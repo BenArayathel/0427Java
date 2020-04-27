@@ -1,0 +1,25 @@
+package eg2;
+
+public class Main {
+
+	int x; //instance level
+	int y;  // instance level
+	static int z = 100;  //class level
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Main m1=new Main();
+		m1.x=9;
+		m1.y=99;
+		
+		m1.printXYZ();
+				
+	}
+	
+	public void printXYZ() {
+		System.out.println("x = "+x);
+		System.out.println("y = "+y);
+		System.out.println("z = "+z);
+	}
+
+}
