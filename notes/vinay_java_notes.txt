@@ -332,10 +332,12 @@ anonymous interface, and you can also extend a interface by other interface.
 * use implements keyword to implement any interface.
 there are types of interfaces
 1)Normal Interface -> interface with many abstract methods in it.
-2)Functional Interface -> Interface with only and only one abstract method.
+Eg: List, Queue, Collection
+2)Functional Interface(SAM Interfaces) -> Interface with only and only one abstract method.
+Eg: Comparable, Comparator
 3)Marker Interface -> Interface with no abstract methods at all, which
 		is used for compiler to mark that it does some job.
-
+Eg: Serializable,Clonable
 
 Wrapper Classes
 ------------------------
