@@ -1,0 +1,32 @@
+package eg1;
+
+public class HelloWorld {
+
+	public static void main(String[] args) {
+		System.out.println("Hello world");
+	}
+	
+	private class A{
+		
+	}
+	public static class Z{
+		
+	}
+}
+
+//public class Z{
+//	
+//}
+//class A{
+//	
+//}
+//
+//class Z{
+//	
+//}
+/*
+ *public
+ *protected
+ *default
+ *private 
+ */
