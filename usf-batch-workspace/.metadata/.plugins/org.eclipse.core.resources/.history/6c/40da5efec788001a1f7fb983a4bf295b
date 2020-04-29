@@ -1,0 +1,55 @@
+package eg1;
+
+public class HelloWorld {
+
+	public static int main(String[] args) {
+		System.out.println("Helloooo");
+		return 0;
+	}
+	
+	public void iAmNonStatic() {
+		System.out.println("Hey I am non static");
+	}
+	
+	private class A{
+		
+	}
+	public static class Z{
+		
+	}
+}
+/*
+ * 8 primitive data types
+ * typename		size		defaultvalue
+ * ---------------------------------------
+ * byte			1byte			0
+ * short		2bytes			0
+ * int(default)	4bytes			0
+ * long			8bytes			0
+ * 
+ * float		4bytes			0.0000f
+ * double(default)8bytes		0.0000d
+ * 
+ * char(unicode)2bytes			'\u0000'
+ * 
+ * boolean		1byte			false	
+ * 
+ * 
+ */
+
+//public class Z{
+//	
+//}
+//class A{
+//	
+//}
+//
+//class Z{
+//	
+//}
+/*
+ *public
+ *protected
+ *default
+ *private 
+ */
