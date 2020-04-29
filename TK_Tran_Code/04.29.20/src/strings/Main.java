@@ -41,14 +41,22 @@ public class Main {
 		sb.append(" and Morty");
 		System.out.println("sb : " + sb);
 		System.out.println("sb2 : " + sb2);
-		String stringy = sb.toString();	// Converts StringBuilder back to String
+        String stringy = sb.toString();	// Converts StringBuilder back to String
+        System.out.println(stringy.getClass());
 
 		// StringBuffer
 		String moreTest = "Morty";
 		StringBuffer sbuff = new StringBuffer(moreTest);	// Converts String to StringBuffer
 		sbuff.append(" and Summer");
 		System.out.println(sbuff);
-		String string2 = sbuff.toString();	// Converts StringBuffer back to String
+        String stringy2 = sbuff.toString();	// Converts StringBuffer back to String
+        System.out.println(stringy2.getClass());
+
+        // Checks memory addresses
+        System.out.println(System.identityHashCode(s));     // 1554547125
+        System.out.println(System.identityHashCode(s2));    // 1554547125
+        System.out.println(System.identityHashCode(s4));    // 617901222
+        
 
 		// Note: no DIRECT conversion between StringBuilder and StringBuffer; must go through intermediate.
 		// Note: all 3 classes are final and not related to each other.

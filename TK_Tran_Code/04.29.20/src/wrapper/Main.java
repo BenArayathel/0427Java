@@ -9,6 +9,7 @@ public class Main {
         Integer k = 3;
         // Unboxing (converts back to primitive)
         int l = k;
+        System.out.println(l);
 
         String s = "123";
         Integer g = Integer.parseInt(s); // Converts String param into Object
