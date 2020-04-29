@@ -1,0 +1,28 @@
+package com.example.polymorphism;
+
+public class Animal {
+	
+	public int numberOfEyes;
+	public int numberOfLegs;
+	
+	public Animal() {
+		
+	}
+	
+	public Animal(int numberOfEyes, int numberOfLegs) {
+		this.numberOfEyes = numberOfEyes;
+		this.numberOfLegs = numberOfLegs;
+	}
+	
+	public void move() {
+		System.out.println("Animal is moving");
+	}
+	
+	public void eat() {
+		System.out.println("Animal is consuming calories");
+	}
+  
+	public void sleep() {
+		System.out.println("Sleeping!!!");
+	}
+}

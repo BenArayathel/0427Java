@@ -1,0 +1,15 @@
+package com.encapsulation;
+
+public class MainDriver {
+
+	public static void main(String[] args) {
+		/*
+		 * Practice of restricting access to resources within our class.
+		 * 
+		 * We achieve this through access modifiers within Java;
+		 * 
+		 */
+
+	}
+
+}

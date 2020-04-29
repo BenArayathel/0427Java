@@ -1,0 +1,22 @@
+package com.example.polymorphism;
+
+public class MainDriver {
+
+	public static void main(String[] args) {
+		Animal genericAnimal = new Animal();
+		
+		System.out.println(genericAnimal.numberOfEyes);
+		System.out.println(genericAnimal.numberOfLegs);
+		
+		Animal specialAnimal = new Animal(3,5);
+		System.out.println(specialAnimal.numberOfEyes);
+		System.out.println(specialAnimal.numberOfLegs);
+		
+		MainDriver o = new MainDriver();
+		
+		specialAnimal.sleep();
+		specialAnimal.sleep("Pillow");
+		specialAnimal.sleep(4);
+	}
+
+}

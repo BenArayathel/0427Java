@@ -1,0 +1,11 @@
+package eg2;
+
+import java.io.FileInputStream;
+
+public class Business {
+	
+	public void openFiel(String fileName) {
+		FileInputStream fis=new FileInputStream(fileName);
+	}
+
+}

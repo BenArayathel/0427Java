@@ -1,0 +1,18 @@
+package eg;
+
+public class Player extends Person{
+
+	private int score;
+	private String teamName;
+	
+	public Player() {
+		
+	}
+
+	public Player(in id, Sting name, int score, String teamName) {
+		super(id, name);
+		this.score = score;
+		this.teamName = teamName;
+	}
+	
+}

@@ -1,0 +1,17 @@
+package com.example.abstraction;
+
+public class Volvo implements Car, Truck {
+
+	@Override
+	public void startEngine() {
+		System.out.println("Volvo starting engine");
+		
+	}
+
+	@Override
+	public void drive() {
+		System.out.println("Volvo driving");
+		
+	}
+
+}

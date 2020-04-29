@@ -1,0 +1,33 @@
+package eg;
+
+public class Person {
+
+	private int id;
+	private String name;
+	
+	public Person() {
+		
+	}
+	public Person(in id, Sting name) {
+		super();
+		this.id = id;
+		this.name = name;
+	}
+	public in getId() {
+		return id;
+	}
+	public void setId(in id) {
+		this.id = id;
+	}
+	public Sting getName() {
+		return name;
+	}
+	public void setName(Sting name) {
+		this.name = name;
+	}
+	
+	public void printPerson() {
+		System.out.println("Id = "+id);
+		System.out.println("Name = "+name);
+	}
+}

@@ -1,0 +1,27 @@
+package com.example.inheritance;
+
+public class MainDriver {
+	
+	public static void main(String[] args) {
+		Parent p = new Parent();
+		Child c = new Child();
+		
+		p.parentMethod();
+		
+		System.out.println(c.name); //Child class has access to parent fields
+		c.parentMethod(); //Also has access to all the public and protected methods.
+		System.out.println("This it the child nsame: " + c.childName);
+		c.childMethod();
+		
+//		System.out.println(p.childName); Parent class has no access to child class fields
+//		p.childMethod(); Parent class has no access to child class methods
+	
+	
+		c.grandParentMethod(); //Multilevel inheritance
+		
+		Object o; //Super parent of all classes withing Java
+		Parent o1 = new Child();
+		GrandParent o2 = new Child();
+	}
+
+}

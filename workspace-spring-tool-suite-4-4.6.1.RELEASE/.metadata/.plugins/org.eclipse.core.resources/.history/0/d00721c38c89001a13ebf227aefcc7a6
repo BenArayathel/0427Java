@@ -1,0 +1,5 @@
+package oldstyle;
+@FunctionalInterface
+public interface MyFunctional {
+ void hello(String name);
+}

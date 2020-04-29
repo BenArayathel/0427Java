@@ -1,0 +1,17 @@
+package com.example.abstraction;
+
+public class Volvo implements Car {
+
+	@Override
+	public void startEngine() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void drive() {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

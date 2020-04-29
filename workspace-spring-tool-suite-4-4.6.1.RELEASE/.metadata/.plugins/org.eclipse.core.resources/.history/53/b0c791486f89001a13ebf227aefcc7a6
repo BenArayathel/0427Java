@@ -1,0 +1,50 @@
+package com.example.polymorphism;
+
+public class MainDriver {
+
+	public static void main(String[] args) {
+		Animal genericAnimal = new Animal();
+		
+		System.out.println(genericAnimal.numberOfEyes);
+		System.out.println(genericAnimal.numberOfLegs);
+		
+		Animal specialAnimal = new Animal(3,5);
+		System.out.println(specialAnimal.numberOfEyes);
+		System.out.println(specialAnimal.numberOfLegs);
+		
+		MainDriver o = new MainDriver();
+		
+		specialAnimal.sleep();
+		specialAnimal.sleep("Pillow");
+		specialAnimal.sleep(4);
+		specialAnimal.sleep("Pillow", 4);
+		specialAnimal.sleep(4, "Pillow");
+		
+		/*Overloading(method and constuctor) is:
+		 * 	Same method name but different parameters
+		 * 	Different number of parameters
+		 * 	Different types
+		 * 	Different Order
+		 *  Compile time polymorphism (static binding)
+		 */
+		
+		
+		
+		/*
+		 * Overriding
+		 * 
+		 * Things that cannot be overridden:
+		 * 		Constructors,
+		 * 		private methods-
+		 * 		final methods--keyword stops overriding
+		 * 		static methods - already loaded into stack
+		 */
+		Dog d = new Dog();
+		d.move();
+		System.out.println(d.numberOfEyes);
+		System.out.println(d.numberOfLegs);
+		
+		
+	}
+
+}

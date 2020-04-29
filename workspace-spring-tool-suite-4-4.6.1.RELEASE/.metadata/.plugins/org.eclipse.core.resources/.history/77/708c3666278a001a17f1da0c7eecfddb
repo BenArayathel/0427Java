@@ -1,0 +1,24 @@
+package com.example.strings;
+
+public class StringStuff {
+	
+	public static void main(String[] args) {
+		/*
+		 * What is a stirng?
+		 * an object that contains an array of characters, allowing you to create and manipulate strings
+		 * 
+		 * immutable: string cant be changed
+		 * final: class cnnot be extended
+		 * 
+		 * string objects are stored in the heao but string literals are stored in strign pool which is in the heap memory
+		 */
+		
+		String s = "This is a String Literal"; //string object will first reference string pool
+		String s2 = "this is a string literal";//and point to it if it already exists
+		
+		String s3 = new String ("This is a string literal");//the new keyword will always create new object in heap memory
+		
+		System.out.println(s == s2);
+	}
+
+}

@@ -1,0 +1,15 @@
+package com.example.inheritance;
+
+public class Upcasting {
+	
+	public static void main(String[] args) {
+/*
+ * 
+ * implicit - compiler -upcasting -child class obj is assigned to parent
+ * explicit - dev -explicitly we have to say that the parent object needs to be converted to which child
+ */
+	Object o = new Child();
+	System.out.println(o.getClass());
+	System.out.println(o.hashCode());
+}
+}

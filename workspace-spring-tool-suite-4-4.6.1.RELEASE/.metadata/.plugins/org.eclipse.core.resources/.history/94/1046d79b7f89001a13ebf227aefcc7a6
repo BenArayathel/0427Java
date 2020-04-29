@@ -1,0 +1,20 @@
+package com.example.abstraction;
+
+public class MainDriver {
+
+	public static void main(String[] args) {
+
+		/*
+		 * what is abstraction
+		 * 	hiding implementation to show functionality
+		 * 
+		 * How does Java implement?
+		 * 		Interfaces--pure form of abstraction
+		 * 		Abstract Classes--partial abstraction
+		 */
+
+		Car c = new Volvo();
+		System.out.println(c.pi);
+	}
+
+}

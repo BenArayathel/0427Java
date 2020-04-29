@@ -1,0 +1,5 @@
+package oldstyle;
+
+public class MyClass implements MyInterface{
+
+}

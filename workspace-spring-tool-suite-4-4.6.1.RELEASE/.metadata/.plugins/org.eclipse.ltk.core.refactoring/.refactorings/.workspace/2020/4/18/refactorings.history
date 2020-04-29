@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename Java project &apos;IntroToWrapper&apos; to &apos;IntroToWrapper&amp;StringAPIDemos&apos;&#x0D;&#x0A;- Original element: &apos;IntroToWrapper&apos;&#x0D;&#x0A;- Renamed element: &apos;IntroToWrapper&apos;&#x0D;&#x0A;- Update references to refactored element" description="Rename Java project &apos;IntroToWrapper&apos;" flags="7" id="org.eclipse.jdt.ui.rename.java.project" input="=IntroToWrapper" name="IntroToWrapper&amp;StringAPIDemos" references="true" stamp="1588185680812" version="1.0"/>
+</session>

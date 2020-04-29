@@ -1,0 +1,30 @@
+package com.example.Wrappers;
+
+public class MainDriver {
+
+	public static void main(String[] args) {
+
+		/*
+		 * A wrapper class wil wrap around primitive data types
+		 * 
+		 * boolean>Boolean
+		 * int>Integer
+		 * char>Character
+		 * byte>Byte
+		 * short>Short
+		 * long>Long
+		 * double>Double
+		 * 
+		 * why?
+		 * 		Objects have methods associated with them
+		 * 		Data Structures like the collection API
+		 */
+		
+		int i = 5;
+		
+		//boxing
+		Integer j = new Integer(5);
+
+	}
+
+}

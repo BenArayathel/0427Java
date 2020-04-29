@@ -1,0 +1,10 @@
+package eg;
+
+public class Main {
+
+	public static void main(String[] args) {
+		Player p1=new Player(100, "Sachin", 10000, "Sparts")
+		p1.printPlayer();
+	}
+
+}

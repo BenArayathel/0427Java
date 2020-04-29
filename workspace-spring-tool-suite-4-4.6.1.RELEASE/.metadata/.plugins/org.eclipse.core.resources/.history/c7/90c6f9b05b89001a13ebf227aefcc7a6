@@ -1,0 +1,16 @@
+package com.example.inheritance;
+
+public class MainDriver {
+	
+	public static void main(String[] args) {
+		Parent p = new Parent();
+		Child c = new Child();
+		
+		p.parentMethod();
+		
+		System.out.println(c.name); //Child class has access to parent fields
+		c.parentMethod(); //Also has access to all the public and protected methods.
+		
+	}
+
+}

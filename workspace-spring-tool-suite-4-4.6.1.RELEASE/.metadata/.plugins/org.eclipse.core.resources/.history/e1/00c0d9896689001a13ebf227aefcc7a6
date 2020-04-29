@@ -1,0 +1,34 @@
+package com.example.polymorphism;
+
+public class Animal {
+	
+	public int numberOfEyes;
+	public int numberOfLegs;
+	
+	/*
+	 * JVM will give every class a default constructor (if there is no explicit constructor)
+	 */
+	
+	public Animal() {
+		System.out.println("No args constructor!!!");
+		this.numberOfEyes = 2;
+		this.numberOfLegs = 4;
+	}
+	
+	public Animal(int numberOfEyes, int numberOfLegs) {
+		this.numberOfEyes = numberOfEyes;
+		this.numberOfLegs = numberOfLegs;
+	}
+	
+	public void move() {
+		System.out.println("Animal is moving");
+	}
+	
+	public void eat() {
+		System.out.println("Animal is consuming calories");
+	}
+  
+	public void sleep() {
+		System.out.println("Sleeping!!!");
+	}
+}

@@ -1,0 +1,9 @@
+package com.example.polymorphism;
+
+public class Dog extends Animal{
+
+	@Override //explicitly tells you when misspelling error
+	public void move() {
+		System.out.println("Chasing the Bone!!!");
+	}
+}

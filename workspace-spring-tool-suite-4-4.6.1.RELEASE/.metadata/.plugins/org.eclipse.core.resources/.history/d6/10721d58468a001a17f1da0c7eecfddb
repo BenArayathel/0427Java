@@ -1,0 +1,23 @@
+package eg_buffer_builder;
+
+public class Palindrome {
+
+	public static void main(String[] args) {
+		String s = "madam";
+//		StringBuilder sb = new StringBuilder(s);
+//		sb.reverse();
+//		String s1 = sb.toString();
+//		if(s.equals(s1)) {
+//			System.out.println("Its Palindrome");
+//		} else {
+//			System.out.println("not a Palindroem");
+//		}
+		
+		if(new StringBuilder(s).reverse().toString().equals(s)) {
+			System.out.println("Its Palindrome");
+			} else {
+				System.out.println("not a Palindroem");
+	}
+
+}
+}

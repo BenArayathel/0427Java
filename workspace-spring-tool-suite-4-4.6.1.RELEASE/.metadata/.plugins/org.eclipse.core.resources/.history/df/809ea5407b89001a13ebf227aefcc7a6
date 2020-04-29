@@ -1,0 +1,19 @@
+package com.encapsulation;
+
+public class Bank {
+
+	private double account;
+	
+	public Bank() {
+		this.account = 0;
+	}
+
+	public double getAccount() { //use shift alt right click to generate getters/setters
+		return account;
+	}
+
+	public void setAccount(double account) {
+		this.account = account;
+	}
+	
+}

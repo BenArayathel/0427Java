@@ -1,0 +1,12 @@
+package oldstyle;
+
+import oldstyle.MyInterface;
+
+public class LambdaWay {
+ public static void main(String[] args) {
+	 MyInterface m = () ->{
+		 System.out.println("hello lambda");
+	 };
+	 m.sayHello();
+	 }
+ }
