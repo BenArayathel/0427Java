@@ -25,4 +25,6 @@ public class LastLetterUppercase {
 		str = sb.toString().trim();
 		System.out.println(str);
 	}
+	
+	// OUTPUT: hellO hI hoW arE yoU doinG todaY
 }

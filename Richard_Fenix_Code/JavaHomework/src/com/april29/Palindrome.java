@@ -15,6 +15,16 @@ public class Palindrome {
 			}
 		}
 		System.out.println("Total number of palindrome is " + count);
-	
+		/* OUTPUT:
+		 	...
+		 	9339
+			9449
+			9559
+			9669
+			9779
+			9889
+			9999
+			Total number of palindrome is 90 
+		 */
 	}
 }
