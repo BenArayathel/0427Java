@@ -14,7 +14,7 @@ public class Main {
         System.out.println(s == s3);    // false, both in heap but s is in the pool and s3 isn't.
         System.out.println(s3 == s4);   // false, although created same way using new, still different memory locations in heap.
 
-        // .equals() checks content
+        // .equals() checks content (.equalsIgnoreCase() ignores case)
         System.out.println(s3.equals(s4));  // true
 
         // Returns String from heap back into String pool (that's still also in heap).
@@ -52,13 +52,34 @@ public class Main {
         String stringy2 = sbuff.toString();	// Converts StringBuffer back to String
         System.out.println(stringy2.getClass());
 
+
+
         // Checks memory addresses
         System.out.println(System.identityHashCode(s));     // 1554547125
         System.out.println(System.identityHashCode(s2));    // 1554547125
         System.out.println(System.identityHashCode(s4));    // 617901222
         
-
 		// Note: no DIRECT conversion between StringBuilder and StringBuffer; must go through intermediate.
-		// Note: all 3 classes are final and not related to each other.
+        // Note: all 3 classes are final and not related to each other.
+        
+
+
+		// Other String methods
+		System.out.println(s2.substring(2, 4));	// Grabs a substring.
+		System.out.println(s2.length());	// Returns length of String.
+		System.out.println(s2.charAt(0));	// Returns character at index.
+
+		// Can iterate with String methods
+		for (int i = 0; i < s2.length(); i++) {
+			System.out.println(s2.charAt(i));
+		}
+		System.out.println(s2.trim());	// Removes leading and trailing whitespace.
+
+		// Splitting a String Literal
+		String t = "Hello how are you doing today?";
+		String ar[] = t.split(" ");
+		for (int i = 0; i < ar.length; i++) {
+			System.out.println(ar[i].toUpperCase());
+		}
     }
 }

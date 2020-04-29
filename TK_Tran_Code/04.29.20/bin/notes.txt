@@ -12,8 +12,8 @@ Why?
 	Objects have methods assocaited with them.
 	Data structures like the Collection API.
 
-Primitives are still faster than wrappers.
-Only use wrapper when a method needs to accept an Object.
+	Primitives are still faster than wrappers.
+	Only use wrapper when a method needs to accept an Object.
 Recall:
 	Everything within Main(), will go onto the stack for execution.
 	Everything instance-level will go onto the heap.
@@ -27,8 +27,67 @@ String
 		which itself is within heap memory.
 
 StringBuilder
-	Mutable, more efficient than StringBuffer.
+	Mutable, more efficient (faster) than StringBuffer.
 
 StringBuffer
-	Mutable, thread safe/synchronized.
-	Lower efficiency than StringBuffer.
+	Also mutable, but thread safe/synchronized.
+	Lower efficiency (slower) than StringBuffer; it's gotta wait for other threads before continuing.
+
+RegEx (Regular Expression)
+	An expression commonly used across programming languages; minor syntax changes.
+	PMA - Pattern Matching Algorithm
+	[] - expression
+	{} - length
+	^ - not
+	? - 
+	. - 
+	* - 
+	() - 
+	Examples:
+		[a-z]{5} - "any lowercase letter of length 5"
+		[0-9]{1,} - "at least 1 digit and max can be any"
+		[a-zA-Z0-9]{10} = "any alphanumeric word of length 10"
+		[^a-zA-Z0-9] - "apart from alphanumeric" (anything except alphanumeric)
+
+Exceptions
+	Exception: anything disrupting the flow of an application.
+	Exception-handling determines the quality of an application.
+
+	Separations of Concerns Normal Workflow
+	Client/Users/Apps >
+		Tier 1: Presentation Layer
+			Logic
+			Accepts user input
+		Tier 2: Business/Application Layer
+			Logic
+			Checks and validates user input
+			Pre-filter, preliminary checks before consulting DB
+		Tier 3: Persistance/DB Layer
+			Logic
+			Interacts with database
+	> Database, SQL, NoSQL, PL/SQL
+
+
+	Object >
+		Throwable (all exceptions throwable) >
+			Exception (Checked Exception) >
+			- SQLException
+			- ClassNotFoundException
+			- ParseException
+			- IOException
+				RuntimeException (Unchecked Exceptions), compiler forces dev to handle it
+				- ArithmeticException (DivideByZero)
+				- IndexOutOfBoundsException
+				- ConcurrentModificationException
+	
+	try..catch..finally
+		try - suspected code that might throw an exception
+		catch - handler of exception
+		finally - last block; runs regardless of whether exception was handled or not
+	throws
+		Tosses exception back to previous layer
+	throw
+		Explicitly create an exception with my own message
+
+	When an exception thrown at runtime, JVM creates exception Object with a predefined message.
+		Then, it checks if the dev has handled it.
