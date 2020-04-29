@@ -1,0 +1,36 @@
+package eg1;
+
+public class HelloWorld {
+
+	public final void main(String[] args) {
+		System.out.println("Helloooo");
+	}
+	
+	public void iAmNonStatic() {
+		System.out.println("Hey I am non static");
+	}
+	
+	private class A{
+		
+	}
+	public static class Z{
+		
+	}
+}
+
+//public class Z{
+//	
+//}
+//class A{
+//	
+//}
+//
+//class Z{
+//	
+//}
+/*
+ *public
+ *protected
+ *default
+ *private 
+ */
