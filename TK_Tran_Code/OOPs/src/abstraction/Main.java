@@ -1,18 +1,5 @@
 package abstraction;
 
-abstract class Animal {                     // Abstract class
-    public abstract void animalSound();     // Abstract method (no implementation, yet)
-    public void sleep() {                   // Regular methods
-        System.out.println("Zzz");
-    }
-}
-
-class Cow extends Animal {                  // Subclass (inherits from Animal via inheritance)
-    public void animalSound() {             // animalSound() implementation provided here
-        System.out.println("Moo");
-    }
-}
-
 public class Main {
     public static void main(String[] args) {
         Cow cow = new Cow();                // Creates a Cow object
