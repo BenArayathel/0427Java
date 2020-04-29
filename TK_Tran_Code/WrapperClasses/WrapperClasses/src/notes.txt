@@ -1,0 +1,34 @@
+04/29/20
+Wrapper Classes wrap around primitive data types.
+Turns primitives into Objects:
+	boolean > Boolean
+	int > Integer
+	char > Character
+	byte > Byte
+	short > Short
+	long > Long
+	double > Double
+Why?
+	Objects have methods assocaited with them.
+	Data structures like the Collection API.
+
+Primitives are still faster than wrappers.
+Only use wrapper when a method needs to accept an Object.
+Recall:
+	Everything within Main(), will go onto the stack for execution.
+	Everything instance-level will go onto the heap.
+
+String
+	An object that contains an array of characters.
+	Allows creation and manipulation of strings (notice lowercase).
+	Immutable: Strings can't be changed.
+	Final: The class cannot be extended.
+	String objects are stored on heap, but String Literals are stored in String pool, 
+		which itself is within heap memory.
+
+StringBuilder
+	Mutable, more efficient than StringBuffer.
+
+StringBuffer
+	Mutable, thread safe/synchronized.
+	Lower efficiency than StringBuffer.
