@@ -1,15 +1,14 @@
 package DetectiveComics;
 
 public class Batman extends Hero implements Powers {
-	
-	private boolean isSidekick;
-	private String secretIdentity;
-	private String location;
 
-	public Batman(String name, String gender, boolean isSidekick, String secretIdentity, String location) {
-		super(name, gender);
-		this.location = location;
-		this.secretIdentity = secretIdentity;
+	private String weapons;
+	// Add an array or something that goes through all of the powers and saves the ones that are true
+	// and adds them to another Powers array. Build a weapons interface as well.
+
+	public Batman(String name, String gender, boolean hasSidekick, String secretIdentity, String location) {
+		super(name, gender, hasSidekick, secretIdentity, location);
+		this.weapons = "Batarangs, Smoke Bombs, His Fists";
 	}
 
 	@Override
@@ -21,43 +20,9 @@ public class Batman extends Hero implements Powers {
 	public boolean masterFighter() {
 		return true;
 	}
-
-
-	public String getSecretIdentity() {
-		return secretIdentity;
-	}
-
-	public void setSecretIdentity(String secretIdentity) {
-		this.secretIdentity = secretIdentity;
-	}
-
-	public String getLocation() {
-		return location;
-	}
-
-	public void setLocation(String location) {
-		this.location = location;
-	}
-	
-	public boolean getIsSidekick() {
-		return isSidekick;
-	}
-	
-	public void setIsSidekick(boolean isSidekick) {
-		this.isSidekick = isSidekick;
-	}
 	
 	public void printBatman() {
 		printHero();
-		System.out.println("Secret Identity: " + secretIdentity);
-		System.out.println("Location: " + location);
-		if(isSidekick) {
-			System.out.println("Is a sidekick");
-		}
-		else {
-			System.out.println("Is not a sidekick");
-		}
 	}
-
 
 }

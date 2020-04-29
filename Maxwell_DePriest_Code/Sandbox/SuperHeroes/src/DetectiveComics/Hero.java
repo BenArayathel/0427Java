@@ -1,44 +1,23 @@
 package DetectiveComics;
 
-public class Hero implements Powers{
+public class Hero{
 	
 	private String name;
 	private String gender;
+	private boolean hasSidekick;
+	private String secretIdentity;
+	private String location;
+	private Hero sideKick;
 	
-	public Hero(String name, String gender) {
+	
+
+	public Hero(String name, String gender, boolean hasSidekick, String secretIdentity, String location) {
 		this.name = name;
 		this.gender = gender;
+		this.hasSidekick = hasSidekick;
+		this.secretIdentity = secretIdentity;
+		this.location = location;
 		
-	}
-
-	@Override
-	public boolean canFly() {
-		return false;
-	}
-
-	@Override
-	public boolean impenetrableSkin() {
-		return false;
-	}
-
-	@Override
-	public boolean superStrength() {
-		return false;
-	}
-
-	@Override
-	public boolean isMutant() {
-		return false;
-	}
-
-	@Override
-	public boolean isGenius() {
-		return false;
-	}
-
-	@Override
-	public boolean masterFighter() {
-		return false;
 	}
 
 	public String getName() {
@@ -57,10 +36,59 @@ public class Hero implements Powers{
 		this.gender = gender;
 	}
 
+	public String getSecretIdentity() {
+		return secretIdentity;
+	}
+
+	public void setSecretIdentity(String secretIdentity) {
+		this.secretIdentity = secretIdentity;
+	}
+
+	public String getLocation() {
+		return location;
+	}
+
+	public void setLocation(String location) {
+		this.location = location;
+	}
+
+	public boolean isHasSidekick() {
+		return hasSidekick;
+	}
+
+	public void setHasSidekick(boolean hasSidekick) {
+		this.hasSidekick = hasSidekick;
+	}
+
+	public Hero getSideKick() {
+		return sideKick;
+	}
+
+	public void setSideKick(Hero sideKick) {
+		this.sideKick = sideKick;
+	}
+
+	
+	// Add parameters for weapons and abilities later
 	public void printHero() {
 		System.out.println("Name: " + name);
 		System.out.println("Gender: " + gender);
+		System.out.println("Secret Identity: " + secretIdentity);
+		System.out.println("Location: " + location);
+		if(hasSidekick) {
+			System.out.println("Has a sidekick\n");
+			System.out.println("-SideKick Details:");
+			this.printSidekick(sideKick);	
+		}
 		
+	}
+	
+	public void printSidekick(Hero sK) {
+		System.out.println("Name: " + sK.name);
+		System.out.println("Gender: " + sK.gender);
+		System.out.println("Secret Identity: " + sK.secretIdentity);
+		System.out.println("Location: " + sK.location);
+		System.out.println();
 	}
 	
 	
