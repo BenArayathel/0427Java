@@ -9,6 +9,12 @@ public class Hero{
 	private String location;
 	private Hero sideKick;
 	
+	/*
+	 * have empty lists of powers and weapons here, then in the individual hero classes can add to it based on own stats
+	 * check out interface variables. may be easier to just have a big list of powers/weapons that can be picked out 
+	 * instead of the default methods
+	 */
+	
 	
 
 	public Hero(String name, String gender, boolean hasSidekick, String secretIdentity, String location) {
