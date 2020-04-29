@@ -1,4 +1,4 @@
-package nerfOrNothin;
+package april28;
 
 public abstract class Blaster implements NerfGun {
 	private int bulletsPerShot;
