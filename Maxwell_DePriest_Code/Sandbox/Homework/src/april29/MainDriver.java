@@ -28,6 +28,9 @@ public class MainDriver {
 		rX.dLicenseValid("666");
 		rX.dLicenseValid("I'm a real driver!");
 		System.out.println();
+		System.out.println("1-bonus: ");
+		System.out.println(rX.phoneNumValid("+1-234-867-5309"));
+		System.out.println(rX.phoneNumValid("+1-234-7567-432"));
 		System.out.println();
 		Palindrome p = new Palindrome();
 		System.out.println("2. ");

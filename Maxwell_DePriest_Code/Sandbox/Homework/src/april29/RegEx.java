@@ -6,6 +6,11 @@ public class RegEx {
 	
 	}
 	
+	public String phoneNumValid(String phoneNum) {		
+		
+		return phoneNum.matches("\\+1-[0-9]{3}-[0-9]{3}-[0-9]{4}") ? ("This is a valid phone number") : ("This is not a valid phone number");
+	}
+	
 	public boolean ssnValid(String ssn) {
 		
 		if (ssn.matches("[0-9]{3}\\-[0-9]{2}\\-[0-9]{4}")) {
