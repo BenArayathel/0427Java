@@ -7,6 +7,7 @@ public class Palindrome {
 		//String p = "madam";
 		//StringBuilder sb = new StringBuilder(p);
 		//sb.reverse();
+		System.out.println("Palindrome Numbers...");
 		
 		for (int i = 1000; i <= 9999; i++) {
 			String p = i+"";
