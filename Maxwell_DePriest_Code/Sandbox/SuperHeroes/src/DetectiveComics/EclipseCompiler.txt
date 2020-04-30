@@ -1,0 +1,1 @@
+30 Apr 2020 3:37:20 GMT: Log 'EclipseCompiler.txt' opened: 30 Apr 2020 3:37:20 GMT with name C:\CodeHome\my_git_repos\0427Java\Maxwell_DePriest_Code\Sandbox\SuperHeroes\src\DetectiveComics\EclipseCompiler.txt

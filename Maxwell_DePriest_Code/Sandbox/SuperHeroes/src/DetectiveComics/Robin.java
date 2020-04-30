@@ -1,13 +1,17 @@
 package DetectiveComics;
 
-public class Robin extends Hero implements Powers{
+public class Robin extends Hero implements Abilities{
 	
-	private String weapons;
+	private String weapon1 = "Bo Staff";
+	private String weapon2 = "Shurikens";
+	private String weapon3 = "Bolas";
 
 	public Robin(String name, String gender,boolean hasSidekick, String secretIdentity,
 			String location) {
 		super(name, gender, hasSidekick, secretIdentity, location);
-		this.weapons = "Bo Staff, Batarangs, Bolas";
+		addToWeaponArrayList(weapon1);
+		addToWeaponArrayList(weapon2);
+		addToWeaponArrayList(weapon3);
 
 	}
 

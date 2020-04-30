@@ -1,13 +1,17 @@
 package DetectiveComics;
 
-public class Superman extends Hero implements Powers {
+public class Superman extends Hero implements Abilities {
 	
-	private String abilities;
+	private String ability1 = "Flight";
+	private String ability2 = "Super Strength";
+	private String ability3 = "Heat Vision";
 
 	
 	public Superman(String name, String gender, boolean hasSidekick, String secretIdentity, String location) {
 		super(name, gender, hasSidekick, secretIdentity, location);
-		this.abilities = "Ice Breath, Heat Vision, Super Strength";
+		addToAbilityArrayList(ability1);
+		addToAbilityArrayList(ability2);
+		addToAbilityArrayList(ability3);
 		
 		
 	}

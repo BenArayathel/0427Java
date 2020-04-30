@@ -1,5 +1,7 @@
 package DetectiveComics;
 
+import java.util.ArrayList;
+
 public class Hero{
 	
 	private String name;
@@ -8,6 +10,8 @@ public class Hero{
 	private String secretIdentity;
 	private String location;
 	private Hero sideKick;
+	private ArrayList<String> weaponArrayList = new ArrayList<String>();
+	private ArrayList<String> abilityArrayList = new ArrayList<String>();
 	
 	/*
 	 * have empty lists of powers and weapons here, then in the individual hero classes can add to it based on own stats
@@ -73,14 +77,37 @@ public class Hero{
 	public void setSideKick(Hero sideKick) {
 		this.sideKick = sideKick;
 	}
+	
+	public ArrayList<String> getWeaponArray() {
+		return weaponArrayList;
+	}
+	
+	public void addToWeaponArrayList(String weapon) {
+		this.weaponArrayList.add(weapon);
+	}
+	
+	public ArrayList<String> getAbilityArrayList() {
+		return abilityArrayList;
+	}
+	
+	public void addToAbilityArrayList(String ability) {
+		this.getAbilityArrayList().add(ability);
+	}
 
 	
-	// Add parameters for weapons and abilities later
 	public void printHero() {
 		System.out.println("Name: " + name);
 		System.out.println("Gender: " + gender);
 		System.out.println("Secret Identity: " + secretIdentity);
 		System.out.println("Location: " + location);
+		if (!weaponArrayList.isEmpty()) {
+			ArrayList<String> weapons = getWeaponArray();
+			System.out.printf("Weapons: %s, %s, %s %n", weapons.get(0), weapons.get(1), weapons.get(2));
+		}
+		if (!abilityArrayList.isEmpty()) {
+			ArrayList<String> abilities = getAbilityArrayList();
+			System.out.printf("Abilities: %s, %s, %s %n", abilities.get(0), abilities.get(1), abilities.get(2));
+		}
 		if(hasSidekick) {
 			System.out.println("Has a sidekick\n");
 			System.out.println("-SideKick Details:");
@@ -94,6 +121,14 @@ public class Hero{
 		System.out.println("Gender: " + sK.gender);
 		System.out.println("Secret Identity: " + sK.secretIdentity);
 		System.out.println("Location: " + sK.location);
+		if (!sK.weaponArrayList.isEmpty()) {
+			ArrayList<String> weapons = sK.getWeaponArray();
+			System.out.printf("Weapons: %s, %s, %s %n", weapons.get(0), weapons.get(1), weapons.get(2));
+		}
+		if (!sK.abilityArrayList.isEmpty()) {
+			ArrayList<String> abilities = sK.getAbilityArrayList();
+			System.out.printf("Abilities: %s, %s, %s %n", abilities.get(0), abilities.get(1), abilities.get(2));
+		}
 		System.out.println();
 	}
 	
