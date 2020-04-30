@@ -1,12 +1,11 @@
-package com.examples.pallindrome;
+package com.examples.palindrome;
 
-public class Pallindrome {
+public class Palindrome {
 	
-	public static boolean checker(String s) {
+	public static boolean isPalindrome(String s) {
 		StringBuilder sb = new StringBuilder(s);
 		sb.reverse();
-		String revS = sb.toString();
-		if (s.equals(revS)) {
+		if (s.equals(sb.toString())) {
 			return true;
 		} else {
 			return false;
@@ -16,7 +15,7 @@ public class Pallindrome {
 	public static void main(String[] args) {
 		int count = 0;
 		for (int i=1000; i<10000; i++) {
-			if (Pallindrome.checker(Integer.toString(i))) {
+			if (Palindrome.isPalindrome(Integer.toString(i))) {
 				System.out.println(i);
 				count += 1;
 			}

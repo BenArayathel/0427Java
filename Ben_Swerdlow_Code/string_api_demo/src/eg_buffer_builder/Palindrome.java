@@ -7,7 +7,7 @@ public class Palindrome {
 		int x = 1212;
 		String s=x+"";// shortcut for changing anything to a string
 		// We'll use StringBuilder because we want to change the string in place
-		// It's not really necessary for this example, but if we had to do multiple changes to the string
+		// It's not really important for this example, but if we had to do multiple changes to the string
 		// (instead of just reversing it), this would save memory
 //		StringBuilder sb = new StringBuilder(s);
 //		String s1 = sb.reverse().toString();
