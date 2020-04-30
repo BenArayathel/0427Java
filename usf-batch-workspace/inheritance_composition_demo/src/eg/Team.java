@@ -11,6 +11,14 @@ public class Team {
 	public Team() {
 		// TODO Auto-generated constructor stub
 	}
+	
+	public Team(int tid, String teamName, String coachName, int noOfPlayers) {
+		super();
+		this.tid = tid;
+		this.teamName = teamName;
+		this.coachName = coachName;
+		this.noOfPlayers = noOfPlayers;
+	}
 
 	public int getTid() {
 		return tid;
@@ -44,19 +52,20 @@ public class Team {
 		this.noOfPlayers = noOfPlayers;
 	}
 
-	public Team(int tid, String teamName, String coachName, int noOfPlayers) {
-		super();
-		this.tid = tid;
-		this.teamName = teamName;
-		this.coachName = coachName;
-		this.noOfPlayers = noOfPlayers;
-	}
 	
 	public void printTeam() {
-		System.out.println("Team Details");
-		System.out.println("Team Id : "+tid);
-		System.out.println("Team Name : "+teamName);
-		System.out.println("Coach : "+coachName);
-		System.out.println("NoOfPlayers : "+noOfPlayers);
+		System.out.println("Team [tid=" + tid + ", teamName=" + teamName + ", coachName=" + coachName + ", noOfPlayers="
+				+ noOfPlayers + "]");
+		 
 	}
+
+
+	
+//	public void printTeam() {
+//		System.out.println("Team Details");
+//		System.out.println("Team Id : "+tid);
+//		System.out.println("Team Name : "+teamName);
+//		System.out.println("Coach : "+coachName);
+//		System.out.println("NoOfPlayers : "+noOfPlayers);
+//	}
 }
