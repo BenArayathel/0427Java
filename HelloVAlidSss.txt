@@ -1,0 +1,27 @@
+package com.Validation;
+
+import java.util.Scanner;
+
+// Made of nine digits: 3 fields: digits hyphen 2 digit hyphen 4 digits hyphen
+
+public class Validation {
+	public static void main(String[] args) {
+		
+		
+		
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("Please enter your social securiy number");
+		String input = scanner.nextLine();
+		System.out.println("SSN: " + input);
+		//String ssn = "245-67-9827";
+		 {
+		if (input.matches("^(\\d{3}-\\d{2}-\\d{4})")) {
+			System.out.println("You enter a valid ssn");
+		
+		} else
+			System.out.println("Sorry, tu enter an invalide ssn! Please again!");
+		}
+	
+	}
+}
+		
