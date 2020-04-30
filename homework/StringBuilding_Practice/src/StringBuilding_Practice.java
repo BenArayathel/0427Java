@@ -18,15 +18,31 @@ public class StringBuilding_Practice {
 		StringBuilder myBuilder = new StringBuilder(); //create an empty stringbuilder
 		String arr[] = s.split(" "); // split the string, one word at a time, into an array
 		for (int k = 0; k < arr.length; k++) { //iterate through the array of words
-			StringBuilder myChar = new StringBuilder();
-			char chararr[] = arr[k].toCharArray();
+			if (arr[k].length() % 2 != 0) {
+				int halfPoint = (arr[k].length() - 1 / 2);
+				System.out.println(halfPoint);
+				if (halfPoint == 1) {
+					myBuilder
+					.append(arr[k].substring(0))
+						.append(arr[k].substring(halfPoint))
+							.append(arr[k].substring(2));
+				} else {
+					myBuilder
+					.append(arr[k].substring(0, halfPoint - 1))
+						.append(arr[k].substring(halfPoint))
+							.append(arr[k].substring(halfPoint + 1, arr[k].length() - 1));					
+				}
+			} else {
+				System.out.println(false);
+			}
 			
 //			fill the stringbuilder up with each letter from the array
-			myChar
-				.append(chararr);
-			for (char b : chararr) {
-				System.out.print(b);				
-			}
+//			myChar
+//				.append(chararr);
+//			for (char b : chararr) {
+//				System.out.println(b);				
+//			}
+
 		}
 	}
 	
@@ -43,7 +59,6 @@ public class StringBuilding_Practice {
 		String ar[] = s.split(" "); //make an array of each individual word
 		for (int i = 0; i < ar.length; i++) {
 	//		all the magic happens here, figure out what to fill our stringbuilder
-	//		sb.append(Character.toUpperCase(ar[i].charAt(ar[i].length()-1))).append(ar[i]);
 			sb
 				.append(ar[i].substring(0,ar[i].length()-1))
 					.append(Character.toUpperCase(ar[i].charAt(ar[i].length() - 1)))
