@@ -41,7 +41,7 @@ public class ProductMain {
 }
 
 /*
- * Flight (int fid, String name, String source, String destination, float ratings, 
+ * Flight(int fid, String name, String source, String destination, float ratings, double ticketPrice) 
  * 
  * default sorting fid, then customize as you want
  * 
