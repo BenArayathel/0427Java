@@ -3,13 +3,12 @@ package builder_buffer;
 public class Palindrome {
     public static void main(String[] args) {
         
-        String s = "madam";
-
-        // Testing if the String is a Palindrome
-        StringBuilder sb = new StringBuilder(s);    // Converts String to Builder/Buffer to use methods.
-        sb.reverse();                               // NOW we can use methods such as .reverse().
-        String s1 = sb.toString();                  // Converts StringBuilder back to String.
-        if (s.equals(s1)) {
+        // Goal: test whether a String is a palindrome
+        String s = "racecar";                         // Original string
+        StringBuilder sb = new StringBuilder(s);    // Converts original string to StringBuilder in order to use .reverse()
+        sb.reverse();                               // Reverses the StringBuilder
+        String s1 = sb.toString();                  // Converts reversed StringBuilder back to String in order compare with original
+        if (s.equals(s1)) {                         // Compares original String to reversed String
             System.out.println("Palindrome");
         } else {
             System.out.println("Not Palindrome");
@@ -27,5 +26,4 @@ public class Palindrome {
 /*
     Homework:
     Print all palindromes between 1000 to 9999.
-        Tip: Surround condition with a for loop
 */

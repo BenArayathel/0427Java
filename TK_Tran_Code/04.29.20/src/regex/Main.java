@@ -6,19 +6,19 @@ public class Main {
         String s ="123abc wasd qwerty !@#$%^&*()";
         System.out.println(s);
 
-        System.out.println(s.replaceAll("[a-zA-Z]", ""));   // Replaces alphanumerics w/ whitespace
-        System.out.println(s.replaceAll("[a-zA-Z]", "").length());
-        System.out.println(s.replaceAll("[^a-zA-Z]", ""));  // Replace everything (except alphanumerics) w/ whitespace
-        System.out.println(s.replaceAll("[^a-zA-Z]", "").length());
-        System.out.println(s.replaceAll("[ a-zA-Z0-9]", ""));   // Removes whitespace
-        System.out.println(s.replaceAll("[ a-zA-Z0-9]", "").length());
+        System.out.println(s.replaceAll("[a-zA-Z]", ""));       // 123   !@#$%^&*(), Replaces all alphanumerics w/ whitespace
+        System.out.println(s.replaceAll("[a-zA-Z]", "").length());  // 16
+        System.out.println(s.replaceAll("[^a-zA-Z]", ""));      // abcwasdqwerty, Replace everything (except alphanumerics) w/ whitespace
+        System.out.println(s.replaceAll("[^a-zA-Z]", "").length()); // 13
+        System.out.println(s.replaceAll("[ a-zA-Z0-9]", ""));   // !@#$%^&*(), Replaces all alphanumerics w/ whitespace
+        System.out.println(s.replaceAll("[ a-zA-Z0-9]", "").length());  // 10
 
-        // First 5 letters should be uppercase followed by 4 digits and followed by 1 uppercase letter
-        String p = "ABXYY11210";
-        if (p.matches("[A-Z]{5}[0-9]{4}[A-Z]{1}")) {
-            System.out.println("Valid");
+        // Practice: First 5 letters should be uppercase, followed by 5 digits, followed by 3 uppercase letters
+        String p = "ABCDE12345ABC";
+        if (p.matches("[A-Z]{5}[0-9]{5}[A-Z]{3}")) {
+            System.out.println("Valid format: " + p);
         } else {
-            System.out.println("Invalid");
+            System.out.println("Invalid format!");
         }
     }
 }
