@@ -20,11 +20,11 @@ public class RegEx {
 		System.out.println(s.replaceAll("[^a-zA-Z]", "").length());
 		System.out.println(s.replaceAll("[^a-zA-Z0-9]", ""));
 		System.out.println(s.replaceAll("[^a-zA-Z0-9]", "").length());
-		System.out.println(s.replaceAll("[ a-zA-Z0-9]", ""));
+		System.out.println(s.replaceAll("[ a-zA-Z0-9]", ""));			// if there is a space letter or number, delete it.
 		System.out.println(s.replaceAll("[ a-zA-Z0-9]", "").length());
 		
 		//first  5 letters should be uppercase followed by 4 digits and followed by an uppercase letter
-		String p="ABXYY112Z";
+		String p="ABXYY1112Z";
 		if(p.matches("[A-Z]{5}[0-9]{4}[A-Z]{1}")) {
 			System.out.println("Valid info");
 		}else {
