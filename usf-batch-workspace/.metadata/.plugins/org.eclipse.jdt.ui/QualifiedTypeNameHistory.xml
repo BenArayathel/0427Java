@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="eg1.HelloWorld"/>
+<fullyQualifiedTypeName name="eg2.Main"/>
+<fullyQualifiedTypeName name="eg2.Two"/>
+<fullyQualifiedTypeName name="oldstyle.MyClass"/>
+<fullyQualifiedTypeName name="oldstyle.MyInterface"/>
+<fullyQualifiedTypeName name="java.lang.FunctionalInterface"/>
+<fullyQualifiedTypeName name="new_lambdaway.MyFunctional"/>
+<fullyQualifiedTypeName name="eg1.Player"/>
+<fullyQualifiedTypeName name="java.lang.Override"/>
+<fullyQualifiedTypeName name="eg.Team"/>
+<fullyQualifiedTypeName name="eg.Player"/>
+<fullyQualifiedTypeName name="eg.Person"/>
+<fullyQualifiedTypeName name="eg.Address"/>
+<fullyQualifiedTypeName name="eg.Organization"/>
+</qualifiedTypeNameHistroy>
