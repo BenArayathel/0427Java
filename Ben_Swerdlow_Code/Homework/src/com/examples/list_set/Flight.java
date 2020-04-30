@@ -73,8 +73,8 @@ public class Flight implements Comparable<Flight> {
 
 	@Override
 	public int compareTo(Flight flight) {
-		Integer fid1 = this.fid;
-		Integer fid2 = flight.fid;
+		Integer fid1 = this.getFid();
+		Integer fid2 = flight.getFid();
 		return fid1.compareTo(fid2);
 	}
 
@@ -82,6 +82,28 @@ public class Flight implements Comparable<Flight> {
 	public String toString() {
 		return "Flight [fid=" + fid + ", name=" + name + ", source=" + source + ", destination=" + destination
 				+ ", rating=" + rating + ", ticketPrice=" + ticketPrice + "]";
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + fid;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Flight other = (Flight) obj;
+		if (fid != other.fid)
+			return false;
+		return true;
 	}
 	
 	
