@@ -1,0 +1,50 @@
+package helloEncapsulation;
+
+public class Person {
+	
+	private static String firstName;
+	private String lastName;
+	private static  int age;
+	
+	
+	public Person (String firstName, String lastName, int age) {
+		Person.firstName = firstName;
+		this.lastName = lastName;
+		Person.age = age;
+	}
+	
+	
+	public void display(String firstName, String lastName, int age) {
+		System.out.println(firstName +" " +lastName + " "+ age);
+	}
+	
+	
+	public static String getFirstName() {
+		return firstName;
+	}
+	public static void setFirstName(String firstName) {
+		Person.firstName = firstName;
+	}
+	public String getLastName() {
+		return lastName;
+	}
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+	public static int getAge() {
+		return age;
+	}
+	public static void setAge(int age) {
+		Person.age = age;
+	}
+	public static void main(String[] args) {
+		Person p = new Person(firstName, firstName, age);
+		p.display("Pauline", "Sawadogo", 40);
+		Person.setFirstName("Sawa");
+		p.setLastName("Vincent");
+		Person.setAge ( 20);
+		System.out.println(Person.getFirstName()+ " "+ p.getLastName()+ " " + Person.getAge());
+		
+		p.display("Marie","Ilboudo", 45);
+	}
+}
