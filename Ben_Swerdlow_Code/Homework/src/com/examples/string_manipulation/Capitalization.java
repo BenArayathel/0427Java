@@ -30,10 +30,15 @@ public class Capitalization {
 		String [] sArr = s.split(" ");
 		for (int i=0; i<sArr.length; i++) {
 			if (sArr[i].length()%2==1) {
+				// My solution, I brute forced it
 				sb.append(sArr[i].substring(0,sArr[i].length()/2));
 				sb.append(Character.toUpperCase(sArr[i].charAt(sArr[i].length()/2)));
 				sb.append(sArr[i].substring(sArr[i].length()/2+1, sArr[i].length()));
 				sb.append(" ");
+				// Ben A.'s solution, much more elegant by converting to character array
+//				char c[] = sArr[i].toCharArray();
+//				c[c.length/2] = Character.toUpperCase(c[c.length/2]);
+//				sb.append(new String(c)).append(" ");
 			} else {
 				sb.append(sArr[i]);
 				sb.append(" ");
