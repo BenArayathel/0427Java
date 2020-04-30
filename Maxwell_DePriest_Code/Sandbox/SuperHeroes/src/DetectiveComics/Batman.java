@@ -26,6 +26,7 @@ public class Batman extends Hero implements Abilities {
 //	}
 	
 	public void printBatman() {
+		// Keep arrayLists in batman, pull from abilities, for loop iteration that adds to another Array List that passes to printHero()
 		printHero();
 	}
 
