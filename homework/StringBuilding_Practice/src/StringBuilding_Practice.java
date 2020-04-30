@@ -13,6 +13,8 @@ public class StringBuilding_Practice {
 		
 	}
 	
+//	changing something
+	
 	
 	public static void capitalMiddle(String s) {
 		StringBuilder myBuilder = new StringBuilder(); //create an empty stringbuilder
