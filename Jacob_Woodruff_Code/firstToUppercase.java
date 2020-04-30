@@ -19,11 +19,13 @@ public class firstToUppercase {
 		String splitString[] = k.split(" ");
 		for (int i=0; i<splitString.length; i++) {
 			int wordLength = splitString[i].length();
-			String lastletter = splitString[i].substring((wordLength-1), (wordLength));
 			char lastletter2 = splitString[i].charAt(splitString[i].length()-1);
-			System.out.println(lastletter2);
+			String lastletter3 = splitString[i].substring(0,(wordLength)-1);
+			greeting.append(lastletter3).append(Character.toUpperCase(lastletter2)).append(" ");
+			
+			
 		}
-	
+	System.out.println(greeting);
 		
 	
 		
