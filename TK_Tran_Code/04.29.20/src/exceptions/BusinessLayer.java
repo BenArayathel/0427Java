@@ -2,12 +2,18 @@ package exceptions;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 
 public class BusinessLayer {
 
     // Simply a method to open a file (to test FileNotFoundException in Main.java)
     public void openFile(String fileName) throws FileNotFoundException {
         FileInputStream fis = new FileInputStream(fileName);
+        try {
+            fis.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     // Illustrating throw using custom-created exceptions (to test InvalidAgeException in Main.java)

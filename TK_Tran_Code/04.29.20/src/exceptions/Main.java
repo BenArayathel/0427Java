@@ -14,12 +14,12 @@ public class Main {
             result = x / y; // Throws DivideByZeroException
 			System.out.println("Result: " + result);	// Only executes if x can be divided by y
 			
-            String s = null;
-            System.out.println(s.length());	// Throws NullPointerException
+            // String s = null;
+            // System.out.println(s.length());	// Throws NullPointerException
         } catch (ArithmeticException e) {	// Handles DivideByZeroException
             System.out.println("You cannot divide by zero!");
-        } catch (NullPointerException e) {	// Handles NullPointerException
-            System.out.println("Null pointer access!");
+        // } catch (NullPointerException e) {	// Handles NullPointerException
+        //     System.out.println("Null pointer access!");
         } finally {							// Executes regardless of whether exceptions are handled
             System.out.println("Finally still executed regardless!");
         }

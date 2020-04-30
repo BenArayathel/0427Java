@@ -67,7 +67,6 @@ Exceptions
 			Interacts with database
 	> Database, SQL, NoSQL, PL/SQL
 
-
 	Object >
 		Throwable (all exceptions throwable) >
 			Exception (Checked Exception) >
@@ -91,3 +90,31 @@ Exceptions
 
 	When an exception thrown at runtime, JVM creates exception Object with a predefined message.
 		Then, it checks if the dev has handled it.
+
+Serialization
+    For an object to be serializable:
+        It must implement the Serializable interface.
+        All vars in class must be serializable; mark transient if you don't want it to be.
+    When implementing Serializable, must generate a seriazable ID.
+    ObjectOutStream used to serialize an object.
+        FileOutputStream used for writing byte data to a File.
+        For writing character streams, use FileWriter.
+    ObjectInputStream used to deserialize an objectm.
+        FileInputStream used for reading byte data from a File.
+        For reading character streams, use FileReader.
+        
+Collections Framework
+	Gives devs access to prepackaged data structures and algorithms for manipulating them.
+	All collections derive from util package.
+	ONLY ACCEPTS OBJECTS.
+	CRUD: Create, Read, Update, Delete
+		Arrays are slow; must iterate through entire thing to CRUD.
+		Easier in collections, no need to iterate through.
+	Dynamic and Resizeable
+		Memory increase/decrease based on elements added/removed.
+	All collections by default iterable.
+	Helps us design data structures in an easier way
+		Queue, Dequeue, Map, Set, List.
+
+	Collection is the root for all data structures
+	Collections is a utility class (helper class) that contains methods like sort(), shuffle(), binarySearch(), reverse().
