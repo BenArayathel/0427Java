@@ -1,6 +1,5 @@
 package iterator;
 
-import java.security.KeyStore.Entry;
 import java.util.HashMap;
 
 public class Iterator {
@@ -14,6 +13,8 @@ public class Iterator {
         hm.put(999, "Collection");
         System.out.println("HashMap before deletion: " + hm);
 
+
+
         // Want to remove all key/value pairs whose key is multiples of 10 (divisible by 10)?
 
         // // Bad practice: will throw ConcurrentModificationException
@@ -24,18 +25,18 @@ public class Iterator {
         //     // Tries to read (getKey()) and write (remove(e.getKey)) at the same time, BAD PRACTICE
         // }
 
-        // Best practice: use iterator which can read AND remove concurrently
-        Iterator<Entry<Integer, String>> i = hm.entrySet().iterator(); // Assigns map to iterator
-        while (i.hasNext()) {
-            Entry<Integer, String> e = i.next(); // iterator points to first record
+        // // Best practice: use iterator which can read AND remove concurrently
+        // Iterator<Entry<Integer, String>> i = hm.entrySet().iterator(); // Assigns map to iterator
+        // while (i.hasNext()) {
+        //     Entry<Integer, String> e = i.next(); // iterator points to first record
 
-            if (e.getKey() % 10 == 0) { // if that record's key is divisible by 10
-                i.remove(); // remove that record
-            }
-            // Can assign iterators to other collections via list.iterator() for List, set.iterator() for Set, or for Queue.
-        }
+        //     if (e.getKey() % 10 == 0) { // if that record's key is divisible by 10
+        //         i.remove(); // remove that record
+        //     }
+        //     // Can assign iterators to other collections via list.iterator() for List, set.iterator() for Set, or for Queue.
+        // }
 
-        System.out.println("HashMap after deletion: " + hm);
+        // System.out.println("HashMap after deletion: " + hm);
     }
 }
 

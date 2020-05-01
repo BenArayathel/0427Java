@@ -1,5 +1,5 @@
 package designpatterns.Factory;
 
-public class Apple implements Fruit {
+public class Apple {
     
 }

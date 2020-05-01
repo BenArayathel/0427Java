@@ -1,5 +1,5 @@
 package designpatterns.Factory;
 
-public class Kiwi implements Fruit {
+public class Kiwi {
     
 }

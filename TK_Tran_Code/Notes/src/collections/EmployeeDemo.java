@@ -16,20 +16,20 @@ public class EmployeeDemo {
         empMap.put(140, new Employee(140, "Jean", "CFO", 60000.00, 11));
         empMap.put(130, new Employee(130, "Dora", "CEO", 100000.00, 16));
 
-        // Prints all employees
-        System.out.println("Printing all Employees: ");
-        for (Entry<Integer, Employee> e : empMap.entrySet()) {
-            System.out.println(e.getValue());
-        }
+        // // Prints all employees
+        // System.out.println("Printing all Employees: ");
+        // for (Entry<Integer, Employee> e : empMap.entrySet()) {
+        //     System.out.println(e.getValue());
+        // }
 
-        // Want all employees whose designation is manager
-        System.out.println("Printing all IDs who are Managers: ");
-        for (Entry<Integer, Employee> e : empMap.entrySet()) {
-            // Checks designation
-            if (e.getValue().getDesignation().equals("Manager")) {
-                System.out.println(e.getKey());
-            }
-        }
+        // // Want all employees whose designation is manager
+        // System.out.println("Printing all IDs who are Managers: ");
+        // for (Entry<Integer, Employee> e : empMap.entrySet()) {
+        //     // Checks designation
+        //     if (e.getValue().getDesignation().equals("Manager")) {
+        //         System.out.println(e.getKey());
+        //     }
+        // }
 
         // Transfer Map to List
         List<Employee> empList = new ArrayList<>(empMap.values()); // Pass in empMap's values
