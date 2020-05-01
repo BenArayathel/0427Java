@@ -36,7 +36,7 @@ public class FlightMain {
 		
 	}
 	
-	public static void sortExample() {
+	public static int sortExample() {
 		List<Flight> flightList = new ArrayList<Flight>();
 		flightList.add(new Flight(879, "Allegiant", "Houston", "Austin", 3.7, 105.85));
 		flightList.add(new Flight(845, "Southwest", "Tampa", "Columbia", 2.5, 500.34));
@@ -71,8 +71,8 @@ public class FlightMain {
 		
 		printFlights(flightList2);
 		
-		System.out.println("\nSorting Flights by Source and Destination");
-		Collections.sort(flightList3, (Flight f1, Flight f2) -> {
+		System.out.println("\nSorting Flights by Source and name");
+		Collections.sort(flightList2, (Flight f1, Flight f2) -> {
 			int res = 0;
 			String fs1 = f1.getSource();
 			String fs2 = f2.getSource();
@@ -83,11 +83,14 @@ public class FlightMain {
 				String ff2 = f2.getDestination();
 				res = ff1.compareTo(ff2);
 			}
-		});
-
+			return res;
+		});	
 		
+		printFlights(flightList2);
 		
-		}
+		return 0;
+		
+	}
 	
 	public static void printFlights(List<Flight> flight) {
 		for(Flight f : flight) {

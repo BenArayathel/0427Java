@@ -1,5 +1,7 @@
 package april30Flight;
 
+import java.util.Comparator;
+
 public class Flight implements Comparable<Flight> {
 	
 	private int fid;
