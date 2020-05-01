@@ -1,0 +1,4 @@
+Differences Between PriorityQueue and LinkedList
+
+PriortiyQueue as well as Linkedlist implement the Queue Interface and perform works same the Queue (FIFO). The difference between PriorityQueue and Linkedlist is at the time of insertion PriorityQueue will be sorted as well as Ordered as per the natural Order but we can add a Comparator in order to define the particular order of sorting, while as LinkedList will be Just Ordered. So while you are trying to add elements in PriorityQueue, they will sort on their natural order or as per the comparator function.
+
