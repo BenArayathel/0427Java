@@ -45,9 +45,16 @@ public class FlightMain {
 		System.out.println("\n");
 		printFlightList(flightList);
 		
+		/**
+		 * Sort by Name, then, Price...
+		 */
 		Collections.sort(flightList, (Flight f1, Flight f2)->{
 			String s1 = f1.getName();
 			String s2 = f2.getName();
+			
+//			Add a = (x, y, z) -> {
+//				return x + y + z;
+//			};
 			return s1.compareTo(s2);
 		});
 		System.out.println("\n hmmm... by Name ??");

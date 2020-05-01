@@ -15,6 +15,8 @@ public class EagleMain {
 		String fileName = "./myEagle.txt";
 		
 		Eagle eagle = new Eagle("wide", "Golden", "Baldy");
+		System.out.println("before write to file : \n" + eagle.toString());
+		System.out.println("");
 		
 		writeObject(fileName, eagle);
 		Eagle eagle2 = readObject(fileName);
@@ -54,6 +56,7 @@ public class EagleMain {
 	private static void writeObject(String fileName, Eagle eagle) {
 		
 		try(ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(fileName))) {
+			oos.writeObject(eagle);
 			
 		} catch (FileNotFoundException e) {
 			
