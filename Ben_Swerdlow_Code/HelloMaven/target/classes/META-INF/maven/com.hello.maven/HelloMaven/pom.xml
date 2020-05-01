@@ -1,0 +1,43 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.hello.maven</groupId>
+  <artifactId>HelloMaven</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  
+  <properties>
+  	<maven.compiler.target>1.8</maven.compiler.target>
+  	<maven.compiler.source>1.8</maven.compiler.source>
+  </properties>
+  
+  <!-- This is a comment in a pom.xml file -->
+  <!-- 
+  	POM: Project Object Model. It's a formatted XML file and will contain 
+  		all the configuration details about the project. 
+  		Build automation tool: rapid deployment of your project.
+  		You need these dependencies and this will get them quickly for you
+  		
+  		When you work at enterprise, ask for access to the proxy, which is a safe local repository
+  		that contains all the dependencies you'd need via maven; you will put the proxy details
+  		in ~/.m2/settings.xml
+  -->
+  
+  <dependencies>
+  
+  	<!-- https://mvnrepository.com/artifact/junit/junit -->
+	<dependency>
+		<groupId>junit</groupId>
+		<artifactId>junit</artifactId>
+		<version>4.12</version>
+		<scope>test</scope>
+	</dependency>
+	
+	<!-- Here's another dependency! We're not using this right now, but I added it anyway :) -->
+	<!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
+	<dependency>
+    	<groupId>com.google.guava</groupId>
+    	<artifactId>guava</artifactId>
+    	<version>29.0-jre</version>
+	</dependency>
+	
+  </dependencies>
+</project>
