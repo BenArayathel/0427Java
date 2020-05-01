@@ -56,7 +56,7 @@ public class Main {
             int compare(Object o1, Object o2)
     
     Homework:
-        1. Flight(int fid, String name, String source, String destination, float rating, double price).
+        1. Collections: Flight(int fid, String name, String source, String destination, float rating, double price).
         2. Make your own object and serialize/deserialize it.
         3. Serialize one of the data structure interface.
 */

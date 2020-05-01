@@ -1,4 +1,3 @@
-04/29/20
 Wrapper Classes wrap around primitive data types.
 Turns primitives into Objects:
 	boolean > Boolean
@@ -23,7 +22,7 @@ String
 	Allows creation and manipulation of strings (notice lowercase).
 	Immutable: Strings can't be changed.
 	Final: The class cannot be extended.
-	String objects are stored on heap, but String Literals are stored in String pool, 
+	String objects are stored on heap, but String Literals are stored in String pool,
 		which itself is within heap memory.
 
 StringBuilder
@@ -39,10 +38,10 @@ RegEx (Regular Expression)
 	[] - expression
 	{} - length
 	^ - not
-	? - 
-	. - 
-	* - 
-	() - 
+	? -
+	. -
+	* -
+	() -
 	Examples:
 		[a-z]{5} - "any lowercase letter of length 5"
 		[0-9]{1,} - "at least 1 digit and max can be any"
@@ -78,7 +77,7 @@ Exceptions
 				- ArithmeticException (DivideByZero)
 				- IndexOutOfBoundsException
 				- ConcurrentModificationException
-	
+
 	try..catch..finally
 		try - suspected code that might throw an exception
 		catch - handler of exception
@@ -92,20 +91,32 @@ Exceptions
 		Then, it checks if the dev has handled it.
 
 Serialization
-    For an object to be serializable:
-        It must implement the Serializable interface.
-        All vars in class must be serializable; mark transient if you don't want it to be.
-    When implementing Serializable, must generate a seriazable ID.
-    ObjectOutStream used to serialize an object.
-        FileOutputStream used for writing byte data to a File.
-        For writing character streams, use FileWriter.
-    ObjectInputStream used to deserialize an objectm.
-        FileInputStream used for reading byte data from a File.
-        For reading character streams, use FileReader.
-        
+	Serialization is the process of converting a Java Object into a byte stream,
+	to transfer it from one JVM to another and recreate it via deserialization.
+
+	For an object to be serializable:
+		The parent class must implement the Serializable interface.
+		All vars in class must be serializable; mark transient if you don't want it to be.
+
+	When implementing Serializable, must generate a seriazable ID.
+
+	ObjectOutStream used to serialize an object.
+		FileOutputStream used for writing byte data to a File.
+		For writing character streams, use FileWriter.
+
+	ObjectInputStream used to deserialize an object.
+		FileInputStream used for reading byte data from a File.
+		For reading character streams, use FileReader.
+
+	Why?
+		To save/persist state of an object.
+		To travel an object across a network.
+		Serialized data streams support encryption compression, authentication, and secure Java computing.
+		Many critical technologies rely on serialization.
+
 Collections Framework
 	Gives devs access to prepackaged data structures and algorithms for manipulating them.
-	All collections derive from util package.
+	All collections derive from Java.util package.
 	ONLY ACCEPTS OBJECTS.
 	CRUD: Create, Read, Update, Delete
 		Arrays are slow; must iterate through entire thing to CRUD.

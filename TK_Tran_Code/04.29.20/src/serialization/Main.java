@@ -9,75 +9,84 @@ import java.io.ObjectOutputStream;
 public class Main {
     public static void main(String[] args) {
         
-        String fileName = "./myParrot.txt";
+        String file = "./myCar.txt";
 
-        Parrot p = new Parrot("Buddy", "Yellow");
-
-        // Serializes
-        writeObject(fileName, p);
+        Car car = new Car(2018, "Subaru", "WRX", "Black");
         
-        // Deserializes
-		Parrot p1 = readObject(fileName);
+        // Uses custom methods to serialize
+        serialize(file, car);
+        serializeShortcut(file, car);
 
-        System.out.println("Deserializing data.." + p1);
+        // Uses custom methods to deserialize
+        Car recreatedCar = deserialize(file);
+        Car recreatedCar1 = deserializeShortcut(file);
+
+        // Prints deserialized, recreatedCar (notice the transient member was never saved to file)
+        System.out.println("Deserialized from data and recreated Object: " + recreatedCar);
+        System.out.println("Deserialized from data and recreated Object (using shortcut): " + recreatedCar1);
     }
-
-    // Serializes an Object and sends it to the output stream.
-    private static void writeObject(String fileName, Parrot p) {
-
-        // try method (normal)
+    
+    // Custom method to serialize an Object to a file
+    private static void serialize(String file, Car car) {
         try {
-            FileOutputStream fos = new FileOutputStream(fileName);
-            ObjectOutputStream oos = new ObjectOutputStream(fos);
-            oos.writeObject(p); // SERIALIZES PARROT OBJECT
+            FileOutputStream fos = new FileOutputStream(file);  // Creates a FileOutputStream to write to the file.
+            ObjectOutputStream oos = new ObjectOutputStream(fos);   // Creates a ObjectOutputStream that writes primitives of objects to specified OutputStream.
+            oos.writeObject(car); // Writes (serializes) the object to the ObjectOutputStream.
+            // Free resources
             fos.close();
             oos.close();
-            System.out.println("Serialized data is saved in" + fileName);
+            System.out.println("Serialized Object.. data stored in: " + file);
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-        // // try_resources method (shortcut)
-        // try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(fileName))) {
-        //     oos.writeObject(p); // SERIALIZES PARROT OBJECT
-        // } catch (IOException e) {
-        //     e.printStackTrace();
-        // }
     }
-    
-    // Retrieves next Object out of the stream and deserializes it.
-    // Returns an Object Parrot, so you must cast it to its appropriate type.
-    private static Parrot readObject(String fileName) {
 
-        // Object obj = null;  // Dummy variable for try_resources method
-        Parrot p = null;
+    // Custom method to deserialize and recreate an Object
+    private static Car deserialize(String file) {
+        Car c = null;   // Dummy variable to be updated with recreated object
 
-        // try method (normal)
         try {
-            FileInputStream fis = new FileInputStream(fileName);
+            FileInputStream fis = new FileInputStream(file);
             ObjectInputStream ois = new ObjectInputStream(fis);
-            p = (Parrot) ois.readObject(); // DESERIALIZES PARROT OBJECT; notice return value cast to Parrot reference
+            c = (Car) ois.readObject(); // Reads (deserializes and recreates) object from the ObjectInputStream; note return value is cast back to Car in order to be spit out from method
+            // Free resources
             fis.close();
             ois.close();
         } catch (IOException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
-            System.err.println("Parrot class not found!");
+            System.out.println("Car class not found!");
             e.printStackTrace();
         }
 
-        // // try_resources method (shortcut)
-        // try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(fileName))) {
-        //     obj = ois.readObject(); // DESERIALIZES PARROT OBJECT; notice return value cast to Parrot reference
-        //     p = (Parrot) obj;	// Casts object from type Object to our type Parrot
-        //     return p;
-        // } catch (IOException e) {
-        //     e.printStackTrace();
-        // } catch (ClassNotFoundException e) {    // Ensures reading a class, not a string
-		// 	e.printStackTrace();
-        // }
-
-        return p;	// Best practice to have only ONE return type per block
+        return c;
     }
 
+    // try_resources shortcut to serialize, does same thing as normal try method
+    private static void serializeShortcut(String file, Car car) {
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(file))){
+            oos.writeObject(car);
+            oos.close();
+            System.out.println("Serialized Object (using shortcut).. data stored in: " + file);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    // try_resources shortcut to deserialize, does same thing as normal try method
+    private static Car deserializeShortcut(String file) {
+        Car c = null;
+
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(file))) {
+            c = (Car) ois.readObject();
+            ois.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            System.out.println("Car class not found!");
+            e.printStackTrace();
+        }
+
+        return c;
+    }
 }
