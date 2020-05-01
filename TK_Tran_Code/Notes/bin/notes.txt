@@ -1,3 +1,7 @@
+General Stuff
+    src - folder that contains human-readable code; .java
+    bin - folder that contains binary (compiled files) that the JVM executes; .jar, .class
+
 Wrapper Classes wrap around primitive data types.
 Turns primitives into Objects:
 	boolean > Boolean
