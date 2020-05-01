@@ -82,3 +82,27 @@ public class StringBuilding_Practice {
 //        System.out.println(sb.toString().trim());
 
 
+// CORRRECT MIDDLE CODE:
+
+//public class MiddleCaps {
+//	public static void main(String[] args) {
+//		String s = "hello hi how are you today";
+//		String[] ar = s.split(" ");
+//		StringBuffer sb=new StringBuffer(); //Can use either builder or buffer, create it as empty first
+//		for(int i = 0;i<ar.length;i++) {
+//			if(ar[i].length()%2 != 0) { //Check whether the String is odd or even 
+////				//reassign 
+////				ar[i] = ar[i].substring(0, (ar[i].length())/2)  //First half of the string
+////						+ ar[i].substring(( ar[i].length())/2, 1+(ar[i].length())/2).toUpperCase() //capitalize the middle character String
+////						+ ar[i].substring(1+ (ar[i].length())/2, ar[i].length()); //add the remaining part of the string
+//				//Using API (more elegant)
+//				char c[]=ar[i].toCharArray(); //converting String into an array
+//				c[c.length/2]=Character.toUpperCase(c[c.length/2]); // Converting middle char of string to upper case
+//				sb.append(new String(c)).append(" "); //Converting array back into String and appending it to a buffer 
+//			}
+//		//	System.out.print(ar[i] + " ");
+//		}
+//		System.out.println(sb.toString().trim());
+//	}
+//}
+
