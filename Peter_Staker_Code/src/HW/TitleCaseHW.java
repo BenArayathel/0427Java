@@ -1,4 +1,4 @@
-package hw;
+package HW;
 
 public class TitleCaseHW {
 	public static void main(String[] args) {
