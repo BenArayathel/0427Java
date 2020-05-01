@@ -40,46 +40,6 @@ public class FlightMain {
 	}
 
 	
-//	private static List<Flight> readObject(String myFileName) {
-//		Object obj = null;
-//		List<Flight> c = null;
-//		
-//		try(ObjectInputStream ois = new ObjectInputStream(new FileInputStream(myFileName))){
-//			
-//			obj = ois.readObject(); //de-serialization
-//			c = (List<Flight>)obj; //Casts an object from type Object to our type Parrot
-////			return p;
-//			
-//		} catch (FileNotFoundException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		} catch (ClassNotFoundException e) {
-//			e.printStackTrace();
-//		} finally {
-//			System.out.println("I'm in finally!!!");
-////			return null;
-//		}
-//		return c; //Best practice to have only have return for a block
-//	}
-//
-//
-//	private static void writeObject(String myFileName, List<Flight> flightList) {
-//		try(ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(myFileName))){
-//			oos.writeObject(flightList); //serialization
-//			
-//		} catch (FileNotFoundException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//		
-//	}
-
 
 	public static void printFlights(List<Flight> flightList) {
 		for (int i = 0; i < flightList.size(); i++) {
