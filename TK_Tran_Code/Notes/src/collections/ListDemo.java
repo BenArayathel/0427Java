@@ -13,7 +13,7 @@ public class ListDemo {
         a1.add("Tran");
         // a1.add(123); // ERROR, this List only accepts Strings
         System.out.println("ArrayList Elements: " + a1);
-        
+
         // Iterating ArrayList
         for (String s : a1) {
             System.out.println(s);
@@ -21,8 +21,6 @@ public class ListDemo {
 
         // ArrayList Size
         System.out.println("ArrayList Size: " + a1.size());
-
-
 
         // LinkedList: elements (nodes) linked with each other using pointers.
         // Each element has a reference (address/pointer) to the next element.

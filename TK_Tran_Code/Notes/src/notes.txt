@@ -1,22 +1,23 @@
 General Stuff
-    src - folder that contains human-readable code; .java
-    bin - folder that contains binary (compiled files) that the JVM executes; .jar, .class
+	src - folder that contains human-readable code; .java
+	bin - folder that contains binary (compiled files) that the JVM executes; .jar, .class
 
-Wrapper Classes wrap around primitive data types.
-Turns primitives into Objects:
-	boolean > Boolean
-	int > Integer
-	char > Character
-	byte > Byte
-	short > Short
-	long > Long
-	double > Double
-Why?
-	Objects have methods assocaited with them.
-	Data structures like the Collection API.
+Wrapper Classes
+    Wrap around primitive data types.
+    Turns primitives into Objects:
+        boolean > Boolean
+        int > Integer
+        char > Character
+        byte > Byte
+        short > Short
+        long > Long
+        double > Double
+    Why?
+        Objects have methods assocaited with them.
+        Data structures like the Collection API.
 
-	Primitives are still faster than wrappers.
-	Only use wrapper when a method needs to accept an Object.
+        Primitives are still faster than wrappers.
+        Only use wrapper when a method needs to accept an Object.
 Recall:
 	Everything within Main(), will go onto the stack for execution.
 	Everything instance-level will go onto the heap.
@@ -118,6 +119,11 @@ Serialization
 		Serialized data streams support encryption compression, authentication, and secure Java computing.
 		Many critical technologies rely on serialization.
 
+Comparable vs Comparator (Sorting)
+	Comparable
+		A class must implement java.lang.Comparable interface to compare its instances.
+		A comparable object is capable of comparing itself with another object.
+
 Collections Framework
 	Gives devs access to prepackaged data structures and algorithms for manipulating them.
 	All collections derive from Java.util package.
@@ -133,3 +139,68 @@ Collections Framework
 
 	Collection is the root for all data structures
 	Collections is a utility class (helper class) that contains methods like sort(), shuffle(), binarySearch(), reverse().
+
+Design Patterns
+    Language agnostic solutions to common problem scenarios.
+    Allows for more reusable and maintainable code.
+    Creational Design Patterns
+        Meant to resolve issues w/ creating objects in a system.
+        Singleton:
+        Factory: 
+    Structural Design Patterns
+        Focuses on how classes and objects can be composed.
+        Identifies simplest way to realize relationships bt entities.
+        Adapter: 
+    Behavioral Design Patterns
+        Deals with how objects interact; how they communicate w/ each other.
+        To achieve simpler formats of comms.
+        Chain of Responsibility: 
+
+Multithreading
+    Thread: a single process of execution; shares resources within the core its in.
+    Multithreading: running multiple threads in parallel.
+
+    Main Thread
+        Child threads will be spawned from it.
+        Will be the last thread to finish execution; once it stops, the program stops.
+    
+    Daemon Thread
+        Thread always running in the background.
+        E.g., Garbage Collection
+    
+    User Threads
+        Can be started and closed.
+
+    Two ways to make custom threads:
+        1. Implementing Runnable interface
+            Can extend another class while also implementing runnable.
+            Also has less overhead, you don't get unnecessary methods.
+        2. Extending Thread class
+            Less lines of code to "start".
+            Easier to override functionality of the Thread class.
+    
+    States of a Threads = New > Runnable > Running > Waiting > Dead
+        New: the thread is instantiated.
+        Runnable: start() has been invoked, but the schedular hasn't selected it to start running.
+        Running: scheduler has selected it to run.
+        Waiting, Time Waiting, Blocked: the thread is alive, but not currently running.
+        Dead: thread has been terminated.
+    
+    Common Thread Problems
+        Synchronization
+            When threads are utilizing the same resource, e.g. modifying a data structure, 
+            errors will occur bc changes will occur to the resource in separate threads.
+        Deadlock
+            When multiple threads are trying to access the same resource.
+        Producer-Consumer (will go over this in class)
+            Producer produces resources for another thread, via storing it in a buffer.
+            Consumer consumes resource and removes it from the buffer.
+            Error occurs if:
+                Producer continually produces and consumer never consumes.
+                Consumer tries to consume but there's nothing in the buffer to consume.
+
+Maven
+    Maven is a dependency manager; allows integration of external libraries and packages.
+    What's a dependency?
+        External standalone program that we'll utilize in our project.
+    POM: Project Object Model, formatted as an XML file containing all config details for Maven project.

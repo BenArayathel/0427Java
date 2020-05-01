@@ -8,11 +8,11 @@ import java.io.ObjectOutputStream;
 
 public class Main {
     public static void main(String[] args) {
-        
+
         String file = "./myCar.txt";
 
         Car car = new Car(2018, "Subaru", "WRX", "Black");
-        
+
         // Uses custom methods to serialize
         serialize(file, car);
         serializeShortcut(file, car);
@@ -25,7 +25,7 @@ public class Main {
         System.out.println("Deserialized from data and recreated Object: " + recreatedCar);
         System.out.println("Deserialized from data and recreated Object (using shortcut): " + recreatedCar1);
     }
-    
+
     // Custom method to serialize an Object to a file
     private static void serialize(String file, Car car) {
         try {

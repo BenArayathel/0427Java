@@ -9,7 +9,6 @@ public class Product implements Comparable<Product> {
     private float rating;
 
     public Product() {
-        
     }
 
     public Product(int id, String name, double cost, float rating) {

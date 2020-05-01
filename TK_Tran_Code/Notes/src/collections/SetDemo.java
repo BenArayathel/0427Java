@@ -2,14 +2,13 @@ package collections;
 
 import java.util.HashSet;
 import java.util.LinkedHashSet;
-import java.util.Set;
 import java.util.TreeSet;
 
 public class SetDemo {
     public static void main(String[] args) {
         
         // HashSet stores in unsorted order
-        Set<String> hs = new HashSet<>();
+        HashSet<String> hs = new HashSet<>();
         hs.add("hello");
         hs.add("java");
         hs.add("jee");
@@ -21,8 +20,8 @@ public class SetDemo {
         hs.add(null);   // Won't print, Set doesn't accept duplicates
         System.out.println(hs);
 
-        // LinkedHashSet is the ordered version of HashSet; stores by order of insertion
-        Set<String> lhs = new LinkedHashSet<>();
+        // LinkedHashSet stores by order of insertion
+        LinkedHashSet<String> lhs = new LinkedHashSet<>();
         lhs.add("service");
         lhs.add("hello");
         lhs.add("jme");
@@ -35,7 +34,7 @@ public class SetDemo {
         System.out.println(lhs);
 
         // TreeSet stores in ascending order; does not accept null
-        Set<String> ts = new TreeSet<>();
+        TreeSet<String> ts = new TreeSet<>();
         // Set<String> ts = new TreeSet<>(Collections.reverseOrder());  // reverses order
         ts.add("jme");
         ts.add("spark");
