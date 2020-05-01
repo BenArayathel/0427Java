@@ -10,7 +10,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainModelAptSaveLoadList implements Serializable {
+public class MainAptListSaveLoad implements Serializable {
 
 	/**
 	 * 
