@@ -18,8 +18,7 @@ public class ProductMain {
 		productList.add(new Product(104, "TV", 12.22, 1.13f));
 		System.out.println("Printing all products");
 		printProducts(productList);
-		
-
+				
 
 	}
 	
