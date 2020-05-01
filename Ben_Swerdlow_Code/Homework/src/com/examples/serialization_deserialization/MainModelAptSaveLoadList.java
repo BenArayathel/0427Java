@@ -8,7 +8,6 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class MainModelAptSaveLoadList implements Serializable {
@@ -26,11 +25,9 @@ public class MainModelAptSaveLoadList implements Serializable {
 		try {
 			saveApartmentList(apartmentList, filename);
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			System.out.println("ERROR: File "+filename+" not found. Please try again.");
 			System.exit(0);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			System.out.println("ERROR: Could not write the Apartment at apartmentList to file "+filename
 					+". Please try again.");
 			System.exit(0);
@@ -47,7 +44,6 @@ public class MainModelAptSaveLoadList implements Serializable {
 	private static List<Apartment> loadApartmentList(String filename) {
 		Object object = null;
 		ArrayList<Object> objectList = new ArrayList<>();
-//		Apartment apartment = new Apartment();
 		ArrayList<Apartment> apartmentList = new ArrayList<>();
 		
 		try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(filename))){
@@ -57,14 +53,13 @@ public class MainModelAptSaveLoadList implements Serializable {
 				apartmentList.add((Apartment) obj);
 			}
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println("ERROR: File "+filename+" not found. Please try again.");
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println("ERROR: Could not read the apartment list in file "+filename
+					+". Please try again.");
 		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println("ERROR: Could not convert list in "+filename+" to a list of Apartment objects. "
+					+"Please try again.");
 		}
 		
 		if (apartmentList.isEmpty()) {
