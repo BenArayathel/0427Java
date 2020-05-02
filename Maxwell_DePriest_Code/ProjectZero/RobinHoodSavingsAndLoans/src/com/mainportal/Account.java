@@ -89,7 +89,7 @@ public class Account implements Bank {
 	public void depositMoney(int amt, int acct) {
 		double temp = this.checkBalance(acct) + amt;
 		this.setBalance(temp, acct);
-		System.out.println("Your account now has $%.2f" + this.checkBalance(acct));
+		System.out.printf("Your account now has $%.2f", this.checkBalance(acct));
 		
 	}
 

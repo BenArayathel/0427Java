@@ -1,6 +1,6 @@
 package com.mainportal;
 
-public class User {
+public class User implements Bank{
 	// Stretch goal - implement some basic hashing for password
 	
 	private String name;
@@ -70,6 +70,23 @@ public class User {
 
 	public void setAccount(Account account) {
 		this.account = account;
+	}
+
+	@Override
+	public double checkBalance(int c) {
+		return this.getAccount().checkBalance(c);
+	}
+
+	@Override
+	public void transferFunds(int destination, int fromWhere, double amount) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void receiveFunds() {
+		// TODO Auto-generated method stub
+		
 	}
 
 	
