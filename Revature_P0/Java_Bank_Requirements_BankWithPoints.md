@@ -2,11 +2,14 @@
 
 ## Description
 
-   The Bank app is a console-based application that simulates banking operations. A customer can apply for an account, view their balance, and make withdrawals and deposits. An employee can approve or deny accounts and view account balances for their customers.
+   The Bank app is a console-based application that simulates banking operations.
+ A customer can apply for an account, view their balance, and make withdrawals and deposits. 
+An employee can approve or deny accounts and view account balances for their customers.
 	
 ## Purpose
 
-   We want to see that you can meet deadlines and that you can code. You are expected to complete the following requirements and give a 5 minute presentation of your project to our QC team.
+   We want to see that you can meet deadlines and that you can code. You are expected to complete
+ the following requirements and give a 5 minute presentation of your project to our QC team.
 
 ## Requirements
 1. Functionality should reflect the below user stories.
@@ -49,8 +52,10 @@ Total Points: 23 points
 
 Project Evaluation Parameters
 1) Your project will be evaluated based on coverage of technology rather than the user stories.
-2) How well you present, naming conventions, separation of code into various classes, how well have you applied OOP and design patterns.
-3) So you could focus less on user stories and more on coverage of things/technologies which you learnt during the training.
+2) How well you present, naming conventions, separation of code into various classes, how well 
+have you applied OOP and design patterns.
+3) So you could focus less on user stories and more on coverage 
+of things/technologies which you learnt during the training.
 
 notes:
 should be able to create and store customers, but just one hardcoded employeee is okay
