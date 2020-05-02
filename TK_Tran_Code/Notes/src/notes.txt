@@ -2,6 +2,10 @@ General Stuff
 	src - folder that contains human-readable code; .java
 	bin - folder that contains binary (compiled files) that the JVM executes; .jar, .class
 
+Recall:
+	Everything within Main(), will go onto the stack for execution.
+	Everything instance-level will go onto the heap.
+	
 Wrapper Classes
     Wrap around primitive data types.
     Turns primitives into Objects:
@@ -18,9 +22,6 @@ Wrapper Classes
 
         Primitives are still faster than wrappers.
         Only use wrapper when a method needs to accept an Object.
-Recall:
-	Everything within Main(), will go onto the stack for execution.
-	Everything instance-level will go onto the heap.
 
 String
 	An object that contains an array of characters.
@@ -145,16 +146,16 @@ Design Patterns
     Allows for more reusable and maintainable code.
     Creational Design Patterns
         Meant to resolve issues w/ creating objects in a system.
-        Singleton:
-        Factory: 
+        Singleton Pattern: restricts instantiation to one object.
+        Factory Pattern:
     Structural Design Patterns
         Focuses on how classes and objects can be composed.
         Identifies simplest way to realize relationships bt entities.
-        Adapter: 
+        Adapter:
     Behavioral Design Patterns
         Deals with how objects interact; how they communicate w/ each other.
         To achieve simpler formats of comms.
-        Chain of Responsibility: 
+        Chain of Responsibility:
 
 Multithreading
     Thread: a single process of execution; shares resources within the core its in.
@@ -163,11 +164,11 @@ Multithreading
     Main Thread
         Child threads will be spawned from it.
         Will be the last thread to finish execution; once it stops, the program stops.
-    
+
     Daemon Thread
         Thread always running in the background.
         E.g., Garbage Collection
-    
+
     User Threads
         Can be started and closed.
 
@@ -178,17 +179,17 @@ Multithreading
         2. Extending Thread class
             Less lines of code to "start".
             Easier to override functionality of the Thread class.
-    
+
     States of a Threads = New > Runnable > Running > Waiting > Dead
         New: the thread is instantiated.
         Runnable: start() has been invoked, but the schedular hasn't selected it to start running.
         Running: scheduler has selected it to run.
         Waiting, Time Waiting, Blocked: the thread is alive, but not currently running.
         Dead: thread has been terminated.
-    
+
     Common Thread Problems
         Synchronization
-            When threads are utilizing the same resource, e.g. modifying a data structure, 
+            When threads are utilizing the same resource, e.g. modifying a data structure,
             errors will occur bc changes will occur to the resource in separate threads.
         Deadlock
             When multiple threads are trying to access the same resource.
