@@ -1,0 +1,63 @@
+package com.example.serialization;
+
+import java.io.Serializable;
+
+public class Customer implements Serializable{
+	
+	
+	 // id used to identify sender of the serialized object
+	private static final long serialVersionUID = 34523090568L; 
+	
+	
+	private transient String name; 
+	private int id;
+	
+	public Customer(String filename, String filename2) {
+		// TODO Auto-generated constructor stub
+	}
+	
+	
+	
+
+	public void Customer1(String name, String string) {
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public String toString() {
+		return "Customer [name=" + name + ", id=" + id + "]";
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+
+
+	public void buy() {
+		System.out.println("How much this Car cost");
+	}
+	public void drive() {
+		System.out.println("Let's have a test drive");
+	}
+
+	public void buy1() {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+
+
+	public void buy11() {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	
+
+}

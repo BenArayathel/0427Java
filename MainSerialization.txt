@@ -1,0 +1,67 @@
+package com.example.serialization;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+
+public class MainCustomer {
+	
+	public static void main(String[] args) {
+		//create a file
+		String filename = "./noCustomer.txt";
+		//create an object
+	
+		Customer c1= new Customer("Pauline", "Ilboudo");
+		
+		
+		writeObject(filename, c1);
+		Customer c2 = readObject(filename);
+		c2.drive();
+		c2.buy();
+		System.out.println(c2); 
+		
+	}
+
+	private static Customer readObject(String filename) {
+		Object obj = "Hi";
+		Customer c = null;
+		
+		try(ObjectInputStream ois = new ObjectInputStream(new FileInputStream(filename))){
+			
+			obj = ois.readObject();
+			c = (Customer)obj;
+			
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} finally {
+			System.out.println("Welcome to our online shopping");
+//			return null;
+		}
+		return c; 
+	}
+// Serialzation with OutputStream
+	private static void writeObject(String filename, Customer c1) {
+
+		try(ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(filename))){
+			oos.writeObject(c1); 
+			
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+
+}
