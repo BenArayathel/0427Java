@@ -36,7 +36,7 @@ public class Demo {
 		 * Enumerator: read only from top to bottom
 		 * 		Iterator (child of Enumerator): can read and remove top to bottom
 		 * 			ListIterator (child of Iterator): add, read, remove and is bidirectional (top to bottom, bottom to top),
-		 * 												but applicable only on Lists (not used very much in pracice)
+		 * 												but applicable only on Lists (not used very much in practice)
 		 */
 		
 		// if it is List or Set, then you can assign to iterator via List.iterator (for list) or Set.iterator (for set)
