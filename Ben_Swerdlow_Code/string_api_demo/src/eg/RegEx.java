@@ -14,6 +14,7 @@ public class RegEx {
 		 * [0-9]{1,} // at least 1 digit, unlimited max
 		 * [a-zA-z0-9]{10} // any alphanumeric word of length 10
 		 * [^a-zA-Z0-9] // any non-alphanumeric character (e.g. space, period, comma, etc.)
+		 * ^^^ I think you actually need to escape the ^ to \^ in the above
 		 * 
 		 * Learn more about RegEx; it's always useful!
 		 */

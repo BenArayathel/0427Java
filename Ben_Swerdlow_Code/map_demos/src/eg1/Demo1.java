@@ -97,9 +97,8 @@ public class Demo1 {
 		System.out.println(tm.keySet());
 		System.out.println(tm.values());
 		
-		Set<Integer> set = tm.keySet();
-		
 		System.out.println("\nTedious way to iterate through map using keySet()");
+		Set<Integer> set = tm.keySet();
 		for (Integer i : set) {
 			System.out.println("Key = "+i+" Value = "+tm.get(i));
 		}
