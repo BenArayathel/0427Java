@@ -96,10 +96,9 @@ public class User implements Bank{
 		String original = "abcdefghijklmnopqrstuvwxyz";
 		String alternate = "zyxwvutsrqponmlkjihgfedcba";
 		String[] arr = alternate.split("");
-		String[] wordArray = pw.split("");
+		String[] wordArray = pw.toLowerCase().split("");
 		int tempIndex;
-		pw = "abcdefg";
-		for(int k = 0; k < (pw.length()); k++) {
+		for(int k = 0; k < (wordArray.length); k++) {
 			String tempLetter = wordArray[k];
 			tempIndex = original.indexOf(tempLetter); 
 			newPassword.append(arr[tempIndex]);

@@ -21,7 +21,7 @@ public class Lobby {
 		User u1 = new User("Max DePriest", "max@email.com", "867-5309", "customer", "guest", a);
 		User u2 = new User("Little John", "lil_john@email.com", "123-3456", "employee", "password", beta);
 		
-		System.out.println("Encrypted password: " + u2.passwordEncryption("abcdefg"));
+		System.out.println("Encrypted password: " + u2.passwordEncryption("MaxwellDePriest"));
 			
 		//l.menuNav(sc, u2);
 		sc.close();
