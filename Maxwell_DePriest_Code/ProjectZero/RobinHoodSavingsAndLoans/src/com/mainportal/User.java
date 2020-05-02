@@ -1,5 +1,7 @@
 package com.mainportal;
 
+import java.lang.StringBuilder;
+
 public class User implements Bank{
 	// Stretch goal - implement some basic hashing for password
 	
@@ -9,7 +11,7 @@ public class User implements Bank{
 	private String status; // Employee or Customer
 	private String password;
 	private Account account;
-	private int pinNumber;
+	//private int pinNumber;
 
 	public User() {
 		// TODO Auto-generated constructor stub
@@ -86,6 +88,23 @@ public class User implements Bank{
 	@Override
 	public void receiveFunds() {
 		// TODO Auto-generated method stub
+		
+	}
+	
+	public String passwordEncryption(String pw) {
+		StringBuilder newPassword = new StringBuilder();
+		String original = "abcdefghijklmnopqrstuvwxyz";
+		String alternate = "zyxwvutsrqponmlkjihgfedcba";
+		String[] arr = alternate.split("");
+		String[] wordArray = pw.split("");
+		int tempIndex;
+		pw = "abcdefg";
+		for(int k = 0; k < (pw.length()); k++) {
+			String tempLetter = wordArray[k];
+			tempIndex = original.indexOf(tempLetter); 
+			newPassword.append(arr[tempIndex]);
+		}
+		return newPassword.toString();
 		
 	}
 

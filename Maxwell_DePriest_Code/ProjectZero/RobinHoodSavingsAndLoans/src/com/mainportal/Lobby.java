@@ -17,10 +17,13 @@ public class Lobby {
 		Lobby l = new Lobby();
 		Scanner sc = new Scanner(System.in);
 		Account a = new Account(1, 123, 456, 1000.00, 2000.00);
+		Account beta = new Account(2, 987, 654, 1200.00, 5000.00);
 		User u1 = new User("Max DePriest", "max@email.com", "867-5309", "customer", "guest", a);
+		User u2 = new User("Little John", "lil_john@email.com", "123-3456", "employee", "password", beta);
 		
-		
-		l.menuNav(sc, u1);
+		System.out.println("Encrypted password: " + u2.passwordEncryption("abcdefg"));
+			
+		//l.menuNav(sc, u2);
 		sc.close();
 
 	}
@@ -35,30 +38,32 @@ public class Lobby {
 			int response = 0;
 			
 			try {
-			System.out.println("\nWelcome to Robin Hood Savings and Loans where we save for the rich and loan to the poor. How may we direct you?");
+			System.out.println("\nWelcome to Loxely Savings and Loans where we save for the rich and loan to the poor. How may we direct you?");
 			System.out.println("\nPlease choose one of the following:");
-	//		System.out.println("1. Edit Profile");
-			System.out.println("2. Check balance");
-			System.out.println("3. Withdraw from an account");
-			System.out.println("4. Deposit to an account");
-	//		System.out.println("5. Transfer funds");
-	//		System.out.println("6. View records");
-			System.out.println("7. Quit");
+			System.out.println("1. Check balance");
+			System.out.println("2. Withdraw from an account");
+			System.out.println("3. Deposit to an account");
+			System.out.println("4. Transfer funds");
+			if(u.getStatus().equalsIgnoreCase("employee")) {
+				System.out.println("5. View Records");
+			}
+
+			System.out.println("\nType 9 to quit");
 			response = sc.nextInt();
 			nextScreen();
-			if (String.valueOf(response).matches("[1-7]{1}")) {
+			if (String.valueOf(response).matches("[1-6]{1}") || response == 9) {
 					
 			
-				if (response == 2) {
+				if (response == 1) {
 					System.out.println("Which account would you like to check?");
 					System.out.println("1. Checking Account");
 					System.out.println("2. Savings Account");
 					int wA2 = sc.nextInt();
 					System.out.printf("You have $%.2f" ,u.getAccount().checkBalance(wA2));
-					nextScreen();
+					
 				}
 				
-				else if (response == 3) {
+				else if (response == 2) {
 					System.out.println("Which account would you like to withdraw from?");
 					System.out.println("1. Checking Account");
 					System.out.println("2. Savings Account");
@@ -73,11 +78,10 @@ public class Lobby {
 						System.out.println("Invalid entry. Please try again");
 					}
 					
-					nextScreen();
 					
 				}
 				
-				else if (response == 4) {
+				else if (response == 3) {
 					System.out.println("Which account would you like to deposit money into?");
 					System.out.println("1. Checking Account");
 					System.out.println("2. Savings Account");
@@ -91,10 +95,9 @@ public class Lobby {
 						System.out.println("Invalid Entry. Please try again.");
 					}
 					
-					nextScreen();
 				}
 				
-				else if (response == 7) {
+				else if (response == 9) {
 					again = false;
 				} 
 			}
@@ -110,6 +113,8 @@ public class Lobby {
 				again = false;
 			}
 		
+			
+			nextScreen();
 		}// End of while loop
 	
 		
