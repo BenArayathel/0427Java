@@ -12,11 +12,12 @@ public class Main {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		String filename = "./customerRecords.txt";
+		//String testFile = "./testFile.txt";
 		// signIn();
 		Lobby l = new Lobby();
-		ArrayList<Customer> customerRecords = new ArrayList<Customer>();
-		l.createFile();
-		l.readObject(filename, customerRecords);
+		//ArrayList<Customer> tempRecords = new ArrayList<Customer>();
+		l.createFile(filename);
+		ArrayList<Customer> allCustomerRecords = l.readObject(filename);
 	}
 	
 	public void createFile() {

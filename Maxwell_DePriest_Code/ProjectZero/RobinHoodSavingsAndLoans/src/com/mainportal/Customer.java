@@ -57,4 +57,14 @@ public class Customer extends User implements Serializable {
 		return randomAccountNumber;
 	}
 
+
+
+	@Override
+	public String toString() {
+		return "Customer [accountActive=" + accountActive + ", getName()=" + getName() + ", getEmail()=" + getEmail()
+				+ ", getPhoneNumber()=" + getPhoneNumber() + ", getStatus()=" + getStatus() + "]";
+	}
+	
+	
+
 }

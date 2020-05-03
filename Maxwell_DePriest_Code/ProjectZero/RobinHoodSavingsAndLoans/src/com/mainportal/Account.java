@@ -1,6 +1,8 @@
 package com.mainportal;
 
-public class Account implements Bank {
+import java.io.Serializable;
+
+public class Account implements Bank, Serializable {
 
 	private int savingsAccountNumber;
 	private int checkingAccountNumber;
@@ -8,6 +10,8 @@ public class Account implements Bank {
 	private double savingsBalance;
 	private boolean active;
 	private String userEmail;
+	
+	private static final long serialVersionUID = 620311235045377344L;
 
 	public Account() {
 		

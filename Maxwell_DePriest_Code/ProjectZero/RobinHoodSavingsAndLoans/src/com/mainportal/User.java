@@ -1,8 +1,9 @@
 package com.mainportal;
 
+import java.io.Serializable;
 import java.lang.StringBuilder;
 
-public class User implements Bank{
+public class User implements Bank, Serializable{
 
 	private String name;
 	private String email;
@@ -10,6 +11,9 @@ public class User implements Bank{
 	private transient String password;
 	private Account account;
 	private String status;
+	
+	private static final long serialVersionUID = 620321243045379944L;
+	//private static final long serialVersionUID = 620321235045377344L;
 
 	public User() {
 

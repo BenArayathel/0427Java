@@ -2,6 +2,7 @@ package com.mainportal;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
+import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 import java.io.FileInputStream;
@@ -185,22 +186,31 @@ public class Lobby {
 		return temp.getEmail();
 	}
 	
-	public void createFile() {
+	public void createFile(String fN) {
 		Account a4 = new Account(234, 567, 100.00, 200.00, "tomH@email.com");
-		Customer c4 = new Customer("Tom Hardy", "tomH@email.com", "1233455", "hardyHo", a4);
-		c4.getAccount().setActive(true);
-		String filename = "./customerRecords.txt";
-		writeObject(filename, c4);
+		Account a5 = new Account(224, 517, 1000.00, 2500.00, "timH@email.com");
+		ArrayList<Customer> tempArray = new ArrayList<>();
+		tempArray.add(new Customer("Tom Hardy", "tomH@email.com", "1233455", "hardyHo", a4));
+		tempArray.add(new Customer("Tom Hardy", "tomH@email.com", "1233455", "hardyHo", a5));
+		
+		writeObjects(fN, tempArray);
 		
 		
 	}
 	
-	public ArrayList<Customer> readObject(String filename, ArrayList<Customer> arrList) {
-		Object obj = null;
+	public ArrayList<Customer> readObject(String filename) {
+		ArrayList<Customer> customerRecs = new ArrayList<Customer>();
 		
-		try(ObjectInputStream ois = new ObjectInputStream(new FileInputStream(filename))){
+		try(ObjectInputStream objIn = new ObjectInputStream(new FileInputStream(filename))){
+			ArrayList<Object> obj1 = (ArrayList<Object>)objIn.readObject();
 			
-			obj = ois.readObject();
+			for(Object oneObj : obj1) {
+				customerRecs.add((Customer)oneObj);
+			}
+			
+			
+			
+//			obj = ois.readObject();
 			//arrList = (ArrayList<Customer>)obj; // look at 4/30 hw
 			
 		} catch (FileNotFoundException e) {
@@ -216,19 +226,38 @@ public class Lobby {
 			System.out.println("I'm in finally!!!");
 //			return null;
 		}
-		return arrList;
+		return customerRecs;
 		
 	}// End of readObject
-
+	
+	public Customer readSingleObject(String fN)
+	{
+		Customer c = null;
+		
+		try(ObjectInputStream ois = new ObjectInputStream(new FileInputStream(fN))){
+			
+			Object obj = ois.readObject();
+			c = (Customer)obj; 
+			
+		} catch (FileNotFoundException e) {
+			System.out.println("We could not find the appropriate file");
+			e.printStackTrace();
+		} catch (IOException e) {
+			System.out.println("We have encountered an error");
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			System.out.println("We have encountered an error");
+			e.printStackTrace();
+		} 
+		
+		return c;
+	}
 
 	
-	public void writeObject(String filename, Customer cust) {
-		Object obj = null;
-		Customer cTemp = null;
+	public void writeObjects(String filename, ArrayList<Customer> custs) {
 		
 		try(ObjectOutputStream objOut = new ObjectOutputStream(new FileOutputStream(filename))){
-			objOut.writeObject(cust); //serialization
-			
+			objOut.writeObject(custs); //serialization
 		} catch (FileNotFoundException e) {
 			System.out.println("Error. File not found");
 			e.printStackTrace();
