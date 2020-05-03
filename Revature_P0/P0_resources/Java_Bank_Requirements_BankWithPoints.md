@@ -57,7 +57,3 @@ have you applied OOP and design patterns.
 3) So you could focus less on user stories and more on coverage 
 of things/technologies which you learnt during the training.
 
-notes:
-should be able to create and store customers, but just one hardcoded employeee is okay
-
-
