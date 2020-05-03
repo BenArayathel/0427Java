@@ -1,32 +1,59 @@
 package com.mainportal;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Random;
 import java.util.Scanner;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 
 /*
  * To help make app easier to use, all choices are number coded. 1 for checking and 2 for savings
  */
 
 public class Lobby {
+	
 
 	public Lobby() {
 		
 	}
 
 	public static void main(String[] args) {
-		Lobby l = new Lobby();
+		//Lobby l = new Lobby();
 		Scanner sc = new Scanner(System.in);
-		Account a = new Account(123, 456, 1000.00, 2000.00, "max@email.com");
-		Account beta = new Account(987, 654, 1200.00, 5000.00, "lil_john@email.com");
-		User u1 = new User("Max DePriest", "max@email.com", "867-5309", "guest", a);
-		User u2 = new User("Little John", "lil_john@email.com", "123-3456", "password", beta);
-			
-			
-		l.menuNav(sc, u2);
+		
+//		Account a = new Account(123, 456, 1000.00, 2000.00, "max@email.com");
+//		Account a2 = new Account(189, 476, 1500.00, 2700.00, "friar@email.com");
+//		Account beta = new Account(987, 654, 1200.00, 5000.00, "lil_john@email.com");
+//		User u1 = new Customer("Max DePriest", "max@email.com", "867-5309", "guest", a);
+//		User u2 = new Employee("Little John", "lil_john@email.com", "123-3456", "password", beta);
+//		Employee e1 = new Employee("Friar Tuck", "friar@email.com", "123-6543", "godIsGood", a2 );
+		//ArrayList<Account> myView = e1.getCustomerAccounts();
+
+		System.out.println();
+		System.out.println("Would you like to activate all pending accounts? Y or N");
+		String activate = sc.nextLine().toLowerCase();
+//		if (activate.equals("y") || activate.equals("n")) {
+//			if (activate.equals("y")) {
+//				e1.activateCustomerAccounts(myView);
+//			}
+//			else {
+//				System.out.println("The peasants will have to wait one more day.");
+//			}
+//		}
+//		else {
+//			System.out.println("Incorrect entry. Please try again");
+//		}
+		
+		System.out.println("\nWelcome to Loxely Savings and Loans where we save for the rich and loan to the poor. How may we direct you?");
+		//l.menuNav(sc, u2);
 		sc.close();
 
 	}
+	
 	
 	public void menuNav(Scanner sc, User u) { 
 		
@@ -38,14 +65,15 @@ public class Lobby {
 			int response = 0;
 			
 			try {
-			System.out.println("\nWelcome to Loxely Savings and Loans where we save for the rich and loan to the poor. How may we direct you?");
 			System.out.println("\nPlease choose one of the following:");
 			System.out.println("1. Check balance");
 			System.out.println("2. Withdraw from an account");
 			System.out.println("3. Deposit to an account");
-			System.out.println("4. Transfer funds");
-			// Check to see if instanceOf Employee. if so, show "View records"
-			//System.out.println("5. View Records");
+			//System.out.println("4. Transfer funds");
+			if (u.getStatus().equals("employee")) {
+				System.out.println("5. Employee Options");
+			}
+			
 
 			System.out.println("\nType 9 to quit");
 			response = sc.nextInt();
@@ -114,11 +142,19 @@ public class Lobby {
 		} // End of try block
 		catch (InputMismatchException e) {
 			System.out.println("Error! Please try again and enter a number between 1 and 7\n");
-			again = false;
+			//again = false;
 		}
-		
+			finally {
+				if (response == 9) {
+					break;
+				}
+				else {
+					System.out.println("Welcome to Loxely Savings and Loans where we save for the rich and loan to the poor. How may we direct you?");
+				}
+				
+				
+			}
 			
-		nextScreen();
 		}// End of while loop
 	
 		
@@ -127,6 +163,78 @@ public class Lobby {
 	public void nextScreen() {
 		for (int x = 0; x < 3; x++) {
 			System.out.println();
+		}
+	}
+	
+	public String signIn(Scanner sc) {
+		System.out.println("Please enter your email address");
+		String em = sc.nextLine();
+		System.out.println("Please enter your password");
+		String pass = sc.nextLine();
+		String passE =  User.passwordEncryption(pass);
+		
+		// pull record, if there is one, from ArrayList with matching email. Check password comparisons
+		// if true, send to menuNav with email
+		// if false, start new User registration
+		
+		return "email";
+	}
+	
+	public String registerNewUser() {
+		Customer temp = new Customer();
+		return temp.getEmail();
+	}
+	
+	public void createFile() {
+		Account a4 = new Account(234, 567, 100.00, 200.00, "tomH@email.com");
+		Customer c4 = new Customer("Tom Hardy", "tomH@email.com", "1233455", "hardyHo", a4);
+		c4.getAccount().setActive(true);
+		String filename = "./customerRecords.txt";
+		writeObject(filename, c4);
+		
+		
+	}
+	
+	public ArrayList<Customer> readObject(String filename, ArrayList<Customer> arrList) {
+		Object obj = null;
+		
+		try(ObjectInputStream ois = new ObjectInputStream(new FileInputStream(filename))){
+			
+			obj = ois.readObject();
+			//arrList = (ArrayList<Customer>)obj; // look at 4/30 hw
+			
+		} catch (FileNotFoundException e) {
+			System.out.println("Error. File not found.");
+			e.printStackTrace();
+		} catch (IOException e) {
+			System.out.println("Error. Please try again");
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			System.out.println("Error. Please try again");
+			e.printStackTrace();
+		} finally {
+			System.out.println("I'm in finally!!!");
+//			return null;
+		}
+		return arrList;
+		
+	}// End of readObject
+
+
+	
+	public void writeObject(String filename, Customer cust) {
+		Object obj = null;
+		Customer cTemp = null;
+		
+		try(ObjectOutputStream objOut = new ObjectOutputStream(new FileOutputStream(filename))){
+			objOut.writeObject(cust); //serialization
+			
+		} catch (FileNotFoundException e) {
+			System.out.println("Error. File not found");
+			e.printStackTrace();
+		} catch (IOException e) {
+			System.out.println("Error. Please try again");
+			e.printStackTrace();
 		}
 	}
 	

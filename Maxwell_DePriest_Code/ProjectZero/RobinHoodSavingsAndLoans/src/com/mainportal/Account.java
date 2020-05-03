@@ -1,7 +1,7 @@
 package com.mainportal;
 
 public class Account implements Bank {
-	
+
 	private int savingsAccountNumber;
 	private int checkingAccountNumber;
 	private double checkingBalance;
@@ -122,7 +122,12 @@ public class Account implements Bank {
 		
 	}
 	
-	
+	@Override
+	public String toString() {
+		return "Account [savingsAccountNumber=" + savingsAccountNumber + ", checkingAccountNumber="
+				+ checkingAccountNumber + ", checkingBalance=" + checkingBalance + ", savingsBalance=" + savingsBalance
+				+ ", active=" + active + ", userEmail=" + userEmail + "]";
+	}
 	
 
 }

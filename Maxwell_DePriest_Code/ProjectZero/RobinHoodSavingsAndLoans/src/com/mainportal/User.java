@@ -7,8 +7,9 @@ public class User implements Bank{
 	private String name;
 	private String email;
 	private String phoneNumber;
-	private String password;
+	private transient String password;
 	private Account account;
+	private String status;
 
 	public User() {
 
@@ -61,6 +62,14 @@ public class User implements Bank{
 	public void setAccount(Account account) {
 		this.account = account;
 	}
+	
+	public String getStatus() {
+		return status;
+	}
+	
+	public void setStatus(String status) {
+		this.status = status;
+	}
 
 	@Override
 	public double checkBalance(int c) {
@@ -69,7 +78,6 @@ public class User implements Bank{
 
 	@Override
 	public void transferFunds(int destination, int fromWhere, double amount) {
-		// TODO Auto-generated method stub
 		
 	}
 
@@ -79,7 +87,11 @@ public class User implements Bank{
 		
 	}
 	
-	public String passwordEncryption(String pw) {
+//	public void addRecord()
+//	
+//	public void updateRecord()
+	
+	public static String passwordEncryption(String pw) {
 		StringBuilder newPassword = new StringBuilder();
 		String original = "abcdefghijklmnopqrstuvwxyz";
 		String alternate = "zyxwvutsrqponmlkjihgfedcba";

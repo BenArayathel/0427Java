@@ -1,30 +1,30 @@
 package com.mainportal;
 
 import java.util.Scanner;
+import java.io.Serializable;
 import java.util.Random;
 
-public class Customer extends User {
+public class Customer extends User implements Serializable {
 	private boolean accountActive;
-	private boolean awaitingApproval;
-	private Transaction transaction = new Transaction();
-	private int startingBalance;
+	// private boolean awaitingApproval; // for pending transactions if we get that far
+	//private Transaction transaction = new Transaction();
+	
+	private static final long serialVersionUID = 620321235045377344L;
 	
 	public Customer() {
-		
+		newCustomerRegistration();
 	}
 
 	
 
 	public Customer(String name, String email, String phoneNumber, String password, Account account) {
 		super(name, email, phoneNumber, password, account);
-		this.accountActive = accountActive;
-		this.awaitingApproval = awaitingApproval;
-//		this.startingBalance = startingBalance;
 		this.accountActive = false;
-		this.awaitingApproval = true;
+		this.setStatus("customer");
+		//this.awaitingApproval = true;
 	}
 	
-	public Customer newUserRegistration() {
+	public static Customer newCustomerRegistration() {
 		Scanner sc = new Scanner(System.in);
 		
 		System.out.println("Please enter your full name");
@@ -45,10 +45,12 @@ public class Customer extends User {
 		
 		Customer c = new Customer(n, e, pN, pW, act);
 		
+		// Where we send info to the text file
+		
 		return c;
 	}
 	
-	public int generateAccountNumber() {
+	public static int generateAccountNumber() {
 		Random rand = new Random();
 		int randomAccountNumber = rand.nextInt(100000);
 		
