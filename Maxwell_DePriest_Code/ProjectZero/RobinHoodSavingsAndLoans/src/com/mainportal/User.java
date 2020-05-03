@@ -3,26 +3,22 @@ package com.mainportal;
 import java.lang.StringBuilder;
 
 public class User implements Bank{
-	// Stretch goal - implement some basic hashing for password
-	
+
 	private String name;
 	private String email;
 	private String phoneNumber;
-	private String status; // Employee or Customer
 	private String password;
 	private Account account;
-	//private int pinNumber;
 
 	public User() {
-		// TODO Auto-generated constructor stub
+
 	}
 
-	public User(String name, String email, String phoneNumber, String status, String password, Account account) {
+	public User(String name, String email, String phoneNumber, String password, Account account) {
 		this.name = name;
 		this.email = email;
 		this.phoneNumber = phoneNumber;
-		this.status = status;
-		this.password = password;
+		this.password = passwordEncryption(password);
 		this.account = account;
 	}
 
@@ -48,14 +44,6 @@ public class User implements Bank{
 
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
-	}
-
-	public String getStatus() {
-		return status;
-	}
-
-	public void setStatus(String status) {
-		this.status = status;
 	}
 
 	public String getPassword() {

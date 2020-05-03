@@ -2,24 +2,24 @@ package com.mainportal;
 
 public class Account implements Bank {
 	
-	private int id;
 	private int savingsAccountNumber;
 	private int checkingAccountNumber;
 	private double checkingBalance;
 	private double savingsBalance;
-	private User user;
+	private boolean active;
+	private String userEmail;
 
 	public Account() {
 		
 	}
 
-	public Account(int id, int savingsAccountNumber, int checkingAccountNumber, double checkingBalance, double savingsBalance) {
-		//add User param once fleshed out
-		this.id = id;
+	public Account(int savingsAccountNumber, int checkingAccountNumber, double savingsBalance, double checkingBalance, String userEmail) {
 		this.savingsAccountNumber = savingsAccountNumber;
 		this.checkingAccountNumber = checkingAccountNumber;
 		this.checkingBalance = checkingBalance;
 		this.savingsBalance = savingsBalance;
+		this.userEmail = userEmail;
+		this.active = false;
 	}
 
 	public int getSavingsAccountNumber() {
@@ -41,18 +41,18 @@ public class Account implements Bank {
 	public double getCheckingBalance() {
 		return checkingBalance;
 	}
-
-//	public void setCheckingBalance(double checkingBalance) {
-//		this.checkingBalance = checkingBalance;
-//	}
 	
 	public double getSavingsBalance() {
 		return savingsBalance;
 	}
-//
-//	public void setSavingsBalance(double savingsBalance) {
-//		this.savingsBalance = savingsBalance;
-//	}
+	
+	public boolean getActive() {
+		return active;
+	}
+	
+	public void setActive(boolean active) {
+		this.active = active;
+	}
 	
 	// 1 = checking account, 2 = savings account 
 	public void setBalance(double amt, int acct) {
