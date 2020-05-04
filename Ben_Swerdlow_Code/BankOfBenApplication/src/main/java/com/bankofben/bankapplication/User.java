@@ -1,5 +1,6 @@
 package com.bankofben.bankapplication;
 
+import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Scanner;
 
@@ -13,34 +14,12 @@ public class User extends Person implements Comparable<User> {
 	public User() {
 		super();
 	}
-	
-	public User(String firstName, String middleName, String lastName, String momsMaidenName, int dobDay, int dobMonth,
-			int dobYear, String ssn, String stateId, String streetAddress, String suiteAptOther, String zipCode,
-			String email, String phoneNumber, String username, String password) throws EmailInvalidException {
-		super(firstName, middleName, lastName, momsMaidenName, dobDay, dobMonth, dobYear, ssn, email, phoneNumber);
-		this.username = username;
-		this.password = password;
-	}
 
-
-
-	public User(String username, String email, String password) throws UsernameInvalidException, EmailInvalidException {
-		super();
-		if (UserUtils.isValidUsername(username)) {
-			this.username = username;
-		} else {
-			throw new UsernameInvalidException();
-		}
-		if (UserUtils.isValidEmail(email)) {
-			this.email = email;
-		} else {
-			throw new EmailInvalidException();
-		}
-		this.password = password;
-	}
-	
-	public User(String username, String password, HashSet<Account> userAccounts) {
-		super();
+	public User(String firstName, String middleName, String lastName, String momsMaidenName, LocalDate dob, String ssn,
+			String email, String phoneNumber, String username, String password, HashSet<Account> userAccounts)
+			throws BlankFieldException, InvalidDateOfBirthException, InvalidSsnException, EmailInvalidException,
+			InvalidPhoneNumberException {
+		super(firstName, middleName, lastName, momsMaidenName, dob, ssn, email, phoneNumber);
 		this.username = username;
 		this.password = password;
 		this.userAccounts = userAccounts;

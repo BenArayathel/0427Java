@@ -102,7 +102,8 @@ public class Person {
 //	}
 
 	public Person(String firstName, String middleName, String lastName, String momsMaidenName, LocalDate dob,
-			String ssn, String email, String phoneNumber) throws BlankFieldException {
+			String ssn, String email, String phoneNumber) throws BlankFieldException, InvalidDateOfBirthException,
+			InvalidSsnException, EmailInvalidException, InvalidPhoneNumberException {
 		super();
 		
 		List<String> blankFieldMessages = new ArrayList<>();
@@ -115,26 +116,29 @@ public class Person {
 		
 		this.middleName = middleName;
 		
-		if (lastName.equals(null)) {
-			throw new NullPointerException("Last name must be provided.");
+		try {
+			setLastName(lastName);
+		} catch (BlankFieldException e) {
+			blankFieldMessages.add(e.getMessage());
 		}
 		
-		if (momsMaidenName.equals(null)) {
-			throw new NullPointerException("Mother's maiden name must be provided.");
-		} else {
-			this.momsMaidenName = momsMaidenName;
+		try {
+			setMomsMaidenName(momsMaidenName);
+		} catch (BlankFieldException e) {
+			blankFieldMessages.add(e.getMessage());
+		}
+		
+		if (!(blankFieldMessages.isEmpty())) {
+			throw new BlankFieldException(String.join("; ", blankFieldMessages));
 		}
 		
 		setDob(dob);
 		
-		if (ssn.equals(null)) {
-			throw new NullPointerException("Social security number must be provided.");
-		} else {
-			setSsn(ssn);
-		}
+		setSsn(ssn);
 		
-		this.email = email;
-		this.phoneNumber = phoneNumber;
+		setEmail(email);
+		
+		setPhoneNumber(phoneNumber);
 	}
 
 	public String getFirstName() {
@@ -173,8 +177,12 @@ public class Person {
 		return momsMaidenName;
 	}
 	
-	public void setMomsMaidenName(String momsMaidenName) {
-		this.momsMaidenName = momsMaidenName;
+	public void setMomsMaidenName(String momsMaidenName) throws BlankFieldException {
+		if (momsMaidenName.equals(null)) {
+			throw new BlankFieldException("Mother's maiden name must be provided.");
+		} else {
+			this.momsMaidenName = momsMaidenName;
+		}
 	}
 	
 	public String getSsn() {
