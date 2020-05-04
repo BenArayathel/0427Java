@@ -190,7 +190,7 @@ public class Person {
 	}
 	
 	public void setSsn(String ssn) throws InvalidSsnException {
-		if (UserUtils.isValidSsn(ssn)) {
+		if (ValidationTools.isValidSsn(ssn)) {
 			this.ssn = ssn;
 		} else {
 			throw new InvalidSsnException();
@@ -202,7 +202,7 @@ public class Person {
 	}
 	
 	public void setEmail(String email) throws EmailInvalidException {
-		if (UserUtils.isValidEmail(email)) {
+		if (ValidationTools.isValidEmail(email)) {
 			this.email = email;
 		} else {
 			throw new EmailInvalidException();
@@ -214,7 +214,7 @@ public class Person {
 	}
 	
 	public void setPhoneNumber(String phoneNumber) throws InvalidPhoneNumberException {
-		if (UserUtils.isValidPhoneNumber(phoneNumber)) {
+		if (ValidationTools.isValidPhoneNumber(phoneNumber)) {
 			this.phoneNumber = phoneNumber;
 		} else {
 			throw new InvalidPhoneNumberException();

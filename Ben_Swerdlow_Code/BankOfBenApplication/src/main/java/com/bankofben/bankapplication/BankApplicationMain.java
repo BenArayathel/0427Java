@@ -68,8 +68,8 @@ public class BankApplicationMain {
 	private static User registerUser(Scanner sc) {
 		BankOfBen bob = BankOfBen.getBank();
 		User user = null;
-		String email = UserUtils.requestEmail(sc);
-		String username = UserUtils.requestUsername(sc);
+		String email = UserInterfaceUtils.requestEmail(sc);
+		String username = UserInterfaceUtils.requestUsername(sc);
 		boolean loginRequested = false;
 		while (bob.emailExists(email)) {
 			System.out.println("The email "+email+" already exists. Would you like to login? (yes or y to confirm)");
@@ -80,7 +80,7 @@ public class BankApplicationMain {
 				username = user.getUsername();
 				break;
 			} else {
-				email = UserUtils.requestEmail(sc);
+				email = UserInterfaceUtils.requestEmail(sc);
 			}
 		}
 		while (bob.userExists(username) && !(loginRequested)) {
@@ -91,7 +91,7 @@ public class BankApplicationMain {
 				user = loginUser(username, sc);
 				break;
 			} else {
-				username = UserUtils.requestUsername(sc);
+				username = UserInterfaceUtils.requestUsername(sc);
 			}
 		}
 		if (!(loginRequested)) {
@@ -118,15 +118,15 @@ public class BankApplicationMain {
 	private static User registerUser(String username, String email, Scanner sc)
 			throws UsernameInvalidException, EmailInvalidException, ExistingUserException, ExistingEmailException {
 		BankOfBen bob = BankOfBen.getBank();
-		String firstName = UserUtils.requestFirstName(sc);
-		String middleName = UserUtils.requestMiddleName(sc);
-		String lastName = UserUtils.requestLastName(sc);
-		String momsMaidenName = UserUtils.requestMomsMaidenName(sc);
-		LocalDate dob = UserUtils.requestDob(sc);
-		String ssn = UserUtils.requestSsn(sc);
-		String phoneNumber = UserUtils.requestPhoneNumber(sc);
+		String firstName = UserInterfaceUtils.requestFirstName(sc);
+		String middleName = UserInterfaceUtils.requestMiddleName(sc);
+		String lastName = UserInterfaceUtils.requestLastName(sc);
+		String momsMaidenName = UserInterfaceUtils.requestMomsMaidenName(sc);
+		LocalDate dob = UserInterfaceUtils.requestDob(sc);
+		String ssn = UserInterfaceUtils.requestSsn(sc);
+		String phoneNumber = UserInterfaceUtils.requestPhoneNumber(sc);
 		
-		String password = UserUtils.requestNewPassword(sc);
+		String password = UserInterfaceUtils.requestNewPassword(sc);
 		
 		User user = bob.registerUser(new User());
 //		if (bob.getUsernameEmailMap().containsKey(username)) {
@@ -147,7 +147,7 @@ public class BankApplicationMain {
 		User user = null;
 		BankOfBen bob = BankOfBen.getBank();
 		while (loginAttempts < 4) {
-			password = UserUtils.requestPassword(sc);
+			password = UserInterfaceUtils.requestPassword(sc);
 			try {
 				user = bob.loginUser(username, password);
 			} catch (InvalidLoginException e) {
@@ -165,7 +165,7 @@ public class BankApplicationMain {
 	}
 	
 	public static User loginUser(Scanner sc) {
-		String username = UserUtils.requestUsername(sc);
+		String username = UserInterfaceUtils.requestUsername(sc);
 		return loginUser(username, sc);
 	}
 

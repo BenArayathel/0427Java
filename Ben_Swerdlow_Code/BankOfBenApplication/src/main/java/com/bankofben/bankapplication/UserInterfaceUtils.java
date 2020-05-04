@@ -4,12 +4,12 @@ import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 import java.util.Scanner;
 
-public class UserUtils {
+public class UserInterfaceUtils {
 
 	public static String requestUsername(Scanner sc) {
 		System.out.println("Please input username:");
 		String username = sc.nextLine();
-		while (!(isValidUsername(username))) {
+		while (!(ValidationTools.isValidUsername(username))) {
 			System.out.println("You must supply a username between 4 and 20 characters.");
 			System.out.println("Please input username:");
 			username = sc.nextLine();
@@ -20,7 +20,7 @@ public class UserUtils {
 	public static String requestEmail(Scanner sc) {
 		System.out.println("Please input your email address:");
 		String email = sc.nextLine();
-		while (!(isValidEmail(email))) {
+		while (!(ValidationTools.isValidEmail(email))) {
 			System.out.println("You must provide a valid email address.");
 			System.out.println("Please input your email address:");
 			email = sc.nextLine();
@@ -33,17 +33,18 @@ public class UserUtils {
 		String confirmPassword = null;
 		boolean confirmed = false;
 		while (!(confirmed)) {
+			System.out.println(passwordCriteria());
 			System.out.println("Please input password:");
 			password = sc.nextLine();
 			System.out.println("Please condfirm password:");
 			confirmPassword = sc.nextLine();
-			if (password.equals(confirmPassword) && !(password.equals(null))) {
-				confirmed = true;
-			} else if (password.equals(null)){
-				System.out.println("No password entry detected. Please enter your password again.");
-			} else {
-				System.out.println("Password and confirmation password do not match. Please enter your password again.");
-			}
+			if (ValidationTools.isValidPassword(password)) {
+				if (password.equals(confirmPassword)) {
+					confirmed = true;
+				} else {
+					System.out.println("Password confirmation failed to match password. Please try again.");
+				}
+			} System.out.println("Invalid password. Pleast try again.");
 		}
 		return password;
 	}
@@ -111,7 +112,7 @@ public class UserUtils {
 		
 		do {
 			// while year-month-day is invalid (which it is at first)
-			while (!(isValidDateString(monthDayYearDob))) {
+			while (!(ValidationTools.isValidDateString(monthDayYearDob))) {
 				// while monthDayYear is invalid (which it hopefully isn't)
 				System.out.println("Invalid date format: "+monthDayYearDob);
 				System.out.println("Please input your date of birth in the following format: MM-DD-YYYY");
@@ -124,42 +125,17 @@ public class UserUtils {
 			yearMonthDayDob = ymdDob.toString();
 			// Set to null so if we have to repeat the loop, the user has a chance to re-enter information
 			monthDayYearDob = null;
-		} while (!(isValidDate(yearMonthDayDob)));
+		} while (!(ValidationTools.isValidDate(yearMonthDayDob)));
 		
 		dob = LocalDate.parse(yearMonthDayDob);
-		
-//		while (noDate) {
-//			System.out.println("Please input your date of birth in the following format: DD-MM-YYYY");
-//			String dmyDob = sc.nextLine();
-//			StringBuilder ymdDob = new StringBuilder();
-//			for (int i=0; i<3; i++) {
-//				ymdDob.append(dmyDob.split("-")[2-i]);
-//			}
-//			if (isValidDate(ymdDob.toString())) {
-//				dob = LocalDate.parse(ymdDob.toString());
-//				noDate = false;
-//			}
-//		}
+
 		return dob;
-	}
-	
-	public static boolean isValidDateString(String dmy) {
-		return dmy.matches("[0-9]{1,2}-[0-9]{1,2}-[0-9]{4}");
-	}
-	
-	public static boolean isValidDate(String ymd) {
-		try {
-			LocalDate.parse(ymd);
-		} catch (DateTimeParseException e) {
-			return false;
-		}
-		return false;
 	}
 	
 	public static String requestSsn(Scanner sc) {
 		System.out.println("Please input your social security number (XXX-XX-XXXX");
 		String ssn = sc.nextLine();
-		while (!(UserUtils.isValidSsn(ssn))) {
+		while (!(ValidationTools.isValidSsn(ssn))) {
 			System.out.println("Invalid social security number entry "+ssn);
 			System.out.println("Please input your social security number (XXX-XX-XXXX");
 			ssn = sc.nextLine();
@@ -170,7 +146,7 @@ public class UserUtils {
 	public static String requestPhoneNumber(Scanner sc) {
 		System.out.println("Please input your US phone number: ");
 		String phoneNumber = sc.nextLine();
-		while (!(isValidPhoneNumber(phoneNumber))) {
+		while (!(ValidationTools.isValidPhoneNumber(phoneNumber))) {
 			System.out.println("Invalid phone number entry "+phoneNumber);
 			System.out.println("Please input your US phone number: ");
 			phoneNumber = sc.nextLine();
@@ -178,51 +154,12 @@ public class UserUtils {
 		return phoneNumber;
 	}
 	
-	public static boolean isValidUsername(String username) {
-		if (username.equals(null)) {
-			return false;
-		} else if (username.length() < 4 || username.length() > 20) {
-			return false;
-		} else {
-			return true;
-		}
-	}
-
-	public static boolean isValidEmail(String email) {
-		if (email.equals(null)) {
-			return false;
-		}
-		// From http://regexlib.com/REDetails.aspx?regexp_id=26
-		else if (!(email.matches("^([a-zA-Z0-9_\\-\\.]+)@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.)|"
-				+ "(([a-zA-Z0-9\\-]+\\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\\]?)$"))) {
-			return false;
-		} else {
-			return true;
-		}
-	}
-
-	public static boolean isValidSsn(String ssn) {
-		if (ssn.equals(null)) {
-			return false;
-		}
-		else if (ssn.replace(" ", "").replace("-", "").matches("[0-9]{9}")) {
-			return true;
-		} else {
-			return false;
-		}
-	}
-	
-	public static boolean isValidPhoneNumber(String phoneNum) {
-		if (phoneNum.equals(null)) {
-			return false;
-		} else {
-			String phoneNumber = phoneNum.replace("-", "").replace("(", "").replace(")", "").replace("+1", "");
-			if (phoneNumber.matches("[0-9]{10}")) {
-				return true;
-			} else {
-				return false;
-			}
-		}
+	public static String passwordCriteria() {
+		return "Passwords must be at least 8 character and contain"
+				+ "\n* At least one uppercase English letter"
+				+ "\n* At least one lowercase English letter"
+				+ "\n* At least one digit"
+				+ "\n* At least one special character (.*?[#?!@$%^&*-)";
 	}
 
 }

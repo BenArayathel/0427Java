@@ -18,9 +18,9 @@ public class User extends Person implements Comparable<User> {
 	public User(String firstName, String middleName, String lastName, String momsMaidenName, LocalDate dob, String ssn,
 			String email, String phoneNumber, String username, String password, HashSet<Account> userAccounts)
 			throws BlankFieldException, InvalidDateOfBirthException, InvalidSsnException, EmailInvalidException,
-			InvalidPhoneNumberException {
+			InvalidPhoneNumberException, InvalidUsernameException {
 		super(firstName, middleName, lastName, momsMaidenName, dob, ssn, email, phoneNumber);
-		this.username = username;
+		setUsername(username);
 		this.password = password;
 		this.userAccounts = userAccounts;
 	}
@@ -33,9 +33,11 @@ public class User extends Person implements Comparable<User> {
 		return username;
 	}
 
-	public void setUsername(String username) {
-		if (UserUtils.isValidUsername(username)) {
+	public void setUsername(String username) throws InvalidUsernameException {
+		if (ValidationTools.isValidUsername(username)) {
 			this.username = username;
+		} else {
+			throw new InvalidUsernameException();
 		}
 	}
 
@@ -57,7 +59,7 @@ public class User extends Person implements Comparable<User> {
 		String password;
 		boolean confirmation = passwordChangeConfirmation(sc);
 		if (confirmation) {
-			password = UserUtils.requestNewPassword(sc);
+			password = UserInterfaceUtils.requestNewPassword(sc);
 			this.password = password;
 			System.out.println("Password has been changed.");
 		} else {
@@ -68,7 +70,7 @@ public class User extends Person implements Comparable<User> {
 	public void changePassword(String oldPassword) {
 		if (oldPassword.equals(this.password)) {
 			Scanner sc = new Scanner(System.in);
-			String password = UserUtils.requestNewPassword(sc);
+			String password = UserInterfaceUtils.requestNewPassword(sc);
 			this.password = password;
 			System.out.println("Password has been changed.");
 		} else {
