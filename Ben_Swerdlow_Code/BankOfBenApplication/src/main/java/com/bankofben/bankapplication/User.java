@@ -45,19 +45,9 @@ public class User extends Person implements Comparable<User> {
 		this.password = password;
 		this.userAccounts = userAccounts;
 	}
-
-	private boolean usernamePasswordMatch(String username, String password) {
-		User user = bob.getUserMap().get(username);
-		return password.equals(user.getPassword());
-	}
 	
-	private boolean passwordMatch(String password) {
+	public boolean passwordMatch(String password) {
 		return password.equals(this.password);
-	}
-	
-	private String requestPassword(Scanner sc) {
-		System.out.println("Please input password:");
-		return sc.nextLine();
 	}
 
 	public String getUsername() {
@@ -76,10 +66,6 @@ public class User extends Person implements Comparable<User> {
 
 	public void setUserAccounts(HashSet<Account> userAccounts) {
 		this.userAccounts = userAccounts;
-	}
-
-	public String getPassword() {
-		return password;
 	}
 	
 	private boolean passwordChangeConfirmation(Scanner sc) {

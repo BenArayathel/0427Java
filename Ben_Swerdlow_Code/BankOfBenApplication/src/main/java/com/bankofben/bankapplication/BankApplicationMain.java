@@ -1,42 +1,56 @@
 package com.bankofben.bankapplication;
 
 import java.time.LocalDate;
-import java.time.format.DateTimeParseException;
 import java.util.Scanner;
 
 public class BankApplicationMain {
 
 	public static void main(String[] args) {
-		BankOfBen bob = BankOfBen.getBank();
+//		BankOfBen bob = BankOfBen.getBank();
 		User user = null;
 //		int loginAttempts = 0;
 		Scanner sc = new Scanner(System.in);
 
 		greeting();
 		String response=null;
-		while (user.equals(null)) {
+		
+		do {
+			greeting();
 			response = sc.nextLine();
 			if (response.equalsIgnoreCase("register")) {
 				user = registerUser(sc);
+				if (user.equals(null)) {
+					invalidRegistrationMessage();
+				}
 			} else if (response.equalsIgnoreCase("login")) {
-				user = bob.loginUser(sc);
+				user = loginUser(sc);
+				if (user.equals(null)) {
+					invalidLoginMessage();
+				}
 			} else if (response.equalsIgnoreCase("quit")) {
 				quit(sc);
 			} else {
-				invalidResponse(response);
-				greeting();
+				invalidResponseMessage(response);
 			}
-		}
-	}
-
-	private static void invalidResponse(String response) {
-		System.out.println("Your request \""+response+"\" is not a valid option.");
-		System.out.println("Please select another option.");
+		} while (user.equals(null));
 		
 	}
 
+	private static void invalidResponseMessage(String response) {
+		System.out.println("Your request \""+response+"\" is not a valid option.");
+		System.out.println("Please select another option.");
+	}
+	
+	private static void invalidRegistrationMessage() {
+		System.out.println("Invalid registration. Please try again.");
+	}
+	
+	private static void invalidLoginMessage() {
+		System.out.println("Invalid login. Please try again.");
+	}
+
 	private static void quit(Scanner sc) {
-		System.out.println("Are you sure you would like to quit the Bank of Ben application?");
+		System.out.println("Are you sure you would like to quit the Bank of Ben Application?");
 		String response = sc.nextLine();
 		if (response.equalsIgnoreCase("quit")) {
 			System.out.println("Thank you for using the Bank of Ben Application.");
@@ -47,16 +61,17 @@ public class BankApplicationMain {
 	private static void greeting() {
 		System.out.println("Welcome to the Bank of Ben! Please select from the following options:");
 		System.out.println("Type \"register\" to register a new user");
-		System.out.println("Type \"login\" to log in.");	
+		System.out.println("Type \"login\" to log in.");
+		System.out.println("type \"quit\" to quit the application");
 	}
 	
 	private static User registerUser(Scanner sc) {
 		BankOfBen bob = BankOfBen.getBank();
 		User user = null;
-		String email = requestEmail(sc);
-		String username = requestUsername(sc);
+		String email = UserUtils.requestEmail(sc);
+		String username = UserUtils.requestUsername(sc);
 		boolean loginRequested = false;
-		while (emailExists(email)) {
+		while (bob.emailExists(email)) {
 			System.out.println("The email "+email+" already exists. Would you like to login? (yes or y to confirm)");
 			String response = sc.nextLine();
 			if (response.equalsIgnoreCase("y") || response.equalsIgnoreCase("y")) {
@@ -65,10 +80,10 @@ public class BankApplicationMain {
 				username = user.getUsername();
 				break;
 			} else {
-				email = requestEmail(sc);
+				email = UserUtils.requestEmail(sc);
 			}
 		}
-		while (userExists(username)) {
+		while (bob.userExists(username) && !(loginRequested)) {
 			System.out.println("The username "+username+" already exists. Would you like to login? (yes or y to confirm)");
 			String response = sc.nextLine();
 			if (response.equalsIgnoreCase("y") || response.equalsIgnoreCase("y")) {
@@ -76,7 +91,7 @@ public class BankApplicationMain {
 				user = loginUser(username, sc);
 				break;
 			} else {
-				username = requestUsername(sc);
+				username = UserUtils.requestUsername(sc);
 			}
 		}
 		if (!(loginRequested)) {
@@ -103,7 +118,6 @@ public class BankApplicationMain {
 	private static User registerUser(String username, String email, Scanner sc)
 			throws UsernameInvalidException, EmailInvalidException, ExistingUserException, ExistingEmailException {
 		BankOfBen bob = BankOfBen.getBank();
-		User user = null;
 		String firstName = UserUtils.requestFirstName(sc);
 		String middleName = UserUtils.requestMiddleName(sc);
 		String lastName = UserUtils.requestLastName(sc);
@@ -113,32 +127,46 @@ public class BankApplicationMain {
 		String phoneNumber = UserUtils.requestPhoneNumber(sc);
 		
 		String password = UserUtils.requestNewPassword(sc);
-//		User user = new User(username, email, password);
-		if (usernameEmailMap.containsKey(username)) {
-			throw new ExistingUserException();
-		}
-		if (usernameEmailMap.containsValue(email)) {
-			throw new ExistingEmailException();
-		}
 		
-
-		bob.registerUser(user);
-		System.out.println("User "+user.getUsername()+" registered with the Bank of Ben.");
+		User user = bob.registerUser(new User());
+//		if (bob.getUsernameEmailMap().containsKey(username)) {
+//			throw new ExistingUserException();
+//		}
+//		if (bob.getUsernameEmailMap().containsValue(email)) {
+//			throw new ExistingEmailException();
+//		}
+		if (!(user.equals(null))) {
+			System.out.println("User "+user.getUsername()+" registered with the Bank of Ben.");
+		}
+		return user;
 	}
 	
-//	private static User getUser(String input) {
-//		User user = null;
-//		switch (input.toLowerCase()) {
-//			case "apply": 
-//				user = bob.applyForAccount();
-//				break;
-//			case "login":
-//				user = bob.signIn();
-//				break;
-//			default:
-//				System.out.println();
-//		}
-//		return user;
-//	}
+	public static User loginUser(String username, Scanner sc) {
+		String password = null;
+		int loginAttempts = 0;
+		User user = null;
+		BankOfBen bob = BankOfBen.getBank();
+		while (loginAttempts < 4) {
+			password = UserUtils.requestPassword(sc);
+			try {
+				user = bob.loginUser(username, password);
+			} catch (InvalidLoginException e) {
+				System.out.println("Invalid password for user "+username+". Please try again.");
+			} catch (NullPointerException | UserNotFoundException e) {
+				System.out.println("Bank of Ben has no record of user with those credentials. Please try again.");
+			}
+			loginAttempts++;
+			// TODO: Added lag to discourage brute force attempts; not critical, attempt later
+		}
+		if (loginAttempts >= 4) {
+			System.out.println("Limit of password attempts exceeded. Please try again later.");
+		}
+		return user;
+	}
+	
+	public static User loginUser(Scanner sc) {
+		String username = UserUtils.requestUsername(sc);
+		return loginUser(username, sc);
+	}
 
 }

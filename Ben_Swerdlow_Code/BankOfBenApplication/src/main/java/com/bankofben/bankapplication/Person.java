@@ -1,15 +1,13 @@
 package com.bankofben.bankapplication;
 
-import java.util.Scanner;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
+//import java.time.format.DateTimeParseException;
 
 public class Person {
 	
 	private String firstName;
 	private String middleName;
-	private String LastName;
+	private String lastName;
 	private String momsMaidenName;
 	private LocalDate dob;
 	private String ssn;
@@ -24,92 +22,115 @@ public class Person {
 		super();
 	}
 	
-	public Person(Scanner sc) {
-		super();
-		
-		System.out.println("Please input your first name:");
-		String firstName = sc.nextLine();
-		this.firstName = firstName;
-		
-		System.out.println("Please input your middle name:");
-		String middleName = sc.nextLine();
-		this.middleName = middleName;
-		
-		System.out.println("Please input your last name:");
-		String lastName = sc.nextLine();
-		this.LastName = lastName;
-		
-		System.out.println("Please input your mother's maiden name:");
-		String momsMaidenName = sc.nextLine();
-		this.momsMaidenName = momsMaidenName;
-		
-		boolean noDate = true;
-		while (noDate) {
-			System.out.println("Please input your date of birth in the following format: DD-MM-YYYY");
-			String dmyDob = sc.nextLine();
-			StringBuilder ymdDob = new StringBuilder();
-			for (int i=0; i<3; i++) {
-				ymdDob.append(dmyDob.split("-")[2-i]);
-			}
-			try {
-				LocalDate dob = LocalDate.parse(ymdDob);
-				setDob(dob);
-				noDate = false;
-			} catch (DateTimeParseException e) {
-				System.out.println("Invalid date entry "+dmyDob);
-			}
-		}
-		
-		boolean noSsn = true;
-		while (noSsn) {
-			System.out.println("Please input your social security number: (XXX-XX-XXXX)");
-			String ssn = sc.nextLine();
-			try {
-				setSsn(ssn);
-				noSsn = false;
-			} catch (InvalidSsnException e) {
-				System.out.println("Invalid social security number entry "+ssn);
-			}
-		}
-//		this.stateId = stateId;
-//		this.streetAddress = streetAddress;
-//		this.suiteAptOther = suiteAptOther;
-//		this.zipCode = zipCode;
-		
-		boolean noEmail = true;
-		while (noEmail) {
-			System.out.println("Please input your email:");
-			String email = sc.nextLine();
-			try {
-				setEmail(email);
-				noEmail = false;
-			} catch (EmailInvalidException e) {
-				System.out.println("Invalid email entry "+email);
-			}
-		}
-		
-		boolean noPhoneNumber = true;
-		while (noPhoneNumber) {
-			System.out.println("Please input your phone number:");
-			String phoneNumber = sc.nextLine();
-			try {
-				setPhoneNumber(phoneNumber);
-				noPhoneNumber = false;
-			} catch (InvalidPhoneNumberException e) {
-				System.out.println("Invalid phone number entry "+phoneNumber);
-			}
-		}
-	}
+//	public Person(Scanner sc) {
+//		super();
+//		
+//		System.out.println("Please input your first name:");
+//		String firstName = sc.nextLine();
+//		this.firstName = firstName;
+//		
+//		System.out.println("Please input your middle name:");
+//		String middleName = sc.nextLine();
+//		this.middleName = middleName;
+//		
+//		System.out.println("Please input your last name:");
+//		String lastName = sc.nextLine();
+//		this.LastName = lastName;
+//		
+//		System.out.println("Please input your mother's maiden name:");
+//		String momsMaidenName = sc.nextLine();
+//		this.momsMaidenName = momsMaidenName;
+//		
+//		boolean noDate = true;
+//		while (noDate) {
+//			System.out.println("Please input your date of birth in the following format: DD-MM-YYYY");
+//			String dmyDob = sc.nextLine();
+//			StringBuilder ymdDob = new StringBuilder();
+//			for (int i=0; i<3; i++) {
+//				ymdDob.append(dmyDob.split("-")[2-i]);
+//			}
+//			try {
+//				LocalDate dob = LocalDate.parse(ymdDob);
+//				setDob(dob);
+//				noDate = false;
+//			} catch (DateTimeParseException e) {
+//				System.out.println("Invalid date entry "+dmyDob);
+//			}
+//		}
+//		
+//		boolean noSsn = true;
+//		while (noSsn) {
+//			System.out.println("Please input your social security number: (XXX-XX-XXXX)");
+//			String ssn = sc.nextLine();
+//			try {
+//				setSsn(ssn);
+//				noSsn = false;
+//			} catch (InvalidSsnException e) {
+//				System.out.println("Invalid social security number entry "+ssn);
+//			}
+//		}
+////		this.stateId = stateId;
+////		this.streetAddress = streetAddress;
+////		this.suiteAptOther = suiteAptOther;
+////		this.zipCode = zipCode;
+//		
+//		boolean noEmail = true;
+//		while (noEmail) {
+//			System.out.println("Please input your email:");
+//			String email = sc.nextLine();
+//			try {
+//				setEmail(email);
+//				noEmail = false;
+//			} catch (EmailInvalidException e) {
+//				System.out.println("Invalid email entry "+email);
+//			}
+//		}
+//		
+//		boolean noPhoneNumber = true;
+//		while (noPhoneNumber) {
+//			System.out.println("Please input your phone number:");
+//			String phoneNumber = sc.nextLine();
+//			try {
+//				setPhoneNumber(phoneNumber);
+//				noPhoneNumber = false;
+//			} catch (InvalidPhoneNumberException e) {
+//				System.out.println("Invalid phone number entry "+phoneNumber);
+//			}
+//		}
+//	}
 
 	public Person(String firstName, String middleName, String lastName, String momsMaidenName, LocalDate dob,
 			String ssn, String email, String phoneNumber) {
 		super();
-		this.firstName = firstName;
+		
+//		setFirstName(firstName);
+		
+		if (firstName.equals(null)) {
+			throw new NullPointerException("First name must be provided.");
+		} else {
+			this.firstName = firstName;
+		}
+		
 		this.middleName = middleName;
-		LastName = lastName;
-		this.momsMaidenName = momsMaidenName;
-		this.dob = dob;
-		this.ssn = ssn;
+		
+		if (lastName.equals(null)) {
+			throw new NullPointerException("Last name must be provided.");
+		}
+		
+		if (momsMaidenName.equals(null)) {
+			throw new NullPointerException("Mother's maiden name must be provided.");
+		} else {
+			this.momsMaidenName = momsMaidenName;
+		}
+			
+		setDob(dob);
+		
+		if (ssn.equals(null)) {
+			throw new NullPointerException("Social security number must be provided.");
+		} else {
+			setSsn(ssn);
+		}
+		
 		this.email = email;
 		this.phoneNumber = phoneNumber;
 	}
@@ -118,7 +139,10 @@ public class Person {
 		return firstName;
 	}
 	
-	public void setFirstName(String firstName) {
+	public void setFirstName(String firstName) throws IllegalArgumentException {
+		if (firstName.equals(null)) {
+			throw new IllegalArgumentException("First name must be provided.");
+		}
 		this.firstName = firstName;
 	}
 	
@@ -131,11 +155,11 @@ public class Person {
 	}
 	
 	public String getLastName() {
-		return LastName;
+		return lastName;
 	}
 	
 	public void setLastName(String lastName) {
-		LastName = lastName;
+		this.lastName = lastName;
 	}
 	
 	public String getMomsMaidenName() {
@@ -186,8 +210,14 @@ public class Person {
 		return dob;
 	}
 
-	public void setDob(LocalDate dob) {
-		this.dob = dob;
+	public void setDob(LocalDate dob) throws InvalidDateOfBirthException {
+		if (dob.equals(null)) {
+			throw new InvalidDateOfBirthException();
+		} else if (dob.isBefore(LocalDate.now())) {
+			this.dob = dob;
+		} else {
+			throw new InvalidDateOfBirthException();
+		}
 	}
 
 }

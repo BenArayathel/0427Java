@@ -5,6 +5,28 @@ import java.time.format.DateTimeParseException;
 import java.util.Scanner;
 
 public class UserUtils {
+
+	public static String requestUsername(Scanner sc) {
+		System.out.println("Please input username:");
+		String username = sc.nextLine();
+		while (!(isValidUsername(username))) {
+			System.out.println("You must supply a username between 4 and 20 characters.");
+			System.out.println("Please input username:");
+			username = sc.nextLine();
+		}
+		return username;
+	}
+
+	public static String requestEmail(Scanner sc) {
+		System.out.println("Please input your email address:");
+		String email = sc.nextLine();
+		while (!(isValidEmail(email))) {
+			System.out.println("You must provide a valid email address.");
+			System.out.println("Please input your email address:");
+			email = sc.nextLine();
+		}
+		return email;
+	}
 	
 	public static String requestNewPassword(Scanner sc) {
 		String password = null;
@@ -81,23 +103,57 @@ public class UserUtils {
 	}
 	
 	public static LocalDate requestDob(Scanner sc) {
-		boolean noDate = true;
+//		boolean noDate = true;
 		LocalDate dob = null;
-		while (noDate) {
-			System.out.println("Please input your date of birth in the following format: DD-MM-YYYY");
-			String dmyDob = sc.nextLine();
+		System.out.println("Please input your date of birth in the following format: MM-DD-YYYY");
+		String monthDayYearDob = sc.nextLine();
+		String yearMonthDayDob = monthDayYearDob;
+		
+		do {
+			// while year-month-day is invalid (which it is at first)
+			while (!(isValidDateString(monthDayYearDob))) {
+				// while monthDayYear is invalid (which it hopefully isn't)
+				System.out.println("Invalid date format: "+monthDayYearDob);
+				System.out.println("Please input your date of birth in the following format: MM-DD-YYYY");
+				monthDayYearDob = sc.nextLine();
+			}
 			StringBuilder ymdDob = new StringBuilder();
 			for (int i=0; i<3; i++) {
-				ymdDob.append(dmyDob.split("-")[2-i]);
+				ymdDob.append(monthDayYearDob.split("-")[(i+2)%3]);
 			}
-			try {
-				dob = LocalDate.parse(ymdDob);
-				noDate = false;
-			} catch (DateTimeParseException e) {
-				System.out.println("Invalid date entry "+dmyDob);
-			}
-		}
+			yearMonthDayDob = ymdDob.toString();
+			// Set to null so if we have to repeat the loop, the user has a chance to re-enter information
+			monthDayYearDob = null;
+		} while (!(isValidDate(yearMonthDayDob)));
+		
+		dob = LocalDate.parse(yearMonthDayDob);
+		
+//		while (noDate) {
+//			System.out.println("Please input your date of birth in the following format: DD-MM-YYYY");
+//			String dmyDob = sc.nextLine();
+//			StringBuilder ymdDob = new StringBuilder();
+//			for (int i=0; i<3; i++) {
+//				ymdDob.append(dmyDob.split("-")[2-i]);
+//			}
+//			if (isValidDate(ymdDob.toString())) {
+//				dob = LocalDate.parse(ymdDob.toString());
+//				noDate = false;
+//			}
+//		}
 		return dob;
+	}
+	
+	public static boolean isValidDateString(String dmy) {
+		return dmy.matches("[0-9]{1,2}-[0-9]{1,2}-[0-9]{4}");
+	}
+	
+	public static boolean isValidDate(String ymd) {
+		try {
+			LocalDate.parse(ymd);
+		} catch (DateTimeParseException e) {
+			return false;
+		}
+		return false;
 	}
 	
 	public static String requestSsn(Scanner sc) {
