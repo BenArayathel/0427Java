@@ -1,26 +1,31 @@
-package mainDriver;
+package com.welcomeview;
 
-import java.util.Scanner;
+import com.maindriver.UserLogin;
+import com.maindriver.myScanner;
 
+
+
+//first view for a user who opened the program
 public class WelcomeView {
 	
 	public static void welcome() {
+		//first, determine if this is a new user or return user
 		String hasAccount = null;
 
 		System.out.println("Welcome to Beaver Trust Fiduciary");
+		System.out.println("Please type and enter 'Quit' at any time to exit.");
 		System.out.println("Do you already have an account? Y or N: ");
-		Scanner welcomeScan = new Scanner(System.in);
 		
-		hasAccount = welcomeScan.nextLine();
+		//takes user input to either log them in or create account
+		hasAccount = myScanner.scan.nextLine();
 		
 		if (hasAccount.equals("Y") || hasAccount.equals("y")) {
-			UserLogin.login();
+			UserLogin.validateUsername();
 		} else if (hasAccount.equals("N") || hasAccount.equals("n")) {
 			CreateAccount.userCreate();
 		} else if (hasAccount.equalsIgnoreCase("quit")) {
 			quitOption.quit();
 		} else {
-			welcomeScan.close();
 			welcome();
 		}
 	}
