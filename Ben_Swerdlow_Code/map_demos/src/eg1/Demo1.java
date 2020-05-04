@@ -51,7 +51,7 @@ public class Demo1 {
 		lhm.put(120, "jse");
 		// can't have null key, can have null value
 		// because TreeMap sorts based on key, and can't compare null
-//		tm.put(null, "jme");
+		tm.put(null, "jme");
 //		tm.put(null, "tri");
 //		tm.put(null, null);
 		tm.put(777, "array");

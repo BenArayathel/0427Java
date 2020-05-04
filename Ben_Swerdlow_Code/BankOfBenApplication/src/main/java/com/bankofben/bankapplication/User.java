@@ -3,7 +3,7 @@ package com.bankofben.bankapplication;
 import java.util.HashSet;
 import java.util.Scanner;
 
-public class User {
+public class User extends Person implements Comparable<User> {
 	
 	private String username;
 	private String password;
@@ -13,67 +13,51 @@ public class User {
 	public User() {
 		super();
 	}
+	
+	public User(String firstName, String middleName, String lastName, String momsMaidenName, int dobDay, int dobMonth,
+			int dobYear, String ssn, String stateId, String streetAddress, String suiteAptOther, String zipCode,
+			String email, String phoneNumber, String username, String password) throws EmailInvalidException {
+		super(firstName, middleName, lastName, momsMaidenName, dobDay, dobMonth, dobYear, ssn, email, phoneNumber);
+		this.username = username;
+		this.password = password;
+	}
 
-	public User(Scanner sc) {
+
+
+	public User(String username, String email, String password) throws UsernameInvalidException, EmailInvalidException {
 		super();
-		String username = null;
-		String password = null;
-		String response = null;
-		boolean confirmed = false;
-		while (!confirmed) {
-			System.out.println("Username: ");
-			username = sc.nextLine();
-			if (!(bob.containsUser(username))) {
-				System.out.println("Bank of Ben does not have record of username "+username
-						+"Would you like to register this username? (yes or y to confirm)");
-				response = sc.nextLine();
-				if (response.equalsIgnoreCase("y") || response.equalsIgnoreCase("yes")) {
-					try {
-						registerUser(username, sc);
-					} catch (InvalidUserException e) {
-						System.out.println("Invalid user credentials. Please enter your credentials again.");
-					}
-					confirmed = true;
-				} else {
-					System.out.println("Please enter your credentials again.");
-				}
-			} else {
-				password = requestPassword(sc);
-				setUsername(username);
-			}
+		if (UserUtils.isValidUsername(username)) {
+			this.username = username;
+		} else {
+			throw new UsernameInvalidException();
 		}
-		
+		if (UserUtils.isValidEmail(email)) {
+			this.email = email;
+		} else {
+			throw new EmailInvalidException();
+		}
+		this.password = password;
 	}
 	
-	private void registerUser(String username, Scanner sc) throws InvalidUserException {
-		setUsername(username);
-		String password = requestPassword(sc);
-		setPassword(password);
-		bob.addUser(this);
+	public User(String username, String password, HashSet<Account> userAccounts) {
+		super();
+		this.username = username;
+		this.password = password;
+		this.userAccounts = userAccounts;
+	}
+
+	private boolean usernamePasswordMatch(String username, String password) {
+		User user = bob.getUserMap().get(username);
+		return password.equals(user.getPassword());
+	}
+	
+	private boolean passwordMatch(String password) {
+		return password.equals(this.password);
 	}
 	
 	private String requestPassword(Scanner sc) {
-		String password = null;
-		String confirmPassword = null;
-		boolean confirmed = false;
-		while (!(confirmed)) {
-			System.out.println("Please input password:");
-			password = sc.nextLine();
-			System.out.println("Please condfirm password:");
-			confirmPassword = sc.nextLine();
-			if (password.equals(confirmPassword) && !(password.equals(null))) {
-				confirmed = true;
-			} else if (password.equals(null)){
-				System.out.println("No password entry detected. Please enter your password again.");
-			} else {
-				System.out.println("Password and confirmation password do not match. Please enter your password again.");
-			}
-		}
-		return password;
-	}
-
-	private void registerUser(String username, String password) {
-		
+		System.out.println("Please input password:");
+		return sc.nextLine();
 	}
 
 	public String getUsername() {
@@ -81,7 +65,9 @@ public class User {
 	}
 
 	public void setUsername(String username) {
-		this.username = username;
+		if (UserUtils.isValidUsername(username)) {
+			this.username = username;
+		}
 	}
 
 	public HashSet<Account> getUserAccounts() {
@@ -95,9 +81,34 @@ public class User {
 	public String getPassword() {
 		return password;
 	}
-
-	public void setPassword(String password) {
-		this.password = password;
+	
+	private boolean passwordChangeConfirmation(Scanner sc) {
+		System.out.println("Please input current password to confirm password change:");
+		String passwordEntry = sc.nextLine();
+		return this.password.equals(passwordEntry);
+	}
+	
+	public void changePassword(Scanner sc) {
+		String password;
+		boolean confirmation = passwordChangeConfirmation(sc);
+		if (confirmation) {
+			password = UserUtils.requestNewPassword(sc);
+			this.password = password;
+			System.out.println("Password has been changed.");
+		} else {
+			System.out.println("Incorrect current password entry. Did not change password.");
+		}
+	}
+	
+	public void changePassword(String oldPassword) {
+		if (oldPassword.equals(this.password)) {
+			Scanner sc = new Scanner(System.in);
+			String password = UserUtils.requestNewPassword(sc);
+			this.password = password;
+			System.out.println("Password has been changed.");
+		} else {
+			System.out.println("Current password entered is incorrect. Did not change password.");
+		}
 	}
 
 	public BankOfBen getBob() {
@@ -128,5 +139,13 @@ public class User {
 			return false;
 		return true;
 	}
+
+	@Override
+	public int compareTo(User otherUser) {
+		String otherUsername = otherUser.getUsername();
+		return this.username.compareTo(otherUsername);
+	}
+	
+	
 
 }
