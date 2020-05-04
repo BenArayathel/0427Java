@@ -12,15 +12,24 @@ public class Main {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		String filename = "./customerRecords.txt";
-		//String testFile = "./testFile.txt";
-		// signIn();
-		Lobby l = new Lobby();
-		//ArrayList<Customer> tempRecords = new ArrayList<Customer>();
-		l.createFile(filename);
-		ArrayList<Customer> allCustomerRecords = l.readObject(filename);
+		signIn(sc);
 	}
 	
-	public void createFile() {
+	public static void signIn(Scanner sc) {
+		Lobby l = new Lobby();
+		l.createFile("./employeesInfo");
+		User person = null;
+		System.out.println("Please enter your email address or type quit to Quit");
+		String em = sc.nextLine();
+		if (em.equalsIgnoreCase("quit")) {
+			System.exit(0);
+		}
+		System.out.println("Please enter your password");
+		String pass = sc.nextLine();
+		l.signIn(em, pass, person);
+		
+
+		
 		
 	}
 

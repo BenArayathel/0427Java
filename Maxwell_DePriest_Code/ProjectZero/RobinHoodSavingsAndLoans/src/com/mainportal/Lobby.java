@@ -17,6 +17,7 @@ import java.io.ObjectOutputStream;
 
 public class Lobby {
 	
+	String filename = "./customerRecords.txt";
 
 	public Lobby() {
 		
@@ -25,14 +26,7 @@ public class Lobby {
 	public static void main(String[] args) {
 		//Lobby l = new Lobby();
 		Scanner sc = new Scanner(System.in);
-		
-//		Account a = new Account(123, 456, 1000.00, 2000.00, "max@email.com");
-//		Account a2 = new Account(189, 476, 1500.00, 2700.00, "friar@email.com");
-//		Account beta = new Account(987, 654, 1200.00, 5000.00, "lil_john@email.com");
-//		User u1 = new Customer("Max DePriest", "max@email.com", "867-5309", "guest", a);
-//		User u2 = new Employee("Little John", "lil_john@email.com", "123-3456", "password", beta);
-//		Employee e1 = new Employee("Friar Tuck", "friar@email.com", "123-6543", "godIsGood", a2 );
-		//ArrayList<Account> myView = e1.getCustomerAccounts();
+		User currentUser = new User();
 
 		System.out.println();
 		System.out.println("Would you like to activate all pending accounts? Y or N");
@@ -56,10 +50,8 @@ public class Lobby {
 	}
 	
 	
-	public void menuNav(Scanner sc, User u) { 
-		
-			
-		
+	public void menuNav(User u) { 
+		Scanner sc = new Scanner(System.in);
 		boolean again = true;
 		
 		while (again == true) {
@@ -167,19 +159,34 @@ public class Lobby {
 		}
 	}
 	
-	public String signIn(Scanner sc) {
-		System.out.println("Please enter your email address");
-		String em = sc.nextLine();
-		System.out.println("Please enter your password");
-		String pass = sc.nextLine();
-		String passE =  User.passwordEncryption(pass);
+	public User signIn(String email, String password, User cU) {
+		Scanner sc = new Scanner(System.in);
+		String fN = getFilename();
+		ArrayList<Customer> arrList = readCustomers(fN);
+		System.out.println(arrList.get(2));
+		for (Customer c : arrList) {
+			if (c.getEmail().equalsIgnoreCase(email)) {
+				System.out.println(c);
+				if (c.getPassword().equals(password)) {
+					System.out.println("Password accepted");
+					nextScreen();
+					cU = c;
+					menuNav(cU);
+				}
+				else {
+					System.out.println("Incorrect Password");
+					Main.signIn(sc);
+				}
+			
+				
+			} // End of if statement
+			sc.close();
+		}  // End of for loop
 		
-		// pull record, if there is one, from ArrayList with matching email. Check password comparisons
-		// if true, send to menuNav with email
-		// if false, start new User registration
-		
-		return "email";
+		return cU;
 	}
+	
+
 	
 	public String registerNewUser() {
 		Customer temp = new Customer();
@@ -187,18 +194,25 @@ public class Lobby {
 	}
 	
 	public void createFile(String fN) {
-		Account a4 = new Account(234, 567, 100.00, 200.00, "tomH@email.com");
-		Account a5 = new Account(224, 517, 1000.00, 2500.00, "timH@email.com");
-		ArrayList<Customer> tempArray = new ArrayList<>();
-		tempArray.add(new Customer("Tom Hardy", "tomH@email.com", "1233455", "hardyHo", a4));
-		tempArray.add(new Customer("Tom Hardy", "tomH@email.com", "1233455", "hardyHo", a5));
+//		Account a4 = new Account(22334, 56217, 100.00, 200.00, "tomH@email.com");
+//		Account a5 = new Account(22434, 51007, 1000.00, 2500.00, "timH@email.com");
+//		Account a6 = new Account(11344, 51897, 150.00, 500.00, "todd@email.com");
+		Account a7 = new Account(18976, 56434, 2000.00, 2500.00, "hank@email.com");
+		Account a8 = new Account(18906, 56034, 5000.00, 3500.00, "max@email.com");
+		ArrayList<Employee> tempArray = new ArrayList<>();
+//		tempArray.add(new Customer("Tom Hardy", "tomH@email.com", "1233455", "hardyHo", a4));
+//		tempArray.add(new Customer("Tim Hardy", "timH@email.com", "1233455", "password", a5));
+//		tempArray.add(new Customer("Todd Hardy", "todd@email.com", "1233455", "ToddHardy", a6));
+//		tempArray.add(new Customer("Mike Hardy", "mike@email.com", "1233455", "guest", a7));
+		tempArray.add(new Employee("Max DePriest", "max@email.com", "8675309" ,"willie", a8));
+		tempArray.add(new Employee("Hank D. Cowdog", "hank@email.com", "8673209" ,"drover", a7));
 		
-		writeObjects(fN, tempArray);
+		writeEmployees("./employeeInfo.txt", tempArray);
 		
 		
 	}
 	
-	public ArrayList<Customer> readObject(String filename) {
+	public static ArrayList<Customer> readCustomers(String filename) {
 		ArrayList<Customer> customerRecs = new ArrayList<Customer>();
 		
 		try(ObjectInputStream objIn = new ObjectInputStream(new FileInputStream(filename))){
@@ -207,11 +221,6 @@ public class Lobby {
 			for(Object oneObj : obj1) {
 				customerRecs.add((Customer)oneObj);
 			}
-			
-			
-			
-//			obj = ois.readObject();
-			//arrList = (ArrayList<Customer>)obj; // look at 4/30 hw
 			
 		} catch (FileNotFoundException e) {
 			System.out.println("Error. File not found.");
@@ -222,39 +231,13 @@ public class Lobby {
 		} catch (ClassNotFoundException e) {
 			System.out.println("Error. Please try again");
 			e.printStackTrace();
-		} finally {
-			System.out.println("I'm in finally!!!");
-//			return null;
 		}
 		return customerRecs;
 		
 	}// End of readObject
-	
-	public Customer readSingleObject(String fN)
-	{
-		Customer c = null;
-		
-		try(ObjectInputStream ois = new ObjectInputStream(new FileInputStream(fN))){
-			
-			Object obj = ois.readObject();
-			c = (Customer)obj; 
-			
-		} catch (FileNotFoundException e) {
-			System.out.println("We could not find the appropriate file");
-			e.printStackTrace();
-		} catch (IOException e) {
-			System.out.println("We have encountered an error");
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			System.out.println("We have encountered an error");
-			e.printStackTrace();
-		} 
-		
-		return c;
-	}
 
 	
-	public void writeObjects(String filename, ArrayList<Customer> custs) {
+	public static void writeCustomers(String filename, ArrayList<Customer> custs) {
 		
 		try(ObjectOutputStream objOut = new ObjectOutputStream(new FileOutputStream(filename))){
 			objOut.writeObject(custs); //serialization
@@ -266,6 +249,28 @@ public class Lobby {
 			e.printStackTrace();
 		}
 	}
+	
+	public static void writeEmployees(String filename, ArrayList<Employee> emps) {
+		
+		try(ObjectOutputStream objOut = new ObjectOutputStream(new FileOutputStream(filename))){
+			objOut.writeObject(emps); //serialization
+		} catch (FileNotFoundException e) {
+			System.out.println("Error. File not found");
+			e.printStackTrace();
+		} catch (IOException e) {
+			System.out.println("Error. Please try again");
+			e.printStackTrace();
+		}
+	}
+
+	public String getFilename() {
+		return filename;
+	}
+
+	public void setFilename(String filename) {
+		this.filename = filename;
+	}
+	
 	
 
 	

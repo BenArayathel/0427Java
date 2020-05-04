@@ -8,12 +8,12 @@ public class User implements Bank, Serializable{
 	private String name;
 	private String email;
 	private String phoneNumber;
-	private transient String password;
+	private String password;
 	private Account account;
 	private String status;
 	
 	private static final long serialVersionUID = 620321243045379944L;
-	//private static final long serialVersionUID = 620321235045377344L;
+	
 
 	public User() {
 
@@ -23,7 +23,7 @@ public class User implements Bank, Serializable{
 		this.name = name;
 		this.email = email;
 		this.phoneNumber = phoneNumber;
-		this.password = passwordEncryption(password);
+		this.password = password; // Can bring on encryption if we get regular working
 		this.account = account;
 	}
 

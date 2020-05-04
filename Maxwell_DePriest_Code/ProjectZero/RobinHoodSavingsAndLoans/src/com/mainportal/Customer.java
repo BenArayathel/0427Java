@@ -15,7 +15,18 @@ public class Customer extends User implements Serializable {
 		newCustomerRegistration();
 	}
 
-	
+
+	public boolean getAccountActive() {
+		return accountActive;
+	}
+
+
+
+	public void setAccountActive(boolean accountActive) {
+		this.accountActive = accountActive;
+	}
+
+
 
 	public Customer(String name, String email, String phoneNumber, String password, Account account) {
 		super(name, email, phoneNumber, password, account);
@@ -46,7 +57,7 @@ public class Customer extends User implements Serializable {
 		Customer c = new Customer(n, e, pN, pW, act);
 		
 		// Where we send info to the text file
-		
+		sc.close();
 		return c;
 	}
 	
