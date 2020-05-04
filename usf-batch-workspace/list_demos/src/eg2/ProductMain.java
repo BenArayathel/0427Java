@@ -42,11 +42,11 @@ public class ProductMain {
 					if(x==0) {
 					Float f1=p1.getRating();
 					Float f2=p2.getRating();
-					x= f2.compareTo(f1);
+					x= f2.compareTo(f1);	// ascending
 					}
 					return x;
 				});
-				System.out.println("\n\nPrinting all products sorted based on cost(asc) and then by rating(desc)");
+				System.out.println("\n\nCost(asc) and then by rating(desc)");
 				printProducts(productList);
 
 

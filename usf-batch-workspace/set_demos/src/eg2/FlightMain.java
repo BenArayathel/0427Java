@@ -33,8 +33,9 @@ public class FlightMain {
 		Collections.sort(flightList, (Flight f1, Flight f2)->{
 			Double d1 = f1.getTicketPrice();
 			Double d2 = f2.getTicketPrice();
-			return d1.compareTo(d2);
+			return d2.compareTo(d1);
 		});
+		System.out.println("\nDecending Price");
 		printFlightList(flightList);
 		
 		Collections.sort(flightList, (Flight f1, Flight f2)->{
@@ -42,7 +43,7 @@ public class FlightMain {
 			Float fL2 = f2.getRatings();
 			return fL1.compareTo(fL2);
 		});
-		System.out.println("\n");
+		System.out.println("\nAscending Rating");
 		printFlightList(flightList);
 		
 		/**
@@ -57,7 +58,7 @@ public class FlightMain {
 //			};
 			return s1.compareTo(s2);
 		});
-		System.out.println("\n hmmm... by Name ??");
+		System.out.println("\nAlphabetical");
 		printFlightList(flightList);
 	}
 	
