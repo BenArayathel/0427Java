@@ -1,6 +1,8 @@
 package com.bankofben.bankapplication;
 
 import java.time.LocalDate;
+import java.util.List;
+import java.util.ArrayList;
 //import java.time.format.DateTimeParseException;
 
 public class Person {
@@ -100,15 +102,15 @@ public class Person {
 //	}
 
 	public Person(String firstName, String middleName, String lastName, String momsMaidenName, LocalDate dob,
-			String ssn, String email, String phoneNumber) {
+			String ssn, String email, String phoneNumber) throws BlankFieldException {
 		super();
 		
-//		setFirstName(firstName);
+		List<String> blankFieldMessages = new ArrayList<>();
 		
-		if (firstName.equals(null)) {
-			throw new NullPointerException("First name must be provided.");
-		} else {
-			this.firstName = firstName;
+		try {
+			setFirstName(firstName);
+		} catch (BlankFieldException e) {
+			blankFieldMessages.add(e.getMessage());
 		}
 		
 		this.middleName = middleName;
@@ -122,7 +124,7 @@ public class Person {
 		} else {
 			this.momsMaidenName = momsMaidenName;
 		}
-			
+		
 		setDob(dob);
 		
 		if (ssn.equals(null)) {
@@ -139,11 +141,12 @@ public class Person {
 		return firstName;
 	}
 	
-	public void setFirstName(String firstName) throws IllegalArgumentException {
+	public void setFirstName(String firstName) throws BlankFieldException {
 		if (firstName.equals(null)) {
-			throw new IllegalArgumentException("First name must be provided.");
+			throw new BlankFieldException("First name must be provided.");
+		} else {
+			this.firstName = firstName;
 		}
-		this.firstName = firstName;
 	}
 	
 	public String getMiddleName() {
@@ -158,8 +161,12 @@ public class Person {
 		return lastName;
 	}
 	
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
+	public void setLastName(String lastName) throws BlankFieldException {
+		if (lastName.equals(null)) {
+			throw new BlankFieldException("Last name must be provided.");
+		} else {
+			this.lastName = lastName;
+		}
 	}
 	
 	public String getMomsMaidenName() {
