@@ -17,7 +17,8 @@ import java.io.ObjectOutputStream;
 
 public class Lobby {
 	
-	String filename = "./customerRecords.txt";
+	private String filename = "./customerRecords.txt";
+	private User currentUser = new User();
 
 	public Lobby() {
 		
@@ -26,11 +27,10 @@ public class Lobby {
 	public static void main(String[] args) {
 		//Lobby l = new Lobby();
 		Scanner sc = new Scanner(System.in);
-		User currentUser = new User();
-
-		System.out.println();
-		System.out.println("Would you like to activate all pending accounts? Y or N");
-		String activate = sc.nextLine().toLowerCase();
+//
+//		System.out.println();
+//		System.out.println("Would you like to activate all pending accounts? Y or N");
+//		String activate = sc.nextLine().toLowerCase();
 //		if (activate.equals("y") || activate.equals("n")) {
 //			if (activate.equals("y")) {
 //				e1.activateCustomerAccounts(myView);
@@ -42,22 +42,21 @@ public class Lobby {
 //		else {
 //			System.out.println("Incorrect entry. Please try again");
 //		}
-		
-		System.out.println("\nWelcome to Loxely Savings and Loans where we save for the rich and loan to the poor. How may we direct you?");
 		//l.menuNav(sc, u2);
 		sc.close();
 
 	}
 	
 	
-	public void menuNav(User u) { 
-		Scanner sc = new Scanner(System.in);
+	public void menuNav(User u) {
+		this.setCurrentUser(u);
 		boolean again = true;
 		
 		while (again == true) {
 			int response = 0;
 			
 			try {
+			Scanner sc = new Scanner(System.in);
 			System.out.println("\nPlease choose one of the following:");
 			System.out.println("1. Check balance");
 			System.out.println("2. Withdraw from an account");
@@ -135,14 +134,14 @@ public class Lobby {
 		} // End of try block
 		catch (InputMismatchException e) {
 			System.out.println("Error! Please try again and enter a number between 1 and 7\n");
-			//again = false;
+			again = false;
 		}
 			finally {
 				if (response == 9) {
 					break;
 				}
 				else {
-					System.out.println("Welcome to Loxely Savings and Loans where we save for the rich and loan to the poor. How may we direct you?");
+					System.out.println("\n\nWelcome to Loxely Savings and Loans where we save for the rich and loan to the poor. How may we direct you?");
 				}
 				
 				
@@ -162,52 +161,60 @@ public class Lobby {
 	public User signIn(String email, String password, User cU) {
 		Scanner sc = new Scanner(System.in);
 		String fN = getFilename();
+		String tempPassword = password; //User.passwordEncryption(password);
 		ArrayList<Customer> arrList = readCustomers(fN);
-		System.out.println(arrList.get(2));
+
 		for (Customer c : arrList) {
 			if (c.getEmail().equalsIgnoreCase(email)) {
-				System.out.println(c);
-				if (c.getPassword().equals(password)) {
+				System.out.println("Entered password- " + password + " saved password- " + c.getPassword());
+				if (c.getPassword().equals(tempPassword)) {
 					System.out.println("Password accepted");
 					nextScreen();
 					cU = c;
+					System.out.println("Welcome to Loxely Savings and Loans where we save for the rich and loan to the poor. How may we direct you?");
 					menuNav(cU);
 				}
 				else {
 					System.out.println("Incorrect Password");
-					Main.signIn(sc);
+					Main.signIn(sc, new Lobby());
 				}
 			
 				
 			} // End of if statement
-			sc.close();
+			
 		}  // End of for loop
-		
+		sc.close();
 		return cU;
 	}
 	
 
 	
-	public String registerNewUser() {
+	public void registerNewUser() {
 		Customer temp = new Customer();
-		return temp.getEmail();
+		temp.setStatus("customer");
+		System.out.println("After temp variable creation");
+		Lobby.addNewCustomer("./customerRecords", temp);
+		
+		//System.out.println("Welcome to Loxely Savings and Loans where we save for the rich and loan to the poor. How may we direct you?");
+		//menuNav(returnCustomer);
 	}
 	
-	public void createFile(String fN) {
-//		Account a4 = new Account(22334, 56217, 100.00, 200.00, "tomH@email.com");
-//		Account a5 = new Account(22434, 51007, 1000.00, 2500.00, "timH@email.com");
-//		Account a6 = new Account(11344, 51897, 150.00, 500.00, "todd@email.com");
-		Account a7 = new Account(18976, 56434, 2000.00, 2500.00, "hank@email.com");
+	// Just in case I need to populate the txt files again
+	public static void createFile(String fN) {
+		Account a4 = new Account(22334, 56217, 100.00, 200.00, "tom@email.com");
+		Account a5 = new Account(22434, 51007, 1000.00, 2500.00, "tim@email.com");
+		Account a6 = new Account(11344, 51897, 150.00, 500.00, "todd@email.com");
+		Account a7 = new Account(18976, 56434, 2000.00, 2500.00, "mike@email.com");
 		Account a8 = new Account(18906, 56034, 5000.00, 3500.00, "max@email.com");
-		ArrayList<Employee> tempArray = new ArrayList<>();
-//		tempArray.add(new Customer("Tom Hardy", "tomH@email.com", "1233455", "hardyHo", a4));
-//		tempArray.add(new Customer("Tim Hardy", "timH@email.com", "1233455", "password", a5));
-//		tempArray.add(new Customer("Todd Hardy", "todd@email.com", "1233455", "ToddHardy", a6));
-//		tempArray.add(new Customer("Mike Hardy", "mike@email.com", "1233455", "guest", a7));
-		tempArray.add(new Employee("Max DePriest", "max@email.com", "8675309" ,"willie", a8));
-		tempArray.add(new Employee("Hank D. Cowdog", "hank@email.com", "8673209" ,"drover", a7));
+		ArrayList<Customer> tempArray = new ArrayList<>();
+		tempArray.add(new Customer("Tom Hardy", "tomH@email.com", "1233455", "hardyho", a4));
+		tempArray.add(new Customer("Tim Hardy", "timH@email.com", "1233455", "password", a5));
+		tempArray.add(new Customer("Todd Hardy", "todd@email.com", "1233455", "todd", a6));
+		tempArray.add(new Customer("Mike Hardy", "mike@email.com", "1233455", "guest", a7));
+		//tempArray.add(new Employee("Max DePriest", "max@email.com", "8675309" ,"willie", a8));
+		//tempArray.add(new Employee("Hank D. Cowdog", "hank@email.com", "8673209" ,"drover", a7));
 		
-		writeEmployees("./employeeInfo.txt", tempArray);
+		writeCustomers("./customerRecords.txt", tempArray);
 		
 		
 	}
@@ -262,6 +269,23 @@ public class Lobby {
 			e.printStackTrace();
 		}
 	}
+	
+	public static void addNewCustomer(String filename, Customer newCustomer) {
+		System.out.println("Beginning of addNewCustomer: newCustomer- " + newCustomer);
+		ArrayList<Customer> custArr = readCustomers("./customerRecords.txt");
+		custArr.add(newCustomer);
+		System.out.println(custArr);
+		try(ObjectOutputStream objOut = new ObjectOutputStream(new FileOutputStream("./customerRecords.txt"))){
+			objOut.writeObject(custArr); //serialization
+		} catch (FileNotFoundException e) {
+			System.out.println("Error. File not found");
+			e.printStackTrace();
+		} catch (IOException e) {
+			System.out.println("Error. Please try again");
+			e.printStackTrace();
+		}
+		
+	}
 
 	public String getFilename() {
 		return filename;
@@ -270,6 +294,16 @@ public class Lobby {
 	public void setFilename(String filename) {
 		this.filename = filename;
 	}
+
+	public User getCurrentUser() {
+		return currentUser;
+	}
+
+	public void setCurrentUser(User currentUser) {
+		this.currentUser = currentUser;
+	}
+	
+	
 	
 	
 

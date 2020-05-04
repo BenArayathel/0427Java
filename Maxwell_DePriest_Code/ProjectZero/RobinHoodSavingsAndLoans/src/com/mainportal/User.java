@@ -23,7 +23,7 @@ public class User implements Bank, Serializable{
 		this.name = name;
 		this.email = email;
 		this.phoneNumber = phoneNumber;
-		this.password = password; // Can bring on encryption if we get regular working
+		this.password = password;  //passwordEncryption(password); // Can bring on encryption if we get regular working
 		this.account = account;
 	}
 
@@ -97,8 +97,8 @@ public class User implements Bank, Serializable{
 	
 	public static String passwordEncryption(String pw) {
 		StringBuilder newPassword = new StringBuilder();
-		String original = "abcdefghijklmnopqrstuvwxyz";
-		String alternate = "zyxwvutsrqponmlkjihgfedcba";
+		String original = "abcdefghijklmnopqrstuvwxyz0987654321";
+		String alternate = "1234567890zyxwvutsrqponmlkjihgfedcba";
 		String[] arr = alternate.split("");
 		String[] wordArray = pw.toLowerCase().split("");
 		int tempIndex;

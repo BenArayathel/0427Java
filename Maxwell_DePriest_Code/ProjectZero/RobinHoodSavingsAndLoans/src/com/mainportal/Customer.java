@@ -55,8 +55,12 @@ public class Customer extends User implements Serializable {
 		Account act = new Account(newSavingsNum, newCheckingNum, 0.00, Integer.parseInt(checkingMoney), e);
 		
 		Customer c = new Customer(n, e, pN, pW, act);
-		
-		// Where we send info to the text file
+		System.out.println("Created new object- " + c );
+		System.out.println();
+		System.out.println("Before addNewCustomer() - " + Lobby.readCustomers("./customerRecords"));
+		Lobby.addNewCustomer("./customerRecords.txt", c);
+		System.out.println();
+		System.out.println("After addNewCustomer() - " + Lobby.readCustomers("./customerRecords"));
 		sc.close();
 		return c;
 	}
@@ -73,7 +77,7 @@ public class Customer extends User implements Serializable {
 	@Override
 	public String toString() {
 		return "Customer [accountActive=" + accountActive + ", getName()=" + getName() + ", getEmail()=" + getEmail()
-				+ ", getPhoneNumber()=" + getPhoneNumber() + ", getStatus()=" + getStatus() + "]";
+				+ ", getPhoneNumber()=" + getPhoneNumber() + ", getStatus()=" + getStatus() + ",  getPassword()=" + getPassword() + "]";
 	}
 	
 	
