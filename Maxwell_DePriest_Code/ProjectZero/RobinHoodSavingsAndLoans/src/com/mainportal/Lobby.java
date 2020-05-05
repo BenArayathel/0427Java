@@ -122,7 +122,7 @@ public class Lobby {
 				}
 				
 				else if (response == 9) {
-					again = false;
+					System.exit(0);
 				} 
 			}
 			
@@ -158,16 +158,26 @@ public class Lobby {
 		}
 	}
 	
-	public User signIn(String email, String password, User cU) {
+	public User signIn() {
+		Lobby lob = new Lobby();
 		Scanner sc = new Scanner(System.in);
 		String fN = getFilename();
-		String tempPassword = password; //User.passwordEncryption(password);
+		System.out.println("Please enter your email address or type quit to Quit");
+		String em = sc.nextLine();
+		if (em.equalsIgnoreCase("quit")) {
+			System.exit(0);
+		}
+		System.out.println("Please enter your password");
+		String pass = sc.nextLine();
+
+	 String tempPassword = pass; //User.passwordEncryption(password);
+		User cU = new User();
 		ArrayList<Customer> arrList = readCustomers(fN);
 
 		for (Customer c : arrList) {
-			if (c.getEmail().equalsIgnoreCase(email)) {
-				System.out.println("Entered password- " + password + " saved password- " + c.getPassword());
-				if (c.getPassword().equals(tempPassword)) {
+			if (c.getEmail().equalsIgnoreCase(em)) {
+				System.out.println("Entered password- " + pass + " saved password- " + c.getPassword());
+				if (c.getPassword().equals(pass)) {
 					System.out.println("Password accepted");
 					nextScreen();
 					cU = c;
@@ -176,11 +186,12 @@ public class Lobby {
 				}
 				else {
 					System.out.println("Incorrect Password");
-					Main.signIn(sc, new Lobby());
-				}
-			
-				
-			} // End of if statement
+					lob.signIn();
+				} // end of inner if block
+			} 
+			else {
+				registerNewUser();
+			} // End of outer if block
 			
 		}  // End of for loop
 		sc.close();
