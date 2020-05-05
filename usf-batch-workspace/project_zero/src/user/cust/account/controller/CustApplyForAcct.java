@@ -15,6 +15,7 @@ public class CustApplyForAcct {
 	private String city;
 	private String state;
 	private String zip;
+	private double balance;
 	public static Scanner scanner = new Scanner(System.in);
 
 	void acctForm(User user) {
@@ -57,9 +58,17 @@ public class CustApplyForAcct {
 			this.zip = scanner.nextLine();
 		}
 		
-		Customer c = new Customer(user.getUserName(), user.getPassword(), name, phone, address, city, state, zip);
+		System.out.println("Starting Balance: ");
+		if (scanner.hasNext()) {
+
+			this.balance = Double.parseDouble(scanner.nextLine());
+		}
+		
+		// String userName, String password, int user_id, String email
+		Customer c = new Customer(user.getUserName(), user.getPassword(), user.getUser_id(), user.getEmail(), 
+				name, phone, address, city, state, zip);
 		BankDaoImpl bankDaoImpl = new BankDaoImpl();
-		bankDaoImpl.customerApplicationForAccount(c);
+		bankDaoImpl.customerApplicationForAccount(c, this.balance);
 
 	}
 

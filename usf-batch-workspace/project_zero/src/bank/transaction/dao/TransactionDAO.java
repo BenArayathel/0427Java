@@ -25,7 +25,7 @@ public interface TransactionDAO {
 	// --------------------------------------------------------------
 
 	// customer transfer to: Customer, Transfer
-	public boolean TransferTo(Customer customer, TransactionType transfer);
+	public boolean TransferTo(Customer customer, TransactionT_isSuper transfer);
 
 	// customer transfer receive: Customer, Transfer
 	// this might not be needed
@@ -34,16 +34,16 @@ public interface TransactionDAO {
 	public double viewBalance(Account account);
 
 	// customer withdraw from Account
-	public boolean withdraw(Transaction transaction);
+	public boolean withdraw(TransactionDaoImpl transaction);
 
 	// customer deposit
-	public boolean deposit(Transaction transaction);
+	public boolean deposit(TransactionDaoImpl transaction);
 
 	// employee view all-customer's-transactions
-	public List<Transaction> viewAllCustTrans(Employee employee, Account account);
+	public List<TransactionDaoImpl> viewAllCustTrans(Employee employee, Account account);
 
 	// employee view all transactions: *!
-	public List<Transaction> viewBankWideTrans(Employee employee);
+	public List<TransactionDaoImpl> viewBankWideTrans(Employee employee);
 
 	// employee view customer bank accounts: *!*
 	public List<Account> viewCustAccounts(Employee employee, Customer customer);

@@ -13,9 +13,9 @@ public class CustOptionsDirectory {
 		
 		System.out.println("Select from Options");
 		System.out.println("Apply for Account: 1");
-		System.out.println("View Balance: 2");
-		System.out.println("Deposit: 3");
-		System.out.println("Withdraw: 4");
+//		System.out.println("View Balance: 2");
+//		System.out.println("Deposit: 3");
+//		System.out.println("Withdraw: 4");
 
 
 		if (scanner.hasNext()) {
@@ -27,20 +27,20 @@ public class CustOptionsDirectory {
 			c.acctForm(customer);
 			}
 			
-			if (nav == 2){
-				CustViewBalance_Deposit_Withdraw c = new CustViewBalance_Deposit_Withdraw();
-				c.viewBalance();
-			}
-			
-			if (nav == 3){
-				CustViewBalance_Deposit_Withdraw c = new CustViewBalance_Deposit_Withdraw();
-				c.deposit();
-			}
-				
-			if (nav == 4){
-				CustViewBalance_Deposit_Withdraw c = new CustViewBalance_Deposit_Withdraw();
-				c.withdraw();
-			}
+//			if (nav == 2){
+//				CustViewBalance_Deposit_Withdraw c = new CustViewBalance_Deposit_Withdraw();
+//				c.viewBalance();
+//			}
+//			
+//			if (nav == 3){
+//				CustViewBalance_Deposit_Withdraw c = new CustViewBalance_Deposit_Withdraw();
+//				c.deposit();
+//			}
+//				
+//			if (nav == 4){
+//				CustViewBalance_Deposit_Withdraw c = new CustViewBalance_Deposit_Withdraw();
+//				c.withdraw();
+//			}
 			
 		}
 	}

@@ -39,7 +39,7 @@ public class UserRegistration {
 			if (b.createUser(user)) {
 				
 				System.out.println(user.toString());
-				System.out.println("Thanks, you are now a: User of the Bank");
+				System.out.println("\nThanks, you are now a: User of the Bank");
 				UserOptions a = new UserOptions();
 				a.select(user);
 			}

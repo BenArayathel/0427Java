@@ -35,8 +35,6 @@
 <fullyQualifiedTypeName name="java.util.Hashtable"/>
 <fullyQualifiedTypeName name="java.util.Collections"/>
 <fullyQualifiedTypeName name="java.util.TreeMap"/>
-<fullyQualifiedTypeName name="java.util.ArrayList"/>
-<fullyQualifiedTypeName name="java.util.List"/>
 <fullyQualifiedTypeName name="java.util.Scanner"/>
 <fullyQualifiedTypeName name="util.helper.Hm"/>
 <fullyQualifiedTypeName name="user.cust.account.controller.CustApplyForAcct"/>
@@ -46,4 +44,12 @@
 <fullyQualifiedTypeName name="user.cust.account.controller.CustOptionsDirectory"/>
 <fullyQualifiedTypeName name="user.cust.account.models.Customer"/>
 <fullyQualifiedTypeName name="eg2.Employee"/>
+<fullyQualifiedTypeName name="user.cust.account.controller.AcctOptionsDirectory"/>
+<fullyQualifiedTypeName name="user.cust.account.models.Account"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="bank.transaction.dao.TransactionDeposit"/>
+<fullyQualifiedTypeName name="bank.transaction.dao.TransactionWithdraw"/>
+<fullyQualifiedTypeName name="bank.transaction.dao.TransferSent"/>
+<fullyQualifiedTypeName name="bank.transaction.dao.TransferRecieved"/>
 </qualifiedTypeNameHistroy>

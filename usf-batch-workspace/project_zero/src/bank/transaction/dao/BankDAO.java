@@ -23,8 +23,8 @@ public interface BankDAO {
 	
 	public boolean employeeRejectOrApprove_userRegistrationToBecomeCustomer(User user, String email);	// step 2 of 2: approve check
 
-	public boolean customerApplicationForAccount(Customer customer);			// step 1 of 2: apply
+	public boolean customerApplicationForAccount(Customer customer, double balance);			// step 1 of 2: apply
 	
-	public boolean employeeRejectOrApprove_customerApplicationForAccount();		// step 2 of 2: approve check
+	public boolean employeeRejectOrApprove_customerApplicationForAccount(Customer customer, double balance);		// step 2 of 2: approve check
 
 }

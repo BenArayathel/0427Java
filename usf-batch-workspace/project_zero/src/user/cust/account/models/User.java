@@ -9,13 +9,14 @@ public class User {
 	private String email; // register to be customer
 
 	// CONSTRUCTOR FOR BEFORE DB
+	// basic User necessities
 	public User(String userName, String password) {
 		// super();
 		this.userName = userName;
 		this.password = password;
 	}
 
-	// CONSTRUCTOR FOR AFTER DB
+	// CONSTRUCTOR FOR AFTER DB persists just user information
 	public User(String userName, String password, int user_id) {
 		// super();
 		this.userName = userName;
@@ -23,13 +24,14 @@ public class User {
 		this.user_id = user_id;
 	}
 
-//	// CONSTRUCTOR FOR AFTER registration to BE a Customer ?? ?? ?? ??
-//	public User(String userName, String password, int user_id) {
-//		// super();
-//		this.userName = userName;
-//		this.password = password;
-//		this.user_id = user_id;
-//	}
+	// CONSTRUCTOR FOR AFTER registration to BE a Customer 
+	public User(String userName, String password, int user_id, String email) {
+		// super();
+		this.userName = userName;
+		this.password = password;
+		this.user_id = user_id;
+		this.email = email;
+	}
 
 	public String getUserName() {
 		return userName;

@@ -5,7 +5,7 @@ import java.util.List;
 import user.cust.account.models.Account;
 import user.cust.account.models.Customer;
 
-public class Transaction implements TransactionDAO {
+public class TransactionDaoImpl implements TransactionDAO {
 
 	// withdraw
 
@@ -16,7 +16,7 @@ public class Transaction implements TransactionDAO {
 	// send transfer
 
 	@Override
-	public boolean TransferTo(Customer customer, TransactionType transfer) {
+	public boolean TransferTo(Customer customer, TransactionT_isSuper transfer) {
 		// TODO Auto-generated method stub
 		return false;
 	}
@@ -28,25 +28,25 @@ public class Transaction implements TransactionDAO {
 	}
 
 	@Override
-	public boolean withdraw(Transaction transaction) {
+	public boolean withdraw(TransactionDaoImpl transaction) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	public boolean deposit(Transaction transaction) {
+	public boolean deposit(TransactionDaoImpl transaction) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	public List<Transaction> viewAllCustTrans(Employee employee, Account account) {
+	public List<TransactionDaoImpl> viewAllCustTrans(Employee employee, Account account) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<Transaction> viewBankWideTrans(Employee employee) {
+	public List<TransactionDaoImpl> viewBankWideTrans(Employee employee) {
 		// TODO Auto-generated method stub
 		return null;
 	}

@@ -11,7 +11,7 @@ public class UserOptions {
 	
 	public void select(User user) {
 		
-		System.out.println("Select User Options");
+		System.out.println("\nSelect User Options");
 		System.out.println("1 - Apply to Become a Customer");
 		//System.out.println("View Balance: 2");
 		//System.out.println("Deposit: 3");
