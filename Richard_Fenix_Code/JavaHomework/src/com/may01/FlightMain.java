@@ -29,6 +29,8 @@ public class FlightMain {
 	    Collections.sort(flightList, new SortByRatings());
 	    System.out.println(flightList);
 
+	    
+	    
 
 	}
 
