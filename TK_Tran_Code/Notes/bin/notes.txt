@@ -53,7 +53,7 @@ Collections Framework
         Iterable(I) > Collection (I) > List(I)/Set(I)/Queue(I)
     List(I) - ordered collection of objects that can contain duplicates; allows random access of elements.
         ArrayList(C) - dynamic arrays that grow as needed.
-        LinkedList(C) - 
+        LinkedList(C) -
         Vector(C)
     Set(I) - unordered collection of objects that cannot contain duplicates.
     Queue(I) - FIFO that can contain duplicates.
@@ -149,8 +149,17 @@ Serialization
 
 Comparable vs Comparator (Sorting)
 	Comparable
-		A class must implement java.lang.Comparable interface to compare its instances.
-		A comparable object is capable of comparing itself with another object.
+        Compares an object WITH ITSELF.
+        Must first implement java.lang.Comparable interface.
+        One method: .compareTo(Object obj);
+        Returns:
+            positive integer, if the current object is greater than the specified object.
+            negative integer, if the current object is less than the specified object.
+            zero, if the current object is equal to the specified object.
+    Comparator
+        Compares TWO OBJECTS.
+        Must first implement java.util.Comparator interface.
+        Two methods: .compare(Object obj1,Object obj2) and .equals(Object obj).
 
 Design Patterns
     Language agnostic solutions to common problem scenarios.
@@ -179,7 +188,7 @@ Multithreading
 
     Two ways to make custom threads:
         1. Implementing Runnable interface
-            Can extend another class while also implementing runnable.
+            Can even extend another class while also implementing runnable.
             Also has less overhead, you don't get unnecessary methods.
         2. Extending Thread class
             Less lines of code to "start".
@@ -213,7 +222,7 @@ Maven
     POM: Project Object Model, formatted as an XML file containing all config details for Maven project.
 
 SQL
-    Important commands:
+    Important Commands:
         SELECT - extracts data from a database
         UPDATE - updates records in a table
             // Updates (SET) based on condition (WHERE)
@@ -242,3 +251,34 @@ SQL
         DROP INDEX - deletes an index
 
     Test for NULL values using IS NULL or IS NOT NULL; cannot use operators like = or !=.
+
+    SQL is case-INSENSITIVE
+
+    Sub-Languages: (* = important)
+        *DDL: Data Definition Language (Structure)
+            Create/Alter/Drop/Rename/Modify/Truncate
+        *DML: Data Manipulation Language (Records)
+            Insert/Update/Delete
+        *DQL: Data Query Language (Reads)
+            Select
+        DCL: Data Control Language (Manage Users)
+            Grant/Revoke
+        TCL: Transaction Control Language (Transactions)
+            Commit/Rollback/SavePoint
+
+    Normal Forms (3NF)
+
+    ACID Props
+
+Logging
+    Allows creation of external files to store logs as backup.
+
+Time API
+    java.sql.Date better for database interaction.
+    java.util.Date better for local work.
+    util date is superclass; sql date is subclass.
+
+AWS
+    AWS RDS hosts our database.
+    Oracle SQL Developer used to interact with the database.
+    A security group acts as a virtual firewall for your instance to control inbound and outbound traffic.
