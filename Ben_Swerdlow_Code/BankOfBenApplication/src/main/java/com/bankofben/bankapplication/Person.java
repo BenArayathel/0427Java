@@ -7,18 +7,18 @@ import java.util.ArrayList;
 
 public class Person {
 	
-	private String firstName;
-	private String middleName;
-	private String lastName;
-	private String momsMaidenName;
-	private LocalDate dob;
-	private String ssn;
+	protected String firstName;
+	protected String middleName;
+	protected String lastName;
+	protected String momsMaidenName;
+	protected LocalDate dob;
+	protected String ssn;
 //	private String stateId;
 //	private String streetAddress;
 //	private String suiteAptOther;
 //	private String zipCode;
-	private String email;
-	private String phoneNumber;
+	protected String email;
+	protected String phoneNumber;
 	
 	public Person() {
 		super();
@@ -103,7 +103,7 @@ public class Person {
 
 	public Person(String firstName, String middleName, String lastName, String momsMaidenName, LocalDate dob,
 			String ssn, String email, String phoneNumber) throws BlankFieldException, InvalidDateOfBirthException,
-			InvalidSsnException, EmailInvalidException, InvalidPhoneNumberException {
+			InvalidSsnException, InvalidEmailException, InvalidPhoneNumberException {
 		super();
 		
 		List<String> blankFieldMessages = new ArrayList<>();
@@ -201,11 +201,11 @@ public class Person {
 		return email;
 	}
 	
-	public void setEmail(String email) throws EmailInvalidException {
+	public void setEmail(String email) throws InvalidEmailException {
 		if (ValidationTools.isValidEmail(email)) {
 			this.email = email;
 		} else {
-			throw new EmailInvalidException();
+			throw new InvalidEmailException();
 		}
 	}
 	

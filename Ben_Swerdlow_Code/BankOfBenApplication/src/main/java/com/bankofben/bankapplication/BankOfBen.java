@@ -57,12 +57,24 @@ public class BankOfBen {
 
 	public boolean userExists(String username) {
 		// Simple method to make intent clearer
-		return this.usernameUserMap.containsKey(username);
+		boolean userExists;
+		try {
+			userExists = this.usernameUserMap.containsKey(username);
+		} catch (NullPointerException e) {
+			userExists = false;
+		}
+		return userExists;
 	}
 	
 	public boolean emailExists(String email) {
 		// simple method to make intent clearer
-		return this.usernameEmailMap.containsValue(email);
+		boolean emailExists;
+		try {
+			emailExists = this.usernameEmailMap.containsValue(email);
+		} catch (NullPointerException e) {
+			emailExists = false;
+		}
+		return emailExists;
 	}
 	
 //	private static User getUser(String username) {

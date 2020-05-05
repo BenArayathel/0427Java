@@ -1,10 +1,16 @@
 package com.bankofben.bankapplication;
 
 import java.time.LocalDate;
-import java.time.format.DateTimeParseException;
+//import java.time.format.DateTimeParseException;
 import java.util.Scanner;
 
-public class UserInterfaceUtils {
+public class UserInterface {
+	
+	/*
+	 * UserInterface is a class that contains static methods that facilitate communication between the user
+	 * and the application. This is separate from BankApplicationMain because these methods may be needed
+	 * by other classes besides BankApplicationMain.
+	 */
 
 	public static String requestUsername(Scanner sc) {
 		System.out.println("Please input username:");
@@ -29,8 +35,8 @@ public class UserInterfaceUtils {
 	}
 	
 	public static String requestNewPassword(Scanner sc) {
-		String password = null;
-		String confirmPassword = null;
+		String password = "";
+		String confirmPassword = "";
 		boolean confirmed = false;
 		while (!(confirmed)) {
 			System.out.println(passwordCriteria());
@@ -57,7 +63,7 @@ public class UserInterfaceUtils {
 	public static String requestFirstName(Scanner sc) {
 		System.out.println("Please input your first name:");
 		String firstName = sc.nextLine();
-		while (firstName.equals(null)) {
+		while (firstName.isEmpty()) {
 			System.out.println("You must enter a first name.");
 			System.out.println("Please input your first name:");
 			firstName = sc.nextLine();
@@ -66,12 +72,13 @@ public class UserInterfaceUtils {
 	}
 	
 	public static String requestMiddleName(Scanner sc) {
-		String middleName = null;
-		while (middleName.equals(null)) {
+		String middleName = "";
+		while (middleName.isEmpty()) {
 			System.out.println("Please input your middle name:");
 			middleName = sc.nextLine();
-			if (middleName.equals(null)) {
-				System.out.println("You have not input a middle name. Is that correct, or would you like to go back and enter one? (y or yes to confirm");
+			if (middleName.isEmpty()) {
+				System.out.println("You have not input a middle name. Is that correct, or would you like to go "
+						+ "back and enter one? (y or yes to confirm)");
 				String response = sc.nextLine();
 				if (response.equalsIgnoreCase("y") || response.equalsIgnoreCase("yes")) {
 					break;
@@ -84,7 +91,7 @@ public class UserInterfaceUtils {
 	public static String requestLastName(Scanner sc) {
 		System.out.println("Please input your last name:");
 		String lastName = sc.nextLine();
-		while (lastName.equals(null)) {
+		while (lastName.isEmpty()) {
 			System.out.println("You must enter a last name.");
 			System.out.println("Please input your last name:");
 			lastName = sc.nextLine();
@@ -95,7 +102,7 @@ public class UserInterfaceUtils {
 	public static String requestMomsMaidenName(Scanner sc) {
 		System.out.println("Please input your mother's maiden name:");
 		String momsMaidenName = sc.nextLine();
-		while (momsMaidenName.equals(null)) {
+		while (momsMaidenName.isEmpty()) {
 			System.out.println("You must enter your mother's maiden name.");
 			System.out.println("Please input your mother's maiden name:");
 			momsMaidenName = sc.nextLine();

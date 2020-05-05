@@ -1,28 +1,30 @@
 package com.bankofben.bankapplication;
 
 import java.time.LocalDate;
-import java.util.HashSet;
+//import java.util.HashSet;
 import java.util.Scanner;
 
 public class User extends Person implements Comparable<User> {
 	
-	private String username;
-	private String password;
-	private HashSet<Account> userAccounts;
-	private BankOfBen bob = BankOfBen.getBank();
-	
+	protected String username;
+	protected String password;
+	public final String id;
+
 	public User() {
 		super();
+		// Change this when you learn database stuff
+		this.id = "0";
 	}
 
 	public User(String firstName, String middleName, String lastName, String momsMaidenName, LocalDate dob, String ssn,
-			String email, String phoneNumber, String username, String password, HashSet<Account> userAccounts)
-			throws BlankFieldException, InvalidDateOfBirthException, InvalidSsnException, EmailInvalidException,
-			InvalidPhoneNumberException, InvalidUsernameException {
+			String email, String phoneNumber, String username, String password) throws BlankFieldException,
+			InvalidDateOfBirthException, InvalidSsnException, InvalidEmailException, InvalidPhoneNumberException,
+			InvalidUsernameException, InvalidPasswordException, InvalidPasswordChangeException {
 		super(firstName, middleName, lastName, momsMaidenName, dob, ssn, email, phoneNumber);
 		setUsername(username);
-		this.password = password;
-		this.userAccounts = userAccounts;
+		setPassword(password);
+		// Change this when you learn database stuff
+		this.id = "0";
 	}
 	
 	public boolean passwordMatch(String password) {
@@ -40,13 +42,17 @@ public class User extends Person implements Comparable<User> {
 			throw new InvalidUsernameException();
 		}
 	}
-
-	public HashSet<Account> getUserAccounts() {
-		return userAccounts;
-	}
-
-	public void setUserAccounts(HashSet<Account> userAccounts) {
-		this.userAccounts = userAccounts;
+	
+	private void setPassword(String password) throws InvalidPasswordException, InvalidPasswordChangeException {
+		if (this.password.equals(null)) {
+			if (ValidationTools.isValidPassword(password)) {
+				this.password = password;
+			} else {
+				throw new InvalidPasswordException();
+			}
+		} else {
+			throw new InvalidPasswordChangeException();
+		}
 	}
 	
 	private boolean passwordChangeConfirmation(Scanner sc) {
@@ -59,7 +65,7 @@ public class User extends Person implements Comparable<User> {
 		String password;
 		boolean confirmation = passwordChangeConfirmation(sc);
 		if (confirmation) {
-			password = UserInterfaceUtils.requestNewPassword(sc);
+			password = UserInterface.requestNewPassword(sc);
 			this.password = password;
 			System.out.println("Password has been changed.");
 		} else {
@@ -70,16 +76,16 @@ public class User extends Person implements Comparable<User> {
 	public void changePassword(String oldPassword) {
 		if (oldPassword.equals(this.password)) {
 			Scanner sc = new Scanner(System.in);
-			String password = UserInterfaceUtils.requestNewPassword(sc);
+			String password = UserInterface.requestNewPassword(sc);
 			this.password = password;
 			System.out.println("Password has been changed.");
 		} else {
 			System.out.println("Current password entered is incorrect. Did not change password.");
 		}
 	}
-
-	public BankOfBen getBob() {
-		return bob;
+	
+	public void applyForAccount() {
+		
 	}
 
 	@Override
@@ -112,7 +118,5 @@ public class User extends Person implements Comparable<User> {
 		String otherUsername = otherUser.getUsername();
 		return this.username.compareTo(otherUsername);
 	}
-	
-	
 
 }
