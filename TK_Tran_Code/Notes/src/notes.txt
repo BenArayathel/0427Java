@@ -5,7 +5,9 @@ General Stuff
 Recall:
 	Everything within Main(), will go onto the stack for execution.
 	Everything instance-level will go onto the heap.
-	
+    Method overloading is the same method name but different parameters.
+    Method overriding is the same name but different implementation.
+
 Wrapper Classes
     Wrap around primitive data types.
     Turns primitives into Objects:
@@ -17,26 +19,51 @@ Wrapper Classes
         long > Long
         double > Double
     Why?
-        Objects have methods assocaited with them.
-        Data structures like the Collection API.
-
-        Primitives are still faster than wrappers.
-        Only use wrapper when a method needs to accept an Object.
+        So we can call methods on the objects (can't call methods on primitives).
+        To be used with data structures like the Collection API.
+    Primitives are still faster than wrappers.
+    Only use wrapper when a method needs to accept an Object.
 
 String
 	An object that contains an array of characters.
 	Allows creation and manipulation of strings (notice lowercase).
-	Immutable: Strings can't be changed.
-	Final: The class cannot be extended.
-	String objects are stored on heap, but String Literals are stored in String pool,
-		which itself is within heap memory.
+	Immutable
+        Strings can't be changed once initialized.
+	Final
+        The class cannot be extended.
+    In memory:
+        String objects are stored in heap; (Dog dog = new Dog())
+        String literals are stored in String pool, which itself is within heap memory. (String s = "hello");
 
-StringBuilder
-	Mutable, more efficient (faster) than StringBuffer.
+    StringBuilder
+        Mutable, more efficient (faster) than StringBuffer.
+    StringBuffer
+        Also mutable, but also thread safe/synchronized.
+        Lower efficiency (slower) than StringBuffer; it's gotta wait for other threads before continuing.
 
-StringBuffer
-	Also mutable, but thread safe/synchronized.
-	Lower efficiency (slower) than StringBuffer; it's gotta wait for other threads before continuing.
+Collections Framework
+    A combination of classes and interface which are used to store and manipulate data in the form of objects.
+	Gives devs access to prepackaged data structures and algorithms for manipulating them.
+	java.util.Collection is the root for all data structures
+	All collections by default are iterable.
+	Collections is a utility class (helper class) that contains methods like sort(), shuffle(), binarySearch(), reverse(), etc.
+    Only OBJECTS can be stored in a collection.
+
+    Hierarchy:
+        Iterable(I) > Collection (I) > List(I)/Set(I)/Queue(I)
+    List(I) - ordered collection of objects that can contain duplicates; allows random access of elements.
+        ArrayList(C) - dynamic arrays that grow as needed.
+        LinkedList(C) - 
+        Vector(C)
+    Set(I) - unordered collection of objects that cannot contain duplicates.
+    Queue(I) - FIFO that can contain duplicates.
+    Deque(I) - double-ended queue; allows insertion/deletion from both ends.
+    Map(I) - stores elements in key/value pairs; must contain a unique key but can have duplicates values.
+
+    CRUD: Create, Read, Update, Delete
+        Arrays are slow; must iterate through entire array.
+        Easier in collections, no need to iterate through.
+    Dynamic and Resizeable - memory increase/decrease based on elements added/removed.
 
 RegEx (Regular Expression)
 	An expression commonly used across programming languages; minor syntax changes.
@@ -58,7 +85,7 @@ Exceptions
 	Exception: anything disrupting the flow of an application.
 	Exception-handling determines the quality of an application.
 
-	Separations of Concerns Normal Workflow
+	Separations of Concerns: Normal Workflow
 	Client/Users/Apps >
 		Tier 1: Presentation Layer
 			Logic
@@ -125,36 +152,16 @@ Comparable vs Comparator (Sorting)
 		A class must implement java.lang.Comparable interface to compare its instances.
 		A comparable object is capable of comparing itself with another object.
 
-Collections Framework
-	Gives devs access to prepackaged data structures and algorithms for manipulating them.
-	All collections derive from Java.util package.
-	ONLY ACCEPTS OBJECTS.
-	CRUD: Create, Read, Update, Delete
-		Arrays are slow; must iterate through entire thing to CRUD.
-		Easier in collections, no need to iterate through.
-	Dynamic and Resizeable
-		Memory increase/decrease based on elements added/removed.
-	All collections by default iterable.
-	Helps us design data structures in an easier way
-		Queue, Dequeue, Map, Set, List.
-
-	Collection is the root for all data structures
-	Collections is a utility class (helper class) that contains methods like sort(), shuffle(), binarySearch(), reverse().
-
 Design Patterns
     Language agnostic solutions to common problem scenarios.
     Allows for more reusable and maintainable code.
-    Creational Design Patterns
-        Meant to resolve issues w/ creating objects in a system.
+    Creational Design Patterns - resolves issues w/ creating objects in a system.
         Singleton Pattern: restricts instantiation to one object.
         Factory Pattern:
-    Structural Design Patterns
-        Focuses on how classes and objects can be composed.
+    Structural Design Patterns - focuses on how classes and objects can be composed.
         Identifies simplest way to realize relationships bt entities.
         Adapter:
-    Behavioral Design Patterns
-        Deals with how objects interact; how they communicate w/ each other.
-        To achieve simpler formats of comms.
+    Behavioral Design Patterns - deals with how objects interact (communicate).
         Chain of Responsibility:
 
 Multithreading
@@ -162,15 +169,13 @@ Multithreading
     Multithreading: running multiple threads in parallel.
 
     Main Thread
-        Child threads will be spawned from it.
+        Child threads will spawn from it.
         Will be the last thread to finish execution; once it stops, the program stops.
-
     Daemon Thread
         Thread always running in the background.
         E.g., Garbage Collection
-
     User Threads
-        Can be started and closed.
+        Can be started and closed manually by user.
 
     Two ways to make custom threads:
         1. Implementing Runnable interface
@@ -188,12 +193,12 @@ Multithreading
         Dead: thread has been terminated.
 
     Common Thread Problems
-        Synchronization
+        1. Synchronization
             When threads are utilizing the same resource, e.g. modifying a data structure,
             errors will occur bc changes will occur to the resource in separate threads.
-        Deadlock
+        2. Deadlock
             When multiple threads are trying to access the same resource.
-        Producer-Consumer (will go over this in class)
+        3. Producer-Consumer
             Producer produces resources for another thread, via storing it in a buffer.
             Consumer consumes resource and removes it from the buffer.
             Error occurs if:
@@ -202,6 +207,38 @@ Multithreading
 
 Maven
     Maven is a dependency manager; allows integration of external libraries and packages.
-    What's a dependency?
-        External standalone program that we'll utilize in our project.
+    Also considered a built and automation tool.
+
+    Dependency: external standalone program that we'll utilize in our project.
     POM: Project Object Model, formatted as an XML file containing all config details for Maven project.
+
+SQL
+    Important commands:
+        SELECT - extracts data from a database
+        UPDATE - updates records in a table
+            // Updates (SET) based on condition (WHERE)
+            UPDATE table_name
+            SET column1 = value1, column2 = value2, ...
+            WHERE condition;
+        DELETE - deletes records in a table
+            DELETE FROM table_name WHERE condition;
+        INSERT INTO - inserts new data into a database; two methods:
+            // Add values individually per column
+            INSERT INTO table_name (column1, column2, column3, ...)
+            VALUES (value1, value2, value3, ...);
+
+            // Add values to all columns; make sure addition order is in same order as columns, though.
+            INSERT INTO table_name
+            VALUES (value1, value2, value3, ...);
+        ORDER BY ASC/DESC - sorts in ascending order
+            // Sorts alphabetically by country, then reverse-alphabetically by name
+            ORDER BY Country ASC, Name DESC;
+        CREATE DATABASE - creates a new database
+        ALTER DATABASE - modifies a database
+        CREATE TABLE - creates a new table
+        ALTER TABLE - modifies a table
+        DROP TABLE - deletes a table
+        CREATE INDEX - creates an index (search key)
+        DROP INDEX - deletes an index
+
+    Test for NULL values using IS NULL or IS NOT NULL; cannot use operators like = or !=.
