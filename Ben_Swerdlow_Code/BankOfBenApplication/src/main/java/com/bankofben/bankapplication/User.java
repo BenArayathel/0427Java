@@ -44,7 +44,7 @@ public class User extends Person implements Comparable<User> {
 	}
 	
 	private void setPassword(String password) throws InvalidPasswordException, InvalidPasswordChangeException {
-		if (this.password.equals(null)) {
+		if (this.password.isEmpty()) {
 			if (ValidationTools.isValidPassword(password)) {
 				this.password = password;
 			} else {

@@ -1,5 +1,6 @@
 package com.bankofben.bankapplication;
 
+import java.time.LocalDate;
 //import java.time.LocalDate;
 //import java.time.format.DateTimeParseException;
 //import java.util.Scanner;
@@ -22,6 +23,19 @@ public class BankOfBen {
 		if (bob==null) {
 			// Will change when we have persistent data
 			bob = new BankOfBen();
+			LocalDate dob = LocalDate.parse("1992-01-01");
+			User ben;
+			try {
+				ben = new User("Ben", "Eli", "Swerdlow", "Tobias", dob, "111-11-1111", 
+						"ben@gmail.com", "555-555-5555", "benswerdlow", "Lego105!");
+				bob.usernameUserMap.put("benswerdlow", ben);
+				bob.usernameEmailMap.put("benswerdlow", "ben@gmail.com");
+			} catch (BlankFieldException | InvalidDateOfBirthException | InvalidSsnException | InvalidEmailException
+					| InvalidPhoneNumberException | InvalidUsernameException | InvalidPasswordException
+					| InvalidPasswordChangeException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		return bob;
 	}
