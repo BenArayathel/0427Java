@@ -1,16 +1,32 @@
-General Stuff
+General
 	src - folder that contains human-readable code; .java
-	bin - folder that contains binary (compiled files) that the JVM executes; .jar, .class
-
-Recall:
+	bin - folder that contains binary (byte code, compiled files) that the JVM executes; .jar, .class
 	Everything within Main(), will go onto the stack for execution.
 	Everything instance-level will go onto the heap.
-    Method overloading is the same method name but different parameters.
-    Method overriding is the same name but different implementation.
+    Method overloading is the same method name but different number/type of parameters.
+    Method overriding is the same name but different implementation (different code block).
+
+Lambda Expressions
+    Assigning a variable "aBlockOfCode" a method.
+    This variable can be passed around as a value.
+    Go from this:
+        aBlockOfCode = public void perform() {
+                            System.out.println("Hello Lambda!");
+                        }
+    Break it down:
+        aBlockOfCode = () {
+                        System.out.println("Hello Lambda!");
+                        }
+            1. Remove modifier public, bc whoever wants to run the method can just call upon aBlockOfCode (wherever they want).
+            2. Remove return type void, bc compiler is smart enough to look for a "return" statement to determine return type.
+            3. Remove method name (perform), bc aBlockOfCode can be used to call the method.
+    To this:
+        aBlockOfCode = () -> {System.out.println("Hello Lambda!");}
+    Can remove curly braces:
+        aBlockOfCode = () -> System.out.println("Hello Lambda!");
 
 Wrapper Classes
-    Wrap around primitive data types.
-    Turns primitives into Objects:
+    Wraps around primitive data types and turns them into Objects:
         boolean > Boolean
         int > Integer
         char > Character
@@ -20,26 +36,24 @@ Wrapper Classes
         double > Double
     Why?
         So we can call methods on the objects (can't call methods on primitives).
-        To be used with data structures like the Collection API.
-    Primitives are still faster than wrappers.
+        So the objects can be used with data structures like the Collection API.
+    Primitives are still "faster" than wrappers.
     Only use wrapper when a method needs to accept an Object.
 
 String
 	An object that contains an array of characters.
 	Allows creation and manipulation of strings (notice lowercase).
-	Immutable
-        Strings can't be changed once initialized.
-	Final
-        The class cannot be extended.
+	Immutable: Strings can't be changed once initialized.
+	Final: the class cannot be extended.
     In memory:
-        String objects are stored in heap; (Dog dog = new Dog())
-        String literals are stored in String pool, which itself is within heap memory. (String s = "hello");
+        String objects are stored in heap (Dog dog = new Dog())
+        String literals are stored in String pool, which itself is also in heap (String s = "hello");
 
     StringBuilder
         Mutable, more efficient (faster) than StringBuffer.
     StringBuffer
         Also mutable, but also thread safe/synchronized.
-        Lower efficiency (slower) than StringBuffer; it's gotta wait for other threads before continuing.
+        Lower efficiency (slower) than StringBuffer; it must wait for other threads before continuing.
 
 Collections Framework
     A combination of classes and interface which are used to store and manipulate data in the form of objects.
@@ -50,20 +64,29 @@ Collections Framework
     Only OBJECTS can be stored in a collection.
 
     Hierarchy:
-        Iterable(I) > Collection (I) > List(I)/Set(I)/Queue(I)
-    List(I) - ordered collection of objects that can contain duplicates; allows random access of elements.
-        ArrayList(C) - dynamic arrays that grow as needed.
-        LinkedList(C) -
-        Vector(C)
-    Set(I) - unordered collection of objects that cannot contain duplicates.
-    Queue(I) - FIFO that can contain duplicates.
-    Deque(I) - double-ended queue; allows insertion/deletion from both ends.
-    Map(I) - stores elements in key/value pairs; must contain a unique key but can have duplicates values.
+        Collections(C) > Iterable(I) > Collection(I) > List(I)/Set(I)/Queue(I)
+    List(I) - ordered collection, can contain duplicates, can contain multiple nulls, maintains order of insertion and accessed via indices.
+        ArrayList(C) - resizable array, not synchronized.
+        LinkedList(C) - operations traverse from beginning or end, whichever is closest to specified index.
+        Vector(C) - same as ArrayList but thead-safe/synchronized, legacy class.
+    Set(I) - unordered collection, cannot contain duplicates, can only contain 1 null.
+        HashSet(C) - Set backed by a hash table, doesn't maintain order, not thread-safe/synchronized.
+        LinkedHashSet(C) - HashSet that maintains insertion order.
+        TreeSet - maintains orders using insertion order or Comparator, doesn't allow duplicates.
+    Queue(I) - FIFO that can contain duplicates, only insertion/removal from end.
+        Provides additional insertion, extraction, and inspection operations.
+        offer(), poll(), peek().
+    Deque(I) - double-ended queue; allows insertion/removal from both ends.
+        "Double-ended queue", pronounced "deck".
+    Map(I) - stores key/value pairs, must contain a UNIQUE key but can have duplicate VALUES.
+        HashMap(C) - Map backed by a hash table, doesn't maintain order, permits null keys and values, not thread-safe/synchronized.
+        LinkedHashMap(C) - HashMap that maintains insertion order (not affected if key is re-inserted).
+        Hashtable(C) - doesn't permit nulls, thread-safe/synchronized,
+        TreeMap(C) - maintains orders using insertion order or Comparator, allows duplicate values (not keys).
 
     CRUD: Create, Read, Update, Delete
         Arrays are slow; must iterate through entire array.
         Easier in collections, no need to iterate through.
-    Dynamic and Resizeable - memory increase/decrease based on elements added/removed.
 
 RegEx (Regular Expression)
 	An expression commonly used across programming languages; minor syntax changes.
@@ -252,23 +275,77 @@ SQL
 
     Test for NULL values using IS NULL or IS NOT NULL; cannot use operators like = or !=.
 
-    SQL is case-INSENSITIVE
-
-    Sub-Languages: (* = important)
+    Sub-Languages: (* = important) - https://www.geeksforgeeks.org/sql-ddl-dql-dml-dcl-tcl-commands/
         *DDL: Data Definition Language (Structure)
-            Create/Alter/Drop/Rename/Modify/Truncate
+            Create/Drop/Alter/Rename/Modify/Truncate
         *DML: Data Manipulation Language (Records)
             Insert/Update/Delete
         *DQL: Data Query Language (Reads)
             Select
         DCL: Data Control Language (Manage Users)
-            Grant/Revoke
+            Grant(give access permissions)/Revoke(remove access)
         TCL: Transaction Control Language (Transactions)
             Commit/Rollback/SavePoint
+    
+PL/SQL? ("Advanced SQL")
+    Procedural Language
+        Methods/Blocks
+        Data types
+        Loops
+        Conditional structurals (if/else)
+        Collection (storage)
+        Exception handling
+        Trigger: reusable blocks of code (method) that cannot cannot be called. 
+            These methods are used during event handling execution.
+            Triggers react on DML events.
+        Cursors
+            Creates "pointers" to address of SELECT statement.
+            Points to the results generated by the SELECT statement.
+            Called "ResultSet" in Java.
+    Why PL/SQL?
+        Fewer calls you're making to the DB.
+        Faster processing of queries in DB.
+        Helpful when logical calculations are entirely dependent on the DB.
+    Procedure vs. Function
+        Procedures - doesn't return a value.
+        Functions - returns a value.
+    
+    2 Types of Blocks
+        1. Anonymous blocks - nameless blocks, used to test procedures or functions; not stored in DB.
+        2. Named blocks - our actual procedures or functions; stored in DB until we drop them.
+    
+    Block syntax:
+        --declaration section
+        DECLARE --optional
 
-    Normal Forms (3NF)
+        --execution block
+        BEGIN --mandatory (inherently a try block)
+            --logic written between BEGIN and END.
+            
 
-    ACID Props
+            --exception block (inherently a catch block)
+            EXCEPTION --optional
+
+        END --ends execution
+
+Normalization (review Data Management Foundations in OneNote)
+    1NF
+        Tabular format, no repeating groups, PK identified.
+    2NF
+        1NF and no partial dependencies.
+    3NF
+        2NF and no transitive dependencies.
+
+ACID Properties - https://www.javatpoint.com/transaction-management-in-jdbc
+    ACID properties describe transaction management in JDBC.
+    Transaction - a single unit of work.
+    ACID:
+        A - Atomicity: either all successful or none.
+        C - Consistency: ensures bringing DB from one consistent state to another consistent state.
+        I - Isolation: ensures a transaction is isolated from other transactions.
+        D - Durability: means once a transaction is committed, it'll remain so, even in an event of errors, power loss, etc.
+    Advantages of Transaction Management
+        Fast performance: DB hit at the time of commit.
 
 Logging
     Allows creation of external files to store logs as backup.
@@ -278,7 +355,20 @@ Time API
     java.util.Date better for local work.
     util date is superclass; sql date is subclass.
 
-AWS
+AWS - https://www.tutorialspoint.com/amazon_web_services/index.htm
     AWS RDS hosts our database.
     Oracle SQL Developer used to interact with the database.
     A security group acts as a virtual firewall for your instance to control inbound and outbound traffic.
+
+JDBC - https://www.tutorialspoint.com/jdbc/index.htm
+    Connection interface provides methods to manage transactions:
+        void setAutoCommit(boolean) - true by default means each transaction is commited by default.
+        void commit() - commits the transaction.
+        void rollback() - cancels the transaction.
+
+DAO Design Pattern - https://www.tutorialspoint.com/design_pattern/data_access_object_pattern.htm
+    Separate low level data accessing API or operations from high level business services.
+    Participants:
+        DAO Interface - interface defines standard operations to be performed on objects.
+        DAO concrete class - implements above interface, responsible for getting data from DB.
+        Model Object or Value Object - simple POJO containing getters/setters to store data retrieved using the DAO concrete class.

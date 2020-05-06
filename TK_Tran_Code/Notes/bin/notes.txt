@@ -1,16 +1,13 @@
-General Stuff
+General
 	src - folder that contains human-readable code; .java
-	bin - folder that contains binary (compiled files) that the JVM executes; .jar, .class
-
-Recall:
+	bin - folder that contains binary (byte code, compiled files) that the JVM executes; .jar, .class
 	Everything within Main(), will go onto the stack for execution.
 	Everything instance-level will go onto the heap.
-    Method overloading is the same method name but different parameters.
-    Method overriding is the same name but different implementation.
+    Method overloading is the same method name but different number/type of parameters.
+    Method overriding is the same name but different implementation (different code block).
 
 Wrapper Classes
-    Wrap around primitive data types.
-    Turns primitives into Objects:
+    Wraps around primitive data types and turns them into Objects:
         boolean > Boolean
         int > Integer
         char > Character
@@ -20,26 +17,24 @@ Wrapper Classes
         double > Double
     Why?
         So we can call methods on the objects (can't call methods on primitives).
-        To be used with data structures like the Collection API.
-    Primitives are still faster than wrappers.
+        So the objects can be used with data structures like the Collection API.
+    Primitives are still "faster" than wrappers.
     Only use wrapper when a method needs to accept an Object.
 
 String
 	An object that contains an array of characters.
 	Allows creation and manipulation of strings (notice lowercase).
-	Immutable
-        Strings can't be changed once initialized.
-	Final
-        The class cannot be extended.
+	Immutable: Strings can't be changed once initialized.
+	Final: the class cannot be extended.
     In memory:
-        String objects are stored in heap; (Dog dog = new Dog())
-        String literals are stored in String pool, which itself is within heap memory. (String s = "hello");
+        String objects are stored in heap (Dog dog = new Dog())
+        String literals are stored in String pool, which itself is also in heap (String s = "hello");
 
     StringBuilder
         Mutable, more efficient (faster) than StringBuffer.
     StringBuffer
         Also mutable, but also thread safe/synchronized.
-        Lower efficiency (slower) than StringBuffer; it's gotta wait for other threads before continuing.
+        Lower efficiency (slower) than StringBuffer; it must wait for other threads before continuing.
 
 Collections Framework
     A combination of classes and interface which are used to store and manipulate data in the form of objects.
@@ -50,20 +45,29 @@ Collections Framework
     Only OBJECTS can be stored in a collection.
 
     Hierarchy:
-        Iterable(I) > Collection (I) > List(I)/Set(I)/Queue(I)
-    List(I) - ordered collection of objects that can contain duplicates; allows random access of elements.
-        ArrayList(C) - dynamic arrays that grow as needed.
-        LinkedList(C) -
-        Vector(C)
-    Set(I) - unordered collection of objects that cannot contain duplicates.
-    Queue(I) - FIFO that can contain duplicates.
-    Deque(I) - double-ended queue; allows insertion/deletion from both ends.
-    Map(I) - stores elements in key/value pairs; must contain a unique key but can have duplicates values.
+        Collections(C) > Iterable(I) > Collection(I) > List(I)/Set(I)/Queue(I)
+    List(I) - ordered collection, can contain duplicates, can contain multiple nulls, maintains order of insertion and accessed via indices.
+        ArrayList(C) - resizable array, not synchronized.
+        LinkedList(C) - operations traverse from beginning or end, whichever is closest to specified index.
+        Vector(C) - same as ArrayList but thead-safe/synchronized, legacy class.
+    Set(I) - unordered collection, cannot contain duplicates, can only contain 1 null.
+        HashSet(C) - Set backed by a hash table, doesn't maintain order, not thread-safe/synchronized.
+        LinkedHashSet(C) - HashSet that maintains insertion order.
+        TreeSet - maintains orders using insertion order or Comparator, doesn't allow duplicates.
+    Queue(I) - FIFO that can contain duplicates, only insertion/removal from end.
+        Provides additional insertion, extraction, and inspection operations.
+        offer(), poll(), peek().
+    Deque(I) - double-ended queue; allows insertion/removal from both ends.
+        "Double-ended queue", pronounced "deck".
+    Map(I) - stores key/value pairs, must contain a UNIQUE key but can have duplicate VALUES.
+        HashMap(C) - Map backed by a hash table, doesn't maintain order, permits null keys and values, not thread-safe/synchronized.
+        LinkedHashMap(C) - HashMap that maintains insertion order (not affected if key is re-inserted).
+        Hashtable(C) - doesn't permit nulls, thread-safe/synchronized,
+        TreeMap(C) - maintains orders using insertion order or Comparator, allows duplicate values (not keys).
 
     CRUD: Create, Read, Update, Delete
         Arrays are slow; must iterate through entire array.
         Easier in collections, no need to iterate through.
-    Dynamic and Resizeable - memory increase/decrease based on elements added/removed.
 
 RegEx (Regular Expression)
 	An expression commonly used across programming languages; minor syntax changes.
@@ -252,23 +256,42 @@ SQL
 
     Test for NULL values using IS NULL or IS NOT NULL; cannot use operators like = or !=.
 
-    SQL is case-INSENSITIVE
-
-    Sub-Languages: (* = important)
+    Sub-Languages: (* = important) - https://www.geeksforgeeks.org/sql-ddl-dql-dml-dcl-tcl-commands/
         *DDL: Data Definition Language (Structure)
-            Create/Alter/Drop/Rename/Modify/Truncate
+            Create/Drop/Alter/Rename/Modify/Truncate
         *DML: Data Manipulation Language (Records)
             Insert/Update/Delete
         *DQL: Data Query Language (Reads)
             Select
         DCL: Data Control Language (Manage Users)
-            Grant/Revoke
+            Grant(give access permissions)/Revoke(remove access)
         TCL: Transaction Control Language (Transactions)
             Commit/Rollback/SavePoint
 
-    Normal Forms (3NF)
+Normalization (review Data Management Foundations in OneNote)
+    1NF
+        Tabular format, no repeating groups, PK identified.
+    2NF
+        1NF and no partial dependencies.
+    3NF
+        2NF and no transitive dependencies.
 
-    ACID Props
+ACID Properties - https://www.javatpoint.com/transaction-management-in-jdbc
+    ACID properties describe transaction management in JDBC.
+    Transaction - a single unit of work.
+    ACID:
+        A - Atomicity: either all successful or none.
+        C - Consistency: ensures bringing DB from one consistent state to another consistent state.
+        I - Isolation: ensures a transaction is isolated from other transactions.
+        D - Durability: means once a transaction is committed, it'll remain so, even in an event of errors, power loss, etc.
+    Advantages of Transaction Management
+        Fast performance: DB hit at the time of commit.
+
+JDBC - https://www.tutorialspoint.com/jdbc/jdbc-sample-code.htm
+    Connection interface provides methods to manage transactions:
+        void setAutoCommit(boolean) - true by default means each transaction is commited by default.
+        void commit() - commits the transaction.
+        void rollback() - cancels the transaction.
 
 Logging
     Allows creation of external files to store logs as backup.
