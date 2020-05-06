@@ -1,0 +1,27 @@
+SQL Developer:
+
+	//Setting up connection to AWS DB
+	Connection:
+		Name:<Whatever you want to call it as>
+		Username: <What you specified on your AWS DB>
+		Password: <What you specified on your AWS DB>
+		Hostname: <Endpoint on your AWS DB>
+		Port: 1521 (By default in AWS)
+		SID: ORCL
+
+	
+	Inside SQL to give access to additional users:
+	
+	--CREATE A NEW USER + GRANT USER PERMISSIONS
+	CREATE USER <username> IDENTIFIED by <password>;
+
+	GRANT CONNECT, RESOURCE to <username>;
+	GRANT DBA to <username> WITH ADMIN OPTION;	
+
+	
+	--SEE ALL USERS
+	SELECT * FROM all_users;
+	SELECT * FROM DBA_users;
+	
+	--DROP USER, don't drop sys or system.
+	DROP USER myuser01 CASCADE;
