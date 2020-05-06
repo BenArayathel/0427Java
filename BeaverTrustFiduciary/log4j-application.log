@@ -1,0 +1,7 @@
+2020-05-05 21:23:31 INFO  Main:17 - Hey, it workith!
+2020-05-05 21:23:31 WARN  Main:22 - HEY!
+2020-05-05 21:23:31 DEBUG Main:28 - This is a debug message
+2020-05-05 21:24:38 INFO  Main:17 - Hey, it workith!
+2020-05-05 21:24:38 WARN  Main:20 - HEY!
+2020-05-05 21:24:59 INFO  Main:17 - Hey, it workith!
+2020-05-05 21:24:59 WARN  Main:20 - HEY!

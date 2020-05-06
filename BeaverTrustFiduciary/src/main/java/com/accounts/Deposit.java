@@ -19,3 +19,5 @@ public class Deposit {
 	
 }
 
+//what else do i have to take into account? what exceptions and problems?
+//use conditional to deal with incorrect account names, and with unacceptable amounts
