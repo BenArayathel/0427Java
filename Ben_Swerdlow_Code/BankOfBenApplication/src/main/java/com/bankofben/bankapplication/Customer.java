@@ -16,8 +16,7 @@ public class Customer extends User {
 
 	public Customer(String firstName, String middleName, String lastName, String momsMaidenName, LocalDate dob,
 			String ssn, String email, String phoneNumber, String username, String password, HashSet<Account> customerAccounts)
-					throws BlankFieldException, InvalidDateOfBirthException, InvalidSsnException, InvalidEmailException, 
-					InvalidPhoneNumberException, InvalidUsernameException, InvalidPasswordException, InvalidPasswordChangeException {
+			throws BusinessException {
 		super(firstName, middleName, lastName, momsMaidenName, dob, ssn, email, phoneNumber, username, password);
 		this.myAccounts = customerAccounts;
 	}
