@@ -1,0 +1,83 @@
+SQL basics:
+
+	--Creating table:
+
+	CREATE TABLE planets(
+    planet_id NUMBER(5) PRIMARY KEY, --MAX ID POSSIBLE IS 99999
+    planet_name VARCHAR2(50) NOT NULL UNIQUE, --COMMON CONTRAINS: PRIMARY, NOT NULL, UNIQUE
+    has_rings NUMBER(5) CHECK (has_rings > -1 AND has_rings < 2), --NO BOOLEAN TYPES IN SQL, USE BIT VALUES
+    number_of_moons NUMBER(5) CHECK (number_of_moons > -1),
+    slogan VARCHAR2(50)
+    );
+    
+DROP TABLE planets; --DELETS THE TABLE AND THE TABLE STRUCTURE
+    
+--SELECT * : THE '*' MEANS ALL THE COLUMNS    
+SELECT * FROM planets; 
+--SELECT [column1, column2, etc...] FROM <table name>
+SELECT planet_name, number_of_moons FROM planets;
+--ALIAS (using the "AS" keyword) changes the title of the attribute in a result set
+SELECT planet_name AS wow, number_of_moons AS wowzer FROM planets;
+--Don't need to use AS keyword either
+--SELECT planet_name wow, number_of_moons wowzer FROM planets;
+
+--INSERTING VALUE INTO TABLE
+INSERT INTO planets VALUES(1, 'Mercury',0,0,'Never too close');
+INSERT INTO planets VALUES(2, 'Venus',0,0,'bit warm in here init');
+INSERT INTO planets VALUES(3, 'Earth',0,1,'just right!');
+INSERT INTO planets VALUES(4, 'Mars',0,2,'Earth 2.0');
+INSERT INTO planets VALUES(5, 'Jupiter',1,67,'BIG');
+INSERT INTO planets VALUES(6, 'Saturn',1,82,'running out of imagination');
+INSERT INTO planets VALUES(7, 'Uranus',1,27,NULL);
+INSERT INTO planets VALUES(8, 'Neptune',1,14,'getting nippy');
+
+--DIFFERENT WAYS TO SELECT:
+SELECT * FROM planets;
+--WHERE clause, filter clause
+SELECT * FROM planets WHERE planet_name = 'Mercury';
+SELECT * FROM planets WHERE planet_name != 'Mercury';
+SELECT * FROM planets WHERE planet_name = 'Jupiter' AND number_of_moons = 67;
+SELECT * FROM planets WHERE planet_name = 'Mercury' OR number_of_moons = 67;
+
+--CAN ALSO use >,<,>=,<=
+SELECT * FROM planets WHERE NOT number_of_moons > 0;
+--CAN ALSO USE 'WHERE NOT' to get the opposite result
+
+--NULL refference
+SELECT* FROM planets WHERE slogan IS NULL;
+
+
+--LIKE keyword, used to find patterns 
+--'%' is a wildcard that is a stand-in for 0 or more characters
+--'_' is a wildcard that is a stand-in for EXACTLY ONE character
+SELECT * FROM planets WHERE slogan LIKE 'B%';
+SELECT * FROM planets WHERE slogan LIKE '%B%%%';
+SELECT * FROM planets WHERE slogan LIKE '_IG%%%%%';
+SELECT * FROM planets WHERE slogan LIKE 'B__%%%';
+
+DESC planets; --PROVIDES DESCRIPTION OF TABLE
+SELECT * FROM planets;
+--SORTING
+SELECT*FROM planets ORDER BY planet_name; --Default is ascending order
+SELECT*FROM planets ORDER BY planet_name ASC; 
+SELECT*FROM planets ORDER BY planet_name DESC; 
+
+--BETWEEN keyword (inclusive range)
+SELECT * FROM planets WHERE planet_id BETWEEN 2 AND 4 AND planet_name = 'Mars'; --CAN add additional constraints
+
+--IN KEYWORD (can save a lot of syntax)
+--Tedious way
+SELECT*FROM planets WHERE planet_name = 'Jupiter' OR planet_name = 'Earth' OR planet_name = 'Mars';
+--EPIC FAST WAY
+SELECT * FROM planets WHERE planet_name IN('Jupiter','Earth','Mars');
+
+
+
+
+
+
+
+
+
+	
+	
