@@ -1,11 +1,11 @@
 package com.application.bank;
 
-import java.io.Serializable;
+//import java.io.Serializable;
 
 import org.apache.log4j.Logger;
 import org.apache.log4j.Level;
 
-public class Account implements Bank, Serializable {
+public class Account implements Bank {
 
 	private int savingsAccountNumber;
 	private int checkingAccountNumber;
@@ -14,7 +14,7 @@ public class Account implements Bank, Serializable {
 	private boolean active;
 	private String userEmail;
 	
-	private static final long serialVersionUID = 620311235045377344L;
+	//private static final long serialVersionUID = 620311235045377344L;
 	final static Logger loggy = Logger.getLogger(Account.class);
 
 	public Account() {
@@ -143,4 +143,4 @@ public class Account implements Bank, Serializable {
 	}
 	
 
-}
+} // End of class
