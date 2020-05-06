@@ -1,0 +1,25 @@
+AWS- RDS
+
+Create a personal RDS account, with the basic plan.
+
+
+	//Database has been created, with permissions for external access.
+	//Now to give our own system permission
+To create a DB:
+	Navigate to the RDS section (Services -> (Database) RDS)
+	Click DB Instances
+	Create database: 
+		Engine type: Oracle
+		Edition: Standard
+		Templates: FREE TIER
+		username: <username>
+		password: <password>
+		Additional connectivity configuration -> publicly accessible 
+
+	
+	//You've given permission to your IP now
+Navigate to security group (Services -> (Compute) EC2 -> Security group)
+	Create inbound rules:
+		Custom TCP: Port range 1520-1522:My IP
+
+	
