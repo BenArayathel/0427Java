@@ -3,35 +3,43 @@ package com.bankofben.bankapplication;
 import java.time.LocalDate;
 import java.util.Scanner;
 
-public class BankApplicationMain {
+public class PresentationLayer {
 
 	public static void main(String[] args) {
-//		BankOfBen bob = BankOfBen.getBank();
+		BusinessLayer bob = BusinessLayer.getBank();
 		User user = null;
 //		int loginAttempts = 0;
 		Scanner sc = new Scanner(System.in);
 		String response=null;
 
 		printUserGreeting();
+		boolean userResponseValidated = false;
 		do {
 			printUserOptions();
 			response = sc.nextLine();
 			if (response.equalsIgnoreCase("register")) {
-				user = registerUser(sc);
-				if (user.equals(null)) {
+				try {
+					user = requestUserInfo(sc);
+					userResponseValidated = true;
+				} catch (BusinessException e) {
+					System.out.println(e.getMessage());
 					printInvalidRegistrationMessage();
 				}
 			} else if (response.equalsIgnoreCase("login")) {
-				user = loginUser(sc);
-				if (user.equals(null)) {
+				try {
+					user = requestLoginUserInfo(sc);
+					userResponseValidated = true;
+				} catch (BusinessException e) {
+					System.out.println(e.getMessage());
 					printInvalidLoginMessage();
 				}
 			} else if (response.equalsIgnoreCase("quit")) {
 				quit(sc);
+//				userResponseValidated = true;
 			} else {
 				printInvalidResponseMessage(response);
 			}
-		} while (user==null);
+		} while (!(userResponseValidated));
 		
 		if (user instanceof Customer) {
 			Customer customer = (Customer) user;
@@ -72,8 +80,7 @@ public class BankApplicationMain {
 				}
 			}
 		} else {
-			// user is neither a customer nor an employee
-			// assume they are a customer and must apply for an account
+			bob.applyForAccount(user);
 		}
 		
 	}
@@ -148,8 +155,8 @@ public class BankApplicationMain {
 				+ "and get back to you via email. If you are denied, your personal information will not be saved.\n");
 	}
 	
-	private static User registerUser(Scanner sc) {
-		BankOfBen bob = BankOfBen.getBank();
+	private static User requestUserInfo(Scanner sc) throws BusinessException {
+		BusinessLayer bob = BusinessLayer.getBank();
 		User user = null;
 		registrationDisclaimer();
 		String email = UserInterface.requestEmail(sc);
@@ -160,7 +167,7 @@ public class BankApplicationMain {
 			String response = sc.nextLine();
 			if (response.equalsIgnoreCase("y") || response.equalsIgnoreCase("y")) {
 				loginRequested = true;
-				user = loginUser(sc);
+				user = requestLoginUserInfo(sc);
 				username = user.getUsername();
 				break;
 			} else {
@@ -172,7 +179,11 @@ public class BankApplicationMain {
 			String response = sc.nextLine();
 			if (response.equalsIgnoreCase("y") || response.equalsIgnoreCase("y")) {
 				loginRequested = true;
-				user = loginUser(username, sc);
+				try {
+					user = bob.loginUser(username, sc);
+				} catch (BusinessException e) {
+					e.getMessage();
+				}
 				break;
 			} else {
 				username = UserInterface.requestUsername(sc);
@@ -184,41 +195,12 @@ public class BankApplicationMain {
 			 * been given a chance to correct the provided information. The exceptions are a safety measure to
 			 * ensure erroneous information cannot be registered with BoB. 
 			 */
-			
-
-			try {
-				user = registerUser(username, email, sc);
-			} catch (InvalidEmailException e) {
-				System.out.println("User registration unsuccessful. Must supply a valid email address.");
-			} catch (ExistingUserException e) {
-				System.out.println("User registration unsuccessful. User already exists. Please login instead.");
-			} catch (ExistingEmailException e) {
-				System.out.println("User registration unsuccessful. Email provided already exists. Please login instead.");
-			} catch (BlankFieldException e) {
-				System.out.println(e.getMessage());
-			} catch (InvalidDateOfBirthException e1) {
-				System.out.println("User registration unsuccessful. Date of birth invalid.");
-			} catch (InvalidSsnException e) {
-				System.out.println("User registration unsuccessful. Social security number invalid");
-			} catch (InvalidPhoneNumberException e) {
-				System.out.println("User registration unsuccessful. Phone number invalid");
-			} catch (InvalidUsernameException e) {
-				System.out.println("User registration unsuccessful. Username must be between 4 and 20 characters");
-			} catch (InvalidPasswordException e) {
-				System.out.println("User registration unsuccessful. Password invalid.");
-				System.out.println(UserInterface.passwordCriteria());
-			} catch (InvalidPasswordChangeException e) {
-				System.out.println("User registration unsuccessful. Password for "+username+" already exists. "
-						+ "Please login instead.");
-			}
+			user = requestUserInfo(username, email, sc);
 		}
 		return user;
 	}
 	
-	private static User registerUser(String username, String email, Scanner sc)
-			throws InvalidEmailException, ExistingUserException, ExistingEmailException, BlankFieldException,
-			InvalidDateOfBirthException, InvalidSsnException, InvalidPhoneNumberException, InvalidUsernameException,
-			InvalidPasswordException, InvalidPasswordChangeException {
+	private static User requestUserInfo(String username, String email, Scanner sc) throws BusinessException {
 		String firstName = UserInterface.requestFirstName(sc);
 		String middleName = UserInterface.requestMiddleName(sc);
 		String lastName = UserInterface.requestLastName(sc);
@@ -231,39 +213,32 @@ public class BankApplicationMain {
 		User user = new User(firstName, middleName, lastName, momsMaidenName, dob, ssn, email,
 				phoneNumber, username, password);
 		
-		if (!(user.equals(null))) {
-			System.out.println("User "+user.getUsername()+" registered with the Bank of Ben.");
-		}
+		System.out.println("Thank you for your information.");
 		
 		return user;
 	}
 	
-	public static User loginUser(String username, Scanner sc) {
-		String password = null;
-		int loginAttempts = 0;
-		User user = null;
-		BankOfBen bob = BankOfBen.getBank();
-		while (loginAttempts < 4) {
-			password = UserInterface.requestPassword(sc);
-			try {
-				user = bob.loginUser(username, password);
-			} catch (InvalidLoginException e) {
-				System.out.println("Invalid password for user "+username+". Please try again.");
-			} catch (NullPointerException | UserNotFoundException e) {
-				System.out.println("Bank of Ben has no record of user with those credentials. Please try again.");
-			}
-			loginAttempts++;
-			// TODO: Added lag to discourage brute force attempts; not critical, attempt later
-		}
-		if (loginAttempts >= 4) {
-			System.out.println("Limit of password attempts exceeded. Please try again later.");
-		}
-		return user;
-	}
-	
-	public static User loginUser(Scanner sc) {
+	public static User requestLoginUserInfo(Scanner sc) throws BusinessException {
 		String username = UserInterface.requestUsername(sc);
-		return loginUser(username, sc);
+		BusinessLayer bob = BusinessLayer.getBank();
+		return bob.loginUser(username, sc);
 	}
+//	
+//	public static User loginUser(String username, Scanner sc) throws BusinessException {
+//		String password = null;
+//		int loginAttempts = 0;
+//		User user = null;
+//		BusinessLayer bob = BusinessLayer.getBank();
+//		while (loginAttempts < 4) {
+//			password = UserInterface.requestPassword(sc);
+//			bob.loginUser(username, password);
+//			loginAttempts++;
+//			// TODO: Added lag to discourage brute force attempts; not critical, attempt later
+//		}
+//		if (loginAttempts >= 4) {
+//			throw new BusinessException("Limit of password attempts exceeded. Please try again later.");
+//		}
+//		return user;
+//	}
 
 }

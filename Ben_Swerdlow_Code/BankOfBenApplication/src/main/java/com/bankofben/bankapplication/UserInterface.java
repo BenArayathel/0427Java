@@ -149,6 +149,13 @@ public class UserInterface {
 		}
 		return ssn;
 	}
+	
+	public static String phoneNumberCriteria() {
+		return "Valid phone numbers\n"
+				+ "* May or may not contain the +1 country code\n"
+				+ "* May or may not contain the following symbols: ( ) -\n"
+				+ "* Must contain exactly 10 digits excluding the above optional additions";
+	}
 
 	public static String requestPhoneNumber(Scanner sc) {
 		System.out.println("Please input your US phone number: ");
@@ -167,6 +174,10 @@ public class UserInterface {
 				+ "\n* At least one lowercase English letter"
 				+ "\n* At least one digit"
 				+ "\n* At least one special character (.*?[#?!@$%^&*-)";
+	}
+
+	public static String ssnCriteria() {
+		return "Social security number must be exactly 9 digits, excluding the - symbol.";
 	}
 
 }

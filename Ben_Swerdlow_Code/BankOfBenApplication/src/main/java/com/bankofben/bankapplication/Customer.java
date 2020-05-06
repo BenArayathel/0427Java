@@ -5,7 +5,8 @@ import java.util.HashSet;
 
 public class Customer extends User {
 	
-	private HashSet<Account> userAccounts;
+	private HashSet<Account> myAccounts;
+//	private TreeSet<Integer, Account> myAccountNumbers;
 //	private BankOfBen bob = BankOfBen.getBank();
 
 	public Customer() {
@@ -14,20 +15,20 @@ public class Customer extends User {
 	}
 
 	public Customer(String firstName, String middleName, String lastName, String momsMaidenName, LocalDate dob,
-			String ssn, String email, String phoneNumber, String username, String password) throws BlankFieldException,
-			InvalidDateOfBirthException, InvalidSsnException, InvalidEmailException, InvalidPhoneNumberException,
-			InvalidUsernameException, InvalidPasswordException, InvalidPasswordChangeException {
+			String ssn, String email, String phoneNumber, String username, String password, HashSet<Account> customerAccounts)
+					throws BlankFieldException, InvalidDateOfBirthException, InvalidSsnException, InvalidEmailException, 
+					InvalidPhoneNumberException, InvalidUsernameException, InvalidPasswordException, InvalidPasswordChangeException {
 		super(firstName, middleName, lastName, momsMaidenName, dob, ssn, email, phoneNumber, username, password);
-		// TODO Auto-generated constructor stub
+		this.myAccounts = customerAccounts;
 	}
 
 	public void setUserAccounts(HashSet<Account> userAccounts) {
-		this.userAccounts = userAccounts;
+		this.myAccounts = userAccounts;
 	}
 	
 	
 	public HashSet<Account> getUserAccounts() {
-		return userAccounts;
+		return myAccounts;
 	}
 
 }

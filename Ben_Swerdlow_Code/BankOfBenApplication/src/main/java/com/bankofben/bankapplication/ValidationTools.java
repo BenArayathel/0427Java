@@ -19,7 +19,7 @@ public class ValidationTools {
 	}
 	
 	public static boolean isValidUsername(String username) {
-		if (username.equals(null)) {
+		if (username==null) {
 			return false;
 		} else if (username.length() < 4 || username.length() > 20) {
 			return false;
@@ -45,7 +45,7 @@ public class ValidationTools {
 	}
 
 	public static boolean isValidEmail(String email) {
-		if (email.equals(null)) {
+		if (email==null) {
 			return false;
 		}
 		// From http://regexlib.com/REDetails.aspx?regexp_id=26
@@ -58,7 +58,7 @@ public class ValidationTools {
 	}
 
 	public static boolean isValidSsn(String ssn) {
-		if (ssn.equals(null)) {
+		if (ssn==null) {
 			return false;
 		}
 		else if (ssn.replace(" ", "").replace("-", "").matches("[0-9]{9}")) {
@@ -69,7 +69,7 @@ public class ValidationTools {
 	}
 	
 	public static boolean isValidPhoneNumber(String phoneNum) {
-		if (phoneNum.equals(null)) {
+		if (phoneNum==null) {
 			return false;
 		} else {
 			String phoneNumber = phoneNum.replace("-", "").replace("(", "").replace(")", "").replace("+1", "");

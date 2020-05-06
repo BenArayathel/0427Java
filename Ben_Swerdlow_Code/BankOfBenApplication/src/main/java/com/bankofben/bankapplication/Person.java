@@ -1,8 +1,9 @@
 package com.bankofben.bankapplication;
 
 import java.time.LocalDate;
-import java.util.List;
-import java.util.ArrayList;
+//import java.time.Period;
+//import java.util.List;
+//import java.util.ArrayList;
 //import java.time.format.DateTimeParseException;
 
 public class Person {
@@ -102,35 +103,16 @@ public class Person {
 //	}
 
 	public Person(String firstName, String middleName, String lastName, String momsMaidenName, LocalDate dob,
-			String ssn, String email, String phoneNumber) throws BlankFieldException, InvalidDateOfBirthException,
-			InvalidSsnException, InvalidEmailException, InvalidPhoneNumberException {
+			String ssn, String email, String phoneNumber) throws BusinessException { 
+//					throws BlankFieldException, InvalidDateOfBirthException,
+//			InvalidSsnException, InvalidEmailException, InvalidPhoneNumberException {
 		super();
 		
-		List<String> blankFieldMessages = new ArrayList<>();
-		
-		try {
-			setFirstName(firstName);
-		} catch (BlankFieldException e) {
-			blankFieldMessages.add(e.getMessage());
-		}
-		
+//		List<String> blankFieldMessages = new ArrayList<>();
+		setFirstName(firstName);
 		this.middleName = middleName;
-		
-		try {
-			setLastName(lastName);
-		} catch (BlankFieldException e) {
-			blankFieldMessages.add(e.getMessage());
-		}
-		
-		try {
-			setMomsMaidenName(momsMaidenName);
-		} catch (BlankFieldException e) {
-			blankFieldMessages.add(e.getMessage());
-		}
-		
-		if (!(blankFieldMessages.isEmpty())) {
-			throw new BlankFieldException(String.join("; ", blankFieldMessages));
-		}
+		setLastName(lastName);
+		setMomsMaidenName(momsMaidenName);
 		
 		setDob(dob);
 		
@@ -145,9 +127,9 @@ public class Person {
 		return firstName;
 	}
 	
-	public void setFirstName(String firstName) throws BlankFieldException {
-		if (firstName.equals(null)) {
-			throw new BlankFieldException("First name must be provided.");
+	public void setFirstName(String firstName) throws BusinessException {
+		if (firstName==null) {
+			throw new BusinessException("No entry for first name detected. A first name must be provided.");
 		} else {
 			this.firstName = firstName;
 		}
@@ -165,9 +147,9 @@ public class Person {
 		return lastName;
 	}
 	
-	public void setLastName(String lastName) throws BlankFieldException {
-		if (lastName.equals(null)) {
-			throw new BlankFieldException("Last name must be provided.");
+	public void setLastName(String lastName) throws BusinessException {
+		if (lastName==null) {
+			throw new BusinessException("No entry for last name detected. A last name must be provided.");
 		} else {
 			this.lastName = lastName;
 		}
@@ -177,9 +159,9 @@ public class Person {
 		return momsMaidenName;
 	}
 	
-	public void setMomsMaidenName(String momsMaidenName) throws BlankFieldException {
-		if (momsMaidenName.equals(null)) {
-			throw new BlankFieldException("Mother's maiden name must be provided.");
+	public void setMomsMaidenName(String momsMaidenName) throws BusinessException {
+		if (momsMaidenName==null) {
+			throw new BusinessException("Mother's maiden name must be provided.");
 		} else {
 			this.momsMaidenName = momsMaidenName;
 		}
@@ -189,11 +171,13 @@ public class Person {
 		return ssn;
 	}
 	
-	public void setSsn(String ssn) throws InvalidSsnException {
-		if (ValidationTools.isValidSsn(ssn)) {
+	public void setSsn(String ssn) throws BusinessException {
+		if (email==null) {
+			throw new BusinessException("No entry detected for social security number. A social security number must be provided.");
+		} else if (ValidationTools.isValidSsn(ssn)) {
 			this.ssn = ssn;
 		} else {
-			throw new InvalidSsnException();
+			throw new BusinessException("Invalid social security number.\n"+UserInterface.ssnCriteria());
 		}
 	}
 	
@@ -201,11 +185,14 @@ public class Person {
 		return email;
 	}
 	
-	public void setEmail(String email) throws InvalidEmailException {
+	public void setEmail(String email) throws BusinessException {
+		if (email==null) {
+			throw new BusinessException("No entry detected for email. An email must be provided.");
+		}
 		if (ValidationTools.isValidEmail(email)) {
 			this.email = email;
 		} else {
-			throw new InvalidEmailException();
+			throw new BusinessException("The entry provided is not a valid email address.");
 		}
 	}
 	
@@ -213,11 +200,14 @@ public class Person {
 		return phoneNumber;
 	}
 	
-	public void setPhoneNumber(String phoneNumber) throws InvalidPhoneNumberException {
+	public void setPhoneNumber(String phoneNumber) throws BusinessException {
+		if (phoneNumber == null) {
+			throw new BusinessException("No entry detected for phone number. A phone number must be provided.");
+		}
 		if (ValidationTools.isValidPhoneNumber(phoneNumber)) {
 			this.phoneNumber = phoneNumber;
 		} else {
-			throw new InvalidPhoneNumberException();
+			throw new BusinessException("Invalid phone number.\n"+UserInterface.phoneNumberCriteria());
 		}
 	}
 
@@ -225,13 +215,13 @@ public class Person {
 		return dob;
 	}
 
-	public void setDob(LocalDate dob) throws InvalidDateOfBirthException {
-		if (dob.equals(null)) {
-			throw new InvalidDateOfBirthException();
-		} else if (dob.isBefore(LocalDate.now())) {
-			this.dob = dob;
+	public void setDob(LocalDate dob) throws BusinessException {
+		if (dob==null) {
+			throw new BusinessException("No entry for date of birth detected. A date of birth must be provided.");
+		} else if (dob.isAfter(LocalDate.now())) {
+			throw new BusinessException("Invalid date of birth. Dates of birth cannot occur after the present date.");
 		} else {
-			throw new InvalidDateOfBirthException();
+			this.dob = dob;
 		}
 	}
 
