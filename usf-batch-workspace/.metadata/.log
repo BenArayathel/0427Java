@@ -6175,3 +6175,13 @@ Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product org.eclipse.
 
 !ENTRY org.eclipse.core.net 1 0 2020-05-05 12:01:24.433
 !MESSAGE System property http.nonProxyHosts has been set to local|*.local|192.168.12|*.192.168.12 by an external source. This value will be overwritten using the values from the preferences
+!SESSION 2020-05-06 09:16:27.870 -----------------------------------------------
+eclipse.buildId=4.15.0.I20200305-0155
+java.version=1.8.0_60
+java.vendor=Oracle Corporation
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.java.product -keyring /Users/markwartman/.eclipse_keyring
+Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product org.eclipse.epp.package.java.product -keyring /Users/markwartman/.eclipse_keyring
+
+!ENTRY org.eclipse.core.net 1 0 2020-05-06 09:16:41.205
+!MESSAGE System property http.nonProxyHosts has been set to local|*.local|192.168.12|*.192.168.12 by an external source. This value will be overwritten using the values from the preferences
