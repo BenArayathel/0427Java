@@ -87,6 +87,21 @@ dbms_output.put_line('Trainee created with id '||id);
 end;
 
 
+-- looping through your rcords
+declare
+c number;
+begin
+for c in (select id,name,contact,email,dob,city from trainee) loop
+dbms_output.put_line('id = '||c.id||' name = '||c.name);
+end loop;
+end;
 
  
  
+begin
+for c in reverse 10 .. 20 loop
+dbms_output.put_line(c);
+end loop;
+end;
+
+-- cursors, triggers, collection(varrays, record, index by table) 
