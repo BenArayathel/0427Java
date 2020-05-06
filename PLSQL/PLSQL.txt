@@ -1,0 +1,92 @@
+-- anonymous block
+declare
+name varchar2(10):='Raj';
+begin
+DBMS_OUTPUT.PUT_line('Hello '||name);
+helloproc();
+DBMS_OUTPUT.PUT_line(hellofunc);
+end;
+
+set SERVEROUTPUT ON; -- to enable console output of server.
+
+create or replace procedure helloProc AS
+-- after AS it is declaration block, do not use declare keyword for that
+begin
+DBMS_OUTPUT.PUT_line('Hello Procedure');
+ end helloProc;
+ 
+ create or replace function helloFunc return varchar2 AS
+ Begin
+ return 'Hello function';
+ end helloFunc;
+ 
+ /*
+ Type of parameters
+ 1) IN - Input (default)
+ 2) OUT - Output 
+ 3) INOUT - Input Output
+ */
+ 
+create or replace procedure add2Numbers( a IN number, b number, res OUT number) As
+Begin
+res:=a+b;
+end add2Numbers; 
+
+declare 
+result number;
+begin
+add2Numbers(10,22,result);
+dbms_output.put_line('Result is '||result);
+end;
+
+
+-- if? loop?(normal loop, while loop, for loop, case)  Homework
+
+Trainee
+ CREATE TABLE "TRAINEE" 
+   (	"ID" VARCHAR2(20 BYTE) NOT NULL ENABLE, 
+	"NAME" VARCHAR2(20 BYTE) NOT NULL ENABLE, 
+	"CONTACT" NUMBER NOT NULL ENABLE, 
+	"EMAIL" VARCHAR2(20 BYTE) NOT NULL ENABLE, 
+	"DOB" DATE NOT NULL ENABLE, 
+	"CITY" VARCHAR2(20 BYTE) NOT NULL ENABLE, 
+	 CONSTRAINT "TRAINEE_PK" PRIMARY KEY ("ID"),
+ CONSTRAINT "TRAINEE_UK1" UNIQUE ("CONTACT", "EMAIL")
+)
+
+Trainee_seq
+
+   CREATE SEQUENCE "TRAINEE_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 10000 CACHE 20 NOORDER  NOCYCLE ;
+
+
+CreateTrainee_procedure
+CREATE OR REPLACE PROCEDURE CREATETRAINEE 
+(
+  ID OUT VARCHAR2 
+, NAME IN VARCHAR2 
+, CONTACT IN NUMBER 
+, EMAIL IN VARCHAR2 
+, DOB IN DATE 
+, CITY IN VARCHAR2 
+) AS 
+BEGIN
+  select 'TR'||upper(substr(name,0,2))||substr(contact,0,3)||
+  extract(year from dob)||trainee_seq.nextval into id from dual;
+  insert into trainee(id,name,contact,email,dob,city) 
+  values(id,name,contact,email,dob,city);
+END CREATETRAINEE;
+
+--TRVI123199910000
+
+-- to execute the procedure
+declare
+id varchar2(20);
+begin
+createtrainee(id,'ethan',1234567899,'ethan@gmail.com','12/05/1990','Dallas');
+dbms_output.put_line('Trainee created with id '||id);
+end;
+
+
+
+ 
+ 
