@@ -8,11 +8,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
-
 import org.apache.log4j.Logger;
-
-import com.application.bank.Account;
 import com.application.bank.dao.UserDao;
+import com.application.bank.exception.BusinessException;
 import com.application.bank.models.User;
 
 public class UserDaoImpl implements UserDao {
@@ -28,7 +26,7 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	@Override
-	public void insertUser(User u) {
+	public User insertUser(User u) throws BusinessException {
 		try (Connection conn = DriverManager.getConnection(url, username, password)) {
 			PreparedStatement ps = conn.prepareStatement("INSERT INTO bankuser VALUES(?,?,?,?,?,?)");
 			
@@ -47,28 +45,38 @@ public class UserDaoImpl implements UserDao {
 			e.printStackTrace();
 		}
 		
-	}
-
-	@Override
-	public void updateUser() {
-		// TODO Auto-generated method stub
+		return u;
 		
 	}
 
 	@Override
-	public User selectUserByEmail() {
+	public User updateUser(User u, String newAttribute, String columnName) throws BusinessException{
+		try (Connection conn = DriverManager.getConnection(url, username, password)) {
+			String userEmail = u.getEmail();
+			PreparedStatement ps = conn.prepareStatement("UPDATE bankuser SET " + columnName + "=" + newAttribute + " WHERE email = " + userEmail);
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	
+		return u;
+		
+	}
+
+	@Override
+	public User selectUserByEmail() throws BusinessException{
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<User> selectAllUsers() {
+	public List<User> selectAllUsers() throws BusinessException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public void removeUser() {
+	public void removeUser() throws BusinessException{
 		// TODO Auto-generated method stub
 		
 	}
@@ -137,5 +145,7 @@ public class UserDaoImpl implements UserDao {
 		
 		return randomAccountNumber;
 	}
+
+	
 
 }
