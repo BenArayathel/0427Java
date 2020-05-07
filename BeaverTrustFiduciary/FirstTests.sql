@@ -17,3 +17,5 @@ select * from myStuff ORDER BY stuff_id;
 
 select stuff_name from myStuff where stuff_isCool = 0;
 
+select * from mystuff;
+
