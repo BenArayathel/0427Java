@@ -19,12 +19,13 @@ SELECT * FROM DBA_users;
 --Don't run the following commands
 --make panetsDB and run this
 --SQL BASICS
+
 CREATE TABLE planets(
     planet_id NUMBER(5) PRIMARY KEY, --MAX ID POSSIBLE IS 99999 --PK means NOT NULL and UNIQUE
     planet_name VARCHAR2(50) NOT NULL UNIQUE, --COMMON CONSTRAINS: PIMARY, NOT NULL, UNIQUE
     --SQL doesn't really support booleans, instead use bit values 0 and 1
     has_rings NUMBER(5) CHECK (has_rings > -1 AND has_rings < 2), 
-    number_of_moons NUMBER(5) check (number_of_moons > 1),
+    number_of_moons NUMBER(5) check (number_of_moons >= 0),
     slogan VARCHAR2(50)--There are no constraints to slogan, so it can accept any value (including null)
 );
 
@@ -40,7 +41,7 @@ INSERT INTO planets VALUES(4, 'Mars',0,2,'Earth 2.0');
 INSERT INTO planets VALUES(5, 'Jupiter',1,67,'BIG');
 INSERT INTO planets VALUES(6, 'Saturn',1,82,'running out of imagination');
 INSERT INTO planets VALUES(7, 'Uranus',1,27,NULL);
-INSERT INTO planets VALUES(8, 'Neptune',1,14,'getting nippy');.
+INSERT INTO planets VALUES(8, 'Neptune',1,14,'getting nippy');
 
 -- '*' == all the columns of a table
 SELECT * FROM planets;

@@ -1,6 +1,8 @@
-package com.bankofben.bankapplication;
+package com.bankofben.presentation;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 //import java.time.format.DateTimeParseException;
 import java.util.Scanner;
 
@@ -50,7 +52,9 @@ public class UserInterface {
 				} else {
 					System.out.println("Password confirmation failed to match password. Please try again.");
 				}
-			} System.out.println("Invalid password. Pleast try again.");
+			} else {
+				System.out.println("Invalid password. Pleast try again.");
+			}
 		}
 		return password;
 	}
@@ -113,34 +117,54 @@ public class UserInterface {
 	public static LocalDate requestDob(Scanner sc) {
 //		boolean noDate = true;
 		LocalDate dob = null;
-		System.out.println("Please input your date of birth in the following format: MM-DD-YYYY");
-		String monthDayYearDob = sc.nextLine();
-		String yearMonthDayDob = monthDayYearDob;
-		
-		do {
-			// while year-month-day is invalid (which it is at first)
-			while (!(ValidationTools.isValidDateString(monthDayYearDob))) {
-				// while monthDayYear is invalid (which it hopefully isn't)
-				System.out.println("Invalid date format: "+monthDayYearDob);
-				System.out.println("Please input your date of birth in the following format: MM-DD-YYYY");
-				monthDayYearDob = sc.nextLine();
+		boolean enteredCorrectly = false;
+		String monthDayYearDobString;
+		while (!(enteredCorrectly)) {
+			System.out.println("Please input your date of birth in the following format: MM-DD-YYYY "
+					+ "(e.g. January 1st, 2000 would be 01-01-2000)");
+			monthDayYearDobString = sc.nextLine();
+			if (ValidationTools.isValidDateString(monthDayYearDobString)) {
+				DateTimeFormatter monthDayYearFormat = DateTimeFormatter.ofPattern("MM-dd-yyyy");
+				try {
+					dob = LocalDate.parse(monthDayYearDobString, monthDayYearFormat);
+					enteredCorrectly = true;
+				} catch (DateTimeParseException e) {
+					System.out.println(monthDayYearDobString+" is not a valid entry for date of birth. "
+							+ "Dates of birth should be of form MM-DD-YYYY (e.g. 01-01-2000)");
+				}
+			} else {
+				System.out.println(monthDayYearDobString+" is not a valid entry for date of birth. "
+							+ "Dates of birth should be of form MM-DD-YYYY (e.g. 01-01-2000)");
 			}
-			StringBuilder ymdDob = new StringBuilder();
-			for (int i=0; i<3; i++) {
-				ymdDob.append(monthDayYearDob.split("-")[(i+2)%3]);
-			}
-			yearMonthDayDob = ymdDob.toString();
-			// Set to null so if we have to repeat the loop, the user has a chance to re-enter information
-			monthDayYearDob = null;
-		} while (!(ValidationTools.isValidDate(yearMonthDayDob)));
-		
-		dob = LocalDate.parse(yearMonthDayDob);
-
+		}
 		return dob;
+//		System.out.println(monthDayYearDobString);
+//		String yearMonthDayDob = monthDayYearDobString;
+//		
+////		do {
+////			// while year-month-day is invalid (which it is at first)
+////			while (!(ValidationTools.isValidDateString(monthDayYearDobString))) {
+////				// while monthDayYear is invalid (which it hopefully isn't)
+////				System.out.println("Invalid date format: "+monthDayYearDobString);
+////				System.out.println("Please input your date of birth in the following format: MM-DD-YYYY");
+////				monthDayYearDobString = sc.nextLine();
+////			}
+////			StringBuilder ymdDob = new StringBuilder();
+////			for (int i=0; i<3; i++) {
+////				ymdDob.append(monthDayYearDobString.split("-")[(i+2)%3]);
+////			}
+////			yearMonthDayDob = ymdDob.toString();
+////			// Set to null so if we have to repeat the loop, the user has a chance to re-enter information
+////			monthDayYearDobString = null;
+////		} while (!(ValidationTools.isValidDate(yearMonthDayDob)));
+//		
+//		dob = LocalDate.parse(yearMonthDayDob);
+//
+//		return dob;
 	}
 	
 	public static String requestSsn(Scanner sc) {
-		System.out.println("Please input your social security number (XXX-XX-XXXX");
+		System.out.println("Please input your social security number (XXX-XX-XXXX)");
 		String ssn = sc.nextLine();
 		while (!(ValidationTools.isValidSsn(ssn))) {
 			System.out.println("Invalid social security number entry "+ssn);
@@ -153,7 +177,7 @@ public class UserInterface {
 	public static String phoneNumberCriteria() {
 		return "Valid phone numbers\n"
 				+ "* May or may not contain the +1 country code\n"
-				+ "* May or may not contain the following symbols: ( ) -\n"
+				+ "* May or may not contain spaces or following symbols: ( ) -\n"
 				+ "* Must contain exactly 10 digits excluding the above optional additions";
 	}
 

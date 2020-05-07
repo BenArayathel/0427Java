@@ -1,10 +1,16 @@
-package com.bankofben.bankapplication;
+package com.bankofben.models;
 
 import java.time.LocalDate;
 //import java.time.Period;
 //import java.util.List;
 //import java.util.ArrayList;
 //import java.time.format.DateTimeParseException;
+
+import org.apache.commons.lang3.StringUtils;
+
+import com.bankofben.business.BusinessException;
+import com.bankofben.presentation.UserInterface;
+import com.bankofben.presentation.ValidationTools;
 
 public class Person {
 	
@@ -131,7 +137,9 @@ public class Person {
 		if (firstName==null) {
 			throw new BusinessException("No entry for first name detected. A first name must be provided.");
 		} else {
-			this.firstName = firstName;
+			char[] firstNameArray = firstName.toCharArray();
+			firstNameArray[0] = Character.toUpperCase(firstNameArray[0]);
+			this.firstName = String.valueOf(firstNameArray);
 		}
 	}
 	
@@ -140,7 +148,9 @@ public class Person {
 	}
 	
 	public void setMiddleName(String middleName) {
-		this.middleName = middleName;
+		char[] middleNameArray = middleName.toCharArray();
+		middleNameArray[0] = Character.toUpperCase(middleNameArray[0]);
+		this.middleName = String.valueOf(middleNameArray);
 	}
 	
 	public String getLastName() {
@@ -151,7 +161,9 @@ public class Person {
 		if (lastName==null) {
 			throw new BusinessException("No entry for last name detected. A last name must be provided.");
 		} else {
-			this.lastName = lastName;
+			char[] lastNameArray = lastName.toCharArray();
+			lastNameArray[0] = Character.toUpperCase(lastNameArray[0]);
+			this.lastName = String.valueOf(lastNameArray);
 		}
 	}
 	
@@ -163,7 +175,9 @@ public class Person {
 		if (momsMaidenName==null) {
 			throw new BusinessException("Mother's maiden name must be provided.");
 		} else {
-			this.momsMaidenName = momsMaidenName;
+			char[] momsMaidenNameArray = momsMaidenName.toCharArray();
+			momsMaidenNameArray[0] = Character.toUpperCase(momsMaidenNameArray[0]);
+			this.momsMaidenName = String.valueOf(momsMaidenNameArray);
 		}
 	}
 	
@@ -172,9 +186,10 @@ public class Person {
 	}
 	
 	public void setSsn(String ssn) throws BusinessException {
-		if (email==null) {
+		if (ssn==null) {
 			throw new BusinessException("No entry detected for social security number. A social security number must be provided.");
-		} else if (ValidationTools.isValidSsn(ssn)) {
+		} 
+		if (ValidationTools.isValidSsn(ssn)) {
 			this.ssn = ssn;
 		} else {
 			throw new BusinessException("Invalid social security number.\n"+UserInterface.ssnCriteria());
@@ -223,6 +238,80 @@ public class Person {
 		} else {
 			this.dob = dob;
 		}
+	}
+
+	@Override
+	public String toString() {
+		return "Person [firstName=" + firstName + ", middleName=" + middleName + ", lastName=" + lastName
+				+ ", momsMaidenName=" + momsMaidenName + ", dob=" + dob + ", ssn=" + ssn + ", email=" + email
+				+ ", phoneNumber=" + phoneNumber + "]";
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((dob == null) ? 0 : dob.hashCode());
+		result = prime * result + ((email == null) ? 0 : email.hashCode());
+		result = prime * result + ((firstName == null) ? 0 : firstName.hashCode());
+		result = prime * result + ((lastName == null) ? 0 : lastName.hashCode());
+		result = prime * result + ((middleName == null) ? 0 : middleName.hashCode());
+		result = prime * result + ((momsMaidenName == null) ? 0 : momsMaidenName.hashCode());
+		result = prime * result + ((phoneNumber == null) ? 0 : phoneNumber.hashCode());
+		result = prime * result + ((ssn == null) ? 0 : ssn.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Person other = (Person) obj;
+		if (dob == null) {
+			if (other.dob != null)
+				return false;
+		} else if (!dob.equals(other.dob))
+			return false;
+		if (email == null) {
+			if (other.email != null)
+				return false;
+		} else if (!email.equals(other.email))
+			return false;
+		if (firstName == null) {
+			if (other.firstName != null)
+				return false;
+		} else if (!firstName.equals(other.firstName))
+			return false;
+		if (lastName == null) {
+			if (other.lastName != null)
+				return false;
+		} else if (!lastName.equals(other.lastName))
+			return false;
+		if (middleName == null) {
+			if (other.middleName != null)
+				return false;
+		} else if (!middleName.equals(other.middleName))
+			return false;
+		if (momsMaidenName == null) {
+			if (other.momsMaidenName != null)
+				return false;
+		} else if (!momsMaidenName.equals(other.momsMaidenName))
+			return false;
+		if (phoneNumber == null) {
+			if (other.phoneNumber != null)
+				return false;
+		} else if (!phoneNumber.equals(other.phoneNumber))
+			return false;
+		if (ssn == null) {
+			if (other.ssn != null)
+				return false;
+		} else if (!ssn.equals(other.ssn))
+			return false;
+		return true;
 	}
 
 }

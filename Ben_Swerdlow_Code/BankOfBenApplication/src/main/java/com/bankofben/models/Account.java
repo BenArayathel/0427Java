@@ -1,4 +1,6 @@
-package com.bankofben.bankapplication;
+package com.bankofben.models;
+
+import com.bankofben.business.BusinessException;
 
 public class Account {
 	

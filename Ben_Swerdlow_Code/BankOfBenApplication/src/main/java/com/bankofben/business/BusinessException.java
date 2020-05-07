@@ -1,4 +1,4 @@
-package com.bankofben.bankapplication;
+package com.bankofben.business;
 
 public class BusinessException extends Exception {
 

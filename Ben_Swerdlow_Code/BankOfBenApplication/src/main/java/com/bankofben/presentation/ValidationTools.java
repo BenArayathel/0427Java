@@ -1,4 +1,4 @@
-package com.bankofben.bankapplication;
+package com.bankofben.presentation;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
@@ -58,21 +58,20 @@ public class ValidationTools {
 	}
 
 	public static boolean isValidSsn(String ssn) {
-		if (ssn==null) {
-			return false;
-		}
-		else if (ssn.replace(" ", "").replace("-", "").matches("[0-9]{9}")) {
-			return true;
-		} else {
-			return false;
-		}
+//		if (ssn==null) {
+//			return false;
+//		}
+//		else {
+//			return ssn.replace(" ", "").replace("-", "").matches("[0-9]{9}");
+//		}
+		return ssn.replace(" ", "").replace("-", "").matches("[0-9]{9}");
 	}
 	
 	public static boolean isValidPhoneNumber(String phoneNum) {
 		if (phoneNum==null) {
 			return false;
 		} else {
-			String phoneNumber = phoneNum.replace("-", "").replace("(", "").replace(")", "").replace("+1", "");
+			String phoneNumber = phoneNum.replace("-", "").replace("(", "").replace(")", "").replace("+1", "").replace(" ", "");
 			if (phoneNumber.matches("[0-9]{10}")) {
 				return true;
 			} else {

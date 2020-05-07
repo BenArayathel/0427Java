@@ -1,21 +1,13 @@
-package com.bankofben.bankapplication;
+package com.bankofben.database;
 
 import java.sql.SQLException;
 
-public class DatabaseLayer {
-	
-	private static DatabaseLayer dbl;
-	
-	private DatabaseLayer() {
-		super();
-	}
+import com.bankofben.business.BusinessException;
+import com.bankofben.models.Customer;
+import com.bankofben.models.Employee;
+import com.bankofben.models.User;
 
-	public static DatabaseLayer getDatabaseLayer() {
-		if (dbl==null) {
-			dbl = new DatabaseLayer();
-		}
-		return dbl;
-	}
+public class DatabaseServices {
 
 	public User validateUser(String username, String password) throws BusinessException {
 		User user = null;
@@ -102,6 +94,16 @@ public class DatabaseLayer {
 		 *  TODO Check database to see if employee exists with employeeUsername
 		 */
 		return exists;
+	}
+
+	public Customer applyForAccount(User user) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public String getBalances(int customerID) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

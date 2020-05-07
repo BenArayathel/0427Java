@@ -1,9 +1,13 @@
-package com.bankofben.bankapplication;
+package com.bankofben.models;
 
 import java.time.LocalDate;
 import java.time.Period;
 //import java.util.HashSet;
 import java.util.Scanner;
+
+import com.bankofben.business.BusinessException;
+import com.bankofben.presentation.UserInterface;
+import com.bankofben.presentation.ValidationTools;
 
 public class User extends Person implements Comparable<User> {
 	
@@ -62,14 +66,14 @@ public class User extends Person implements Comparable<User> {
 	}
 	
 	private void setPassword(String password) throws BusinessException {
-		if (this.password.isEmpty()) {
+		if (this.password==null) {
 			if (ValidationTools.isValidPassword(password)) {
 				this.password = password;
 			} else {
 				throw new BusinessException("Invalid password.\n"+UserInterface.passwordCriteria());
 			}
 		} else {
-			throw new BusinessException("Password for "+username+" already exists. "
+			throw new BusinessException("Password for "+this.username+" already exists. "
 					+ "If you would like to change it, please login and change your password via the proper protocol. "
 					+ "If you forgot your password or cannot login, contact a Bank of Ben employee to assist you retrieving "
 					+ "your account information and setting up a new password.");
@@ -142,6 +146,13 @@ public class User extends Person implements Comparable<User> {
 	public int compareTo(User otherUser) {
 		String otherUsername = otherUser.getUsername();
 		return this.username.compareTo(otherUsername);
+	}
+
+	@Override
+	public String toString() {
+		return "User [username=" + username + ", password=" + password + ", id=" + id + ", firstName=" + firstName
+				+ ", middleName=" + middleName + ", lastName=" + lastName + ", momsMaidenName=" + momsMaidenName
+				+ ", dob=" + dob + ", ssn=" + ssn + ", email=" + email + ", phoneNumber=" + phoneNumber + "]";
 	}
 
 }

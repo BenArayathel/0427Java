@@ -2,11 +2,21 @@ package com.bankofben.unit_tests;
 
 import static org.junit.Assert.assertArrayEquals;
 
+import java.io.ByteArrayInputStream;
+import java.util.Scanner;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+
+import com.bankofben.business.BusinessException;
+import com.bankofben.models.User;
+import com.bankofben.presentation.PresentationLayer;
+import com.bankofben.presentation.ValidationTools;
 
 public class BankOfBenApplicationTests {
 	/*
@@ -21,18 +31,61 @@ public class BankOfBenApplicationTests {
 	
 	// Will be executed after each test
 	@Before
-	public static void before() {
+	public void before() {
 		System.out.println("\nAttempting the next Application test");
 	}
 	
 	@Test
-	public static void registerUser() {
-		// Test the user registration process
-//		assertArrayEquals(expecteds, actuals);
+	public void requestUserInfo_properCall_userReturned() throws BusinessException {
+		PresentationLayer pl = new PresentationLayer();
+		User expecteds[] = {new User(
+				"testFirst",
+				"testMiddle",
+				"testLast",
+				"testMom",
+				LocalDate.parse("10-10-2000", DateTimeFormatter.ofPattern("MM-dd-yyyy")), 
+				"111-11-1111",
+				"test@gmail.com",
+				"1234567890",
+				"testUsername",
+				"P4ssw0rd!")};
+		String inputs = "test@gmail.com\n"
+				+ "testUsername\n"
+				+ "testFirst\n"
+				+ "testMiddle\n"
+				+ "testLast\n"
+				+ "testMom\n"
+				+ "10-10-2000\n"
+				+ "111-11-1111\n"
+				+ "(123) 456-7890\n"
+				+ "P4ssw0rd!\n"
+				+ "P4ssw0rd!\n";
+		User actuals[] = {
+				pl.requestUserInfo(
+						new Scanner(
+								new ByteArrayInputStream(
+										inputs.getBytes())))};
+		assertArrayEquals(expecteds, actuals);
 	}
 	
 	@Test
-	public static void approve() {
+	public void requestLoginUserInfo_properCall_userReturned() throws BusinessException{PresentationLayer pl = new PresentationLayer();
+		User expecteds[] = {new User(
+			"testFirst",
+			"testMiddle",
+			"testLast",
+			"testMom",
+			LocalDate.parse("10-10-2000", DateTimeFormatter.ofPattern("MM-dd-yyyy")), 
+			"111-11-1111",
+			"test@gmail.com",
+			"1234567890",
+			"testUsername",
+			"P4ssw0rd!")};
+		
+	}
+	
+	@Test
+	public void approve() {
 		// Test the 
 	}
 	
@@ -45,7 +98,7 @@ public class BankOfBenApplicationTests {
 	// Will be executed after testing begins
 	@AfterClass
 	public static void after() {
-		
+		System.out.println("Completed all Application tests!");
 	}
 
 }

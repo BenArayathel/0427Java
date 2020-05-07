@@ -1,4 +1,4 @@
-package com.bankofben.bankapplication;
+package com.bankofben.models;
 
 public class Employee extends User {
 
