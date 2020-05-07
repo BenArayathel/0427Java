@@ -3,7 +3,7 @@ package com.application.bank.models;
 import com.application.bank.Account;
 
 public class User {
-
+	private int id;
 	private String name;
 	private String email;
 	private String phoneNumber;
@@ -12,13 +12,22 @@ public class User {
 	public User() {
 		
 	}
-	public User(String name, String email, String phoneNumber, String password, String status) {
+	public User(int id, String name, String email, String phoneNumber, String password, String status) {
 		super();
+		this.id = id;
 		this.name = name;
 		this.email = email;
 		this.phoneNumber = phoneNumber;
 		this.password = password;
 		this.status = status;
+	}
+	
+	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
 	}
 	public String getName() {
 		return name;

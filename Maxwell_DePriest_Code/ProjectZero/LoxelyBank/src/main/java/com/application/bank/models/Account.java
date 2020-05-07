@@ -1,7 +1,7 @@
 package com.application.bank.models;
 
 public class Account {
-	
+	private int id;
 	private int savingsAccountNumber;
 	private int checkingAccountNumber;
 	private double checkingBalance;
@@ -13,15 +13,25 @@ public class Account {
 		
 	}
 
-	public Account(int savingsAccountNumber, int checkingAccountNumber, double checkingBalance, double savingsBalance,
+	public Account(int id, int savingsAccountNumber, int checkingAccountNumber, double checkingBalance, double savingsBalance,
 			boolean active, String userEmail) {
 		super();
+		this.id = id;
 		this.savingsAccountNumber = savingsAccountNumber;
 		this.checkingAccountNumber = checkingAccountNumber;
 		this.checkingBalance = checkingBalance;
 		this.savingsBalance = savingsBalance;
 		this.active = active;
 		this.userEmail = userEmail;
+	}
+
+	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public int getSavingsAccountNumber() {

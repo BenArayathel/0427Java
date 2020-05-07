@@ -20,7 +20,7 @@ public class Main {
 		System.out.println("Welcome to Loxely Savings and Loans.");
 		loggy.info("Main function running");
 		
-		l.signIn();
+		//l.signIn();
 		//signIn(sc, l);
 		
 	}
