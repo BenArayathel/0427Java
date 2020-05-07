@@ -39,17 +39,22 @@
 <fullyQualifiedTypeName name="util.helper.Hm"/>
 <fullyQualifiedTypeName name="user.cust.account.controller.CustApplyForAcct"/>
 <fullyQualifiedTypeName name="user.cust.account.models.User"/>
-<fullyQualifiedTypeName name="bank.transaction.dao.BankDaoImpl"/>
 <fullyQualifiedTypeName name="user.cust.account.controller.UserOptions"/>
 <fullyQualifiedTypeName name="user.cust.account.controller.CustOptionsDirectory"/>
 <fullyQualifiedTypeName name="user.cust.account.models.Customer"/>
 <fullyQualifiedTypeName name="eg2.Employee"/>
 <fullyQualifiedTypeName name="user.cust.account.controller.AcctOptionsDirectory"/>
 <fullyQualifiedTypeName name="user.cust.account.models.Account"/>
-<fullyQualifiedTypeName name="java.util.List"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="bank.transaction.dao.TransactionDeposit"/>
 <fullyQualifiedTypeName name="bank.transaction.dao.TransactionWithdraw"/>
 <fullyQualifiedTypeName name="bank.transaction.dao.TransferSent"/>
 <fullyQualifiedTypeName name="bank.transaction.dao.TransferRecieved"/>
+<fullyQualifiedTypeName name="models.Planet"/>
+<fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
+<fullyQualifiedTypeName name="bank.transaction.dao.BankDaoImpl"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="java.sql.Connection"/>
+<fullyQualifiedTypeName name="java.sql.SQLException"/>
+<fullyQualifiedTypeName name="java.sql.DriverManager"/>
 </qualifiedTypeNameHistroy>

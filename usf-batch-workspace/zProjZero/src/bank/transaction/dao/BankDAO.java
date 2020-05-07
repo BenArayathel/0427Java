@@ -17,9 +17,9 @@ public interface BankDAO {
 	
 	public List<User> getAllUsers();
 
-	public Customer login(User user);
+	public boolean login(User user);
 	
-	public boolean userRegistrationToBecomeCustomer(User user, String email);					// step 1 of 2: apply
+	public boolean userRegistrationToBecomeCustomer(User user);					// step 1 of 2: apply
 	
 	public boolean employeeRejectOrApprove_userRegistrationToBecomeCustomer(User user, String email);	// step 2 of 2: approve check
 

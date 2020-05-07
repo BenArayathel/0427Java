@@ -20,12 +20,18 @@ public class UserRegToBecomeCustomer {
 		if (scanner.hasNext()) {
 
 			this.email = scanner.nextLine();
-			//user.setEmail(this.email);
+			// https://howtodoinjava.com/regex/java-regex-validate-email-address/
+			if (this.email.matches("^(.+)@(.+)$")) {
+				user.setEmail(this.email);
+				BankDaoImpl bankDaoImpl = new BankDaoImpl();
+				bankDaoImpl.userRegistrationToBecomeCustomer(user);
+			} else {
+				System.out.println("Sorry that is not a valid format");
+			}
 		}
 		
 		//Customer c = new Customer(user.getUserName(), user.getPassword(), name, phone, address, city, state, zip);
-		BankDaoImpl bankDaoImpl = new BankDaoImpl();
-		bankDaoImpl.userRegistrationToBecomeCustomer(user, this.email);
+
 
 	}
 

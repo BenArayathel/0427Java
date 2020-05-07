@@ -1,14 +1,23 @@
 package user.cust.account.controller;
 
+import java.util.Iterator;
+import java.util.List;
 import java.util.Scanner;
 
-import util.helper.Hm;
+import bank.transaction.dao.BankDaoImpl;
+import user.cust.account.models.User;
 
 public class UserWelcome {
 
 	//private static Scanner scanner = new Scanner(System.in);
 
 	public static void main(String[] args) {
+		
+		BankDaoImpl b = new BankDaoImpl();
+		List<User> u = b.getAllUsers();
+		for (User user : u) {
+			System.out.println(user.toString());
+		}
 
 		Scanner scanner = new Scanner(System.in);
 
@@ -22,8 +31,9 @@ public class UserWelcome {
 	private void greetUser(Scanner scanner) {
 
 		System.out.println("Hello, welcome to the Bank.");
-		System.out.println("Enter: 1 to Register: ");
-		System.out.println("Enter: 2 to Login: ");
+		System.out.println("1 to Register: ");
+		System.out.println("2 to Login: ");
+		System.out.println("3 to Quit: ");
 
 		if (scanner.hasNextLine()) {
 
@@ -36,6 +46,9 @@ public class UserWelcome {
 			}
 			if (input == 2) {
 				UserLogin.getUserName();
+			}
+			if (input == 3) {
+				System.exit(0);
 			}
 		}
 

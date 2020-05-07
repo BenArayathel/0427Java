@@ -2,6 +2,9 @@ package user.cust.account.controller;
 
 import java.util.Scanner;
 
+import bank.transaction.dao.BankDaoImpl;
+import user.cust.account.models.User;
+
 public class UserLogin {
 	
 	private static String username;
@@ -10,12 +13,11 @@ public class UserLogin {
 	
 	public static void getUserName() {
 
-		System.out.println("Create a Username: ");
+		System.out.println("Enter Username: ");
 
 		if (scanner.hasNext()) {
 
 			username = scanner.nextLine();
-			System.out.println("Hello: " + username);
 		}
 		getPassword();
 
@@ -23,12 +25,23 @@ public class UserLogin {
 	
 	private static void getPassword() {
 
-		System.out.println("Create a password: ");
+		System.out.println("Enter Password: ");
 		if (scanner.hasNext()) {
 
 			password = scanner.nextLine();
 			scanner.close();
-			System.out.println("Thanks, you are now logged into the Bank");
+			
+			// call the db
+			BankDaoImpl b = new BankDaoImpl();
+			User user = new User(username, password);
+			
+			
+			if (b.login(user)) {
+				System.out.println("Thanks, you are now logged into the Bank");
+				
+			} else {
+				System.out.println("Please check credentials..");
+			}
 		}
 
 	}

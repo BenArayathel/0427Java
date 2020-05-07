@@ -1,8 +1,14 @@
 package bank.transaction.dao;
 
+import java.sql.Connection;
+//import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import connection.utilities.DAOUtilites;
 import user.cust.account.controller.AcctOptionsDirectory;
 import user.cust.account.controller.CustOptionsDirectory;
 import user.cust.account.controller.UserOptions;
@@ -11,41 +17,156 @@ import user.cust.account.models.Customer;
 import user.cust.account.models.User;
 
 public class BankDaoImpl implements BankDAO {
+	
+	Connection conn = null;
+	PreparedStatement ps = null;
+	ResultSet rs = null;
 
-	List<Employee> employee = new ArrayList<>();
-	List<User> user = new ArrayList<>(); // arrayList
+	//private static List<Employee> employee = new ArrayList<>();
+	//private static List<User> userList = new ArrayList<>(); // arrayList
+	//private static String url = "jdbc:oracle:thin:@database-1.ctmojn75tg7f.us-east-2.rds.amazonaws.com:1521:orcl";
+	//private static String username = "mybasic";
+	//private static String password = "34uy34uy";
 	
 	@Override
 	public boolean createUser(User user) {
 		// TODO Auto-generated method stub
-		System.out.println("db Creates user.");
+		
+		try{
+
+			/**
+			 * INSERT INTO b_user(user_id, username, password) values(2, 'test1', 'test1');
+			 * 
+			 * TODO:
+			 * AUTO INCREMENT ON ID'S ------------------------------------------------>
+			 */
+			conn = DAOUtilites.getConnection();
+			//ps = conn.prepareStatement("INSERT INTO b_user(user_id, username, password) values(12, '"+ user.getUserName() +"', '"+ user.getPassword() +"')");
+			ps = conn.prepareStatement("INSERT INTO b_user(user_id, username, password) values(4, ?, ?)");
+			ps.setString(1, user.getUserName());
+			ps.setString(2, user.getPassword());
+			
+			if (ps.executeUpdate() != 0) {
+				System.out.println("db Creates user.");
+				return true;
+			} else {
+				System.out.println("Sorry something went wrong");
+				return false;
+			}
+			
+			//  insert User
+			//rs.close();
+			
+		}
+		catch(SQLException e) {
+			e.printStackTrace();
+		}
+		finally {
+			closeResources();
+			
+		}
 		return true;
 	}
 
 	@Override
 	public List<User> getAllUsers() {
 		// TODO Auto-generated method stub
-		return null;
+		System.out.println("getAll ran\n");
+		List<User> userList = new ArrayList<>();
+		
+		// old try with resources
+		// Connection conn = DriverManager.getConnection(url, username, password))
+		try{
+//			PreparedStatement ps = conn.prepareStatement("SELECT * FROM b_user");
+//			ResultSet rs = ps.executeQuery();
+			conn = DAOUtilites.getConnection();
+			ps = conn.prepareStatement("SELECT * FROM b_user");
+			rs = ps.executeQuery();
+			
+			while (rs.next()) {
+				System.out.println(rs.getString("userName"));
+				userList.add(
+						new User(rs.getString("userName"), 
+								rs.getString("password"),
+								rs.getInt("user_id"),
+								rs.getString("email")));
+			}
+			//rs.close();
+			
+		}
+		catch(SQLException e) {
+			e.printStackTrace();
+		}
+		finally {
+			closeResources();
+			
+		}
+		return userList;
 	}
 
+
+
 	@Override
-	public Customer login(User user) {
-		// TODO Auto-generated method stub
-		return null;
+	public boolean login(User user) {
+		
+		try{
+//			PreparedStatement ps = conn.prepareStatement("SELECT * FROM b_user");
+//			ResultSet rs = ps.executeQuery();
+			conn = DAOUtilites.getConnection();
+			ps = conn.prepareStatement("SELECT * FROM b_user WHERE USERNAME=? AND PASSWORD=?");
+			ps.setString(1, user.getUserName());
+			ps.setString(2, user.getPassword());
+			rs = ps.executeQuery();
+			
+			return rs.next();
+				
+			
+		}
+		catch(SQLException e) {
+			e.printStackTrace();
+		}
+		finally {
+			closeResources();
+			
+		}
+		return false;
 	}
 	
 	@Override
-	public boolean userRegistrationToBecomeCustomer(User user, String email) {
+	public boolean userRegistrationToBecomeCustomer(User user) {
 		
 		System.out.println("Successful application submission.");
 		System.out.println("\nA Bank Employee will make a dertermination as soon as possible.");
-		System.out.println("Application For Customer Received @ db");
+		//System.out.println("Application For Customer Received @ db");
 		System.out.println("Thanks for applying");
 		
-		// TODO ...PERSIST TO DB
+		
+		try{
+
+			conn = DAOUtilites.getConnection();
+			ps = conn.prepareStatement("UPDATE b_user SET EMAIL=? WHERE USERNAME=?");
+			ps.setString(1, user.getEmail());
+			ps.setString(2, user.getUserName());
+			
+			if (ps.executeUpdate() != 0) {
+				return true;
+			} else {
+				return false;
+			}
+			
+		}
+		catch(SQLException e) {
+			e.printStackTrace();
+		}
+		finally {
+			closeResources();
+			
+		}
+		
+		
 		// FORWARD DATA TO EMPLOYEE FRONT END ?
 		// FOR NOW, DO THIS ...
-		employeeRejectOrApprove_userRegistrationToBecomeCustomer(user, email);
+		employeeRejectOrApprove_userRegistrationToBecomeCustomer(user, user.getEmail());
 		return true;
 	}
 	
@@ -129,8 +250,63 @@ public class BankDaoImpl implements BankDAO {
 
 
 
-
+	private void closeResources() {
+		// TODO Auto-generated method stub
+		
+		try {
+			if (rs != null && !rs.isClosed()) {
+				System.out.println("Closed result set...");
+				rs.close();
+			}
+		} catch (Exception e) {
+			System.out.println("Could not close result set !");
+			e.printStackTrace();
+		}
+		
+		try {
+			if (ps != null) {
+				ps.close();
+			}
+		} catch (SQLException e) {
+			System.out.println("Could not close statement!");
+			e.printStackTrace();
+		}
+		
+		try {
+			if (conn != null) {
+				conn.close();
+				System.out.println("Closing down connection...");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+	}
 
 
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,4 +1,4 @@
-package util.helper;
+package connection.utilities;
 
 import java.util.Scanner;
 

@@ -32,10 +32,12 @@ public class PlanetDaoImpl implements PlanetDao{
 	 */
 	
 	//"jdbc:oracle:thin:@<endpoint>:1521:orcl"
+	// Ben's
+	//"jdbc:oracle:thin:@database-1.ctmojn75tg7f.us-east-2.rds.amazonaws.com:1521:orcl"
 	private static String url =
-			"jdbc:oracle:thin:@myfirstorcl.cqoseij0k35s.us-east-2.rds.amazonaws.com:1521:orcl";
-	private static String username = "puser";
-	private static String password = "p4ssw0rd";
+			"jdbc:oracle:thin:@database-1.ctmojn75tg7f.us-east-2.rds.amazonaws.com:1521:orcl";
+	private static String username = "mybasic";
+	private static String password = "34uy34uy";
 
 	@Override
 	public void insertPlanet(Planet p) {

@@ -16,7 +16,7 @@ public class UserOptions {
 		//System.out.println("View Balance: 2");
 		//System.out.println("Deposit: 3");
 		//System.out.println("Withdraw: 4");
-		System.out.println("Provide possible exit/logout options here");
+		System.out.println("2 - Quit");
 
 
 		if (scanner.hasNext()) {
@@ -26,6 +26,10 @@ public class UserOptions {
 			if (nav == 1) {
 				UserRegToBecomeCustomer ur = new UserRegToBecomeCustomer();
 				ur.acctForm(user);
+			}
+			
+			if (nav == 3) {
+				System.exit(0);
 			}
 			
 //			if (nav == 2){
