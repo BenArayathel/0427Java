@@ -1,0 +1,18 @@
+What is meant by cursor in SQL?
+A cursor is a temporary work area created in the system memory when a SQL statement is executed. A cursor contains information on a select statement and the rows of data accessed by it. This temporary work area is used to store the data retrieved from the database, and manipulate this data.
+Reference
+https://plsql-tutorial.com/plsql-cursors.htm
+
+What is trigger in SQL?
+Trigger: A trigger is a stored procedure in database which automatically invokes whenever a special event in the database occurs. For example, a trigger can be invoked when a row is inserted into a specified table or when certain table columns are being updated.
+Reference
+https://www.geeksforgeeks.org/sql-trigger-student-database/
+
+collection (varrays, record, index by table) in SQL?
+A collection is an ordered group of elements having the same data type. Each element is identified by a unique subscript that represents its position in the collection.
+
+varrays: Varrays (short for variable-size arrays) hold a fixed number of elements (although you can change the number of elements at runtime). They use sequential numbers as subscripts. You can define equivalent SQL types, allowing varrays to be stored in database tables.
+record: A record is a data structure that can hold data items of different kinds. Records consist of different fields, similar to a row of a database table.
+index by table: An index-by table (also called an associative array) is a set of key-value pairs. Each key is unique and is used to locate the corresponding value. The key can be either an integer or a string.
+Reference
+https://docs.oracle.com/cd/A97630_01/appdev.920/a96624/05_colls.htm
