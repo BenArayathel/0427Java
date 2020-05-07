@@ -5,7 +5,7 @@ import java.time.Period;
 //import java.util.HashSet;
 import java.util.Scanner;
 
-import com.bankofben.business.BusinessException;
+import com.bankofben.exceptions.BusinessException;
 import com.bankofben.presentation.UserInterface;
 import com.bankofben.presentation.ValidationTools;
 
@@ -13,7 +13,7 @@ public class User extends Person implements Comparable<User> {
 	
 	private String username;
 	private String password;
-	private final int id;
+	private final String id;
 	// For now, we will use counter to generate unique ids
 	// This will change once we do database stuff
 	private static Integer counter = 0;
@@ -22,7 +22,7 @@ public class User extends Person implements Comparable<User> {
 		super();
 		// Change this when you learn database stuff
 		counter++;
-		this.id = counter.hashCode();
+		this.id = Integer.toString(counter.hashCode());
 	}
 
 	public User(String firstName, String middleName, String lastName, String momsMaidenName, LocalDate dob, String ssn,
@@ -35,7 +35,7 @@ public class User extends Person implements Comparable<User> {
 		setPassword(password);
 		// Change this when you learn database stuff
 		counter++;
-		this.id = counter.hashCode();
+		this.id = Integer.toString(counter.hashCode());
 	}
 	
 	public boolean passwordMatch(String password) {
@@ -109,7 +109,7 @@ public class User extends Person implements Comparable<User> {
 		}
 	}
 
-	public int getId() {
+	public String getId() {
 		return id;
 	}
 	

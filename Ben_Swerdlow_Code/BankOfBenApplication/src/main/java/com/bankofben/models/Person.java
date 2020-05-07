@@ -1,14 +1,8 @@
 package com.bankofben.models;
 
 import java.time.LocalDate;
-//import java.time.Period;
-//import java.util.List;
-//import java.util.ArrayList;
-//import java.time.format.DateTimeParseException;
 
-import org.apache.commons.lang3.StringUtils;
-
-import com.bankofben.business.BusinessException;
+import com.bankofben.exceptions.BusinessException;
 import com.bankofben.presentation.UserInterface;
 import com.bankofben.presentation.ValidationTools;
 
@@ -19,102 +13,18 @@ public class Person {
 	protected String lastName;
 	protected String momsMaidenName;
 	protected LocalDate dob;
-	protected String ssn;
-//	private String stateId;
-//	private String streetAddress;
-//	private String suiteAptOther;
-//	private String zipCode;
+	protected long ssn;
 	protected String email;
-	protected String phoneNumber;
+	protected long phoneNumber;
 	
 	public Person() {
 		super();
 	}
-	
-//	public Person(Scanner sc) {
-//		super();
-//		
-//		System.out.println("Please input your first name:");
-//		String firstName = sc.nextLine();
-//		this.firstName = firstName;
-//		
-//		System.out.println("Please input your middle name:");
-//		String middleName = sc.nextLine();
-//		this.middleName = middleName;
-//		
-//		System.out.println("Please input your last name:");
-//		String lastName = sc.nextLine();
-//		this.LastName = lastName;
-//		
-//		System.out.println("Please input your mother's maiden name:");
-//		String momsMaidenName = sc.nextLine();
-//		this.momsMaidenName = momsMaidenName;
-//		
-//		boolean noDate = true;
-//		while (noDate) {
-//			System.out.println("Please input your date of birth in the following format: DD-MM-YYYY");
-//			String dmyDob = sc.nextLine();
-//			StringBuilder ymdDob = new StringBuilder();
-//			for (int i=0; i<3; i++) {
-//				ymdDob.append(dmyDob.split("-")[2-i]);
-//			}
-//			try {
-//				LocalDate dob = LocalDate.parse(ymdDob);
-//				setDob(dob);
-//				noDate = false;
-//			} catch (DateTimeParseException e) {
-//				System.out.println("Invalid date entry "+dmyDob);
-//			}
-//		}
-//		
-//		boolean noSsn = true;
-//		while (noSsn) {
-//			System.out.println("Please input your social security number: (XXX-XX-XXXX)");
-//			String ssn = sc.nextLine();
-//			try {
-//				setSsn(ssn);
-//				noSsn = false;
-//			} catch (InvalidSsnException e) {
-//				System.out.println("Invalid social security number entry "+ssn);
-//			}
-//		}
-////		this.stateId = stateId;
-////		this.streetAddress = streetAddress;
-////		this.suiteAptOther = suiteAptOther;
-////		this.zipCode = zipCode;
-//		
-//		boolean noEmail = true;
-//		while (noEmail) {
-//			System.out.println("Please input your email:");
-//			String email = sc.nextLine();
-//			try {
-//				setEmail(email);
-//				noEmail = false;
-//			} catch (EmailInvalidException e) {
-//				System.out.println("Invalid email entry "+email);
-//			}
-//		}
-//		
-//		boolean noPhoneNumber = true;
-//		while (noPhoneNumber) {
-//			System.out.println("Please input your phone number:");
-//			String phoneNumber = sc.nextLine();
-//			try {
-//				setPhoneNumber(phoneNumber);
-//				noPhoneNumber = false;
-//			} catch (InvalidPhoneNumberException e) {
-//				System.out.println("Invalid phone number entry "+phoneNumber);
-//			}
-//		}
-//	}
 
 	public Person(String firstName, String middleName, String lastName, String momsMaidenName, LocalDate dob,
-			String ssn, String email, String phoneNumber) throws BusinessException { 
-//					throws BlankFieldException, InvalidDateOfBirthException,
-//			InvalidSsnException, InvalidEmailException, InvalidPhoneNumberException {
+			String ssn, String email, String phoneNumber) throws BusinessException {
 		super();
-		
-//		List<String> blankFieldMessages = new ArrayList<>();
+	
 		setFirstName(firstName);
 		this.middleName = middleName;
 		setLastName(lastName);
@@ -181,8 +91,19 @@ public class Person {
 		}
 	}
 	
-	public String getSsn() {
+	public Long getSsn() {
 		return ssn;
+	}
+	
+	public void setSsn(long ssn) throws BusinessException {
+		if (ssn==0) {
+			throw new BusinessException("No entry detected for social security number. A social security number must be provided.");
+		} 
+		if (ValidationTools.isValidSsn(Long.toString(ssn))) {
+			this.ssn = ssn;
+		} else {
+			throw new BusinessException("Invalid social security number.\n"+UserInterface.ssnCriteria());
+		}
 	}
 	
 	public void setSsn(String ssn) throws BusinessException {
@@ -190,7 +111,11 @@ public class Person {
 			throw new BusinessException("No entry detected for social security number. A social security number must be provided.");
 		} 
 		if (ValidationTools.isValidSsn(ssn)) {
-			this.ssn = ssn;
+			try {
+				this.ssn = Long.parseLong(ssn.replace("-","").replace(" ", ""));
+			} catch (NumberFormatException e) {
+				throw new BusinessException("Invalid social security number.\n"+UserInterface.ssnCriteria());
+			}
 		} else {
 			throw new BusinessException("Invalid social security number.\n"+UserInterface.ssnCriteria());
 		}
@@ -211,8 +136,19 @@ public class Person {
 		}
 	}
 	
-	public String getPhoneNumber() {
+	public long getPhoneNumber() {
 		return phoneNumber;
+	}
+	
+	public void setPhoneNumber(long phoneNumber) throws BusinessException {
+		if (phoneNumber == 0) {
+			throw new BusinessException("No entry detected for phone number. A phone number must be provided.");
+		}
+		if (ValidationTools.isValidPhoneNumber(phoneNumber)) {
+			this.phoneNumber = phoneNumber;
+		} else {
+			throw new BusinessException("Invalid phone number.\n"+UserInterface.phoneNumberCriteria());
+		}
 	}
 	
 	public void setPhoneNumber(String phoneNumber) throws BusinessException {
@@ -220,7 +156,11 @@ public class Person {
 			throw new BusinessException("No entry detected for phone number. A phone number must be provided.");
 		}
 		if (ValidationTools.isValidPhoneNumber(phoneNumber)) {
-			this.phoneNumber = phoneNumber;
+			try {
+				this.phoneNumber = Long.parseLong(phoneNumber);
+			} catch (NumberFormatException e) {
+				throw new BusinessException("Invalid phone number.\n"+UserInterface.phoneNumberCriteria());
+			}
 		} else {
 			throw new BusinessException("Invalid phone number.\n"+UserInterface.phoneNumberCriteria());
 		}
@@ -251,14 +191,7 @@ public class Person {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((dob == null) ? 0 : dob.hashCode());
-		result = prime * result + ((email == null) ? 0 : email.hashCode());
-		result = prime * result + ((firstName == null) ? 0 : firstName.hashCode());
-		result = prime * result + ((lastName == null) ? 0 : lastName.hashCode());
-		result = prime * result + ((middleName == null) ? 0 : middleName.hashCode());
-		result = prime * result + ((momsMaidenName == null) ? 0 : momsMaidenName.hashCode());
-		result = prime * result + ((phoneNumber == null) ? 0 : phoneNumber.hashCode());
-		result = prime * result + ((ssn == null) ? 0 : ssn.hashCode());
+		result = prime * result + (int) (ssn ^ (ssn >>> 32));
 		return result;
 	}
 
@@ -271,45 +204,7 @@ public class Person {
 		if (getClass() != obj.getClass())
 			return false;
 		Person other = (Person) obj;
-		if (dob == null) {
-			if (other.dob != null)
-				return false;
-		} else if (!dob.equals(other.dob))
-			return false;
-		if (email == null) {
-			if (other.email != null)
-				return false;
-		} else if (!email.equals(other.email))
-			return false;
-		if (firstName == null) {
-			if (other.firstName != null)
-				return false;
-		} else if (!firstName.equals(other.firstName))
-			return false;
-		if (lastName == null) {
-			if (other.lastName != null)
-				return false;
-		} else if (!lastName.equals(other.lastName))
-			return false;
-		if (middleName == null) {
-			if (other.middleName != null)
-				return false;
-		} else if (!middleName.equals(other.middleName))
-			return false;
-		if (momsMaidenName == null) {
-			if (other.momsMaidenName != null)
-				return false;
-		} else if (!momsMaidenName.equals(other.momsMaidenName))
-			return false;
-		if (phoneNumber == null) {
-			if (other.phoneNumber != null)
-				return false;
-		} else if (!phoneNumber.equals(other.phoneNumber))
-			return false;
-		if (ssn == null) {
-			if (other.ssn != null)
-				return false;
-		} else if (!ssn.equals(other.ssn))
+		if (ssn != other.ssn)
 			return false;
 		return true;
 	}

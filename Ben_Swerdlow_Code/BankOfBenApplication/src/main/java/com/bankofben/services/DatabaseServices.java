@@ -1,13 +1,18 @@
-package com.bankofben.database;
+package com.bankofben.services;
 
 import java.sql.SQLException;
+import java.util.List;
 
-import com.bankofben.business.BusinessException;
+import com.bankofben.dao.BankOfBenDAO;
+import com.bankofben.exceptions.BusinessException;
+import com.bankofben.models.Account;
 import com.bankofben.models.Customer;
 import com.bankofben.models.Employee;
 import com.bankofben.models.User;
 
 public class DatabaseServices {
+	
+	private BankOfBenDAO dao = new BankOfBenDAO();
 
 	public User validateUser(String username, String password) throws BusinessException {
 		User user = null;
@@ -64,7 +69,7 @@ public class DatabaseServices {
 
 	private boolean customerExists(Customer customer) {
 		boolean exists = false;
-		int employeeID = customer.getId();
+		String employeeID = customer.getId();
 		/*
 		 *  TODO Check database to see if employee already exists using the employeeID
 		 */
@@ -81,7 +86,7 @@ public class DatabaseServices {
 
 	private boolean employeeExists(Employee employee) {
 		boolean exists = false;
-		int employeeID = employee.getId();
+		String employeeID = employee.getId();
 		/*
 		 *  TODO Check database to see if employee already exists using the employeeID
 		 */
@@ -101,9 +106,20 @@ public class DatabaseServices {
 		return null;
 	}
 
-	public String getBalances(int customerID) {
+	public String getBalances(Customer customer) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	public Account getAccount(long accountNumber, String routingNumber) throws BusinessException {
+		// TODO Auto-generated method stub
+//		throw new BusinessException("Recipient account and intended recipient account do not match. Please check "
+//				+ "that your information is correct. If it is, contact a Bank of Ben employee to remedy the issue.");
+		return dao.getAccountByAccountNumber(accountNumber);
+	}
+	
+	public List<Account> getAccountsForCustomer(Customer customer) throws BusinessException {
+		return dao.getAccountsForCustomerId(customer.getId());
 	}
 
 }

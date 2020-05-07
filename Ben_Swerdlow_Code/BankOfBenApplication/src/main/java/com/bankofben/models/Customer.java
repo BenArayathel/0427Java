@@ -3,7 +3,7 @@ package com.bankofben.models;
 import java.time.LocalDate;
 import java.util.HashSet;
 
-import com.bankofben.business.BusinessException;
+import com.bankofben.exceptions.BusinessException;
 
 public class Customer extends User {
 	

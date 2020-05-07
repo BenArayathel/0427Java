@@ -13,7 +13,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import com.bankofben.business.BusinessException;
+import com.bankofben.exceptions.BusinessException;
 import com.bankofben.models.User;
 import com.bankofben.presentation.PresentationLayer;
 import com.bankofben.presentation.ValidationTools;

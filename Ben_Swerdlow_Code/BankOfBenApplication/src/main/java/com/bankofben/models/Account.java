@@ -1,43 +1,62 @@
 package com.bankofben.models;
 
-import com.bankofben.business.BusinessException;
+import com.bankofben.exceptions.BusinessException;
+import com.bankofben.presentation.ValidationTools;
 
 public class Account {
 	
-	private String accountNumber;
+	private long accountNumber;
 	// This is a small bank, so everyone has the same routing number
 	private static final String routingNumber = "123456789";
 	private double balance;
-	private User owner;
+	private int customerId;
 	
 	public Account() {
 		super();
 	}
 	
-	public Account(String accountNumber, double balance, User owner) throws BusinessException {
+	public Account(long accountNumber, double balance, User owner) throws BusinessException {
 		super();
 		setAccountNumber(accountNumber);
-		setBalance(balance);
-		setOwner(owner);
+		this.balance = balance;
+		setCustomerId(owner.getId());
 	}
 	
-	public String getAccountNumber() {
+	public Long getAccountNumber() {
 		return accountNumber;
 	}
 	
 	public void setAccountNumber(String accountNumber) throws BusinessException {
 		if (Long.parseLong(accountNumber) <= 0 || accountNumber.length() != 10) {
-			throw new BusinessException("Account number must be a positive 10-digit number");
+			throw new BusinessException("Invalid account number. Account number must be a positive 10-digit number");
 		}
 		
-		if (this.accountNumber==null) {
-			this.accountNumber = accountNumber;
+		if (this.accountNumber==0) {
+			try {
+				this.accountNumber = Long.parseLong(accountNumber);
+			} catch (NumberFormatException e) {
+				throw new BusinessException("Invalid account number. Account number must be a positive 10-digit number");
+			}
 		} else {
-			throw new BusinessException("Account numbers cannot change after creation.");
+			throw new BusinessException("Attempt to make account failed. Account alreaedy exists and account numbers "
+					+ "cannot change after creation.");
 		}
 	}
 	
-	public String getRoutingNumber() {
+	public void setAccountNumber(long accountNumber) throws BusinessException {
+		if (accountNumber <= 0 || Long.toString(accountNumber).length() != 10) {
+			throw new BusinessException("Invalid account number. Account number must be a positive 10-digit number");
+		}
+		
+		if (this.accountNumber==0) {
+			this.accountNumber = accountNumber;
+		} else {
+			throw new BusinessException("Attempt to make account failed. Account alreaedy exists and account numbers "
+					+ "cannot change after creation.");
+		}
+	}
+	
+	public static String getRoutingNumber() {
 		return routingNumber;
 	}
 
@@ -48,92 +67,33 @@ public class Account {
 		return balance;
 	}
 	
-	private void setBalance(double balance) throws BusinessException {
-		if (isValidMonetaryAmount(balance)) {
-			if (Double.valueOf(balance)==Double.POSITIVE_INFINITY) {
-				throw new BusinessException("Balances in excess of "+Double.MAX_VALUE+" are handled "
-						+ "via another system. Contact a Bank of Ben employee for more details.");
+	public void setBalance(double balance, User customerOrEmployee) throws BusinessException {
+		if ((customerOrEmployee instanceof Customer && customerOrEmployee.getId()==this.getCustomerId())
+				|| customerOrEmployee instanceof Employee) {
+			if (ValidationTools.isValidMonetaryAmount(balance)) {
+				if (Double.valueOf(balance)==Double.POSITIVE_INFINITY) {
+					throw new BusinessException("Balances in excess of "+Double.MAX_VALUE+" are handled "
+							+ "via another system. Contact a Bank of Ben employee for more details.");
+				} else if (balance < 0) {
+					throw new BusinessException("The balance of an account cannot be a negative number.");
+				} else {
+					this.balance = balance;
+				}
 			} else {
-				this.balance = balance;
+				throw new BusinessException("Balance amount must be a positive number that has only "
+						+ "two digits after the decimal point");
 			}
 		} else {
-			throw new BusinessException("Balance amount must be a positive number that has only "
-					+ "two digits after the decimal point");
+			throw new BusinessException("Invalid credentials to change account "+this.getAccountNumber()+". Please check your information and try again.");
 		}
 	}
 
-	public User getOwner() {
-		return owner;
+	public int getCustomerId() {
+		return customerId;
 	}
 
-	public void setOwner(User owner) {
-		this.owner = owner;
-	}
-	
-	public void makeDeposit(double deposit, String accountNumber, String routingNumber) throws BusinessException {
-		if (isValidMonetaryAmount(deposit)) {
-			if (!(routingNumber.equals(Account.routingNumber))) {
-				// Check routing number
-				throw new BusinessException("Given routing number does not match Bank of Ben's routing number. Please check "
-						+ "that your information is correct. If it is, contact a Bank of Ben employee to remedy the issue.");
-			} else if (!(accountNumber.equals(this.accountNumber))) {
-				// Check account number
-				throw new BusinessException("Recipient account and intended recipient account do not match. Please check "
-						+ "that your information is correct. If it is, contact a Bank of Ben employee to remedy the issue.");
-			} else if (Double.valueOf(getBalance() + deposit)==Double.POSITIVE_INFINITY) {
-				// Check that the maximum balance is not exceeded
-				throw new BusinessException("Deposits that would result in balances in excess of "+Double.MAX_VALUE+" are handled "
-						+ "via another system. Contact a Bank of Ben employee for more details.");
-			} else {
-				setBalance(getBalance() + deposit);
-			}
-		} else {
-			throw new BusinessException("Deposit amount must be a positive number that has only "
-					+ "two digits after the decimal point.");
-		}
-	}
-	
-	public void makeWithdrawal(double withdrawal, String accountNumber, String routingNumber) throws BusinessException {
-		if (isValidMonetaryAmount(withdrawal)) {
-			if (!(routingNumber.equals(Account.routingNumber))) {
-				// Check routing number
-				throw new BusinessException("Given routing number does not match Bank of Ben's routing number. Please check "
-						+ "that your information is correct. If it is, contact a Bank of Ben employee to remedy the issue.");
-			} else if (!(accountNumber.equals(this.accountNumber))) {
-				// Check account number
-				throw new BusinessException("Recipient account and intended recipient account do not match. Please check "
-						+ "that your information is correct. If it is, contact a Bank of Ben employee to remedy the issue.");
-			} else if (Double.valueOf(getBalance() - withdrawal) < 0) {
-				// Check that the maximum balance is not exceeded
-				throw new BusinessException("Withdrawal amount "+withdrawal+" exceeds the amount available in account"
-						+accountNumber+". Please check that your information is correct. If it is, contact a Bank of Ben employee "
-						+ "to remedy the issue.");
-			} else {
-				setBalance(getBalance() - withdrawal);
-			}
-		} else {
-			throw new BusinessException("Withdrawal amount must be a positive number that has only "
-					+ "two digits after the decimal point.");
-		}
-	}
-	
-	public boolean isValidMonetaryAmount(double ammount) {
-		boolean valid;
-		if (ammount <= 0) {
-			valid = false;
-		}
-		String stringAmmount = Double.valueOf(ammount).toString();
-		String[] ammountIntegerMantissa = stringAmmount.split(".");
-		if (ammountIntegerMantissa.length == 2) {
-			if (ammountIntegerMantissa[1].length() > 2) {
-				valid = false;
-			} else {
-				valid = true;
-			}
-		} else {
-			valid = true;
-		}
-		return valid;
+	public void setCustomerId(int customerId) {
+		this.customerId = customerId;
 	}
 
 }

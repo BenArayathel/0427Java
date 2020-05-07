@@ -56,6 +56,10 @@ public class ValidationTools {
 			return true;
 		}
 	}
+	
+	public static boolean isValidSsn(long ssn) {
+		return isValidSsn(Long.toString(ssn));
+	}
 
 	public static boolean isValidSsn(String ssn) {
 //		if (ssn==null) {
@@ -78,6 +82,29 @@ public class ValidationTools {
 				return false;
 			}
 		}
+	}
+	
+	public static boolean isValidMonetaryAmount(double ammount) {
+		boolean valid;
+		if (ammount <= 0) {
+			valid = false;
+		}
+		String stringAmmount = Double.valueOf(ammount).toString();
+		String[] ammountIntegerMantissa = stringAmmount.split(".");
+		if (ammountIntegerMantissa.length == 2) {
+			if (ammountIntegerMantissa[1].length() > 2) {
+				valid = false;
+			} else {
+				valid = true;
+			}
+		} else {
+			valid = true;
+		}
+		return valid;
+	}
+
+	public static boolean isValidPhoneNumber(long phoneNumber) {
+		return isValidPhoneNumber(Long.toString(phoneNumber));
 	}
 
 }

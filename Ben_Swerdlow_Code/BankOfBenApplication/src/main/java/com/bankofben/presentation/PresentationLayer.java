@@ -1,10 +1,13 @@
 package com.bankofben.presentation;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Scanner;
 
-import com.bankofben.business.BusinessException;
 import com.bankofben.business.BusinessLayer;
+import com.bankofben.dao.BankOfBenDAO;
+import com.bankofben.exceptions.BusinessException;
+import com.bankofben.models.Account;
 import com.bankofben.models.Customer;
 import com.bankofben.models.Employee;
 import com.bankofben.models.User;
@@ -13,11 +16,16 @@ public class PresentationLayer {
 	
 	/*
 	 * PUT ALL SYSOUT INFORMATION (AND SYSIN?) INTO THE LOG FILE
+	 * 
+	 * Presentation: 2-3 slides on technologies, 1 slide on functionality overview, then functionality demo
+	 * 
 	 */
+	
+	private static PresentationLayer pl = new PresentationLayer();
+	private static BusinessLayer bl = new BusinessLayer();
+	
 
 	public static void main(String[] args) {
-		PresentationLayer pl = new PresentationLayer();
-		BusinessLayer bl = new BusinessLayer();
 		User user = null;
 //		int loginAttempts = 0;
 		Scanner sc = new Scanner(System.in);
@@ -52,6 +60,8 @@ public class PresentationLayer {
 			}
 		} while (!(userResponseValidated));
 		
+		userResponseValidated = false;
+		
 		if (user instanceof Customer) {
 			Customer customer = (Customer) user;
 			pl.printCustomerGreeting(customer);
@@ -59,20 +69,61 @@ public class PresentationLayer {
 				pl.printCustomerOptions();
 				response = sc.nextLine();
 				if (response.equalsIgnoreCase("view")) {
-					// TODO: view balance(s) logic
-					String accountView = bl.viewBalances(customer.getId());
-				} else if (response.equalsIgnoreCase("withdraw")) {
-					// TODO: withdraw logic
+
+					String accountView = null;
+					try {
+						accountView = bl.viewBalances(customer);
+					} catch (BusinessException e) {
+						System.out.println(e.getMessage());
+					}
+					System.out.println(accountView);
+					
 				} else if (response.equalsIgnoreCase("deposit")) {
-					// TODO: deposit logic
+
+					Account account = null;
+					try {
+						account = pl.requestCustomerSelectAccountForDeposit(customer, sc);
+					} catch (BusinessException e) {
+						System.out.println(e.getMessage());
+					}
+					
+					double deposit = pl.requestDepositAmount(account.getBalance(), sc);
+					try {
+						bl.makeDeposit(deposit, account, customer);
+					} catch (BusinessException e) {
+						System.out.println(e.getMessage());
+					}
+					
+				} else if (response.equalsIgnoreCase("withdraw")) {
+					
+					Account account = null;
+					try {
+						account = pl.requestCustomerSelectAccountForWithdrawal(customer, sc);
+					} catch (BusinessException e) {
+						System.out.println(e.getMessage());
+					}
+					
+					double withdrawal = pl.requestDepositAmount(account.getBalance(), sc);
+					try {
+						bl.makeWithdrawal(withdrawal, account, customer);
+					} catch (BusinessException e) {
+						System.out.println(e.getMessage());
+					}
+					
 				} else if (response.equalsIgnoreCase("apply")) {
-					// TODO: apply logic
+					
+					try {
+						customer = bl.applyForAccount(customer);
+					} catch (BusinessException e) {
+						System.out.println(e.getMessage());
+					}
+					
 				} else if (response.equalsIgnoreCase("quit")) {
 					pl.quit(sc);
 				} else {
 					pl.printInvalidResponseMessage(response);
 				}
-			} while(true);
+			}  while (!(userResponseValidated));
 		} else if (user instanceof Employee) {
 			Employee employee = (Employee) user;
 			pl.printEmployeeGreeting(employee);
@@ -92,7 +143,16 @@ public class PresentationLayer {
 				}
 			}
 		} else {
-			Customer customer = bl.applyForAccount(user);
+			Customer customer = null;
+			try {
+				customer = bl.applyForAccount(user);
+				System.out.println("Thank you for applying for your account. Your application will be reviewed by a "
+						+ "Bank of Ben employee in a timely manner.");
+			} catch (BusinessException e) {
+				System.out.println(e.getMessage());
+			}
+			System.out.println("Exiting the Bank of Ben Application. Goodbye!");
+			System.exit(0);
 		}
 		
 	}
@@ -101,11 +161,11 @@ public class PresentationLayer {
 		System.out.println("I am sorry. Your request \""+response+"\" is not a valid option.");
 		System.out.println("Please try again.\n");
 	}
-	
+
 	private void printInvalidRegistrationMessage() {
 		System.out.println("Invalid registration. Please try again.");
 	}
-	
+
 	private void printInvalidLoginMessage() {
 		System.out.println("Invalid login. Please try again.");
 	}
@@ -168,8 +228,6 @@ public class PresentationLayer {
 	}
 	
 	public User requestUserInfo(Scanner sc) throws BusinessException {
-		PresentationLayer pl = new PresentationLayer();
-		BusinessLayer bl = new BusinessLayer();
 		User user = null;
 		registrationDisclaimer();
 		String email = UserInterface.requestEmail(sc);
@@ -235,25 +293,99 @@ public class PresentationLayer {
 	
 	public User requestLoginUserInfo(Scanner sc) throws BusinessException {
 		String username = UserInterface.requestUsername(sc);
-		BusinessLayer bl = new BusinessLayer();
 		return bl.loginUser(username, sc);
 	}
-//	
-//	public static User loginUser(String username, Scanner sc) throws BusinessException {
-//		String password = null;
-//		int loginAttempts = 0;
-//		User user = null;
-//		BusinessLayer bob = BusinessLayer.getBank();
-//		while (loginAttempts < 4) {
-//			password = UserInterface.requestPassword(sc);
-//			bob.loginUser(username, password);
-//			loginAttempts++;
-//			// TODO: Added lag to discourage brute force attempts; not critical, attempt later
-//		}
-//		if (loginAttempts >= 4) {
-//			throw new BusinessException("Limit of password attempts exceeded. Please try again later.");
-//		}
-//		return user;
-//	}
+	
+	public Account requestCustomerSelectAccountForDeposit(Customer customer, Scanner sc) throws BusinessException {
+		String accountInformation = bl.viewBalances(customer);
+		List<Long> customerAccounts = bl.getAccountNumbersForCustomer(customer);
+		String accountNumberString = null;
+		long accountNumber = 0;
+		while(accountNumber==0) {
+			System.out.println("Please input the account number for your deposit.");
+			System.out.println(accountInformation);
+			accountNumberString = sc.nextLine();
+			if (accountNumberString.matches("[0-9]{10}")) {
+				try {
+					accountNumber = Long.parseLong(accountNumberString);
+					if (!customerAccounts.contains(accountNumber)) {
+						System.out.println("The given account number does not correspond to one of your accounts. Please try again.");
+						// if bad account number, reset to 0 and loop back.
+						accountNumber = 0;
+					}
+				} catch (NumberFormatException e) {
+					System.out.println("Invalid account number. Account numbers must be 10 digit numbers");
+				}
+			} else {
+				System.out.println("Invalid account number. Account numbers must be 10 digit numbers");
+			}
+		}
+		return bl.getAccount(accountNumber, Account.getRoutingNumber());
+	}
+	
+	public double requestDepositAmount(double balance, Scanner sc) {
+		double deposit = -1;
+		while (deposit<0) {
+			System.out.println("How much would you like to deposit?");
+			String depositString = sc.nextLine();
+			try {
+				deposit = Long.parseLong(depositString);
+				if (!ValidationTools.isValidMonetaryAmount(deposit)) {
+					System.out.println("Invalid deposit amount. Deposit amount must be a positive number that has only"
+							+"two digits after the decimal point. Please try again.");
+				}
+			} catch (NumberFormatException e) {
+				System.out.println("Invalid deposit amount. Deposit amount must be a positive number that has only"
+						+"two digits after the decimal point. Please try again.");
+			}
+		}
+		return deposit;
+	}
+	
+	public Account requestCustomerSelectAccountForWithdrawal(Customer customer, Scanner sc) throws BusinessException {
+		String accountInformation = bl.viewBalances(customer);
+		List<Long> customerAccounts = bl.getAccountNumbersForCustomer(customer);
+		String accountNumberString = null;
+		long accountNumber = 0;
+		while(accountNumber==0) {
+			System.out.println("Please input the account number for your withdrawal.");
+			System.out.println(accountInformation);
+			accountNumberString = sc.nextLine();
+			if (accountNumberString.matches("[0-9]{10}")) {
+				try {
+					accountNumber = Long.parseLong(accountNumberString);
+					if (!customerAccounts.contains(accountNumber)) {
+						System.out.println("The given account number does not correspond to one of your accounts. Please try again.");
+						// if bad account number, reset to 0 and loop back.
+						accountNumber = 0;
+					}
+				} catch (NumberFormatException e) {
+					System.out.println("Invalid account number. Account numbers must be 10 digit numbers");
+				}
+			} else {
+				System.out.println("Invalid account number. Account numbers must be 10 digit numbers");
+			}
+		}
+		return bl.getAccount(accountNumber, Account.getRoutingNumber());
+	}
+	
+	public double requestWithdrawalAmount(double balance, Scanner sc) {
+		double withdrawal = -1;
+		while (withdrawal<0) {
+			System.out.println("How much would you like to withdraw?");
+			String withdrawalString = sc.nextLine();
+			try {
+				withdrawal = Long.parseLong(withdrawalString);
+				if (!ValidationTools.isValidMonetaryAmount(withdrawal)) {
+					System.out.println("Invalid withdrawal amount. Withdrawal amount must be a positive number that has only"
+							+"two digits after the decimal point. Please try again.");
+				}
+			} catch (NumberFormatException e) {
+				System.out.println("Invalid withdrawal amount. Withdrawal amount must be a positive number that has only"
+						+"two digits after the decimal point. Please try again.");
+			}
+		}
+		return withdrawal;
+	}
 
 }
