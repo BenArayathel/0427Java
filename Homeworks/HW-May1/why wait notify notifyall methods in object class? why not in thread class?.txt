@@ -1,0 +1,30 @@
+why wait notify notifyall methods in object class? why not in thread class?
+
+In Java, thread waits on monitor assigned to the object and when you want to send a signal to another thread who is waiting for the same monitor, you call notify() method to wake one thread and notifyAll() to wake up all the threads.
+If wait, notify and notifyAll method are in thread class, then each thread should be aware of the status of another thread.
+For example: Let’s say you have two threads, T1 and T2. Now T1 must know that T2 was waiting for this particular resource which I have just freed because T1 will need to call T2.notify().
+In Java, the object itself is shared among the threads and facilitates inter-thread communication. Threads have no specific knowledge of each other. They can run asynchronously and are independent. They just run, lock, wait and get notified. They do not need to know about the status of other threads. They just need to call notify method on an object, so whomever thread is waiting on that resource will be notified.
+As stated before,
+When you call wait() method on the object, then it gives up monitor and go to sleep
+When you call notify() method, then the single thread which is waiting for the object’s monitor will be notified.
+Hence wait, notify() And notifyAll() work at object’s monitor level. If thread which is currently holding the monitor, wants to give up the monitor then it will call wait method on the object and if it want to notify other thread, then it will call notify method on the object.
+Shared objects allow threads to communicate by calling wait(), notify() And notifyAll() Methods, so these methods are in the object class.
+Reference
+https://java2blog.com/why-wait-notify-notifyall-methods-object-class/
+
+Wait VS Sleep
+sleep() is a method which is used to pause the process for few seconds or the time we want to. But in case of wait() method, thread goes in waiting state and it won’t come back automatically until we call the notify() or notifyAll().
+The major difference is that wait() releases the lock or monitor while sleep() doesn’t releases the lock or monitor while waiting. wait() is used for inter-thread communication while sleep() is used to introduce pause on execution, generally.
+Reference
+https://howtodoinjava.com/java/multi-threading/sleep-vs-wait/
+
+Wait VS Join
+The wait() and join() methods are used to pause the current thread. The wait() is used in with notify() and notifyAll() methods, but join() is used in Java to wait until one thread finishes its execution.
+wait() is mainly used for shared resources, a thread notifies other waiting thread when a resource becomes free. On the other hand join() is used for waiting a thread to die.
+Reference
+https://www.geeksforgeeks.org/differences-between-wait-and-join-methods-in-java/
+
+Yield
+A yield() method is a static method of Thread class and it can stop the currently executing thread and will give a chance to other waiting threads of the same priority. If in case there are no waiting threads or if all the waiting threads have low priority then the same thread will continue its execution. The advantage of yield() method is to get a chance to execute other waiting threads so if our current thread takes more time to execute and allocate processor to other threads.
+Reference
+https://www.tutorialspoint.com/importance-of-yield-method-in-java
