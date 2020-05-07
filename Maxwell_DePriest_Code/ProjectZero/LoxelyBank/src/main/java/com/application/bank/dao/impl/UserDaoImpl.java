@@ -1,4 +1,4 @@
-package com.application.bank.dao;
+package com.application.bank.dao.impl;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -12,21 +12,20 @@ import java.util.Scanner;
 import org.apache.log4j.Logger;
 
 import com.application.bank.Account;
+import com.application.bank.dao.UserDao;
 import com.application.bank.models.User;
 
 public class UserDaoImpl implements UserDao {
 	private static String x = "ccpojkviae8q";
 	final static Logger loggy = Logger.getLogger(User.class);
-
-	public UserDaoImpl() {
-		// TODO Auto-generated constructor stub
-	}
-	
-	
 	private static String url =
 			"jdbc:oracle:thin:@database-1." + x + ".us-east-2.rds.amazonaws.com:1521:orcl";
 	private static String username = "madmax9242";
 	private static String password = "jasonbourne";
+	
+	public UserDaoImpl() {
+		
+	}
 
 	@Override
 	public void insertUser(User u) {

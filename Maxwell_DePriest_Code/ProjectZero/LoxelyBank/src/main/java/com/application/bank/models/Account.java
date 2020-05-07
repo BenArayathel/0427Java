@@ -81,6 +81,13 @@ public class Account {
 	public void setUserEmail(String userEmail) {
 		this.userEmail = userEmail;
 	}
+
+	@Override
+	public String toString() {
+		return "Account [id=" + id + ", savingsAccountNumber=" + savingsAccountNumber + ", checkingAccountNumber="
+				+ checkingAccountNumber + ", checkingBalance=" + checkingBalance + ", savingsBalance=" + savingsBalance
+				+ ", active=" + active + ", userEmail=" + userEmail + "]";
+	}
 	
 	
 

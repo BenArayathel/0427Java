@@ -1,10 +1,9 @@
 package com.application.bank;
 
+import com.application.bank.dao.impl.UserDaoImpl;
 import com.application.bank.models.User;
 
 import org.apache.log4j.Logger;
-
-import com.application.bank.dao.UserDaoImpl;
 
 public class MainDriver {
 	final static Logger loggy = Logger.getLogger(User.class);

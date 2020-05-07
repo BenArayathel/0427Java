@@ -1,14 +1,19 @@
-package com.application.bank.dao;
+package com.application.bank.dao.impl;
 
 import java.sql.Connection;
+
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
+import com.application.bank.dao.AccountDao;
 import com.application.bank.models.Account;
 
 public class AccountDaoImpl implements AccountDao {
+	final static Logger loggy = Logger.getLogger(Account.class);
 	
 	private static String x = "ccpojkviae8q";
 	private static String url =

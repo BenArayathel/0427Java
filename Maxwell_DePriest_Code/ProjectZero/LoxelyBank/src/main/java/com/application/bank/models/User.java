@@ -1,7 +1,5 @@
 package com.application.bank.models;
 
-import com.application.bank.Account;
-
 public class User {
 	private int id;
 	private String name;
