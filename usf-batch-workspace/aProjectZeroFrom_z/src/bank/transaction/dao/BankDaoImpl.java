@@ -13,7 +13,7 @@ import java.util.Date;
 import java.util.List;
 
 import exception.BusinessException;
-
+import log.Log;
 import connection.utilities.DAOUtilites;
 import user.cust.account.controller.AcctOptionsDirectory;
 import user.cust.account.controller.CustOptionsDirectory;
@@ -28,15 +28,11 @@ public class BankDaoImpl implements BankDAO {
 	PreparedStatement ps = null;
 	ResultSet rs = null;
 
-	//private static List<Employee> employee = new ArrayList<>();
-	//private static List<User> userList = new ArrayList<>(); // arrayList
-	//private static String url = "jdbc:oracle:thin:@database-1.ctmojn75tg7f.us-east-2.rds.amazonaws.com:1521:orcl";
-	//private static String username = "mybasic";
-	//private static String password = "34uy34uy";
+
 	
 	@Override
 	public boolean createUser(User user) {
-		// TODO Auto-generated method stub
+
 		
 		try{
 
@@ -54,13 +50,24 @@ public class BankDaoImpl implements BankDAO {
 			callableStatement.setString(4, user.getEmail());
 			callableStatement.setLong(5, user.getContact());
 			
-			if (callableStatement.executeUpdate() != 0) {
-				System.out.println("db Creates user.");
-				return true;
-			} else {
-				System.out.println("Sorry something went wrong");
-				return false;
+			if (isValidEmail(user.getEmail())) {
+				
+				if (isValidContactPhone(user.getContact())) {
+					
+					if (callableStatement.executeUpdate() != 0 ) {
+						System.out.println("db Creates user.");
+						return true;
+					} else {
+						System.out.println("Sorry something went wrong at the database");
+						return false;
+					}
+					
+				}
+				
+
 			}
+			
+
 			
 			//  insert User
 			//rs.close();
@@ -73,13 +80,43 @@ public class BankDaoImpl implements BankDAO {
 			closeResources();
 			
 		}
-		return true;
+		return false;
 	}
+	
+	
+	public boolean isValidEmail(String email) {
+		
+		// https://howtodoinjava.com/regex/java-regex-validate-email-address/
+		//this.email.matches("^(.+)@(.+)$")
+		if (email.matches("^(.+)@(.+)$")) {
+			return true;
+		} else {
+			Log.logger("Invalid Email format");
+			return false;
+		}
+		
+	}
+	
+	public boolean isValidContactPhone(long phoneNum) {
+		
+		// (contact + "").matches("[0-9]{10}")					// Dr. V's
+		// phoneNum.matches("[0-9]{3}\\-[0-9]{3}\\-[0-9]{4}")	// my
+		if((phoneNum + "").matches("[0-9]{10}")) {
+			//System.out.println("\nValid Soc. Sec. !!!!");
+			return true;
+		}else {
+			//System.out.println("Invalid Info");
+			Log.logger("Invalid phone number format");
+			return false;
+		}
+	}
+	
+	
 
 	@Override
 	public List<User> getAllUsers() {
-		// TODO Auto-generated method stub
-		System.out.println("getAll ran\n");
+
+		//System.out.println("getAll ran\n");
 		List<User> userList = new ArrayList<>();
 		
 		// old try with resources
@@ -119,36 +156,38 @@ public class BankDaoImpl implements BankDAO {
 
 	@Override
 	public boolean login(User user) {
-		User u = null;
+		//User u = null;
 		CustOptionsDirectory co = new CustOptionsDirectory();
 		Customer c = null;
 		
 		try{
-//			PreparedStatement ps = conn.prepareStatement("SELECT * FROM b_user");
-//			ResultSet rs = ps.executeQuery();
+
 			conn = DAOUtilites.getConnection();
 			ps = conn.prepareStatement("SELECT * FROM b_user WHERE USERNAME=? AND PASSWORD=?");
 			ps.setString(1, user.getUserName());
 			ps.setString(2, user.getPassword());
 			
+			//Log.logger("Value of execute Query " + ps.executeQuery());
 			rs = ps.executeQuery();
 			
-			System.out.println("this is rs : " + rs);
+			//System.out.println("this is rs : " + rs);
 			
 			while (rs.next()) {
-				u = new User(
-						rs.getString("userName"), 
-						rs.getString("password"),
-						rs.getString("email"),
-						rs.getLong("contact"),
-						rs.getString("user_id")
-						);
-				System.out.println("Does logger have: " + rs.getString("soc"));
+//				u = new User(
+//						rs.getString("userName"), 
+//						rs.getString("password"),
+//						rs.getString("email"),
+//						rs.getLong("contact"),
+//						rs.getString("user_id")
+//						);
+
+				Log.logger("BankDAOImpl.login verified SOC: " + rs.getString("soc"));
 				user.setSoc(rs.getString("soc"));
 				user.setContact(rs.getInt("contact"));
 				user.setEmail(rs.getString("email"));
 				user.setUser_id(rs.getString("user_id"));
 				//System.out.println("user_id in Login: " + user.getUser_id());
+				Log.logger("user_id in Login: " + user.getUser_id());
 				
 			} 
 			if(user.getSoc() != null) {
@@ -158,10 +197,14 @@ public class BankDaoImpl implements BankDAO {
 				co.select(c);
 			}
 			
-			else {
+			else if(user.getUser_id() != null) {
 				//return false;
 				UserOptions uo = new UserOptions();		// no soc: not a customer
 				uo.seeOptions(user);
+			}
+			else {
+				Log.logger("Invalid");
+				return false;
 			}
 			
 				
@@ -178,13 +221,7 @@ public class BankDaoImpl implements BankDAO {
 	}
 	
 	
-//	private String verifyUser_id() {
-//		
-//		//User u = new User();
-//		
-//		
-//		return null;
-//	}
+
 	
 	public boolean userRegistrationToBecomeCustomer(User user) {
 		
@@ -386,11 +423,11 @@ public class BankDaoImpl implements BankDAO {
 		
 		try {
 			if (rs != null && !rs.isClosed()) {
-				System.out.println("Closed result set...");
+				//System.out.println("Closed result set...");
 				rs.close();
 			}
 		} catch (Exception e) {
-			System.out.println("Could not close result set !");
+			//System.out.println("Could not close result set !");
 			e.printStackTrace();
 		}
 		
@@ -399,14 +436,14 @@ public class BankDaoImpl implements BankDAO {
 				ps.close();
 			}
 		} catch (SQLException e) {
-			System.out.println("Could not close statement!");
+			//System.out.println("Could not close statement!");
 			e.printStackTrace();
 		}
 		
 		try {
 			if (conn != null) {
 				conn.close();
-				System.out.println("Closing down connection...");
+				//System.out.println("Closing down connection...");
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

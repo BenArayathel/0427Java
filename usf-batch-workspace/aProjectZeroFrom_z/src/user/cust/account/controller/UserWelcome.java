@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Scanner;
 
 import bank.transaction.dao.BankDaoImpl;
+import log.Log;
 import user.cust.account.models.User;
 
 public class UserWelcome {
@@ -13,10 +14,14 @@ public class UserWelcome {
 
 	public static void main(String[] args) {
 		
+
+		Log.logger("reference Users:\n");;
+		
 		BankDaoImpl b = new BankDaoImpl();
 		List<User> u = b.getAllUsers();
 		for (User user : u) {
-			System.out.println(user.toString());
+			//System.out.println(user.toString());
+			Log.logger(user.toString());			
 		}
 
 		Scanner scanner = new Scanner(System.in);
@@ -30,10 +35,11 @@ public class UserWelcome {
 
 	private void greetUser(Scanner scanner) {
 
-		System.out.println("Hello, welcome to the Bank.");
-		System.out.println("1 to Register: ");
-		System.out.println("2 to Login: ");
-		System.out.println("3 to Quit: ");
+		Log.logger("\nHello, Welcome to the Bank\n");
+		Log.logger("-----------------------------------");;
+		Log.logger("\n1 to Register: ");
+		Log.logger("2 to Login: ");
+		Log.logger("3 to Quit: ");
 
 		if (scanner.hasNextLine()) {
 
@@ -54,26 +60,4 @@ public class UserWelcome {
 		}
 
 	}
-	
-//	private static void greetUser() {
-//
-//		System.out.println("Hello, welcome to the Bank.");
-//		System.out.println("Enter: 1 to Register: ");
-//		System.out.println("Enter: 2 to Login: ");
-//
-//		if (Hm.getString() != null) {
-//
-//			int input = Integer.parseInt(Hm.input);
-//			//Hm.scanner.close();
-//
-//			if (input == 1) {
-//				UserRegistration.getUserName();
-//			}
-//			if (input == 2) {
-//				UserLogin.getUserName();
-//			}
-//			
-//		}
-//
-//	}
 }

@@ -13,10 +13,10 @@ public class CustOptionsDirectory {
 		
 		System.out.println("\nWelcome Customer");
 		System.out.println("Select Customer Options");
-		System.out.println("Apply for Account: 1");
+		System.out.println("1 - Apply for Account");
 //		System.out.println("View Balance: 2");
 //		System.out.println("Deposit: 3");
-//		System.out.println("Withdraw: 4");
+		System.out.println("4 - Quit");
 
 
 		if (scanner.hasNext()) {
@@ -38,10 +38,9 @@ public class CustOptionsDirectory {
 //				c.deposit();
 //			}
 //				
-//			if (nav == 4){
-//				CustViewBalance_Deposit_Withdraw c = new CustViewBalance_Deposit_Withdraw();
-//				c.withdraw();
-//			}
+			if (nav == 4){
+				System.exit(0);
+			}
 			
 		}
 	}

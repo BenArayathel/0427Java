@@ -13,9 +13,9 @@ public class AcctOptionsDirectory {
 		
 		System.out.println("Select from Options");
 		
-		System.out.println("View Balance: 1");
-		System.out.println("Deposit: 2");
-		System.out.println("Withdraw: 3");
+		System.out.println("1 - View Balance");
+		System.out.println("2 - Deposit");
+		System.out.println("3 - Withdraw");
 		//System.out.println("Apply for Another Account");
 
 

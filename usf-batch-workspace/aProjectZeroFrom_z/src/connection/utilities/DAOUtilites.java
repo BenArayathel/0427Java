@@ -23,13 +23,13 @@ public class DAOUtilites {
 //				System.out.println("Could not register driver!");
 //				e.printStackTrace();
 //			}
-			System.out.println("Opening new connection...");
+			//System.out.println("Opening new connection...");
 			connection = DriverManager.getConnection(URL, CONNECTION_USERNAME, CONNECTION_PASSWORD);
 		}
 		
 		//If connection was closed then retrieve a new connection
 		if (connection.isClosed()){
-			System.out.println("Connection Found Closed!: Opening new connection...");
+			//System.out.println("Connection Found Closed!: Opening new connection...");
 			connection = DriverManager.getConnection(URL, CONNECTION_USERNAME, CONNECTION_PASSWORD);
 		}
 		return connection;

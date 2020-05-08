@@ -23,8 +23,7 @@ public class UserRegToBecomeCustomer {
 			this.soc = scanner.nextLine();
 			
 			
-			// https://howtodoinjava.com/regex/java-regex-validate-email-address/
-			//this.email.matches("^(.+)@(.+)$")
+
 			
 			//user.setEmail(this.email);
 			BankDaoImpl bankDaoImpl = new BankDaoImpl();

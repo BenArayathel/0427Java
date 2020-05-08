@@ -1,9 +1,12 @@
 package user.cust.account.models;
 
+import java.util.List;
+
 public class Account extends Customer {
 	
 	private int acct_id;
 	private double balance;
+	private List<String> list_of_transactions = null;
 
 	// DEFAULT CONSTRUCTOR
 	// basic User & Customer necessities  &&

@@ -3,6 +3,7 @@ package user.cust.account.controller;
 import java.util.Scanner;
 
 import bank.transaction.dao.BankDaoImpl;
+import log.Log;
 import user.cust.account.models.User;
 
 public class UserLogin {
@@ -43,11 +44,13 @@ public class UserLogin {
 			
 			if (b.login(user)) {
 				System.out.println("user_id upfront : " + user.getUser_id());
-				System.out.println("Thanks, you are now logged into the Bank");
+				//System.out.println("Thanks, you are now logged into the Bank");
+				Log.logger("Thanks, you are now logged into the Bank");
 //				UserOptions uo = new UserOptions();
 //				uo.seeOptions(user);
 			} else {
-				System.out.println("Please check credentials..");
+				//System.out.println("Please check credentials..");
+				Log.logger("Please check credentials..");
 			}
 			scanner.close();
 		}
