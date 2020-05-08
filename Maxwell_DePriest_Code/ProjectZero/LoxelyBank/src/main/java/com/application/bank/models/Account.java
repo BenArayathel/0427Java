@@ -1,7 +1,7 @@
 package com.application.bank.models;
 
 public class Account {
-	private int id;
+	private String id;
 	private int savingsAccountNumber;
 	private int checkingAccountNumber;
 	private double checkingBalance;
@@ -13,7 +13,7 @@ public class Account {
 		
 	}
 
-	public Account(int id, int savingsAccountNumber, int checkingAccountNumber, double checkingBalance, double savingsBalance,
+	public Account(String id, int savingsAccountNumber, int checkingAccountNumber, double checkingBalance, double savingsBalance,
 			boolean active, String userEmail) {
 		super();
 		this.id = id;
@@ -26,11 +26,11 @@ public class Account {
 	}
 
 	
-	public int getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 

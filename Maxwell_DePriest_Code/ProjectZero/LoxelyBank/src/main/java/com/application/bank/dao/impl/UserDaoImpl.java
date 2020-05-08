@@ -1,5 +1,6 @@
 package com.application.bank.dao.impl;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -16,12 +17,12 @@ import com.application.bank.models.User;
 import com.application.bank.secrets.SecretStuff;
 
 public class UserDaoImpl implements UserDao {
-	private static String myAws = SecretStuff.getAWSKey();
-	final static Logger loggy = Logger.getLogger(User.class);
-	private static String url =
+	private static String myAws = SecretStuff.getAwsKey();
+	public static final String URL =
 			"jdbc:oracle:thin:@database-1." + myAws + ".us-east-2.rds.amazonaws.com:1521:orcl";
-	private static String username = "madmax9242";
-	private static String password = "jasonbourne";
+	public static final String USERNAME = SecretStuff.getAwsUserName();
+	public static final String PASSWORD = SecretStuff.getAwsPassword();
+	final static Logger loggy = Logger.getLogger(User.class);
 	
 	public UserDaoImpl() {
 		
@@ -29,21 +30,25 @@ public class UserDaoImpl implements UserDao {
 
 	@Override
 	public User insertUser(User u) throws BusinessException {
-		try (Connection conn = DriverManager.getConnection(url, username, password)) {
-			PreparedStatement ps = conn.prepareStatement("INSERT INTO bankuser VALUES(?,?,?,?,?,?)");
+		try (Connection conn = DriverManager.getConnection(URL, USERNAME, PASSWORD)) {
+//			String sql = "INSERT INTO bankuser VALUES(?,?,?,?,?,?)";
+			PreparedStatement ps = conn.prepareStatement("call CREATEBANKUSER(?,?,?,?,?,?)");
+		
 			
-			ps.setInt(1, u.getId());
+			ps.setString(1,  "");
 			ps.setString(2, u.getName());
 			ps.setString(3, u.getEmail());
 			ps.setString(4, u.getPhoneNumber());
 			ps.setString(5, u.getPassword());
 			ps.setString(6, u.getStatus());
-			
+			loggy.info("Creating new user\n");
 			ps.executeUpdate();
-			loggy.info("Inserting new User");
+			loggy.info("Inserting new User\n");
+			loggy.info("Returning newly created user");
+			u = this.selectUserByEmail(u.getEmail());
 			
 		} catch (SQLException e) {
-			loggy.warn("SQLException caught- " + e);
+			loggy.warn("CREATEBANKUSER SQLException caught- " + e);
 			e.printStackTrace();
 		}
 		
@@ -52,42 +57,46 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	@Override
-	public void updateUser(String userEmail, String columnName, String newAttribute) throws BusinessException{
-		try (Connection conn = DriverManager.getConnection(url, username, password)) {
-			//String userEmail = u.getEmail();
-			PreparedStatement ps = conn.prepareStatement("UPDATE bankuser SET ? = ? WHERE email = ?");
-//			ps.setString(0, columnName);
-//			ps.setString(1, newAttribute);
-//			ps.setString(2, userEmail);
+	public User updateUser(String userEmail, String columnName, String newAttribute) throws BusinessException{
+		User uTwo = new User();
+		try (Connection conn = DriverManager.getConnection(URL, USERNAME, PASSWORD)) {
+			PreparedStatement ps = conn.prepareStatement("UPDATE bankuser SET " + columnName + " = '" + newAttribute + "' WHERE email = '"+ userEmail + "'");
+			//ps.setString(0, userEmail);
+			//ps.setString(1, newAttribute);
+			//ps.setString(2, userEmail);
 			ps.executeUpdate();
+			uTwo = this.selectUserByEmail(userEmail);
 			
 		} catch (SQLException e) {
 			loggy.warn("Caught SQLException");
-			loggy.info(userEmail + " " + password + " " + username);
 			throw new BusinessException("Internal Error. Contact SYSADMIN");
 		}
+		
+		return uTwo;
 		
 	}
 
 	@Override
 	public User selectUserByEmail(String uEmail) throws BusinessException{
 		User u = new User();
-		try (Connection conn = DriverManager.getConnection(url, username, password)) {
+		try (Connection conn = DriverManager.getConnection(URL, USERNAME, PASSWORD)) {
 			PreparedStatement ps = conn.prepareStatement("SELECT * FROM bankuser WHERE email = ?");
 			ps.setString(1, uEmail);
 			ResultSet rs = ps.executeQuery();
 			while(rs.next()) {
-				u.setId(rs.getInt(1));
-				u.setName(rs.getString(2));
-				u.setEmail(rs.getString(3));
-				u.setPhoneNumber(Integer.toString(rs.getInt(4)));
-				u.setPassword(rs.getString(5));
-				u.setStatus(rs.getString(6));
+				u.setId(rs.getString("id"));
+				u.setName(rs.getString("name"));
+				u.setEmail(rs.getString("email"));
+				u.setPhoneNumber(rs.getString("phone"));
+				u.setPassword(rs.getString("password"));
+				u.setStatus(rs.getString("status"));
 			}	
 		} catch (SQLException e) {
 			e.printStackTrace();
 			loggy.warn("Caught SQLException");
-			throw new BusinessException("Internal Error. Contact SYSADMIN");
+			e.printStackTrace();
+			throw new BusinessException("Internal Error while updating. Contact SYSADMIN");
+			
 		}
 		return u;
 	}
@@ -95,23 +104,21 @@ public class UserDaoImpl implements UserDao {
 	@Override
 	public User selectUserByColumnName(String cName, String cValue) throws BusinessException {
 		User u = new User();
-		try (Connection conn = DriverManager.getConnection(url, username, password)) {
+		try (Connection conn = DriverManager.getConnection(URL, USERNAME, PASSWORD)) {
 		
 			PreparedStatement ps = conn.prepareStatement("SELECT * FROM bankuser WHERE " + cName + " = '" + cValue + "'");
 			ResultSet rs = ps.executeQuery();
-			loggy.info(rs);
 			while(rs.next()) {
 				
-				u.setId(rs.getInt(1));
-				u.setName(rs.getString(2));
-				u.setEmail(rs.getString(3));
-				u.setPhoneNumber(Integer.toString(rs.getInt(4)));
-				u.setPassword(rs.getString(5));
-				u.setStatus(rs.getString(6));
+				u.setId(rs.getString("id"));
+				u.setName(rs.getString("name"));
+				u.setEmail(rs.getString("email"));
+				u.setPhoneNumber(rs.getString("phone"));
+				u.setPassword(rs.getString("password"));
+				u.setStatus(rs.getString("status"));
 			}	
 		} catch (SQLException e) {
-			e.printStackTrace();
-			loggy.warn("Caught SQLException");
+			loggy.warn("Caught SQLException- " + e);
 			throw new BusinessException("Internal Error. Contact SYSADMIN");
 		}
 		return u;
@@ -119,81 +126,53 @@ public class UserDaoImpl implements UserDao {
 
 	@Override
 	public List<User> selectAllUsers() throws BusinessException {
-		// TODO Auto-generated method stub
-		return null;
+		List<User> uList = new ArrayList<>();
+		try (Connection conn = DriverManager.getConnection(URL, USERNAME, PASSWORD)) {
+			User u = new User();
+			PreparedStatement ps = conn.prepareStatement("SELECT * FROM bankuser");
+			ResultSet rs = ps.executeQuery();
+			while(rs.next()) {
+				uList.add(new User(rs.getString("id"), rs.getString("name"), rs.getString("email"), rs.getString("phone"), rs.getString("password"), rs.getString("status")));
+				
+			}	
+		} catch (SQLException e) {
+			loggy.warn("Caught SQLException- " + e);
+			throw new BusinessException("Internal Error. Contact SYSADMIN");
+		}
+		for (User uCount: uList) {
+			System.out.println(uCount);
+		}
+		return uList;
+		
 	}
 
 	@Override
-	public void removeUser() throws BusinessException{
-		// TODO Auto-generated method stub
+	public void deleteUser(String uEmail) throws BusinessException{
+		try (Connection conn = DriverManager.getConnection(URL, USERNAME, PASSWORD)) {
+			PreparedStatement ps = conn.prepareStatement("DELETE FROM bankuser WHERE email = '" + uEmail + "'");
+			
+			ps.execute();
+			loggy.info("Record deleted");
+			loggy.error("Oh god, it's gone. Oh, the humanity!");
+		} catch (SQLException e) {
+			loggy.error("SQLException- " + e);
+			
+			e.printStackTrace();
+		}
 		
 	}
 	
-	public static String passwordEncryption(String pw) {
-	loggy.info("Encrypting password");
-	StringBuilder newPassword = new StringBuilder();
-	String original = "abcdefghijklmnopqrstuvwxyz0987654321";
-	String alternate = "1234567890zyxwvutsrqponmlkjihgfedcba";
-	String[] arr = alternate.split("");
-	String[] wordArray = pw.toLowerCase().split("");
-	int tempIndex;
-	for(int k = 0; k < (wordArray.length); k++) {
-		String tempLetter = wordArray[k];
-		tempIndex = original.indexOf(tempLetter); 
-		newPassword.append(arr[tempIndex]);
+	public void deleteAllUsers() throws BusinessException {
+		try (Connection conn = DriverManager.getConnection(URL, USERNAME, PASSWORD)) {
+			PreparedStatement ps = conn.prepareStatement("DELETE FROM bankuser");
+			
+			ps.execute();
+			loggy.info("Delete all rows");
+		} catch (SQLException e) {
+			loggy.warn("Caught SQLException- " + e);
+			e.printStackTrace();
+		}
 	}
-	return newPassword.toString();
-	
-	}
-	
-//	public static Customer newCustomerRegistration() {
-//		Scanner sc = new Scanner(System.in);
-//		System.out.println("Please enter your full name");
-//		String n = sc.nextLine();
-//		System.out.println("Please enter your email");
-//		String e = sc.nextLine();
-//		System.out.println("Please enter your phone number. Ex 3048675309");
-//		String pN = sc.nextLine();
-//		System.out.println("Create a password");
-//		String pW = sc.nextLine();
-//		System.out.println("How much would you like to put into your checking account?");
-//		String checkingMoney = sc.nextLine();
-//		int newSavingsNum = generateAccountNumber();
-//		int newCheckingNum = generateAccountNumber();
-//		Account act = new Account(newSavingsNum, newCheckingNum, 0.00, Integer.parseInt(checkingMoney), e);
-//		Customer c = new Customer(n, e, pN, pW, act);
-//		loggy.info("new customer and associated account created");
-//		System.out.println("Created new object- " + c );
-//		System.out.println();
-//		//Lobby.addNewCustomer("./customerRecords.txt", c);
-//		
-//		sc.close();
-//		
-//		return c;
-//	}
-	
-//	public void activateCustomerAccounts(ArrayList<Customer> allRecords) {
-//
-//		for(Customer record : allRecords) {
-//			if(!record.getAccount().getActive()) {
-//				record.getAccount().setActive(true);
-//			}
-//			loggy.info("Customer accounts activated");
-//			updateCustomerInfo(allRecords);
-//			
-//		}// end for loop
-//		
-//		
-//
-//	}// end activateUserAccounts()
-	
-	public static int generateAccountNumber() {
-		Random rand = new Random();
-		int randomAccountNumber = rand.nextInt(100000);
-		
-		return randomAccountNumber;
-	}
-
 
 
 	
