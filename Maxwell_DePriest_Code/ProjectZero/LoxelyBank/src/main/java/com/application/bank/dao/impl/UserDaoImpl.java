@@ -13,12 +13,13 @@ import org.apache.log4j.Logger;
 import com.application.bank.dao.UserDao;
 import com.application.bank.exception.BusinessException;
 import com.application.bank.models.User;
+import com.application.bank.secrets.SecretStuff;
 
 public class UserDaoImpl implements UserDao {
-	private static String x = "ccpojkviae8q";
+	private static String myAws = SecretStuff.getAWSKey();
 	final static Logger loggy = Logger.getLogger(User.class);
 	private static String url =
-			"jdbc:oracle:thin:@database-1." + x + ".us-east-2.rds.amazonaws.com:1521:orcl";
+			"jdbc:oracle:thin:@database-1." + myAws + ".us-east-2.rds.amazonaws.com:1521:orcl";
 	private static String username = "madmax9242";
 	private static String password = "jasonbourne";
 	
@@ -72,10 +73,9 @@ public class UserDaoImpl implements UserDao {
 	public User selectUserByEmail(String uEmail) throws BusinessException{
 		User u = new User();
 		try (Connection conn = DriverManager.getConnection(url, username, password)) {
-			PreparedStatement ps2 = conn.prepareStatement("SELECT * FROM bankuser WHERE email = ?");
-			ps2.setString(1, uEmail);
-			ResultSet rs = ps2.executeQuery();
-			loggy.info(rs);
+			PreparedStatement ps = conn.prepareStatement("SELECT * FROM bankuser WHERE email = ?");
+			ps.setString(1, uEmail);
+			ResultSet rs = ps.executeQuery();
 			while(rs.next()) {
 				u.setId(rs.getInt(1));
 				u.setName(rs.getString(2));
