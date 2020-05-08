@@ -14,10 +14,13 @@ import com.company.model.Customer;
 
 public class CustomerDaoJdbcImpl implements CustomerDao {
 	
-	private static String url = "jdbc:oracle:thin:@localhost:1521:XE";
-	private static String username = "bank_test";
-	private static String password = "password";
-	
+	private static final String URL = "jdbc:oracle:thin:@localhost:1521:XE";
+	private static final String USERNAME = "bank_test";
+	private static final String PASSWORD = "password";
+
+    ResultSet rs = null;
+    PreparedStatement ps = null;
+
     private static final String INSERT_CUSTOMER_SQL =
             "insert into customer (first_name, last_name, birthday, us_state) " +
                     "values (?, ?, ?, ?)";
@@ -36,11 +39,9 @@ public class CustomerDaoJdbcImpl implements CustomerDao {
             "delete from customer where customer_id = ?";
 
   
-    ResultSet rs = null;
-    PreparedStatement ps = null;
     
 	public Customer addCustomer(Customer customer) {
-		try(Connection conn = DriverManager.getConnection(url, username, password)){
+		try(Connection conn = DriverManager.getConnection(URL, USERNAME, PASSWORD)){
 			
 			String returnCols[] = { "customer_id" };
 			
@@ -59,7 +60,7 @@ public class CustomerDaoJdbcImpl implements CustomerDao {
 			if (rs!= null && rs.next()) {
 				customer.setCustomerId(rs.getInt(1));
 				System.out.println("Successfully added record id: "+rs.getInt(1));
-
+				
 			}
 			return customer;
 			
@@ -75,7 +76,7 @@ public class CustomerDaoJdbcImpl implements CustomerDao {
 	}
 
 	public Customer getCustomer(int id) {
-		try(Connection conn = DriverManager.getConnection(url, username, password)) {
+		try(Connection conn = DriverManager.getConnection(URL, USERNAME, PASSWORD)) {
 			
 			ps = conn.prepareStatement(SELECT_CUSTOMER_SQL);
 			ps.setInt(1,id);
@@ -108,9 +109,9 @@ public class CustomerDaoJdbcImpl implements CustomerDao {
 	}
 
 	public List<Customer> getAllCustomers() {
-		// TODO Auto-generated method stub
+
 		List<Customer> customers = new ArrayList<Customer>();
-		try(Connection conn = DriverManager.getConnection(url, username, password)) {
+		try(Connection conn = DriverManager.getConnection(URL, USERNAME, PASSWORD)) {
 			
 			ps = conn.prepareStatement(SELECT_ALL_CUSTOMERS_SQL);
 			
@@ -139,16 +140,39 @@ public class CustomerDaoJdbcImpl implements CustomerDao {
 		}
 		
 		
-		return null;
+		return customers;
 	}
 
 	public void updateCustomer(Customer customer) {
-		// TODO Auto-generated method stub
-		
+		try(Connection conn = DriverManager.getConnection(URL, USERNAME, PASSWORD)) {
+			
+			ps = conn.prepareStatement(UPDATE_CUSTOMER_SQL);
+			ps.setString(1, customer.getFirstName());
+			ps.setString(2, customer.getLastName());
+			ps.setDate(3, customer.getBirthday());
+			ps.setString(4, customer.getState());
+			ps.setInt(5,customer.getCustomerId());
+			
+			int updatedRows = ps.executeUpdate();
+			
+			if (updatedRows == 0) {
+				System.out.println("No records updated.");
+			} else {
+				System.out.println(updatedRows + " rows updated.");
+			}		
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(rs != null) rs.close();
+				if(ps != null) ps.close();
+			} catch(Exception ex){}
+		}
+
 	}
 
 	public void deleteCustomer(int id) {
-		try(Connection conn = DriverManager.getConnection(url, username, password)) {
+		try(Connection conn = DriverManager.getConnection(URL, USERNAME, PASSWORD)) {
 			
 			ps = conn.prepareStatement(DELETE_CUSTOMER_SQL);
 			ps.setInt(1,id);
@@ -160,14 +184,14 @@ public class CustomerDaoJdbcImpl implements CustomerDao {
 			} else {
 				System.out.println(deletedRows + " rows deleted.");
 			}		
-	} catch (SQLException e) {
-		e.printStackTrace();
-	} finally {
-		try {
-			if(rs != null) rs.close();
-			if(ps != null) ps.close();
-		} catch(Exception ex){}
-	}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(rs != null) rs.close();
+				if(ps != null) ps.close();
+			} catch(Exception ex){}
+		}
 }
 
 

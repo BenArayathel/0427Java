@@ -1,11 +1,14 @@
 package com.company.dao;
 
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.List;
 
 import com.company.model.AccountType;
 
 public class AccountTypeJdbcImpl implements AccountTypeDao {
-
+	
+	
 	public AccountType addAccountType(AccountType accountType) {
 		// TODO Auto-generated method stub
 		return null;
