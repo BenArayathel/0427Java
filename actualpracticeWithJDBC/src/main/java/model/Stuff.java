@@ -16,6 +16,10 @@ public class Stuff {
 		this.stuff_amount = stuff_amount;
 	}
 
+	public Stuff() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public int getStuff_id() {
 		return stuff_id;
 	}

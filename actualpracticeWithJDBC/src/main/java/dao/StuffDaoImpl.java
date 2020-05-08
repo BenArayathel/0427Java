@@ -1,5 +1,6 @@
 package dao;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -25,14 +26,32 @@ public class StuffDaoImpl implements Dao {
 	public void insertStuff(Stuff thing) {
 		
 		try (Connection conn = DriverManager.getConnection(url, username, password)) {
-			PreparedStatement ps = conn.prepareStatement("insert into mystuff values(?,?,?,?)");
+//			PreparedStatement ps = conn.prepareStatement("insert into mystuff values(?,?,?,?)");
+//			
+//			ps.setInt(1, thing.getStuff_id());
+//			ps.setString(2, thing.getStuff_name());
+//			ps.setBoolean(3, thing.isStuff_iscool());
+//			ps.setInt(4, thing.getStuff_amount());
+//			
+//			ps.executeUpdate();
 			
-			ps.setInt(1, thing.getStuff_id());
-			ps.setString(2, thing.getStuff_name());
-			ps.setBoolean(3, thing.isStuff_iscool());
-			ps.setInt(4, thing.getStuff_amount());
 			
-			ps.executeUpdate();
+			// above we have the first approach that works if it doesn't require a 
+			// stored procedure. to access the procedure (and sequence which creates
+			// the id) we use callablestatement
+			
+			CallableStatement cs = conn.prepareCall("{call create_new_stuff(?,?,?,?)}");
+			
+//			cs.setInt(1, thing.getStuff_id());
+			cs.registerOutParameter(1, java.sql.Types.VARCHAR);
+//			callableStatement.registerOutParameter(1, java.sql.Types.VARCHAR);
+
+			cs.setString(2, thing.getStuff_name());
+			cs.setBoolean(3, thing.isStuff_iscool());
+			cs.setInt(4, thing.getStuff_amount());
+			
+			cs.executeUpdate();
+			
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

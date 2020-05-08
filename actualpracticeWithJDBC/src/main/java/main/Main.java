@@ -17,18 +17,25 @@ public class Main {
 
 		
 		//this triggers my Create from CRUD, making a new stuff
-		Stuff thing1 = new Stuff(11, "walls", false, 4);
+//		Stuff thing1 = new Stuff(11, "walls", false, 4);
 		//this is the command to insert, if you try again it will throw error for duplicate
+//		myImpl.insertStuff(thing1);
+		
+		Stuff thing1 = new Stuff();
+		thing1.setStuff_name("face");
+		thing1.setStuff_iscool(false);
+		thing1.setStuff_amount(10);
+		
+		//new command to create new 'stuff'
 //		myImpl.insertStuff(thing1);
 		
 		
 		//this deletes an item by it's name
-//		myImpl.deleteStuff("\'microphone\'");
 //		myImpl.deleteStuff("bed");
-		myImpl.deleteStuff("paintings");
+//		myImpl.deleteStuff("paintings");
 		
 		//updating the amount of a thing that i have
-		myImpl.updateStuffAmount("books", 342);
+//		myImpl.updateStuffAmount("books", 342);
 
 
 		//this used my select all, the Read in CRUD
