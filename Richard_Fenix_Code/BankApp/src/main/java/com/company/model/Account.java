@@ -7,6 +7,7 @@ public class Account {
 	private Integer customerId;
 	private String accountType;
 	private BigDecimal balance;
+	private boolean	approved;
 	public String getAccountId() {
 		return accountId;
 	}
@@ -31,6 +32,17 @@ public class Account {
 	public void setBalance(BigDecimal balance) {
 		this.balance = balance;
 	}
+	public boolean isApproved() {
+		return approved;
+	}
+	public void setApproved(boolean approved) {
+		this.approved = approved;
+	}
+	@Override
+	public String toString() {
+		return "Account [accountId=" + accountId + ", customerId=" + customerId + ", accountType=" + accountType
+				+ ", balance=" + balance + ", approved=" + approved + "]";
+	}
 
 	@Override
 	public boolean equals(Object obj) {
@@ -51,6 +63,8 @@ public class Account {
 				return false;
 		} else if (!accountType.equals(other.accountType))
 			return false;
+		if (approved != other.approved)
+			return false;
 		if (balance == null) {
 			if (other.balance != null)
 				return false;
@@ -66,7 +80,4 @@ public class Account {
 	
 	
 	
-	
-	
-
 }
