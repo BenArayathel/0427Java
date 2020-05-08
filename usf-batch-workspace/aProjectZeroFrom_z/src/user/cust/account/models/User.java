@@ -53,7 +53,13 @@ public class User {
 		this.dob = dob;
 	}
 	
-	
+	// FOR TRANSITION TO CUSTOMER
+	public User(String userName, String password, String user_id) {
+		super();
+		this.userName = userName;
+		this.password = password;
+		this.user_id = user_id;
+	}
 
 	public String getUserName() {
 		return userName;

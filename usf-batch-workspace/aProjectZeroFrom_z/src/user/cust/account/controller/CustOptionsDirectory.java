@@ -11,7 +11,8 @@ public class CustOptionsDirectory {
 
 	public void select(Customer customer) {
 		
-		System.out.println("Select from Options");
+		System.out.println("\nWelcome Customer");
+		System.out.println("Select Customer Options");
 		System.out.println("Apply for Account: 1");
 //		System.out.println("View Balance: 2");
 //		System.out.println("Deposit: 3");

@@ -33,7 +33,7 @@ public class UserRegToBecomeCustomer {
 			if (bankDaoImpl.userRegistrationToBecomeCustomer(user)) {
 
 				System.out.println("Application called back to FRONT !!");
-				CustOptionsDirectory co = new CustOptionsDirectory();
+				//CustOptionsDirectory co = new CustOptionsDirectory();
 				//Customer c = new Customer();
 				//co.select(customer);
 			} else {

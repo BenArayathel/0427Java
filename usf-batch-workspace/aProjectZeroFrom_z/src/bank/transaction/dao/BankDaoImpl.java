@@ -120,6 +120,9 @@ public class BankDaoImpl implements BankDAO {
 	@Override
 	public boolean login(User user) {
 		User u = null;
+		CustOptionsDirectory co = new CustOptionsDirectory();
+		Customer c = null;
+		
 		try{
 //			PreparedStatement ps = conn.prepareStatement("SELECT * FROM b_user");
 //			ResultSet rs = ps.executeQuery();
@@ -141,18 +144,24 @@ public class BankDaoImpl implements BankDAO {
 						rs.getString("user_id")
 						);
 				System.out.println("Does logger have: " + rs.getString("soc"));
+				user.setSoc(rs.getString("soc"));
 				user.setContact(rs.getInt("contact"));
 				user.setEmail(rs.getString("email"));
 				user.setUser_id(rs.getString("user_id"));
 				//System.out.println("user_id in Login: " + user.getUser_id());
 				
 			} 
-			if(!u.getUser_id().isEmpty()) {
-				return true;
+			if(user.getSoc() != null) {
+				//return true;							// soc: your a customer
+				// userName, password, user_id
+				c = new Customer(user.getUserName(), user.getPassword(), user.getUser_id());
+				co.select(c);
 			}
 			
 			else {
-				return false;
+				//return false;
+				UserOptions uo = new UserOptions();		// no soc: not a customer
+				uo.seeOptions(user);
 			}
 			
 				
@@ -218,8 +227,8 @@ public class BankDaoImpl implements BankDAO {
 		
 		// FORWARD DATA TO EMPLOYEE FRONT END ?
 		// FOR NOW, DO THIS ...
-		employeeRejectOrApprove_userRegistrationToBecomeCustomer(user, user.getEmail());
-		return true;
+		//employeeRejectOrApprove_userRegistrationToBecomeCustomer(user, user.getEmail());
+		return false;
 	}
 	
 	
@@ -269,8 +278,8 @@ public class BankDaoImpl implements BankDAO {
 		
 		// FORWARD DATA TO EMPLOYEE FRONT END ?
 		// FOR NOW, DO THIS ...
-		employeeRejectOrApprove_userRegistrationToBecomeCustomer(user, user.getEmail());
-		return true;
+		//employeeRejectOrApprove_userRegistrationToBecomeCustomer(user, user.getEmail());
+		return false;
 	}
 	
 	
@@ -292,35 +301,35 @@ public class BankDaoImpl implements BankDAO {
 	}
 	
 	
-	@Override
-	public boolean employeeRejectOrApprove_userRegistrationToBecomeCustomer(User user, String email) {
-		
-		System.out.println("\nAutomation Emp @ db: verifying...");
-		System.out.println("Email as: " + email);
-		
-		// TODO ... READ FROM DB
-		// CODE LIKE THIS BELONGS UP FRONT
-		if (email != null && email.length() > 3) { // mimicking emp Auth...
-			// SHOULD I PUT LOGIC IN THE USER.setEMAIL() ??
-			user.setEmail(email);
-			System.out.println("\nApproved as a Customer");
-			//System.out.println("Thanks for applying");
-			System.out.println("Redirect to Customer Options\n");
-			
-			// there technically would be an user_id here if the Database had generated this.
-			Customer customer = new Customer(user.getUserName(), user.getPassword(), user.getUser_id(), user.getEmail());
-			CustOptionsDirectory co = new CustOptionsDirectory();
-			co.select(customer);
-			return true;
-		}
-		else {
-			System.out.println("Something went wrong...");
-			System.out.println("Please try again later...");
-			UserOptions uo = new UserOptions();
-			uo.seeOptions(user);
-		}
-		return false;
-	}
+//	@Override
+//	public boolean employeeRejectOrApprove_userRegistrationToBecomeCustomer(User user, String email) {
+//		
+//		System.out.println("\nAutomation Emp @ db: verifying...");
+//		System.out.println("Email as: " + email);
+//		
+//		// TODO ... READ FROM DB
+//		// CODE LIKE THIS BELONGS UP FRONT
+//		if (email != null && email.length() > 3) { // mimicking emp Auth...
+//			// SHOULD I PUT LOGIC IN THE USER.setEMAIL() ??
+//			user.setEmail(email);
+//			System.out.println("\nApproved as a Customer");
+//			//System.out.println("Thanks for applying");
+//			System.out.println("Redirect to Customer Options\n");
+//			
+//			// there technically would be an user_id here if the Database had generated this.
+//			Customer customer = new Customer(user.getUserName(), user.getPassword(), user.getUser_id(), user.getEmail());
+//			CustOptionsDirectory co = new CustOptionsDirectory();
+//			co.select(customer);
+//			return true;
+//		}
+//		else {
+//			System.out.println("Something went wrong...");
+//			System.out.println("Please try again later...");
+//			UserOptions uo = new UserOptions();
+//			uo.seeOptions(user);
+//		}
+//		return false;
+//	}
 
 	@Override
 	public boolean customerApplicationForAccount(Customer customer, double balance) {
