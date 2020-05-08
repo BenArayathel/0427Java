@@ -6,6 +6,10 @@
   <name>Bank Application Project 0</name>
   <description>CLI-based Bank Application using Java with Oracle SQL backend.</description>
   
+  <properties>
+  	<maven.compiler.target>1.8</maven.compiler.target>
+  	<maven.compiler.source>1.8</maven.compiler.source>
+  </properties>
   
   <dependencies>
 	<dependency>
