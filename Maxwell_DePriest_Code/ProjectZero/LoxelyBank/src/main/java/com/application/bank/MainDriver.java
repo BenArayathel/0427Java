@@ -23,7 +23,7 @@ public class MainDriver {
 		
 		
 		try {
-			//User u5 = uDI.selectUserByEmail("max@email.com");
+			User u5 = uDI.selectUserByEmail("max@email.com");
 			User u6 = uDI.selectUserByColumnName("name", "Max DePriest");
 			loggy.info("The name of this user is " + u6.getEmail());
 		} catch (BusinessException e) {

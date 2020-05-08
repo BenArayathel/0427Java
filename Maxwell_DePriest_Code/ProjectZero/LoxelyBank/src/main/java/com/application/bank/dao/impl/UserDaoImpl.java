@@ -72,16 +72,11 @@ public class UserDaoImpl implements UserDao {
 	public User selectUserByEmail(String uEmail) throws BusinessException{
 		User u = new User();
 		try (Connection conn = DriverManager.getConnection(url, username, password)) {
-		
-			PreparedStatement ps = conn.prepareStatement("SELECT * FROM bankuser WHERE email = '" + uEmail + "'");
-			
 			PreparedStatement ps2 = conn.prepareStatement("SELECT * FROM bankuser WHERE email = ?");
 			ps2.setString(1, uEmail);
-			//loggy.info(ps);
 			ResultSet rs = ps2.executeQuery();
 			loggy.info(rs);
 			while(rs.next()) {
-				
 				u.setId(rs.getInt(1));
 				u.setName(rs.getString(2));
 				u.setEmail(rs.getString(3));
@@ -103,10 +98,6 @@ public class UserDaoImpl implements UserDao {
 		try (Connection conn = DriverManager.getConnection(url, username, password)) {
 		
 			PreparedStatement ps = conn.prepareStatement("SELECT * FROM bankuser WHERE " + cName + " = '" + cValue + "'");
-			
-			PreparedStatement ps2 = conn.prepareStatement("SELECT * FROM bankuser WHERE email = 'henry@email.com'");
-			//ps.setString(0, uEmail);
-			//loggy.info(ps);
 			ResultSet rs = ps.executeQuery();
 			loggy.info(rs);
 			while(rs.next()) {
