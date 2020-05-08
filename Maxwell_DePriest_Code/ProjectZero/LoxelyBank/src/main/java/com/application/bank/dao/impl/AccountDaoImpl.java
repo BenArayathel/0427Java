@@ -10,6 +10,7 @@ import java.util.List;
 import org.apache.log4j.Logger;
 
 import com.application.bank.dao.AccountDao;
+import com.application.bank.exception.BusinessException;
 import com.application.bank.models.Account;
 
 public class AccountDaoImpl implements AccountDao {
@@ -22,42 +23,43 @@ public class AccountDaoImpl implements AccountDao {
 	private static String password = "jasonbourne";
 
 	@Override
-	public void insertAccount(Account a) {
+	public Account insertAccount(Account a) throws BusinessException{
 		try (Connection conn = DriverManager.getConnection(url, username, password)) {
 			PreparedStatement ps = conn.prepareStatement("INSERT INTO bankaccount VALUES ?,?,?,?,?,?,?");
 			
 			ps.setInt(1, a.getId());
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+			throw new BusinessException("Internal Error. Please contact SYSADMIN");
 		}
-		// TODO Auto-generated method stub
+		return a;
+		
 		
 	}
 
 	@Override
-	public Account selectAccount() {
+	public Account selectAccount() throws BusinessException{
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<Account> selectAllAccounts() {
+	public List<Account> selectAllAccounts() throws BusinessException{
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public void updateAccount() {
+	public void deleteAccount() throws BusinessException{
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void deleteAccount() {
+	public Account updateAccount(Account a) throws BusinessException{
 		// TODO Auto-generated method stub
-		
+		return null;
 	}
 
 }

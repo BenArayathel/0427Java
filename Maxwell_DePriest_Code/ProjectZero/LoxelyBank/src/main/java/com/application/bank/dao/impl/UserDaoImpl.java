@@ -3,6 +3,7 @@ package com.application.bank.dao.impl;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -50,23 +51,79 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	@Override
-	public User updateUser(User u, String newAttribute, String columnName) throws BusinessException{
+	public void updateUser(String userEmail, String columnName, String newAttribute) throws BusinessException{
 		try (Connection conn = DriverManager.getConnection(url, username, password)) {
-			String userEmail = u.getEmail();
-			PreparedStatement ps = conn.prepareStatement("UPDATE bankuser SET " + columnName + "=" + newAttribute + " WHERE email = " + userEmail);
+			//String userEmail = u.getEmail();
+			PreparedStatement ps = conn.prepareStatement("UPDATE bankuser SET ? = ? WHERE email = ?");
+//			ps.setString(0, columnName);
+//			ps.setString(1, newAttribute);
+//			ps.setString(2, userEmail);
+			ps.executeUpdate();
 			
 		} catch (SQLException e) {
-			e.printStackTrace();
+			loggy.warn("Caught SQLException");
+			loggy.info(userEmail + " " + password + " " + username);
+			throw new BusinessException("Internal Error. Contact SYSADMIN");
 		}
-	
-		return u;
 		
 	}
 
 	@Override
-	public User selectUserByEmail() throws BusinessException{
-		// TODO Auto-generated method stub
-		return null;
+	public User selectUserByEmail(String uEmail) throws BusinessException{
+		User u = new User();
+		try (Connection conn = DriverManager.getConnection(url, username, password)) {
+		
+			PreparedStatement ps = conn.prepareStatement("SELECT * FROM bankuser WHERE email = '" + uEmail + "'");
+			
+			PreparedStatement ps2 = conn.prepareStatement("SELECT * FROM bankuser WHERE email = ?");
+			ps2.setString(1, uEmail);
+			//loggy.info(ps);
+			ResultSet rs = ps2.executeQuery();
+			loggy.info(rs);
+			while(rs.next()) {
+				
+				u.setId(rs.getInt(1));
+				u.setName(rs.getString(2));
+				u.setEmail(rs.getString(3));
+				u.setPhoneNumber(Integer.toString(rs.getInt(4)));
+				u.setPassword(rs.getString(5));
+				u.setStatus(rs.getString(6));
+			}	
+		} catch (SQLException e) {
+			e.printStackTrace();
+			loggy.warn("Caught SQLException");
+			throw new BusinessException("Internal Error. Contact SYSADMIN");
+		}
+		return u;
+	}
+	
+	@Override
+	public User selectUserByColumnName(String cName, String cValue) throws BusinessException {
+		User u = new User();
+		try (Connection conn = DriverManager.getConnection(url, username, password)) {
+		
+			PreparedStatement ps = conn.prepareStatement("SELECT * FROM bankuser WHERE " + cName + " = '" + cValue + "'");
+			
+			PreparedStatement ps2 = conn.prepareStatement("SELECT * FROM bankuser WHERE email = 'henry@email.com'");
+			//ps.setString(0, uEmail);
+			//loggy.info(ps);
+			ResultSet rs = ps.executeQuery();
+			loggy.info(rs);
+			while(rs.next()) {
+				
+				u.setId(rs.getInt(1));
+				u.setName(rs.getString(2));
+				u.setEmail(rs.getString(3));
+				u.setPhoneNumber(Integer.toString(rs.getInt(4)));
+				u.setPassword(rs.getString(5));
+				u.setStatus(rs.getString(6));
+			}	
+		} catch (SQLException e) {
+			e.printStackTrace();
+			loggy.warn("Caught SQLException");
+			throw new BusinessException("Internal Error. Contact SYSADMIN");
+		}
+		return u;
 	}
 
 	@Override
@@ -145,6 +202,8 @@ public class UserDaoImpl implements UserDao {
 		
 		return randomAccountNumber;
 	}
+
+
 
 	
 

@@ -1,18 +1,19 @@
 package com.application.bank.dao;
 import java.util.List;
 
+import com.application.bank.exception.BusinessException;
 import com.application.bank.models.Account;
 
 public interface AccountDao {
 	
-	public void insertAccount(Account a);
+	public Account insertAccount(Account a) throws BusinessException;
 	
-	public Account selectAccount();
-	public List<Account> selectAllAccounts();
+	public Account selectAccount() throws BusinessException;
+	public List<Account> selectAllAccounts() throws BusinessException;
 	
-	public void updateAccount();
+	public Account updateAccount(Account a) throws BusinessException;
 	
-	public void deleteAccount();
+	public void deleteAccount() throws BusinessException;
 
 }
 

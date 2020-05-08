@@ -10,10 +10,11 @@ public interface UserDao {
 public User insertUser(User u) throws BusinessException;
 
 //Update
-public User updateUser(User u, String newAttribute, String columnName) throws BusinessException;
+public void updateUser(String email, String newAttribute, String columnName) throws BusinessException;
 
 //Read
-public User selectUserByEmail() throws BusinessException;
+public User selectUserByEmail(String uEmail) throws BusinessException;
+public User selectUserByColumnName(String cName, String cValue) throws BusinessException;
 public List<User> selectAllUsers() throws BusinessException;
 
 //Delete
