@@ -1,5 +1,7 @@
 select * from bank_user;
 
+insert into bank_user values (34, 'ethan12', 'pass', 0);
+
 select * from bank_account;
 
 --anonymous block for creating a new user

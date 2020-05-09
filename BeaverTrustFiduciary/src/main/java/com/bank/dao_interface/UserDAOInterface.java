@@ -11,6 +11,7 @@ public interface UserDAOInterface {
 	
 	public User createUser(User user) throws BankException;
 	public List<User> listUsers() throws BankException;
+	public boolean loginUser(String username, String password) throws BankException;
 	
 
 }

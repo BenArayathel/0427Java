@@ -20,6 +20,7 @@ import com.bank.tools.BankException;
 public class Main {
 	
 	final static Logger myLog = Logger.getLogger(Main.class);
+	public static final Scanner scan = new Scanner(System.in);
 
 	public static void main(String[] args) {
 		
@@ -34,11 +35,7 @@ public class Main {
 		
 	     
 	    //my logger only works if my call to this object/method comes after the logging stuff!
-//		WelcomeView.welcome();
-	
-	    //using new structure, for now calling all the way to DAO from presentation layer
-		//this is just a temporary scanner
-		Scanner scan = new Scanner(System.in);
+		WelcomeView.welcome();
 
 
 		UserServiceInterface usi = new UserServiceImplementation();
@@ -78,19 +75,21 @@ public class Main {
 //		System.out.println("your new account starting balance will be $50.");
 //		newAccount.setBalance(50.00);
 //		
+		// CREATE new account
 //		try {
 //			newAccount = asi.createAccount(newAccount);
 //		} catch (BankException e) {
 //			// TODO Auto-generated catch block
 //			e.printStackTrace();
 //		}
-		
-		try {
-			asi.listAccounts();
-		} catch (BankException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+	
+		// READ all accounts
+//		try {
+//			asi.listAccounts();
+//		} catch (BankException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 		
 		
 	

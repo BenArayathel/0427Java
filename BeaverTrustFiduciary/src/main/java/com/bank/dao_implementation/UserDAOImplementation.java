@@ -69,5 +69,35 @@ public class UserDAOImplementation implements UserDAOInterface {
 		return userList;
 	}
 	
+	
+	// LOGGING IN AN EXISTING USER
+	@Override
+	public boolean loginUser(String username, String password) throws BankException {
+		boolean inputVerified;
+		String sql = "select * from bank_user where username = ? and password = ?";
+		
+		try (Connection conn = DataConnection.getConnection()) {
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setString(1, username);
+			ps.setString(2, password);
+					
+			ResultSet rs = ps.executeQuery();
+			
+			// return a boolean, depending on if it finds the entry
+			if (rs.next()) {
+				inputVerified = true;
+				return inputVerified;
+
+			} else {
+				inputVerified = false;
+				return inputVerified;
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new BankException("login failed at dao");
+		}
+	}
+	
 
 }

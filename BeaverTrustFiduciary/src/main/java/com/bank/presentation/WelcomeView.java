@@ -1,9 +1,9 @@
 package com.bank.presentation;
 
-import com.bank.tools.myScanner;
-import com.bank.tools.quitOption;
-import com.maindriver.OLD.UserLogin;
-import com.welcomeview.OLD.CreateAccount;
+import com.bank.main.Main;
+import com.bank.tools.QuitOption;
+import com.bank.presentation.UserLoginView;
+import com.welcomeview.OLD.CreateAccountView;
 
 
 
@@ -15,18 +15,18 @@ public class WelcomeView {
 		String hasAccount = null;
 
 		System.out.println("Welcome to Beaver Trust Fiduciary");
-		System.out.println("Please type and enter 'Quit' at any time to exit.");
-		System.out.println("Do you already have an account? Y or N: ");
+		System.out.println("\nPlease type and enter 'Quit' at any time to exit.");
+		System.out.println("\nDo you already have an account? Y or N: ");
 		
 		//takes user input to either log them in or create account
-		hasAccount = myScanner.scan.nextLine();
+		hasAccount = Main.scan.nextLine();
 		
 		if (hasAccount.equalsIgnoreCase("y")) {
-			UserLogin.validateUsername();
+			UserLoginView.validateLogin();
 		} else if (hasAccount.equalsIgnoreCase("n")) {
-			CreateAccount.userCreate();
+			CreateAccountView.userCreate();
 		} else if (hasAccount.equalsIgnoreCase("quit")) {
-			quitOption.quit();
+			QuitOption.quit();
 		} else {
 			welcome();
 		}

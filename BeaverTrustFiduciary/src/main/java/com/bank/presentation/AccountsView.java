@@ -1,8 +1,8 @@
 package com.bank.presentation;
 
-import com.accounts.OLD.Deposit;
-import com.bank.tools.myScanner;
-import com.bank.tools.quitOption;
+import com.bank.main.Main;
+import com.bank.tools.QuitOption;
+//import com.accounts.OLD.Deposit;
 
 public class AccountsView {
 	
@@ -21,18 +21,18 @@ public class AccountsView {
 		System.out.println("Enter '4' to go back.");
 		System.out.println("Or, as always, enter 'Quit' to exit.");
 		
-		accountAction = myScanner.scan.nextLine().toString();
+		accountAction = Main.scan.nextLine().toString();
 		
 		if (accountAction.equalsIgnoreCase("1")) {
-			Deposit.deposit();			
+//			Deposit.deposit();			
 //		} else if (accountAction.equalsIgnoreCase("2")) {
 //			Withdrawal.withdraw();			
 //		} else if (accountAction.equalsIgnoreCase("3")) {
 //			Transfer.transfer();			
 		} else if (accountAction.equalsIgnoreCase("4")) {
-			UserHome.userWelcome(userName);			
+			UserHomeView.userWelcome(userName);			
 		} else if (accountAction.equalsIgnoreCase("quit")) {
-			quitOption.quit();
+			QuitOption.quit();
 		} else {
 			System.out.println("Please try again.");
 			view(userName);

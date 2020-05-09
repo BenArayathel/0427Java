@@ -1,6 +1,6 @@
 package com.bank.tools;
 
-public class quitOption {
+public class QuitOption {
 	
 	public static void quit() {
 
