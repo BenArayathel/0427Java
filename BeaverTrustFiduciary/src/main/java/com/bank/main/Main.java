@@ -71,15 +71,22 @@ public class Main {
 		AccountServiceInterface asi = new AccountServiceImplementation();
 		Account newAccount = new Account();
 		
-		System.out.println("enter new account user_id");
-		newAccount.setUser_id(scan.nextLine().toString());
-		System.out.println("enter new account name");
-		newAccount.setAccount_name(scan.nextLine());
-		System.out.println("your new account starting balance will be $50.");
-		newAccount.setBalance(50.00);
+//		System.out.println("enter new account user_id");
+//		newAccount.setUser_id(scan.nextLine().toString());
+//		System.out.println("enter new account name");
+//		newAccount.setAccount_name(scan.nextLine());
+//		System.out.println("your new account starting balance will be $50.");
+//		newAccount.setBalance(50.00);
+//		
+//		try {
+//			newAccount = asi.createAccount(newAccount);
+//		} catch (BankException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 		
 		try {
-			newAccount = asi.createAccount(newAccount);
+			asi.listAccounts();
 		} catch (BankException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

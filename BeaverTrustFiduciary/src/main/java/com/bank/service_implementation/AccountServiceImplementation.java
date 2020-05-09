@@ -19,6 +19,7 @@ public class AccountServiceImplementation implements AccountServiceInterface {
 
 	@Override
 	public List<Account> listAccounts() throws BankException {
+		adi.listAccounts();
 		return null;
 	}
 	
