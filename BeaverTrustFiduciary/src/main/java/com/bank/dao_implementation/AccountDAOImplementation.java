@@ -73,34 +73,22 @@ public class AccountDAOImplementation implements AccountDAOInterface {
 		List<Account> accountList = new ArrayList<Account>();
 		
 		try (Connection conn = DataConnection.getConnection()) {
-			// retrieve id associated with username
-//			String findID = "select user_id from bank_user where username = ?";
-//			PreparedStatement findUserIDFromUsername = conn.prepareStatement(findID);
-//			findUserIDFromUsername.setString(1, username);
-//			ResultSet rsID = findUserIDFromUsername.executeQuery();
+			String sql = "select * from bank_account inner join bank_user on bank_account.user_id = bank_user.user_id where username = ?";
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setString(1, username);
+			ResultSet rs = ps.executeQuery();
 			
-//			while (rsID.next()) {
-//				String userID = rsID.getString(1);
-//				System.out.println(userID = " user ID");
-				
-				// now that we have the ID, use that to run an inner join to get their accounts
-				String sql = "select account_name, account_balance from bank_account inner join bank_user on bank_account.user_id = bank_user.user_id where username = ?";
-				PreparedStatement ps = conn.prepareStatement(sql);
-				ps.setString(1, username);
-				ResultSet rs = ps.executeQuery();
-				
-				while (rs.next()) {
-					accountList.add
-					(new Account(rs.getString(1), rs.getString(2), rs.getString(3), rs.getDouble(4)));
-					System.out.println(accountList + " inside while loop");
-				}
+			while (rs.next()) {
+				accountList.add
+				(new Account(rs.getString(3), rs.getDouble(4)));
 			}
 			
 		} catch (SQLException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
-			throw new BankException("trouble with the account dao");
+			throw new BankException("something wrong with list users account dao layer");
 		}
-		
+
 		System.out.println("All accounts: " + accountList);
 		return accountList;
 	}

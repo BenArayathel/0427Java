@@ -26,13 +26,13 @@ public class AccountsView {
 		// try to list all accounts related to user's name/id
 		try {
 			asi.listUserAccounts(username);
-			System.out.println("did anything happen?");
+//			System.out.println("did anything happen?");
 		} catch (BankException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 				
-		System.out.println("What would you like to do?");
+		System.out.println("\nWhat would you like to do?");
 		System.out.println(".........................................");
 		System.out.println("Enter '1' to make a deposit.");
 		System.out.println("Enter '2' to make a withdrawal.");
