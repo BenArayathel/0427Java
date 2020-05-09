@@ -3,8 +3,11 @@ package com.bankofben.presentation;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+import java.util.Date;
 //import java.time.format.DateTimeParseException;
 import java.util.Scanner;
+
+import com.bankofben.exceptions.BusinessException;
 
 public class UserInterface {
 	
@@ -114,7 +117,7 @@ public class UserInterface {
 		return momsMaidenName;
 	}
 	
-	public static LocalDate requestDob(Scanner sc) {
+	public static Date requestDob(Scanner sc) {
 //		boolean noDate = true;
 		LocalDate dob = null;
 		boolean enteredCorrectly = false;
@@ -137,7 +140,7 @@ public class UserInterface {
 							+ "Dates of birth should be of form MM-DD-YYYY (e.g. 01-01-2000)");
 			}
 		}
-		return dob;
+		return java.sql.Date.valueOf(dob);
 //		System.out.println(monthDayYearDobString);
 //		String yearMonthDayDob = monthDayYearDobString;
 //		
@@ -163,7 +166,7 @@ public class UserInterface {
 //		return dob;
 	}
 	
-	public static String requestSsn(Scanner sc) {
+	public static long requestSsn(Scanner sc) throws BusinessException {
 		System.out.println("Please input your social security number (XXX-XX-XXXX)");
 		String ssn = sc.nextLine();
 		while (!(ValidationTools.isValidSsn(ssn))) {
@@ -171,7 +174,14 @@ public class UserInterface {
 			System.out.println("Please input your social security number (XXX-XX-XXXX");
 			ssn = sc.nextLine();
 		}
-		return ssn;
+		long result;
+		try {
+			result = Long.parseLong(ssn);
+		} catch (NumberFormatException e) {
+			throw new BusinessException("Unable to read social security number. "
+					+ "Please restart the process and try again.");
+		}
+		return result;
 	}
 	
 	public static String phoneNumberCriteria() {
@@ -181,7 +191,7 @@ public class UserInterface {
 				+ "* Must contain exactly 10 digits excluding the above optional additions";
 	}
 
-	public static String requestPhoneNumber(Scanner sc) {
+	public static long requestPhoneNumber(Scanner sc) throws BusinessException {
 		System.out.println("Please input your US phone number: ");
 		String phoneNumber = sc.nextLine();
 		while (!(ValidationTools.isValidPhoneNumber(phoneNumber))) {
@@ -189,7 +199,14 @@ public class UserInterface {
 			System.out.println("Please input your US phone number: ");
 			phoneNumber = sc.nextLine();
 		}
-		return phoneNumber;
+		long result;
+		try {
+			result = Long.parseLong(phoneNumber);
+		} catch (NumberFormatException e) {
+			throw new BusinessException("Unable to read phone number. "
+					+ "Please restart the process and try again.");
+		}
+		return result;
 	}
 	
 	public static String passwordCriteria() {

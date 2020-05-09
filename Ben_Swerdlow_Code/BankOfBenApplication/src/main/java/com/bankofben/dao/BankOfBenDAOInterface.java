@@ -7,6 +7,7 @@ import com.bankofben.exceptions.BusinessException;
 import com.bankofben.models.Account;
 import com.bankofben.models.Customer;
 import com.bankofben.models.Employee;
+import com.bankofben.models.User;
 
 public interface BankOfBenDAOInterface {
 	
@@ -19,8 +20,8 @@ public interface BankOfBenDAOInterface {
 	// CREATE
 	
 	// Create each type of persistent data
-	public Customer createCustomer(Customer customer) throws BusinessException;
-	public Employee createEmployee(Employee employee) throws BusinessException;
+	public Customer createCustomer(User user) throws BusinessException;
+	public Employee createEmployee(User user, String designation, Employee supervisor) throws BusinessException;
 	public Account createAccount(Account account) throws BusinessException;
 	
 	
@@ -65,33 +66,35 @@ public interface BankOfBenDAOInterface {
 	// UPDATE
 	
 	// Update customer information
-	public Customer updateCustomerFirstLame(String firstName) throws BusinessException;
-	public Customer updateCustomerMiddleName(String middleName) throws BusinessException;
-	public Customer updateCustomerLastName(String lastName) throws BusinessException;
-	public Customer updateCustomerMomsMaidenName(String momsMaidenName) throws BusinessException;
-	public Customer updateCustomerDateOfBirth(Date dob) throws BusinessException;
-	public Customer updateCustomerSocialSecurityNumber(long ssn) throws BusinessException;
-	public Customer updateCustomerSocialSecurityNumber(String ssn) throws BusinessException;
-	public Customer updateCustomerPhoneNumber(long phoneNumber) throws BusinessException;
-	public Customer updateCustomerPhoneNumber(String phoneNumber) throws BusinessException;
-	public Customer updateCustomerUsername(String username) throws BusinessException;
-	public Customer updateCustomerPassword(String password) throws BusinessException;
+	public Customer updateCustomerFirstLame(String firstName, String customerId) throws BusinessException;
+	public Customer updateCustomerMiddleName(String middleName, String customerId) throws BusinessException;
+	public Customer updateCustomerLastName(String lastName, String customerId) throws BusinessException;
+	public Customer updateCustomerMomsMaidenName(String momsMaidenName, String customerId) throws BusinessException;
+	public Customer updateCustomerDateOfBirth(Date dob, String customerId) throws BusinessException;
+	public Customer updateCustomerSocialSecurityNumber(long ssn, String customerId) throws BusinessException;
+	public Customer updateCustomerSocialSecurityNumber(String ssn, String customerId) throws BusinessException;
+	public Customer updateCustomerPhoneNumber(long phoneNumber, String customerId) throws BusinessException;
+	public Customer updateCustomerPhoneNumber(String phoneNumber, String customerId) throws BusinessException;
+	public Customer updateCustomerUsername(String username, String customerId) throws BusinessException;
+	public Customer updateCustomerPassword(String password, String customerId) throws BusinessException;
+	public Customer updateCustomerApplicationPending(boolean applicationPending, String customerId) throws BusinessException;
 	// Update employee information
-	public Employee updateEmployeeFirstLame(String firstName) throws BusinessException;
-	public Employee updateEmployeeMiddleName(String middleName) throws BusinessException;
-	public Employee updateEmployeeLastName(String lastName) throws BusinessException;
-	public Employee updateEmployeeMomsMaidenName(String momsMaidenName) throws BusinessException;
-	public Employee updateEmployeeDateOfBirth(Date dob) throws BusinessException;
-	public Employee updateEmployeeSocialSecurityNumber(long ssn) throws BusinessException;
-	public Employee updateEmployeeSocialSecurityNumber(String ssn) throws BusinessException;
-	public Employee updateEmployeePhoneNumber(long phoneNumber) throws BusinessException;
-	public Employee updateEmployeePhoneNumber(String phoneNumber) throws BusinessException;
-	public Employee updateEmployeeUsername(String username) throws BusinessException;
-	public Employee updateEmployeePassword(String password) throws BusinessException;
-	public Employee updateEmployeeDesignation(String designation) throws BusinessException;
+	public Employee updateEmployeeFirstLame(String firstName, String employeeId) throws BusinessException;
+	public Employee updateEmployeeMiddleName(String middleName, String employeeId) throws BusinessException;
+	public Employee updateEmployeeLastName(String lastName, String employeeId) throws BusinessException;
+	public Employee updateEmployeeMomsMaidenName(String momsMaidenName, String employeeId) throws BusinessException;
+	public Employee updateEmployeeDateOfBirth(Date dob, String employeeId) throws BusinessException;
+	public Employee updateEmployeeSocialSecurityNumber(long ssn, String employeeId) throws BusinessException;
+	public Employee updateEmployeeSocialSecurityNumber(String ssn, String employeeId) throws BusinessException;
+	public Employee updateEmployeePhoneNumber(long phoneNumber, String employeeId) throws BusinessException;
+	public Employee updateEmployeePhoneNumber(String phoneNumber, String employeeId) throws BusinessException;
+	public Employee updateEmployeeUsername(String username, String employeeId) throws BusinessException;
+	public Employee updateEmployeePassword(String password, String employeeId) throws BusinessException;
+	public Employee updateEmployeeDesignation(String designation, String employeeId) throws BusinessException;
+	public Employee updateEmployeeSupervisor(String supervisorId, String employeeId) throws BusinessException;
 	// Update account information
-	public Account updateAccountBalance(double balance) throws BusinessException;
-	public Account updateAccountCustomerId(int customerId) throws BusinessException;
+	public Account updateAccountBalance(double balance, long accountNumber) throws BusinessException;
+	public Account updateAccountCustomerId(int customerId, long accountNumber) throws BusinessException;
 	
 	
 	// DELETE

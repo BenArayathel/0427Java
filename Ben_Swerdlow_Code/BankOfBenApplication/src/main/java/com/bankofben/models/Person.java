@@ -1,6 +1,6 @@
 package com.bankofben.models;
 
-import java.time.LocalDate;
+import java.util.Date;
 
 import com.bankofben.exceptions.BusinessException;
 import com.bankofben.presentation.UserInterface;
@@ -12,7 +12,7 @@ public class Person {
 	protected String middleName;
 	protected String lastName;
 	protected String momsMaidenName;
-	protected LocalDate dob;
+	protected Date dob;
 	protected long ssn;
 	protected String email;
 	protected long phoneNumber;
@@ -21,8 +21,8 @@ public class Person {
 		super();
 	}
 
-	public Person(String firstName, String middleName, String lastName, String momsMaidenName, LocalDate dob,
-			String ssn, String email, String phoneNumber) throws BusinessException {
+	public Person(String firstName, String middleName, String lastName, String momsMaidenName, Date dob,
+			long ssn, String email, long phoneNumber) throws BusinessException {
 		super();
 	
 		setFirstName(firstName);
@@ -166,14 +166,14 @@ public class Person {
 		}
 	}
 
-	public LocalDate getDob() {
+	public Date getDob() {
 		return dob;
 	}
 
-	public void setDob(LocalDate dob) throws BusinessException {
+	public void setDob(Date dob) throws BusinessException {
 		if (dob==null) {
 			throw new BusinessException("No entry for date of birth detected. A date of birth must be provided.");
-		} else if (dob.isAfter(LocalDate.now())) {
+		} else if (dob.after(new Date())) {
 			throw new BusinessException("Invalid date of birth. Dates of birth cannot occur after the present date.");
 		} else {
 			this.dob = dob;

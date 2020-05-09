@@ -40,14 +40,14 @@ public class PlanetDaoImpl implements PlanetDao {
 	
 //	private static String url = 
 //			"jdbc:oracle:thin:@<endpoint>:<portNumber>:orcl";
-	private static String url = 
+	private static final String URL = /*System.getenv("TRAINING_DB_URL");*/
 			"jdbc:oracle:thin:@myfirstorcl.cyw8bxzbivob.us-east-2.rds.amazonaws.com:1521:orcl";
-	private static String username = "puser";
-	private static String password = "p4ssw0rd";
+	private static final String USERNAME = "puser";
+	private static final String PASSWORD = "p4ssw0rd";
 
 	@Override
 	public void insertPlanet(Planet p) {
-		try(Connection conn = DriverManager.getConnection(url, username, password)){
+		try(Connection conn = DriverManager.getConnection(URL, USERNAME, PASSWORD)){
 			
 			PreparedStatement ps = conn.prepareStatement("INSERT INTO planets VALUES(?,?,?,?,?)");
 			// This prevents us from accidentally passing in "Jonny; DROP TABLE;"
@@ -70,7 +70,7 @@ public class PlanetDaoImpl implements PlanetDao {
 	@Override
 	public List<Planet> selectAllPlanets() {
 		List<Planet> planets = new ArrayList<>();
-		try(Connection conn = DriverManager.getConnection(url, username, password)){
+		try(Connection conn = DriverManager.getConnection(URL, USERNAME, PASSWORD)){
 			
 			PreparedStatement ps = conn.prepareStatement("SELECT * FROM planets");
 			

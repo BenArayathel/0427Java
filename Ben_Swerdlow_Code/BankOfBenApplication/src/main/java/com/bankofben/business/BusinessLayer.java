@@ -11,9 +11,11 @@ import com.bankofben.models.Customer;
 import com.bankofben.models.User;
 import com.bankofben.presentation.UserInterface;
 import com.bankofben.presentation.ValidationTools;
-import com.bankofben.services.DatabaseServices;
+import com.bankofben.services.BankOfBenServices;
 
 public class BusinessLayer {
+	
+	BankOfBenServices dbs = new BankOfBenServices();
 	
 	public User loginUser(String username, Scanner sc) throws BusinessException {
 		String password = null;
@@ -33,63 +35,42 @@ public class BusinessLayer {
 	}
 
 	public User loginUser(String username, String password) throws BusinessException {
-		DatabaseServices dba = new DatabaseServices();
-		User user = null;
-		try {
-			user = dba.validateUser(username, password);
-		} catch (BusinessException e) {
-			throw e;
-		}
-		return user;
+		return dbs.loginUser(username, password);
 	}
 
-	private String generateAccountNumber () {
-		boolean uniqueAccountNumber = false;
-		Long randomTenDigitNumber;
-		DatabaseServices dba = new DatabaseServices();
-		do {
-			randomTenDigitNumber = ThreadLocalRandom.current().nextLong((long)1e9, (long)1e10);
-			uniqueAccountNumber = dba.isUniqueAccountNumber(randomTenDigitNumber);
-			/*
-			 *  TODO Fix dbl.isUniqueAccountNumber(long randomTenDigitNumber) implementation to actually
-			 *  		check if account number already exists in the database.
-			 */
-		} while (!(uniqueAccountNumber));
-		return randomTenDigitNumber.toString();
-	}
+//	private String generateAccountNumber () {
+//		boolean uniqueAccountNumber = false;
+//		Long randomTenDigitNumber;
+//		do {
+//			randomTenDigitNumber = ThreadLocalRandom.current().nextLong((long)1e9, (long)1e10);
+//			uniqueAccountNumber = dbs.isUniqueAccountNumber(randomTenDigitNumber);
+//			/*
+//			 *  TODO Fix dbl.isUniqueAccountNumber(long randomTenDigitNumber) implementation to actually
+//			 *  		check if account number already exists in the database.
+//			 */
+//		} while (!(uniqueAccountNumber));
+//		return randomTenDigitNumber.toString();
+//	}
 
-	public boolean userExists(String username) {
+	public boolean userExists(String username) throws BusinessException {
 		// BusinessLayer passes database call to DatabaseLayer
-		return new DatabaseServices().userExists(username);
-//		boolean userExists;
-//		try {
-//			userExists = this.usernameCustomerMap.containsKey(username);
-//		} catch (NullPointerException e) {
-//			userExists = false;
-//		}
-//		return userExists;
+		return dbs.usernameExists(username);
 	}
 	
-	public boolean emailExists(String email) {
+	public boolean emailExists(String email) throws BusinessException {
 		// BusinessLayer passes database call to DatabaseLayer
-		return new DatabaseServices().emailExists(email);
-//		boolean emailExists;
-//		try {
-//			emailExists = this.usernameEmailMap.containsValue(email);
-//		} catch (NullPointerException e) {
-//			emailExists = false;
-//		}
-//		return emailExists;
+		return dbs.emailExists(email);
+	}
+
+	public boolean userExists(long ssn) throws BusinessException {
+		return dbs.ssnExists(ssn);
 	}
 
 	public Customer applyForAccount(User user) throws BusinessException {
-		DatabaseServices dbs = new DatabaseServices();
-		Customer customer = dbs.applyForAccount(user);
-		return customer;
+		return dbs.applyForAccount(user);
 	}
 
 	public String viewBalances(Customer customer) throws BusinessException {
-		DatabaseServices dbs = new DatabaseServices();
 		return dbs.getBalances(customer);
 	}
 	
@@ -100,7 +81,7 @@ public class BusinessLayer {
 			throw new BusinessException("Given routing number does not match Bank of Ben's routing number. Please check "
 					+ "that your information is correct. If it is, contact a Bank of Ben employee to remedy the issue.");
 		} else {
-			DatabaseServices dbs = new DatabaseServices();
+			BankOfBenServices dbs = new BankOfBenServices();
 			Account account = dbs.getAccount(accountNumber, routingNumber);
 			return account;
 		}
@@ -120,7 +101,7 @@ public class BusinessLayer {
 					+ "two digits after the decimal point.");
 		}
 	}
-	
+
 	public void makeWithdrawal(double withdrawal, Account account, User customerOrEmployee) throws BusinessException {
 		if (ValidationTools.isValidMonetaryAmount(withdrawal)) {
 			if (Double.valueOf(account.getBalance() - withdrawal) < 0) {
@@ -142,7 +123,7 @@ public class BusinessLayer {
 		return false;
 	}
 	public List<Long> getAccountNumbersForCustomer(Customer customer) throws BusinessException {
-		DatabaseServices dbs = new DatabaseServices();
+		BankOfBenServices dbs = new BankOfBenServices();
 		List<Account> accounts = dbs.getAccountsForCustomer(customer);
 		List<Long> accountNumbers = new ArrayList<>();
 		for (Account account : accounts) {

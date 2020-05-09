@@ -1,11 +1,13 @@
 package com.bankofben.presentation;
 
-import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
+import org.apache.log4j.Logger;
+import org.apache.log4j.Level;
+
 import com.bankofben.business.BusinessLayer;
-import com.bankofben.dao.BankOfBenDAO;
 import com.bankofben.exceptions.BusinessException;
 import com.bankofben.models.Account;
 import com.bankofben.models.Customer;
@@ -13,19 +15,39 @@ import com.bankofben.models.Employee;
 import com.bankofben.models.User;
 
 public class PresentationLayer {
-	
+
 	/*
 	 * PUT ALL SYSOUT INFORMATION (AND SYSIN?) INTO THE LOG FILE
 	 * 
-	 * Presentation: 2-3 slides on technologies, 1 slide on functionality overview, then functionality demo
+	 * Presentation: 10 minute functionality presentation (plan for 7 minutes to account for questions; no powerpoint)
+	 * to Vinay, Ben, and QC team.
+	 * 
+	 * REMEMBER TO INTRODUCE YOURSELF
+	 * 
+	 * No code/SQL in presentation. Show functionality only. Pretend audience has never seen code before.
+	 * Imitate being a user (go through user stories). You can show the logging file to show you have been
+	 * logging the events. People may ask about code in Q&A, you should be able to pull code quickly to 
+	 * answer. Mention best practices you used.
+	 * 
+	 * should not use sysout, should only be log.info and log.error
+	 * 		NEED TO EDIT TO MAKE THIS HAPPEN
+	 * 
+	 * Can have dummy data to speed up presentation, but should show all functionality
+	 * 
+	 * Project due on Monday, May 11, presentation on Wednesday, May 13
+	 * 
+	 * QUIZ WILL STILL BE ON MONDAY
+	 * 		WILL COVER ONLY SQL, SEE QUESTION BANK!!!!
 	 * 
 	 */
-	
+
 	private static PresentationLayer pl = new PresentationLayer();
 	private static BusinessLayer bl = new BusinessLayer();
-	
+	final static Logger loggy = Logger.getLogger(PresentationLayer.class);
 
 	public static void main(String[] args) {
+		loggy.setLevel(Level.INFO);
+		loggy.info("This is a test! Use this method for all stdout.");
 		User user = null;
 //		int loginAttempts = 0;
 		Scanner sc = new Scanner(System.in);
@@ -39,18 +61,22 @@ public class PresentationLayer {
 			if (response.equalsIgnoreCase("register")) {
 				try {
 					user = pl.requestUserInfo(sc);
-					userResponseValidated = true;
 				} catch (BusinessException e) {
 					System.out.println(e.getMessage());
 					pl.printInvalidRegistrationMessage();
 				}
+				if (user!=null) {
+					userResponseValidated = true;
+				}
 			} else if (response.equalsIgnoreCase("login")) {
 				try {
 					user = pl.requestLoginUserInfo(sc);
-					userResponseValidated = true;
 				} catch (BusinessException e) {
 					System.out.println(e.getMessage());
 					pl.printInvalidLoginMessage();
+				}
+				if (user!=null) {
+					userResponseValidated = true;
 				}
 			} else if (response.equalsIgnoreCase("quit")) {
 				pl.quit(sc);
@@ -232,23 +258,29 @@ public class PresentationLayer {
 		registrationDisclaimer();
 		String email = UserInterface.requestEmail(sc);
 		String username = UserInterface.requestUsername(sc);
+		long ssn = UserInterface.requestSsn(sc);
 		boolean loginRequested = false;
+		boolean goBack = false;
 		while (bl.emailExists(email)) {
-			System.out.println("The email "+email+" already exists. Would you like to login? (yes or y to confirm)");
+			System.out.println("The email "+email+" already exists. Would you like to login?\n"
+					+ "(yes or y to confirm, back or b to go back)");
 			String response = sc.nextLine();
-			if (response.equalsIgnoreCase("y") || response.equalsIgnoreCase("y")) {
+			if (response.equalsIgnoreCase("yes") || response.equalsIgnoreCase("y")) {
 				loginRequested = true;
 				user = pl.requestLoginUserInfo(sc);
-				username = user.getUsername();
+				break;
+			} else if (response.equals("back") || response.equals("b")) {
+				goBack = true;
 				break;
 			} else {
 				email = UserInterface.requestEmail(sc);
 			}
 		}
 		while (bl.userExists(username) && !(loginRequested)) {
-			System.out.println("The username "+username+" already exists. Would you like to login? (yes or y to confirm)");
+			System.out.println("The username "+username+" already exists. Would you like to login?\n"
+					+ "(yes or y to confirm, back or b to go back)");
 			String response = sc.nextLine();
-			if (response.equalsIgnoreCase("y") || response.equalsIgnoreCase("y")) {
+			if (response.equalsIgnoreCase("yes") || response.equalsIgnoreCase("y")) {
 				loginRequested = true;
 				try {
 					user = bl.loginUser(username, sc);
@@ -256,29 +288,49 @@ public class PresentationLayer {
 					e.getMessage();
 				}
 				break;
+			} else if (response.equals("back") || response.equals("b")) {
+				goBack = true;
+				break;
 			} else {
 				username = UserInterface.requestUsername(sc);
 			}
 		}
-		if (!(loginRequested)) {
+		while (bl.userExists(ssn) && !(loginRequested)){
+			System.out.println("The ssn "+ssn+" already exists. Would you like to login?\n" 
+					+ "(yes or y to confirm, back or b to go back)");
+			String response = sc.nextLine();
+			if (response.equalsIgnoreCase("yes") || response.equalsIgnoreCase("y")) {
+				loginRequested = true;
+				try {
+					user = bl.loginUser(username, sc);
+				} catch (BusinessException e) {
+					e.getMessage();
+				}
+				break;
+			} else if (response.equals("back") || response.equals("b")) {
+				goBack = true;
+				break;
+			} else {
+				username = UserInterface.requestUsername(sc);
+			}
+			
+		}
+		if (!loginRequested && !goBack) {
 			/* 
-			 * Try to register user. These exceptions should have been caught earlier and the user should have
-			 * been given a chance to correct the provided information. The exceptions are a safety measure to
-			 * ensure erroneous information cannot be registered with BoB. 
+			 * Try to register user.
 			 */
-			user = requestUserInfo(username, email, sc);
+			user = requestUserInfo(username, email, ssn, sc);
 		}
 		return user;
 	}
 	
-	public User requestUserInfo(String username, String email, Scanner sc) throws BusinessException {
+	public User requestUserInfo(String username, String email, long ssn, Scanner sc) throws BusinessException {
 		String firstName = UserInterface.requestFirstName(sc);
 		String middleName = UserInterface.requestMiddleName(sc);
 		String lastName = UserInterface.requestLastName(sc);
 		String momsMaidenName = UserInterface.requestMomsMaidenName(sc);
-		LocalDate dob = UserInterface.requestDob(sc);
-		String ssn = UserInterface.requestSsn(sc);
-		String phoneNumber = UserInterface.requestPhoneNumber(sc);
+		Date dob = UserInterface.requestDob(sc);
+		long phoneNumber = UserInterface.requestPhoneNumber(sc);
 		String password = UserInterface.requestNewPassword(sc);
 		
 		User user = new User(firstName, middleName, lastName, momsMaidenName, dob, ssn, email,

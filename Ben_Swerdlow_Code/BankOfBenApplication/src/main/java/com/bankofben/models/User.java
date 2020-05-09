@@ -2,6 +2,8 @@ package com.bankofben.models;
 
 import java.time.LocalDate;
 import java.time.Period;
+import java.time.ZoneId;
+import java.util.Date;
 //import java.util.HashSet;
 import java.util.Scanner;
 
@@ -10,32 +12,25 @@ import com.bankofben.presentation.UserInterface;
 import com.bankofben.presentation.ValidationTools;
 
 public class User extends Person implements Comparable<User> {
-	
+
 	private String username;
 	private String password;
-	private final String id;
-	// For now, we will use counter to generate unique ids
-	// This will change once we do database stuff
-	private static Integer counter = 0;
+//	// For now, we will use counter to generate unique ids
+//	// This will change once we do database stuff
+//	private static Integer counter = 0;
 
 	public User() {
 		super();
-		// Change this when you learn database stuff
-		counter++;
-		this.id = Integer.toString(counter.hashCode());
 	}
 
-	public User(String firstName, String middleName, String lastName, String momsMaidenName, LocalDate dob, String ssn,
-			String email, String phoneNumber, String username, String password) throws BusinessException { 
+	public User(String firstName, String middleName, String lastName, String momsMaidenName, Date dob, long ssn,
+			String email, long phoneNumber, String username, String password) throws BusinessException { 
 //			throws BlankFieldException,
 //			InvalidDateOfBirthException, InvalidSsnException, InvalidEmailException, InvalidPhoneNumberException,
 //			InvalidUsernameException, InvalidPasswordException, InvalidPasswordChangeException {
 		super(firstName, middleName, lastName, momsMaidenName, dob, ssn, email, phoneNumber);
 		setUsername(username);
 		setPassword(password);
-		// Change this when you learn database stuff
-		counter++;
-		this.id = Integer.toString(counter.hashCode());
 	}
 	
 	public boolean passwordMatch(String password) {
@@ -43,9 +38,10 @@ public class User extends Person implements Comparable<User> {
 	}
 	
 	@Override
-	public void setDob(LocalDate dob) throws BusinessException {
+	public void setDob(Date dob) throws BusinessException {
 		super.setDob(dob);
-		if (Period.between(dob, LocalDate.now()).getYears() < 18) {
+		LocalDate localDateDob = dob.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+		if (Period.between(localDateDob, LocalDate.now()).getYears() < 18) {
 			this.dob = null;
 			throw new BusinessException("While the Bank of Ben appreciate young people's interest in financial responsibility, "
 					+ "you must be at least 18 years old to be a customer or employee of the Bank of Ben. We look forward to "
@@ -63,6 +59,12 @@ public class User extends Person implements Comparable<User> {
 		} else {
 			throw new BusinessException("Invalid username. Username must be between 4 and 20 characters.");
 		}
+	}
+	
+	public String getPassword() {
+		// TODO figure out security issue of having a getPassword method
+		// Right now it's necessary for creating a user
+		return this.password;
 	}
 	
 	private void setPassword(String password) throws BusinessException {
@@ -109,14 +111,6 @@ public class User extends Person implements Comparable<User> {
 		}
 	}
 
-	public String getId() {
-		return id;
-	}
-	
-	public void applyForAccount() {
-		
-	}
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -150,7 +144,7 @@ public class User extends Person implements Comparable<User> {
 
 	@Override
 	public String toString() {
-		return "User [username=" + username + ", password=" + password + ", id=" + id + ", firstName=" + firstName
+		return "User [username=" + username + ", password=" + password + ", firstName=" + firstName
 				+ ", middleName=" + middleName + ", lastName=" + lastName + ", momsMaidenName=" + momsMaidenName
 				+ ", dob=" + dob + ", ssn=" + ssn + ", email=" + email + ", phoneNumber=" + phoneNumber + "]";
 	}

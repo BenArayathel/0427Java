@@ -9,17 +9,17 @@ public class Account {
 	// This is a small bank, so everyone has the same routing number
 	private static final String routingNumber = "123456789";
 	private double balance;
-	private int customerId;
+	private String customerId;
 	
 	public Account() {
 		super();
 	}
 	
-	public Account(long accountNumber, double balance, User owner) throws BusinessException {
+	public Account(long accountNumber, double balance, String customerId) throws BusinessException {
 		super();
 		setAccountNumber(accountNumber);
 		this.balance = balance;
-		setCustomerId(owner.getId());
+		setCustomerId(customerId);
 	}
 	
 	public Long getAccountNumber() {
@@ -67,9 +67,8 @@ public class Account {
 		return balance;
 	}
 	
-	public void setBalance(double balance, User customerOrEmployee) throws BusinessException {
-		if ((customerOrEmployee instanceof Customer && customerOrEmployee.getId()==this.getCustomerId())
-				|| customerOrEmployee instanceof Employee) {
+	public void setBalance(double balance, Customer owner) throws BusinessException {
+		if (owner.getId().equals(getCustomerId())) {
 			if (ValidationTools.isValidMonetaryAmount(balance)) {
 				if (Double.valueOf(balance)==Double.POSITIVE_INFINITY) {
 					throw new BusinessException("Balances in excess of "+Double.MAX_VALUE+" are handled "
@@ -84,15 +83,32 @@ public class Account {
 						+ "two digits after the decimal point");
 			}
 		} else {
-			throw new BusinessException("Invalid credentials to change account "+this.getAccountNumber()+". Please check your information and try again.");
+			throw new BusinessException("Invalid credentials to change account "+this.getAccountNumber()+". "
+					+ "You are not the owner of this account number. Please check your information and try again.");
+		}
+	}
+	
+	public void setBalance(double balance, Employee employee) throws BusinessException {
+		if (ValidationTools.isValidMonetaryAmount(balance)) {
+			if (Double.valueOf(balance)==Double.POSITIVE_INFINITY) {
+				throw new BusinessException("Balances in excess of "+Double.MAX_VALUE+" are handled "
+						+ "via another system. Contact a Bank of Ben employee for more details.");
+			} else if (balance < 0) {
+				throw new BusinessException("The balance of an account cannot be a negative number.");
+			} else {
+				this.balance = balance;
+			}
+		} else {
+			throw new BusinessException("Balance amount must be a positive number that has only "
+					+ "two digits after the decimal point");
 		}
 	}
 
-	public int getCustomerId() {
+	public String getCustomerId() {
 		return customerId;
 	}
 
-	public void setCustomerId(int customerId) {
+	public void setCustomerId(String customerId) {
 		this.customerId = customerId;
 	}
 
