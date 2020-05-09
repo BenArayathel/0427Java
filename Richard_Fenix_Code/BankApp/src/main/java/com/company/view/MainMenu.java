@@ -1,6 +1,5 @@
 package com.company.view;
 
-import java.io.IOException;
 import java.util.Scanner;
 
 import com.company.controller.BankServiceController;
@@ -31,10 +30,11 @@ public class MainMenu {
 	                //displayCarInventory();
 	                break;
 	            case 0:
-	                System.out.println("\n *** Thank you for using my application. Have a great day! ***");
+	            	BankApp.loggy.info("\n *** Thank you for using my application. Have a great day! ***");
 	                break;
 	            default:
-	                System.out.println("Input not valid.");
+	                //System.out.println("Input not valid.");
+	            	BankApp.loggy.info("\n *** Input not valid. Please try again. ***");
 	                continue;
 	        }
 	    } while (userChoice != 0);
@@ -46,19 +46,19 @@ public class MainMenu {
 
 
 	public int displayMainMenu() {
-	    System.out.println("================= Rich Bank Program =================");
-	    System.out.println("       ");
-	    System.out.println("    Here are your choices:");
-	    System.out.println("       ");
-	    System.out.println("       1. Sign On");
-	    System.out.println("       2. Enroll Now");
-	    System.out.println("       9. Admin");	    
-	    System.out.println("       ");
-	    System.out.println("       0. Exit Program");
-	    System.out.println("       ");
-	    System.out.println("=====================================================");
-	    System.out.print("    Enter your choice: ");
-	
+		BankApp.loggy.info("================= Rich Bank Program =================");
+		BankApp.loggy.info("       ");
+		BankApp.loggy.info("    Here are your choices:");
+		BankApp.loggy.info("       ");
+		BankApp.loggy.info("       1. Sign On");
+		BankApp.loggy.info("       2. Enroll Now");
+		BankApp.loggy.info("       9. Admin");	    
+		BankApp.loggy.info("       ");
+		BankApp.loggy.info("       0. Exit Program");
+		BankApp.loggy.info("       ");
+		BankApp.loggy.info("=====================================================");
+		BankApp.loggy.info("    Enter your choice: ");
+		
 	    userChoice = Integer.parseInt(scanner.nextLine());
 	
 	    return userChoice;
@@ -90,7 +90,8 @@ public class MainMenu {
         	};
         	
         } else {
-        	System.out.println("Invalid user and account information.");
+        	//System.out.println("Invalid user and account information.");
+        	BankApp.loggy.error("Invalid user and account information.");
         };
                 
         return;
