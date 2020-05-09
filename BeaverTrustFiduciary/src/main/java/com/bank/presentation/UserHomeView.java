@@ -10,11 +10,11 @@ public class UserHomeView {
 		String userOptions = null;
 		userOptions = Main.scan.nextLine().toString();
 		
-		System.out.println("Welcome to your account.");
+		System.out.println("Welcome to your account, " + username);
 		System.out.println("What would you like to do?");
 		System.out.println(".........................................");
 		System.out.println("Enter '1' to access your existing accounts.");
-		System.out.println("Enter '2' to apply for a new account.");
+		System.out.println("Enter '2' to apply for a new bank account.");
 		System.out.println("Or, as always, enter 'Quit' to exit.");
 		
 

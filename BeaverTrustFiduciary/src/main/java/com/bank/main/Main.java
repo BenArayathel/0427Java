@@ -10,6 +10,7 @@ import org.apache.log4j.Logger;
 import com.bank.dao_interface.UserDAOInterface;
 import com.bank.models.Account;
 import com.bank.models.User;
+import com.bank.presentation.AccountsView;
 import com.bank.presentation.WelcomeView;
 import com.bank.service_implementation.AccountServiceImplementation;
 import com.bank.service_implementation.UserServiceImplementation;
@@ -35,7 +36,8 @@ public class Main {
 		
 	     
 	    //my logger only works if my call to this object/method comes after the logging stuff!
-		WelcomeView.welcome();
+//		WelcomeView.welcome();
+		AccountsView.view("ethan1");
 
 
 		UserServiceInterface usi = new UserServiceImplementation();

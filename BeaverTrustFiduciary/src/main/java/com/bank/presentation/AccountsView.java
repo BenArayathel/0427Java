@@ -1,17 +1,36 @@
 package com.bank.presentation;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.bank.main.Main;
+import com.bank.models.Account;
+import com.bank.service_implementation.AccountServiceImplementation;
+import com.bank.service_implementation.UserServiceImplementation;
+import com.bank.tools.BankException;
 import com.bank.tools.QuitOption;
 //import com.accounts.OLD.Deposit;
 
 public class AccountsView {
 	
-	public static void view(String userName) {
+	public static void view(String username) {
+		AccountServiceImplementation asi = new AccountServiceImplementation();
 		String accountAction = null;
+		List<Account> userAccounts = new ArrayList<Account>();
 
-		System.out.println("Here are your accounts, " + userName);
-		//this will be connect to db, iterate and print their accounts
+		System.out.println("Here are your accounts, " + username + ".");
+		
+		// this will be connect to db, iterate and print their accounts
 		System.out.println("The Accounts...with balances");
+		
+		// try to list all accounts related to user's name/id
+		try {
+			asi.listUserAccounts(username);
+			System.out.println("did anything happen?");
+		} catch (BankException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 				
 		System.out.println("What would you like to do?");
 		System.out.println(".........................................");
@@ -30,12 +49,12 @@ public class AccountsView {
 //		} else if (accountAction.equalsIgnoreCase("3")) {
 //			Transfer.transfer();			
 		} else if (accountAction.equalsIgnoreCase("4")) {
-			UserHomeView.userWelcome(userName);			
+			UserHomeView.userWelcome(username);			
 		} else if (accountAction.equalsIgnoreCase("quit")) {
 			QuitOption.quit();
 		} else {
 			System.out.println("Please try again.");
-			view(userName);
+			view(username);
 		}
 		
 

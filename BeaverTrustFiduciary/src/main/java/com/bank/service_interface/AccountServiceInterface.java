@@ -10,5 +10,7 @@ public interface AccountServiceInterface {
 		
 	public Account createAccount(Account account) throws BankException;
 	public List<Account> listAccounts() throws BankException;
+	public List<Account> listUserAccounts(String username) throws BankException;
+
 
 }

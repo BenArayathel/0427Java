@@ -22,6 +22,12 @@ public class AccountServiceImplementation implements AccountServiceInterface {
 		adi.listAccounts();
 		return null;
 	}
+
+	@Override
+	public List<Account> listUserAccounts(String username) throws BankException {
+		adi.listUserAccounts(username);
+		return null;
+	}
 	
 	
 
