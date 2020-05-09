@@ -40,16 +40,16 @@ public interface BankOfBenDAOInterface {
 	public List<Customer> getCustomersByColumn(int columnIndex, String columnValue) throws BusinessException;
 	
 	// Get employee by primary or unique key
-	public Customer getEmployeeById(String customerId) throws BusinessException;
-	public Customer getEmployeeByUsername(String username) throws BusinessException;
-	public Customer getEmployeeByEmail(String email) throws BusinessException;
+	public Employee getEmployeeById(String employeeId) throws BusinessException;
+	public Employee getEmployeeByUsername(String username) throws BusinessException;
+	public Employee getEmployeeByEmail(String email) throws BusinessException;
 	// Get all employees
-	public List<Customer> getAllEmployees() throws BusinessException;
-	public List<Customer> getAllEmployeesOrderedBy(String columnName) throws BusinessException;
-	public List<Customer> getAllEmployeesOrderedBy(int columnIndex) throws BusinessException;
+	public List<Employee> getAllEmployees() throws BusinessException;
+	public List<Employee> getAllEmployeesOrderedBy(String columnName) throws BusinessException;
+	public List<Employee> getAllEmployeesOrderedBy(int columnIndex) throws BusinessException;
 	// Get all employees with column value
-	public List<Customer> getEmployeesByColumn(String columnName, String columnValue) throws BusinessException;
-	public List<Customer> getEmployeesByColumn(int columnIndex, String columnValue) throws BusinessException;
+	public List<Employee> getEmployeesByColumn(String columnName, String columnValue) throws BusinessException;
+	public List<Employee> getEmployeesByColumn(int columnIndex, String columnValue) throws BusinessException;
 	
 	// Get account by primary or unique key
 	public Account getAccountByAccountNumber(Long accountNumber) throws BusinessException;

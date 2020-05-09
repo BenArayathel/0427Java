@@ -12,6 +12,7 @@ import com.bankofben.exceptions.BusinessException;
 import com.bankofben.models.Account;
 import com.bankofben.models.Customer;
 import com.bankofben.models.Employee;
+import com.bankofben.models.Transfer;
 import com.bankofben.models.User;
 
 public class PresentationLayer {
@@ -87,7 +88,6 @@ public class PresentationLayer {
 		} while (!(userResponseValidated));
 		
 		userResponseValidated = false;
-		
 		if (user instanceof Customer) {
 			Customer customer = (Customer) user;
 			pl.printCustomerGreeting(customer);
@@ -136,6 +136,61 @@ public class PresentationLayer {
 						System.out.println(e.getMessage());
 					}
 					
+				} else if (response.equalsIgnoreCase("transfers")) {
+					boolean exitTransfers = false;
+					boolean selectingOptions = false;
+					while (!exitTransfers) {
+						try {
+							bl.viewTransfers();
+						} catch (BusinessException e) {
+							System.out.println(e.getMessage());
+						}
+						selectingOptions = true;
+						String transferResponse = null;
+						List<Transfer> transfers = bl.getTransfers();
+						if (transfers.size()==0) {
+							System.out.println("You have no pending transfers at this time.");
+							while (selectingOptions) {
+								pl.printTransferOptions();
+								transferResponse = sc.nextLine();
+								if (transferResponse.equals("post")) {
+									// TODO Post transfer
+									
+								} else if (transferResponse.equals("view")) {
+									selectingOptions = false;
+								} else if (transferResponse.equals("back")) {
+									selectingOptions = false;
+									exitTransfers = true;
+								} else {
+									pl.printInvalidResponseMessage(transferResponse);
+								}
+							}
+						} else {
+							System.out.println("Your pending transfers are:");
+							pl.printTransfers(transfers);
+							while (selectingOptions) {
+								pl.printTransferOptions();
+								transferResponse = sc.nextLine();
+								if (transferResponse.equalsIgnoreCase("accept")) {
+									// TODO Accept transfer
+									
+								} else if (transferResponse.equals("post")) {
+									// TODO Post transfer
+									
+								} else if (transferResponse.equals("reject")) {
+									// TODO Reject transfer
+									transfers = bl.getTransfers();
+								} else if (transferResponse.equals("view")) {
+									selectingOptions = false;
+								} else if (transferResponse.equals("back")) {
+									selectingOptions = false;
+									exitTransfers = true;
+								} else {
+									pl.printInvalidResponseMessage(transferResponse);
+								}
+							}
+						}
+					}
 				} else if (response.equalsIgnoreCase("apply")) {
 					
 					try {
@@ -149,7 +204,7 @@ public class PresentationLayer {
 				} else {
 					pl.printInvalidResponseMessage(response);
 				}
-			}  while (!(userResponseValidated));
+			} while (!(userResponseValidated));
 		} else if (user instanceof Employee) {
 			Employee employee = (Employee) user;
 			pl.printEmployeeGreeting(employee);
@@ -157,9 +212,17 @@ public class PresentationLayer {
 				pl.printEmployeeOptions();
 				response = sc.nextLine();
 				if (response.equalsIgnoreCase("view")) {
-					// TODO: view customer accounts logic
+					try {
+						System.out.println(bl.viewBalances());
+					} catch (BusinessException e) {
+						System.out.println(e.getMessage());
+					}
 				} else if (response.equalsIgnoreCase("applications")) {
-					// TODO: applications logic
+					try {
+						System.out.println(bl.viewPendingApplications());
+					} catch (BusinessException e) {
+						System.out.println(e.getMessage());
+					}
 				} else if (response.equalsIgnoreCase("log")) {
 					// TODO: log logic
 				} else if (response.equalsIgnoreCase("quit")) {
@@ -169,9 +232,8 @@ public class PresentationLayer {
 				}
 			}
 		} else {
-			Customer customer = null;
 			try {
-				customer = bl.applyForAccount(user);
+				bl.applyForAccount_returnNothing(user);
 				System.out.println("Thank you for applying for your account. Your application will be reviewed by a "
 						+ "Bank of Ben employee in a timely manner.");
 			} catch (BusinessException e) {
@@ -226,10 +288,27 @@ public class PresentationLayer {
 		System.out.println("Type \"view\" to view your balance(s)");
 		System.out.println("Type \"withdraw\" to make a withdrawal from an account");
 		System.out.println("Type \"deposit\" to make a deposit into an account");
+		System.out.println("Type \"transfers\" to view, manage, or post money transfers.");
 		System.out.println("Type \"apply\" to apply for a new account");
 		System.out.println("Type \"quit\" to quit the application");
 	}
 
+	private void printTransferOptions() {
+		System.out.println("Please select from the following transfer options:");
+		System.out.println("Type \"accept\" to accept money from another user's account.");
+		System.out.println("Type \"post\" to post a transfer to an account you do or do not own");
+		System.out.println("Type \"reject\" to reject money from another user's account.");
+		System.out.println("Type \"view\" to view your pending transfers.");
+		System.out.println("Type \"back\" to go back to the customer options menu.");
+	}
+	
+	private void printTransferOptions_nonePending() {
+		System.out.println("Please select from the following transfer options:");
+		System.out.println("Type \"post\" to post a transfer to an account you do or do not own");
+		System.out.println("Type \"view\" to view your pending transfers.");
+		System.out.println("Type \"back\" to go back to the customer options menu.");
+	}
+	
 	private void printEmployeeGreeting(Employee employee) {
 		System.out.println("Welcome "+employee.getFirstName()+" "+employee.getLastName()+"!");
 		System.out.println("Please select from the following options:");

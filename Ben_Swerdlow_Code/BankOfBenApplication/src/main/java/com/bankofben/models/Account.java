@@ -7,7 +7,7 @@ public class Account {
 	
 	private long accountNumber;
 	// This is a small bank, so everyone has the same routing number
-	private static final String routingNumber = "123456789";
+	private static final long routingNumber = 123456789;
 	private double balance;
 	private String customerId;
 	
@@ -56,7 +56,7 @@ public class Account {
 		}
 	}
 	
-	public static String getRoutingNumber() {
+	public static long getRoutingNumber() {
 		return routingNumber;
 	}
 

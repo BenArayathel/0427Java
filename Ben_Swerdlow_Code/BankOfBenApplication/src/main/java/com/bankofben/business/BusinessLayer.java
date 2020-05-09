@@ -8,6 +8,7 @@ import java.util.concurrent.ThreadLocalRandom;
 import com.bankofben.exceptions.BusinessException;
 import com.bankofben.models.Account;
 import com.bankofben.models.Customer;
+import com.bankofben.models.Employee;
 import com.bankofben.models.User;
 import com.bankofben.presentation.UserInterface;
 import com.bankofben.presentation.ValidationTools;
@@ -70,13 +71,37 @@ public class BusinessLayer {
 		return dbs.applyForAccount(user);
 	}
 
+	public void applyForAccount_returnNothing(User user) throws BusinessException{
+		dbs.applyForAccount(user);
+	}
+	
+	public String viewBalances() throws BusinessException {
+		return dbs.getBalances();
+	}
+
 	public String viewBalances(Customer customer) throws BusinessException {
 		return dbs.getBalances(customer);
 	}
+
+	public String viewPendingApplications() throws BusinessException {
+		List<Customer> customers = dbs.getCustomersByApplicationPendingStatus(true);
+		StringBuilder outputBuilder = new StringBuilder();
+		// We'll start by organizing the columns
+		outputBuilder.append("Last Name\t|\tFirst Name\t|\tMiddle Name\t|\tMom's Maiden Name\t|\tDate of Birth\t|\t"
+				+ "SSN\t|\tEmail\t|\tPhone #\t|\tUsername\t|\tApplication Pending\n");
+		// Now we get the content
+		for (Customer c : customers) {
+			outputBuilder.append(c.getLastName()+"\t|\t"+c.getFirstName()+"\t|\t"+c.getMiddleName()+"\t|\t"
+					+c.getMomsMaidenName()+"\t|\t"+c.getDob()+"\t|\t"+c.getSsn()+"\t|\t"+c.getEmail()+"\t|\t"
+					+c.getPhoneNumber()+"\t|\t"+c.getUsername()+"\t|\t"+c.isApplicationPending());
+		}
+		// And... we return the content
+		return outputBuilder.toString();
+	}
 	
-	public Account getAccount(long accountNumber, String routingNumber)
+	public Account getAccount(long accountNumber, long routingNumber)
 			throws BusinessException {
-		if (!(routingNumber.equals(Account.getRoutingNumber()))) {
+		if (routingNumber!=Account.getRoutingNumber()) {
 			// Check routing number
 			throw new BusinessException("Given routing number does not match Bank of Ben's routing number. Please check "
 					+ "that your information is correct. If it is, contact a Bank of Ben employee to remedy the issue.");
@@ -94,7 +119,14 @@ public class BusinessLayer {
 				throw new BusinessException("Deposits that would result in balances in excess of "+Double.MAX_VALUE+" are handled "
 						+ "via another system. Contact a Bank of Ben employee for more details.");
 			} else {
-				account.setBalance(account.getBalance() + deposit, customerOrEmployee);
+				if (customerOrEmployee instanceof Customer) {
+					account.setBalance(account.getBalance() + deposit, (Customer) customerOrEmployee);
+				} else if (customerOrEmployee instanceof Employee) {
+					account.setBalance(account.getBalance() + deposit, (Employee) customerOrEmployee);
+				} else {
+					throw new BusinessException("Invalid credentials to make deposit into account "+account.getAccountNumber()+". "
+							+ "Please ensure your information is correct.");
+				}
 			}
 		} else {
 			throw new BusinessException("Deposit amount must be a positive number that has only "
@@ -110,7 +142,14 @@ public class BusinessLayer {
 						+account.getAccountNumber()+". Please check that your information is correct. If it is, contact "
 						+ "a Bank of Ben employee to remedy the issue.");
 			} else {
-				account.setBalance(account.getBalance() - withdrawal, customerOrEmployee);
+				if (customerOrEmployee instanceof Customer) {
+					account.setBalance(account.getBalance() - withdrawal, (Customer) customerOrEmployee);
+				} else if (customerOrEmployee instanceof Employee) {
+					account.setBalance(account.getBalance() - withdrawal, (Employee) customerOrEmployee);
+				} else {
+					throw new BusinessException("Invalid credentials to make withdrawal from account "+account.getAccountNumber()+". "
+							+ "Please ensure your information is correct.");
+				}
 			}
 		} else {
 			throw new BusinessException("Withdrawal amount must be a positive number that has only "

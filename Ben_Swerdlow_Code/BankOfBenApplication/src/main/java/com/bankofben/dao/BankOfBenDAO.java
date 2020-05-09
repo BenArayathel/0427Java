@@ -4,7 +4,7 @@ import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
+//import java.sql.ResultSetMetaData;
 import java.util.ArrayList;
 import java.util.Date;
 import java.sql.SQLException;
@@ -98,8 +98,31 @@ public class BankOfBenDAO implements BankOfBenDAOInterface {
 
 	@Override
 	public Customer getCustomerById(String customerId) throws BusinessException {
-		// TODO Auto-generated method stub
-		return null;
+		
+		Customer customer = null;
+		
+		try(Connection connection = OracleDbConnection.getConnection()){
+			
+			String sqlCall = "SELECT * FROM bankofben_customers WHERE \"Customer ID\"=?";
+			PreparedStatement ps = connection.prepareStatement(sqlCall);
+			ps.setString(1, customerId);
+			
+			ResultSet rset = ps.executeQuery();
+			if (rset.next()) {
+				customer = new Customer(rset.getString("First Name"), rset.getString("Middle Name"),
+						rset.getString("Last Name"), rset.getString("Mom's Maiden Name"), rset.getDate("Date of Birth"),
+						rset.getLong("Social Security Number"), rset.getString("Email"), rset.getLong("Phone Number"),
+						rset.getString("Username"), rset.getString("Password"), rset.getString("Customer ID"),
+						rset.getBoolean("Application Pending"));
+			} else {
+				throw new BusinessException("Customer ID "+customerId+" doesn't exist.");
+			}
+			
+		} catch (ClassNotFoundException | SQLException e) {
+			throw new BusinessException("Internal database error. Please contact your SYSADMIN.");
+		}
+		
+		return customer;
 	}
 
 	@Override
@@ -144,50 +167,101 @@ public class BankOfBenDAO implements BankOfBenDAOInterface {
 		return null;
 	}
 
+	public List<Customer> getCustomersByApplicationPendingStatus(boolean applicationPending) throws BusinessException {
+		
+		List<Customer> customers = new ArrayList<>();
+		
+		try(Connection connection = OracleDbConnection.getConnection()){
+			
+			String sqlCall = "SELECT * FROM bankofben_customers WHERE \"Application Pending\"=?";
+			PreparedStatement ps = connection.prepareStatement(sqlCall);
+			ps.setBoolean(1, applicationPending);
+			
+			ResultSet rset = ps.executeQuery();
+
+			while (rset.next()) {
+				customers.add(new Customer(rset.getString("First Name"), rset.getString("Middle Name"),
+						rset.getString("Last Name"), rset.getString("Mom's Maiden Name"),
+						rset.getDate("Date of Birth"), rset.getLong("Social Security Number"),
+						rset.getString("Email"), rset.getLong("Phone Number"), rset.getString("Username"),
+						rset.getString("Password"), rset.getString("Customer ID"),
+						rset.getBoolean("Application Pending")));
+			}
+			
+		} catch (ClassNotFoundException | SQLException e) {
+			throw new BusinessException("Internal database error. Please contact your SYSADMIN.");
+		}
+		
+		return customers;
+	}
+
 	@Override
-	public Customer getEmployeeById(String customerId) throws BusinessException {
+	public Employee getEmployeeById(String employeeId) throws BusinessException {
+		
+		Employee employee = null;
+		
+		try(Connection connection = OracleDbConnection.getConnection()){
+			
+			String sqlCall = "SELECT * FROM bankofben_employees WHERE \"Employee ID\"=?";
+			PreparedStatement ps = connection.prepareStatement(sqlCall);
+			ps.setString(1, employeeId);
+			
+			ResultSet rset = ps.executeQuery();
+			if (rset.next()) {
+				employee = new Employee(rset.getString("First Name"), rset.getString("Middle Name"),
+						rset.getString("Last Name"), rset.getString("Mom's Maiden Name"), rset.getDate("Date of Birth"),
+						rset.getLong("Social Security Number"), rset.getString("Email"), rset.getLong("Phone Number"),
+						rset.getString("Username"), rset.getString("Password"), rset.getString("Employee ID"),
+						rset.getString("Designation"), rset.getBoolean("Can Hire"));
+			} else {
+				throw new BusinessException("Customer ID "+employeeId+" doesn't exist.");
+			}
+			
+		} catch (ClassNotFoundException | SQLException e) {
+			throw new BusinessException("Internal database error. Please contact your SYSADMIN.");
+		}
+		
+		return employee;
+	}
+
+	@Override
+	public Employee getEmployeeByUsername(String username) throws BusinessException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Customer getEmployeeByUsername(String username) throws BusinessException {
+	public Employee getEmployeeByEmail(String email) throws BusinessException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Customer getEmployeeByEmail(String email) throws BusinessException {
+	public List<Employee> getAllEmployees() throws BusinessException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<Customer> getAllEmployees() throws BusinessException {
+	public List<Employee> getAllEmployeesOrderedBy(String columnName) throws BusinessException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<Customer> getAllEmployeesOrderedBy(String columnName) throws BusinessException {
+	public List<Employee> getAllEmployeesOrderedBy(int columnIndex) throws BusinessException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<Customer> getAllEmployeesOrderedBy(int columnIndex) throws BusinessException {
+	public List<Employee> getEmployeesByColumn(String columnName, String columnValue) throws BusinessException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<Customer> getEmployeesByColumn(String columnName, String columnValue) throws BusinessException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<Customer> getEmployeesByColumn(int columnIndex, String columnValue) throws BusinessException {
+	public List<Employee> getEmployeesByColumn(int columnIndex, String columnValue) throws BusinessException {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -247,9 +321,27 @@ public class BankOfBenDAO implements BankOfBenDAOInterface {
 	}
 
 	@Override
-	public List<Account> getAccountsForCustomerId(String customerId) throws BusinessException {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Account> getAccountsForCustomerId(String customerId) throws BusinessException {		
+		List<Account> accounts = new ArrayList<>();
+		
+		try(Connection connection = OracleDbConnection.getConnection()){
+			
+			String sqlCall = "SELECT * FROM bankofben_accounts WHERE \"Customer ID\"=?";
+			PreparedStatement ps = connection.prepareStatement(sqlCall);
+			ps.setString(1, customerId);
+			
+			ResultSet rset = ps.executeQuery();
+			
+			while (rset.next()) {
+				accounts.add(new Account(rset.getLong("Account Number"), rset.getDouble("Balance"),
+						rset.getString("Customer ID")));
+			}
+			
+		} catch (ClassNotFoundException | SQLException e) {
+			throw new BusinessException("Internal database error. Please contact your SYSADMIN.");
+		}
+		
+		return accounts;
 	}
 
 	@Override
@@ -326,21 +418,24 @@ public class BankOfBenDAO implements BankOfBenDAOInterface {
 	
 	@Override
 	public Customer updateCustomerApplicationPending(boolean applicationPending, String customerId) throws BusinessException {
-		Customer customer = null;
+		updateCustomerApplicationPending_returnNothing(applicationPending, customerId);
+		return getCustomerById(customerId);
+	}
+	
+	public void updateCustomerApplicationPending_returnNothing(boolean applicationPending, String customerId) throws BusinessException {
 		try(Connection connection = OracleDbConnection.getConnection()){
-			
-			// Check first that command would not 
-			
-			String sqlCall = "UPDATE bankofben_customers SET \"Application Pending\"=0 WHERE \"Customer ID\"=?";
+			String sqlCall = "UPDATE bankofben_customers SET \"Application Pending\"=? WHERE \"Customer ID\"=?";
 			PreparedStatement ps = connection.prepareStatement(sqlCall);
-			
+			ps.setBoolean(1, applicationPending);
+			ps.setString(2, customerId);
 			int rowsUpdated = ps.executeUpdate();
-			
+			if (rowsUpdated<1) {
+				throw new BusinessException("Internal database error. Could not update application status for "
+						+customerId+". Contact your SYSADMIN");
+			}
 		} catch (ClassNotFoundException | SQLException e) {
 			throw new BusinessException("Internal database error. Please contact your SYSADMIN.");
 		}
-		
-		return customer;
 	}
 
 	@Override
@@ -435,8 +530,18 @@ public class BankOfBenDAO implements BankOfBenDAOInterface {
 
 	@Override
 	public void deleteCustomer(String customerId) throws BusinessException {
-		// TODO Auto-generated method stub
-		
+		try(Connection connection = OracleDbConnection.getConnection()){
+			String sqlCall = "DELETE bankofben_customers WHERE \"Customer ID\"=?";
+			PreparedStatement ps = connection.prepareStatement(sqlCall);
+			ps.setString(1, customerId);
+			int rowsUpdated = ps.executeUpdate();
+			if (rowsUpdated<1) {
+				throw new BusinessException("Internal database error. Could not remove customer information for "
+						+customerId+". Contact your SYSADMIN.");
+			}
+		} catch (ClassNotFoundException | SQLException e) {
+			throw new BusinessException("Internal database error. Please contact your SYSADMIN.");
+		}
 	}
 
 	@Override
@@ -489,7 +594,7 @@ public class BankOfBenDAO implements BankOfBenDAOInterface {
 							designation, false);
 				} else {
 					throw new BusinessException("Internal database error. Customer could not be created. "
-							+ "Please contact your SYSADMIN");
+							+ "Please contact your SYSADMIN.");
 				}
 				
 			} catch (ClassNotFoundException | SQLException e) {

@@ -48,14 +48,6 @@ public class BankOfBenServices {
 	public Employee loginEmployee(String username, String password) throws BusinessException {
 		return dao.loginEmployee(username, password);
 	}
-
-//	public boolean isUniqueAccountNumber(Long randomTenDigitNumber) {
-//		/*
-//		 *  TODO: Check database to see if randomTenDigitNumber is already an account number 
-//		 */
-//		boolean unique = true;
-//		return unique;
-//	}
 	
 	public boolean userExists(User user) throws BusinessException {
 		boolean exists = false;
@@ -100,24 +92,61 @@ public class BankOfBenServices {
 		return dao.createCustomer(user);
 	}
 	
-	public void approveCustomerAccount(String customerId, Employee employee) {
-		
+	public void approveCustomerAccount(String customerId, Double startingBalance, Employee employee) throws BusinessException {
+		Account account = new Account(0L, startingBalance, customerId);
+		account = dao.createAccount(account);
+		dao.updateCustomerApplicationPending_returnNothing(false, customerId);
+	}
+	
+	public void rejectCustomerAccount(String customerId, Employee employee) throws BusinessException {
+		dao.deleteCustomer(customerId);
+	}
+	
+	public void approveCustomerAccount(String customerId, Employee employee) throws BusinessException {
+		approveCustomerAccount(customerId, 0.0, employee);
 	}
 
-	public String getBalances(Customer customer) {
-		// TODO Auto-generated method stub
-		return null;
+	public String getBalances() throws BusinessException {
+		List<Account> accounts = dao.getAllAccounts();
+		StringBuilder outputBuilder = new StringBuilder();
+		// We'll start by organizing the columns
+		outputBuilder.append("Account Number\t|\tBalance\t|\tCustomer ID\n");
+		// Now we get the content
+		for (Account a : accounts) {
+			outputBuilder.append(a.getAccountNumber()+"\t|\t"+a.getBalance()+"\t|\t"+a.getCustomerId()+"\n");
+		}
+		// And... we return the content
+		return outputBuilder.toString();
 	}
 
-	public Account getAccount(long accountNumber, String routingNumber) throws BusinessException {
+	public String getBalances(Customer customer) throws BusinessException {
+		List<Account> accounts = dao.getAccountsForCustomerId(customer.getId());
+		StringBuilder outputBuilder = new StringBuilder();
+		// We'll start by organizing the columns
+		outputBuilder.append("Account Number\t|\tBalance\n");
+		// Now we get the content
+		for (Account a : accounts) {
+			outputBuilder.append(a.getAccountNumber()+"\t|\t"+a.getBalance()+"\n");
+		}
+		// And... we return the content
+		return outputBuilder.toString();
+	}
+
+	public Account getAccount(long accountNumber, long routingNumber) throws BusinessException {
 		// TODO Auto-generated method stub
-//		throw new BusinessException("Recipient account and intended recipient account do not match. Please check "
-//				+ "that your information is correct. If it is, contact a Bank of Ben employee to remedy the issue.");
+		if (routingNumber != Account.getRoutingNumber()) {
+			throw new BusinessException("Recipient account and intended recipient account do not match. Please check "
+					+ "that your information is correct. If it is, contact a Bank of Ben employee to remedy the issue.");
+		}
 		return dao.getAccountByAccountNumber(accountNumber);
 	}
 	
 	public List<Account> getAccountsForCustomer(Customer customer) throws BusinessException {
 		return dao.getAccountsForCustomerId(customer.getId());
+	}
+
+	public List<Customer> getCustomersByApplicationPendingStatus(boolean applicationPending) throws BusinessException {
+		return dao.getCustomersByApplicationPendingStatus(applicationPending);
 	}
 
 }
