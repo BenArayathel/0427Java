@@ -17,6 +17,7 @@ public class UserServiceImplementation implements UserServiceInterface {
 	@Override
 	public User createUser(User user) throws BankException {
 		// TODO Auto-generated method stub
+		udi.createUser(user);
 		return null;
 	}
 

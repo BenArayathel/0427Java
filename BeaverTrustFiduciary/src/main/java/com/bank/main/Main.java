@@ -44,17 +44,18 @@ public class Main {
 		UserServiceInterface usi = new UserServiceImplementation();
 		User myUser = new User();
 		
-		System.out.println("enter new username");
-		myUser.setUsername(scan.nextLine());
-		System.out.println("enter new password");
-		myUser.setPassword(scan.nextLine());
-		
-		try {
-			myUser = usi.createUser(myUser);
-		} catch (BankException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//		System.out.println("enter new username");
+//		myUser.setUsername(scan.nextLine());
+//		System.out.println("enter new password");
+//		myUser.setPassword(scan.nextLine());
+//		
+//		try {
+//			myUser = usi.createUser(myUser);
+//			System.out.println("main level works");
+//		} catch (BankException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 	
 		// Listing Users
 //		UserServiceImplementation usi = new UserServiceImplementation();
@@ -70,20 +71,19 @@ public class Main {
 		AccountServiceInterface asi = new AccountServiceImplementation();
 		Account newAccount = new Account();
 		
-//		System.out.println("enter new account user_id");
-//		newAccount.setUser_id(scan.nextLine().toString());
-//		System.out.println("enter new account name");
-//		newAccount.setAccount_name(scan.nextLine());
-//		System.out.println("your new account starting balance will be $50.");
-//		newAccount.setBalance(50.00);
-//		
-//		try {
-//			newAccount = asi.createAccount(newAccount);
-//			System.out.println("main line running");
-//		} catch (BankException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
+		System.out.println("enter new account user_id");
+		newAccount.setUser_id(scan.nextLine().toString());
+		System.out.println("enter new account name");
+		newAccount.setAccount_name(scan.nextLine());
+		System.out.println("your new account starting balance will be $50.");
+		newAccount.setBalance(50.00);
+		
+		try {
+			newAccount = asi.createAccount(newAccount);
+		} catch (BankException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		
 	

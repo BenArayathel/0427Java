@@ -36,14 +36,12 @@ public class AccountDAOImplementation implements AccountDAOInterface {
 			throw new BankException("ACCOUNT DAO IMPLEMENTATION ERROR");
 		}
 		
-		System.out.println("this line?");
 		return account;
 	}
 	
 
 	@Override
 	public List<Account> listAccounts() throws BankException {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

@@ -15,7 +15,7 @@ import com.bank.tools.BankException;
 import com.bank.tools.DataConnection;
 
 public class UserDAOImplementation implements UserDAOInterface {
-
+	
 	// ADD A NEW USER TO THE DB
 	@Override
 	public User createUser(User user) throws BankException {
@@ -41,7 +41,6 @@ public class UserDAOImplementation implements UserDAOInterface {
 			throw new BankException("Something went wrong here");
 		}
 		
-		System.out.println("user test");
 		return user;
 	}
 
@@ -66,8 +65,7 @@ public class UserDAOImplementation implements UserDAOInterface {
 			throw new BankException("List User problem");
 		}
 		
-		System.out.println("THE LIST USER METHOD IS WORKING");
-		System.out.println(userList.toString() + " this is the user!!");
+		System.out.println("USERS: " + userList.toString());
 		return userList;
 	}
 	
