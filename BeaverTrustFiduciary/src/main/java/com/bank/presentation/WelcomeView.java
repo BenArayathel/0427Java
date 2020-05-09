@@ -21,9 +21,9 @@ public class WelcomeView {
 		//takes user input to either log them in or create account
 		hasAccount = myScanner.scan.nextLine();
 		
-		if (hasAccount.equals("Y") || hasAccount.equals("y")) {
+		if (hasAccount.equalsIgnoreCase("y")) {
 			UserLogin.validateUsername();
-		} else if (hasAccount.equals("N") || hasAccount.equals("n")) {
+		} else if (hasAccount.equalsIgnoreCase("n")) {
 			CreateAccount.userCreate();
 		} else if (hasAccount.equalsIgnoreCase("quit")) {
 			quitOption.quit();

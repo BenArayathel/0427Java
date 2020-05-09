@@ -1,5 +1,9 @@
 package com.bank.main;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
 import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Logger;
 
@@ -30,17 +34,42 @@ public class Main {
 //		WelcomeView.welcome();
 	
 	    //using new structure, for now calling all the way to DAO from presentation layer
-		//User testUser = new User();
-		UserServiceInterface usi = new UserServiceImplementation();
-		User myUser = new User();
+		//this is just a temporary scanner
+
+
+//		UserServiceInterface usi = new UserServiceImplementation();
+//		User myUser = new User();
+//		
+//		Scanner scan = new Scanner(System.in);
+//		System.out.println("enter new username");
+//		myUser.setUsername(scan.nextLine());
+//		System.out.println("enter new password");
+//		myUser.setPassword(scan.nextLine());
+//		
+//		try {
+//			myUser = usi.createUser(myUser);
+//		} catch (BankException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+	
+		UserServiceImplementation usi = new UserServiceImplementation();
 		
 		try {
-			myUser = usi.createUser(myUser);
+			List<User> users = usi.listUsers();
+//			for (User u : users) {
+//				System.out.println(u);
+//			}
 		} catch (BankException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	
+		
+//		List<Planet> planets = pDaoImpl.selectAllPlanets();
+//		for(Planet i: planets) {
+//			System.out.println(i);
+//		}
+		
+		
 	
 
 	}

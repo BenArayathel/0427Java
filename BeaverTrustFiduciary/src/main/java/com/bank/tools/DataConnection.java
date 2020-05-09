@@ -25,10 +25,10 @@ public class DataConnection {
 	
 	public static Connection getConnection() throws SQLException {
 		//original approach, will delete to simulate security if system variables work
-		String url = 
-				"jdbc:oracle:thin:@database-1.cb5vpvii5jvy.us-west-2.rds.amazonaws.com:1521:orcl";
-		String username = "admin";
-		String password = "gunderodd";
+//		String url = 
+//				"jdbc:oracle:thin:@database-1.cb5vpvii5jvy.us-west-2.rds.amazonaws.com:1521:orcl";
+//		String username = "admin";
+//		String password = "gunderodd";
 		
 		conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);
 		return conn;

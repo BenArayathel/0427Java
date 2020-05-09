@@ -13,11 +13,12 @@ public class User {
 		super();
 	}
 
-	public User(String user_id, String username, String password) {
+	public User(String user_id, String username, String password, int approved) {
 		super();
 		this.user_id = user_id;
 		this.username = username;
 		this.password = password;
+		this.approved = approved;
 	}
 
 	
@@ -54,11 +55,14 @@ public class User {
 		this.approved = approved;
 	}
 
+
 	//TOSTRING
 	@Override
 	public String toString() {
-		return "User [user_id=" + user_id + ", username=" + username + ", password=" + password + "]";
+		return "User [user_id=" + user_id + ", username=" + username + ", password=" + password + ", approved="
+				+ approved + "]";
 	}
+
 	
 	
 
