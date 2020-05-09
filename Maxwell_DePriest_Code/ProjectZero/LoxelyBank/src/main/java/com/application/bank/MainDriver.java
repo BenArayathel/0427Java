@@ -26,19 +26,27 @@ public class MainDriver {
 		User currentUser = new User();
 		
 		Scanner sc = new Scanner(System.in);
-//		loggy.info("Welcome to Loxely Bank, where we save for the rich and loan to the poor.");
-//		loggy.info("Please enter your email");
-//		String em = sc.nextLine();
-//		loggy.info("Please enter your password");
-//		String pw = sc.nextLine();
+		loggy.info("Welcome to Loxely Bank, where we save for the rich and loan to the poor.");
+		loggy.info("Please enter your email");
+		String em = sc.nextLine();
+		loggy.info("Please enter your password");
+		String pw = sc.nextLine();
+		try {
+			if(uSI.userLogin(em, pw)) {
+				currentUser = uSI.setCurrentUser(em);
+				loggy.info("Hello, " + currentUser.getName());	
+			}
+		} catch (BusinessException e1) {
+			loggy.info(e1.getMessage());
+			e1.printStackTrace();
+		}
+		
 //		try {
-//			if(uSI.userLogin(em, pw)) {
-//				currentUser = uSI.setCurrentUser(em);
-//				loggy.info("Hello, " + currentUser.getName());	
-//			}
+//			String chkB = uSI.checkSavingsBalance(currentUser);
+//			loggy.info("You currently have $" + chkB + " in your savings account.");
 //		} catch (BusinessException e1) {
-//			loggy.info(e1.getMessage());
-//			e1.printStackTrace();
+//			loggy.error("Error while checking checkingBalance");
+//			loggy.info("Something went wrong. Please try again");
 //		}
 //		
 //		uSI.activatePendingAccounts(currentUser);

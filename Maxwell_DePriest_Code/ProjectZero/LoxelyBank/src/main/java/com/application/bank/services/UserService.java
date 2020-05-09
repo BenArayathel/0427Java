@@ -11,9 +11,9 @@ public interface UserService {
 	public User setCurrentUser(String email) throws BusinessException;
 	public void signUpForAccount(String email) throws BusinessException;
 	
-	public User updateProfile(User u) throws BusinessException;
-	public void checkCheckingBalance() throws BusinessException;
-	public void checkSavingsBalance() throws BusinessException;
+	//public User updateProfile(User u) throws BusinessException;
+	public String checkCheckingBalance(User u) throws BusinessException;
+	public String checkSavingsBalance(User u) throws BusinessException;
 	
 	public void removeUserProfile(User u) throws BusinessException;
 	

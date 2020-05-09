@@ -155,22 +155,20 @@ public class UserServiceImpl implements UserService {
 	}
 	
 
+//	@Override
+//	public User updateProfile(User u) throws BusinessException {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
+
 	@Override
-	public User updateProfile(User u) throws BusinessException {
-		// TODO Auto-generated method stub
-		return null;
+	public String checkCheckingBalance(User u) throws BusinessException {
+		return aDI.selectAccountByEmail(u.getEmail()).getCheckingBalance();
 	}
 
 	@Override
-	public void checkCheckingBalance() throws BusinessException {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void checkSavingsBalance() throws BusinessException {
-		// TODO Auto-generated method stub
-		
+	public String checkSavingsBalance(User u) throws BusinessException {
+		return aDI.selectAccountByEmail(u.getEmail()).getSavingsBalance();
 	}
 
 	@Override
@@ -187,30 +185,6 @@ public class UserServiceImpl implements UserService {
 		
 		return randomAccountNumber;
 	}
-	
-	
-	
-	
-//	public static User newCustomerRegistration() {
-
-//	
-//	return c;
-//}
-	
-//	public void activateCustomerAccounts(ArrayList<Customer> allRecords) {
-//
-//		for(Customer record : allRecords) {
-//			if(!record.getAccount().getActive()) {
-//				record.getAccount().setActive(true);
-//			}
-//			loggy.info("Customer accounts activated");
-//			updateCustomerInfo(allRecords);
-//			
-//		}// end for loop
-//		
-//		
-//
-//	}// end activateUserAccounts()
 	
 	private boolean isValidName(String testName) {
 		if (testName.matches("[a-zA-Z ]{2,20}")) {
@@ -230,7 +204,6 @@ public class UserServiceImpl implements UserService {
 	}
 	
 	private boolean isValidDeposit(String testMoney) {
-		
 		if(testMoney.matches("[0-9.]{1,7}") && Double.parseDouble(testMoney) > 0 && Double.parseDouble(testMoney) <= 1000.0) {
 			loggy.debug("isValidDeposit passed");
 			return true;
@@ -240,25 +213,9 @@ public class UserServiceImpl implements UserService {
 			loggy.error("isValidDeposit failed");
 			return false;
 		}
-		
 	}
-	
 	private boolean isEmployee(User u) {
 		return u.getStatus().equals("employee") ? true : false;
 	}
-
-
-	
-//	private boolean isValidEmail(String testEmail) {
-//		Pattern pattern = Pattern.compile(".com");
-//		Matcher matcher = pattern.matcher(testEmail);
-//		if (matcher.find()) {
-//			loggy.debug("Found '.com' in the email submission");
-//			System.out.println("Found the dot com");
-//			return true;
-//		}
-//		loggy.error("Email failed validation test");
-//		return false;
-//	}
 
 }

@@ -61,7 +61,7 @@ public class AccountDaoImpl implements AccountDao {
 				a.setActive(rs.getString("active"));
 				a.setEmail(rs.getString("email"));
 			}	
-			loggy.info("Email associated with account-" + a.getEmail());
+			loggy.debug("Retrieved account information for email-" + a.getEmail());
 		} catch (SQLException e) {
 			e.printStackTrace();
 			loggy.warn("Caught SQLException");
