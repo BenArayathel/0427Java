@@ -9,6 +9,7 @@ import com.application.bank.services.impl.UserServiceImpl;
 import com.application.bank.services.impl.AccountServiceImpl;
 
 import java.util.List;
+import java.util.Scanner;
 
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
@@ -22,25 +23,29 @@ public class MainDriver {
 		AccountDaoImpl aDI = new AccountDaoImpl();
 		AccountServiceImpl aSI = new AccountServiceImpl();
 		UserServiceImpl uSI = new UserServiceImpl();
+		User currentUser = new User();
 		
-		User u3 = new User();
-		
+		Scanner sc = new Scanner(System.in);
+		loggy.info("Welcome to Loxely Bank, where we save for the rich and loan to the poor.");
+		loggy.info("Please enter your email");
+		String em = sc.nextLine();
+		loggy.info("Please enter your password");
+		String pw = sc.nextLine();
 		try {
-			uSI.registerNewUser();
+			if(uSI.userLogin(em, pw)) {
+				currentUser = uSI.setCurrentUser(em);
+				System.out.println("Hello, " + currentUser.getName());
+			}
 		} catch (BusinessException e1) {
 			loggy.info(e1.getMessage());
+			e1.printStackTrace();
 		}
 		
-//		u3.setName("Boba Fett");
-//		u3.setEmail("boba@email.com");
-//		u3.setPhoneNumber("1130490");
-//		u3.setPassword("slave1");
-//		u3.setStatus("customer");
+		
 //		try {
-//			uDI.insertUser(u3);
-//		} catch (BusinessException e) {
-//			loggy.warn("Couldn't create a new user. Please try again.");
-//			e.printStackTrace();
+//			uSI.registerNewUser();           
+//		} catch (BusinessException e1) {
+//			loggy.info(e1.getMessage());
 //		}
 		
 //		try {
@@ -115,23 +120,32 @@ public class MainDriver {
 //		}
 		
 //		Account a2 = new Account();
-//		a2.setCheckingAccountNumber("980054");
-//		a2.setSavingsAccountNumber("7840032");
-//		a2.setCheckingBalance("1500.00");
+//		a2.setCheckingAccountNumber("985751");
+//		a2.setSavingsAccountNumber("7847831");
+//		a2.setCheckingBalance("5000.00");
 //		a2.setSavingsBalance("2500.00");
 //		a2.setActive("false");
-//		a2.setEmail("jabba@email.com");
+//		a2.setEmail("leia@email.com");
 //		
 //		Account a3 = new Account();
-//		a3.setCheckingAccountNumber("986954");
-//		a3.setSavingsAccountNumber("7110032");
-//		a3.setCheckingBalance("100.00");
-//		a3.setSavingsBalance("500.00");
+//		a3.setCheckingAccountNumber("1296011");
+//		a3.setSavingsAccountNumber("1910001");
+//		a3.setCheckingBalance("150.00");
+//		a3.setSavingsBalance("2050.00");
 //		a3.setActive("false");
-//		a3.setEmail("ben@email.com");
+//		a3.setEmail("han@email.com");
+//		
+//		Account a4 = new Account();
+//		a4.setCheckingAccountNumber("1296694");
+//		a4.setSavingsAccountNumber("1910932");
+//		a4.setCheckingBalance("550.00");
+//		a4.setSavingsBalance("100.00");
+//		a4.setActive("false");
+//		a4.setEmail("kirk@email.com");
 //		try {
-//			aDI.insertAccount(a3);
+//			aDI.insertAccount(a4);
 //			aDI.insertAccount(a2);
+//			aDI.insertAccount(a3);
 //		} catch (BusinessException e) {
 //			loggy.error("Internal Error. Please contact the SYSADMIN");
 //			e.printStackTrace();

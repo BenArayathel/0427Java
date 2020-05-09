@@ -7,7 +7,8 @@ import com.application.bank.models.User;
 public interface UserService {
 	
 	public User registerNewUser() throws BusinessException;
-	public User selectCurrentUser(String email) throws BusinessException;
+	public boolean userLogin(String email, String password) throws BusinessException;
+	public User setCurrentUser(String email) throws BusinessException;
 	public void signUpForAccount() throws BusinessException;
 	
 	public User updateProfile(User u) throws BusinessException;

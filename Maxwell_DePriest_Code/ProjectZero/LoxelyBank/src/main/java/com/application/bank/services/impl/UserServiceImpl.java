@@ -66,31 +66,38 @@ public class UserServiceImpl implements UserService {
 			
 			loggy.debug("new customer account created with email " + newUser.getEmail());
 		}
-
+		sc.close();
+		return newUser;
+	}
+	
+	@Override
+	public boolean userLogin(String email, String password) throws BusinessException {
+		User u = uDI.selectUserByEmail(email);
+		if (u != null) {
+			if (u.getPassword().equals(password)) {
+				loggy.debug("Passwords match");
+				return true;
+			}
+			loggy.error("Passwords did not match");
+		}
+		loggy.error("Email or password could not be found matched in DB");
+		loggy.info("Either your email or password is incorrect. Please try again.");
+		return false;
 		
-		
-		
-		
+	}
+	
+	@Override
+	public User setCurrentUser(String email) throws BusinessException {
+		return uDI.selectUserByEmail(email);
+	}
+	
+	@Override
+	public void signUpForAccount() throws BusinessException {
 //		loggy.info("How much would you like to put into your checking account?");
 //		String checkingMoney = sc.nextLine();
 //		String newSavingsNum = generateAccountNumber();
 //		String newCheckingNum = generateAccountNumber();
 //		Account act = new Account();
-		
-
-		
-		sc.close();
-		return null;
-	}
-	
-	@Override
-	public User selectCurrentUser(String email) throws BusinessException {
-		return null;
-	}
-	
-	@Override
-	public void signUpForAccount() throws BusinessException {
-		
 	}
 
 	@Override
@@ -166,6 +173,8 @@ public class UserServiceImpl implements UserService {
 		loggy.error("Phone number failed validation check");
 		return false;
 	}
+
+
 	
 //	private boolean isValidEmail(String testEmail) {
 //		Pattern pattern = Pattern.compile(".com");
