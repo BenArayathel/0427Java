@@ -73,8 +73,8 @@ public class UserRegistration {
 				// System.out.println(user.toString());
 				// System.out.println("\nThanks, you are now a: User of the Bank");
 				Log.logger("\nThanks, you are now a: User of the Bank");
-				UserOptions a = new UserOptions();
-				a.seeOptions(user);
+				UserOptionsDirectory a = new UserOptionsDirectory();
+				a.userOptionsDir(user);
 			} else {
 				// System.out.println("Failure to Create user.");
 				Log.logger("Failure to create user.");

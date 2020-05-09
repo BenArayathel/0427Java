@@ -5,17 +5,18 @@ import java.util.Date;
 public class User {
 
 	private String userName;
-	private long contact;
+	private long contactPhone;
 	private String password;
 
 	private String user_id; // after db generates id
-	private String email; // register to be customer
-	private Date dob;
-	private String soc;
-	
+	private String email;
+	private Date dob; // register for account
+	private String soc; // register to be customer
+	private Double balance;
+	private int a_access;
+
 	// username, password, email, contact
 
-	
 	// for log in
 	public User(String userName, String password) {
 		// super();
@@ -29,36 +30,65 @@ public class User {
 		this.userName = userName;
 		this.password = password;
 		this.email = email;
-		this.contact = contact;
+		this.contactPhone = contact;
 	}
 
-	// CONSTRUCTOR database 
+	// CONSTRUCTOR database
 	public User(String userName, String password, String email, long contact, String user_id) {
 		// super();
 		this.userName = userName;
 		this.password = password;
 		this.user_id = user_id;
 		this.email = email;
-		this.contact = contact;
+		this.contactPhone = contact;
 	}
-	
-	// AFTER DOB 
+
+	// AFTER DOB
 	public User(String userName, String password, String email, long contact, String user_id, Date dob) {
 		super();
 		this.userName = userName;
-		this.contact = contact;
+		this.contactPhone = contact;
 		this.password = password;
 		this.user_id = user_id;
 		this.email = email;
 		this.dob = dob;
 	}
-	
+
 	// FOR TRANSITION TO CUSTOMER
 	public User(String userName, String password, String user_id) {
 		super();
 		this.userName = userName;
 		this.password = password;
 		this.user_id = user_id;
+	}
+
+	// After getting Account
+	public User(String userName, long contactPhone, String password, String user_id, String email, Date dob, String soc,
+			Double balance) {
+		super();
+		this.userName = userName;
+		this.contactPhone = contactPhone;
+		this.password = password;
+		this.user_id = user_id;
+		this.email = email;
+		this.dob = dob;
+		this.soc = soc;
+		this.balance = balance;
+	}
+
+	// constructor after account access ?
+	public User(String userName, long contactPhone, String password, String user_id, String email, Date dob, String soc,
+			Double balance, int a_access) {
+		super();
+		this.userName = userName;
+		this.contactPhone = contactPhone;
+		this.password = password;
+		this.user_id = user_id;
+		this.email = email;
+		this.dob = dob;
+		this.soc = soc;
+		this.balance = balance;
+		this.a_access = a_access;
 	}
 
 	public String getUserName() {
@@ -93,15 +123,6 @@ public class User {
 		this.email = email;
 	}
 
-	public long getContact() {
-		return contact;
-	}
-
-	public void setContact(long contact) {
-
-		this.contact = contact;
-	}
-
 	public Date getDob() {
 		return this.dob;
 	}
@@ -109,7 +130,7 @@ public class User {
 	public void setDob(Date dob) {
 		this.dob = dob;
 	}
-	
+
 	public String getSoc() {
 		return soc;
 	}
@@ -118,10 +139,49 @@ public class User {
 		this.soc = soc;
 	}
 
+	public long getContactPhone() {
+		return contactPhone;
+	}
+
+	public void setContactPhone(long contactPhone) {
+		this.contactPhone = contactPhone;
+	}
+
+	public Double getBalance() {
+		return balance;
+	}
+
+	public void setBalance(Double balance) {
+		this.balance = balance;
+	}
+
+	public int getA_access() {
+		return a_access;
+	}
+
+	public void setA_access(int a_access) {
+		this.a_access = a_access;
+	}
+
+	// FULL VERSION
+//	@Override
+//	public String toString() {
+//		return "User [userName=" + userName + ", contactPhone=" + contactPhone + ", password=" + password + ", user_id="
+//				+ user_id + ", email=" + email + ", dob=" + dob + ", soc=" + soc + ", balance=" + balance
+//				+ ", a_access=" + a_access + "]";
+//	}
+
 	@Override
 	public String toString() {
-		return "User [userName=" + userName + ", password=" + password + ", user_id=" + user_id + ", email=" + email
-				+ "]";
+		return "Name=" + userName  + ", pass=" + password 
+				+ ", bal=" + balance
+				+ ", access=" + a_access
+				+ ", _id="+ user_id 
+				+ ", soc=" + soc 
+				+ ", dob=" + dob
+				 +"";
 	}
+	
+	
 
 }

@@ -13,7 +13,8 @@ public class Transaction {
 	private int t_id;
 	private String date;
 	private double transactionValue; // $
-	private int fk_origin_account_id; // identifies user or user-of-transfer
+	private int fk_origin_account_id; // foreign key user_id
+//	private String transactionType;
 	private List<TransactionDeposit> transactionDeposits = new ArrayList<>();
 	private List<TransactionWithdraw> transactionWithdraws = new ArrayList<>();
 	private List<TransferSent> transferSent = new ArrayList<>();

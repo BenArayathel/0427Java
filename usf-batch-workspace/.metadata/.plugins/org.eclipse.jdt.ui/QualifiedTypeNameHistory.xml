@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="eg1.HelloWorld"/>
-<fullyQualifiedTypeName name="eg2.Main"/>
-<fullyQualifiedTypeName name="eg2.Two"/>
 <fullyQualifiedTypeName name="oldstyle.MyClass"/>
 <fullyQualifiedTypeName name="oldstyle.MyInterface"/>
 <fullyQualifiedTypeName name="java.lang.FunctionalInterface"/>
@@ -38,7 +35,6 @@
 <fullyQualifiedTypeName name="java.util.Scanner"/>
 <fullyQualifiedTypeName name="util.helper.Hm"/>
 <fullyQualifiedTypeName name="user.cust.account.controller.CustApplyForAcct"/>
-<fullyQualifiedTypeName name="user.cust.account.models.User"/>
 <fullyQualifiedTypeName name="user.cust.account.controller.CustOptionsDirectory"/>
 <fullyQualifiedTypeName name="user.cust.account.models.Customer"/>
 <fullyQualifiedTypeName name="eg2.Employee"/>
@@ -52,12 +48,16 @@
 <fullyQualifiedTypeName name="models.Planet"/>
 <fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
 <fullyQualifiedTypeName name="bank.transaction.dao.BankDaoImpl"/>
-<fullyQualifiedTypeName name="java.util.List"/>
 <fullyQualifiedTypeName name="java.sql.Connection"/>
 <fullyQualifiedTypeName name="java.sql.SQLException"/>
 <fullyQualifiedTypeName name="java.sql.DriverManager"/>
 <fullyQualifiedTypeName name="java.sql.Date"/>
 <fullyQualifiedTypeName name="user.cust.account.controller.UserOptions"/>
 <fullyQualifiedTypeName name="exception.BusinessException"/>
+<fullyQualifiedTypeName name="log.MainDriver"/>
 <fullyQualifiedTypeName name="java.util.Date"/>
+<fullyQualifiedTypeName name="log.Log"/>
+<fullyQualifiedTypeName name="user.cust.account.controller.EmployeePortal"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="user.cust.account.models.User"/>
 </qualifiedTypeNameHistroy>

@@ -10,14 +10,14 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 import exception.BusinessException;
 import log.Log;
 import connection.utilities.DAOUtilites;
-import user.cust.account.controller.AcctOptionsDirectory;
 import user.cust.account.controller.CustOptionsDirectory;
-import user.cust.account.controller.UserOptions;
+import user.cust.account.controller.UserOptionsDirectory;
 import user.cust.account.models.Account;
 import user.cust.account.models.Customer;
 import user.cust.account.models.User;
@@ -48,14 +48,15 @@ public class BankDaoImpl implements BankDAO {
 			callableStatement.setString(2, user.getUserName());
 			callableStatement.setString(3, user.getPassword());
 			callableStatement.setString(4, user.getEmail());
-			callableStatement.setLong(5, user.getContact());
+			callableStatement.setLong(5, user.getContactPhone());
 			
 			if (isValidEmail(user.getEmail())) {
 				
-				if (isValidContactPhone(user.getContact())) {
+				if (isValidContactPhone(user.getContactPhone())) {
 					
 					if (callableStatement.executeUpdate() != 0 ) {
-						System.out.println("db Creates user.");
+						System.out.println("User created: log back in...");
+						System.exit(0);
 						return true;
 					} else {
 						System.out.println("Sorry something went wrong at the database");
@@ -128,14 +129,30 @@ public class BankDaoImpl implements BankDAO {
 			ps = conn.prepareStatement("SELECT * FROM b_user");
 			rs = ps.executeQuery();
 			
+			/**
+			 * User(
+			 * String userName, 
+			 * long contactPhone, 
+			 * String password, 
+			 * String user_id, 
+			 * String email, 
+			 * Date dob, 
+			 * String soc,
+			 * Double balance,
+			 * int a_access)
+			 */
 			while (rs.next()) {
-				System.out.println(rs.getString("userName"));
+				//System.out.println(rs.getString("userName"));
 				userList.add(
-						new User(rs.getString("userName"), 
-								rs.getString("password"),
-								rs.getString("email"),
+						new User(rs.getString("userName"),
 								rs.getLong("contact"),
-								rs.getString("user_id")
+								rs.getString("password"),
+								rs.getString("user_id"),
+								rs.getString("email"),
+								rs.getDate("dob"),
+								rs.getString("soc"),
+								rs.getDouble("balance"),
+								rs.getInt("a_access")
 								
 								));
 			}
@@ -151,14 +168,15 @@ public class BankDaoImpl implements BankDAO {
 		}
 		return userList;
 	}
+	
+	
 
 
 
 	@Override
-	public boolean login(User user) {
-		//User u = null;
+	public void login(User user) {
+
 		CustOptionsDirectory co = new CustOptionsDirectory();
-		Customer c = null;
 		
 		try{
 
@@ -172,39 +190,52 @@ public class BankDaoImpl implements BankDAO {
 			
 			//System.out.println("this is rs : " + rs);
 			
-			while (rs.next()) {
-//				u = new User(
-//						rs.getString("userName"), 
-//						rs.getString("password"),
-//						rs.getString("email"),
-//						rs.getLong("contact"),
-//						rs.getString("user_id")
-//						);
+			while (rs.next()) {			
 
+				/**
+				 * User(
+				 * 									String userName, 
+				 * 									long contactPhone, 
+				 * 									String password, 
+				 * 									String user_id, 
+				 * 									String email, 
+				 * Date dob, 
+				 * 									String soc,
+				 * 									Double balance,
+				 * 									int a_access)
+				 */
 				Log.logger("BankDAOImpl.login verified SOC: " + rs.getString("soc"));
 				user.setSoc(rs.getString("soc"));
-				user.setContact(rs.getInt("contact"));
+				user.setContactPhone(rs.getInt("contact"));
 				user.setEmail(rs.getString("email"));
 				user.setUser_id(rs.getString("user_id"));
-				//System.out.println("user_id in Login: " + user.getUser_id());
+				user.setA_access(rs.getInt("a_access"));
+				user.setBalance(rs.getDouble("balance"));
+				user.setDob(rs.getDate("dob"));
+
 				Log.logger("user_id in Login: " + user.getUser_id());
 				
 			} 
-			if(user.getSoc() != null) {
-				//return true;							// soc: your a customer
+			if(user.getSoc() != null) {					// soc: your a customer
+				//return true;							
 				// userName, password, user_id
-				c = new Customer(user.getUserName(), user.getPassword(), user.getUser_id());
-				co.select(c);
+				Log.logger("Customer privileges:");
+				co.select(user);
+				//return true;
 			}
 			
-			else if(user.getUser_id() != null) {
+			else if(user.getUser_id() != null) {		// no soc: not a customer
 				//return false;
-				UserOptions uo = new UserOptions();		// no soc: not a customer
-				uo.seeOptions(user);
+				Log.logger("User privileges:");
+				UserOptionsDirectory uo = new UserOptionsDirectory();		
+				uo.userOptionsDir(user);
+				//return true;
 			}
 			else {
 				Log.logger("Invalid");
-				return false;
+				Log.logger("Please check credentials..");
+				Log.logger("You may need to register if you have not");
+				//return false;
 			}
 			
 				
@@ -217,7 +248,7 @@ public class BankDaoImpl implements BankDAO {
 			closeResources();
 			
 		}
-		return false;
+		//return false;
 	}
 	
 	
@@ -226,7 +257,7 @@ public class BankDaoImpl implements BankDAO {
 	public boolean userRegistrationToBecomeCustomer(User user) {
 		
 		System.out.println("Successful application submission.");
-		System.out.println("\nA Bank Employee will make a dertermination as soon as possible.");
+		System.out.println("\nApproval will take place as soon as possible.");
 		//System.out.println("Application For Customer Received @ db");
 		System.out.println("Thanks for applying");
 		
@@ -234,7 +265,8 @@ public class BankDaoImpl implements BankDAO {
 		try{
 			String s = user.getSoc();
 
-			if (s.matches("[0-9]{3}\\-[0-9]{2}\\-[0-9]{4}")) {
+			// "[0-9]{3}\\-[0-9]{2}\\-[0-9]{4}"
+			if (s.matches("[0-9]{3}-[0-9]{2}-[0-9]{4}")) {
 				
 				conn = DAOUtilites.getConnection();
 				ps = conn.prepareStatement("UPDATE b_user SET soc=? WHERE user_id=?");
@@ -243,10 +275,21 @@ public class BankDaoImpl implements BankDAO {
 				System.out.println("user id in DAO: " + user.getUser_id());
 				//ps.setString(2, user.getEmail());
 				
+				// instead of redirect to get user_id...
+				//CustOptionsDirectory c = new CustOptionsDirectory();
+				//c.select(user);
+				// ... it is easiest to refresh vs query again right here
+				
+				
+			}else {
+				Log.logger("Sorry that is not a valid format");
+				UserOptionsDirectory uo = new UserOptionsDirectory();
+				uo.userOptionsDir(user);
 			}
 
 			
 			if (ps.executeUpdate() != 0) {
+				System.exit(0);
 				return true;
 			} else {
 				return false;
@@ -322,104 +365,132 @@ public class BankDaoImpl implements BankDAO {
 	
 	public static Date isValidDate(String dob) throws BusinessException {
 		Date d=null;
-		if(dob.matches("[0-9]{2}.[0-9]{2}.[0-9]{4}")) {
-											// dd/MM/yyyy  dd.MM.yyyy
-			SimpleDateFormat sdf=new SimpleDateFormat("dd.MM.yyyy");
+		// mine:  s.matches("[0-9]{3}-[0-9]{2}-[0-9]{4}")
+		// dr's: dob.matches("[0-9]{2}.[0-9]{2}.[0-9]{4}")
+		if(dob.matches("[0-9]{2}-[0-9]{2}-[0-9]{4}")) {
+											// dd/MM/yyyy  Dr.'s:  dd.MM.yyyy
+			SimpleDateFormat sdf=new SimpleDateFormat("dd-MM-yyyy");
 			sdf.setLenient(false);
 			try {
 				d=sdf.parse(dob);
+				return d;
 			} catch (ParseException e) {
 				throw new BusinessException("Entered date "+dob+" is invalid");
 			}
 		}else {
 			throw new BusinessException("Entered date "+dob+" should be in (dd.MM.yyyy) format only");
 		}
-		return d;
+		//return d;
 	}
 	
-	
-//	@Override
-//	public boolean employeeRejectOrApprove_userRegistrationToBecomeCustomer(User user, String email) {
-//		
-//		System.out.println("\nAutomation Emp @ db: verifying...");
-//		System.out.println("Email as: " + email);
-//		
-//		// TODO ... READ FROM DB
-//		// CODE LIKE THIS BELONGS UP FRONT
-//		if (email != null && email.length() > 3) { // mimicking emp Auth...
-//			// SHOULD I PUT LOGIC IN THE USER.setEMAIL() ??
-//			user.setEmail(email);
-//			System.out.println("\nApproved as a Customer");
-//			//System.out.println("Thanks for applying");
-//			System.out.println("Redirect to Customer Options\n");
-//			
-//			// there technically would be an user_id here if the Database had generated this.
-//			Customer customer = new Customer(user.getUserName(), user.getPassword(), user.getUser_id(), user.getEmail());
-//			CustOptionsDirectory co = new CustOptionsDirectory();
-//			co.select(customer);
-//			return true;
-//		}
-//		else {
-//			System.out.println("Something went wrong...");
-//			System.out.println("Please try again later...");
-//			UserOptions uo = new UserOptions();
-//			uo.seeOptions(user);
-//		}
-//		return false;
-//	}
+
 
 	@Override
-	public boolean customerApplicationForAccount(Customer customer, double balance) {
+	public boolean customerApplicationForAccount(User user, String dob, double balance) {
 		
 		System.out.println("Application For Account Received @ db");
-		System.out.println("A Bank Employee will make a dertermination as soon as possible.");
+		System.out.println("A Bank Employee will make a determination as soon as possible.");
 		System.out.println("Thanks for applying");
 		
-		// TODO ...  PERSIST TO DB
-		// FORWARD TO DATA TO EMPLOYEE FRONT END USER INTERFACE FOR WORKER AUTH
-		// FOR NOW, DO THIS ...
-		// SENDING CUSTOMER TO NEXT METHOD 
-		employeeRejectOrApprove_customerApplicationForAccount(customer, balance);
-		return true;
+		
+		
+		try{
+			if (isValidDate(dob) != null) {
+				
+				//int myInt = 1;
+				user.setDob(isValidDate(dob));
+				conn = DAOUtilites.getConnection();
+										// update b_user set a_access=1 where user_id='BUTE123TE5';
+				ps = conn.prepareStatement("UPDATE b_user SET balance=?, dob=? WHERE user_id=?");
+				
+
+				Log.logger("user_id at backend" + user.getUser_id());
+				ps.setDouble(1, balance);
+				// dr. V's:  new java.sql.Date(trainee.getDob().getTime())
+				ps.setDate(2, new java.sql.Date(user.getDob().getTime()));
+				ps.setString(3, user.getUser_id());
+				
+				if(ps.execute()) {
+					return true;
+				}
+			}
+
+			
+		}
+		catch(SQLException | BusinessException e) {
+			e.printStackTrace();
+		}
+		finally {
+			closeResources();
+			
+		}
+		return false;
 	}
 	
 	@Override
-	public boolean employeeRejectOrApprove_customerApplicationForAccount(Customer customer, double balance){
+	public boolean employeeRejectOrApprove_customerApplicationForAccount(User approvedUser){
 		
-		// TODO ...  READ FROM DB
-		// FORWARD TO DATA TO EMPLOYEE FRONT END USER INTERFACE FOR WORKER AUTH
-		// or actually listen for call from Employee front-end
-		// FOR NOW, DO THIS ...
-		System.out.println("\nAutomation Emp @ db: verifying...");
-		System.out.println("Verifying Address:" + customer.getAddress().toString());
-		System.out.println("Verifying Funds...\n");
+		// UPDATE THE DATABASE
 		
-		// TODO ... READ FROM DB
-		// CODE LIKE THIS BELONGS UP FRONT
-		if (customer.getAddress() != null && balance >= 0) { // mimicking emp Auth...
-			// I will PUT LOGIC -> in the front-end
+		try{
+			int myInt = 1;
+			conn = DAOUtilites.getConnection();
+									// update b_user set a_access=1 where user_id='BUTE123TE5';
+			ps = conn.prepareStatement("UPDATE b_user SET a_access=? WHERE user_id=?");
+			// hard-coding 1 as the update
+			// which does approve user for account
+			Log.logger("user_id at backend" + approvedUser.getUser_id());
+			ps.setInt(1, myInt);
+			ps.setString(2, approvedUser.getUser_id());
 			
-			// String userName, String password, int user_id, String email, int cust_id, String name, String phone, String address,
-			//String city, String state, String zip, int acct_id, double balance
-			Account a = new Account(customer.getUserName(), customer.getPassword(), customer.getUser_id(), customer.getEmail(),
-					customer.getCust_id(), customer.getName(), customer.getPhone(), customer.getAddress(),
-					customer.getCity(), customer.getState(), customer.getZip(), balance);
-			System.out.println("Approved for Account");
-			System.out.println("Thanks for applying");
-			System.out.println("\nRedirect to Account Options ...");
-			AcctOptionsDirectory ad = new AcctOptionsDirectory();
-			ad.select(a);
+			if(ps.execute()) {
+				return true;
+			}
+			
 		}
-		else {
-			System.out.println("Sorry, something went wrong");
+		catch(SQLException e) {
+			e.printStackTrace();
+		}
+		finally {
+			closeResources();
+			
 		}
 		return false;
+	}
+	
+	@Override
+	public void updateBalance(User user) {
+		
+		try{
+
+			conn = DAOUtilites.getConnection();
+									// update b_user set a_access=1 where user_id='BUTE123TE5';
+			ps = conn.prepareStatement("UPDATE b_user SET balance=? WHERE user_id=?");
+			// hard-coding 1 as the update
+			// which does approve user for account
+			Log.logger("user_id at backend" + user.getUser_id());
+			ps.setDouble(1, user.getBalance());
+			ps.setString(2, user.getUser_id());
+			
+			if(ps.execute()) {
+				//return true;
+			}
+			
+		}
+		catch(SQLException e) {
+			e.printStackTrace();
+		}
+		finally {
+			closeResources();
+			
+		}
+		//return false;
+		
 	}
 
 
 
 	private void closeResources() {
-		// TODO Auto-generated method stub
 		
 		try {
 			if (rs != null && !rs.isClosed()) {
@@ -450,6 +521,9 @@ public class BankDaoImpl implements BankDAO {
 		}
 		
 	}
+
+
+
 
 
 

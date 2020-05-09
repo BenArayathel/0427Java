@@ -39,19 +39,19 @@ public class UserLogin {
 			User user = new User(username, password);
 			//user.setUserName(username);
 			//user.setPassword(password);
-			//b.login(user);
+			b.login(user);
 			
 			
-			if (b.login(user)) {
-				System.out.println("user_id upfront : " + user.getUser_id());
-				//System.out.println("Thanks, you are now logged into the Bank");
-				Log.logger("Thanks, you are now logged into the Bank");
-//				UserOptions uo = new UserOptions();
-//				uo.seeOptions(user);
-			} else {
-				//System.out.println("Please check credentials..");
-				Log.logger("Please check credentials..");
-			}
+//			if (b.login(user)) {
+//				System.out.println("user_id upfront : " + user.getUser_id());
+//				//System.out.println("Thanks, you are now logged into the Bank");
+//				Log.logger("Thanks, you are now logged into the Bank");
+////				UserOptions uo = new UserOptions();
+////				uo.seeOptions(user);
+//			} else {
+//				//System.out.println("Please check credentials..");
+//				Log.logger("Please check credentials..");
+//			}
 			scanner.close();
 		}
 
