@@ -4,30 +4,31 @@ import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-import com.bank.dao_interface.UserDAO;
+import com.bank.dao_interface.UserDAOInterface;
 import com.bank.models.User;
 import com.bank.tools.BankException;
 import com.bank.tools.DataConnection;
 
-public class UserDaoImplementation implements UserDAO {
+public class UserDAOImplementation implements UserDAOInterface {
 
 	@Override
 	public User createUser(User user) throws BankException {
 		
 		try (Connection conn = DataConnection.getConnection()) {
 			
-			String sql = "{call create_new_user(?,?,?)}";
+			String sql = "{call create_new_user(?,?,?,?)}";
 			CallableStatement cb = conn.prepareCall(sql);
 			//for now i'm writing in variables, later i'll use setters/getters
 			cb.setString(2, "monkey");
 			cb.setString(3, "business");
+			cb.setInt(4, 0);
 			
 			cb.registerOutParameter(1, java.sql.Types.VARCHAR);
 			
 			cb.execute();
 			
 			//i'm trying int, it might need to be string
-			user.setUser_id(cb.getInt(1));
+			user.setUser_id(cb.getString(1));
 			
 		} catch (SQLException e) {
 			e.printStackTrace();

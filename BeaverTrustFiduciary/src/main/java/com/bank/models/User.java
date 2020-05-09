@@ -3,16 +3,17 @@ package com.bank.models;
 public class User {
 	
 	//FIELDS
-	private int user_id;
+	private String user_id;
 	private String username;
 	private String password;
+	private int approved;
 	
 	//CONSTRUCTORS
 	public User() {
 		super();
 	}
 
-	public User(int user_id, String username, String password) {
+	public User(String user_id, String username, String password) {
 		super();
 		this.user_id = user_id;
 		this.username = username;
@@ -21,12 +22,12 @@ public class User {
 
 	
 	//GETTERS and SETTERS
-	public int getUser_id() {
+	public String getUser_id() {
 		return user_id;
 	}
 	
-	public void setUser_id(int user_id) {
-		this.user_id = user_id;
+	public void setUser_id(String string) {
+		this.user_id = string;
 	}
 	
 	public String getUsername() {
@@ -43,6 +44,14 @@ public class User {
 	
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	
+	public int getApproved() {
+		return approved;
+	}
+	
+	public void setApproved(int approved) {
+		this.approved = approved;
 	}
 
 	//TOSTRING

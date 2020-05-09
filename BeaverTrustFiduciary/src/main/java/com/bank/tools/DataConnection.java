@@ -18,16 +18,24 @@ public class DataConnection {
 		
 	}
 	
+	//using my system variables, hiding my info from github
+	private static final String URL = System.getenv("REVATURE_P0_URL");
+	private static final String USERNAME = System.getenv("REVATURE_P0_USERNAME");
+	private static final String PASSWORD = System.getenv("REVATURE_P0_PASSWORD");
+	
 	public static Connection getConnection() throws SQLException {
+		//original approach, will delete to simulate security if system variables work
 		String url = 
 				"jdbc:oracle:thin:@database-1.cb5vpvii5jvy.us-west-2.rds.amazonaws.com:1521:orcl";
 		String username = "admin";
 		String password = "gunderodd";
-		conn = DriverManager.getConnection(url, username, password);
+		
+		conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);
 		return conn;
 	}
 	
 	// instructor's example included this line
+	// mostly likely no longer used, depricated
 	// Class.forName("oracle.jdbc.OracleDriver");
 
 }

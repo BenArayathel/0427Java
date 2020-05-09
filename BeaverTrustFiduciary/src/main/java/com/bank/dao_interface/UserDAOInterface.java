@@ -3,7 +3,7 @@ package com.bank.dao_interface;
 import com.bank.models.User;
 import com.bank.tools.BankException;
 
-public interface UserDAO {
+public interface UserDAOInterface {
 	
 	//abstract methods for interacting with my bank_user table in my db
 	
