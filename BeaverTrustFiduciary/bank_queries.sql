@@ -13,5 +13,5 @@ insert into bank_account values (1, 2, 'newtest', 200, 5);
 
 declare account_id varchar2(20);
 begin
-create_new_account(account_id, 4, 'newtestaccount', 2300, 1);
+create_new_account(account_id, 4, 'newtestaccount', 2300);
 end;

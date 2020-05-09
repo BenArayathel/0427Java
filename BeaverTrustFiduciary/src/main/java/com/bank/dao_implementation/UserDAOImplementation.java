@@ -24,7 +24,6 @@ public class UserDAOImplementation implements UserDAOInterface {
 			
 			String sql = "{call create_new_user(?,?,?,?)}";
 			CallableStatement cb = conn.prepareCall(sql);
-			//for now i'm writing in variables, later i'll use setters/getters
 			cb.setString(2, user.getUsername());
 			cb.setString(3, user.getPassword());
 			//approved will stay at 0, and only get changed by employee later
@@ -34,7 +33,7 @@ public class UserDAOImplementation implements UserDAOInterface {
 			
 			cb.execute();
 			
-			//i'm trying int, it might need to be string
+			//looks like example uses string too
 			user.setUser_id(cb.getString(1));
 			
 		} catch (SQLException e) {
@@ -42,6 +41,7 @@ public class UserDAOImplementation implements UserDAOInterface {
 			throw new BankException("Something went wrong here");
 		}
 		
+		System.out.println("user test");
 		return user;
 	}
 
@@ -50,9 +50,6 @@ public class UserDAOImplementation implements UserDAOInterface {
 	public List<User> listUsers() throws BankException {
 		List<User> userList = new ArrayList<User>();
 		
-		//WHEN I GET BACK:
-		//continue referencing planets to see logic to print out list of all users, call from main,
-		//list them all out
 		try (Connection conn = DataConnection.getConnection()) {
 			PreparedStatement ps = conn.prepareStatement("select * from bank_user");
 			
@@ -73,29 +70,6 @@ public class UserDAOImplementation implements UserDAOInterface {
 		System.out.println(userList.toString() + " this is the user!!");
 		return userList;
 	}
-	
-//	@Override
-//	public List<Planet> selectAllPlanets() {
-//		
-//		//loggy.info("Trying to connect")
-//		List<Planet> planets = new ArrayList<Planet>();
-//		try(Connection conn = DriverManager.getConnection(url, username, password)){
-//			
-//			PreparedStatement ps = conn.prepareStatement("SELECT * FROM planets");
-//			
-//			ResultSet rs = ps.executeQuery();
-//			
-//			while(rs.next()) {
-//				planets.add(
-//						new Planet(rs.getInt("planet_id"), rs.getString(2),rs.getBoolean(3) , rs.getInt(4), rs.getString(5)));
-//			}
-//		} catch (SQLException e) {
-//			// TODO Auto-generated catch block
-//			//loggy.warn("Not connected",Exception e);
-//			e.printStackTrace();
-//		}
-//		return planets;
-//	}
 	
 
 }
