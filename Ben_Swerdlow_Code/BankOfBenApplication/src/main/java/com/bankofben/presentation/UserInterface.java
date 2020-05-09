@@ -4,10 +4,14 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.Date;
+import java.util.List;
 //import java.time.format.DateTimeParseException;
 import java.util.Scanner;
 
+import com.bankofben.business.BusinessLayer;
 import com.bankofben.exceptions.BusinessException;
+import com.bankofben.models.Account;
+import com.bankofben.models.Customer;
 
 public class UserInterface {
 	
@@ -219,6 +223,190 @@ public class UserInterface {
 
 	public static String ssnCriteria() {
 		return "Social security number must be exactly 9 digits, excluding the - symbol.";
+	}
+
+	public static String requestTransferType(Account account, Scanner sc) throws BusinessException {
+		String transferType = null;
+		System.out.println("Type \"pay\" if you would like to add money to account "+account.getAccountNumber());
+		System.out.println("Type \"request\" if you would like to request money from account "+account.getAccountNumber());
+		transferType = sc.nextLine();
+		while(!(transferType.equalsIgnoreCase("pay") || transferType.equalsIgnoreCase("request"))) {
+			System.out.println("Your entry \""+transferType+"\" is not a valid option. Please try again.");
+			System.out.println("Type \"pay\" if you would like to add money to account "+account.getAccountNumber());
+			System.out.println("Type \"request\" if you would like to request money from account"+account.getAccountNumber());
+			transferType = sc.nextLine();
+		}
+		return transferType;
+	}
+
+	public static Account requestOtherAccount(Scanner sc) {
+		BusinessLayer bl = new BusinessLayer();
+		boolean destinationChosen = false;
+		String destinationAccountString = null;
+		String destinationRoutingString = null;
+		long destinationAccountNumber = 0;
+		long destinationRoutingNumber = 0;
+		Account destinationAccount = null;
+		while (!destinationChosen) {
+			boolean accountNumberValid = false;
+			while (!accountNumberValid) {
+				System.out.println("Please input the 10-digit account number for the account to "
+						+ "which you would like to post a money transfer.");
+				destinationAccountString = sc.nextLine();
+				try {
+					destinationAccountNumber = bl.validateAccountNumber(destinationAccountString);
+					accountNumberValid = true;
+				} catch (BusinessException e) {
+					System.out.println(e.getMessage()+"\nPlease try again.");
+				}
+			}
+			boolean routingNumberValid = false;
+			while (!routingNumberValid) {
+				System.out.println("Please input the 9-digit routing number for the account into "
+						+ "which you would like to post a money transfer.");
+				destinationRoutingString = sc.nextLine();
+				try {
+					destinationRoutingNumber = bl.validateRoutingNumber(destinationRoutingString);
+				} catch (BusinessException e){
+					System.out.println(e.getMessage()+"\nPlease try again.");
+				}
+			}
+			try {
+				destinationAccount = bl.getAccount(destinationAccountNumber, destinationRoutingNumber);
+				destinationChosen = true;
+			} catch (BusinessException e){
+				System.out.println(e.getMessage()+"\nPlease try again.");
+			}
+		}
+		return destinationAccount;
+	}
+
+	public static Account requestMyChosenAccount(Customer customer, Scanner sc) {
+		BusinessLayer bl = new BusinessLayer();
+		
+		String sourceAccountString = null;
+		long sourceAccountNumber = 0;
+		String sourceRoutingString = null;
+		long sourceRoutingNumber = 0;
+		Account sourceAccount = null;
+		
+		boolean sourceChosen = false;
+		while (!sourceChosen) {
+			// Get account number
+			boolean accountNumberValid = false;
+			while (!accountNumberValid) {
+				System.out.println("Please input the 10-digit account number for the account of yours "
+						+ "you would like to use as the source of this money transfer.");
+				sourceAccountString = sc.nextLine();
+				try {
+					sourceAccountNumber = bl.validateAccountNumber(sourceAccountString);
+					accountNumberValid = true;
+				} catch (BusinessException e) {
+					System.out.println(e.getMessage()+"\nPlease try again.");
+				}
+			}
+			// Get routing number
+			boolean routingNumberValid = false;
+			while (!routingNumberValid) {
+				System.out.println("Please input the 9-digit routing number for the account of yours "
+						+ "you would like to use as the source of this money transfer.");
+				sourceRoutingString = sc.nextLine();
+				try {
+					sourceRoutingNumber = bl.validateRoutingNumber(sourceRoutingString);
+					routingNumberValid = true;
+				} catch (BusinessException e){
+					System.out.println(e.getMessage()+"\nPlease try again.");
+				}
+			}
+			// Check account information belongs to customer
+			try {
+				sourceAccount = bl.validateAccount(sourceAccountNumber, sourceRoutingNumber, customer);
+				sourceChosen = true;
+			} catch (BusinessException e) {
+				System.out.println(e.getMessage()+"\nPlease try again.");
+			}
+		}
+		return sourceAccount;
+	}
+
+	public static double requestPaymentAmount(Account myChosenAccount, Account otherAccount, Scanner sc) {
+		BusinessLayer bl = new BusinessLayer();
+		boolean amountChosen = false;
+		double amount=0;
+		String confirmation = null;
+		System.out.println("Please enter in the amount to pay account "+otherAccount.getAccountNumber());
+		String amountString = sc.nextLine();
+		while (!amountChosen) {
+			try {
+				amount = bl.validateMonetaryAmount(amountString);
+				System.out.println("You have chosen to pay "+otherAccount.getAccountNumber()+" $"+amount
+						+" from your account "+myChosenAccount.getAccountNumber()+" with balance $"+myChosenAccount.getBalance());
+				System.out.println("Please type \"confirm\" to confirm. Please type "
+						+ "\"cancel\" to cancel the transfer. Any other entry will "
+						+ "prompt you to enter another payment amount.");
+				confirmation = sc.nextLine();
+				if (confirmation.equalsIgnoreCase("confirm")) {
+					if (amount <= myChosenAccount.getBalance()) {
+						amountChosen = true;
+					} else {
+						System.out.println("$"+amount+" exceeds your balance of $"+myChosenAccount.getBalance()
+							+" in account "+myChosenAccount.getAccountNumber()+". You cannot pay more than your "
+							+ "account's current balance.");
+						System.out.println("Please enter in the amount to pay account "+otherAccount.getAccountNumber());
+						amountString = sc.nextLine();
+					}
+				} else if (confirmation.equalsIgnoreCase("cancel")){
+					System.out.println("Transfer payment canceled.");
+					amount = Double.NaN;
+					break;
+				} else {
+					System.out.println("You have chosen to pay a different amount.");
+					System.out.println("Please enter in the amount to pay account "+otherAccount.getAccountNumber());
+					amountString = sc.nextLine();
+				}
+			} catch (BusinessException e) {
+				System.out.println(e.getMessage());
+				System.out.println("Please enter in the amount to pay account "+otherAccount.getAccountNumber());
+				amountString = sc.nextLine();
+			}
+		}
+		return amount;
+	}
+
+	public static double requestRequestAmount(Account myChosenAccount, Account otherAccount, Scanner sc) {
+		BusinessLayer bl = new BusinessLayer();
+		boolean amountChosen = false;
+		double amount=0;
+		String confirmation = null;
+		System.out.println("Please enter in the amount to request from account "+otherAccount.getAccountNumber());
+		String amountString = sc.nextLine();
+		while (!amountChosen) {
+			try {
+				amount = bl.validateMonetaryAmount(amountString);
+				System.out.println("You have chosen to request $"+amount+" from "+otherAccount.getAccountNumber()
+						+" to be placed in your account "+myChosenAccount.getAccountNumber());
+				System.out.println("Please type \"confirm\" to confirm. Please type "
+						+ "\"cancel\" to cancel the transfer. Any other entry will "
+						+ "prompt you to enter another payment amount.");
+				confirmation = sc.nextLine();
+				if (confirmation.equalsIgnoreCase("confirm")) {
+					amountChosen = true;
+				} else if (confirmation.equalsIgnoreCase("cancel")){
+					System.out.println("Transfer request canceled.");
+					amount = Double.NaN;
+					break;
+				} else {
+					System.out.println("You have chosen to request a different amount.");
+					System.out.println("Please enter in the amount to request from account "+otherAccount.getAccountNumber());
+					amountString = sc.nextLine();
+				}
+			} catch (BusinessException e) {
+				System.out.println(e.getMessage());
+				System.out.println("Please enter in the amount to request from account "+otherAccount.getAccountNumber());
+				amountString = sc.nextLine();
+			}
+		}
+		return amount;
 	}
 
 }

@@ -9,6 +9,7 @@ import com.bankofben.exceptions.BusinessException;
 import com.bankofben.models.Account;
 import com.bankofben.models.Customer;
 import com.bankofben.models.Employee;
+import com.bankofben.models.Transfer;
 import com.bankofben.models.User;
 import com.bankofben.presentation.UserInterface;
 import com.bankofben.presentation.ValidationTools;
@@ -81,6 +82,120 @@ public class BusinessLayer {
 
 	public String viewBalances(Customer customer) throws BusinessException {
 		return dbs.getBalances(customer);
+	}
+	
+	public long validateAccountNumber(String accountNumberString) throws BusinessException {
+		long accountNumber;
+		if (accountNumberString.matches("[0-9]{10}")) {
+			try {
+				accountNumber = Long.parseLong(accountNumberString);
+			} catch (NumberFormatException e){
+				throw new BusinessException("The entry "+accountNumberString+" is not a valid "
+						+ "account number. Account numbers must be positive 10-digit numbers. "
+						+ "Please try again.");
+			}
+		} else {
+			throw new BusinessException("The entry "+accountNumberString+" is not a valid "
+					+ "account number. Account numbers must be positive 10-digit numbers. "
+					+ "Please try again.");
+		}
+		return accountNumber;
+	}
+	
+	public long validateAccountNumber(long accountNumber) throws BusinessException {
+		return validateAccountNumber(Long.toString(accountNumber));
+	}
+
+	public long validateAccountNumber(String sourceAccountString, String sourceRoutingString, Customer customer)
+			throws BusinessException {
+		long sourceAccountNumber = validateAccountNumber(sourceAccountString);
+		long sourceRoutingNumber = validateRoutingNumber(sourceRoutingString);
+		List<Account> customerAccounts = dbs.getAccountsForCustomer(customer);
+		Account sourceAccount = dbs.getAccount(sourceAccountNumber, sourceRoutingNumber);
+		if (customerAccounts.contains(sourceAccount)) {
+			return sourceAccount.getAccountNumber();
+		} else {
+			throw new BusinessException("The account number "+sourceAccountString+" and routing number "+sourceRoutingString
+					+" do not correspond to an account owned by "+customer.getUsername());
+		}
+	}
+	
+	public long validateAccountNumber(long sourceAccountNumber, String sourceRoutingString, Customer customer)
+			throws BusinessException {
+		return validateAccountNumber(Long.toString(sourceAccountNumber), sourceRoutingString, customer);
+	}
+	
+	public long validateAccountNumber(String sourceAccountString, long sourceRoutingNumber, Customer customer)
+			throws BusinessException {
+		return validateAccountNumber(sourceAccountString, Long.toString(sourceRoutingNumber), customer);
+	}
+	
+	public long validateAccountNumber(long sourceAccountNumber, long sourceRoutingNumber, Customer customer)
+			throws BusinessException {
+		return validateAccountNumber(Long.toString(sourceAccountNumber), Long.toString(sourceRoutingNumber), customer);
+	}
+	
+	public Account validateAccount(Account account, Customer customer) throws BusinessException {
+		List<Account> customerAccounts = dbs.getAccountsForCustomer(customer);
+		if (customerAccounts.contains(account)) {
+			return account;
+		} else {
+			throw new BusinessException("The account number "+account.getAccountNumber()+" and routing number "
+					+Account.getRoutingNumber()+" do not correspond to an account owned by "+customer.getUsername());
+		}
+	}
+	
+	public Account validateAccount(long sourceAccountNumber, long sourceRoutingNumber, Customer customer)
+			throws BusinessException {
+		Account account = dbs.getAccount(sourceAccountNumber, sourceRoutingNumber);
+		return validateAccount(account, customer);
+	}
+	
+	public double validateMonetaryAmount(String amount) throws BusinessException {
+		long amt;
+		if (ValidationTools.isValidMonetaryAmount(amount)) {
+			try {
+				amt = Long.parseLong(amount);
+			} catch (NumberFormatException e) {
+				throw new BusinessException("The amount "+amount+" is not a valid monetary amount.");
+			}
+		} else {
+			throw new BusinessException("The amount "+amount+" is not a valid monetary amount.");
+		}
+		return amt;
+	}
+	
+	public double validateMonetaryAmount(double amount) throws BusinessException {
+		if (ValidationTools.isValidMonetaryAmount(amount)) {
+			return amount;
+		} else {
+			throw new BusinessException("The amount "+amount+" is not a valid monetary amount.");
+		}
+	}
+	
+	public long validateRoutingNumber(String routingNumberString) throws BusinessException {
+		long routingNumber;
+		if (routingNumberString.matches("[0-9]{9}")) {
+			try {
+				routingNumber = Long.parseLong(routingNumberString);
+			} catch (NumberFormatException e){
+				throw new BusinessException("The entry "+routingNumberString+" is not a valid "
+						+ "account number. Account numbers must be positive 10-digit numbers. "
+						+ "Please try again.");
+			}
+			if (routingNumber!=Account.getRoutingNumber()) {
+				throw new BusinessException("Invalid routing number. Please try again.")
+			}
+		} else {
+			throw new BusinessException("The entry "+routingNumberString+" is not a valid "
+					+ "account number. Account numbers must be positive 10-digit numbers. "
+					+ "Please try again.");
+		}
+		return routingNumber;
+	}
+	
+	public long isValidroutingNumber(long routingNumber) throws BusinessException {
+		return validateAccountNumber(Long.toString(routingNumber));
 	}
 
 	public String viewPendingApplications() throws BusinessException {
@@ -161,6 +276,7 @@ public class BusinessLayer {
 		// TODO Auto-generated method stub
 		return false;
 	}
+	
 	public List<Long> getAccountNumbersForCustomer(Customer customer) throws BusinessException {
 		BankOfBenServices dbs = new BankOfBenServices();
 		List<Account> accounts = dbs.getAccountsForCustomer(customer);
@@ -171,5 +287,29 @@ public class BusinessLayer {
 		return accountNumbers;
 	}
 	
+	public List<Account> getAccountsForCustomer(Customer customer) throws BusinessException {
+		BankOfBenServices dbs = new BankOfBenServices();
+		return dbs.getAccountsForCustomer(customer);
+	}
+
+	public List<Transfer> getTransfers(Customer customer) throws BusinessException {
+		return dbs.getTransfers(customer);
+	}
+
+	public void postPayment(Account paySourceAccount, Account payDestinationAccount, double amount) {
+		dbs.postPayement(paySourceAccount, payDestinationAccount, amount);
+	}
+	
+	public void postRequest(Account reqSourceAccount, Account reqDestinationAccount, double amount) {
+		dbs.postRequest(reqSourceAccount, reqDestinationAccount, amount);
+	}
+
+	public void acceptTransfer(Transfer transfer, Customer customer) throws BusinessException {
+		dbs.acceptTransfer(transfer, customer);
+	}
+
+	public void rejectTransfer(Transfer transfer, Customer customer) throws BusinessException {
+		dbs.rejectTransfer(transfer, customer);
+	}
 	
 }

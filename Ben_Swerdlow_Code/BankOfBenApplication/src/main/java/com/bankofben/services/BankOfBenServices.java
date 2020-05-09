@@ -149,4 +149,8 @@ public class BankOfBenServices {
 		return dao.getCustomersByApplicationPendingStatus(applicationPending);
 	}
 
+	public Customer getCustomerById(String customerId) throws BusinessException {
+		return dao.getCustomerById(customerId);
+	}
+
 }

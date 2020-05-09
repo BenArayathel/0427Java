@@ -17,3 +17,10 @@ DECLARE
 BEGIN
     CREATEACCOUNT("Account Number", 0, 'CUCAAA2000100000', "Number of AcctNumbers");
 END;
+
+UPDATE bankofben_customers SET "Application Pending"=0 WHERE "Customer ID"='CUCAAA200010000';
+
+CREATE bankofben_transactions(
+    "TIME" TIMESTAMP_VALUE PRIMARY KEY
+    
+)

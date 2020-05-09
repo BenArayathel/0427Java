@@ -3,6 +3,8 @@ package com.bankofben.presentation;
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 
+import com.bankofben.exceptions.BusinessException;
+
 public class ValidationTools {
 	
 	public static boolean isValidDateString(String dmy) {
@@ -83,6 +85,10 @@ public class ValidationTools {
 			}
 		}
 	}
+
+	public static boolean isValidPhoneNumber(long phoneNumber) {
+		return isValidPhoneNumber(Long.toString(phoneNumber));
+	}
 	
 	public static boolean isValidMonetaryAmount(double ammount) {
 		boolean valid;
@@ -102,9 +108,15 @@ public class ValidationTools {
 		}
 		return valid;
 	}
-
-	public static boolean isValidPhoneNumber(long phoneNumber) {
-		return isValidPhoneNumber(Long.toString(phoneNumber));
+	
+	public static boolean isValidMonetaryAmount(String ammountString) {
+		boolean valid;
+		try {
+			valid = isValidMonetaryAmount(Long.parseLong(ammountString));
+		} catch (NumberFormatException e) {
+			valid = false;
+		}
+		return valid;
 	}
 
 }
