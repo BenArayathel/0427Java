@@ -61,9 +61,6 @@ public class UserDaoImpl implements UserDao {
 		User uTwo = new User();
 		try (Connection conn = DriverManager.getConnection(URL, USERNAME, PASSWORD)) {
 			PreparedStatement ps = conn.prepareStatement("UPDATE bankuser SET " + columnName + " = '" + newAttribute + "' WHERE email = '"+ userEmail + "'");
-			//ps.setString(0, userEmail);
-			//ps.setString(1, newAttribute);
-			//ps.setString(2, userEmail);
 			ps.executeUpdate();
 			uTwo = this.selectUserByEmail(userEmail);
 			
@@ -75,6 +72,9 @@ public class UserDaoImpl implements UserDao {
 		return uTwo;
 		
 	}
+	
+	//update all columns -> select user, delete from db, change data, re-insert into db
+	//possibly use addBatch ?
 
 	@Override
 	public User selectUserByEmail(String uEmail) throws BusinessException{

@@ -8,12 +8,14 @@ public interface AccountDao {
 	
 	public Account insertAccount(Account a) throws BusinessException;
 	
-	public Account selectAccount() throws BusinessException;
+	public Account selectAccountByEmail(String email) throws BusinessException;
 	public List<Account> selectAllAccounts() throws BusinessException;
 	
-	public Account updateAccount(Account a) throws BusinessException;
+	public void updateAccount(String email, String columnName, String newAtt) throws BusinessException;
 	
-	public void deleteAccount() throws BusinessException;
+	public void deleteAccount(String email) throws BusinessException;
+	
+	public void deleteAllAccounts() throws BusinessException;
 
 }
 

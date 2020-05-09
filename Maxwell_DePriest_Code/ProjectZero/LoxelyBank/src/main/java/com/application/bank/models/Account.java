@@ -2,19 +2,19 @@ package com.application.bank.models;
 
 public class Account {
 	private String id;
-	private int savingsAccountNumber;
-	private int checkingAccountNumber;
-	private double checkingBalance;
-	private double savingsBalance;
-	private boolean active;
-	private String userEmail;
+	private String savingsAccountNumber;
+	private String checkingAccountNumber;
+	private String checkingBalance;
+	private String savingsBalance;
+	private String active;
+	private String email;
 
 	public Account() {
 		
 	}
 
-	public Account(String id, int savingsAccountNumber, int checkingAccountNumber, double checkingBalance, double savingsBalance,
-			boolean active, String userEmail) {
+	public Account(String id, String savingsAccountNumber, String checkingAccountNumber, String checkingBalance, String savingsBalance,
+			String active, String email) {
 		super();
 		this.id = id;
 		this.savingsAccountNumber = savingsAccountNumber;
@@ -22,10 +22,12 @@ public class Account {
 		this.checkingBalance = checkingBalance;
 		this.savingsBalance = savingsBalance;
 		this.active = active;
-		this.userEmail = userEmail;
+		this.email = email;
 	}
 
 	
+	
+
 	public String getId() {
 		return id;
 	}
@@ -34,59 +36,59 @@ public class Account {
 		this.id = id;
 	}
 
-	public int getSavingsAccountNumber() {
+	public String getSavingsAccountNumber() {
 		return savingsAccountNumber;
 	}
 
-	public void setSavingsAccountNumber(int savingsAccountNumber) {
+	public void setSavingsAccountNumber(String savingsAccountNumber) {
 		this.savingsAccountNumber = savingsAccountNumber;
 	}
 
-	public int getCheckingAccountNumber() {
+	public String getCheckingAccountNumber() {
 		return checkingAccountNumber;
 	}
 
-	public void setCheckingAccountNumber(int checkingAccountNumber) {
+	public void setCheckingAccountNumber(String checkingAccountNumber) {
 		this.checkingAccountNumber = checkingAccountNumber;
 	}
 
-	public double getCheckingBalance() {
+	public String getCheckingBalance() {
 		return checkingBalance;
 	}
 
-	public void setCheckingBalance(double checkingBalance) {
+	public void setCheckingBalance(String checkingBalance) {
 		this.checkingBalance = checkingBalance;
 	}
 
-	public double getSavingsBalance() {
+	public String getSavingsBalance() {
 		return savingsBalance;
 	}
 
-	public void setSavingsBalance(double savingsBalance) {
+	public void setSavingsBalance(String savingsBalance) {
 		this.savingsBalance = savingsBalance;
 	}
 
-	public boolean isActive() {
+	public String getActive() {
 		return active;
 	}
 
-	public void setActive(boolean active) {
+	public void setActive(String active) {
 		this.active = active;
 	}
 
-	public String getUserEmail() {
-		return userEmail;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setUserEmail(String userEmail) {
-		this.userEmail = userEmail;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	@Override
 	public String toString() {
 		return "Account [id=" + id + ", savingsAccountNumber=" + savingsAccountNumber + ", checkingAccountNumber="
 				+ checkingAccountNumber + ", checkingBalance=" + checkingBalance + ", savingsBalance=" + savingsBalance
-				+ ", active=" + active + ", userEmail=" + userEmail + "]";
+				+ ", active=" + active + ", userEmail=" + email + "]";
 	}
 	
 	
