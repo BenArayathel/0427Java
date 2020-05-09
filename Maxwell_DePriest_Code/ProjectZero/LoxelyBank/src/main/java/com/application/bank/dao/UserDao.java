@@ -19,6 +19,7 @@ public List<User> selectAllUsers() throws BusinessException;
 
 //Delete
 public void deleteUser(String uEmail) throws BusinessException;
+public void deleteAllUsers() throws BusinessException;
 
 
 }

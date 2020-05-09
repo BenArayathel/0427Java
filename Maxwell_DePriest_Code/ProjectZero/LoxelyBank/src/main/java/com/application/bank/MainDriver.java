@@ -5,26 +5,38 @@ import com.application.bank.exception.BusinessException;
 import com.application.bank.models.User;
 import com.application.bank.models.Account;
 import com.application.bank.dao.impl.AccountDaoImpl;
+import com.application.bank.services.impl.UserServiceImpl;
+import com.application.bank.services.impl.AccountServiceImpl;
 
 import java.util.List;
 
+import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 
 public class MainDriver {
 	final static Logger loggy = Logger.getLogger(User.class);
 
 	public static void main(String[] args) {
+		
 		UserDaoImpl uDI = new UserDaoImpl();
 		AccountDaoImpl aDI = new AccountDaoImpl();
+		AccountServiceImpl aSI = new AccountServiceImpl();
+		UserServiceImpl uSI = new UserServiceImpl();
 		
 		User u3 = new User();
-//		u3.setName("Jabba D. Hutt");
-//		u3.setEmail("jabba@email.com");
-//		u3.setPhoneNumber("2930490");
-//		u3.setPassword("rancor");
+		
+		try {
+			uSI.registerNewUser();
+		} catch (BusinessException e1) {
+			loggy.info(e1.getMessage());
+		}
+		
+//		u3.setName("Boba Fett");
+//		u3.setEmail("boba@email.com");
+//		u3.setPhoneNumber("1130490");
+//		u3.setPassword("slave1");
 //		u3.setStatus("customer");
 //		try {
-//			//uDI.insertUser(u3);
 //			uDI.insertUser(u3);
 //		} catch (BusinessException e) {
 //			loggy.warn("Couldn't create a new user. Please try again.");
@@ -32,10 +44,19 @@ public class MainDriver {
 //		}
 		
 //		try {
-//			uDI.selectAllUsers();
+//			List<User> userList = uDI.selectAllUsers();
 //		} catch (BusinessException e1) {
 //			loggy.error("Internal Error. Please contact the SYSADMIN");
 //		}
+		
+//		try {
+//			u3 = uDI.selectUserByColumnName("email", "ben@email.com");
+//		} catch (BusinessException e) {
+//			loggy.info("Internal Error. Please try again or contact your SYSADMIN");
+//			e.printStackTrace();
+//		}
+//		
+//		System.out.println(u3);
 		
 //		try {
 //			uDI.updateUser("serenity@email.com", "name", "Malcom Reynolds");
@@ -51,7 +72,7 @@ public class MainDriver {
 //		}
 		
 //		try {
-//			uDI.deleteUser();
+//			uDI.deleteUser(u3.getEmail());
 //		} catch (BusinessException e) {
 //			loggy.warn("The row still exist because " + e);
 //		}	
@@ -79,19 +100,19 @@ public class MainDriver {
 //		}
 		
 //		try {
-//			aDI.deleteAccount("kirk@email.com");
+//			aDI.deleteAccount(u3.getEmail());
 //		} catch (BusinessException e) {
 //			loggy.info("Internal Error. Please try again or contact your SYSADMIN");
 //			e.printStackTrace();
 //		}
 		
-		try {
-			aDI.updateAccount("ben@email.com", "savingsbalance", "500.00");
-		} catch (BusinessException e) {
-			
-			loggy.info("Internal Error. Please try again or contact your SYSADMIN");
-			e.printStackTrace();
-		}
+//		try {
+//			aDI.updateAccount("ben@email.com", "savingsbalance", "1500.00");
+//		} catch (BusinessException e) {
+//			
+//			loggy.info("Internal Error. Please try again or contact your SYSADMIN");
+//			e.printStackTrace();
+//		}
 		
 //		Account a2 = new Account();
 //		a2.setCheckingAccountNumber("980054");
@@ -116,13 +137,6 @@ public class MainDriver {
 //			e.printStackTrace();
 //		}
 //		
-		
-		
-
-		
-		
-		
-		
 
 	}
 
