@@ -67,9 +67,6 @@ public class UserDaoImpl implements UserDao {
 		return uTwo;
 		
 	}
-	
-	//update all columns -> select user, delete from db, change data, re-insert into db
-	//possibly use addBatch ?
 
 	@Override
 	public User selectUserByEmail(String uEmail) throws BusinessException{
@@ -137,6 +134,24 @@ public class UserDaoImpl implements UserDao {
 			throw new BusinessException("Internal Error. Contact SYSADMIN");
 		}
 		return uList;
+		
+	}
+	
+	public List<User> selectAllUsersByColumnName(String cName, String cValue) throws BusinessException{
+		List<User> filteredUserList = new ArrayList<>();
+		try (Connection conn = DriverManager.getConnection(AWSURL, USERNAME, PASSWORD)) {
+			PreparedStatement ps = conn.prepareStatement("SELECT * FROM bankuser WHERE " + cName + " = '" + cValue + "'");
+			ResultSet rs = ps.executeQuery();
+			loggy.debug("Selecting all users based on " + cName + " = " + cValue);
+			while(rs.next()) {
+				filteredUserList.add(new User(rs.getString("id"), rs.getString("name"), rs.getString("email"), rs.getString("phone"), rs.getString("password"), rs.getString("status")));
+				
+			}	
+		} catch (SQLException e) {
+			loggy.error("Caught SQLException- " + e);
+			throw new BusinessException("Internal Error. Contact SYSADMIN");
+		}
+		return filteredUserList;
 		
 	}
 

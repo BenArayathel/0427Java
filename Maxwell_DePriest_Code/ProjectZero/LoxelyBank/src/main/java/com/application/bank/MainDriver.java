@@ -26,20 +26,22 @@ public class MainDriver {
 		User currentUser = new User();
 		
 		Scanner sc = new Scanner(System.in);
-		loggy.info("Welcome to Loxely Bank, where we save for the rich and loan to the poor.");
-		loggy.info("Please enter your email");
-		String em = sc.nextLine();
-		loggy.info("Please enter your password");
-		String pw = sc.nextLine();
-		try {
-			if(uSI.userLogin(em, pw)) {
-				currentUser = uSI.setCurrentUser(em);
-				System.out.println("Hello, " + currentUser.getName());
-			}
-		} catch (BusinessException e1) {
-			loggy.info(e1.getMessage());
-			e1.printStackTrace();
-		}
+//		loggy.info("Welcome to Loxely Bank, where we save for the rich and loan to the poor.");
+//		loggy.info("Please enter your email");
+//		String em = sc.nextLine();
+//		loggy.info("Please enter your password");
+//		String pw = sc.nextLine();
+//		try {
+//			if(uSI.userLogin(em, pw)) {
+//				currentUser = uSI.setCurrentUser(em);
+//				loggy.info("Hello, " + currentUser.getName());	
+//			}
+//		} catch (BusinessException e1) {
+//			loggy.info(e1.getMessage());
+//			e1.printStackTrace();
+//		}
+//		
+//		uSI.activatePendingAccounts(currentUser);
 		
 		
 //		try {
@@ -111,13 +113,13 @@ public class MainDriver {
 //			e.printStackTrace();
 //		}
 		
-//		try {
-//			aDI.updateAccount("ben@email.com", "savingsbalance", "1500.00");
-//		} catch (BusinessException e) {
-//			
-//			loggy.info("Internal Error. Please try again or contact your SYSADMIN");
-//			e.printStackTrace();
-//		}
+		try {
+			aDI.updateAccount("leia@email.com", "active", "true");
+		} catch (BusinessException e) {
+			
+			loggy.info("Internal Error. Please try again or contact your SYSADMIN");
+			e.printStackTrace();
+		}
 		
 //		Account a2 = new Account();
 //		a2.setCheckingAccountNumber("985751");
@@ -150,11 +152,12 @@ public class MainDriver {
 //			loggy.error("Internal Error. Please contact the SYSADMIN");
 //			e.printStackTrace();
 //		}
-//		
+		sc.close();
+	
 
-	}
+	}// End of main
 
-}
+}// End of class
 
 
 

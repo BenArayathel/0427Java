@@ -9,7 +9,7 @@ public interface UserService {
 	public User registerNewUser() throws BusinessException;
 	public boolean userLogin(String email, String password) throws BusinessException;
 	public User setCurrentUser(String email) throws BusinessException;
-	public void signUpForAccount() throws BusinessException;
+	public void signUpForAccount(String email) throws BusinessException;
 	
 	public User updateProfile(User u) throws BusinessException;
 	public void checkCheckingBalance() throws BusinessException;

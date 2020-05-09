@@ -1,5 +1,7 @@
 package com.application.bank.services.impl;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 import java.util.regex.Matcher;
@@ -54,12 +56,11 @@ public class UserServiceImpl implements UserService {
 		newUser.setPassword(sc.nextLine());
 		newUser.setStatus("customer");
 		
-		boolean verified = true;
 		if (!isValidName(newUser.getName())) {
-			verified = false;
+			loggy.info("Error. Please use only letters in the name field. Please try again.");
 		}
 		else if (!isValidPhoneNumber(newUser.getPhoneNumber())) {
-			verified = false;
+			loggy.info("Error. Please input your phone number with 10 digits. Ex. 1234567890");
 		}
 		else {
 			uDI.insertUser(newUser);
@@ -74,11 +75,15 @@ public class UserServiceImpl implements UserService {
 	public boolean userLogin(String email, String password) throws BusinessException {
 		User u = uDI.selectUserByEmail(email);
 		if (u != null) {
-			if (u.getPassword().equals(password)) {
-				loggy.debug("Passwords match");
-				return true;
+			try {
+				if (u.getPassword().equals(password)) {
+					loggy.debug("Passwords match");
+					return true;
+				}
+			} catch (NullPointerException e) {
+				return false;
 			}
-			loggy.error("Passwords did not match");
+			
 		}
 		loggy.error("Email or password could not be found matched in DB");
 		loggy.info("Either your email or password is incorrect. Please try again.");
@@ -92,13 +97,63 @@ public class UserServiceImpl implements UserService {
 	}
 	
 	@Override
-	public void signUpForAccount() throws BusinessException {
-//		loggy.info("How much would you like to put into your checking account?");
-//		String checkingMoney = sc.nextLine();
-//		String newSavingsNum = generateAccountNumber();
-//		String newCheckingNum = generateAccountNumber();
-//		Account act = new Account();
+	public void signUpForAccount(String email) throws BusinessException {
+		Scanner sc = new Scanner(System.in);
+		boolean verified = true;
+		loggy.info("How much would you like to put into your checking account?");
+		String checkingMoney = sc.nextLine();
+		if (!isValidDeposit(checkingMoney)) {
+			verified = false;
+			
+		}
+		else {
+			String newSavingsNum = Integer.toString(generateAccountNumber());
+			String newCheckingNum = Integer.toString(generateAccountNumber());
+			aDI.insertAccount(new Account("", newSavingsNum, newCheckingNum, checkingMoney, "0.00", "false", email));
+		}
+		
 	}
+	
+	public void activatePendingAccounts(User u) {
+		Scanner sc = new Scanner(System.in);
+		List<Account> notActiveAccounts= new ArrayList<>();
+		if(isEmployee(u)) {
+			try {
+				notActiveAccounts = aDI.selectAllAccountsByColumnName("active", "false");
+			} catch (BusinessException e) {
+				loggy.info(e.getMessage());
+				loggy.error("Could not select all accounts by column name");
+			}
+			
+			for (Account a : notActiveAccounts) {
+				String printOut = "Email- " + a.getEmail() + ", Checking Account Number- " + a.getCheckingAccountNumber() +
+						", Savings Account Number " + a.getSavingsAccountNumber() + ", Account Active- " + a.getActive();
+				loggy.info(printOut);
+			}
+			
+			loggy.info("Would you like to activate all pending accounts? Y or N");
+			String answer = sc.next();
+			if (answer.equalsIgnoreCase("y")) {
+				for (Account pAccount : notActiveAccounts) {
+					try {
+						aDI.updateAccount(pAccount.getEmail(), "active", "true");
+					} catch (BusinessException e) {
+						loggy.error("Error while activating non-active accounts");
+						e.printStackTrace();
+					}
+				}
+				loggy.debug("Activating all pending accounts");
+			}
+			else {
+				loggy.debug("Employee opted to not activate all pending accounts");
+			}
+			
+		}
+		else {
+			loggy.info("You must be an employee to continue");
+		}
+	}
+	
 
 	@Override
 	public User updateProfile(User u) throws BusinessException {
@@ -159,19 +214,37 @@ public class UserServiceImpl implements UserService {
 	
 	private boolean isValidName(String testName) {
 		if (testName.matches("[a-zA-Z ]{2,20}")) {
-			loggy.debug("Name passed validation check");
+			loggy.debug("isValidName passed");
 			return true;
 		}
-		loggy.error("Name failed validation check");
+		loggy.error("isValidName failed");
 		return false;
 	}
 	private boolean isValidPhoneNumber(String testNumber) {
 		if (testNumber.matches("[0-9]{10}")) {
-			loggy.debug("Phone number passed validation check");
+			loggy.debug("isValidPhoneNumber passed");
 			return true;
 		}
-		loggy.error("Phone number failed validation check");
+		loggy.error("isValidPhoneNumber failed");
 		return false;
+	}
+	
+	private boolean isValidDeposit(String testMoney) {
+		
+		if(testMoney.matches("[0-9.]{1,7}") && Double.parseDouble(testMoney) > 0 && Double.parseDouble(testMoney) <= 1000.0) {
+			loggy.debug("isValidDeposit passed");
+			return true;
+		}
+		else {
+			loggy.info("Error. Please try again. Amount cannot be larger than $1000");
+			loggy.error("isValidDeposit failed");
+			return false;
+		}
+		
+	}
+	
+	private boolean isEmployee(User u) {
+		return u.getStatus().equals("employee") ? true : false;
 	}
 
 

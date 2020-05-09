@@ -94,6 +94,26 @@ public class AccountDaoImpl implements AccountDao {
 		return aList;
 	
 	}
+	
+	public List<Account> selectAllAccountsByColumnName(String cName, String cValue) throws BusinessException{
+		List<Account> filteredAccountList = new ArrayList<>();
+		try (Connection conn = DriverManager.getConnection(AWSURL, USERNAME, PASSWORD)) {
+			PreparedStatement ps = conn.prepareStatement("SELECT * FROM bankaccount WHERE " + cName + " = '" + cValue + "'");
+			ResultSet rs = ps.executeQuery();
+			while(rs.next()) {
+				filteredAccountList.add(new Account(rs.getString("id"), rs.getString("savingsnumber"), rs.getString("checkingnumber"), 
+						rs.getString("checkingbalance"), rs.getString("savingsbalance"), rs.getString("active"), rs.getString("email")));
+			}	
+			loggy.debug("Retrieved all accounts");
+		} catch (SQLException e) {
+			e.printStackTrace();
+			loggy.error("Caught SQLException " + e);
+			e.printStackTrace();
+			throw new BusinessException("Internal Error. Please contact SYSADMIN");
+			
+		}
+		return filteredAccountList;
+	}
 
 	@Override
 	public void updateAccount(String userEmail, String columnName, String newAtt) throws BusinessException{
