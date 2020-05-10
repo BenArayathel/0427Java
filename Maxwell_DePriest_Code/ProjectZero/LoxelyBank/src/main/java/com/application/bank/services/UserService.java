@@ -11,11 +11,12 @@ public interface UserService {
 	public boolean userLogin(String email, String password) throws BusinessException;
 	public void signUpForAccount(String email) throws BusinessException;
 
-	public String checkCheckingBalance(User u) throws BusinessException;
-	public String checkSavingsBalance(User u) throws BusinessException;
+	public String checkCheckingBalance(String email) throws BusinessException;
+	public String checkSavingsBalance(String email) throws BusinessException;
 	
-	public void depositMoney(String whichAccount, String amount, User u) throws BusinessException;
-	public void withdrawMoney(String whichAccount, String amount, User u) throws BusinessException;
+	public void depositMoney(String whichAccount, String amount, String email) throws BusinessException;
+	public void withdrawMoney(String whichAccount, String amount, String email) throws BusinessException;
+	public void transferFunds(String uEmail, String fromWhichAccount, String receivingAccountNum, String amt) throws BusinessException;
 	
 	public void removeUserProfile(User u) throws BusinessException;
 	

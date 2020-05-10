@@ -158,13 +158,13 @@ public class UserServiceImpl implements UserService {
 	}// End of activatePendingAccounts
 
 	@Override
-	public String checkCheckingBalance(User u) throws BusinessException {
-		return aDI.selectAccountByEmail(u.getEmail()).getCheckingBalance();
+	public String checkCheckingBalance(String email) throws BusinessException {
+		return aDI.selectAccountByEmail(email).getCheckingBalance();
 	}
 
 	@Override
-	public String checkSavingsBalance(User u) throws BusinessException {
-		return aDI.selectAccountByEmail(u.getEmail()).getSavingsBalance();
+	public String checkSavingsBalance(String email) throws BusinessException {
+		return aDI.selectAccountByEmail(email).getSavingsBalance();
 	}
 
 	@Override
@@ -216,50 +216,73 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public void depositMoney(String whichAccount, String amount, User u) throws BusinessException {
-		Account userAccount = aDI.selectAccountByEmail(u.getEmail());
+	public void depositMoney(String whichAccount, String amount, String email) throws BusinessException {
+		Account userAccount = aDI.selectAccountByEmail(email);
 		double currentBalance = 0.0;
-		try {
-			if (whichAccount.equalsIgnoreCase("checkingBalance")) {
-				currentBalance = Double.parseDouble(userAccount.getCheckingBalance());
+		if (amount.matches("[0-9.]{1,7}")) {
+			if (Double.parseDouble(amount) >= 0) {
+				try {
+					if (whichAccount.equalsIgnoreCase("checkingBalance")) {
+						currentBalance = Double.parseDouble(userAccount.getCheckingBalance());
+					}
+					else {
+						currentBalance = Double.parseDouble(userAccount.getSavingsBalance());
+					}
+					if(amount.matches("[0-9.]{1,7}"))  {
+						currentBalance += Double.parseDouble(amount);
+						aDI.updateAccount(email, whichAccount, (currentBalance + ""));
+						
+					}
+				}catch(NullPointerException e) {
+					loggy.error("depositMoney threw NullPointException e- " + e);
+					e.printStackTrace();
+				}// end try block
 			}
 			else {
-				currentBalance = Double.parseDouble(userAccount.getSavingsBalance());
-			}
-			if(amount.matches("[0-9.]{1,7}"))  {
-				currentBalance += Double.parseDouble(amount);
-				loggy.info("Your new balance is " + currentBalance);
-				aDI.updateAccount(u.getEmail(), whichAccount, (currentBalance + ""));
-			}
-		}catch(NullPointerException e) {
-			loggy.error("depositMoney threw NullPointException e- " + e);
-			e.printStackTrace();
-			
+				loggy.info("Numbers cannot be negative");
+				loggy.error("Negative number entered - deposit");
+			}// end no negatives if check
 		}
+		else {
+			loggy.info("Number must contain only numerical digits and non-negative");
+			loggy.error("Non-numerical characters were used - deposit");
+		}// end no letters if check
+		
 	} // End of depositMoney()
 
 	@Override
-	public void withdrawMoney(String whichAccount, String amount, User u) throws BusinessException {
+	public void withdrawMoney(String whichAccount, String amount, String email) throws BusinessException {
 		double currentBalance = 0.00;
-		Account userAccount = aDI.selectAccountByEmail(u.getEmail());
-		try {
-			currentBalance = whichAccount.equalsIgnoreCase("checkingBalance") ? Double.parseDouble(userAccount.getCheckingBalance()) : Double.parseDouble(userAccount.getSavingsBalance());
-			loggy.info("Current balance is " + currentBalance);
-			if(currentBalance - Double.parseDouble(amount) > 0)  {
-				currentBalance -= Double.parseDouble(amount);
-				loggy.info("Here's $" + amount);
-				loggy.info("Your new balance is $" + currentBalance);
-				loggy.debug(amount + " was taken from account");
-				aDI.updateAccount(u.getEmail(), whichAccount, (currentBalance + ""));
+		Account userAccount = aDI.selectAccountByEmail(email);
+		
+		if (amount.matches("[0-9.]{1,7}")) {
+			if (Double.parseDouble(amount) >= 0) {
+				try {
+					currentBalance = whichAccount.equalsIgnoreCase("checkingBalance") ? Double.parseDouble(userAccount.getCheckingBalance()) : Double.parseDouble(userAccount.getSavingsBalance());
+					if(currentBalance - Double.parseDouble(amount) > 0)  {
+						currentBalance -= Double.parseDouble(amount);
+						loggy.debug(amount + " was taken from account with email" +  email);
+						aDI.updateAccount(email, whichAccount, (currentBalance + ""));
+						
+					}
+					else {
+						loggy.info("Error. Insufficient funds. Your current balance is $" + currentBalance);
+						loggy.error("Current balance was smaller than requested amount during withdrawl");
+					}
+				} catch(NullPointerException e){
+					loggy.error("Caught NullPointerException at withdrawMoney()");
+					loggy.info("Error. Please try again");
+				}
 			}
 			else {
-				loggy.info("Error. Insufficient funds. Your current balance is $" + currentBalance);
-				loggy.error("Current balance was smaller than requested amount during withdrawl");
-			}
-		} catch(NullPointerException e){
-			loggy.error("Caught NullPointerException at withdrawMoney()");
-			loggy.info("Error. Please try again");
+				loggy.info("Numbers cannot be negative");
+				loggy.error("Negative number entered - withdrawl");
+			}// end no negatives if check
 		}
+		else {
+			loggy.info("Number must contain only numerical digits and non-negative");
+			loggy.error("Non-numerical characters were used - withdrawl");
+		}// end no letters if check
 		
 	}// end of withdrawMoney()
 	
@@ -267,13 +290,37 @@ public class UserServiceImpl implements UserService {
 		try {
 			Account a = aDI.selectAccountByEmail(u.getEmail()); 
 			if(a.getId() != null && a.getActive().equals("true") ) {
-				loggy.info(aDI.selectAccountByEmail(u.getEmail()));
 				return true;
 			}
 		} catch (BusinessException e) {
 			loggy.info("Couldn't find account with that email.");
 		}
 		return false;
+	}
+	
+	@Override
+	public void transferFunds(String uEmail, String fromWhichAccount, String receivingAccountNumber, String amt) throws BusinessException {
+		try {
+			Account sendingAccount = aDI.selectAccountByEmail(uEmail);
+			Account receivingAccount = aDI.selectAccountByColumnName("checkingNumber", receivingAccountNumber);
+			withdrawMoney(fromWhichAccount, amt, uEmail);
+			depositMoney("checkingBalance", amt, receivingAccount.getEmail());
+		} catch (BusinessException e) {
+			loggy.error("Exception thrown during transfer funds");
+			e.printStackTrace();
+		}
+		
+	}
+	
+	public void printStatement(User u) {
+		try {
+			loggy.info("Checking Account Balance- $" + checkCheckingBalance(u.getEmail()));
+			loggy.info("Savings Account Balance- $" + checkSavingsBalance(u.getEmail()));
+		} catch (BusinessException e) {
+			loggy.error("Error during print statement");
+			e.printStackTrace();
+		}
+		
 	}
 	
 	
