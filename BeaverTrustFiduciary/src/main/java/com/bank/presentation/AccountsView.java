@@ -6,6 +6,7 @@ import java.util.List;
 
 import com.bank.main.Main;
 import com.bank.models.Account;
+import com.bank.models.User;
 import com.bank.service_implementation.AccountServiceImplementation;
 import com.bank.service_implementation.UserServiceImplementation;
 import com.bank.tools.BankException;
@@ -14,7 +15,8 @@ import com.bank.tools.QuitOption;
 
 public class AccountsView {
 	
-	public static void view(String username) {
+	public static void view(User user) {
+		String username = user.getUsername();
 		AccountServiceImplementation asi = new AccountServiceImplementation();
 		String accountAction = null;
 		List<Account> userAccounts = new ArrayList<Account>();
@@ -48,18 +50,18 @@ public class AccountsView {
 		accountAction = Main.scan.nextLine().toString();
 		
 		if (accountAction.equalsIgnoreCase("1")) {
-			AccountDeposit.deposit(username);			
+			AccountDeposit.deposit(user);			
 		} else if (accountAction.equalsIgnoreCase("2")) {
-			AccountWithdrawal.withdraw(username);			
+			AccountWithdrawal.withdraw(user);			
 //		} else if (accountAction.equalsIgnoreCase("3")) {
 //			Transfer.transfer();			
 		} else if (accountAction.equalsIgnoreCase("4")) {
-			UserHomeView.userWelcome(username);			
+			UserHomeView.userWelcome(user);			
 		} else if (accountAction.equalsIgnoreCase("quit")) {
 			QuitOption.quit();
 		} else {
 			System.out.println("Please try again.");
-			view(username);
+			view(user);
 		}
 		
 

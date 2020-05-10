@@ -1,11 +1,13 @@
 package com.bank.presentation;
 
 import com.bank.main.Main;
+import com.bank.models.User;
 import com.bank.service_implementation.AccountServiceImplementation;
 
 public class AccountWithdrawal {
 	
-	public static void withdraw(String username) {
+	public static void withdraw(User user) {
+		String username = user.getUsername();
 		AccountServiceImplementation asi = new AccountServiceImplementation();
 		String accountName;
 		String withdrawalAmount;
@@ -18,7 +20,7 @@ public class AccountWithdrawal {
 		asi.withdraw(username, accountName, withdrawalAmount);
 		System.out.println("\nWithdrawal of $" + withdrawalAmount + " complete!");
 		System.out.println("-----------------------------------------------------");
-		AccountsView.view(username);
+		AccountsView.view(user);
 	}
 
 }

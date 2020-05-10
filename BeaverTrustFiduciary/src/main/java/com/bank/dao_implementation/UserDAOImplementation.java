@@ -98,6 +98,34 @@ public class UserDAOImplementation implements UserDAOInterface {
 			throw new BankException("login failed at dao");
 		}
 	}
-	
 
+	// I use this to create an object, using the username as the key in,
+	// so that I am not doing everything by username and am using 
+	// getter and setters appropriately 
+	@Override
+	public User accessUserObject(String username) throws BankException {
+		User user = new User();
+		
+		String sql = "select * from bank_user where username = ?";
+		
+		try (Connection conn = DataConnection.getConnection()) {
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setString(1, username);
+					
+			ResultSet rs = ps.executeQuery();
+			
+			while (rs.next()) {
+				user.setUser_id(rs.getString(1));
+				user.setUsername(rs.getString(2));
+				user.setPassword(rs.getString(3));
+				user.setApproved(rs.getInt(4));
+			}
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			throw new BankException("something wrong with accessing user object");
+		}
+		return user;
+	}
 }

@@ -1,11 +1,13 @@
 package com.bank.presentation;
 
 import com.bank.main.Main;
+import com.bank.models.User;
 import com.bank.tools.QuitOption;
 
 public class UserHomeView {
 	
-	public static void userWelcome(String username) {
+	public static void userWelcome(User user) {
+		String username = user.getUsername();
 		String userOptions = null;
 		userOptions = Main.scan.nextLine().toString();
 		
@@ -20,14 +22,14 @@ public class UserHomeView {
 		
 		// either view accounts, apply for a new one, or quit
 		if (userOptions.equalsIgnoreCase("1")) {
-			AccountsView.view(username);
+			AccountsView.view(user);
 		} else if (userOptions.equalsIgnoreCase("2")) {
-			AccountApplication.apply(username);
+			AccountApplication.apply(user);
 		} else if (userOptions.equalsIgnoreCase("quit")) {
 			QuitOption.quit();
 		} else {
 			System.out.println("Please try again.");
-			userWelcome(username);
+			userWelcome(user);
 		}
 
 	}

@@ -1,10 +1,12 @@
 package com.bank.presentation;
 
 import com.bank.main.Main;
+import com.bank.models.User;
 
 public class AccountApplication {
 	
-	public static void apply(String username) {
+	public static void apply(User user) {
+		String username = user.getUsername();
 		String accountName;
 		String initialDeposit;
 		

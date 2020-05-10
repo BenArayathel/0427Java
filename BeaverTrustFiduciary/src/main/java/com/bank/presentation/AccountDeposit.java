@@ -1,12 +1,14 @@
 package com.bank.presentation;
 
 import com.bank.main.Main;
+import com.bank.models.User;
 import com.bank.service_implementation.AccountServiceImplementation;
 
 public class AccountDeposit {
 
-	public static void deposit(String username) {
+	public static void deposit(User user) {
 		AccountServiceImplementation asi = new AccountServiceImplementation();
+		String username = user.getUsername();
 		String accountName;
 		String depositAmount;
 		
@@ -18,7 +20,7 @@ public class AccountDeposit {
 		asi.deposit(username, accountName, depositAmount);
 		System.out.println("\nDeposit of $" + depositAmount + " complete!");
 		System.out.println("-----------------------------------------------------");
-		AccountsView.view(username);
+		AccountsView.view(user);
 	}
 	
 }

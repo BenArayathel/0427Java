@@ -13,6 +13,7 @@ public interface UserServiceInterface {
 	public User createUser(User user) throws BankException;
 	public List<User> listUsers() throws BankException;
 	public boolean loginUser(String username, String password) throws BankException;
+	public User accessUserObject(String username) throws BankException;
 
 
 	

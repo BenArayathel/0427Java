@@ -2,6 +2,7 @@ package com.bank.presentation;
 
 import com.bank.dao_implementation.UserDAOImplementation;
 import com.bank.main.Main;
+import com.bank.models.User;
 import com.bank.presentation.UserHomeView;
 import com.bank.service_implementation.UserServiceImplementation;
 import com.bank.tools.BankException;
@@ -13,7 +14,10 @@ public class UserLoginView {
 	
 	//first, check the users username via input
 	public static void validateLogin() {
-		UserServiceImplementation udi = new UserServiceImplementation();
+		User user = new User();
+		
+		UserServiceImplementation usi = new UserServiceImplementation();
+		UserDAOImplementation udi = new UserDAOImplementation();
 		String username = null;
 		String password = null;
 		
@@ -23,9 +27,12 @@ public class UserLoginView {
 		password = Main.scan.nextLine().toString();
 		
 		try {
-			if (udi.loginUser(username, password)) {
+			if (usi.loginUser(username, password)) {
 				System.out.println("Log in successful.");
-				UserHomeView.userWelcome(username);
+				// this is where the NEW ACTION is happening
+				// it creates an object to use from here on into the program
+				user = udi.accessUserObject(username);
+				UserHomeView.userWelcome(user);
 			} else {
 				System.out.println("Username/Password combo not found. Please try again");
 				validateLogin();

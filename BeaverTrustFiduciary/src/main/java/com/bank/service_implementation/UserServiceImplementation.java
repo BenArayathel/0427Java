@@ -37,6 +37,12 @@ public class UserServiceImplementation implements UserServiceInterface {
 		return udi.loginUser(username, password);
 	}
 
+	@Override
+	public User accessUserObject(String username) throws BankException {
+		udi.accessUserObject(username);
+		return null;
+	}
+
 	
 	
 	// the SERVICES layer does most of the checks and tests before passing
