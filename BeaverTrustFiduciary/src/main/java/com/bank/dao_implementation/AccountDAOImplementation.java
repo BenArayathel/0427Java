@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.bank.dao_interface.AccountDAOInterface;
+import com.bank.main.Main;
 import com.bank.models.Account;
 import com.bank.models.Transaction;
 import com.bank.models.User;
@@ -65,7 +66,7 @@ public class AccountDAOImplementation implements AccountDAOInterface {
 			throw new BankException("trouble with the account dao");
 		}
 		
-		System.out.println("All accounts: " + accountList.toString());
+		Main.myLog.info("All accounts: " + accountList.toString());
 		return accountList;
 	}
 
@@ -95,7 +96,7 @@ public class AccountDAOImplementation implements AccountDAOInterface {
 	
 	// LOG ALL TRANSACTIONS WHEN MAKING DEPOSIT or WITHDRAWAL
 	public void logTransaction(String amount, String accountName, String user_id, String type) throws BankException {
-//		System.out.println(amount + accountName + user_id + type);
+//		Main.myLog.info(amount + accountName + user_id + type);
 		String sql = "{call create_new_transaction(?,?,?,?,?)}";
 		try (Connection conn = DataConnection.getConnection()) {
 			CallableStatement cs = conn.prepareCall(sql);
@@ -184,8 +185,8 @@ public class AccountDAOImplementation implements AccountDAOInterface {
 	// EMPLOYEE APPROVING ACCOUNT
 	@Override
 	public void approve(String user_id) throws BankException {
-//		System.out.println("test at adi level");
-//		System.out.println(user_id);
+//		Main.myLog.info("test at adi level");
+//		Main.myLog.info(user_id);
 		String sql = "update bank_user set approved = 1 where user_id = ?";
 		
 		try (Connection conn = DataConnection.getConnection()) {

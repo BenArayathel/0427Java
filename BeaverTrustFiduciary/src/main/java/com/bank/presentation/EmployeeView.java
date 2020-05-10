@@ -29,15 +29,15 @@ public class EmployeeView {
 		String showApproval;
 		String selection;
 		
-		System.out.println("Welcome to the Employee Dashboard");
+		Main.myLog.info("Welcome to the Employee Dashboard");
 		// Employee options
-		System.out.println("........................................");
-		System.out.println("Choose an option: ");
-		System.out.println("Enter '1' to make see all customers.");
-		System.out.println("Enter '2' to make see specific user's account details.");
-		System.out.println("Enter '3' to approve a new account application.");
-		System.out.println("Enter '4' to see all transactions.");
-		System.out.println("Enter 'quit' to exit to Home screen.");
+		Main.myLog.info("........................................");
+		Main.myLog.info("Choose an option: ");
+		Main.myLog.info("Enter '1' to make see all customers.");
+		Main.myLog.info("Enter '2' to make see specific user's account details.");
+		Main.myLog.info("Enter '3' to approve a new account application.");
+		Main.myLog.info("Enter '4' to see all transactions.");
+		Main.myLog.info("Enter 'quit' to exit to Home screen.");
 
 		
 		selection = Main.scan.nextLine().toString();
@@ -52,8 +52,8 @@ public class EmployeeView {
 					} else {
 						showApproval = "(Account Approved)";
 					}
-					System.out.println("Username: " + u.getUsername() + "...." + "User_Id: " + u.getUser_id() + " " + showApproval);
-					System.out.println("...........................................");
+					Main.myLog.info("Username: " + u.getUsername() + "...." + "User_Id: " + u.getUser_id() + " " + showApproval);
+					Main.myLog.info("...........................................");
 				}
 			} catch (BankException e) {
 				e.printStackTrace();
@@ -62,14 +62,14 @@ public class EmployeeView {
 			banking();
 		// See SPECIFIC customer accounts
 		} else if (selection.equals("2")) {
-			System.out.println("Access customer's accounts with their Username: ");
+			Main.myLog.info("Access customer's accounts with their Username: ");
 			username = Main.scan.nextLine();
 			
 			// list them by the selected username
 			try {
 				List<Account> userAccountsList = asi.listUserAccounts(username);
 				for(Account i: userAccountsList) {
-					System.out.println("Account: " + i.getAccount_name() + "......Account_ID: " + i.getAccount_id() + "......." + " Balance: $" + i.getBalance());
+					Main.myLog.info("Account: " + i.getAccount_name() + "......Account_ID: " + i.getAccount_id() + "......." + " Balance: $" + i.getBalance());
 				}
 				
 			} catch (BankException e) {
@@ -78,17 +78,17 @@ public class EmployeeView {
 			banking();
 		// APPROVE account //PROBLEM CHILD
 		} else if (selection.equals("3")) {
-			System.out.println("Approve customer's account by entering their User_ID: ");
+			Main.myLog.info("Approve customer's account by entering their User_ID: ");
 			user_id = Main.scan.nextLine().toString();
 			adi.approve(user_id);
-			System.out.println("Account approved.");
+			Main.myLog.info("Account approved.");
 			banking();
 		} else if (selection.equals("4")) {
-			System.out.println("Transaction Log: ");
+			Main.myLog.info("Transaction Log: ");
 			try {
 				List<Transaction> allTransactionsList = asi.listAllTransactions();
 				for(Transaction t: allTransactionsList) {
-					System.out.println(t);
+					Main.myLog.info(t);
 				}
 			} catch (BankException e) {
 				e.printStackTrace();
@@ -96,7 +96,7 @@ public class EmployeeView {
 		} else if (selection.equalsIgnoreCase("quit")) {
 			QuitOption.quit();
 		} else {
-			System.out.println("somethign broke");
+			Main.myLog.info("somethign broke");
 		}
 		
 

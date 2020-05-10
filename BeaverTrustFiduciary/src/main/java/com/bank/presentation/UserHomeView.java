@@ -12,13 +12,13 @@ public class UserHomeView {
 		String userOptions = null;
 		userOptions = Main.scan.nextLine().toString();
 		
-		System.out.println("Welcome to your account, " + username);
-		System.out.println("What would you like to do?");
-		System.out.println(".........................................");
-		System.out.println("Enter '1' to access your existing accounts.");
-		System.out.println("Enter '2' to apply for a new bank account.");
-		System.out.println("Or, as always, enter 'Quit' to exit.");
-		System.out.println(".........................................");
+		Main.myLog.info("Welcome to your account, " + username);
+		Main.myLog.info("What would you like to do?");
+		Main.myLog.info(".........................................");
+		Main.myLog.info("Enter '1' to access your existing accounts.");
+		Main.myLog.info("Enter '2' to apply for a new bank account.");
+		Main.myLog.info("Or, as always, enter 'Quit' to exit.");
+		Main.myLog.info(".........................................");
 
 		
 		// either view accounts, apply for a new one, or quit
@@ -34,7 +34,7 @@ public class UserHomeView {
 		} else if (userOptions.equalsIgnoreCase("quit")) {
 			QuitOption.quit();
 		} else {
-			System.out.println("Please try again.");
+			Main.myLog.info("Please try again.");
 			userWelcome(user);
 		}
 

@@ -18,14 +18,14 @@ public class AccountApplication {
 //			QuitOption.quit();
 //		} else {
 		
-		System.out.println("What would you like to name your new account?");
+		Main.myLog.info("What would you like to name your new account?");
 		accountName = Main.scan.nextLine();
-		System.out.println("How much will you be depositing as your starting balance?");
+		Main.myLog.info("How much will you be depositing as your starting balance?");
 		initialDeposit = Main.scan.nextLine().toString();
 		
 		try {
 			aci.createAccount(user, accountName, initialDeposit);
-			System.out.println("Your new account, " + accountName + " has been added.");
+			Main.myLog.info("Your new account, " + accountName + " has been added.");
 			UserHomeView.userWelcome(user);
 		} catch (BankException e) {
 			// TODO Auto-generated catch block

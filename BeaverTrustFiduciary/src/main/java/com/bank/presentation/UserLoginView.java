@@ -21,9 +21,9 @@ public class UserLoginView {
 		String username = null;
 		String password = null;
 		
-		System.out.println("Enter your username: ");
+		Main.myLog.info("Enter your username: ");
 		username = Main.scan.nextLine().toString();
-		System.out.println("Enter your password: ");
+		Main.myLog.info("Enter your password: ");
 		password = Main.scan.nextLine().toString();
 		
 
@@ -32,13 +32,14 @@ public class UserLoginView {
 			if (username.equals("employee") && password.equals("employee")) {
 				EmployeeView.banking();
 			} else if (usi.loginUser(username, password)) {
-				System.out.println("Log in successful.");
+				Main.myLog.info("Log in successful.");
+				
 				// this is where the NEW ACTION is happening
 				// it creates an object to use from here on into the program
 				user = udi.accessUserObject(username);
 				UserHomeView.userWelcome(user);
 			} else {
-				System.out.println("Username/Password combo not found. Please try again");
+				Main.myLog.info("Username/Password combo not found. Please try again");
 				validateLogin();
 			}
 		} catch (BankException e) {
@@ -59,7 +60,7 @@ public class UserLoginView {
 //		} else if (userLoginU.equalsIgnoreCase("quit")) {
 //			QuitOption.quit();
 //		} else {
-//			System.out.println("Username not recognized. Please try again.");
+//			Main.myLog.info("Username not recognized. Please try again.");
 //			validateUsername();
 //		}
 //		
@@ -69,17 +70,17 @@ public class UserLoginView {
 //	public static void validatePassword() {
 //		String userLoginP = null;
 //		
-//		System.out.println("Enter your password: ");
+//		Main.myLog.info("Enter your password: ");
 //		userLoginP = Main.scan.nextLine();
 //		
 //		//hardcoded default password, will be "is in database + connected to username
 //		if (userLoginP.equalsIgnoreCase("pass")) {
-//			System.out.println(userLoginU);
+//			Main.myLog.info(userLoginU);
 //			UserHomeView.userWelcome(userLoginU);
 //		} else if (userLoginP.equalsIgnoreCase("quit")) {
 //			QuitOption.quit();
 //		} else {
-//			System.out.println("That username and password combination was not found. Please try again.");
+//			Main.myLog.info("That username and password combination was not found. Please try again.");
 //			validateUsername();
 //		}
 

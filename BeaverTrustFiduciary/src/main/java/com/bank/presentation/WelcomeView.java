@@ -13,9 +13,9 @@ public class WelcomeView {
 		//first, determine if this is a new user or return user
 		String hasAccount = null;
 
-		System.out.println("Welcome to Beaver Trust Fiduciary");
-		System.out.println("\nPlease type and enter 'Quit' at any time to exit.");
-		System.out.println("\nDo you already have an account? Y or N: ");
+		Main.myLog.info("Welcome to Beaver Trust Fiduciary");
+		Main.myLog.info("\nPlease type and enter 'Quit' at any time to exit.");
+		Main.myLog.info("\nDo you already have an account? Y or N: ");
 		
 		//takes user input to either log them in or create account
 		hasAccount = Main.scan.nextLine();

@@ -12,14 +12,14 @@ public class AccountWithdrawal {
 		String accountName;
 		String withdrawalAmount;
 		
-		System.out.println("Enter the account name that you'd like to withdraw from: ");
+		Main.myLog.info("Enter the account name that you'd like to withdraw from: ");
 		accountName = Main.scan.nextLine().toString();
-		System.out.println("Enter the amount you are withdrawing: ");
+		Main.myLog.info("Enter the amount you are withdrawing: ");
 		withdrawalAmount = Main.scan.nextLine().toString();
 		
 		asi.withdraw(user, accountName, withdrawalAmount);
-		System.out.println("\nWithdrawal of $" + withdrawalAmount + " complete!");
-		System.out.println("-----------------------------------------------------");
+		Main.myLog.info("\nWithdrawal of $" + withdrawalAmount + " complete!");
+		Main.myLog.info("-----------------------------------------------------");
 		AccountsView.view(user);
 	}
 

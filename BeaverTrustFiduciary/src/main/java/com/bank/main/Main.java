@@ -22,7 +22,7 @@ import com.bank.tools.BankException;
 public class Main {
 	
 	// Setting up logger, scanner, for use in whole application
-	final static Logger myLog = Logger.getLogger(Main.class);
+	public static Logger myLog = Logger.getLogger(Main.class);
 	public static final Scanner scan = new Scanner(System.in);
 
 	public static void main(String[] args) {
@@ -52,14 +52,14 @@ public class Main {
 		UserServiceInterface usi = new UserServiceImplementation();
 		User myUser = new User();
 		
-//		System.out.println("enter new username");
+//		Main.myLog.info("enter new username");
 //		myUser.setUsername(scan.nextLine());
-//		System.out.println("enter new password");
+//		Main.myLog.info("enter new password");
 //		myUser.setPassword(scan.nextLine());
 //		
 //		try {
 //			myUser = usi.createUser(myUser);
-//			System.out.println("main level works");
+//			Main.myLog.info("main level works");
 //		} catch (BankException e) {
 //			// TODO Auto-generated catch block
 //			e.printStackTrace();
@@ -79,11 +79,11 @@ public class Main {
 		AccountServiceInterface asi = new AccountServiceImplementation();
 		Account newAccount = new Account();
 		
-//		System.out.println("enter new account user_id");
+//		Main.myLog.info("enter new account user_id");
 //		newAccount.setUser_id(scan.nextLine().toString());
-//		System.out.println("enter new account name");
+//		Main.myLog.info("enter new account name");
 //		newAccount.setAccount_name(scan.nextLine());
-//		System.out.println("your new account starting balance will be $50.");
+//		Main.myLog.info("your new account starting balance will be $50.");
 //		newAccount.setBalance(50.00);
 //		
 		// CREATE new account

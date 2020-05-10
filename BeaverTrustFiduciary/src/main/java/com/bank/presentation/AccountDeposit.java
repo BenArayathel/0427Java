@@ -12,14 +12,14 @@ public class AccountDeposit {
 		String accountName;
 		String depositAmount;
 		
-		System.out.println("Enter the account name that you'd like to deposit into: ");
+		Main.myLog.info("Enter the account name that you'd like to deposit into: ");
 		accountName = Main.scan.nextLine().toString();
-		System.out.println("Enter the amount you are depositing: ");
+		Main.myLog.info("Enter the amount you are depositing: ");
 		depositAmount = Main.scan.nextLine().toString();
 		
 		asi.deposit(user, accountName, depositAmount);
-		System.out.println("\nDeposit of $" + depositAmount + " complete!");
-		System.out.println("-----------------------------------------------------");
+		Main.myLog.info("\nDeposit of $" + depositAmount + " complete!");
+		Main.myLog.info("-----------------------------------------------------");
 		AccountsView.view(user);
 	}
 	

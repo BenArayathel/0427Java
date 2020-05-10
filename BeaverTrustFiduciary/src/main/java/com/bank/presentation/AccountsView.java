@@ -21,17 +21,17 @@ public class AccountsView {
 		String accountAction = null;
 		List<Account> userAccounts = new ArrayList<Account>();
 
-		System.out.println("Here are your accounts, " + username + ".");
+		Main.myLog.info("Here are your accounts, " + username + ".");
 		
 		// this will be connect to db, iterate and print their accounts
-		System.out.println("\nYour Accounts: ");
-		System.out.println("-----------------------------------------");
+		Main.myLog.info("\nYour Accounts: ");
+		Main.myLog.info("-----------------------------------------");
 		
 		// list all accounts related to user's name/id
 		try {
 			List<Account> userAccountsList = asi.listUserAccounts(username);
 			for(Account i: userAccountsList) {
-				System.out.println("Account: " + i.getAccount_name() + " Balance: $" + i.getBalance());
+				Main.myLog.info("Account: " + i.getAccount_name() + " Balance: $" + i.getBalance());
 			}
 			
 		} catch (BankException e) {
@@ -39,13 +39,13 @@ public class AccountsView {
 			e.printStackTrace();
 		}
 				
-		System.out.println("\nWhat would you like to do?");
-		System.out.println(".........................................");
-		System.out.println("Enter '1' to make a deposit.");
-		System.out.println("Enter '2' to make a withdrawal.");
-		System.out.println("Enter '3' to transfer funds.");
-		System.out.println("Enter '4' to go back.");
-		System.out.println("Or, as always, enter 'Quit' to exit.");
+		Main.myLog.info("\nWhat would you like to do?");
+		Main.myLog.info(".........................................");
+		Main.myLog.info("Enter '1' to make a deposit.");
+		Main.myLog.info("Enter '2' to make a withdrawal.");
+		Main.myLog.info("Enter '3' to transfer funds.");
+		Main.myLog.info("Enter '4' to go back.");
+		Main.myLog.info("Or, as always, enter 'Quit' to exit.");
 		
 		accountAction = Main.scan.nextLine().toString();
 		
@@ -53,14 +53,16 @@ public class AccountsView {
 			AccountDeposit.deposit(user);			
 		} else if (accountAction.equalsIgnoreCase("2")) {
 			AccountWithdrawal.withdraw(user);			
-//		} else if (accountAction.equalsIgnoreCase("3")) {
-//			Transfer.transfer();			
+		} else if (accountAction.equalsIgnoreCase("3")) {
+			Main.myLog.info("Transfer currently unavailable!");
+			AccountsView.view(user);
+//			AccountTransfer.transfer();			
 		} else if (accountAction.equalsIgnoreCase("4")) {
 			UserHomeView.userWelcome(user);			
 		} else if (accountAction.equalsIgnoreCase("quit")) {
 			QuitOption.quit();
 		} else {
-			System.out.println("Please try again.");
+			Main.myLog.info("Please try again.");
 			view(user);
 		}
 		
