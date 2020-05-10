@@ -13,9 +13,10 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
-import exception.BusinessException;
 import log.Log;
 import connection.utilities.DAOUtilites;
+import exception.validations.BusinessException;
+import exception.validations.Validation;
 import user.cust.account.controller.CustOptionsDirectory;
 import user.cust.account.controller.UserOptionsDirectory;
 import user.cust.account.models.Account;
@@ -33,6 +34,7 @@ public class BankDaoImpl implements BankDAO {
 	@Override
 	public boolean createUser(User user) {
 
+		Validation v = new Validation();
 		
 		try{
 
@@ -50,9 +52,9 @@ public class BankDaoImpl implements BankDAO {
 			callableStatement.setString(4, user.getEmail());
 			callableStatement.setLong(5, user.getContactPhone());
 			
-			if (isValidEmail(user.getEmail())) {
+			if (v.isValidEmail(user.getEmail())) {
 				
-				if (isValidContactPhone(user.getContactPhone())) {
+				if (v.isValidContactPhone(user.getContactPhone())) {
 					
 					if (callableStatement.executeUpdate() != 0 ) {
 						System.out.println("User created: log back in...");
@@ -68,10 +70,6 @@ public class BankDaoImpl implements BankDAO {
 
 			}
 			
-
-			
-			//  insert User
-			//rs.close();
 			
 		}
 		catch(SQLException e) {
@@ -85,46 +83,42 @@ public class BankDaoImpl implements BankDAO {
 	}
 	
 	
-	public boolean isValidEmail(String email) {
-		
-		// https://howtodoinjava.com/regex/java-regex-validate-email-address/
-		//this.email.matches("^(.+)@(.+)$")
-		if (email.matches("^(.+)@(.+)$")) {
-			return true;
-		} else {
-			Log.logger("Invalid Email format");
-			return false;
-		}
-		
-	}
+//	public boolean isValidEmail(String email) {
+//		
+//		// https://howtodoinjava.com/regex/java-regex-validate-email-address/
+//		//this.email.matches("^(.+)@(.+)$")
+//		if (email.matches("^(.+)@(.+)$")) {
+//			return true;
+//		} else {
+//			Log.logger("Invalid Email format");
+//			return false;
+//		}
+//		
+//	}
 	
-	public boolean isValidContactPhone(long phoneNum) {
-		
-		// (contact + "").matches("[0-9]{10}")					// Dr. V's
-		// phoneNum.matches("[0-9]{3}\\-[0-9]{3}\\-[0-9]{4}")	// my
-		if((phoneNum + "").matches("[0-9]{10}")) {
-			//System.out.println("\nValid Soc. Sec. !!!!");
-			return true;
-		}else {
-			//System.out.println("Invalid Info");
-			Log.logger("Invalid phone number format");
-			return false;
-		}
-	}
+//	public boolean isValidContactPhone(long phoneNum) {
+//		
+//		// (contact + "").matches("[0-9]{10}")					// Dr. V's
+//		// phoneNum.matches("[0-9]{3}\\-[0-9]{3}\\-[0-9]{4}")	// my
+//		if((phoneNum + "").matches("[0-9]{10}")) {
+//			//System.out.println("\nValid Soc. Sec. !!!!");
+//			return true;
+//		}else {
+//			//System.out.println("Invalid Info");
+//			Log.logger("Invalid phone number format");
+//			return false;
+//		}
+//	}
 	
 	
 
 	@Override
 	public List<User> getAllUsers() {
 
-		//System.out.println("getAll ran\n");
 		List<User> userList = new ArrayList<>();
 		
-		// old try with resources
-		// Connection conn = DriverManager.getConnection(url, username, password))
 		try{
-//			PreparedStatement ps = conn.prepareStatement("SELECT * FROM b_user");
-//			ResultSet rs = ps.executeQuery();
+
 			conn = DAOUtilites.getConnection();
 			ps = conn.prepareStatement("SELECT * FROM b_user");
 			rs = ps.executeQuery();
@@ -253,20 +247,20 @@ public class BankDaoImpl implements BankDAO {
 	
 	
 
-	
+	@Override
 	public boolean userRegistrationToBecomeCustomer(User user) {
 		
-		System.out.println("Successful application submission.");
-		System.out.println("\nApproval will take place as soon as possible.");
-		//System.out.println("Application For Customer Received @ db");
-		System.out.println("Thanks for applying");
+		Validation v = new Validation();
+
 		
 		// new java.sql.Date(trainee.getDob().getTime()
 		try{
 			String s = user.getSoc();
 
 			// "[0-9]{3}\\-[0-9]{2}\\-[0-9]{4}"
-			if (s.matches("[0-9]{3}-[0-9]{2}-[0-9]{4}")) {
+			//s.matches("[0-9]{3}\\-[0-9]{2}\\-[0-9]{4}"
+					
+			if (v.isValid_ssn(user.getSoc())) {
 				
 				conn = DAOUtilites.getConnection();
 				ps = conn.prepareStatement("UPDATE b_user SET soc=? WHERE user_id=?");
@@ -280,6 +274,10 @@ public class BankDaoImpl implements BankDAO {
 				//c.select(user);
 				// ... it is easiest to refresh vs query again right here
 				
+				System.out.println("Successful application submission.");
+				System.out.println("\nApproval will take place as soon as possible.");
+				//System.out.println("Application For Customer Received @ db");
+				System.out.println("Thanks for applying");
 				
 			}else {
 				Log.logger("Sorry that is not a valid format");
@@ -314,91 +312,90 @@ public class BankDaoImpl implements BankDAO {
 	
 	
 	
-	@Override
-	public boolean userRegistrationToBecomeCustomer(User user, String dob) {
-		
-		System.out.println("Successful application submission.");
-		System.out.println("\nA Bank Employee will make a dertermination as soon as possible.");
-		//System.out.println("Application For Customer Received @ db");
-		System.out.println("Thanks for applying");
-		
-		// new java.sql.Date(trainee.getDob().getTime()
-		try{
-
-			if (isValidDate(dob) != null) {
-				
-				user.setDob(isValidDate(dob));
-				
-				//java.util.Date utilStartDate = user.getDob();
-				//java.sql.Date sqlStartDate = new java.sql.Date(utilStartDate.getTime());
-				conn = DAOUtilites.getConnection();
-				ps = conn.prepareStatement("UPDATE b_user SET dob=? WHERE EMAIL=?");
-				ps.setDate(1, new java.sql.Date(user.getDob().getTime()));
-				//ps.setString(2, user.getUserName());
-				ps.setString(2, user.getEmail());
-				
-			}
-
-			
-			if (ps.executeUpdate() != 0) {
-				return true;
-			} else {
-				return false;
-			}
-			
-		}
-		catch(SQLException | BusinessException e) {
-			e.printStackTrace();
-		}
-		finally {
-			closeResources();
-			
-		}
-		
-		
-		// FORWARD DATA TO EMPLOYEE FRONT END ?
-		// FOR NOW, DO THIS ...
-		//employeeRejectOrApprove_userRegistrationToBecomeCustomer(user, user.getEmail());
-		return false;
-	}
+//	@Override
+//	public boolean userRegistrationToBecomeCustomer(User user, String dob) {
+//		
+//		System.out.println("Successful application submission.");
+//		System.out.println("\nA Bank Employee will make a dertermination as soon as possible.");
+//		//System.out.println("Application For Customer Received @ db");
+//		System.out.println("Thanks for applying");
+//		
+//		// new java.sql.Date(trainee.getDob().getTime()
+//		try{
+//
+//			if (isValidDate(dob) != null) {
+//				
+//				user.setDob(isValidDate(dob));
+//				
+//				//java.util.Date utilStartDate = user.getDob();
+//				//java.sql.Date sqlStartDate = new java.sql.Date(utilStartDate.getTime());
+//				conn = DAOUtilites.getConnection();
+//				ps = conn.prepareStatement("UPDATE b_user SET dob=? WHERE EMAIL=?");
+//				ps.setDate(1, new java.sql.Date(user.getDob().getTime()));
+//				//ps.setString(2, user.getUserName());
+//				ps.setString(2, user.getEmail());
+//				
+//			}
+//
+//			
+//			if (ps.executeUpdate() != 0) {
+//				return true;
+//			} else {
+//				return false;
+//			}
+//			
+//		}
+//		catch(SQLException | BusinessException e) {
+//			e.printStackTrace();
+//		}
+//		finally {
+//			closeResources();
+//			
+//		}
+//		
+//		
+//		// FORWARD DATA TO EMPLOYEE FRONT END ?
+//		// FOR NOW, DO THIS ...
+//		//employeeRejectOrApprove_userRegistrationToBecomeCustomer(user, user.getEmail());
+//		return false;
+//	}
 	
 	
-	public static Date isValidDate(String dob) throws BusinessException {
-		Date d=null;
-		// mine:  s.matches("[0-9]{3}-[0-9]{2}-[0-9]{4}")
-		// dr's: dob.matches("[0-9]{2}.[0-9]{2}.[0-9]{4}")
-		if(dob.matches("[0-9]{2}-[0-9]{2}-[0-9]{4}")) {
-											// dd/MM/yyyy  Dr.'s:  dd.MM.yyyy
-			SimpleDateFormat sdf=new SimpleDateFormat("dd-MM-yyyy");
-			sdf.setLenient(false);
-			try {
-				d=sdf.parse(dob);
-				return d;
-			} catch (ParseException e) {
-				throw new BusinessException("Entered date "+dob+" is invalid");
-			}
-		}else {
-			throw new BusinessException("Entered date "+dob+" should be in (dd.MM.yyyy) format only");
-		}
-		//return d;
-	}
+//	public static Date isValidDate(String dob) throws BusinessException {
+//		Date d=null;
+//		// mine:  s.matches("[0-9]{3}-[0-9]{2}-[0-9]{4}")
+//		// dr's: dob.matches("[0-9]{2}.[0-9]{2}.[0-9]{4}")
+//		if(dob.matches("[0-9]{2}-[0-9]{2}-[0-9]{4}")) {
+//											// dd/MM/yyyy  Dr.'s:  dd.MM.yyyy
+//			SimpleDateFormat sdf=new SimpleDateFormat("dd-MM-yyyy");
+//			sdf.setLenient(false);
+//			try {
+//				d=sdf.parse(dob);
+//				return d;
+//			} catch (ParseException e) {
+//				throw new BusinessException("Entered date "+dob+" is invalid");
+//			}
+//		}else {
+//			throw new BusinessException("Entered date "+dob+" should be in (dd.MM.yyyy) format only");
+//		}
+//		//return d;
+//	}
 	
 
 
 	@Override
 	public boolean customerApplicationForAccount(User user, String dob, double balance) {
 		
-		System.out.println("Application For Account Received @ db");
-		System.out.println("A Bank Employee will make a determination as soon as possible.");
-		System.out.println("Thanks for applying");
-		
+
+		Validation v = new Validation();
 		
 		
 		try{
-			if (isValidDate(dob) != null) {
+			
+			if (v.isValidDate(dob) != null) {
 				
 				//int myInt = 1;
-				user.setDob(isValidDate(dob));
+				user.setDob(v.isValidDate(dob));
 				conn = DAOUtilites.getConnection();
 										// update b_user set a_access=1 where user_id='BUTE123TE5';
 				ps = conn.prepareStatement("UPDATE b_user SET balance=?, dob=? WHERE user_id=?");
@@ -409,6 +406,10 @@ public class BankDaoImpl implements BankDAO {
 				// dr. V's:  new java.sql.Date(trainee.getDob().getTime())
 				ps.setDate(2, new java.sql.Date(user.getDob().getTime()));
 				ps.setString(3, user.getUser_id());
+				
+				System.out.println("Application For Account Received @ db");
+				System.out.println("A Bank Employee will make a determination as soon as possible.");
+				System.out.println("Thanks for applying");
 				
 				if(ps.execute()) {
 					return true;

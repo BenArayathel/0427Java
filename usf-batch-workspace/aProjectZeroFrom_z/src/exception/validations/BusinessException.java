@@ -1,4 +1,4 @@
-package exception;
+package exception.validations;
 
 public class BusinessException extends Exception{
 

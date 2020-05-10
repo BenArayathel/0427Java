@@ -19,7 +19,9 @@ public interface BankDAO {
 
 	public void login(User user);
 	
-	public boolean userRegistrationToBecomeCustomer(User user, String email);					// step 1 of 2: apply
+	//public boolean userRegistrationToBecomeCustomer(User user, String email);
+	
+	public boolean userRegistrationToBecomeCustomer(User user);// step 1 of 2: apply
 	
 	//public boolean employeeRejectOrApprove_userRegistrationToBecomeCustomer(User user, String email);	// step 2 of 2: approve check
 
