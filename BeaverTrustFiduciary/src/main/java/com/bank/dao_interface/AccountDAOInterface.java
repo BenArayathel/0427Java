@@ -12,6 +12,7 @@ public interface AccountDAOInterface {
 	public Account createAccount(Account account) throws BankException;
 	public List<Account> listAccounts() throws BankException;
 	public List<Account> listUserAccounts(String username) throws BankException;
+	public void deposit(String username, String accountName, String depositAmount) throws BankException;
 	
 
 }

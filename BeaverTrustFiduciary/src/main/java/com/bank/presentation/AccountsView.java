@@ -1,5 +1,6 @@
 package com.bank.presentation;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,12 +22,16 @@ public class AccountsView {
 		System.out.println("Here are your accounts, " + username + ".");
 		
 		// this will be connect to db, iterate and print their accounts
-		System.out.println("The Accounts...with balances");
+		System.out.println("\nYour Accounts: ");
+		System.out.println("-----------------------------------------");
 		
-		// try to list all accounts related to user's name/id
+		// list all accounts related to user's name/id
 		try {
-			asi.listUserAccounts(username);
-//			System.out.println("did anything happen?");
+			List<Account> userAccountsList = asi.listUserAccounts(username);
+			for(Account i: userAccountsList) {
+				System.out.println("Account: " + i.getAccount_name() + " Balance: $" + i.getBalance());
+			}
+			
 		} catch (BankException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -43,7 +48,7 @@ public class AccountsView {
 		accountAction = Main.scan.nextLine().toString();
 		
 		if (accountAction.equalsIgnoreCase("1")) {
-//			Deposit.deposit();			
+			AccountDeposit.deposit(username);			
 //		} else if (accountAction.equalsIgnoreCase("2")) {
 //			Withdrawal.withdraw();			
 //		} else if (accountAction.equalsIgnoreCase("3")) {

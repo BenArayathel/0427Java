@@ -25,8 +25,15 @@ public class AccountServiceImplementation implements AccountServiceInterface {
 
 	@Override
 	public List<Account> listUserAccounts(String username) throws BankException {
-		adi.listUserAccounts(username);
-		return null;
+		List<Account> accountList = adi.listUserAccounts(username);
+		return accountList;
+	}
+
+	// DEPOSIT INTO ACCOUNT
+	@Override
+	public void deposit(String username, String accountName, String depositAmount) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 	

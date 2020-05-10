@@ -60,15 +60,13 @@ public class Account {
 		this.balance = balance;
 	}
 
-	// for now, i have this edited down to showing two elements for the sake of
-	// the account view. but i need a better solution long term
-	
 	//TOSTRING
-	@Override
-	public String toString() {
-		return "Account [account_name=" + account_name
-				+ ", balance=" + balance + "]";
-	}
+//	@Override
+//	public String toString() {
+//		return "Account [account_id=" + account_id + ", user_id=" + user_id + ", account_name=" + account_name
+//				+ ", balance=" + balance + "]";
+//	}
+
 
 	
 	
