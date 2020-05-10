@@ -8,12 +8,19 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.Date;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import com.bankofben.exceptions.BusinessException;
 import com.bankofben.models.Account;
 import com.bankofben.models.Customer;
 import com.bankofben.models.Employee;
+import com.bankofben.models.Payment;
+import com.bankofben.models.Request;
+import com.bankofben.models.Transaction;
+import com.bankofben.models.Transfer;
 import com.bankofben.models.User;
 
 public class BankOfBenDAO implements BankOfBenDAOInterface {
@@ -115,7 +122,7 @@ public class BankOfBenDAO implements BankOfBenDAOInterface {
 						rset.getString("Username"), rset.getString("Password"), rset.getString("Customer ID"),
 						rset.getBoolean("Application Pending"));
 			} else {
-				throw new BusinessException("Customer ID "+customerId+" doesn't exist.");
+				throw new BusinessException("Customer ID "+customerId+" does not exist.");
 			}
 			
 		} catch (ClassNotFoundException | SQLException e) {
@@ -127,14 +134,60 @@ public class BankOfBenDAO implements BankOfBenDAOInterface {
 
 	@Override
 	public Customer getCustomerByUsername(String username) throws BusinessException {
-		// TODO Auto-generated method stub
-		return null;
+		
+		Customer customer = null;
+		
+		try(Connection connection = OracleDbConnection.getConnection()){
+			
+			String sqlCall = "SELECT * FROM bankofben_customers WHERE \"Username\"=?";
+			PreparedStatement ps = connection.prepareStatement(sqlCall);
+			ps.setString(1, username);
+			
+			ResultSet rset = ps.executeQuery();
+			if (rset.next()) {
+				customer = new Customer(rset.getString("First Name"), rset.getString("Middle Name"),
+						rset.getString("Last Name"), rset.getString("Mom's Maiden Name"), rset.getDate("Date of Birth"),
+						rset.getLong("Social Security Number"), rset.getString("Email"), rset.getLong("Phone Number"),
+						rset.getString("Username"), rset.getString("Password"), rset.getString("Customer ID"),
+						rset.getBoolean("Application Pending"));
+			} else {
+				throw new BusinessException("Customer Username "+username+" does not exist.");
+			}
+			
+		} catch (ClassNotFoundException | SQLException e) {
+			throw new BusinessException("Internal database error. Please contact your SYSADMIN.");
+		}
+		
+		return customer;
 	}
 
 	@Override
 	public Customer getCustomerByEmail(String email) throws BusinessException {
-		// TODO Auto-generated method stub
-		return null;
+		
+		Customer customer = null;
+		
+		try(Connection connection = OracleDbConnection.getConnection()){
+			
+			String sqlCall = "SELECT * FROM bankofben_customers WHERE \"Eamil\"=?";
+			PreparedStatement ps = connection.prepareStatement(sqlCall);
+			ps.setString(1, email);
+			
+			ResultSet rset = ps.executeQuery();
+			if (rset.next()) {
+				customer = new Customer(rset.getString("First Name"), rset.getString("Middle Name"),
+						rset.getString("Last Name"), rset.getString("Mom's Maiden Name"), rset.getDate("Date of Birth"),
+						rset.getLong("Social Security Number"), rset.getString("Email"), rset.getLong("Phone Number"),
+						rset.getString("Username"), rset.getString("Password"), rset.getString("Customer ID"),
+						rset.getBoolean("Application Pending"));
+			} else {
+				throw new BusinessException("Customer email "+email+" does not exist.");
+			}
+			
+		} catch (ClassNotFoundException | SQLException e) {
+			throw new BusinessException("Internal database error. Please contact your SYSADMIN.");
+		}
+		
+		return customer;
 	}
 
 	@Override
@@ -282,19 +335,6 @@ public class BankOfBenDAO implements BankOfBenDAOInterface {
 			PreparedStatement ps = connection.prepareStatement(sqlCall);
 			
 			ResultSet rset = ps.executeQuery();
-//			ResultSetMetaData rsetmd = rset.getMetaData();
-//			
-//			for (int i=1; i<=rsetmd.getColumnCount(); i++) {
-//				if (i > 1) System.out.print("\t");
-//				System.out.print(rsetmd.getColumnName(i));
-//			}
-//			
-//			while (rset.next()) {
-//				for (int i=1; i<=rsetmd.getColumnCount(); i++) {
-//					if (i > 1) System.out.println("\t");
-//					System.out.print(rset.getString(i));
-//				}
-//			}
 			
 			while (rset.next()) {
 				accounts.add(new Account(rset.getLong("Account Number"), rset.getDouble("Balance"),
@@ -844,6 +884,803 @@ public class BankOfBenDAO implements BankOfBenDAOInterface {
 		}
 		
 		return employee;
+	}
+	
+	public boolean paymentExists(String paymentId) throws BusinessException {
+		
+		boolean exists = false;
+		
+		try(Connection connection = OracleDbConnection.getConnection()){
+			
+			String sqlCall = "SELECT * FROM bankofben_payments WHERE \"Payment ID\"=?";
+			PreparedStatement ps = connection.prepareStatement(sqlCall);
+			ps.setString(1, paymentId);
+			
+			ResultSet rset = ps.executeQuery();
+			exists = rset.isBeforeFirst();
+			
+		} catch (ClassNotFoundException | SQLException e) {
+			throw new BusinessException("Internal database error. Please contact your SYSADMIN.");
+		}
+		
+		return exists;
+	}
+	
+	public boolean requestExists(String requestId) throws BusinessException {
+		
+		boolean exists = false;
+		
+		try(Connection connection = OracleDbConnection.getConnection()){
+			
+			String sqlCall = "SELECT * FROM bankofben_requests WHERE \"Request ID\"=?";
+			PreparedStatement ps = connection.prepareStatement(sqlCall);
+			ps.setString(1, requestId);
+			
+			ResultSet rset = ps.executeQuery();
+			exists = rset.isBeforeFirst();
+			
+		} catch (ClassNotFoundException | SQLException e) {
+			throw new BusinessException("Internal database error. Please contact your SYSADMIN.");
+		}
+		
+		return exists;
+	}
+	
+	public boolean transferExists(String transferId) throws BusinessException {
+		return paymentExists(transferId) || requestExists(transferId);
+	}
+
+	@Override
+	public Payment createPayment(Payment payment) throws BusinessException {
+		
+		try(Connection connection = OracleDbConnection.getConnection()){
+			
+			String sqlCall = "{call createpayment(?,?,?,?,?,?)}";
+			CallableStatement cs = connection.prepareCall(sqlCall);
+			
+			// Tell SQL Procedure there should be an out parameter first of type VARCHAR
+			cs.registerOutParameter(1, java.sql.Types.VARCHAR);
+			
+			//Tell SQL Procedure there should be the following parameters
+			cs.setString(2, payment.getInitUserId());
+			cs.setLong(3, payment.getPayingAccountNumber());
+			cs.setLong(4, payment.getReceivingAccountNumber());
+			cs.setBoolean(5, payment.isPending());
+			
+			boolean paymentCreated = cs.execute();
+			if (paymentCreated) {
+				payment = new Payment(cs.getString("Payment ID"), cs.getString("Initiator's ID"), cs.getBoolean("Pending"),
+						cs.getLong("Paying Account Number"), cs.getLong("Receiving Account Number"), cs.getDouble("Amount"));
+			} else {
+				throw new BusinessException("Internal database error. Payment could not be created. "
+						+ "Please contact your SYSADMIN");
+			}
+			
+		} catch (ClassNotFoundException | SQLException e) {
+			throw new BusinessException("Internal database error. Please contact your SYSADMIN.");
+		}
+		
+		return payment;
+	}
+
+	@Override
+	public Request createRequest(Request request) throws BusinessException {
+		
+		try(Connection connection = OracleDbConnection.getConnection()){
+			
+			String sqlCall = "{call createrequest(?,?,?,?,?,?)}";
+			CallableStatement cs = connection.prepareCall(sqlCall);
+			
+			// Tell SQL Procedure there should be an out parameter first of type VARCHAR
+			cs.registerOutParameter(1, java.sql.Types.VARCHAR);
+			
+			//Tell SQL Procedure there should be the following parameters
+			cs.setString(2, request.getInitUserId());
+			cs.setLong(3, request.getRequestorAccountNumber());
+			cs.setLong(4, request.getSoughtAccountNumber());
+			cs.setBoolean(5, request.isPending());
+			
+			boolean paymentCreated = cs.execute();
+			if (paymentCreated) {
+				request = new Request(cs.getString("Request ID"), cs.getString("Initiator's ID"), cs.getBoolean("Pending"),
+						cs.getLong("Requestor Account Number"), cs.getLong("Sought Account Number"), cs.getDouble("Amount"));
+			} else {
+				throw new BusinessException("Internal database error. Request could not be created. "
+						+ "Please contact your SYSADMIN");
+			}
+			
+		} catch (ClassNotFoundException | SQLException e) {
+			throw new BusinessException("Internal database error. Please contact your SYSADMIN.");
+		}
+		
+		return request;
+	}
+
+	@Override
+	public Transfer createTransfer(Transfer transfer) throws BusinessException {
+		if (transfer instanceof Payment) {
+			return createPayment((Payment) transfer);
+		} else if (transfer instanceof Request) {
+			return createRequest((Request) transfer);
+		} else {
+			throw new BusinessException("Cannot create transfer. Too little information. Input should specify if payment or request.");
+		}
+	}
+
+	@Override
+	public Payment getPaymentById(String paymentId) throws BusinessException {
+		
+		Payment payment = null;
+		
+		try(Connection connection = OracleDbConnection.getConnection()){
+			
+			String sqlCall = "SELECT * FROM bankofben_payments WHERE \"Payment ID\"=?";
+			PreparedStatement ps = connection.prepareStatement(sqlCall);
+			ps.setString(1, paymentId);
+			
+			ResultSet rset = ps.executeQuery();
+			if (rset.next()) {
+				payment = new Payment(rset.getString("Payment ID"), rset.getString("Initiator's ID"),
+						rset.getBoolean("Pending"), rset.getLong("Paying Account Number"),
+						rset.getLong("Receiving Account Number"), rset.getDouble("Amount"));
+			} else {
+				throw new BusinessException("Customer ID "+paymentId+" does not exist.");
+			}
+			
+		} catch (ClassNotFoundException | SQLException e) {
+			throw new BusinessException("Internal database error. Please contact your SYSADMIN.");
+		}
+		
+		return payment;
+	}
+
+	@Override
+	public List<Payment> getAllPayments() throws BusinessException {
+		
+		List<Payment> payments = new ArrayList<>();
+		
+		try(Connection connection = OracleDbConnection.getConnection()){
+			
+			String sqlCall = "SELECT * FROM bankofben_payments";
+			PreparedStatement ps = connection.prepareStatement(sqlCall);
+			
+			ResultSet rset = ps.executeQuery();
+
+			while (rset.next()) {
+				payments.add(new Payment(rset.getString("Payment ID"), rset.getString("Initiator's ID"),
+						rset.getBoolean("Pending"), rset.getLong("Paying Account Number"),
+						rset.getLong("Receiving Account Number"), rset.getDouble("Amount")));
+			}
+			
+		} catch (ClassNotFoundException | SQLException e) {
+			throw new BusinessException("Internal database error. Please contact your SYSADMIN.");
+		}
+		
+		return payments;
+	}
+	
+	public List<Payment> getAllPaymentsWithPayingAccountNumber(long payingAccountNumber) throws BusinessException {
+		
+		List<Payment> payments = new ArrayList<>();
+		
+		try(Connection connection = OracleDbConnection.getConnection()){
+			
+			String sqlCall = "SELECT * FROM bankofben_payments WHERE \"Paying Account Number\" = ?";
+			PreparedStatement ps = connection.prepareStatement(sqlCall);
+			ps.setLong(1, payingAccountNumber);
+			
+			ResultSet rset = ps.executeQuery();
+
+			while (rset.next()) {
+				payments.add(new Payment(rset.getString("Payment ID"), rset.getString("Initiator's ID"),
+						rset.getBoolean("Pending"), rset.getLong("Paying Account Number"),
+						rset.getLong("Receiving Account Number"), rset.getDouble("Amount")));
+			}
+			
+		} catch (ClassNotFoundException | SQLException e) {
+			throw new BusinessException("Internal database error. Please contact your SYSADMIN.");
+		}
+		
+		return payments;
+	}
+	
+	public List<Payment> getAllPaymentsWithReceivingAccountNumber(long receivingAccountNumber) throws BusinessException {
+		
+		List<Payment> payments = new ArrayList<>();
+		
+		try(Connection connection = OracleDbConnection.getConnection()){
+			
+			String sqlCall = "SELECT * FROM bankofben_payments WHERE \"Receiving Account Number\" = ?";
+			PreparedStatement ps = connection.prepareStatement(sqlCall);
+			ps.setLong(1, receivingAccountNumber);
+			
+			ResultSet rset = ps.executeQuery();
+
+			while (rset.next()) {
+				payments.add(new Payment(rset.getString("Payment ID"), rset.getString("Initiator's ID"),
+						rset.getBoolean("Pending"), rset.getLong("Paying Account Number"),
+						rset.getLong("Receiving Account Number"), rset.getDouble("Amount")));
+			}
+			
+		} catch (ClassNotFoundException | SQLException e) {
+			throw new BusinessException("Internal database error. Please contact your SYSADMIN.");
+		}
+		
+		return payments;
+	}
+
+	@Override
+	public List<Payment> getAllPaymentsByColumn(String columnName, String columnValue) throws BusinessException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Payment> getAllPaymentsByColumn(int columnIndex, String columnValue) throws BusinessException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Payment> getAllPaymentsWithInitId(String initId) throws BusinessException {
+		
+		List<Payment> payments = new ArrayList<>();
+		
+		try(Connection connection = OracleDbConnection.getConnection()){
+			
+			String sqlCall = "SELECT * FROM bankofben_payments WHERE \"Initiator's ID\"=?";
+			PreparedStatement ps = connection.prepareStatement(sqlCall);
+			ps.setString(1, initId);
+			
+			ResultSet rset = ps.executeQuery();
+
+			while (rset.next()) {
+				payments.add(new Payment(rset.getString("Payment ID"), rset.getString("Initiator's ID"),
+						rset.getBoolean("Pending"), rset.getLong("Paying Account Number"),
+						rset.getLong("Receiving Account Number"), rset.getDouble("Amount")));
+			}
+			
+		} catch (ClassNotFoundException | SQLException e) {
+			throw new BusinessException("Internal database error. Please contact your SYSADMIN.");
+		}
+		
+		return payments;
+	}
+
+	@Override
+	public List<Payment> getAllPaymentsWithPendingStatus(boolean isPending) throws BusinessException {
+		
+		List<Payment> payments = new ArrayList<>();
+		
+		try(Connection connection = OracleDbConnection.getConnection()){
+			
+			String sqlCall = "SELECT * FROM bankofben_payments WHERE \"Pending\"=?";
+			PreparedStatement ps = connection.prepareStatement(sqlCall);
+			ps.setBoolean(1, isPending);
+			
+			ResultSet rset = ps.executeQuery();
+
+			while (rset.next()) {
+				payments.add(new Payment(rset.getString("Payment ID"), rset.getString("Initiator's ID"),
+						rset.getBoolean("Pending"), rset.getLong("Paying Account Number"),
+						rset.getLong("Receiving Account Number"), rset.getDouble("Amount")));
+			}
+			
+		} catch (ClassNotFoundException | SQLException e) {
+			throw new BusinessException("Internal database error. Please contact your SYSADMIN.");
+		}
+		
+		return payments;
+	}
+
+	@Override
+	public Request getRequestById(String requestId) throws BusinessException {
+		
+		Request request = null;
+		
+		try(Connection connection = OracleDbConnection.getConnection()){
+			
+			String sqlCall = "SELECT * FROM bankofben_requests WHERE \"Request ID\"=?";
+			PreparedStatement ps = connection.prepareStatement(sqlCall);
+			ps.setString(1, requestId);
+			
+			ResultSet rset = ps.executeQuery();
+			if (rset.next()) {
+				request = new Request(rset.getString("Payment ID"), rset.getString("Initiator's ID"),
+						rset.getBoolean("Pending"), rset.getLong("Requestor Account Number"),
+						rset.getLong("Sought Account Number"), rset.getDouble("Amount"));
+			} else {
+				throw new BusinessException("Customer ID "+requestId+" does not exist.");
+			}
+			
+		} catch (ClassNotFoundException | SQLException e) {
+			throw new BusinessException("Internal database error. Please contact your SYSADMIN.");
+		}
+		
+		return request;
+	}
+
+	@Override
+	public List<Request> getAllRequests() throws BusinessException {
+		
+		List<Request> requests = new ArrayList<>();
+		
+		try(Connection connection = OracleDbConnection.getConnection()){
+			
+			String sqlCall = "SELECT * FROM bankofben_payments";
+			PreparedStatement ps = connection.prepareStatement(sqlCall);
+			
+			ResultSet rset = ps.executeQuery();
+
+			while (rset.next()) {
+				requests.add(new Request(rset.getString("Payment ID"), rset.getString("Initiator's ID"),
+						rset.getBoolean("Pending"), rset.getLong("Paying Account Number"),
+						rset.getLong("Receiving Account Number"), rset.getDouble("Amount")));
+			}
+			
+		} catch (ClassNotFoundException | SQLException e) {
+			throw new BusinessException("Internal database error. Please contact your SYSADMIN.");
+		}
+		
+		return requests;
+	}
+
+	@Override
+	public List<Request> getAllRequestsByColumn(String columnName, String columnValue) throws BusinessException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Request> getAllRequestsByColumn(int columnIndex, String columnValue) throws BusinessException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Request> getAllRequestsWithInitId(String initId) throws BusinessException {
+		
+		List<Request> requests = new ArrayList<>();
+		
+		try(Connection connection = OracleDbConnection.getConnection()){
+			
+			String sqlCall = "SELECT * FROM bankofben_requests WHERE \"Initiator's ID\"=?";
+			PreparedStatement ps = connection.prepareStatement(sqlCall);
+			ps.setString(1, initId);
+			
+			ResultSet rset = ps.executeQuery();
+
+			while (rset.next()) {
+				requests.add(new Request(rset.getString("Payment ID"), rset.getString("Initiator's ID"),
+						rset.getBoolean("Pending"), rset.getLong("Paying Account Number"),
+						rset.getLong("Receiving Account Number"), rset.getDouble("Amount")));
+			}
+			
+		} catch (ClassNotFoundException | SQLException e) {
+			throw new BusinessException("Internal database error. Please contact your SYSADMIN.");
+		}
+		
+		return requests;
+	}
+
+	@Override
+	public List<Request> getAllRequestsWithPendingStatus(boolean isPending) throws BusinessException {
+		
+		List<Request> requests = new ArrayList<>();
+		
+		try(Connection connection = OracleDbConnection.getConnection()){
+			
+			String sqlCall = "SELECT * FROM bankofben_requests WHERE \"Pending\"=?";
+			PreparedStatement ps = connection.prepareStatement(sqlCall);
+			ps.setBoolean(1, isPending);
+			
+			ResultSet rset = ps.executeQuery();
+
+			while (rset.next()) {
+				requests.add(new Request(rset.getString("Payment ID"), rset.getString("Initiator's ID"),
+						rset.getBoolean("Pending"), rset.getLong("Paying Account Number"),
+						rset.getLong("Receiving Account Number"), rset.getDouble("Amount")));
+			}
+			
+		} catch (ClassNotFoundException | SQLException e) {
+			throw new BusinessException("Internal database error. Please contact your SYSADMIN.");
+		}
+		
+		return requests;
+	}
+	
+	public List<Request> getAllRequestsWithRequestorAccountNumber(long requestorAccountNumber) throws BusinessException {
+		
+		List<Request> requests = new ArrayList<>();
+		
+		try(Connection connection = OracleDbConnection.getConnection()){
+			
+			String sqlCall = "SELECT * FROM bankofben_requests WHERE \"Requestor Account Number\" = ?";
+			PreparedStatement ps = connection.prepareStatement(sqlCall);
+			ps.setLong(1, requestorAccountNumber);
+			
+			ResultSet rset = ps.executeQuery();
+
+			while (rset.next()) {
+				requests.add(new Request(rset.getString("Payment ID"), rset.getString("Initiator's ID"),
+						rset.getBoolean("Pending"), rset.getLong("Requestor Account Number"),
+						rset.getLong("Sought Account Number"), rset.getDouble("Amount")));
+			}
+			
+		} catch (ClassNotFoundException | SQLException e) {
+			throw new BusinessException("Internal database error. Please contact your SYSADMIN.");
+		}
+		
+		return requests;
+	}
+	
+	public List<Request> getAllRequestsWithSoughtAccountNumber(long soughtAccountNumber) throws BusinessException {
+		
+		List<Request> requests = new ArrayList<>();
+		
+		try(Connection connection = OracleDbConnection.getConnection()){
+			
+			String sqlCall = "SELECT * FROM bankofben_requests WHERE \"Sought Account Number\" = ?";
+			PreparedStatement ps = connection.prepareStatement(sqlCall);
+			ps.setLong(1, soughtAccountNumber);
+			
+			ResultSet rset = ps.executeQuery();
+
+			while (rset.next()) {
+				requests.add(new Request(rset.getString("Payment ID"), rset.getString("Initiator's ID"),
+						rset.getBoolean("Pending"), rset.getLong("Requestor Account Number"),
+						rset.getLong("Sought Account Number"), rset.getDouble("Amount")));
+			}
+			
+		} catch (ClassNotFoundException | SQLException e) {
+			throw new BusinessException("Internal database error. Please contact your SYSADMIN.");
+		}
+		
+		return requests;
+	}
+
+	@Override
+	public List<Transfer> getAllTransfers() throws BusinessException {
+		List<Payment> payments = getAllPayments();
+		List<Request> requests = getAllRequests();
+		List<Transfer> transfers = new ArrayList<>();
+		for (Transfer t : payments) {
+			transfers.add(t);
+		}
+		for (Transfer t : requests) {
+			transfers.add(t);
+		}
+		return transfers;
+	}
+
+	@Override
+	public List<Transfer> getAllTransfersWithInitId(String initId) throws BusinessException {
+		List<Payment> payments = getAllPaymentsWithInitId(initId);
+		List<Request> requests = getAllRequestsWithInitId(initId);
+		List<Transfer> transfers = new ArrayList<>();
+		for (Transfer t : payments) {
+			transfers.add(t);
+		}
+		for (Transfer t : requests) {
+			transfers.add(t);
+		}
+		return transfers;
+	}
+
+	@Override
+	public List<Transfer> getAllTransfersWithPendingStatus(boolean isPending) throws BusinessException {
+		List<Payment> payments = getAllPaymentsWithPendingStatus(isPending);
+		List<Request> requests = getAllRequestsWithPendingStatus(isPending);
+		List<Transfer> transfers = new ArrayList<>();
+		for (Transfer t : payments) {
+			transfers.add(t);
+		}
+		for (Transfer t : requests) {
+			transfers.add(t);
+		}
+		return transfers;
+	}
+
+	@Override
+	public Payment updatePaymentPendingStatus(boolean isPending, String paymentId) throws BusinessException {
+		updatePaymentPendingStatus_returnNothing(isPending, paymentId);
+		return getPaymentById(paymentId);
+	}
+	
+	public void updatePaymentPendingStatus_returnNothing(boolean isPending, String paymentId) throws BusinessException {
+		try(Connection connection = OracleDbConnection.getConnection()){
+			String sqlCall = "UPDATE bankofben_payments SET \"Pending\"=? WHERE \"Payment ID\"=?";
+			PreparedStatement ps = connection.prepareStatement(sqlCall);
+			ps.setBoolean(1, isPending);
+			ps.setString(2, paymentId);
+			int rowsUpdated = ps.executeUpdate();
+			if (rowsUpdated<1) {
+				throw new BusinessException("Internal database error. Could not update pending status for "
+						+paymentId+". Contact your SYSADMIN");
+			}
+		} catch (ClassNotFoundException | SQLException e) {
+			throw new BusinessException("Internal database error. Please contact your SYSADMIN.");
+		}
+		
+	}
+
+	@Override
+	public Request updateRequestPendingStatus(boolean isPending, String requestId) throws BusinessException {
+		updateRequestPendingStatus_returnNothing(isPending, requestId);
+		return getRequestById(requestId);
+	}
+	
+	public void updateRequestPendingStatus_returnNothing(boolean isPending, String requestId) throws BusinessException {
+		try(Connection connection = OracleDbConnection.getConnection()){
+			String sqlCall = "UPDATE bankofben_requests SET \"Pending\"=? WHERE \"Request ID\"=?";
+			PreparedStatement ps = connection.prepareStatement(sqlCall);
+			ps.setBoolean(1, isPending);
+			ps.setString(2, requestId);
+			int rowsUpdated = ps.executeUpdate();
+			if (rowsUpdated<1) {
+				throw new BusinessException("Internal database error. Could not update pending status for "
+						+requestId+". Contact your SYSADMIN");
+			}
+		} catch (ClassNotFoundException | SQLException e) {
+			throw new BusinessException("Internal database error. Please contact your SYSADMIN.");
+		}
+		
+	}
+
+	@Override
+	public Transfer updateTransferPendingStatus(boolean isPending, String transferId) throws BusinessException {
+		Transfer t = null;
+		if (paymentExists(transferId)) {
+			t = updatePaymentPendingStatus(isPending, transferId);
+		} else if (requestExists(transferId)) {
+			t = updateRequestPendingStatus(isPending, transferId);
+		} else {
+			throw new BusinessException("No payment or request exists with ID "+transferId);
+		}
+		return t;
+	}
+	
+	public void updateTransferPendingStatus_returnNothing(boolean isPending, String transferId) throws BusinessException {
+		if (paymentExists(transferId)) {
+			updatePaymentPendingStatus_returnNothing(isPending, transferId);
+		} else if (requestExists(transferId)) {
+			updateRequestPendingStatus_returnNothing(isPending, transferId);
+		} else {
+			throw new BusinessException("No payment or request exists with ID "+transferId);
+		}
+	}
+
+	public List<Payment> getAllPaymentsInvolvingCustomer(Customer customer) throws BusinessException {
+		List<Account> customerAccounts = getAccountsForCustomerId(customer.getId());
+		List<Payment> customerPayments = new ArrayList<>();
+		for (Account ca : customerAccounts) {
+			List<Payment> accountPayments = getAllPaymentsInvolvingAccount(ca);
+			for (Payment p : accountPayments) {
+				customerPayments.add(p);
+			}
+		}
+		return customerPayments;
+	}
+
+	public List<Payment> getAllPaymentsInvolvingAccount(Account ca) throws BusinessException {
+		List<Payment> paymentsToAccount = getAllPaymentsWithPayingAccountNumber(ca.getAccountNumber());
+		List<Payment> paymentsFromAccount = getAllPaymentsWithReceivingAccountNumber(ca.getAccountNumber());
+		return Stream.concat(paymentsToAccount.stream(), paymentsFromAccount.stream()).collect(Collectors.toList());
+	}
+
+	public List<Payment> getAllPaymentsInvolvingCustomerWithPendingStatus(Customer customer, boolean isPending) throws BusinessException {
+		List<Account> customerAccounts = getAccountsForCustomerId(customer.getId());
+		List<Payment> customerPayments = new ArrayList<>();
+		for (Account ca : customerAccounts) {
+			List<Payment> accountPayments = getAllPaymentsInvolvingAccount(ca);
+			for (Payment p : accountPayments) {
+				if (p.isPending()==isPending) {
+					customerPayments.add(p);
+				}
+			}
+		}
+		return customerPayments;
+	}
+
+	public List<Request> getAllRequestsInvolvingCustomer(Customer customer) throws BusinessException {
+		List<Account> customerAccounts = getAccountsForCustomerId(customer.getId());
+		List<Request> customerRequests = new ArrayList<>();
+		for (Account ca : customerAccounts) {
+			List<Request> accountPayments = getAllRequestsInvolvingAccount(ca);
+			for (Request r : accountPayments) {
+				customerRequests.add(r);
+			}
+		}
+		return customerRequests;
+	}
+
+	public List<Request> getAllRequestsInvolvingAccount(Account ca) throws BusinessException {
+		List<Request> requestsToAccount = getAllRequestsWithRequestorAccountNumber(ca.getAccountNumber());
+		List<Request> paymentsFromAccount = getAllRequestsWithSoughtAccountNumber(ca.getAccountNumber());
+		return Stream.concat(requestsToAccount.stream(), paymentsFromAccount.stream()).collect(Collectors.toList());
+	}
+
+	public List<Request> getAllRequestsInvolvingCustomerWithPendingStatus(Customer customer, boolean isPending) throws BusinessException {
+		List<Account> customerAccounts = getAccountsForCustomerId(customer.getId());
+		List<Request> customerRequests = new ArrayList<>();
+		for (Account ca : customerAccounts) {
+			List<Request> accountRequests = getAllRequestsInvolvingAccount(ca);
+			for (Request p : accountRequests) {
+				if (p.isPending()==isPending) {
+					customerRequests.add(p);
+				}
+			}
+		}
+		return customerRequests;
+	}
+
+	public List<Transfer> getTransfersInvolvingCustomer(Customer customer) throws BusinessException {
+		List<Payment> customerTransferPayments = getAllPaymentsInvolvingCustomer(customer);
+		List<Request> customerTransferRequests = getAllRequestsInvolvingCustomer(customer);
+		List<Transfer> customerTransfers = new ArrayList<>();
+		for (Payment p : customerTransferPayments) {
+			customerTransfers.add((Transfer) p);
+		}
+		for(Request r :customerTransferRequests) {
+			customerTransfers.add((Transfer) r);
+		}
+		return customerTransfers;
+	}
+
+	public List<Transfer> getTransfersInvolvingCustomerWithPendingStatus(Customer customer, boolean isPending) throws BusinessException {
+		List<Payment> customerTransferPayments = getAllPaymentsInvolvingCustomer(customer);
+		List<Request> customerTransferRequests = getAllRequestsInvolvingCustomer(customer);
+		List<Transfer> customerTransfers = new ArrayList<>();
+		for (Payment p : customerTransferPayments) {
+			if (p.isPending()==isPending) {
+				customerTransfers.add((Transfer) p);
+			}
+		}
+		for(Request r :customerTransferRequests) {
+			if (r.isPending()==isPending) {
+				customerTransfers.add((Transfer) r);
+			}
+		}
+		return customerTransfers;
+	}
+
+	@Override
+	public void deletePayment(String paymentId) throws BusinessException {
+		try(Connection connection = OracleDbConnection.getConnection()){
+			String sqlCall = "DELETE FROM bankofben_payments WHERE \"Payment ID\"=?";
+			PreparedStatement ps = connection.prepareStatement(sqlCall);
+			ps.setString(1, paymentId);
+			int rowsUpdated = ps.executeUpdate();
+			if (rowsUpdated<1) {
+				throw new BusinessException("Internal database error. Could not delete payment with Payment ID "
+						+paymentId+". Contact your SYSADMIN");
+			}
+		} catch (ClassNotFoundException | SQLException e) {
+			throw new BusinessException("Internal database error. Please contact your SYSADMIN.");
+		}
+	}
+
+	@Override
+	public void deleteRequest(String requestId) throws BusinessException {
+		try(Connection connection = OracleDbConnection.getConnection()){
+			String sqlCall = "DELETE FROM bankofben_requests WHERE \"Request ID\"=?";
+			PreparedStatement ps = connection.prepareStatement(sqlCall);
+			ps.setString(1, requestId);
+			int rowsUpdated = ps.executeUpdate();
+			if (rowsUpdated<1) {
+				throw new BusinessException("Internal database error. Could not delete request with Request ID "
+						+requestId+". Contact your SYSADMIN");
+			}
+		} catch (ClassNotFoundException | SQLException e) {
+			throw new BusinessException("Internal database error. Please contact your SYSADMIN.");
+		}
+	}
+
+	@Override
+	public void deleteTransfer(String transferId) throws BusinessException {
+		if (paymentExists(transferId)) {
+			deletePayment(transferId);
+		} else if (requestExists(transferId)) {
+			deleteRequest(transferId);
+		} else {
+			throw new BusinessException("No payment or request exists with ID "+transferId);
+		}
+	}
+
+	@Override
+	public Transaction createTransaction(Transaction transaction) throws BusinessException {
+		
+		try(Connection connection = OracleDbConnection.getConnection()){
+			
+			String sqlCall = "{call createtransaction(?,?,?,?,?)}";
+			CallableStatement cs = connection.prepareCall(sqlCall);
+			
+			cs.registerOutParameter(1, java.sql.Types.VARCHAR);
+			cs.registerOutParameter(2, java.sql.Types.TIMESTAMP);
+			
+			//Tell SQL Procedure there should be the following parameters
+			cs.setLong(3, transaction.getAccountNumber());
+			cs.setDouble(4, transaction.getInitialBalance());
+			cs.setDouble(5, transaction.getAmount());
+			
+			boolean transactionCreated = cs.execute();
+			if (transactionCreated) {
+				transaction = new Transaction(cs.getString("Transaction ID"), cs.getTimestamp("Timestamp"),
+						cs.getLong("Account Number"), cs.getDouble("Initial Balance"), cs.getDouble("Amount"),
+						cs.getDouble("Final Balance"));
+			} else {
+				throw new BusinessException("Internal database error. Transaction could not be created. "
+						+ "Please contact your SYSADMIN");
+			}
+			
+		} catch (ClassNotFoundException | SQLException e) {
+			throw new BusinessException("Internal database error. Please contact your SYSADMIN.");
+		}
+		
+		return transaction;
+	}
+
+	@Override
+	public List<Transaction> getAllTransactions() throws BusinessException {
+		
+		List<Transaction> transactions = new ArrayList<>();
+		
+		try(Connection connection = OracleDbConnection.getConnection()){
+			
+			String sqlCall = "SELECT * FROM bankofben_transactions";
+			PreparedStatement ps = connection.prepareStatement(sqlCall);
+			
+			ResultSet rset = ps.executeQuery();
+
+			while (rset.next()) {
+				transactions.add(new Transaction(rset.getString("Transaction ID"), rset.getTimestamp("Timestamp"),
+						rset.getLong("Account Number"), rset.getDouble("Initial Balance"), rset.getDouble("Amount"),
+						rset.getDouble("Final Balance")));
+			}
+			
+		} catch (ClassNotFoundException | SQLException e) {
+			throw new BusinessException("Internal database error. Please contact your SYSADMIN.");
+		}
+		
+		return transactions;
+	}
+
+	@Override
+	public List<Transaction> getAllTransactionsWithAccountNumber(long accountNumber) throws BusinessException {
+		
+		List<Transaction> transactions = new ArrayList<>();
+		
+		try(Connection connection = OracleDbConnection.getConnection()){
+			
+			String sqlCall = "SELECT * FROM bankofben_transactions WHERE \"Account Number\"=?";
+			PreparedStatement ps = connection.prepareStatement(sqlCall);
+			ps.setLong(1, accountNumber);
+			
+			ResultSet rset = ps.executeQuery();
+
+			while (rset.next()) {
+				transactions.add(new Transaction(rset.getString("Transaction ID"), rset.getTimestamp("Timestamp"),
+						rset.getLong("Account Number"), rset.getDouble("Initial Balance"), rset.getDouble("Amount"),
+						rset.getDouble("Final Balance")));
+			}
+			
+		} catch (ClassNotFoundException | SQLException e) {
+			throw new BusinessException("Internal database error. Please contact your SYSADMIN.");
+		}
+		
+		return transactions;
+	}
+
+	@Override
+	public List<Transaction> getAllTransactionsAfterDate(LocalDate date) throws BusinessException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Transaction> getAllTransactionsAfterDate(Date date) throws BusinessException {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

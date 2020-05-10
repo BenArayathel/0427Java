@@ -329,6 +329,25 @@ public class UserInterface {
 		return sourceAccount;
 	}
 
+	public static long requestAccountNumber(Scanner sc) {
+		BusinessLayer bl = new BusinessLayer();
+		
+		String accountString = null;
+		long accountNumber = 0;
+		boolean accountNumberValid = false;
+		while (!accountNumberValid) {
+			System.out.println("Please input a Bank of Ben 10-digit account number.");
+			accountString = sc.nextLine();
+			try {
+				accountNumber = bl.validateAccountNumber(accountString);
+				accountNumberValid = true;
+			} catch (BusinessException e) {
+				System.out.println(e.getMessage()+"\nPlease try again.");
+			}
+		}
+		return accountNumber;
+	}
+
 	public static double requestPaymentAmount(Account myChosenAccount, Account otherAccount, Scanner sc) {
 		BusinessLayer bl = new BusinessLayer();
 		boolean amountChosen = false;

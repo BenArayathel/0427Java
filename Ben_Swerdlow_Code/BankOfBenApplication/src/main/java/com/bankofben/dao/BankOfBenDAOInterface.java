@@ -1,5 +1,6 @@
 package com.bankofben.dao;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -7,6 +8,10 @@ import com.bankofben.exceptions.BusinessException;
 import com.bankofben.models.Account;
 import com.bankofben.models.Customer;
 import com.bankofben.models.Employee;
+import com.bankofben.models.Payment;
+import com.bankofben.models.Request;
+import com.bankofben.models.Transaction;
+import com.bankofben.models.Transfer;
 import com.bankofben.models.User;
 
 public interface BankOfBenDAOInterface {
@@ -23,6 +28,10 @@ public interface BankOfBenDAOInterface {
 	public Customer createCustomer(User user) throws BusinessException;
 	public Employee createEmployee(User user, String designation, Employee supervisor) throws BusinessException;
 	public Account createAccount(Account account) throws BusinessException;
+	public Payment createPayment(Payment payment) throws BusinessException;
+	public Request createRequest(Request request) throws BusinessException;
+	public Transfer createTransfer(Transfer transfer) throws BusinessException;
+	public Transaction createTransaction(Transaction transaction) throws BusinessException;
 	
 	
 	// READ
@@ -62,6 +71,45 @@ public interface BankOfBenDAOInterface {
 	// Low priority: Get all accounts by balance comparison (i.e. all accounts with balance < 1000)
 	public List<Account> getAccountsByBalanceComparison(String balanceComparison) throws BusinessException;
 	
+	// Get payment by primary key
+	public Payment getPaymentById(String paymentId) throws BusinessException;
+	// Get all payments
+	public List<Payment> getAllPayments() throws BusinessException;
+	// Get all payments with column value (i.e. Initiator's ID)
+	public List<Payment> getAllPaymentsByColumn(String columnName, String columnValue) throws BusinessException;
+	public List<Payment> getAllPaymentsByColumn(int columnIndex, String columnValue) throws BusinessException;
+	// Get all payments with Initiator's ID
+	public List<Payment> getAllPaymentsWithInitId(String initId) throws BusinessException;
+	// Get all payments with pending status
+	public List<Payment> getAllPaymentsWithPendingStatus(boolean isPending) throws BusinessException;
+	
+	// Get request by primary key
+	public Request getRequestById(String requestId) throws BusinessException;
+	// Get all requests
+	public List<Request> getAllRequests() throws BusinessException;
+	// Get all requests with column value (i.e. Initiator's ID)
+	public List<Request> getAllRequestsByColumn(String columnName, String columnValue) throws BusinessException;
+	public List<Request> getAllRequestsByColumn(int columnIndex, String columnValue) throws BusinessException;
+	// Get all requests with Initiator's ID
+	public List<Request> getAllRequestsWithInitId(String initId) throws BusinessException;
+	// Get all requests with pending status
+	public List<Request> getAllRequestsWithPendingStatus(boolean isPending) throws BusinessException;
+	
+	// Get all transfers (payments and requests)
+	public List<Transfer> getAllTransfers() throws BusinessException;
+	// Get all transfers with Initiator's ID
+	public List<Transfer> getAllTransfersWithInitId(String initId) throws BusinessException;
+	// Get all transfers with pending status
+	public List<Transfer> getAllTransfersWithPendingStatus(boolean isPending) throws BusinessException;
+	
+	// Get all transactions
+	public List<Transaction> getAllTransactions() throws BusinessException;
+	// Get all transactions with Account Number
+	public List<Transaction> getAllTransactionsWithAccountNumber(long accountNumber) throws BusinessException;
+	// Get all transactions after date
+	public List<Transaction> getAllTransactionsAfterDate(LocalDate date) throws BusinessException;
+	public List<Transaction> getAllTransactionsAfterDate(Date date) throws BusinessException;
+	
 	
 	// UPDATE
 	
@@ -95,6 +143,12 @@ public interface BankOfBenDAOInterface {
 	// Update account information
 	public Account updateAccountBalance(double balance, long accountNumber) throws BusinessException;
 	public Account updateAccountCustomerId(int customerId, long accountNumber) throws BusinessException;
+	// Update payment information
+	public Payment updatePaymentPendingStatus(boolean isPending, String paymentId) throws BusinessException;
+	// Update request information
+	public Request updateRequestPendingStatus(boolean isPending, String requestId) throws BusinessException;
+	//Update transfer information
+	public Transfer updateTransferPendingStatus(boolean isPending, String transferId) throws BusinessException;
 	
 	
 	// DELETE
@@ -103,5 +157,8 @@ public interface BankOfBenDAOInterface {
 	public void deleteCustomer(String customerId) throws BusinessException;
 	public void deleteEmployee(String employeeId) throws BusinessException;
 	public void deleteAccount(String accountId) throws BusinessException;
+	public void deletePayment(String paymentId) throws BusinessException;
+	public void deleteRequest(String requestId) throws BusinessException;
+	public void deleteTransfer(String transferId) throws BusinessException;
 
 }

@@ -13,11 +13,18 @@ public class Transfer {
 		this.pending = pending;
 	}
 
+	public Transfer(String initUserId, boolean pending) {
+		super();
+		this.id = null;
+		this.initUserId = initUserId;
+		this.pending = pending;
+	}
+
 	public String getId() {
 		return id;
 	}
 
-	public String getSourceUserId() {
+	public String getInitUserId() {
 		return initUserId;
 	}
 

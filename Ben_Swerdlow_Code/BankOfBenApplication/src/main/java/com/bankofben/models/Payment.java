@@ -6,9 +6,17 @@ public class Payment extends Transfer {
 	private final long receivingAccountNumber;
 	private final double amount;
 	
-	public Payment(String transferId, String initUserId, boolean pending, long payingAccountNumber,
+	public Payment(String id, String initUserId, boolean pending, long payingAccountNumber,
 			long receivingAccountNumber, double amount) {
-		super(transferId, initUserId, pending);
+		super(id, initUserId, pending);
+		this.payingAccountNumber = payingAccountNumber;
+		this.receivingAccountNumber = receivingAccountNumber;
+		this.amount = amount;
+	}
+	
+	public Payment(String initUserId, boolean pending, long payingAccountNumber,
+			long receivingAccountNumber, double amount) {
+		super(initUserId, pending);
 		this.payingAccountNumber = payingAccountNumber;
 		this.receivingAccountNumber = receivingAccountNumber;
 		this.amount = amount;

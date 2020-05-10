@@ -88,6 +88,54 @@ public class Account {
 		}
 	}
 	
+	public void setBalance(double balance, Payment payment) throws BusinessException {
+		if (payment.isPending()) {
+			throw new BusinessException("Invalid change in balance. Payment must be accepted by receiving party before changes are made");
+		} else {
+			if (payment.getPayingAccountNumber()==this.accountNumber || payment.getReceivingAccountNumber()==this.accountNumber) {
+				if (ValidationTools.isValidMonetaryAmount(balance)) {
+					if (Double.valueOf(balance)==Double.POSITIVE_INFINITY) {
+						throw new BusinessException("Balances in excess of "+Double.MAX_VALUE+" are handled "
+								+ "via another system. Contact a Bank of Ben employee for more details.");
+					} else if (balance < 0) {
+						throw new BusinessException("The balance of an account cannot be a negative number.");
+					} else {
+						this.balance = balance;
+					}
+				} else {
+					throw new BusinessException("Balance amount must be a positive number that has only "
+							+ "two digits after the decimal point");
+				}
+			} else {
+				throw new BusinessException("Invalid change in balance. Payment does not involve account "+this.accountNumber);
+			}
+		}
+	}
+	
+	public void setBalance(double balance, Request request) throws BusinessException {
+		if (request.isPending()) {
+			throw new BusinessException("Invalid change in balance. Payment must be accepted by receiving party before changes are made");
+		} else {
+			if (request.getRequestorAccountNumber()==this.accountNumber || request.getSoughtAccountNumber()==this.accountNumber) {
+				if (ValidationTools.isValidMonetaryAmount(balance)) {
+					if (Double.valueOf(balance)==Double.POSITIVE_INFINITY) {
+						throw new BusinessException("Balances in excess of "+Double.MAX_VALUE+" are handled "
+								+ "via another system. Contact a Bank of Ben employee for more details.");
+					} else if (balance < 0) {
+						throw new BusinessException("The balance of an account cannot be a negative number.");
+					} else {
+						this.balance = balance;
+					}
+				} else {
+					throw new BusinessException("Balance amount must be a positive number that has only "
+							+ "two digits after the decimal point");
+				}
+			} else {
+				throw new BusinessException("Invalid change in balance. Request does not involve account "+this.accountNumber);
+			}
+		}
+	}
+	
 	public void setBalance(double balance, Employee employee) throws BusinessException {
 		if (ValidationTools.isValidMonetaryAmount(balance)) {
 			if (Double.valueOf(balance)==Double.POSITIVE_INFINITY) {

@@ -9,6 +9,8 @@ import com.bankofben.exceptions.BusinessException;
 import com.bankofben.models.Account;
 import com.bankofben.models.Customer;
 import com.bankofben.models.Employee;
+import com.bankofben.models.Payment;
+import com.bankofben.models.Request;
 import com.bankofben.models.Transfer;
 import com.bankofben.models.User;
 import com.bankofben.presentation.UserInterface;
@@ -40,20 +42,6 @@ public class BusinessLayer {
 		return dbs.loginUser(username, password);
 	}
 
-//	private String generateAccountNumber () {
-//		boolean uniqueAccountNumber = false;
-//		Long randomTenDigitNumber;
-//		do {
-//			randomTenDigitNumber = ThreadLocalRandom.current().nextLong((long)1e9, (long)1e10);
-//			uniqueAccountNumber = dbs.isUniqueAccountNumber(randomTenDigitNumber);
-//			/*
-//			 *  TODO Fix dbl.isUniqueAccountNumber(long randomTenDigitNumber) implementation to actually
-//			 *  		check if account number already exists in the database.
-//			 */
-//		} while (!(uniqueAccountNumber));
-//		return randomTenDigitNumber.toString();
-//	}
-
 	public boolean userExists(String username) throws BusinessException {
 		// BusinessLayer passes database call to DatabaseLayer
 		return dbs.usernameExists(username);
@@ -78,6 +66,10 @@ public class BusinessLayer {
 	
 	public String viewBalances() throws BusinessException {
 		return dbs.getBalances();
+	}
+
+	public String viewBalances(String username) throws BusinessException {
+		return dbs.getBalances(username);
 	}
 
 	public String viewBalances(Customer customer) throws BusinessException {
@@ -184,7 +176,7 @@ public class BusinessLayer {
 						+ "Please try again.");
 			}
 			if (routingNumber!=Account.getRoutingNumber()) {
-				throw new BusinessException("Invalid routing number. Please try again.")
+				throw new BusinessException("Invalid routing number. Please try again.");
 			}
 		} else {
 			throw new BusinessException("The entry "+routingNumberString+" is not a valid "
@@ -271,6 +263,22 @@ public class BusinessLayer {
 					+ "two digits after the decimal point.");
 		}
 	}
+	
+	public void makePayment(Payment payment) throws BusinessException {
+		Account payingAccount = dbs.getAccount(payment.getPayingAccountNumber(), Account.getRoutingNumber());
+		Account receivingAccount = dbs.getAccount(payment.getReceivingAccountNumber(), Account.getRoutingNumber());
+		payingAccount.setBalance(payingAccount.getBalance()-payment.getAmount(), payment);
+		receivingAccount.setBalance(receivingAccount.getBalance()+payment.getAmount(), payment);
+		dbs.resolvePendingPayment(payment);
+	}
+	
+	public void makeRequest(Request request) throws BusinessException {
+		Account requestorAccount = dbs.getAccount(request.getRequestorAccountNumber(), Account.getRoutingNumber());
+		Account soughtAccount = dbs.getAccount(request.getSoughtAccountNumber(), Account.getRoutingNumber());
+		requestorAccount.setBalance(requestorAccount.getBalance()+request.getAmount(), request);
+		soughtAccount.setBalance(soughtAccount.getBalance()-request.getAmount(), request);
+		dbs.resolvePendingRequest(request);
+	}
 
 	public boolean employeeExists(int employeeId) {
 		// TODO Auto-generated method stub
@@ -296,20 +304,51 @@ public class BusinessLayer {
 		return dbs.getTransfers(customer);
 	}
 
-	public void postPayment(Account paySourceAccount, Account payDestinationAccount, double amount) {
-		dbs.postPayement(paySourceAccount, payDestinationAccount, amount);
+	public void postPayment(Customer customer, Account paySourceAccount, Account payDestinationAccount, double amount) throws BusinessException {
+		dbs.postPayement(customer, paySourceAccount, payDestinationAccount, amount);
 	}
 	
-	public void postRequest(Account reqSourceAccount, Account reqDestinationAccount, double amount) {
-		dbs.postRequest(reqSourceAccount, reqDestinationAccount, amount);
+	public void postRequest(Customer customer, Account reqSourceAccount, Account reqDestinationAccount, double amount) throws BusinessException {
+		dbs.postRequest(customer, reqSourceAccount, reqDestinationAccount, amount);
 	}
 
 	public void acceptTransfer(Transfer transfer, Customer customer) throws BusinessException {
-		dbs.acceptTransfer(transfer, customer);
+		
+		BusinessLayer bl = new BusinessLayer();
+		if (transfer.isPending()) {
+			if (transfer instanceof Payment) {
+				Payment p = (Payment) transfer;
+				bl.makePayment(p);
+			} else if (transfer instanceof Request) {
+				Request r = (Request) transfer;
+				bl.makeRequest(r);
+			} else {
+				throw new BusinessException("Could not accept transfer "+transfer.getId()+" due to too little information given. "
+						+ "Need to specify if the transfer is a payment or a request.");
+			}
+		} else {
+			throw new BusinessException("Cannot accept transfer "+transfer.getId()+". Transfer is not pending.");
+		}
 	}
 
 	public void rejectTransfer(Transfer transfer, Customer customer) throws BusinessException {
-		dbs.rejectTransfer(transfer, customer);
+		if (transfer.isPending()) {
+			dbs.rejectTransfer(transfer, customer);
+		} else {
+			throw new BusinessException("No need to reject transfer "+transfer.getId()+". Transfer is not pending.");
+		}
+	}
+
+	public String viewTransactions() throws BusinessException {
+		return dbs.getTransactions();
+	}
+
+	public String viewTransactions(long accountNumber) throws BusinessException {
+		return dbs.getTransactions(accountNumber);
+	}
+	
+	public String viewTransactions(int numberOfTransactions) throws BusinessException {
+		return dbs.getTransactions(numberOfTransactions);
 	}
 	
 }

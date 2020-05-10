@@ -1,6 +1,7 @@
 package com.bankofben.services;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import com.bankofben.dao.BankOfBenDAO;
@@ -8,6 +9,10 @@ import com.bankofben.exceptions.BusinessException;
 import com.bankofben.models.Account;
 import com.bankofben.models.Customer;
 import com.bankofben.models.Employee;
+import com.bankofben.models.Payment;
+import com.bankofben.models.Request;
+import com.bankofben.models.Transaction;
+import com.bankofben.models.Transfer;
 import com.bankofben.models.User;
 
 public class BankOfBenServices {
@@ -132,6 +137,11 @@ public class BankOfBenServices {
 		return outputBuilder.toString();
 	}
 
+	public String getBalances(String username) throws BusinessException {
+		Customer customer = dao.getCustomerByUsername(username);
+		return getBalances(customer);
+	}
+
 	public Account getAccount(long accountNumber, long routingNumber) throws BusinessException {
 		// TODO Auto-generated method stub
 		if (routingNumber != Account.getRoutingNumber()) {
@@ -151,6 +161,106 @@ public class BankOfBenServices {
 
 	public Customer getCustomerById(String customerId) throws BusinessException {
 		return dao.getCustomerById(customerId);
+	}
+
+	public List<Transfer> getTransfers(Customer customer) throws BusinessException {
+		return dao.getTransfersInvolvingCustomer(customer);
+	}
+	
+	public List<Transfer> getTransfersPending(Customer customer) throws BusinessException {
+		return dao.getTransfersInvolvingCustomerWithPendingStatus(customer, true);
+	}
+	
+	public List<Payment> getPayments(Customer customer) throws BusinessException {
+		return dao.getAllPaymentsInvolvingCustomer(customer);
+	}
+	
+	public List<Payment> getPaymentsPending(Customer customer) throws BusinessException {
+		return dao.getAllPaymentsInvolvingCustomerWithPendingStatus(customer, true);
+	}
+	
+	public List<Request> getRequests(Customer customer) throws BusinessException {
+		return dao.getAllRequestsInvolvingCustomer(customer);
+	}
+	
+	public List<Request> getRequestsPending(Customer customer) throws BusinessException {
+		return dao.getAllRequestsInvolvingCustomerWithPendingStatus(customer, true);
+	}
+
+	public void postPayement(Customer customer, Account paySourceAccount, Account payDestinationAccount, double amount) throws BusinessException {
+		dao.createPayment(new Payment(customer.getId(), true, paySourceAccount.getAccountNumber(), payDestinationAccount.getAccountNumber(), amount));
+	}
+
+	public void postRequest(Customer customer, Account reqSourceAccount, Account reqDestinationAccount, double amount) throws BusinessException {
+		dao.createRequest(new Request(customer.getId(), true, reqSourceAccount.getAccountNumber(), reqDestinationAccount.getAccountNumber(), amount));
+	}
+
+	public void resolvePendingPayment(Payment payment) throws BusinessException {
+		if (payment.isPending()) {
+			dao.updatePaymentPendingStatus_returnNothing(false, payment.getId());
+		} else {
+			throw new BusinessException("No need to resolve payment "+payment.getId()+". Payment is not pending.");
+		}
+	}
+
+	public void resolvePendingRequest(Request request) throws BusinessException {
+		if (request.isPending()) {
+			dao.updatePaymentPendingStatus_returnNothing(false, request.getId());
+		} else {
+			throw new BusinessException("No need to resolve request "+request.getId()+". Request is not pending.");
+		}
+	}
+
+	public void rejectTransfer(Transfer transfer, Customer customer) throws BusinessException {
+		if (transfer.isPending()) {
+			dao.deleteTransfer(transfer.getId());
+			// TODO log that customer rejected transfer!!!!! Also, all the other logging of transactions :)
+		} else {
+			throw new BusinessException("No need to reject transfer "+transfer.getId()+". Transfer is not pending.");
+		}
+	}
+
+	public String getTransactions() throws BusinessException {
+		List<Transaction> transactions = dao.getAllTransactions();
+		Collections.sort(transactions);
+		StringBuilder outputBuilder = new StringBuilder();
+		// We'll start by organizing the columns
+		outputBuilder.append("Transaction ID\t|\tTimestamp\t|\tAccount Number\t|\tInitial Balance\t|\tAmount\t|\tFinal Balance\n");
+		// Now we get the content
+		for (Transaction t : transactions) {
+			outputBuilder.append(t.getTransactionId()+"\t|\t"+t.getTimestamp()+"\t|\t"+t.getAccountNumber()+"\t|\t"+t.getInitialBalance()+"\t|\t"+t.getAmount()+"\t|\t"+t.getFinalBalance()+"\n");
+		}
+		// And... we return the content
+		return outputBuilder.toString();
+	}
+
+	public String getTransactions(long accountNumber) throws BusinessException {
+		List<Transaction> transactions = dao.getAllTransactionsWithAccountNumber(accountNumber);
+		Collections.sort(transactions);
+		StringBuilder outputBuilder = new StringBuilder();
+		// We'll start by organizing the columns
+		outputBuilder.append("Transaction ID\t|\tTimestamp\t|\tAccount Number\t|\tInitial Balance\t|\tAmount\t|\tFinal Balance\n");
+		// Now we get the content
+		for (Transaction t : transactions) {
+			outputBuilder.append(t.getTransactionId()+"\t|\t"+t.getTimestamp()+"\t|\t"+t.getAccountNumber()+"\t|\t"+t.getInitialBalance()+"\t|\t"+t.getAmount()+"\t|\t"+t.getFinalBalance()+"\n");
+		}
+		// And... we return the content
+		return outputBuilder.toString();
+	}
+	
+	public String getTransactions(int numberOfTransactions) throws BusinessException {
+		List<Transaction> transactions = dao.getAllTransactions();
+		Collections.sort(transactions);
+		StringBuilder outputBuilder = new StringBuilder();
+		// We'll start by organizing the columns
+		outputBuilder.append("Transaction ID\t|\tTimestamp\t|\tAccount Number\t|\tInitial Balance\t|\tAmount\t|\tFinal Balance\n");
+		// Now we get the content
+		for (int i=0; i<numberOfTransactions; i++) {
+			Transaction t = transactions.get(i);
+			outputBuilder.append(t.getTransactionId()+"\t|\t"+t.getTimestamp()+"\t|\t"+t.getAccountNumber()+"\t|\t"+t.getInitialBalance()+"\t|\t"+t.getAmount()+"\t|\t"+t.getFinalBalance()+"\n");
+		}
+		// And... we return the content
+		return outputBuilder.toString();
 	}
 
 }

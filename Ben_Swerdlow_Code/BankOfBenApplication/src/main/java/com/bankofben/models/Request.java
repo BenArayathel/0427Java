@@ -6,9 +6,17 @@ public class Request extends Transfer {
 	private final long soughtAccountNumber;
 	private final double amount;
 	
-	public Request(String transferId, String initUserId, boolean pending, long requestorAccountNumber,
+	public Request(String id, String initUserId, boolean pending, long requestorAccountNumber,
 			long soughtAccountNumber, double amount) {
-		super(transferId, initUserId, pending);
+		super(id, initUserId, pending);
+		this.requestorAccountNumber = requestorAccountNumber;
+		this.soughtAccountNumber = soughtAccountNumber;
+		this.amount = amount;
+	}
+	
+	public Request(String initUserId, boolean pending, long requestorAccountNumber,
+			long soughtAccountNumber, double amount) {
+		super(initUserId, pending);
 		this.requestorAccountNumber = requestorAccountNumber;
 		this.soughtAccountNumber = soughtAccountNumber;
 		this.amount = amount;

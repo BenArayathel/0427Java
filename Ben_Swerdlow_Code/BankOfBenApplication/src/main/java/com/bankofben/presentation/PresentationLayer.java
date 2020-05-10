@@ -165,7 +165,11 @@ public class PresentationLayer {
 									if (Double.isNaN(amount)) {
 										System.out.println("Payment canceled.");
 									} else {
-										bl.postPayment(myChosenAccount, otherAccount, amount);
+										try {
+											bl.postPayment(customer, myChosenAccount, otherAccount, amount);
+										} catch (BusinessException e) {
+											System.out.println(e.getMessage()+"\nPlease try again.");
+										}
 										selectingOptions = false;
 									}
 								} else if (transferResponse.equals("request")) {
@@ -175,7 +179,11 @@ public class PresentationLayer {
 									if (Double.isNaN(amount)) {
 										System.out.println("Request canceled.");
 									} else {
-										bl.postRequest(myChosenAccount, otherAccount, amount);
+										try {
+											bl.postRequest(customer, myChosenAccount, otherAccount, amount);
+										} catch (BusinessException e) {
+											System.out.println(e.getMessage()+"\nPlease try again.");
+										}
 										selectingOptions = false;
 									}
 								} else if (transferResponse.equals("back")) {
@@ -203,7 +211,11 @@ public class PresentationLayer {
 									if (Double.isNaN(amount)) {
 										System.out.println("Payment canceled.");
 									} else {
-										bl.postPayment(myChosenAccount, otherAccount, amount);
+										try {
+											bl.postPayment(customer, myChosenAccount, otherAccount, amount);
+										} catch (BusinessException e) {
+											System.out.println(e.getMessage()+"\nPlease try again.");
+										}
 										selectingOptions = false;
 									}
 								} else if (transferResponse.equals("request")) {
@@ -213,7 +225,11 @@ public class PresentationLayer {
 									if (Double.isNaN(amount)) {
 										System.out.println("Request canceled.");
 									} else {
-										bl.postRequest(myChosenAccount, otherAccount, amount);
+										try {
+											bl.postRequest(customer, myChosenAccount, otherAccount, amount);
+										} catch (BusinessException e) {
+											System.out.println(e.getMessage()+"\nPlease try again.");
+										}
 										selectingOptions = false;
 									}
 								} else if (transferResponse.equalsIgnoreCase("accept")) {
@@ -275,6 +291,7 @@ public class PresentationLayer {
 					
 				} else if (response.equalsIgnoreCase("quit")) {
 					pl.quit(sc);
+					//userResponseValidated=true;
 				} else {
 					pl.printInvalidResponseMessage(response);
 				}
@@ -282,14 +299,35 @@ public class PresentationLayer {
 		} else if (user instanceof Employee) {
 			Employee employee = (Employee) user;
 			pl.printEmployeeGreeting(employee);
-			while (true) {
+			while (!userResponseValidated) {
 				pl.printEmployeeOptions();
 				response = sc.nextLine();
 				if (response.equalsIgnoreCase("view")) {
-					try {
-						System.out.println(bl.viewBalances());
-					} catch (BusinessException e) {
-						System.out.println(e.getMessage());
+					boolean choosingViews = true;
+					String viewResponse = null;
+					while (choosingViews) {
+						pl.printEmployeeBalanceViewingOptions();
+						viewResponse = sc.nextLine();
+						if (viewResponse.equalsIgnoreCase("all")) {
+							try {
+								System.out.println(bl.viewBalances());
+							} catch (BusinessException e) {
+								System.out.println(e.getMessage()+"\nPlease try again.");
+							}
+						} else if (viewResponse.equalsIgnoreCase("customer")) {
+							String username = null;
+							System.out.println("Please type the username of the customer whose accounts you would like to view");
+							username = UserInterface.requestUsername(sc);
+							try {
+								System.out.println(bl.viewBalances(username));
+							} catch (BusinessException e) {
+								System.out.println(e.getMessage()+"\nPlease try again.");
+							}
+						} else if (viewResponse.equalsIgnoreCase("back")) {
+							choosingViews = false;
+						} else {
+							pl.printInvalidResponseMessage(viewResponse);
+						}
 					}
 				} else if (response.equalsIgnoreCase("applications")) {
 					try {
@@ -298,7 +336,39 @@ public class PresentationLayer {
 						System.out.println(e.getMessage());
 					}
 				} else if (response.equalsIgnoreCase("log")) {
-					// TODO: log logic
+					boolean choosingLogViews = true;
+					String viewLogResponse = null;
+					while (choosingLogViews) {
+						pl.printEmployeeLogViewOptions();
+						viewLogResponse = sc.nextLine();
+						if (viewLogResponse.equalsIgnoreCase("all")) {
+							try {
+								System.out.println(bl.viewTransactions());
+							} catch (BusinessException e) {
+								System.out.println(e.getMessage()+"\nPlease try again.");
+							}
+						} else if (viewLogResponse.equalsIgnoreCase("account")) {
+							long accountNumber = UserInterface.requestAccountNumber(sc);
+							try {
+								System.out.println(bl.viewTransactions(accountNumber));
+							} catch (BusinessException e) {
+								System.out.println(e.getMessage()+"\nPlease try again.");
+							}
+						} else if (viewLogResponse.matches("^[0-9]+$")) {
+							try {
+								int latestNumber = Integer.parseInt(viewLogResponse);
+								bl.viewTransactions(latestNumber);
+							} catch (NumberFormatException e) {
+								System.out.println("The number you entered is invalid.\nPlease try again.");
+							} catch (BusinessException e) {
+								System.out.println(e.getMessage()+"\nPlease try again.");
+							}
+						} else if (viewLogResponse.equalsIgnoreCase("back")) {
+							choosingLogViews = false;
+						} else {
+							pl.printInvalidResponseMessage(viewLogResponse);
+						}
+					}
 				} else if (response.equalsIgnoreCase("quit")) {
 					pl.quit(sc);
 				} else {
@@ -409,6 +479,19 @@ public class PresentationLayer {
 		System.out.println("Please complete the account application process after these personal information prompts "
 				+ "to complete the process. An employee will either approve or deny your account in a timely manner "
 				+ "and get back to you via email. If you are denied, your personal information will not be saved.\n");
+	}
+
+	public void printEmployeeBalanceViewingOptions() {
+		System.out.println("Type \"all\" if you would like to view all balances.");
+		System.out.println("Type \"customer\" if you would like to view all balances for a specific customer.");
+		System.out.println("Type \"back\" if you would like to go back to the other employee options.");
+	}
+
+	public void printEmployeeLogViewOptions() {
+		System.out.println("Type \"all\" if you would like to view the entire log of bank transactions.");
+		System.out.println("Type \"account\" if you would like to view the entire log of transactions related to an account number.");
+		System.out.println("Type any whole number to view that number of most recent log entries.");
+		System.out.println("Type \"back\" if you would like to go back to the other employee options.");
 	}
 	
 	public User requestUserInfo(Scanner sc) throws BusinessException {
@@ -712,7 +795,7 @@ public class PresentationLayer {
 			counter++;
 			System.out.println(counter+"\t|\t");
 			System.out.print(p.getId()+"\t|\t");
-			customer = dbs.getCustomerById(p.getSourceUserId());
+			customer = dbs.getCustomerById(p.getInitUserId());
 			System.out.print(customer.getLastName()+", "+customer.getFirstName()+"\t|\t");
 			System.out.print(p.getReceivingAccountNumber()+"\t|\t");
 			System.out.print(p.getAmount()+"\t|\t");
@@ -733,7 +816,7 @@ public class PresentationLayer {
 			counter++;
 			System.out.println(counter+"\t|\t");
 			System.out.print(r.getId()+"\t|\t");
-			customer = dbs.getCustomerById(r.getSourceUserId());
+			customer = dbs.getCustomerById(r.getInitUserId());
 			System.out.print(customer.getLastName()+", "+customer.getFirstName()+"\t|\t");
 			System.out.print(r.getSoughtAccountNumber()+"\t|\t");
 			System.out.print(r.getAmount()+"\t|\t");
@@ -772,7 +855,7 @@ public class PresentationLayer {
 		System.out.print("\n");
 		for (Payment p : payments) {
 			System.out.print(p.getId()+"\t|\t");
-			customer = dbs.getCustomerById(p.getSourceUserId());
+			customer = dbs.getCustomerById(p.getInitUserId());
 			System.out.print(customer.getLastName()+", "+customer.getFirstName()+"\t|\t");
 			System.out.print(p.getReceivingAccountNumber()+"\t|\t");
 			System.out.print(p.getAmount()+"\t|\t");
@@ -791,7 +874,7 @@ public class PresentationLayer {
 		System.out.print("\n");
 		for (Request r : requests) {
 			System.out.print(r.getId()+"\t|\t");
-			customer = dbs.getCustomerById(r.getSourceUserId());
+			customer = dbs.getCustomerById(r.getInitUserId());
 			System.out.print(customer.getLastName()+", "+customer.getFirstName()+"\t|\t");
 			System.out.print(r.getSoughtAccountNumber()+"\t|\t");
 			System.out.print(r.getAmount()+"\t|\t");
