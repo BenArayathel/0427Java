@@ -43,7 +43,17 @@ public class Account {
 		return "Account [accountId=" + accountId + ", customerId=" + customerId + ", accountType=" + accountType
 				+ ", balance=" + balance + ", approved=" + approved + "]";
 	}
-
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((accountId == null) ? 0 : accountId.hashCode());
+		result = prime * result + ((accountType == null) ? 0 : accountType.hashCode());
+		result = prime * result + (approved ? 1231 : 1237);
+		result = prime * result + ((balance == null) ? 0 : balance.hashCode());
+		result = prime * result + ((customerId == null) ? 0 : customerId.hashCode());
+		return result;
+	}
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -77,7 +87,8 @@ public class Account {
 			return false;
 		return true;
 	}
-	
+
+
 	
 	
 }

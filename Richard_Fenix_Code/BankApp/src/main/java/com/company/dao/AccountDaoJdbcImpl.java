@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.company.model.Account;
-import com.company.model.Account;
 import com.company.view.BankApp;
 
 public class AccountDaoJdbcImpl implements AccountDao{
@@ -61,7 +60,7 @@ public class AccountDaoJdbcImpl implements AccountDao{
 			
 			if (rs!= null && rs.next()) {
 				account.setAccountId(rs.getString(1));
-				BankApp.loggy.info("Successfully added record id: "+rs.getInt(1));
+				BankApp.loggy.info("Successfully added account id: "+rs.getInt(1));
 				
 			}
 			return account;

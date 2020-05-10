@@ -47,7 +47,17 @@ public class Transaction {
 		return "Transaction [transactionId=" + transactionId + ", accountId=" + accountId + ", transactionType="
 				+ transactionType + ", amount=" + amount + ", timestamp=" + timestamp + "]";
 	}
-	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((accountId == null) ? 0 : accountId.hashCode());
+		result = prime * result + ((amount == null) ? 0 : amount.hashCode());
+		result = prime * result + ((timestamp == null) ? 0 : timestamp.hashCode());
+		result = prime * result + ((transactionId == null) ? 0 : transactionId.hashCode());
+		result = prime * result + ((transactionType == null) ? 0 : transactionType.hashCode());
+		return result;
+	}
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -84,6 +94,7 @@ public class Transaction {
 			return false;
 		return true;
 	}
+	
 	
 
 }

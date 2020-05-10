@@ -25,9 +25,10 @@ public class MainMenu {
 	                //BankApp.loggy.info("going to enroll page...");
 	                displayEnrollNow();
 	                break;
-	            case 9:
-	                BankApp.loggy.info("Admin page... can be hidden");
-	                //displayCarInventory();
+	            case 3:
+	                //BankApp.loggy.info("applying for an account page...");
+	                OpenCustomerAccount openCustomerAccount = new OpenCustomerAccount();
+	                openCustomerAccount.displayForm();;
 	                break;
 	            case 0:
 	            	BankApp.loggy.info("\n *** Thank you for using my application. Have a great day! ***");
@@ -51,8 +52,10 @@ public class MainMenu {
 		BankApp.loggy.info("    Here are your choices:");
 		BankApp.loggy.info("       ");
 		BankApp.loggy.info("       1. Sign On");
-		BankApp.loggy.info("       2. Enroll Now");
-		BankApp.loggy.info("       9. Admin");	    
+		BankApp.loggy.info("       2. Enroll Now (must have an active account)");
+		BankApp.loggy.info("       3. Apply for an Account");
+//		We want admin to be able to just sign on to approve applications
+//		BankApp.loggy.info("       9. Admin"); 
 		BankApp.loggy.info("       ");
 		BankApp.loggy.info("       0. Exit Program");
 		BankApp.loggy.info("       ");

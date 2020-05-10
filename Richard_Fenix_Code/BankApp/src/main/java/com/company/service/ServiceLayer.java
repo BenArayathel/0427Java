@@ -5,6 +5,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
 import com.company.controller.BankServiceController;
+import com.company.dao.AccountDaoJdbcImpl;
 import com.company.dao.CustomerDaoJdbcImpl;
 import com.company.dao.RegistrationDaoJdbcImpl;
 import com.company.model.Account;
@@ -15,6 +16,7 @@ public class ServiceLayer {
 	
 	private final RegistrationDaoJdbcImpl registrationDao = new RegistrationDaoJdbcImpl();
 	private final CustomerDaoJdbcImpl customerDao = new CustomerDaoJdbcImpl();
+	private final AccountDaoJdbcImpl accountDao = new AccountDaoJdbcImpl();
 
 	
 	public Customer validateLogin(String loginName, String password) {
@@ -43,7 +45,7 @@ public class ServiceLayer {
 	}
 	
 	
-	public Customer createCustomerAccount(String firstName, String lastName, String birthday, String usState, String accountType, BigDecimal bigDecimalBalance) {
+	public void createCustomerAccount(String firstName, String lastName, String birthday, String usState, String accountType, BigDecimal bigDecimalBalance) {
 	
 		// Create Customer
 		Customer customer = new Customer();
@@ -73,14 +75,14 @@ public class ServiceLayer {
 		account.setCustomerId(customer.getCustomerId());
 		account.setAccountType(accountType);
 		account.setBalance(bigDecimalBalance);
+		account.setApproved(false);
 		
-		// account.addAccount(account);
+		account = accountDao.addAccount(account);
+		
+		// insert transactions in transaction table.
 		
 		
 		
-		
-		
-		return customer;
 	}
 
 }

@@ -20,7 +20,14 @@ public class TransactionType {
 	public String toString() {
 		return "TransactionType [TransactionType=" + TransactionType + ", Description=" + Description + "]";
 	}
-
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((Description == null) ? 0 : Description.hashCode());
+		result = prime * result + ((TransactionType == null) ? 0 : TransactionType.hashCode());
+		return result;
+	}
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -42,6 +49,7 @@ public class TransactionType {
 			return false;
 		return true;
 	}
+
 	
 	
 

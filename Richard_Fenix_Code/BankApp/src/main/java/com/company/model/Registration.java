@@ -35,7 +35,16 @@ public class Registration {
 		return "Registration [registrationId=" + registrationId + ", customerId=" + customerId + ", loginName="
 				+ loginName + ", loginPassword=" + loginPassword + "]";
 	}
-
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((customerId == null) ? 0 : customerId.hashCode());
+		result = prime * result + ((loginName == null) ? 0 : loginName.hashCode());
+		result = prime * result + ((loginPassword == null) ? 0 : loginPassword.hashCode());
+		result = prime * result + ((registrationId == null) ? 0 : registrationId.hashCode());
+		return result;
+	}
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -67,7 +76,8 @@ public class Registration {
 			return false;
 		return true;
 	}
-	
+
+
 	
 
 }

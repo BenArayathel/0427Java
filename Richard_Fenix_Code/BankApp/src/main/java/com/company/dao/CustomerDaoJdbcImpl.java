@@ -60,7 +60,7 @@ public class CustomerDaoJdbcImpl implements CustomerDao {
 			
 			if (rs!= null && rs.next()) {
 				customer.setCustomerId(rs.getInt(1));
-				BankApp.loggy.info("Successfully added record id: "+rs.getInt(1));
+				BankApp.loggy.info("Successfully added customer id: "+rs.getInt(1));
 				
 			}
 			return customer;

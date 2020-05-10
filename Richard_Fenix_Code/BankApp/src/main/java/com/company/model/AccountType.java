@@ -20,8 +20,14 @@ public class AccountType {
 	public String toString() {
 		return "AccountType [accountType=" + accountType + ", Description=" + Description + "]";
 	}
-
-
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((Description == null) ? 0 : Description.hashCode());
+		result = prime * result + ((accountType == null) ? 0 : accountType.hashCode());
+		return result;
+	}
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -43,6 +49,8 @@ public class AccountType {
 			return false;
 		return true;
 	}
+
+
 	
 	
 	

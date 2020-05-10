@@ -26,8 +26,8 @@ public class BankServiceController {
 		
 	}
 	
-	public Customer createCustomerAccount(String firstName, String lastName, String birthday, String usState, String accountType, BigDecimal bigDecimalBalance) {
-		return serviceLayer.createCustomerAccount(firstName, lastName, birthday, usState, accountType, bigDecimalBalance);
+	public void createCustomerAccount(String firstName, String lastName, String birthday, String usState, String accountType, BigDecimal bigDecimalBalance) {
+		serviceLayer.createCustomerAccount(firstName, lastName, birthday, usState, accountType, bigDecimalBalance);
 	}
 
 }
