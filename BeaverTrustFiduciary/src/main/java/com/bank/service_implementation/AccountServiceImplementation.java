@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.bank.dao_implementation.AccountDAOImplementation;
 import com.bank.models.Account;
+import com.bank.models.Transaction;
 import com.bank.models.User;
 import com.bank.service_interface.AccountServiceInterface;
 import com.bank.tools.BankException;
@@ -57,6 +58,14 @@ public class AccountServiceImplementation implements AccountServiceInterface {
 	@Override
 	public void approve(String user_id) throws BankException {
 		adi.approve(user_id);
+	}
+
+	
+	//LIST ALL TRANSACTIONS for EMPLOYEE
+	@Override
+	public List<Transaction> listAllTransactions() throws BankException {
+		List<Transaction> transactionList = adi.listAllTransactions();
+		return transactionList;
 	}
 	
 	

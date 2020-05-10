@@ -5,6 +5,7 @@ import java.util.List;
 import com.bank.dao_implementation.AccountDAOImplementation;
 import com.bank.main.Main;
 import com.bank.models.Account;
+import com.bank.models.Transaction;
 import com.bank.models.User;
 import com.bank.service_implementation.AccountServiceImplementation;
 import com.bank.service_implementation.UserServiceImplementation;
@@ -84,7 +85,14 @@ public class EmployeeView {
 			banking();
 		} else if (selection.equals("4")) {
 			System.out.println("Transaction Log: ");
-			
+			try {
+				List<Transaction> allTransactionsList = asi.listAllTransactions();
+				for(Transaction t: allTransactionsList) {
+					System.out.println(t);
+				}
+			} catch (BankException e) {
+				e.printStackTrace();
+			}
 		} else if (selection.equalsIgnoreCase("quit")) {
 			QuitOption.quit();
 		} else {

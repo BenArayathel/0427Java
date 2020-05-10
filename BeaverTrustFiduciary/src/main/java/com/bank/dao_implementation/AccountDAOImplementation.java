@@ -11,6 +11,7 @@ import java.util.List;
 
 import com.bank.dao_interface.AccountDAOInterface;
 import com.bank.models.Account;
+import com.bank.models.Transaction;
 import com.bank.models.User;
 import com.bank.tools.BankException;
 import com.bank.tools.DataConnection;
@@ -197,5 +198,28 @@ public class AccountDAOImplementation implements AccountDAOInterface {
 			throw new BankException("trouble with approving account at dao level");
 		}
 	}
+
+	
+	// LIST ALL OF THE TRANSACTION by the EMPLOYEE
+	@Override
+	public List<Transaction> listAllTransactions() throws BankException {
+		List<Transaction> transactionList = new ArrayList<Transaction>();
+			
+			try (Connection conn = DataConnection.getConnection()) {
+				String sql = "select * from bank_transaction";
+				PreparedStatement ps = conn.prepareStatement(sql);
+				ResultSet rs = ps.executeQuery();
+				
+				while (rs.next()) {
+					transactionList.add
+						(new Transaction(rs.getString(1), rs.getDouble(2), rs.getString(3), rs.getString(4), rs.getString(5)));
+				}
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+				throw new BankException("trouble with the account dao");
+			}			
+			return transactionList;
+		}
 	
 }

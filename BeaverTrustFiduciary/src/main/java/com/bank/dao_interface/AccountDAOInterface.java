@@ -3,6 +3,7 @@ package com.bank.dao_interface;
 import java.util.List;
 
 import com.bank.models.Account;
+import com.bank.models.Transaction;
 import com.bank.models.User;
 import com.bank.tools.BankException;
 
@@ -16,6 +17,7 @@ public interface AccountDAOInterface {
 	public void deposit(User user, String accountName, String depositAmount) throws BankException;
 	public void withdraw(User user, String accountName, String depositAmount) throws BankException;
 	public void approve(String user_id) throws BankException;
+	public List<Transaction> listAllTransactions() throws BankException;
 
 	
 
