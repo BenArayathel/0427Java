@@ -71,7 +71,7 @@ public class AccountDaoImpl implements AccountDao {
 		}
 		return a;
 	
-	}
+	}// End of selectByEmail
 
 	@Override
 	public List<Account> selectAllAccounts() throws BusinessException{
@@ -113,7 +113,7 @@ public class AccountDaoImpl implements AccountDao {
 			
 		}
 		return filteredAccountList;
-	}
+	}// End of selectAllByColumn
 
 	@Override
 	public void updateAccount(String userEmail, String columnName, String newAtt) throws BusinessException{
@@ -161,31 +161,5 @@ public class AccountDaoImpl implements AccountDao {
 			e.printStackTrace();
 		}
 	}
-
-
-
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+} // End of class
 

@@ -25,23 +25,6 @@ public class UserServiceImpl implements UserService {
 		
 	}
 	
-	public static String passwordEncryption(String pw) {
-	loggy.info("Encrypting password");
-	StringBuilder newPassword = new StringBuilder();
-	String original = "abcdefghijklmnopqrstuvwxyz0987654321";
-	String alternate = "1234567890zyxwvutsrqponmlkjihgfedcba";
-	String[] arr = alternate.split("");
-	String[] wordArray = pw.toLowerCase().split("");
-	int tempIndex;
-	for(int k = 0; k < (wordArray.length); k++) {
-		String tempLetter = wordArray[k];
-		tempIndex = original.indexOf(tempLetter); 
-		newPassword.append(arr[tempIndex]);
-	}
-	return newPassword.toString();
-	
-	}
-
 	@Override
 	public User registerNewUser() throws BusinessException {
 		User newUser = new User();
@@ -69,7 +52,7 @@ public class UserServiceImpl implements UserService {
 		}
 		sc.close();
 		return newUser;
-	}
+	}// end of registerNewUser
 	
 	@Override
 	public boolean userLogin(String email, String password) throws BusinessException {
@@ -88,8 +71,7 @@ public class UserServiceImpl implements UserService {
 		loggy.error("Email or password could not be found matched in DB");
 		loggy.info("Either your email or password is incorrect. Please try again.");
 		return false;
-		
-	}
+	} // end of userLogin
 	
 	@Override
 	public User setCurrentUser(String email) throws BusinessException {
@@ -110,9 +92,8 @@ public class UserServiceImpl implements UserService {
 			String newSavingsNum = Integer.toString(generateAccountNumber());
 			String newCheckingNum = Integer.toString(generateAccountNumber());
 			aDI.insertAccount(new Account("", newSavingsNum, newCheckingNum, checkingMoney, "0.00", "false", email));
-		}
-		
-	}
+		}	
+	} // End of signUpForAccount
 	
 	public void activatePendingAccounts(User u) {
 		Scanner sc = new Scanner(System.in);
@@ -152,7 +133,7 @@ public class UserServiceImpl implements UserService {
 		else {
 			loggy.info("You must be an employee to continue");
 		}
-	}
+	}// End of activatePendingAccounts
 	
 
 //	@Override
@@ -194,6 +175,7 @@ public class UserServiceImpl implements UserService {
 		loggy.error("isValidName failed");
 		return false;
 	}
+	
 	private boolean isValidPhoneNumber(String testNumber) {
 		if (testNumber.matches("[0-9]{10}")) {
 			loggy.debug("isValidPhoneNumber passed");
@@ -218,4 +200,73 @@ public class UserServiceImpl implements UserService {
 		return u.getStatus().equals("employee") ? true : false;
 	}
 
-}
+	@Override
+	public void depositMoney(String whichAccount, String amount, User u) throws BusinessException {
+		Account userAccount = aDI.selectAccountByEmail(u.getEmail());
+		double currentBalance = 0.0;
+		try {
+			loggy.info("whichAccount- " + whichAccount + " amount- " + amount + " currentUser email- " + u.getEmail());
+			
+			//currentBalance = whichAccount.equalsIgnoreCase("checkingBalance") ? Double.parseDouble(userAccount.getCheckingBalance()) : Double.parseDouble(userAccount.getSavingsBalance());
+			if (whichAccount.equalsIgnoreCase("checkingBalance")) {
+				currentBalance = Double.parseDouble(userAccount.getCheckingBalance());
+			}
+			else {
+				currentBalance = Double.parseDouble(userAccount.getSavingsBalance());
+			}
+			loggy.info("Current balance- " + currentBalance);
+			if(amount.matches("[0-9.]{1,7}"))  {
+				currentBalance += Double.parseDouble(amount);
+				loggy.info("Your new balance is " + currentBalance);
+				aDI.updateAccount(u.getEmail(), whichAccount, (currentBalance + ""));
+			}
+		}catch(NullPointerException e) {
+			loggy.error("depositMoney threw NullPointException e- " + e);
+			e.printStackTrace();
+			loggy.info("Error. Please try again");
+		}
+	} // End of depositMoney()
+
+	@Override
+	public void withdrawMoney(String whichAccount, String amount, User u) throws BusinessException {
+		double currentBalance = 0.00;
+		Account userAccount = aDI.selectAccountByEmail(u.getEmail());
+		try {
+			currentBalance = whichAccount.equalsIgnoreCase("checkingBalance") ? Double.parseDouble(userAccount.getCheckingBalance()) : Double.parseDouble(userAccount.getSavingsBalance());
+			loggy.info("Current balance is " + currentBalance);
+			if(currentBalance - Double.parseDouble(amount) > 0)  {
+				currentBalance -= Double.parseDouble(amount);
+				loggy.info("Here's $" + amount);
+				loggy.info("Your new balance is $" + currentBalance);
+				loggy.debug(amount + " was taken from account");
+				aDI.updateAccount(u.getEmail(), whichAccount, (currentBalance + ""));
+			}
+			else {
+				loggy.info("Error. Insufficient funds. Your current balance is $" + currentBalance);
+				loggy.error("Current balance was smaller than requested amount during withdrawl");
+			}
+		} catch(NullPointerException e){
+			loggy.error("Caught NullPointerException at withdrawMoney()");
+			loggy.info("Error. Please try again");
+		}
+		
+	}// end of withdrawMoney()
+	
+	public static String passwordEncryption(String pw) {
+	loggy.info("Encrypting password");
+	StringBuilder newPassword = new StringBuilder();
+	String original = "abcdefghijklmnopqrstuvwxyz0987654321";
+	String alternate = "1234567890zyxwvutsrqponmlkjihgfedcba";
+	String[] arr = alternate.split("");
+	String[] wordArray = pw.toLowerCase().split("");
+	int tempIndex;
+	for(int k = 0; k < (wordArray.length); k++) {
+		String tempLetter = wordArray[k];
+		tempIndex = original.indexOf(tempLetter); 
+		newPassword.append(arr[tempIndex]);
+	}
+	return newPassword.toString();
+	
+	}
+
+}// End of class

@@ -15,6 +15,9 @@ public interface UserService {
 	public String checkCheckingBalance(User u) throws BusinessException;
 	public String checkSavingsBalance(User u) throws BusinessException;
 	
+	public void depositMoney(String whichAccount, String amount, User u) throws BusinessException;
+	public void withdrawMoney(String whichAccount, String amount, User u) throws BusinessException;
+	
 	public void removeUserProfile(User u) throws BusinessException;
 	
 

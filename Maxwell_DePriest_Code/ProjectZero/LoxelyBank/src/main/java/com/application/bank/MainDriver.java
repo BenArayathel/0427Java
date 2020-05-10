@@ -42,6 +42,23 @@ public class MainDriver {
 		}
 		
 //		try {
+//			uSI.withdrawMoney("checkingBalance", "3000.00", currentUser);
+//		} catch (BusinessException e1) {
+//			loggy.info("Error. Please try again");
+//			loggy.error("Exception caught while trying to withdraw money");
+//			e1.printStackTrace();
+//		}
+		
+		try {
+			uSI.depositMoney("savingsBalance", "150.00", currentUser);
+		} catch (BusinessException e1) {
+			loggy.error("Exception thrown during depositMoney");
+			e1.printStackTrace();
+		}
+		
+
+		
+//		try {
 //			String chkB = uSI.checkSavingsBalance(currentUser);
 //			loggy.info("You currently have $" + chkB + " in your savings account.");
 //		} catch (BusinessException e1) {
@@ -121,13 +138,13 @@ public class MainDriver {
 //			e.printStackTrace();
 //		}
 		
-		try {
-			aDI.updateAccount("leia@email.com", "active", "true");
-		} catch (BusinessException e) {
-			
-			loggy.info("Internal Error. Please try again or contact your SYSADMIN");
-			e.printStackTrace();
-		}
+//		try {
+//			aDI.updateAccount("leia@email.com", "active", "true");
+//		} catch (BusinessException e) {
+//			
+//			loggy.info("Internal Error. Please try again or contact your SYSADMIN");
+//			e.printStackTrace();
+//		}
 		
 //		Account a2 = new Account();
 //		a2.setCheckingAccountNumber("985751");
