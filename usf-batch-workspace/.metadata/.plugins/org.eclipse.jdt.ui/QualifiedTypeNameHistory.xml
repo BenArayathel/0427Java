@@ -47,7 +47,6 @@
 <fullyQualifiedTypeName name="bank.transaction.dao.TransferRecieved"/>
 <fullyQualifiedTypeName name="models.Planet"/>
 <fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
-<fullyQualifiedTypeName name="bank.transaction.dao.BankDaoImpl"/>
 <fullyQualifiedTypeName name="java.sql.Connection"/>
 <fullyQualifiedTypeName name="java.sql.SQLException"/>
 <fullyQualifiedTypeName name="java.sql.DriverManager"/>
@@ -56,8 +55,9 @@
 <fullyQualifiedTypeName name="exception.BusinessException"/>
 <fullyQualifiedTypeName name="log.MainDriver"/>
 <fullyQualifiedTypeName name="java.util.Date"/>
-<fullyQualifiedTypeName name="log.Log"/>
 <fullyQualifiedTypeName name="user.cust.account.controller.EmployeePortal"/>
 <fullyQualifiedTypeName name="java.util.List"/>
 <fullyQualifiedTypeName name="user.cust.account.models.User"/>
+<fullyQualifiedTypeName name="log.Log"/>
+<fullyQualifiedTypeName name="bank.transaction.dao.BankDaoImpl"/>
 </qualifiedTypeNameHistroy>

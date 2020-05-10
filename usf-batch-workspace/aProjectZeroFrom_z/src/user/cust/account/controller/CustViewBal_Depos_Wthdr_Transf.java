@@ -6,7 +6,7 @@ import bank.transaction.dao.BankDaoImpl;
 import log.Log;
 import user.cust.account.models.User;
 
-public class CustViewBalance_Deposit_Withdraw {
+public class CustViewBal_Depos_Wthdr_Transf {
 	
 	public static Scanner scanner = new Scanner(System.in);
 	CustOptionsDirectory cd = new CustOptionsDirectory();

@@ -33,22 +33,22 @@ public class CustOptionsDirectory {
 			}
 			
 			if (nav == 2){
-				CustViewBalance_Deposit_Withdraw c = new CustViewBalance_Deposit_Withdraw();
+				CustViewBal_Depos_Wthdr_Transf c = new CustViewBal_Depos_Wthdr_Transf();
 				c.viewBalance(user);
 			}
 			
 			if (nav == 3){
-				CustViewBalance_Deposit_Withdraw c = new CustViewBalance_Deposit_Withdraw();
+				CustViewBal_Depos_Wthdr_Transf c = new CustViewBal_Depos_Wthdr_Transf();
 				c.deposit(user);
 			}
 			
 			if (nav == 4){
-				CustViewBalance_Deposit_Withdraw c = new CustViewBalance_Deposit_Withdraw();
+				CustViewBal_Depos_Wthdr_Transf c = new CustViewBal_Depos_Wthdr_Transf();
 				c.withdraw(user);
 			}
 			
 			if (nav == 5){
-				CustViewBalance_Deposit_Withdraw c = new CustViewBalance_Deposit_Withdraw();
+				CustViewBal_Depos_Wthdr_Transf c = new CustViewBal_Depos_Wthdr_Transf();
 				c.transfer(user);
 			}
 			
