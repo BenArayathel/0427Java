@@ -102,29 +102,69 @@ public class AccountDAOImplementation implements AccountDAOInterface {
 		String sql2 = 
 				"update bank_account set account_balance = (account_balance + ?) where account_name = ? and user_id = ?";
 
-				
-		try (Connection conn = DataConnection.getConnection()) {
-			PreparedStatement ps = conn.prepareStatement(sql1);
-			ps.setString(1, username);
-			ResultSet rs = ps.executeQuery();
+		// first query for user id attached to username		
+		try (Connection conn1 = DataConnection.getConnection()) {
+			PreparedStatement ps1 = conn1.prepareStatement(sql1);
+			ps1.setString(1, username);
+			ResultSet rs1 = ps1.executeQuery();
 			
-			user_id = rs.getString(2);
-			System.out.println(user_id);
+			while (rs1.next()) {
+				user_id = rs1.getString(1);
+
+				// then use that user id to access account and update balance
+				try (Connection conn2 = DataConnection.getConnection()) {
+					PreparedStatement ps2 = conn2.prepareStatement(sql2);
+					ps2.setDouble(1, Double.parseDouble(depositAmount));
+					ps2.setString(2, accountName);
+					ps2.setString(3, user_id);
+					int rs2 = ps2.executeUpdate();
+					
+
+				} catch (SQLException e) {
+					e.printStackTrace();
+					throw new BankException("trouble with make deposit in accout dao");
+				}
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new BankException("can't get user_id in account dao");
 		}
 		
-		try (Connection conn = DataConnection.getConnection()) {
-			PreparedStatement ps = conn.prepareStatement(sql2);
-			ps.setDouble(1, Double.parseDouble(depositAmount));
-			int rs = ps.executeUpdate();
+	}
+
+	@Override
+	public void withdraw(String username, String accountName, String withdrawalAmount) throws BankException {
+		String user_id;
+		String sql1 = "select user_id from bank_user where username = ?";
+		String sql2 = 
+				"update bank_account set account_balance = (account_balance - ?) where account_name = ? and user_id = ?";
+
+		// first query for user id attached to username		
+		try (Connection conn1 = DataConnection.getConnection()) {
+			PreparedStatement ps1 = conn1.prepareStatement(sql1);
+			ps1.setString(1, username);
+			ResultSet rs1 = ps1.executeQuery();
 			
-//			user_id = rs.getString(2);
-//			System.out.println(user_id);
+			while (rs1.next()) {
+				user_id = rs1.getString(1);
+
+				// then use that user id to access account and update balance
+				try (Connection conn2 = DataConnection.getConnection()) {
+					PreparedStatement ps2 = conn2.prepareStatement(sql2);
+					ps2.setDouble(1, Double.parseDouble(withdrawalAmount));
+					ps2.setString(2, accountName);
+					ps2.setString(3, user_id);
+					int rs2 = ps2.executeUpdate();
+					
+
+				} catch (SQLException e) {
+					e.printStackTrace();
+					throw new BankException("trouble with make deposit in accout dao");
+				}
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new BankException("trouble with make deposit in accout dao");
+			throw new BankException("can't get user_id in account dao");
 		}
 		
 	}

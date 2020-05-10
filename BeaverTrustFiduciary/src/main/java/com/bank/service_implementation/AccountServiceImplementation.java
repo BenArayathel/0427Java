@@ -32,8 +32,23 @@ public class AccountServiceImplementation implements AccountServiceInterface {
 	// DEPOSIT INTO ACCOUNT
 	@Override
 	public void deposit(String username, String accountName, String depositAmount) {
-		// TODO Auto-generated method stub
-		
+		try {
+			adi.deposit(username, accountName, depositAmount);
+		} catch (BankException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	// WITHDRAW FROM ACCOUNT
+	@Override
+	public void withdraw(String username, String accountName, String depositAmount) {
+		try {
+			adi.withdraw(username, accountName, depositAmount);
+		} catch (BankException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	

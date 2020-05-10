@@ -49,8 +49,8 @@ public class AccountsView {
 		
 		if (accountAction.equalsIgnoreCase("1")) {
 			AccountDeposit.deposit(username);			
-//		} else if (accountAction.equalsIgnoreCase("2")) {
-//			Withdrawal.withdraw();			
+		} else if (accountAction.equalsIgnoreCase("2")) {
+			AccountWithdrawal.withdraw(username);			
 //		} else if (accountAction.equalsIgnoreCase("3")) {
 //			Transfer.transfer();			
 		} else if (accountAction.equalsIgnoreCase("4")) {

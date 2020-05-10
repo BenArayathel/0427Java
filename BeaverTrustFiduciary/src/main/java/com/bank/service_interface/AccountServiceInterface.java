@@ -12,6 +12,8 @@ public interface AccountServiceInterface {
 	public List<Account> listAccounts() throws BankException;
 	public List<Account> listUserAccounts(String username) throws BankException;
 	public void deposit(String username, String accountName, String depositAmount);
+	public void withdraw(String username, String accountName, String depositAmount);
+
 
 
 }

@@ -5,8 +5,10 @@ select * from bank_user where username = 'ethan1' and password = 'ethan1';
 
 insert into bank_user values (34, 'ethan12', 'pass', 0);
 
-select * from bank_account;
-delete from bank_account where account_id = 136;
+select * from bank_account where user_id = 92;
+delete from bank_account where user_id = ;
+update bank_account set account_name = 'test' where account_name = 'evenmoremoemore';
+update bank_account set account_balance = (account_balance + 90) where account_name = 'evenmoremoemore' and user_id = 92;
 
 select account_name, account_balance from bank_account inner join bank_user on bank_account.user_id = bank_user.user_id where username = 'ethan1';
 
