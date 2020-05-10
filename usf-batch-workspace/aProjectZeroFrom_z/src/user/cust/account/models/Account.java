@@ -4,9 +4,9 @@ import java.util.List;
 
 public class Account {
 	
-	private int acct_id;
-	private double balance;
-	private List<Transaction> transactions = null;
+	//private int acct_id;
+	//private double balance;
+	private List<Old_Transaction> transactions = null;
 
 
 

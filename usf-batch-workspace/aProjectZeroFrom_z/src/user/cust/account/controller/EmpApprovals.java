@@ -14,13 +14,15 @@ public class EmpApprovals {
 
 	public void empApprovals() {
 
-		System.out.println("here is your for loop");
+		//System.out.println("here is your for loop");
 
 		
 
 		BankDaoImpl b = new BankDaoImpl();
 		List<User> usersNeedApproval = new ArrayList<>();
-		usersNeedApproval = b.getAllUsers();
+		// getAllUsers_needingAuth()
+		//usersNeedApproval = b.getAllUsers();
+		usersNeedApproval = b.getAllUsers_needingAuth();
 
 		Log.logger(usersNeedApproval.size() + " Customer(s) Need Approval");
 		Log.logger("Select -which- Customer to Approve:\n");
@@ -81,61 +83,61 @@ public class EmpApprovals {
 		}
 	}
 
-	void old_empApprovals() {
-		
-		System.out.println("here is your for loop");
-		
-		
-		int input=0;
-		
-
-
-		BankDaoImpl b = new BankDaoImpl();
-		List<User> usersNeedApproval = new ArrayList<>();
-		usersNeedApproval = b.getAllUsers();
-		
-		Log.logger(usersNeedApproval.size() + " Customer(s) Need Approval");
-		
-		for(User u : usersNeedApproval) {
-			Log.logger("Select from Options:");
-			Log.logger("1 - approve");
-			Log.logger("2 - skip");
-			Log.logger("approve or skip\n" + u.toString());
-			input = Integer.parseInt(scanner.nextLine());
-			if(input == 1) {
-				b.employeeRejectOrApprove_customerApplicationForAccount(u);
-			}
-		}
-
-		// call datatbase check for boolean
-
-		// read total num of approvals pending
-
-		// loop through approvals and stop to approve, skip, or deny the approvals
-
-		
-
-		
-		// System.out.println("Apply for Another Account");
-
-		if (scanner.hasNext()) {
-
-			int nav = Integer.parseInt(scanner.nextLine());
-
-			if (nav == 1) {
-
-				// approve acct
-			}
-
-			if (nav == 2) {
-				System.exit(0);
-			}
-
-			if (nav == 3) {
-				System.exit(0);
-			}
-
-		}
-	}
+//	void old_empApprovals() {
+//		
+//		System.out.println("here is your for loop");
+//		
+//		
+//		int input=0;
+//		
+//
+//
+//		BankDaoImpl b = new BankDaoImpl();
+//		List<User> usersNeedApproval = new ArrayList<>();
+//		usersNeedApproval = b.getAllUsers();
+//		
+//		Log.logger(usersNeedApproval.size() + " Customer(s) Need Approval");
+//		
+//		for(User u : usersNeedApproval) {
+//			Log.logger("Select from Options:");
+//			Log.logger("1 - approve");
+//			Log.logger("2 - skip");
+//			Log.logger("approve or skip\n" + u.toString());
+//			input = Integer.parseInt(scanner.nextLine());
+//			if(input == 1) {
+//				b.employeeRejectOrApprove_customerApplicationForAccount(u);
+//			}
+//		}
+//
+//		// call datatbase check for boolean
+//
+//		// read total num of approvals pending
+//
+//		// loop through approvals and stop to approve, skip, or deny the approvals
+//
+//		
+//
+//		
+//		// System.out.println("Apply for Another Account");
+//
+//		if (scanner.hasNext()) {
+//
+//			int nav = Integer.parseInt(scanner.nextLine());
+//
+//			if (nav == 1) {
+//
+//				// approve acct
+//			}
+//
+//			if (nav == 2) {
+//				System.exit(0);
+//			}
+//
+//			if (nav == 3) {
+//				System.exit(0);
+//			}
+//
+//		}
+//	}
 
 }

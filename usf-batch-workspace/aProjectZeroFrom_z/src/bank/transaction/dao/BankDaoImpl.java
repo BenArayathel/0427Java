@@ -164,6 +164,110 @@ public class BankDaoImpl implements BankDAO {
 	}
 	
 	
+	@Override
+	public List<User> getAllUsers_needingAuth() {
+
+		List<User> userList = new ArrayList<>();
+		
+		try{
+
+			conn = DAOUtilites.getConnection();
+			ps = conn.prepareStatement("select * from b_user where a_access is null");
+			rs = ps.executeQuery();
+			
+			/**
+			 * User(
+			 * String userName, 
+			 * long contactPhone, 
+			 * String password, 
+			 * String user_id, 
+			 * String email, 
+			 * Date dob, 
+			 * String soc,
+			 * Double balance,
+			 * int a_access)
+			 */
+			while (rs.next()) {
+				//System.out.println(rs.getString("userName"));
+				userList.add(
+						new User(rs.getString("userName"),
+								rs.getLong("contact"),
+								rs.getString("password"),
+								rs.getString("user_id"),
+								rs.getString("email"),
+								rs.getDate("dob"),
+								rs.getString("soc"),
+								rs.getDouble("balance"),
+								rs.getInt("a_access")
+								
+								));
+			}
+			//rs.close();
+			
+		}
+		catch(SQLException e) {
+			e.printStackTrace();
+		}
+		finally {
+			closeResources();
+			
+		}
+		return userList;
+	}
+	
+	
+	@Override
+	public List<User> getAllUsers_withAuth() {
+
+		List<User> userList = new ArrayList<>();
+		
+		try{
+
+			conn = DAOUtilites.getConnection();
+			ps = conn.prepareStatement("select * from b_user where a_access = 1 AND dob is not null");
+			rs = ps.executeQuery();
+			
+			/**
+			 * User(
+			 * String userName, 
+			 * long contactPhone, 
+			 * String password, 
+			 * String user_id, 
+			 * String email, 
+			 * Date dob, 
+			 * String soc,
+			 * Double balance,
+			 * int a_access)
+			 */
+			while (rs.next()) {
+				//System.out.println(rs.getString("userName"));
+				userList.add(
+						new User(rs.getString("userName"),
+								rs.getLong("contact"),
+								rs.getString("password"),
+								rs.getString("user_id"),
+								rs.getString("email"),
+								rs.getDate("dob"),
+								rs.getString("soc"),
+								rs.getDouble("balance"),
+								rs.getInt("a_access")
+								
+								));
+			}
+			//rs.close();
+			
+		}
+		catch(SQLException e) {
+			e.printStackTrace();
+		}
+		finally {
+			closeResources();
+			
+		}
+		return userList;
+	}
+	
+	
 
 
 
@@ -476,6 +580,61 @@ public class BankDaoImpl implements BankDAO {
 			if(ps.execute()) {
 				//return true;
 			}
+			
+		}
+		catch(SQLException e) {
+			e.printStackTrace();
+		}
+		finally {
+			closeResources();
+			
+		}
+		//return false;
+		
+	}
+	
+	
+	/**
+	 * -- from test to new
+	 *	update b_user set balance = (balance - 500) where user_id = 'BUTE123TE5';
+	 *
+	 *	update b_user set balance = (balance + 500) where user_id = 'BUNE123NE90';
+	 */
+	@Override
+	public void update_transfer(User user, double funds, User recipient) {
+		
+		try{
+
+			conn = DAOUtilites.getConnection();
+									// update b_user set a_access=1 where user_id='BUTE123TE5';
+			// 3 arguments to this
+			// original did not work
+//			ps = conn.prepareStatement("update b_user set balance = (balance - ?) where user_id = ?  update b_user set balance = (balance + ?) where user_id = ?");
+//			ps.setDouble(1, funds);
+//			ps.setString(2, user.getUser_id());
+//			ps.setDouble(3, funds);
+//			ps.setString(4, recipient.getUser_id());
+			
+			// update 1
+			ps = conn.prepareStatement("update b_user set balance = (balance - ?) where user_id = ?");
+			Log.logger("user_id at backend" + user.getUser_id());
+			ps.setDouble(1, funds);
+			ps.setString(2, user.getUser_id());
+			if(ps.execute()) {
+				//return true;
+			}
+
+			// update 2			
+			ps = conn.prepareStatement("update b_user set balance = (balance + ?) where user_id = ?");
+			ps.setDouble(1, funds);
+			ps.setString(2, recipient.getUser_id());
+			if(ps.execute()) {
+				//return true;
+			}
+			
+//			if(ps.execute()) {
+//				//return true;
+//			}
 			
 		}
 		catch(SQLException e) {

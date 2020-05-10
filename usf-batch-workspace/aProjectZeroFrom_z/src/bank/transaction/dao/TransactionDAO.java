@@ -4,8 +4,15 @@ import java.util.List;
 
 import user.cust.account.models.Account;
 import user.cust.account.models.Customer;
+import user.cust.account.models.User;
 
 public interface TransactionDAO {
+	
+	
+	public boolean createTransaction(User user, String trans);
+	
+	// the stuff below I thought would exist here and maybe it should
+	// ----------------------------------------------
 
 	// customer transfer to
 
@@ -25,27 +32,27 @@ public interface TransactionDAO {
 	// --------------------------------------------------------------
 
 	// customer transfer to: Customer, Transfer
-	public boolean TransferTo(Customer customer, TransactionT_isSuper transfer);
+//	public boolean TransferTo(Customer customer, TransactionT_isSuper transfer);
 
 	// customer transfer receive: Customer, Transfer
 	// this might not be needed
 
 	// customer view balance: Account
-	public double viewBalance(Account account);
+//	public double viewBalance(Account account);
 
 	// customer withdraw from Account
-	public boolean withdraw(TransactionDaoImpl transaction);
+//	public boolean withdraw(TransactionDaoImpl transaction);
 
 	// customer deposit
-	public boolean deposit(TransactionDaoImpl transaction);
+//	public boolean deposit(TransactionDaoImpl transaction);
 
 	// employee view all-customer's-transactions
-	public List<TransactionDaoImpl> viewAllCustTrans(Employee employee, Account account);
+//	public List<TransactionDaoImpl> viewAllCustTrans(Employee employee, Account account);
 
 	// employee view all transactions: *!
-	public List<TransactionDaoImpl> viewBankWideTrans(Employee employee);
+//	public List<TransactionDaoImpl> viewBankWideTrans(Employee employee);
 
 	// employee view customer bank accounts: *!*
-	public List<Account> viewCustAccounts(Employee employee, Customer customer);
+//	public List<Account> viewCustAccounts(Employee employee, Customer customer);
 
 }

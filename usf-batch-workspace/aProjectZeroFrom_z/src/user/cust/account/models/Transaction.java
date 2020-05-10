@@ -10,34 +10,50 @@ import bank.transaction.dao.TransferSent;
 
 public class Transaction {
 
-	private int t_id;
+	private String t_id;
+	private String user_id; // foreign key user_id
 	private String date;
+	private String description;
 	private double transactionValue; // $
-	private int fk_origin_account_id; // foreign key user_id
-//	private String transactionType;
-	private List<TransactionDeposit> transactionDeposits = new ArrayList<>();
-	private List<TransactionWithdraw> transactionWithdraws = new ArrayList<>();
-	private List<TransferSent> transferSent = new ArrayList<>();
-	private List<TransferReceived> transferReceived = new ArrayList<>();
-
-	public Transaction() {
+	private String destination_id;
+	
+	// before database
+	public Transaction(String user_id, String date, String description, double transactionValue,
+			String destination_id) {
 		super();
-	}
-
-	public Transaction(int t_id, String date, double transactionValue, int fk_origin_account_id) {
-		// super();
-		this.t_id = t_id;
+		this.user_id = user_id;
 		this.date = date;
+		this.description = description;
 		this.transactionValue = transactionValue;
-		this.fk_origin_account_id = fk_origin_account_id;
+		this.destination_id = destination_id;
 	}
 
-	public int getT_id() {
+	// after database
+	public Transaction(String t_id, String user_id, String date, String description, double transactionValue,
+			String destination_id) {
+		super();
+		this.t_id = t_id;
+		this.user_id = user_id;
+		this.date = date;
+		this.description = description;
+		this.transactionValue = transactionValue;
+		this.destination_id = destination_id;
+	}
+
+	public String getT_id() {
 		return t_id;
 	}
 
-	public void setT_id(int t_id) {
+	public void setT_id(String t_id) {
 		this.t_id = t_id;
+	}
+
+	public String getUser_id() {
+		return user_id;
+	}
+
+	public void setUser_id(String user_id) {
+		this.user_id = user_id;
 	}
 
 	public String getDate() {
@@ -48,6 +64,14 @@ public class Transaction {
 		this.date = date;
 	}
 
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
 	public double getTransactionValue() {
 		return transactionValue;
 	}
@@ -56,75 +80,22 @@ public class Transaction {
 		this.transactionValue = transactionValue;
 	}
 
-	public int getFk_origin_account_id() {
-		return fk_origin_account_id;
+	public String getDestination_id() {
+		return destination_id;
 	}
 
-	public void setFk_origin_account_id(int fk_origin_account_id) {
-		this.fk_origin_account_id = fk_origin_account_id;
+	public void setDestination_id(String destination_id) {
+		this.destination_id = destination_id;
 	}
-
-	// ------------------------------------------------------DEPOSITS
-
-	public List<TransactionDeposit> getAllTransactionDeposits() {
-		return transactionDeposits;
-	}
-
-	public void addTransactionDeposit(TransactionDeposit transactionDeposit) {
-		this.transactionDeposits.add(transactionDeposit);
-	}
-
-	public void deleteTransactionDeposit(TransactionDeposit transactionDeposit) {
-		this.transactionDeposits.remove(transactionDeposit);
-	}
-	// ------------------------------------------------------DEPOSITS
-	// ------------------------------------------------------WITHDRAWS
-
-	public List<TransactionWithdraw> getAllTransactionWithdraws() {
-		return this.transactionWithdraws;
-	}
-
-	public void addTransactionWithdraw(TransactionWithdraw transactionWithdraw) {
-		this.transactionWithdraws.add(transactionWithdraw);
-	}
-
-	public void deleteTransactionWithdraw(TransactionWithdraw transactionWithdraw) {
-		this.transactionWithdraws.remove(transactionWithdraw);
-	}
-
-	// ------------------------------------------------------WITHDRAWS
-	// ------------------------------------------------------TRANSFER-SENT
-	public List<TransferSent> getAllTransferSent() {
-		return transferSent;
-	}
-
-	public void addTransferSent(TransferSent transferSent) {
-		this.transferSent.add(transferSent);
-	}
-
-	public void deleteTransferSent(TransferSent transferSent) {
-		this.transferSent.remove(transferSent);
-	}
-
-	// ------------------------------------------------------TRANSFER-SENT
-	// ------------------------------------------------------TRANSFER-RECEIVED
-	public List<TransferReceived> getAllTransferReceived() {
-		return transferReceived;
-	}
-
-	public void addTransferReceived(TransferReceived transferReceived) {
-		this.transferReceived.add(transferReceived);
-	}
-
-	public void deleteTransferReceived(TransferReceived transferReceived) {
-		this.transferReceived.remove(transferReceived);
-	}
-	// ------------------------------------------------------TRANSFER-RECEIVED
 
 	@Override
 	public String toString() {
-		return "TransactionT_isSuper [t_id=" + t_id + ", date=" + date + ", transactionValue=" + transactionValue
-				+ ", fk_origin_account_id=" + fk_origin_account_id + "]";
+		return "Transaction [t_id=" + t_id + ", user_id=" + user_id + ", date=" + date + ", description=" + description
+				+ ", transactionValue=" + transactionValue + ", destination_id=" + destination_id + "]";
 	}
+
+	
+	
+	
 
 }

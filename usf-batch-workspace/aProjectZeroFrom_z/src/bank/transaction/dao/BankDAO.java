@@ -16,6 +16,11 @@ public interface BankDAO {
 	public boolean createUser(User user);
 	
 	public List<User> getAllUsers();
+	
+	public List<User> getAllUsers_needingAuth();
+	
+	// getAllUsers_withAuth()
+	public List<User> getAllUsers_withAuth();
 
 	public void login(User user);
 	
@@ -30,5 +35,7 @@ public interface BankDAO {
 	public boolean employeeRejectOrApprove_customerApplicationForAccount(User approvedUser);		// step 2 of 2: approve check
 	
 	public void updateBalance(User user);
+	
+	public void update_transfer(User user, double funds, User recipient);
 
 }

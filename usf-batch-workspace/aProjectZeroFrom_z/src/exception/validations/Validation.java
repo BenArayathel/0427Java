@@ -59,11 +59,12 @@ public class Validation {
 				return d;
 			} catch (ParseException e) {
 				throw new BusinessException("Entered date "+dob+" is invalid");
+				//return null;
 			}
 		}else {
 			throw new BusinessException("Entered date "+dob+" should be in (dd.MM.yyyy) format only");
 		}
-		//return d;
+		
 	}
 
 }
