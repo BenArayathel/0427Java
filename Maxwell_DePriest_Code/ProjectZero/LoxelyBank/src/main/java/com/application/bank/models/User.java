@@ -19,6 +19,7 @@ public class User {
 		this.phoneNumber = phoneNumber;
 		this.password = password;
 		this.status = status;
+		
 	}
 
 

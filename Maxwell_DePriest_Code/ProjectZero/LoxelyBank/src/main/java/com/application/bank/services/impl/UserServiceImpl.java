@@ -26,7 +26,7 @@ public class UserServiceImpl implements UserService {
 	}
 	
 	@Override
-	public User registerNewUser() throws BusinessException {
+	public void registerNewUser() throws BusinessException {
 		User newUser = new User();
 		Scanner sc = new Scanner(System.in);
 		loggy.info("Please enter your first and last names");
@@ -47,11 +47,12 @@ public class UserServiceImpl implements UserService {
 		}
 		else {
 			uDI.insertUser(newUser);
-			
 			loggy.debug("new customer account created with email " + newUser.getEmail());
+			loggy.info("We'll review your application and get back to you shortly");
+			System.exit(0);
 		}
 		sc.close();
-		return newUser;
+		
 	}// end of registerNewUser
 	
 	@Override
@@ -64,7 +65,9 @@ public class UserServiceImpl implements UserService {
 					return true;
 				}
 			} catch (NullPointerException e) {
-				return false;
+				//loggy.info("Either your email or password is incorrect. Please try again.");
+				loggy.error("NullPointerException thrown during userLogin");
+				//return false;
 			}
 			
 		}
@@ -86,7 +89,6 @@ public class UserServiceImpl implements UserService {
 		String checkingMoney = sc.nextLine();
 		if (!isValidDeposit(checkingMoney)) {
 			verified = false;
-			
 		}
 		else {
 			String newSavingsNum = Integer.toString(generateAccountNumber());
@@ -94,6 +96,26 @@ public class UserServiceImpl implements UserService {
 			aDI.insertAccount(new Account("", newSavingsNum, newCheckingNum, checkingMoney, "0.00", "false", email));
 		}	
 	} // End of signUpForAccount
+	
+	public void viewAllAccounts(User u) {
+		List<Account> allAccounts = new ArrayList<>();
+		if(isEmployee(u)) {
+			try {
+				allAccounts = aDI.selectAllAccounts();
+			} catch (BusinessException e) {
+				loggy.error(e.getMessage());
+				e.printStackTrace();
+			}
+			for (Account a : allAccounts) {
+				String printOut = "Email- " + a.getEmail() + ", Checking Account Number- " + a.getCheckingAccountNumber() +
+						", Savings Account Number " + a.getSavingsAccountNumber() + ", Account Active- " + a.getActive();
+				loggy.info(printOut);
+			}
+		}
+		else {
+			loggy.info("You must be an employee to continue");
+		}
+	}
 	
 	public void activatePendingAccounts(User u) {
 		Scanner sc = new Scanner(System.in);
@@ -134,13 +156,6 @@ public class UserServiceImpl implements UserService {
 			loggy.info("You must be an employee to continue");
 		}
 	}// End of activatePendingAccounts
-	
-
-//	@Override
-//	public User updateProfile(User u) throws BusinessException {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
 
 	@Override
 	public String checkCheckingBalance(User u) throws BusinessException {
@@ -205,16 +220,12 @@ public class UserServiceImpl implements UserService {
 		Account userAccount = aDI.selectAccountByEmail(u.getEmail());
 		double currentBalance = 0.0;
 		try {
-			loggy.info("whichAccount- " + whichAccount + " amount- " + amount + " currentUser email- " + u.getEmail());
-			
-			//currentBalance = whichAccount.equalsIgnoreCase("checkingBalance") ? Double.parseDouble(userAccount.getCheckingBalance()) : Double.parseDouble(userAccount.getSavingsBalance());
 			if (whichAccount.equalsIgnoreCase("checkingBalance")) {
 				currentBalance = Double.parseDouble(userAccount.getCheckingBalance());
 			}
 			else {
 				currentBalance = Double.parseDouble(userAccount.getSavingsBalance());
 			}
-			loggy.info("Current balance- " + currentBalance);
 			if(amount.matches("[0-9.]{1,7}"))  {
 				currentBalance += Double.parseDouble(amount);
 				loggy.info("Your new balance is " + currentBalance);
@@ -223,7 +234,7 @@ public class UserServiceImpl implements UserService {
 		}catch(NullPointerException e) {
 			loggy.error("depositMoney threw NullPointException e- " + e);
 			e.printStackTrace();
-			loggy.info("Error. Please try again");
+			
 		}
 	} // End of depositMoney()
 
@@ -251,6 +262,20 @@ public class UserServiceImpl implements UserService {
 		}
 		
 	}// end of withdrawMoney()
+	
+	public boolean checkForAccount(User u) {
+		try {
+			Account a = aDI.selectAccountByEmail(u.getEmail()); 
+			if(a.getId() != null && a.getActive().equals("true") ) {
+				loggy.info(aDI.selectAccountByEmail(u.getEmail()));
+				return true;
+			}
+		} catch (BusinessException e) {
+			loggy.info("Couldn't find account with that email.");
+		}
+		return false;
+	}
+	
 	
 	public static String passwordEncryption(String pw) {
 	loggy.info("Encrypting password");

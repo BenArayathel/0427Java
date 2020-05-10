@@ -9,6 +9,7 @@ public class Customer extends User implements Serializable {
 	// private boolean awaitingApproval; // for pending transactions if we get that far
 	//private Transaction transaction = new Transaction();
 	
+	
 	private static final long serialVersionUID = 620321235045377344L;
 	
 	public Customer() {
