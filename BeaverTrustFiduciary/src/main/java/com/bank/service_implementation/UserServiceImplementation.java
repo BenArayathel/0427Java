@@ -27,9 +27,9 @@ public class UserServiceImplementation implements UserServiceInterface {
 		// always have to call the methods from an instantiation of
 		// a class...why though? they aren't private...it has to do with not being static...
 		// it has to do with instance methods vs static methods. 
-		udi.listUsers();
+		List<User> users = udi.listUsers();
 		
-		return null;
+		return users;
 	}
 
 	@Override

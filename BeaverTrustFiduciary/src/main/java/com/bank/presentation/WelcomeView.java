@@ -23,7 +23,7 @@ public class WelcomeView {
 		if (hasAccount.equalsIgnoreCase("y")) {
 			UserLoginView.validateLogin();
 		} else if (hasAccount.equalsIgnoreCase("n")) {
-			CreateAccountView.userCreate();
+			CreateUserAccountView.userCreate();
 		} else if (hasAccount.equalsIgnoreCase("quit")) {
 			QuitOption.quit();
 		} else {

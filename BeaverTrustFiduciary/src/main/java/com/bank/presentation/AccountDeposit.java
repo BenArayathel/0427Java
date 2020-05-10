@@ -17,7 +17,7 @@ public class AccountDeposit {
 		System.out.println("Enter the amount you are depositing: ");
 		depositAmount = Main.scan.nextLine().toString();
 		
-		asi.deposit(username, accountName, depositAmount);
+		asi.deposit(user, accountName, depositAmount);
 		System.out.println("\nDeposit of $" + depositAmount + " complete!");
 		System.out.println("-----------------------------------------------------");
 		AccountsView.view(user);

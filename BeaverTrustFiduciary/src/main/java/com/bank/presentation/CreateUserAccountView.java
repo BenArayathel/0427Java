@@ -7,7 +7,7 @@ import com.bank.service_interface.UserServiceInterface;
 import com.bank.tools.BankException;
 import com.bank.tools.QuitOption;
 
-public class CreateAccountView {
+public class CreateUserAccountView {
 	
 	public static void userCreate() {
 		

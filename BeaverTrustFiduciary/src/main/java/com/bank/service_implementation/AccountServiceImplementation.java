@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.bank.dao_implementation.AccountDAOImplementation;
 import com.bank.models.Account;
+import com.bank.models.User;
 import com.bank.service_interface.AccountServiceInterface;
 import com.bank.tools.BankException;
 
@@ -13,15 +14,16 @@ public class AccountServiceImplementation implements AccountServiceInterface {
 
 	// CREATE NEW USER ACCOUNT
 	@Override
-	public Account createAccount(Account account) throws BankException {
-		adi.createAccount(account);
-		return null;
+	public Account createAccount(User user, String accountName, String depositAmount) throws BankException {
+		Account account = new Account();
+		account = adi.createAccount(user, accountName, depositAmount);
+		return account;
 	}
 
 	@Override
 	public List<Account> listAccounts() throws BankException {
-		adi.listAccounts();
-		return null;
+		List<Account> accounts = adi.listAccounts();
+		return accounts;
 	}
 
 	@Override
@@ -32,9 +34,9 @@ public class AccountServiceImplementation implements AccountServiceInterface {
 
 	// DEPOSIT INTO ACCOUNT
 	@Override
-	public void deposit(String username, String accountName, String depositAmount) {
+	public void deposit(User user, String accountName, String depositAmount) {
 		try {
-			adi.deposit(username, accountName, depositAmount);
+			adi.deposit(user, accountName, depositAmount);
 		} catch (BankException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -43,9 +45,9 @@ public class AccountServiceImplementation implements AccountServiceInterface {
 	
 	// WITHDRAW FROM ACCOUNT
 	@Override
-	public void withdraw(String username, String accountName, String depositAmount) {
+	public void withdraw(User user, String accountName, String depositAmount) {
 		try {
-			adi.withdraw(username, accountName, depositAmount);
+			adi.withdraw(user, accountName, depositAmount);
 		} catch (BankException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

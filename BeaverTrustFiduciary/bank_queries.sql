@@ -1,4 +1,5 @@
 select * from bank_user;
+select * from bank_account;
 
 select * from bank_user where username = 'ethan1' and password = 'ethan1';
 select * from bank_user where username = 'ethan1' and password = 'ethan1';

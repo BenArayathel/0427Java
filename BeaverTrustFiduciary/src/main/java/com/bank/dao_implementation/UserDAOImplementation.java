@@ -65,7 +65,6 @@ public class UserDAOImplementation implements UserDAOInterface {
 			throw new BankException("List User problem");
 		}
 		
-		System.out.println("USERS: " + userList.toString());
 		return userList;
 	}
 	

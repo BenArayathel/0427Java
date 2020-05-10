@@ -17,7 +17,7 @@ public class AccountWithdrawal {
 		System.out.println("Enter the amount you are withdrawing: ");
 		withdrawalAmount = Main.scan.nextLine().toString();
 		
-		asi.withdraw(username, accountName, withdrawalAmount);
+		asi.withdraw(user, accountName, withdrawalAmount);
 		System.out.println("\nWithdrawal of $" + withdrawalAmount + " complete!");
 		System.out.println("-----------------------------------------------------");
 		AccountsView.view(user);
