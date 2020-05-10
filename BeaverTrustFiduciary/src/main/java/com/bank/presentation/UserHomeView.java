@@ -1,6 +1,5 @@
 package com.bank.presentation;
 
-import com.accounts.OLD.AccountApplication;
 import com.bank.main.Main;
 import com.bank.tools.QuitOption;
 
@@ -23,7 +22,7 @@ public class UserHomeView {
 		if (userOptions.equalsIgnoreCase("1")) {
 			AccountsView.view(username);
 		} else if (userOptions.equalsIgnoreCase("2")) {
-			AccountApplication.apply();
+			AccountApplication.apply(username);
 		} else if (userOptions.equalsIgnoreCase("quit")) {
 			QuitOption.quit();
 		} else {

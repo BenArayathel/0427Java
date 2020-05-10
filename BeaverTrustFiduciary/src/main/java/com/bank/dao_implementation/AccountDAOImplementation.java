@@ -132,6 +132,7 @@ public class AccountDAOImplementation implements AccountDAOInterface {
 		
 	}
 
+	// WITHDRAW from ACCOUNT
 	@Override
 	public void withdraw(String username, String accountName, String withdrawalAmount) throws BankException {
 		String user_id;
@@ -168,4 +169,5 @@ public class AccountDAOImplementation implements AccountDAOInterface {
 		}
 		
 	}
+
 }

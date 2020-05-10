@@ -36,8 +36,8 @@ public class Main {
 		
 	     
 	    //my logger only works if my call to this object/method comes after the logging stuff!
-//		WelcomeView.welcome();
-		AccountsView.view("ethan1");
+		WelcomeView.welcome();
+//		AccountsView.view("ethan1");
 
 
 		UserServiceInterface usi = new UserServiceImplementation();

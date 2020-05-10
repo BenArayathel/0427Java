@@ -3,7 +3,6 @@ package com.bank.presentation;
 import com.bank.main.Main;
 import com.bank.tools.QuitOption;
 import com.bank.presentation.UserLoginView;
-import com.welcomeview.OLD.CreateAccountView;
 
 
 

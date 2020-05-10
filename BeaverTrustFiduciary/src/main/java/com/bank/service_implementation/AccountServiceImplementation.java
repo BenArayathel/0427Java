@@ -11,6 +11,7 @@ public class AccountServiceImplementation implements AccountServiceInterface {
 	
 	private AccountDAOImplementation adi = new AccountDAOImplementation();
 
+	// CREATE NEW USER ACCOUNT
 	@Override
 	public Account createAccount(Account account) throws BankException {
 		adi.createAccount(account);
