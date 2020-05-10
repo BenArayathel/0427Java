@@ -96,7 +96,7 @@ public class AccountDAOImplementation implements AccountDAOInterface {
 	
 	// DEPOSIT INTO ACCOUNT
 	@Override
-	public void deposit(String username, String accountName, String depositAmount) throws BankException {
+	public void deposit(User user, String accountName, String depositAmount) throws BankException {
 		String user_id;
 		String sql1 = "select user_id from bank_user where username = ?";
 		String sql2 = 
@@ -134,7 +134,7 @@ public class AccountDAOImplementation implements AccountDAOInterface {
 
 	// WITHDRAW from ACCOUNT
 	@Override
-	public void withdraw(String username, String accountName, String withdrawalAmount) throws BankException {
+	public void withdraw(User user, String accountName, String withdrawalAmount) throws BankException {
 		String user_id;
 		String sql1 = "select user_id from bank_user where username = ?";
 		String sql2 = 

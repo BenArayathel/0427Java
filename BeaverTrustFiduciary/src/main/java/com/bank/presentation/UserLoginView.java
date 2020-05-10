@@ -26,8 +26,12 @@ public class UserLoginView {
 		System.out.println("Enter your password: ");
 		password = Main.scan.nextLine().toString();
 		
+
+		
 		try {
-			if (usi.loginUser(username, password)) {
+			if (username.equals("employee") && password.equals("employee")) {
+				EmployeeView.Banking();
+			} else if (usi.loginUser(username, password)) {
 				System.out.println("Log in successful.");
 				// this is where the NEW ACTION is happening
 				// it creates an object to use from here on into the program
