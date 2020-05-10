@@ -4,6 +4,8 @@ select * from bank_account;
 select * from bank_user where username = 'ethan1' and password = 'ethan1';
 select * from bank_user where username = 'ethan1' and password = 'ethan1';
 
+update bank_user set approved = 0 where user_id = 92;
+
 insert into bank_user values (34, 'ethan12', 'pass', 0);
 
 select * from bank_account where user_id = 92;

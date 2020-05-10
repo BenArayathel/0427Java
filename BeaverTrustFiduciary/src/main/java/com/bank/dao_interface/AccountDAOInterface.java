@@ -15,6 +15,7 @@ public interface AccountDAOInterface {
 	public List<Account> listUserAccounts(String username) throws BankException;
 	public void deposit(User user, String accountName, String depositAmount) throws BankException;
 	public void withdraw(User user, String accountName, String depositAmount) throws BankException;
+	public void approve(String user_id) throws BankException;
 
 	
 

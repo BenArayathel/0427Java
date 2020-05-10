@@ -40,7 +40,7 @@ public class Main {
 //		WelcomeView.welcome();
 //		AccountsView.view("ethan1");
 		try {
-			EmployeeView.Banking();
+			EmployeeView.banking();
 		} catch (BankException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

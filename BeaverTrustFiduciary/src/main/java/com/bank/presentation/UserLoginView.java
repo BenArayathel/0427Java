@@ -30,7 +30,7 @@ public class UserLoginView {
 		
 		try {
 			if (username.equals("employee") && password.equals("employee")) {
-				EmployeeView.Banking();
+				EmployeeView.banking();
 			} else if (usi.loginUser(username, password)) {
 				System.out.println("Log in successful.");
 				// this is where the NEW ACTION is happening

@@ -38,7 +38,6 @@ public class AccountServiceImplementation implements AccountServiceInterface {
 		try {
 			adi.deposit(user, accountName, depositAmount);
 		} catch (BankException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -49,9 +48,15 @@ public class AccountServiceImplementation implements AccountServiceInterface {
 		try {
 			adi.withdraw(user, accountName, depositAmount);
 		} catch (BankException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+			
 		}
+	}
+
+	// EMPLOYEE approves pending account application
+	@Override
+	public void approve(String user_id) throws BankException {
+		adi.approve(user_id);
 	}
 	
 	
