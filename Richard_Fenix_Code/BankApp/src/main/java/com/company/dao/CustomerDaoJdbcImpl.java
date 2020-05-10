@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.company.model.Customer;
+import com.company.view.BankApp;
 
 public class CustomerDaoJdbcImpl implements CustomerDao {
 	
@@ -59,7 +60,7 @@ public class CustomerDaoJdbcImpl implements CustomerDao {
 			
 			if (rs!= null && rs.next()) {
 				customer.setCustomerId(rs.getInt(1));
-				System.out.println("Successfully added record id: "+rs.getInt(1));
+				BankApp.loggy.info("Successfully added record id: "+rs.getInt(1));
 				
 			}
 			return customer;
@@ -92,7 +93,7 @@ public class CustomerDaoJdbcImpl implements CustomerDao {
 		        customer.setState(rs.getString("us_state"));
 				return customer;
 			} else {
-				System.out.println("Record not found.");
+				BankApp.loggy.info("Record not found.");
 				return null;
 			}
 
@@ -128,7 +129,7 @@ public class CustomerDaoJdbcImpl implements CustomerDao {
 		        customers.add(customer);
 			}
 			
-			customers.forEach(c -> System.out.println(c));
+			customers.forEach(c -> BankApp.loggy.info(c));
 
 		} catch (SQLException e) {
 				e.printStackTrace();
@@ -156,9 +157,9 @@ public class CustomerDaoJdbcImpl implements CustomerDao {
 			int updatedRows = ps.executeUpdate();
 			
 			if (updatedRows == 0) {
-				System.out.println("No records updated.");
+				BankApp.loggy.info("No records updated.");
 			} else {
-				System.out.println(updatedRows + " rows updated.");
+				BankApp.loggy.info(updatedRows + " rows updated.");
 			}		
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -180,9 +181,9 @@ public class CustomerDaoJdbcImpl implements CustomerDao {
 			int deletedRows = ps.executeUpdate();
 			
 			if (deletedRows == 0) {
-				System.out.println("No records deleted.");
+				BankApp.loggy.info("No records deleted.");
 			} else {
-				System.out.println(deletedRows + " rows deleted.");
+				BankApp.loggy.info(deletedRows + " rows deleted.");
 			}		
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -192,8 +193,6 @@ public class CustomerDaoJdbcImpl implements CustomerDao {
 				if(ps != null) ps.close();
 			} catch(Exception ex){}
 		}
-}
-
-
+	}
 
 }

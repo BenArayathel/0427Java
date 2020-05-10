@@ -80,12 +80,7 @@ public class CustomerDaoJdbcImplTest {
 
 	@Test
 	public void testGetAllCustomers() {
-		
-//		List<Customer> cList = customerDaoJdbcImpl.getAllCustomers();
-//		for (Customer c: cList) {
-//			customerDaoJdbcImpl.deleteCustomer(c.getCustomerId());
-//		}
-		
+				
 		Customer customer = new Customer();
 		
         customer.setFirstName("Rich");

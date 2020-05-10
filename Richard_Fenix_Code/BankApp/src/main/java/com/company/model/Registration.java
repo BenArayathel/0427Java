@@ -2,14 +2,14 @@ package com.company.model;
 
 public class Registration {
 	
-	private Integer registrationId;
+	private Long registrationId;
 	private Integer customerId;
 	private String loginName;
 	private String loginPassword;
-	public Integer getRegistrationId() {
+	public Long getRegistrationId() {
 		return registrationId;
 	}
-	public void setRegistrationId(Integer registrationId) {
+	public void setRegistrationId(Long registrationId) {
 		this.registrationId = registrationId;
 	}
 	public Integer getCustomerId() {

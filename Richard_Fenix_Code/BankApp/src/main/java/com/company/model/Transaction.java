@@ -5,15 +5,16 @@ import java.sql.Timestamp;
 
 public class Transaction {
 	
-	private Integer transactionId;
+	private Long transactionId;
 	private String accountId;
 	private String transactionType;
 	private BigDecimal amount;
 	private Timestamp timestamp;
-	public Integer getTransactionId() {
+	
+	public Long getTransactionId() {
 		return transactionId;
 	}
-	public void setTransactionId(Integer transactionId) {
+	public void setTransactionId(Long transactionId) {
 		this.transactionId = transactionId;
 	}
 	public String getAccountId() {

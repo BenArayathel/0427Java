@@ -33,7 +33,6 @@ public class AccountTypeJdbcImpl implements AccountTypeDao {
 		// TODO Auto-generated method stub
 		
 	}
-	
-	
+
 
 }
