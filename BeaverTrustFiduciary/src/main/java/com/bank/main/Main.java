@@ -21,30 +21,32 @@ import com.bank.tools.BankException;
 
 public class Main {
 	
+	// Setting up logger, scanner, for use in whole application
 	final static Logger myLog = Logger.getLogger(Main.class);
 	public static final Scanner scan = new Scanner(System.in);
 
 	public static void main(String[] args) {
-		
-     	// central hub for behavior
-		// should have very few commands, just start the ball rolling
 	
 //		if (myLog.isInfoEnabled()) {
-//			myLog.info("Hey, it workith!");			
+//			myLog.info("trying with filters");			
 //		}
+		
+//		myLog.trace("this is just for transactions");
+		
+//		myLog.info("filters info ONLY");
 //				
-//		myLog.warn("HEY!");
+//		myLog.error("filters error ONLY");
 		
 	     
 	    //my logger only works if my call to this object/method comes after the logging stuff!
-//		WelcomeView.welcome();
+		WelcomeView.welcome();
 //		AccountsView.view("ethan1");
-		try {
-			EmployeeView.banking();
-		} catch (BankException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//		try {
+//			EmployeeView.banking();
+//		} catch (BankException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 
 
 		UserServiceInterface usi = new UserServiceImplementation();

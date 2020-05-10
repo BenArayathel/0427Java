@@ -1,5 +1,8 @@
 select * from bank_user;
 select * from bank_account;
+select * from bank_transaction;
+
+
 
 select * from bank_user where username = 'ethan1' and password = 'ethan1';
 select * from bank_user where username = 'ethan1' and password = 'ethan1';
@@ -31,4 +34,9 @@ select * from bank_account;
 declare account_id varchar2(20);
 begin
 create_new_account(account_id, 92, 'evenmoremoemore', 3.30);
+end;
+
+declare transaction_id varchar2(20);
+begin
+create_new_transaction(transaction_id, 20, 'newaccount', 24, 'deposit');
 end;

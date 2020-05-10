@@ -91,6 +91,44 @@ public class AccountDAOImplementation implements AccountDAOInterface {
 		}
 		return accountList;
 	}
+	
+	// LOG ALL TRANSACTIONS WHEN MAKING DEPOSIT or WITHDRAWAL
+	public void logTransaction(String amount, String accountName, String user_id, String type) throws BankException {
+//		System.out.println(amount + accountName + user_id + type);
+		String sql = "{call create_new_transaction(?,?,?,?,?)}";
+		try (Connection conn = DataConnection.getConnection()) {
+			CallableStatement cs = conn.prepareCall(sql);
+			cs.setDouble(2, Double.parseDouble(amount));
+			cs.setString(3, accountName);
+			cs.setString(4, user_id);
+			cs.setString(5, type);
+			cs.registerOutParameter(1, java.sql.Types.VARCHAR);
+			
+			cs.execute();
+
+//			int rs2 = ps.executeUpdate();
+			
+//			try (Connection conn = DataConnection.getConnection()) {
+//				String sql = "{call create_new_account(?,?,?,?)}";
+//				CallableStatement cb = conn.prepareCall(sql);
+//				
+//				cb.setString(2, user.getUser_id());
+//				cb.setString(3, accountName);
+//				cb.setDouble(4, Double.parseDouble(depositAmount));
+//				
+//				cb.registerOutParameter(1, java.sql.Types.VARCHAR);
+//				
+//				cb.execute();
+//				
+//				account.setAccount_id(cb.getString(1));	
+			
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new BankException("trouble with LOG TRANSACTION IN DAO");
+		}
+	}
+	
 
 	
 	// DEPOSIT INTO ACCOUNT
@@ -106,7 +144,8 @@ public class AccountDAOImplementation implements AccountDAOInterface {
 					ps2.setDouble(1, Double.parseDouble(depositAmount));
 					ps2.setString(2, accountName);
 					ps2.setString(3, user_id);
-					int rs2 = ps2.executeUpdate();
+					logTransaction(depositAmount, accountName, user_id, "deposit");
+					ps2.executeUpdate();
 					
 
 				} catch (SQLException e) {
@@ -128,6 +167,8 @@ public class AccountDAOImplementation implements AccountDAOInterface {
 					ps2.setDouble(1, Double.parseDouble(withdrawalAmount));
 					ps2.setString(2, accountName);
 					ps2.setString(3, user_id);
+					logTransaction(withdrawalAmount, accountName, user_id, "withdrawal");
+					
 					int rs2 = ps2.executeUpdate();
 					
 

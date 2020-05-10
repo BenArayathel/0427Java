@@ -35,6 +35,7 @@ public class EmployeeView {
 		System.out.println("Enter '1' to make see all customers.");
 		System.out.println("Enter '2' to make see specific user's account details.");
 		System.out.println("Enter '3' to approve a new account application.");
+		System.out.println("Enter '4' to see all transactions.");
 		System.out.println("Enter 'quit' to exit to Home screen.");
 
 		
@@ -74,13 +75,16 @@ public class EmployeeView {
 				e.printStackTrace();
 			}
 			banking();
-		// APPROVE account
+		// APPROVE account //PROBLEM CHILD
 		} else if (selection.equals("3")) {
 			System.out.println("Approve customer's account by entering their User_ID: ");
 			user_id = Main.scan.nextLine().toString();
 			adi.approve(user_id);
 			System.out.println("Account approved.");
 			banking();
+		} else if (selection.equals("4")) {
+			System.out.println("Transaction Log: ");
+			
 		} else if (selection.equalsIgnoreCase("quit")) {
 			QuitOption.quit();
 		} else {
