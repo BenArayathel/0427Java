@@ -30,12 +30,12 @@ public class Main {
 //		if (myLog.isInfoEnabled()) {
 //			myLog.info("trying with filters");			
 //		}
-		
-//		myLog.trace("this is just for transactions");
-		
-//		myLog.info("filters info ONLY");
 //				
+//		myLog.info("filters info ONLY");
+//			
 //		myLog.error("filters error ONLY");
+//		
+//		myLog.warn("this is a warning");
 		
 	     
 	    //my logger only works if my call to this object/method comes after the logging stuff!
