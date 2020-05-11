@@ -34,6 +34,10 @@ public class BankOfBenDAO implements BankOfBenDAOInterface {
 		
 		Customer customer = null;
 		
+//		if (customerUsernameExists(user.getUsername()){
+//			throw new BusinessException("User "+)
+//		}
+		
 		try(Connection connection = OracleDbConnection.getConnection()){
 			
 			String sqlCall = "{call createcustomer(?,?,?,?,?,?,?,?,?,?,?)}";

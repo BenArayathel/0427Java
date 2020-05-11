@@ -54,29 +54,28 @@ public class PresentationLayer {
 
 	public static void main(String[] args) {
 		loggy.setLevel(Level.INFO);
-		loggy.info("This is a test! Use this method for all stdout.");
+//		loggy.info("This is a test! Use this method for all stdout.");
 		User user = null;
-//		int loginAttempts = 0;
 		Scanner sc = new Scanner(System.in);
 		String response=null;
 
-		SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
-		Date d=null;
-		try {
-			d = sdf.parse("10/05/1992");
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
-		
-		try {
-			System.out.println(new Employee("Ben", "Eli", "Swerdlow", "Tobias", d, 564738291L, "ben@gmail.com", 3216621808L,
-							"benswerd", "P4ssw0rd!", "thingy", "stuff", "person", false));
-		} catch (BusinessException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-		
-		System.exit(0);
+//		SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
+//		Date d=null;
+//		try {
+//			d = sdf.parse("10/05/1992");
+//		} catch (ParseException e) {
+//			e.printStackTrace();
+//		}
+//		
+//		try {
+//			loggy.info(new Employee("Ben", "Eli", "Swerdlow", "Tobias", d, 564738291L, "ben@gmail.com", 3216621808L,
+//							"benswerd", "P4ssw0rd!", "thingy", "stuff", "person", false));
+//		} catch (BusinessException e1) {
+//			// TODO Auto-generated catch block
+//			e1.printStackTrace();
+//		}
+//		
+//		System.exit(0);
 		
 		pl.printUserGreeting();
 		boolean userResponseValidated = false;
@@ -87,14 +86,14 @@ public class PresentationLayer {
 				try {
 					user = pl.requestUserInfo(sc);
 				} catch (BusinessException e) {
-					System.out.println(e.getMessage());
+					loggy.info(e.getMessage());
 					pl.printInvalidRegistrationMessage();
 				}
 				if (user!=null) {
 					try {
 						bl.applyForAccount(user);
 					} catch (BusinessException e) {
-						System.out.println(e.getMessage());
+						loggy.info(e.getMessage());
 					}
 					userResponseValidated = true;
 				}
@@ -102,7 +101,7 @@ public class PresentationLayer {
 				try {
 					user = pl.requestLoginUserInfo(sc);
 				} catch (BusinessException e) {
-					System.out.println(e.getMessage());
+					loggy.info(e.getMessage());
 					pl.printInvalidLoginMessage();
 				}
 				if (user!=null) {
@@ -129,9 +128,9 @@ public class PresentationLayer {
 					try {
 						accountView = bl.viewBalances(customer);
 					} catch (BusinessException e) {
-						System.out.println(e.getMessage());
+						loggy.info(e.getMessage());
 					}
-					System.out.println(accountView);
+					loggy.info(accountView);
 					
 				} else if (response.equalsIgnoreCase("deposit")) {
 
@@ -139,14 +138,14 @@ public class PresentationLayer {
 					try {
 						account = pl.requestCustomerSelectAccountForDeposit(customer, sc);
 					} catch (BusinessException e) {
-						System.out.println(e.getMessage());
+						loggy.info(e.getMessage());
 					}
 					
 					double deposit = pl.requestDepositAmount(account.getBalance(), sc);
 					try {
 						bl.makeDeposit(deposit, account, customer);
 					} catch (BusinessException e) {
-						System.out.println(e.getMessage());
+						loggy.info(e.getMessage());
 					}
 					
 				} else if (response.equalsIgnoreCase("withdraw")) {
@@ -155,14 +154,14 @@ public class PresentationLayer {
 					try {
 						account = pl.requestCustomerSelectAccountForWithdrawal(customer, sc);
 					} catch (BusinessException e) {
-						System.out.println(e.getMessage());
+						loggy.info(e.getMessage());
 					}
 					
 					double withdrawal = pl.requestDepositAmount(account.getBalance(), sc);
 					try {
 						bl.makeWithdrawal(withdrawal, account, customer);
 					} catch (BusinessException e) {
-						System.out.println(e.getMessage());
+						loggy.info(e.getMessage());
 					}
 					
 				} else if (response.equalsIgnoreCase("transfers")) {
@@ -175,11 +174,11 @@ public class PresentationLayer {
 						try {
 							transfers = bl.getTransfers(customer);
 						} catch (BusinessException e) {
-							System.out.println(e.getMessage());
+							loggy.info(e.getMessage());
 							break;
 						}
 						if (transfers.size()==0) {
-							System.out.println("You have no pending transfers at this time.");
+							loggy.info("You have no pending transfers at this time.");
 							while (selectingOptions) {
 								pl.printTransferOptions_nonePending();
 								transferResponse = sc.nextLine();
@@ -188,12 +187,12 @@ public class PresentationLayer {
 									Account myChosenAccount = UserInterface.requestMyChosenAccount(customer, sc);
 									double amount = UserInterface.requestPaymentAmount(myChosenAccount, otherAccount, sc);
 									if (Double.isNaN(amount)) {
-										System.out.println("Payment canceled.");
+										loggy.info("Payment canceled.");
 									} else {
 										try {
 											bl.postPayment(customer, myChosenAccount, otherAccount, amount);
 										} catch (BusinessException e) {
-											System.out.println(e.getMessage()+"\nPlease try again.");
+											loggy.info(e.getMessage()+"\nPlease try again.");
 										}
 										selectingOptions = false;
 									}
@@ -202,12 +201,12 @@ public class PresentationLayer {
 									Account myChosenAccount = UserInterface.requestMyChosenAccount(customer, sc);
 									double amount = UserInterface.requestRequestAmount(myChosenAccount, otherAccount, sc);
 									if (Double.isNaN(amount)) {
-										System.out.println("Request canceled.");
+										loggy.info("Request canceled.");
 									} else {
 										try {
 											bl.postRequest(customer, myChosenAccount, otherAccount, amount);
 										} catch (BusinessException e) {
-											System.out.println(e.getMessage()+"\nPlease try again.");
+											loggy.info(e.getMessage()+"\nPlease try again.");
 										}
 										selectingOptions = false;
 									}
@@ -219,11 +218,11 @@ public class PresentationLayer {
 								}
 							}
 						} else {
-							System.out.println("Your pending transfers are:");
+							loggy.info("Your pending transfers are:");
 							try {
 								pl.printPendingTransfers(transfers);
 							} catch (BusinessException e) {
-								System.out.println(e.getMessage()+"\nPlease try again.");
+								loggy.info(e.getMessage()+"\nPlease try again.");
 								selectingOptions = false;
 							}
 							while (selectingOptions) {
@@ -234,12 +233,12 @@ public class PresentationLayer {
 									Account myChosenAccount = UserInterface.requestMyChosenAccount(customer, sc);
 									double amount = UserInterface.requestPaymentAmount(myChosenAccount, otherAccount, sc);
 									if (Double.isNaN(amount)) {
-										System.out.println("Payment canceled.");
+										loggy.info("Payment canceled.");
 									} else {
 										try {
 											bl.postPayment(customer, myChosenAccount, otherAccount, amount);
 										} catch (BusinessException e) {
-											System.out.println(e.getMessage()+"\nPlease try again.");
+											loggy.info(e.getMessage()+"\nPlease try again.");
 										}
 										selectingOptions = false;
 									}
@@ -248,12 +247,12 @@ public class PresentationLayer {
 									Account myChosenAccount = UserInterface.requestMyChosenAccount(customer, sc);
 									double amount = UserInterface.requestRequestAmount(myChosenAccount, otherAccount, sc);
 									if (Double.isNaN(amount)) {
-										System.out.println("Request canceled.");
+										loggy.info("Request canceled.");
 									} else {
 										try {
 											bl.postRequest(customer, myChosenAccount, otherAccount, amount);
 										} catch (BusinessException e) {
-											System.out.println(e.getMessage()+"\nPlease try again.");
+											loggy.info(e.getMessage()+"\nPlease try again.");
 										}
 										selectingOptions = false;
 									}
@@ -262,16 +261,16 @@ public class PresentationLayer {
 									try {
 										transfer = pl.chooseATransferToAccept(transfers, sc);
 									} catch (BusinessException e) {
-										System.out.println(e.getMessage()+"\nPlease try again.");
+										loggy.info(e.getMessage()+"\nPlease try again.");
 										selectingOptions = false;
 										exitTransfers = true;
 									}
 									if (transfer!=null) {
 										try{
 											bl.acceptTransfer(transfer, customer);
-											System.out.println("Tranfer accepted.");
+											loggy.info("Tranfer accepted.");
 										} catch (BusinessException e) {
-											System.out.println(e.getMessage()+"\nPlease try again.");
+											loggy.info(e.getMessage()+"\nPlease try again.");
 											selectingOptions = false;
 										}
 									}
@@ -281,16 +280,16 @@ public class PresentationLayer {
 									try {
 										transfer = pl.chooseATransferToReject(transfers, sc);
 									} catch (BusinessException e) {
-										System.out.println(e.getMessage()+"\nPlease try again.");
+										loggy.info(e.getMessage()+"\nPlease try again.");
 										selectingOptions = false;
 										exitTransfers = true;
 									}
 									if (transfer!=null) {
 										try{
 											bl.rejectTransfer(transfer, customer);
-											System.out.println("Tranfer rejected.");
+											loggy.info("Tranfer rejected.");
 										} catch (BusinessException e) {
-											System.out.println(e.getMessage()+"\nPlease try again.");
+											loggy.info(e.getMessage()+"\nPlease try again.");
 											selectingOptions = false;
 										}
 									}
@@ -311,7 +310,7 @@ public class PresentationLayer {
 					try {
 						customer = bl.applyForAccount(customer);
 					} catch (BusinessException e) {
-						System.out.println(e.getMessage());
+						loggy.info(e.getMessage());
 					}
 					
 				} else if (response.equalsIgnoreCase("quit")) {
@@ -335,18 +334,18 @@ public class PresentationLayer {
 						viewResponse = sc.nextLine();
 						if (viewResponse.equalsIgnoreCase("all")) {
 							try {
-								System.out.println(bl.viewBalances());
+								loggy.info(bl.viewBalances());
 							} catch (BusinessException e) {
-								System.out.println(e.getMessage()+"\nPlease try again.");
+								loggy.info(e.getMessage()+"\nPlease try again.");
 							}
 						} else if (viewResponse.equalsIgnoreCase("customer")) {
 							String username = null;
-							System.out.println("Please type the username of the customer whose accounts you would like to view");
+							loggy.info("Please type the username of the customer whose accounts you would like to view");
 							username = UserInterface.requestUsername(sc);
 							try {
-								System.out.println(bl.viewBalances(username));
+								loggy.info(bl.viewBalances(username));
 							} catch (BusinessException e) {
-								System.out.println(e.getMessage()+"\nPlease try again.");
+								loggy.info(e.getMessage()+"\nPlease try again.");
 							}
 						} else if (viewResponse.equalsIgnoreCase("back")) {
 							choosingViews = false;
@@ -356,9 +355,9 @@ public class PresentationLayer {
 					}
 				} else if (response.equalsIgnoreCase("applications")) {
 					try {
-						System.out.println(bl.viewPendingApplications());
+						loggy.info(bl.viewPendingApplications());
 					} catch (BusinessException e) {
-						System.out.println(e.getMessage());
+						loggy.info(e.getMessage());
 					}
 				} else if (response.equalsIgnoreCase("log")) {
 					boolean choosingLogViews = true;
@@ -368,25 +367,25 @@ public class PresentationLayer {
 						viewLogResponse = sc.nextLine();
 						if (viewLogResponse.equalsIgnoreCase("all")) {
 							try {
-								System.out.println(bl.viewTransactions());
+								loggy.info(bl.viewTransactions());
 							} catch (BusinessException e) {
-								System.out.println(e.getMessage()+"\nPlease try again.");
+								loggy.info(e.getMessage()+"\nPlease try again.");
 							}
 						} else if (viewLogResponse.equalsIgnoreCase("account")) {
 							long accountNumber = UserInterface.requestAccountNumber(sc);
 							try {
-								System.out.println(bl.viewTransactions(accountNumber));
+								loggy.info(bl.viewTransactions(accountNumber));
 							} catch (BusinessException e) {
-								System.out.println(e.getMessage()+"\nPlease try again.");
+								loggy.info(e.getMessage()+"\nPlease try again.");
 							}
 						} else if (viewLogResponse.matches("^[0-9]+$")) {
 							try {
 								int latestNumber = Integer.parseInt(viewLogResponse);
 								bl.viewTransactions(latestNumber);
 							} catch (NumberFormatException e) {
-								System.out.println("The number you entered is invalid.\nPlease try again.");
+								loggy.info("The number you entered is invalid.\nPlease try again.");
 							} catch (BusinessException e) {
-								System.out.println(e.getMessage()+"\nPlease try again.");
+								loggy.info(e.getMessage()+"\nPlease try again.");
 							}
 						} else if (viewLogResponse.equalsIgnoreCase("back")) {
 							choosingLogViews = false;
@@ -403,120 +402,120 @@ public class PresentationLayer {
 		} else {
 			try {
 				bl.applyForAccount_returnNothing(user);
-				System.out.println("Thank you for applying for your account. Your application will be reviewed by a "
+				loggy.info("Thank you for applying for your account. Your application will be reviewed by a "
 						+ "Bank of Ben employee in a timely manner.");
 			} catch (BusinessException e) {
-				System.out.println(e.getMessage());
+				loggy.info(e.getMessage());
 			}
-			System.out.println("Exiting the Bank of Ben Application. Goodbye!");
+			loggy.info("Exiting the Bank of Ben Application. Goodbye!");
 			System.exit(0);
 		}
 		
 	}
 
 	public void printInvalidResponseMessage(String response) {
-		System.out.println("I am sorry. Your request \""+response+"\" is not a valid option.");
-		System.out.println("Please try again.\n");
+		loggy.info("I am sorry. Your request \""+response+"\" is not a valid option.");
+		loggy.info("Please try again.\n");
 	}
 
 	public void printInvalidRegistrationMessage() {
-		System.out.println("Invalid registration. Please try again.");
+		loggy.info("Invalid registration. Please try again.");
 	}
 
 	public void printInvalidLoginMessage() {
-		System.out.println("Invalid login. Please try again.");
+		loggy.info("Invalid login. Please try again.");
 	}
 
 	public void quit(Scanner sc) {
-		System.out.println("Are you sure you would like to quit the Bank of Ben Application?");
-		System.out.println("Type \"quit\" again to confirm. Enter anything else to return to your options.");
+		loggy.info("Are you sure you would like to quit the Bank of Ben Application?");
+		loggy.info("Type \"quit\" again to confirm. Enter anything else to return to your options.");
 		String response = sc.nextLine();
 		if (response.equalsIgnoreCase("quit")) {
-			System.out.println("Thank you for using the Bank of Ben Application.");
+			loggy.info("Thank you for using the Bank of Ben Application.");
 			System.exit(0);
 		}
 	}
 
 	public void printUserGreeting() {
-		System.out.println("Welcome to the Bank of Ben!\n");
+		loggy.info("Welcome to the Bank of Ben!\n");
 	}
 	
 	public void printUserOptions() {
-		System.out.println("Please select from the following options:");
-		System.out.println("Type \"register\" to register a new user");
-		System.out.println("Type \"login\" to log in.");
-		System.out.println("Type \"quit\" to quit the application");
+		loggy.info("Please select from the following options:");
+		loggy.info("Type \"register\" to register a new user");
+		loggy.info("Type \"login\" to log in.");
+		loggy.info("Type \"quit\" to quit the application");
 	}
 
 	public void printCustomerGreeting(Customer customer) {
-		System.out.println("Welcome "+customer.getFirstName()+" "+customer.getLastName()+"!");
+		loggy.info("Welcome "+customer.getFirstName()+" "+customer.getLastName()+"!");
 	}
 	
 	public void printCustomerOptions() {
-		System.out.println("Please select from the following options:");
-		System.out.println("Type \"view\" to view your balance(s)");
-		System.out.println("Type \"withdraw\" to make a withdrawal from an account");
-		System.out.println("Type \"deposit\" to make a deposit into an account");
-		System.out.println("Type \"transfers\" to view, manage, or post money transfers.");
-		System.out.println("Type \"apply\" to apply for a new account");
-		System.out.println("Type \"quit\" to quit the application");
+		loggy.info("Please select from the following options:");
+		loggy.info("Type \"view\" to view your balance(s)");
+		loggy.info("Type \"withdraw\" to make a withdrawal from an account");
+		loggy.info("Type \"deposit\" to make a deposit into an account");
+		loggy.info("Type \"transfers\" to view, manage, or post money transfers.");
+		loggy.info("Type \"apply\" to apply for a new account");
+		loggy.info("Type \"quit\" to quit the application");
 	}
 
 	public void printTransferOptions() {
-		System.out.println("Please select from the following transfer options:");
-		System.out.println("Type \"pay\" to post a money transfer paying money from an account you own "
+		loggy.info("Please select from the following transfer options:");
+		loggy.info("Type \"pay\" to post a money transfer paying money from an account you own "
 				+ "into an account you do or do not own");
-		System.out.println("Type \"request\" to request a money transfer from an account you do not own "
+		loggy.info("Type \"request\" to request a money transfer from an account you do not own "
 				+ "into an account you do own.");
-		System.out.println("Type \"accept\" to accept a money transfer payment from another user's account.");
-		System.out.println("Type \"reject\" to reject a money transfer payment from another user's account.");
-		System.out.println("Type \"view\" to view your pending transfers.");
-		System.out.println("Type \"back\" to go back to the customer options menu.");
+		loggy.info("Type \"accept\" to accept a money transfer payment from another user's account.");
+		loggy.info("Type \"reject\" to reject a money transfer payment from another user's account.");
+		loggy.info("Type \"view\" to view your pending transfers.");
+		loggy.info("Type \"back\" to go back to the customer options menu.");
 	}
 	
 	public void printTransferOptions_nonePending() {
-		System.out.println("Please select from the following transfer options:");
-		System.out.println("Type \"pay\" to post a money transfer paying money from an account you own "
+		loggy.info("Please select from the following transfer options:");
+		loggy.info("Type \"pay\" to post a money transfer paying money from an account you own "
 				+ "into an account you do or do not own");
-		System.out.println("Type \"request\" to request a money transfer from an account you do not own "
+		loggy.info("Type \"request\" to request a money transfer from an account you do not own "
 				+ "into an account you do own.");
-		System.out.println("Type \"back\" to go back to the customer options menu.");
+		loggy.info("Type \"back\" to go back to the customer options menu.");
 	}
 	
 	public void printEmployeeGreeting(Employee employee) {
-		System.out.println("Welcome "+employee.getFirstName()+" "+employee.getLastName()+"!");
-		System.out.println("Please select from the following options:");
+		loggy.info("Welcome "+employee.getFirstName()+" "+employee.getLastName()+"!");
+		loggy.info("Please select from the following options:");
 	}
 	
 	public void printEmployeeOptions() {
-		System.out.println("Please select from the following options:");
-		System.out.println("Type \"view\" to view user balances");
-		System.out.println("Type \"applications\" to view, approve, or deny account applications.");
-		System.out.println("Type \"log\" to view a log of all transactions");
-		System.out.println("Type \"quit\" to quit the application");
+		loggy.info("Please select from the following options:");
+		loggy.info("Type \"view\" to view user balances");
+		loggy.info("Type \"applications\" to view, approve, or deny account applications.");
+		loggy.info("Type \"log\" to view a log of all transactions");
+		loggy.info("Type \"quit\" to quit the application");
 	}
 	
 	public void registrationDisclaimer() {
-		System.out.println("Thank you for your interest in registering with the Bank of Ben.\n");
-		System.out.println("The following prompts will ask you for personal information necessary to create your "
+		loggy.info("Thank you for your interest in registering with the Bank of Ben.\n");
+		loggy.info("The following prompts will ask you for personal information necessary to create your "
 				+ "application. If you do not intend to apply for an account after all your personal infromation "
 				+ "is entered, your information will not be saved.\n");
-		System.out.println("Please complete the account application process after these personal information prompts "
+		loggy.info("Please complete the account application process after these personal information prompts "
 				+ "to complete the process. An employee will either approve or deny your account in a timely manner "
 				+ "and get back to you via email. If you are denied, your personal information will not be saved.\n");
 	}
 
 	public void printEmployeeBalanceViewingOptions() {
-		System.out.println("Type \"all\" if you would like to view all balances.");
-		System.out.println("Type \"customer\" if you would like to view all balances for a specific customer.");
-		System.out.println("Type \"back\" if you would like to go back to the other employee options.");
+		loggy.info("Type \"all\" if you would like to view all balances.");
+		loggy.info("Type \"customer\" if you would like to view all balances for a specific customer.");
+		loggy.info("Type \"back\" if you would like to go back to the other employee options.");
 	}
 
 	public void printEmployeeLogViewOptions() {
-		System.out.println("Type \"all\" if you would like to view the entire log of bank transactions.");
-		System.out.println("Type \"account\" if you would like to view the entire log of transactions related to an account number.");
-		System.out.println("Type any whole number to view that number of most recent log entries.");
-		System.out.println("Type \"back\" if you would like to go back to the other employee options.");
+		loggy.info("Type \"all\" if you would like to view the entire log of bank transactions.");
+		loggy.info("Type \"account\" if you would like to view the entire log of transactions related to an account number.");
+		loggy.info("Type any whole number to view that number of most recent log entries.");
+		loggy.info("Type \"back\" if you would like to go back to the other employee options.");
 	}
 	
 	public User requestUserInfo(Scanner sc) throws BusinessException {
@@ -528,7 +527,7 @@ public class PresentationLayer {
 		boolean loginRequested = false;
 		boolean goBack = false;
 		while (bl.emailExists(email)) {
-			System.out.println("The email "+email+" already exists. Would you like to login?\n"
+			loggy.info("The email "+email+" already exists. Would you like to login?\n"
 					+ "(yes or y to confirm, back or b to go back)");
 			String response = sc.nextLine();
 			if (response.equalsIgnoreCase("yes") || response.equalsIgnoreCase("y")) {
@@ -543,7 +542,7 @@ public class PresentationLayer {
 			}
 		}
 		while (bl.userExists(username) && !(loginRequested)) {
-			System.out.println("The username "+username+" already exists. Would you like to login?\n"
+			loggy.info("The username "+username+" already exists. Would you like to login?\n"
 					+ "(yes or y to confirm, back or b to go back)");
 			String response = sc.nextLine();
 			if (response.equalsIgnoreCase("yes") || response.equalsIgnoreCase("y")) {
@@ -562,7 +561,7 @@ public class PresentationLayer {
 			}
 		}
 		while (bl.userExists(ssn) && !(loginRequested)){
-			System.out.println("The ssn "+ssn+" already exists. Would you like to login?\n" 
+			loggy.info("The ssn "+ssn+" already exists. Would you like to login?\n" 
 					+ "(yes or y to confirm, back or b to go back)");
 			String response = sc.nextLine();
 			if (response.equalsIgnoreCase("yes") || response.equalsIgnoreCase("y")) {
@@ -602,9 +601,9 @@ public class PresentationLayer {
 		User user = new User(firstName, middleName, lastName, momsMaidenName, dob, ssn, email,
 				phoneNumber, username, password);
 		
-		System.out.println("Thank you for your information.");
+		loggy.info("Thank you for your information.");
 		
-//		System.out.println(user);
+//		loggy.info(user);
 		
 		return user;
 	}
@@ -625,13 +624,13 @@ public class PresentationLayer {
 				break;
 			} catch (BusinessException e) {
 				if (loginAttempts < 4) {
-					System.out.println(e.getMessage());
+					loggy.info(e.getMessage());
 				} else {
 					throw e;
 				}
 			}
 		}
-//		System.out.println(user);
+//		loggy.info(user);
 		if (loginAttempts >= 4) {
 			throw new BusinessException("Limit of password attempts exceeded. Please try again later.");
 		} else if (user==null) {
@@ -646,22 +645,22 @@ public class PresentationLayer {
 		String accountNumberString = null;
 		long accountNumber = 0;
 		while(accountNumber==0) {
-			System.out.println("Please input the account number for your deposit.");
-			System.out.println(accountInformation);
+			loggy.info("Please input the account number for your deposit.");
+			loggy.info(accountInformation);
 			accountNumberString = sc.nextLine();
 			if (accountNumberString.matches("[0-9]{10}")) {
 				try {
 					accountNumber = Long.parseLong(accountNumberString);
 					if (!customerAccounts.contains(accountNumber)) {
-						System.out.println("The given account number does not correspond to one of your accounts. Please try again.");
+						loggy.info("The given account number does not correspond to one of your accounts. Please try again.");
 						// if bad account number, reset to 0 and loop back.
 						accountNumber = 0;
 					}
 				} catch (NumberFormatException e) {
-					System.out.println("Invalid account number. Account numbers must be 10 digit numbers");
+					loggy.info("Invalid account number. Account numbers must be 10 digit numbers");
 				}
 			} else {
-				System.out.println("Invalid account number. Account numbers must be 10 digit numbers");
+				loggy.info("Invalid account number. Account numbers must be 10 digit numbers");
 			}
 		}
 		return bl.getAccount(accountNumber, Account.getRoutingNumber());
@@ -670,16 +669,16 @@ public class PresentationLayer {
 	public double requestDepositAmount(double balance, Scanner sc) {
 		double deposit = -1;
 		while (deposit<0) {
-			System.out.println("How much would you like to deposit?");
+			loggy.info("How much would you like to deposit?");
 			String depositString = sc.nextLine();
 			try {
 				deposit = Long.parseLong(depositString);
 				if (!ValidationTools.isValidMonetaryAmount(deposit)) {
-					System.out.println("Invalid deposit amount. Deposit amount must be a positive number that has only"
+					loggy.info("Invalid deposit amount. Deposit amount must be a positive number that has only"
 							+"two digits after the decimal point. Please try again.");
 				}
 			} catch (NumberFormatException e) {
-				System.out.println("Invalid deposit amount. Deposit amount must be a positive number that has only"
+				loggy.info("Invalid deposit amount. Deposit amount must be a positive number that has only"
 						+"two digits after the decimal point. Please try again.");
 			}
 		}
@@ -692,22 +691,22 @@ public class PresentationLayer {
 		String accountNumberString = null;
 		long accountNumber = 0;
 		while(accountNumber==0) {
-			System.out.println("Please input the account number for your withdrawal.");
-			System.out.println(accountInformation);
+			loggy.info("Please input the account number for your withdrawal.");
+			loggy.info(accountInformation);
 			accountNumberString = sc.nextLine();
 			if (accountNumberString.matches("[0-9]{10}")) {
 				try {
 					accountNumber = Long.parseLong(accountNumberString);
 					if (!customerAccounts.contains(accountNumber)) {
-						System.out.println("The given account number does not correspond to one of your accounts. Please try again.");
+						loggy.info("The given account number does not correspond to one of your accounts. Please try again.");
 						// if bad account number, reset to 0 and loop back.
 						accountNumber = 0;
 					}
 				} catch (NumberFormatException e) {
-					System.out.println("Invalid account number. Account numbers must be 10 digit numbers");
+					loggy.info("Invalid account number. Account numbers must be 10 digit numbers");
 				}
 			} else {
-				System.out.println("Invalid account number. Account numbers must be 10 digit numbers");
+				loggy.info("Invalid account number. Account numbers must be 10 digit numbers");
 			}
 		}
 		return bl.getAccount(accountNumber, Account.getRoutingNumber());
@@ -716,16 +715,16 @@ public class PresentationLayer {
 	public double requestWithdrawalAmount(double balance, Scanner sc) {
 		double withdrawal = -1;
 		while (withdrawal<0) {
-			System.out.println("How much would you like to withdraw?");
+			loggy.info("How much would you like to withdraw?");
 			String withdrawalString = sc.nextLine();
 			try {
 				withdrawal = Long.parseLong(withdrawalString);
 				if (!ValidationTools.isValidMonetaryAmount(withdrawal)) {
-					System.out.println("Invalid withdrawal amount. Withdrawal amount must be a positive number that has only"
+					loggy.info("Invalid withdrawal amount. Withdrawal amount must be a positive number that has only"
 							+"two digits after the decimal point. Please try again.");
 				}
 			} catch (NumberFormatException e) {
-				System.out.println("Invalid withdrawal amount. Withdrawal amount must be a positive number that has only"
+				loggy.info("Invalid withdrawal amount. Withdrawal amount must be a positive number that has only"
 						+"two digits after the decimal point. Please try again.");
 			}
 		}
@@ -739,7 +738,7 @@ public class PresentationLayer {
 		int transferIndex = -1;
 		while (acceptingTransfers) {
 			pl.printPendingTransfersEnumerated(transfers);
-			System.out.println("Please enter the number that corresponds to the transfer you would like "
+			loggy.info("Please enter the number that corresponds to the transfer you would like "
 					+ "to accept. Enter \"back\" to go back and see other transfer options.");
 			transferEntryString = sc.nextLine();
 			
@@ -758,8 +757,8 @@ public class PresentationLayer {
 			
 			if (transferIndex > -1) {
 				if (transferIndex < transfers.size()) {
-					System.out.println("You have chosen transfer number: "+transferEntryString);
-					System.out.println("Type \"accept\" to accept this transfer. Type \"back\" to go "
+					loggy.info("You have chosen transfer number: "+transferEntryString);
+					loggy.info("Type \"accept\" to accept this transfer. Type \"back\" to go "
 							+ "back to the main transfer menu. Enter anything else to select a "
 							+ "different transfer to accept.");
 					transferEntryString = sc.nextLine();
@@ -781,7 +780,7 @@ public class PresentationLayer {
 		int transferIndex = -1;
 		while (rejectingTransfers) {
 			pl.printPendingTransfersEnumerated(transfers);
-			System.out.println("Please enter the number that corresponds to the transfer you would like "
+			loggy.info("Please enter the number that corresponds to the transfer you would like "
 					+ "to reject. Enter \"back\" to go back and see other transfer options.");
 			transferEntryString = sc.nextLine();
 			
@@ -800,8 +799,8 @@ public class PresentationLayer {
 			
 			if (transferIndex > -1) {
 				if (transferIndex < transfers.size()) {
-					System.out.println("You have chosen transfer number:"+transferEntryString);
-					System.out.println("Type \"reject\" to reject this transfer. Type \"back\" to go "
+					loggy.info("You have chosen transfer number:"+transferEntryString);
+					loggy.info("Type \"reject\" to reject this transfer. Type \"back\" to go "
 							+ "back to the main transfer menu. Enter anything else to select a "
 							+ "different transfer to reject.");
 					transferEntryString = sc.nextLine();
@@ -844,16 +843,16 @@ public class PresentationLayer {
 		System.out.print("\n");
 		for (Payment p : payments) {
 			counter++;
-			System.out.println(counter+"\t|\t");
+			loggy.info(counter+"\t|\t");
 			System.out.print(p.getId()+"\t|\t");
 			customer = dbs.getCustomerById(p.getInitUserId());
 			System.out.print(customer.getLastName()+", "+customer.getFirstName()+"\t|\t");
 			System.out.print(p.getReceivingAccountNumber()+"\t|\t");
 			System.out.print(p.getAmount()+"\t|\t");
 			if (p.isPending()) {
-				System.out.println("Pending");
+				loggy.info("Pending");
 			} else {
-				System.out.println("Accepted");
+				loggy.info("Accepted");
 			}
 		}
 		
@@ -865,16 +864,16 @@ public class PresentationLayer {
 		System.out.print("\n");
 		for (Request r : requests) {
 			counter++;
-			System.out.println(counter+"\t|\t");
+			loggy.info(counter+"\t|\t");
 			System.out.print(r.getId()+"\t|\t");
 			customer = dbs.getCustomerById(r.getInitUserId());
 			System.out.print(customer.getLastName()+", "+customer.getFirstName()+"\t|\t");
 			System.out.print(r.getSoughtAccountNumber()+"\t|\t");
 			System.out.print(r.getAmount()+"\t|\t");
 			if (r.isPending()) {
-				System.out.println("Pending");
+				loggy.info("Pending");
 			} else {
-				System.out.println("Accepted");
+				loggy.info("Accepted");
 			}
 		}
 	}
@@ -911,9 +910,9 @@ public class PresentationLayer {
 			System.out.print(p.getReceivingAccountNumber()+"\t|\t");
 			System.out.print(p.getAmount()+"\t|\t");
 			if (p.isPending()) {
-				System.out.println("Pending");
+				loggy.info("Pending");
 			} else {
-				System.out.println("Accepted");
+				loggy.info("Accepted");
 			}
 		}
 		
@@ -930,9 +929,9 @@ public class PresentationLayer {
 			System.out.print(r.getSoughtAccountNumber()+"\t|\t");
 			System.out.print(r.getAmount()+"\t|\t");
 			if (r.isPending()) {
-				System.out.println("Pending");
+				loggy.info("Pending");
 			} else {
-				System.out.println("Accepted");
+				loggy.info("Accepted");
 			}
 		}
 	}

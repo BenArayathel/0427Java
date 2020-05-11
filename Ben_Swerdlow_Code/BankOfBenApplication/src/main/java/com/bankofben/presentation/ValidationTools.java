@@ -3,9 +3,12 @@ package com.bankofben.presentation;
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 
+import com.bankofben.dao.BankOfBenDAO;
 import com.bankofben.exceptions.BusinessException;
 
 public class ValidationTools {
+	
+	private static BankOfBenDAO dao = new BankOfBenDAO();
 	
 	public static boolean isValidDateString(String dmy) {
 		return dmy.matches("[0-9]{1,2}-[0-9]{1,2}-[0-9]{4}");
@@ -21,6 +24,7 @@ public class ValidationTools {
 	}
 	
 	public static boolean isValidUsername(String username) {
+		if (dao.customerUsernameExists(username)) {
 		if (username==null) {
 			return false;
 		} else if (username.length() < 4 || username.length() > 20) {
