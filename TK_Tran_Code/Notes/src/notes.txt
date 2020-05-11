@@ -1,0 +1,385 @@
+General
+	src - folder that contains human-readable code; .java
+	bin - folder that contains binary (byte code, compiled files) that the JVM executes; .jar, .class
+	Everything within Main(), will go onto the stack for execution.
+	Everything instance-level will go onto the heap.
+    Method overloading is the same method name but different number/type of parameters.
+    Method overriding is the same name but different implementation (different code block).
+
+Lambda Expressions
+    Assigning a variable "aBlockOfCode" a method.
+    This variable can be passed around as a value.
+    Go from this:
+        aBlockOfCode = public void perform() {
+                            System.out.println("Hello Lambda!");
+                        }
+    Break it down:
+        aBlockOfCode = () {
+                        System.out.println("Hello Lambda!");
+                        }
+            1. Remove modifier public, bc whoever wants to run the method can just call upon aBlockOfCode (wherever they want).
+            2. Remove return type void, bc compiler is smart enough to look for a "return" statement to determine return type.
+            3. Remove method name (perform), bc aBlockOfCode can be used to call the method.
+    To this:
+        aBlockOfCode = () -> {System.out.println("Hello Lambda!");}
+    Can remove curly braces:
+        aBlockOfCode = () -> System.out.println("Hello Lambda!");
+
+Wrapper Classes
+    Wraps around primitive data types and turns them into Objects:
+        boolean > Boolean
+        int > Integer
+        char > Character
+        byte > Byte
+        short > Short
+        long > Long
+        double > Double
+    Why?
+        So we can call methods on the objects (can't call methods on primitives).
+        So the objects can be used with data structures like the Collection API.
+    Primitives are still "faster" than wrappers.
+    Only use wrapper when a method needs to accept an Object.
+
+String
+	An object that contains an array of characters.
+	Allows creation and manipulation of strings (notice lowercase).
+	Immutable: Strings can't be changed once initialized.
+	Final: the class cannot be extended.
+    In memory:
+        String objects are stored in heap (Dog dog = new Dog())
+        String literals are stored in String pool, which itself is also in heap (String s = "hello");
+
+    StringBuilder
+        Mutable, more efficient (faster) than StringBuffer.
+    StringBuffer
+        Also mutable, but also thread safe/synchronized.
+        Lower efficiency (slower) than StringBuffer; it must wait for other threads before continuing.
+
+Collections Framework
+    A combination of classes and interface which are used to store and manipulate data in the form of objects.
+	Gives devs access to prepackaged data structures and algorithms for manipulating them.
+	java.util.Collection is the root for all data structures
+	All collections by default are iterable.
+	Collections is a utility class (helper class) that contains methods like sort(), shuffle(), binarySearch(), reverse(), etc.
+    Only OBJECTS can be stored in a collection.
+
+    Hierarchy:
+        Collections(C) > Iterable(I) > Collection(I) > List(I)/Set(I)/Queue(I)
+    List(I) - ordered collection, can contain duplicates, can contain multiple nulls, maintains order of insertion and accessed via indices.
+        ArrayList(C) - resizable array, not synchronized.
+        LinkedList(C) - operations traverse from beginning or end, whichever is closest to specified index.
+        Vector(C) - same as ArrayList but thead-safe/synchronized, legacy class.
+    Set(I) - unordered collection, cannot contain duplicates, can only contain 1 null.
+        HashSet(C) - Set backed by a hash table, doesn't maintain order, not thread-safe/synchronized.
+        LinkedHashSet(C) - HashSet that maintains insertion order.
+        TreeSet - maintains orders using insertion order or Comparator, doesn't allow duplicates.
+    Queue(I) - FIFO that can contain duplicates, only insertion/removal from end.
+        Provides additional insertion, extraction, and inspection operations.
+        offer(), poll(), peek().
+    Deque(I) - double-ended queue; allows insertion/removal from both ends.
+        "Double-ended queue", pronounced "deck".
+    Map(I) - stores key/value pairs, must contain a UNIQUE key but can have duplicate VALUES.
+        HashMap(C) - Map backed by a hash table, doesn't maintain order, permits null keys and values, not thread-safe/synchronized.
+        LinkedHashMap(C) - HashMap that maintains insertion order (not affected if key is re-inserted).
+        Hashtable(C) - doesn't permit nulls, thread-safe/synchronized,
+        TreeMap(C) - maintains orders using insertion order or Comparator, allows duplicate values (not keys).
+
+    CRUD: Create, Read, Update, Delete
+        Arrays are slow; must iterate through entire array.
+        Easier in collections, no need to iterate through.
+
+RegEx (Regular Expression)
+	An expression commonly used across programming languages; minor syntax changes.
+	PMA - Pattern Matching Algorithm
+	[] - expression
+	{} - length
+	^ - not
+	? -
+	. -
+	* -
+	() -
+	Examples:
+		[a-z]{5} - "any lowercase letter of length 5"
+		[0-9]{1,} - "at least 1 digit and max can be any"
+		[a-zA-Z0-9]{10} = "any alphanumeric word of length 10"
+		[^a-zA-Z0-9] - "apart from alphanumeric" (anything except alphanumeric)
+
+Exceptions
+	Exception: anything disrupting the flow of an application.
+	Exception-handling determines the quality of an application.
+
+	Separations of Concerns: Normal Workflow
+	Client/Users/Apps >
+		Tier 1: Presentation Layer
+			Logic
+			Accepts user input
+		Tier 2: Business/Application Layer
+			Logic
+			Checks and validates user input
+			Pre-filter, preliminary checks before consulting DB
+		Tier 3: Persistance/DB Layer
+			Logic
+			Interacts with database
+	> Database, SQL, NoSQL, PL/SQL
+
+	Object >
+		Throwable (all exceptions throwable) >
+			Exception (Checked Exception) >
+			- SQLException
+			- ClassNotFoundException
+			- ParseException
+			- IOException
+				RuntimeException (Unchecked Exceptions), compiler forces dev to handle it
+				- ArithmeticException (DivideByZero)
+				- IndexOutOfBoundsException
+				- ConcurrentModificationException
+
+	try..catch..finally
+		try - suspected code that might throw an exception
+		catch - handler of exception
+		finally - last block; runs regardless of whether exception was handled or not
+	throws
+		Tosses exception back to previous layer
+	throw
+		Explicitly create an exception with my own message
+
+	When an exception thrown at runtime, JVM creates exception Object with a predefined message.
+		Then, it checks if the dev has handled it.
+
+Serialization
+	Serialization is the process of converting a Java Object into a byte stream,
+	to transfer it from one JVM to another and recreate it via deserialization.
+
+	For an object to be serializable:
+		The parent class must implement the Serializable interface.
+		All vars in class must be serializable; mark transient if you don't want it to be.
+
+	When implementing Serializable, must generate a seriazable ID.
+
+	ObjectOutStream used to serialize an object.
+		FileOutputStream used for writing byte data to a File.
+		For writing character streams, use FileWriter.
+
+	ObjectInputStream used to deserialize an object.
+		FileInputStream used for reading byte data from a File.
+		For reading character streams, use FileReader.
+
+	Why?
+		To save/persist state of an object.
+		To travel an object across a network.
+		Serialized data streams support encryption compression, authentication, and secure Java computing.
+		Many critical technologies rely on serialization.
+
+Comparable vs Comparator (Sorting)
+	Comparable
+        Compares an object WITH ITSELF.
+        Must first implement java.lang.Comparable interface.
+        One method: .compareTo(Object obj);
+        Returns:
+            positive integer, if the current object is greater than the specified object.
+            negative integer, if the current object is less than the specified object.
+            zero, if the current object is equal to the specified object.
+    Comparator
+        Compares TWO OBJECTS.
+        Must first implement java.util.Comparator interface.
+        Two methods: .compare(Object obj1,Object obj2) and .equals(Object obj).
+
+Design Patterns
+    Language agnostic solutions to common problem scenarios.
+    Allows for more reusable and maintainable code.
+    Creational Design Patterns - resolves issues w/ creating objects in a system.
+        Singleton Pattern: restricts instantiation to one object.
+        Factory Pattern:
+    Structural Design Patterns - focuses on how classes and objects can be composed.
+        Identifies simplest way to realize relationships bt entities.
+        Adapter:
+    Behavioral Design Patterns - deals with how objects interact (communicate).
+        Chain of Responsibility:
+
+Multithreading
+    Thread: a single process of execution; shares resources within the core its in.
+    Multithreading: running multiple threads in parallel.
+
+    Main Thread
+        Child threads will spawn from it.
+        Will be the last thread to finish execution; once it stops, the program stops.
+    Daemon Thread
+        Thread always running in the background.
+        E.g., Garbage Collection
+    User Threads
+        Can be started and closed manually by user.
+
+    Two ways to make custom threads:
+        1. Implementing Runnable interface
+            Can even extend another class while also implementing runnable.
+            Also has less overhead, you don't get unnecessary methods.
+        2. Extending Thread class
+            Less lines of code to "start".
+            Easier to override functionality of the Thread class.
+
+    States of a Threads = New > Runnable > Running > Waiting > Dead
+        New: the thread is instantiated.
+        Runnable: start() has been invoked, but the schedular hasn't selected it to start running.
+        Running: scheduler has selected it to run.
+        Waiting, Time Waiting, Blocked: the thread is alive, but not currently running.
+        Dead: thread has been terminated.
+
+    Common Thread Problems
+        1. Synchronization
+            When threads are utilizing the same resource, e.g. modifying a data structure,
+            errors will occur bc changes will occur to the resource in separate threads.
+        2. Deadlock
+            When multiple threads are trying to access the same resource.
+        3. Producer-Consumer
+            Producer produces resources for another thread, via storing it in a buffer.
+            Consumer consumes resource and removes it from the buffer.
+            Error occurs if:
+                Producer continually produces and consumer never consumes.
+                Consumer tries to consume but there's nothing in the buffer to consume.
+
+Maven
+    Maven is a dependency manager; allows integration of external libraries and packages.
+    Also considered a built and automation tool.
+
+    Dependency: external standalone program that we'll utilize in our project.
+    POM: Project Object Model, formatted as an XML file containing all config details for Maven project.
+
+SQL
+    Important Commands:
+        SELECT - extracts data from a database
+        UPDATE - updates records in a table
+            // Updates (SET) based on condition (WHERE)
+            UPDATE table_name
+            SET column1 = value1, column2 = value2, ...
+            WHERE condition;
+        DELETE - deletes records in a table
+            DELETE FROM table_name WHERE condition;
+        INSERT INTO - inserts new data into a database; two methods:
+            // Add values individually per column
+            INSERT INTO table_name (column1, column2, column3, ...)
+            VALUES (value1, value2, value3, ...);
+
+            // Add values to all columns; make sure addition order is in same order as columns, though.
+            INSERT INTO table_name
+            VALUES (value1, value2, value3, ...);
+        ORDER BY ASC/DESC - sorts in ascending order
+            // Sorts alphabetically by country, then reverse-alphabetically by name
+            ORDER BY Country ASC, Name DESC;
+        CREATE DATABASE - creates a new database
+        ALTER DATABASE - modifies a database
+        CREATE TABLE - creates a new table
+        ALTER TABLE - modifies a table
+        DROP TABLE - deletes a table
+        CREATE INDEX - creates an index (search key)
+        DROP INDEX - deletes an index
+
+    Test for NULL values using IS NULL or IS NOT NULL; cannot use operators like = or !=.
+
+    Sub-Languages: (* = important) - https://www.geeksforgeeks.org/sql-ddl-dql-dml-dcl-tcl-commands/
+        *DDL: Data Definition Language (Structure)
+            Create/Drop/Alter/Rename/Modify/Truncate
+        *DML: Data Manipulation Language (Records)
+            Insert/Update/Delete
+        *DQL: Data Query Language (Reads)
+            Select
+        DCL: Data Control Language (Manage Users)
+            Grant(give access permissions)/Revoke(remove access)
+        TCL: Transaction Control Language (Transactions)
+            Commit/Rollback/SavePoint
+
+PL/SQL? ("Advanced SQL")
+    Procedural Language
+        Methods/Blocks
+        Data types
+        Loops
+        Conditional structurals (if/else)
+        Collection (storage)
+        Exception handling
+        Trigger: reusable blocks of code (method) that cannot cannot be called.
+            These methods are used during event handling execution.
+            Triggers react on DML events.
+        Cursors
+            Creates "pointers" to address of SELECT statement.
+            Points to the results generated by the SELECT statement.
+            Called "ResultSet" in Java.
+    Why PL/SQL?
+        Fewer calls you're making to the DB.
+        Faster processing of queries in DB.
+        Helpful when logical calculations are entirely dependent on the DB.
+    Procedure vs. Function
+        Procedures - doesn't return a value.
+        Functions - returns a value.
+
+    2 Types of Blocks
+        1. Anonymous blocks - nameless blocks, used to test procedures or functions; not stored in DB.
+        2. Named blocks - our actual procedures or functions; stored in DB until we drop them.
+
+    Block syntax:
+        --declaration section
+        DECLARE --optional
+
+        --execution block
+        BEGIN --mandatory (inherently a try block)
+            --logic written between BEGIN and END.
+
+
+            --exception block (inherently a catch block)
+            EXCEPTION --optional
+
+        END --ends execution
+
+    DUAL - a table w/o any columns used for testing.
+
+    Query Statements:
+        Statement(I) - general purpose; useful when usig statinc SQL statements at runtime; cannot accept input params.
+        PreparedStatement(I) - used when plan to use a SQL statement many times; accepts input params.
+        CallableStatement(I) - makes calls to stored procedures and functions in the DB; accepts input params.
+    Execute Statements:
+        boolean execute() - best to use for DDL commands (CREATE, DROP, ALTER, TRUNCATE, RENAME).
+        int executeUpdate() - best to use for DML commands (INSERT, UPDATE, DELETE).
+        ResultSet executeQuery() - best to use for DQL commands (SELECT).
+
+Normalization (review Data Management Foundations in OneNote)
+    1NF
+        Tabular format, no repeating groups, PK identified.
+    2NF
+        1NF and no partial dependencies.
+    3NF
+        2NF and no transitive dependencies.
+
+ACID Properties - https://www.javatpoint.com/transaction-management-in-jdbc
+    ACID properties describe transaction management in JDBC.
+    Transaction - a single unit of work.
+    ACID:
+        A - Atomicity: either all successful or none.
+        C - Consistency: ensures bringing DB from one consistent state to another consistent state.
+        I - Isolation: ensures a transaction is isolated from other transactions.
+        D - Durability: means once a transaction is committed, it'll remain so, even in an event of errors, power loss, etc.
+    Advantages of Transaction Management
+        Fast performance: DB hit at the time of commit.
+
+Logging
+    Allows creation of external files to store logs as backup.
+
+Time API
+    java.sql.Date better for database interaction.
+    java.util.Date better for local work.
+    util date is superclass; sql date is subclass.
+
+AWS - https://www.tutorialspoint.com/amazon_web_services/index.htm
+    AWS RDS hosts our database.
+    Oracle SQL Developer used to interact with the database.
+    A security group acts as a virtual firewall for your instance to control inbound and outbound traffic.
+
+JDBC - https://www.tutorialspoint.com/jdbc/index.htm
+    Connection interface provides methods to manage transactions:
+        void setAutoCommit(boolean) - true by default means each transaction is commited by default.
+        void commit() - commits the transaction.
+        void rollback() - cancels the transaction.
+
+DAO Design Pattern - https://www.tutorialspoint.com/design_pattern/data_access_object_pattern.htm
+    Separate low level data accessing API or operations from high level business services.
+    Participants:
+        DAO Interface - interface defines standard operations to be performed on objects.
+        DAO concrete class - implements above interface, responsible for getting data from DB.
+        Model Object or Value Object - simple POJO containing getters/setters to store data retrieved using the DAO concrete class.

@@ -1,0 +1,98 @@
+--[ SQL Questions ]--
+
+What is a database?
+    Stored collection of data.
+What is DBMS?
+    Database Management System; software packaged to define, manipulate, retrieve, and manage data in a database.
+What is RDBMS?
+    Relational Database Management System; subset of DBMS, stores data in a structured format using columns and rows.
+What is SQL?
+    Structured Query Language; language designed to communicate with databases.
+*DDL: Data Definition Language (Structure)
+    Create/Drop/Alter/Rename/Modify/Truncate
+*DML: Data Manipulation Language (Records)
+    Insert/Update/Delete
+*DQL: Data Query Language (Reads)
+    Select
+DCL: Data Control Language (Manage Users)
+    Grant(give access permissions)/Revoke(remove access)
+TCL: Transaction Control Language (Transactions)
+    Commit/Rollback/SavePoint
+What is a query?
+    A request for data or information from a database.
+What are the properties of transactions?
+    Any change made to a database.
+    Properties: ACID; Atomicity, Consistency, Isolation, Durability.
+What is a key?
+    A field used to sort data; can also create relationships.
+What is a candidate key?
+    Column (or set of columns) that uniquely identifies a DB record w/o referring to ANY other data.
+What is a primary key?
+    A column (or set of columns) that uniquely identifies a record.
+What is a composite key?
+    A key composed of more than one attribute.
+What is a foreign key?
+    A PK of one table that's placed in another table to create a common attribute.
+What is multiplicity?
+    Max number of entity occurrences integrated with one occurrence of a related activity.
+    How many instances of one object are related to instances of another object.
+What is referential integrity?
+    Condition in which every reference to an entity instance by another entity instace is valid.
+    If something in one table is "correctly" pointing to something else in another table.
+    Foreign keys used to ensure referential integrity.
+    Foreign keys must always reference a valid primary key
+What is a cascade delete?
+    If a record from the parent table is deleted, the corresponding records in child table will automatically be deleted.
+What is Like keyboard?
+    Used in WHERE clause to specify a pattern in a column.
+What is GROUP BY?
+    Groups rows that have the same values into "summary rows".
+What is ORDER BY?
+    Sort the result set in ascending or descending order.
+What is the WHERE clause?
+    Filters records.
+What is the HAVING clause?
+    Used when WHERE clause couldn't be used with aggregate functions.
+What is an aggregate function?
+    COUNT, AVG, SUM, MAX, MIN, etc.
+What is a scalar function?
+    User-defined function that returns a single value each time it's invoked.
+What are constraints?
+    Specify rules for data in a table.
+    PRIMARY KEY, FOREIGN KEY, UNIQUE, NOT NULL, etc.
+What is a view?
+    The result set of a stored procedure on the data.
+What is set operations?
+    Allow results of multiple queries to be combined into a single result set.
+    UNION, INTERSECT, EXCEPT, etc.
+What are joins?
+    Clause used to combine rows from two or more tables.
+How are joins different to set operations?
+What is normalization?
+1st NF - no repeating groups and PK identified.
+2nd NF - 1st NF w/o partial dependencies.
+3rd NF - 2nd NF w/o transitive dependencies.
+What is PL/SQL?
+    Procedural language SQL;
+What is a sequence?
+What is a stored procedure?
+    Procedure on the DB that doesn't return a value.
+Function vs Stored procedure
+    Functions returns values; procedures don't.
+What is a cursor?
+    Control structure that enables traversal over records in a DB
+How do you add a record to a table?
+How do you add column to a table
+How would you use IN and EXIST?
+DROP?
+DELETE?
+TRUNCATE?
+How to prevent SQL injections?
+    Create stored procedures, accessed only in the database.
+CRUD operations
+What is ACID?
+    Guarantees transactions are processed reliably.
+    Atomicity - transaction must be completed with all its data modifications, or none is performed at all.
+    Consistency - at the end of the transaction, all data must be left in a consistent state.
+    Isolation - modifications performed are independent of another.
+    Durability - when transaction is completed, effects must be permanent in the system.

@@ -1,0 +1,51 @@
+## Project 0: Bank
+​
+## Description
+   The Bank app is a console-based application that simulates banking operations.
+   A customer can apply for an account, view their balance, and make withdrawals and deposits.
+   An employee can approve or deny accounts and view account balances for their customers.
+
+## Purpose
+   We want to see that you can meet deadlines and that you can code.
+   You are expected to complete the following requirements and give a 10 minute presentation of your project to our QC team.
+
+## Requirements
+X	1. Functionality should reflect the below user stories.
+X	2. Data is stored in a database.
+X	3. A custom stored procedure is called to perform some portion of the functionality.
+X	4. Data Access is performed through the use of JDBC in a data layer consisting of Data Access Objects.
+X	5. All input is received using the java.util.Scanner class.
+X	6. Log4j is implemented to log events to a file.
+X	7. A minimum of 10 JUnit test is written to test some functionality.
+​
+## User Stories
+Total Points: 23 points
+    // General
+X	* As a user, I can register for a customer account.
+X	* As a user, I can login.
+X	* As the system, I reject invalid transactions.
+X	    * A withdrawal that would result in a negative balance.
+X		* A deposit or withdrawal of negative money.
+	// Customers
+X	* As a customer, I can apply for a new bank account with a starting balance.
+X	* As a customer, I can view the balance of a specific account.
+X	* As a customer, I can make a withdrawal or deposit to a specific account.
+X	* As a customer, I can post a money transfer to another account.
+X	* As a customer, I can accept a money transfer from another account.
+	// Employee
+​X   * As an employee, I can approve or reject an account.
+X   * As an employee, I can view a customer's bank accounts.
+X   * An employee, I can view a log of all transactions.
+
+Project Evaluation Parameters
+	1) Your project will be evaluated based on coverage of technology rather than the user stories.
+	2) How well you present, naming conventions, separation of code into various classes, how well have you applied OOP and design patterns.
+	3) So you could focus less on user stories and more on coverage of things/technologies which you learnt during the training.
+
+P0 Presentation
+    Submit project by Monday.
+    Presentation is on Wednesday.
+    Audience: QC team based in India.
+    Time limit: 10 minutes, but plan for 7 to allocate time for questions.
+    No PowerPoints, just show functionality
+    INTRODUCE YOURSELF AND PRODUCT

@@ -1,0 +1,33 @@
+
+
+Mini-Project
+    Create 2 HTML pages:
+        Guideline:
+            About me
+            Hobby 
+            Interesting topic 
+        Utilize:
+            Use an image
+            tables
+            lists
+            Anchor tag
+            CSS:
+                Classes
+                Id
+                Nested tags
+
+05.11.20
+    HTML
+        Tags
+    CSS
+        BoxModel
+            Margin - transparent, clears area outside the border.
+            Border - goes around padding and content.
+            Padding - transparent, clears area around content.
+            Content - content of the box, where text and images appear.
+    Boostrap
+    Homework:
+        FlexboxFroggy
+        HTML vs HTML5
+        Why is Flash becoming obsolete?
+        Experiment with forms
