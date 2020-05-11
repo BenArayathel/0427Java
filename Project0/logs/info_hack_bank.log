@@ -1,0 +1,11 @@
+2020-05-11 01:31:54,164 -0500 [main] INFO  (Main.java:194) - Customer BenK applied for account 10328 with starting balance 14000.0
+2020-05-11 01:33:05,266 -0500 [main] INFO  (Main.java:289) - Customer BenK withdrew $2000.0 from account 10328
+Remaining balance: 14000.0
+2020-05-11 01:51:10,652 -0500 [main] INFO  (Main.java:355) - Customer BenK transferred $3000.0 from account 10328 into account 10327
+Remaining balance: 14000.0
+2020-05-11 01:55:44,211 -0500 [main] INFO  (Main.java:130) - Account 10328 approved by Bob Executive
+2020-05-11 01:55:45,814 -0500 [main] INFO  (Main.java:130) - Account 10328 approved by Bob Executive
+2020-05-11 01:56:23,030 -0500 [main] INFO  (Main.java:258) - Customer BenK deposited $2000.0 from account 10328
+Remaining balance: 13000.0
+2020-05-11 01:57:05,541 -0500 [main] INFO  (Main.java:297) - Customer BenK withdrew $-2000.0 from account 10328
+Remaining balance: 13000.0
