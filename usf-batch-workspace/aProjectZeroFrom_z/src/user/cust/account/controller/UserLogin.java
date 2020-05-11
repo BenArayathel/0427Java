@@ -16,7 +16,7 @@ public class UserLogin {
 		Scanner scanner = new Scanner(System.in);
 		String username = "";
 
-		System.out.println("Enter Username: ");
+		Log.logger("Enter Username: ");
 
 		if (scanner.hasNext()) {
 
@@ -28,7 +28,7 @@ public class UserLogin {
 	
 	public void getPassword(Scanner scanner, String username) {
 
-		System.out.println("Enter Password: ");
+		Log.logger("Enter Password: ");
 		if (scanner.hasNext()) {
 
 			String password = scanner.nextLine();

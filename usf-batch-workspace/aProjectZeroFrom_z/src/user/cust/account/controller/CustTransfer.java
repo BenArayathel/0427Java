@@ -1,5 +1,5 @@
-package user.cust.account.controller;
-
-public class CustTransfer {
-
-}
+//package user.cust.account.controller;
+//
+//public class CustTransfer {
+//
+//}

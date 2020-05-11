@@ -2,6 +2,7 @@ package user.cust.account.controller;
 
 import java.util.Scanner;
 
+import log.Log;
 import user.cust.account.models.User;
 
 public class UserOptionsDirectory {
@@ -11,12 +12,12 @@ public class UserOptionsDirectory {
 	
 	public void userOptionsDir(User user) {
 		
-		System.out.println("\nSelect User Options");
-		System.out.println("1 - Apply to Become a Customer");
-		System.out.println("2 - Employee Portal");
+		Log.logger("\nSelect User Options");
+		Log.logger("1 - Apply to Become a Customer");
+		Log.logger("2 - Employee Portal");
 		//System.out.println("Deposit: 3");
 		//System.out.println("Withdraw: 4");
-		System.out.println("3 - Quit");
+		Log.logger("3 - Quit");
 
 
 		if (scanner.hasNext()) {

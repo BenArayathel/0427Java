@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.Scanner;
 
 import bank.transaction.dao.BankDaoImpl;
+import log.Log;
 import user.cust.account.models.Customer;
 import user.cust.account.models.User;
 
@@ -16,18 +17,18 @@ public class CustApplyForAcct {
 
 	public void acctForm(User user) {
 		
-		System.out.println("Welcome to Application For Acct");
+		Log.logger("Welcome to Application For Acct");
 		
 	
 		
-		System.out.println("Enter Date of Birth: ");
-		System.out.println("Format dd-mm-yyyy");
+		Log.logger("Enter Date of Birth: ");
+		Log.logger("Format dd-mm-yyyy");
 		if (scanner.hasNext()) {
 
 			this.dob = scanner.nextLine();
 		}
 		
-		System.out.println("Starting Balance: ");
+		Log.logger("Starting Balance: ");
 		if (scanner.hasNext()) {
 
 			this.balance = Double.parseDouble(scanner.nextLine());
