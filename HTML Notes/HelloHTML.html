@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+
+<!-- 
+    This is a comment in HTML (HyperText Markup Language). All web pages are built on HTML documents.
+
+-->
+
+<html>
+
+    <head><!--root tag-->
+        <!--metadata goes here!-->
+        <!--your user will not see stuff in the head (except for the title)-->
+        <meta charset="UTF-8">
+        <title>HELLO HTML</title>
+        <link rel="stylesheet" type="text/css" href="MyStyle.css">
+        <!--<style>
+            p{
+                color: purple;
+            }
+
+            div{
+                background-color:red;
+            }
+
+            h3{
+                text-align:left;
+            }
+
+            h1{
+                text-align: left;
+            }
+            
+        </style>-->
+        <!--style tag takes precedence over enclosing tag attributes, but can be overridden by in-line attributes-->
+    </head>
+
+    <body>
+        
+    <header style=text-align:right>
+        <h1 style=text-align:center>SUPER AWESOME CENTERED TITLE</h1>
+        <h1> PLEASE PUT ALL HEADER INFORMATION IN THE HEADER TAG</h1>
+        <h2> even though you can get away with not doing it. It is best practice to put it there.</h2>
+        <h1>Welcome to my HTML script</h1>
+        <h3>Small</h3>
+        <h6>Tiny</h6>
+    </header>
+
+        
+
+        <div>
+            <!--div helps you organize your html.
+                 You can get all of the stuff in each div tag (as opposed
+                to having to select each p, for example>-->
+            <p>This is a paragraph tag</p>
+            <p>This is another paragraph tag</p>
+            <span>Here's a span element. It will not make a line break!</span>
+        </div>
+
+        <span>However, div will automatically, so this span is separate</span>
+
+        <br><!--break tag, specifies a line break.
+        Try to avoid using <br> since it can cause problems on small devices?-->
+    </body>
+
+    <table border=8>
+        <tr>
+            <th style="color:red">Left</th>
+            <!--Placing style attributes outside head is inefficient. Have to render new stuff each time and write more code-->
+            <th>Right</th>
+        </tr>
+        <tr>
+            <td>number 1</td>
+            <td>number 2</td>
+        </tr>
+    </table>
+
+    <ol>
+        <li>This</li>
+        <li>is</li>
+        <li></li>
+        <li>an</li>
+        <li>Ordered List</li>
+    </ol>
+
+    <ul>
+        <li>This</li>
+        <li>is</li>
+        <li></li>
+        <li>an</li>
+        <li>Unordered List</li>
+    </ul>
+
+    <form action = # method="GET"><!--Action: endpoint to send the form data, methood: HTTP method-->
+        <input type="text" placeholder="This is a placeholder">
+        <input type="password">
+        <input type="submit" value="Hello There!!!">
+    </form>
+
+    <iframe src=https://cdn.vox-cdn.com/thumbor/fNwRmSTE0L-p6SjuaQmsmhfmEb0=/0x0:655x365/1400x1400/filters:focal(249x23:353x127):format(jpeg)/cdn.vox-cdn.com/uploads/chorus_image/image/55356659/spider_man_homecoming.0.jpg
+     height="400", width="200">
+    </iframe>
+    <img src=https://cdn.vox-cdn.com/thumbor/fNwRmSTE0L-p6SjuaQmsmhfmEb0=/0x0:655x365/1400x1400/filters:focal(249x23:353x127):format(jpeg)/cdn.vox-cdn.com/uploads/chorus_image/image/55356659/spider_man_homecoming.0.jpg
+    class="fun">
+    <!--Class is used to select multiple elements of class in JS-->
+    <p class="superman paragraph">Welcome to my superman paragraph.</p>
+
+    <div class="superheroes">
+        <p class="superheroes">Green Lantern here!</p>
+    </div>
+    <!--Don't reuse ids!!! (Best practice)-->
+    <p id="Batman">I'M BATMAN!!! No one else is me!!! (I used an id attribute)</p>
+
+
+    <footer>
+        <a href="https://www.google.com">CLICK ME</a>
+        <p>Put footer information here, even though you could put it anywhere</p>
+    </footer>
+</html>

@@ -1,0 +1,40 @@
+p{
+    color: purple;
+}
+
+div{
+    background-color:red;
+}
+
+h3{
+    text-align:left;
+}
+
+h1{
+    text-align: left;
+}
+
+body{
+    /*Selecting an element by its tag*/
+    background-color: lightblue;
+}
+
+.superheroes{
+    /* Selecting an element by its class */
+    background-color: orchid;
+}
+
+#Batman{
+    /* Selecting an element by its id*/
+    color: orange;
+}
+
+div>h6{
+    /*Selects all h6 inside div*/
+    background-color: maroon;
+}
+
+p.superheroes{
+    /*selects all paragraphs with class superhero*/
+    color: greenyellow;
+}
