@@ -9,9 +9,9 @@ import java.util.Scanner;
 import bank.transaction.dao.BankDaoImpl;
 import bank.transaction.dao.TransactionDaoImpl;
 import log.Log;
+import not.used.Account;
+import not.used.Customer;
 import oracle.sql.DATE;
-import user.cust.account.models.Account;
-import user.cust.account.models.Customer;
 import user.cust.account.models.Transaction;
 import user.cust.account.models.User;
 
@@ -24,8 +24,8 @@ public class CustViewBal_Depos_Wthdr_Transf {
 	Transaction t = new Transaction();
 	TransactionDaoImpl tDao = new TransactionDaoImpl();
 	
-	Customer c = new Customer();
-	Account a = new Account();
+	//Customer c = new Customer();
+	//Account a = new Account();
 	SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
 	Date date = new Date();  
     //System.out.println(formatter.format(date));
@@ -131,7 +131,7 @@ public class CustViewBal_Depos_Wthdr_Transf {
 		
 		if (user.getA_access() == 1) {
 			
-			Log.logger("Under Construction..");
+			//Log.logger("Under Construction..");
 			
 			if (transferHelperwithdraw(user)) {
 				
@@ -141,8 +141,8 @@ public class CustViewBal_Depos_Wthdr_Transf {
 				//usersNeedApproval = b.getAllUsers();
 				transferRecipient = b.getAllUsers_withAuth();
 
-				Log.logger(transferRecipient.size() + " Customer(s):");
-				Log.logger("Select -which- Customer to Transfer to:\n");
+				Log.logger("Listing recognized accounts:");
+				Log.logger(transferRecipient.size() + " Total Customer(s):\n");
 
 
 				for (User u : transferRecipient) {
@@ -165,9 +165,9 @@ public class CustViewBal_Depos_Wthdr_Transf {
 
 						// approve acct
 						
-						Log.logger("Select customer from list:");
-						Log.logger("() <- approve: ie: 1");
-						Log.logger("0 - Quit - back to Employee Directory");
+						Log.logger("\nSelect Number from list:");
+						Log.logger("() <- to approve: ie: 1");
+						Log.logger("0 - to Quit - back to menu");
 
 						
 						if (scanner.hasNext()) {
@@ -180,7 +180,7 @@ public class CustViewBal_Depos_Wthdr_Transf {
 								Log.logger("this: " + transferRecipient.get(nav-1).toString());
 								
 								// send user, funds, recipient
-								System.out.println("service calling the back");
+								//Log.logger("service calling the back");
 								
 								b.update_transfer(user, transferFunds, transferRecipient.get(nav-1));
 								

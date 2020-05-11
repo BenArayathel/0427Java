@@ -1,4 +1,4 @@
-package bank.transaction.dao;
+package not.used;
 
 public class TransferReceived extends TransactionDeposit {
 

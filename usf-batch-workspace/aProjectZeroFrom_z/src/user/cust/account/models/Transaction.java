@@ -3,10 +3,10 @@ package user.cust.account.models;
 import java.util.ArrayList;
 import java.util.List;
 
-import bank.transaction.dao.TransactionDeposit;
-import bank.transaction.dao.TransactionWithdraw;
-import bank.transaction.dao.TransferReceived;
-import bank.transaction.dao.TransferSent;
+import not.used.TransactionDeposit;
+import not.used.TransactionWithdraw;
+import not.used.TransferReceived;
+import not.used.TransferSent;
 
 public class Transaction {
 

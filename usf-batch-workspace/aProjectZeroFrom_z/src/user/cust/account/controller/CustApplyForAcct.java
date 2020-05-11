@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 import bank.transaction.dao.BankDaoImpl;
 import log.Log;
-import user.cust.account.models.Customer;
+import not.used.Customer;
 import user.cust.account.models.User;
 
 public class CustApplyForAcct {

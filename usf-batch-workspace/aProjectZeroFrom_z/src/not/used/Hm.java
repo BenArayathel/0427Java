@@ -1,4 +1,4 @@
-package connection.utilities;
+package not.used;
 
 import java.util.Scanner;
 

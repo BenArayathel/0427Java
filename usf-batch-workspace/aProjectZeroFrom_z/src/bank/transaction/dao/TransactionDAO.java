@@ -2,8 +2,8 @@ package bank.transaction.dao;
 
 import java.util.List;
 
-import user.cust.account.models.Account;
-import user.cust.account.models.Customer;
+import not.used.Account;
+import not.used.Customer;
 import user.cust.account.models.User;
 
 public interface TransactionDAO {

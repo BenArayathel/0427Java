@@ -24,8 +24,8 @@ public class EmpViewCust_transactions {
 		
 		List<User> allUsers = new ArrayList<>();
 		// getAllUsers_needingAuth()
-		allUsers = b.getAllUsers();
-		//usersNeedApproval = b.getAllUsers_needingAuth();
+		//allUsers = b.getAllUsers();
+		allUsers = b.getAllUsers_withAuth();
 
 		Log.logger(allUsers.size() + " Total Customer(s)");
 		Log.logger("Select -which- Customer to View:\n");

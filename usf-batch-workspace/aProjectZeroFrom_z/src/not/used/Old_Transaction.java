@@ -1,12 +1,7 @@
-package user.cust.account.models;
+package not.used;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import bank.transaction.dao.TransactionDeposit;
-import bank.transaction.dao.TransactionWithdraw;
-import bank.transaction.dao.TransferReceived;
-import bank.transaction.dao.TransferSent;
 
 public class Old_Transaction {
 

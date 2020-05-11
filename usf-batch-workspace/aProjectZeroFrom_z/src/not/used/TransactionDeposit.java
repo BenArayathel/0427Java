@@ -1,7 +1,4 @@
-package bank.transaction.dao;
-
-import user.cust.account.models.Account;
-import user.cust.account.models.Old_Transaction;
+package not.used;
 
 public class TransactionDeposit extends Old_Transaction {
 

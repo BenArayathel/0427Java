@@ -14,13 +14,13 @@ import java.util.Iterator;
 import java.util.List;
 
 import log.Log;
+import not.used.Account;
+import not.used.Customer;
 import connection.utilities.DAOUtilites;
 import exception.validations.BusinessException;
 import exception.validations.Validation;
 import user.cust.account.controller.CustOptionsDirectory;
 import user.cust.account.controller.UserOptionsDirectory;
-import user.cust.account.models.Account;
-import user.cust.account.models.Customer;
 import user.cust.account.models.User;
 
 public class BankDaoImpl implements BankDAO {
@@ -82,33 +82,6 @@ public class BankDaoImpl implements BankDAO {
 		return false;
 	}
 	
-	
-//	public boolean isValidEmail(String email) {
-//		
-//		// https://howtodoinjava.com/regex/java-regex-validate-email-address/
-//		//this.email.matches("^(.+)@(.+)$")
-//		if (email.matches("^(.+)@(.+)$")) {
-//			return true;
-//		} else {
-//			Log.logger("Invalid Email format");
-//			return false;
-//		}
-//		
-//	}
-	
-//	public boolean isValidContactPhone(long phoneNum) {
-//		
-//		// (contact + "").matches("[0-9]{10}")					// Dr. V's
-//		// phoneNum.matches("[0-9]{3}\\-[0-9]{3}\\-[0-9]{4}")	// my
-//		if((phoneNum + "").matches("[0-9]{10}")) {
-//			//System.out.println("\nValid Soc. Sec. !!!!");
-//			return true;
-//		}else {
-//			//System.out.println("Invalid Info");
-//			Log.logger("Invalid phone number format");
-//			return false;
-//		}
-//	}
 	
 	
 
@@ -407,83 +380,9 @@ public class BankDaoImpl implements BankDAO {
 		}
 		
 		
-		// FORWARD DATA TO EMPLOYEE FRONT END ?
-		// FOR NOW, DO THIS ...
-		//employeeRejectOrApprove_userRegistrationToBecomeCustomer(user, user.getEmail());
 		return false;
 	}
 	
-	
-	
-	
-//	@Override
-//	public boolean userRegistrationToBecomeCustomer(User user, String dob) {
-//		
-//		System.out.println("Successful application submission.");
-//		System.out.println("\nA Bank Employee will make a dertermination as soon as possible.");
-//		//System.out.println("Application For Customer Received @ db");
-//		System.out.println("Thanks for applying");
-//		
-//		// new java.sql.Date(trainee.getDob().getTime()
-//		try{
-//
-//			if (isValidDate(dob) != null) {
-//				
-//				user.setDob(isValidDate(dob));
-//				
-//				//java.util.Date utilStartDate = user.getDob();
-//				//java.sql.Date sqlStartDate = new java.sql.Date(utilStartDate.getTime());
-//				conn = DAOUtilites.getConnection();
-//				ps = conn.prepareStatement("UPDATE b_user SET dob=? WHERE EMAIL=?");
-//				ps.setDate(1, new java.sql.Date(user.getDob().getTime()));
-//				//ps.setString(2, user.getUserName());
-//				ps.setString(2, user.getEmail());
-//				
-//			}
-//
-//			
-//			if (ps.executeUpdate() != 0) {
-//				return true;
-//			} else {
-//				return false;
-//			}
-//			
-//		}
-//		catch(SQLException | BusinessException e) {
-//			e.printStackTrace();
-//		}
-//		finally {
-//			closeResources();
-//			
-//		}
-//		
-//		
-//		// FORWARD DATA TO EMPLOYEE FRONT END ?
-//		// FOR NOW, DO THIS ...
-//		//employeeRejectOrApprove_userRegistrationToBecomeCustomer(user, user.getEmail());
-//		return false;
-//	}
-	
-	
-//	public static Date isValidDate(String dob) throws BusinessException {
-//		Date d=null;
-//		// mine:  s.matches("[0-9]{3}-[0-9]{2}-[0-9]{4}")
-//		// dr's: dob.matches("[0-9]{2}.[0-9]{2}.[0-9]{4}")
-//		if(dob.matches("[0-9]{2}-[0-9]{2}-[0-9]{4}")) {
-//											// dd/MM/yyyy  Dr.'s:  dd.MM.yyyy
-//			SimpleDateFormat sdf=new SimpleDateFormat("dd-MM-yyyy");
-//			sdf.setLenient(false);
-//			try {
-//				d=sdf.parse(dob);
-//				return d;
-//			} catch (ParseException e) {
-//				throw new BusinessException("Entered date "+dob+" is invalid");
-//			}
-//		}else {
-//			throw new BusinessException("Entered date "+dob+" should be in (dd.MM.yyyy) format only");
-//		}
-//		//return d;
-//	}
 	
 
 
@@ -511,9 +410,9 @@ public class BankDaoImpl implements BankDAO {
 				ps.setDate(2, new java.sql.Date(user.getDob().getTime()));
 				ps.setString(3, user.getUser_id());
 				
-				System.out.println("Application For Account Received @ db");
-				System.out.println("A Bank Employee will make a determination as soon as possible.");
-				System.out.println("Thanks for applying");
+				Log.logger("Application For Account Received @ db");
+				Log.logger("A Bank Employee will make a determination as soon as possible.");
+				Log.logger("Thanks for applying");
 				
 				if(ps.execute()) {
 					return true;
@@ -606,14 +505,7 @@ public class BankDaoImpl implements BankDAO {
 		try{
 
 			conn = DAOUtilites.getConnection();
-									// update b_user set a_access=1 where user_id='BUTE123TE5';
-			// 3 arguments to this
-			// original did not work
-//			ps = conn.prepareStatement("update b_user set balance = (balance - ?) where user_id = ?  update b_user set balance = (balance + ?) where user_id = ?");
-//			ps.setDouble(1, funds);
-//			ps.setString(2, user.getUser_id());
-//			ps.setDouble(3, funds);
-//			ps.setString(4, recipient.getUser_id());
+
 			
 			// update 1
 			ps = conn.prepareStatement("update b_user set balance = (balance - ?) where user_id = ?");
@@ -621,8 +513,10 @@ public class BankDaoImpl implements BankDAO {
 			ps.setDouble(1, funds);
 			ps.setString(2, user.getUser_id());
 			if(ps.execute()) {
+				
 				//return true;
 			}
+			user.setBalance((user.getBalance() - funds)); // correct balance locally
 
 			// update 2			
 			ps = conn.prepareStatement("update b_user set balance = (balance + ?) where user_id = ?");
@@ -631,10 +525,8 @@ public class BankDaoImpl implements BankDAO {
 			if(ps.execute()) {
 				//return true;
 			}
-			
-//			if(ps.execute()) {
-//				//return true;
-//			}
+	
+
 			
 		}
 		catch(SQLException e) {

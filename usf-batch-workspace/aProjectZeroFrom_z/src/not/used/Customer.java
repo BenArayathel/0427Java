@@ -1,9 +1,15 @@
-package user.cust.account.models;
+package not.used;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import user.cust.account.models.User;
+
 public class Customer {
+	
+	/**
+	 * not really being used
+	 */
 
 	private User user;
 
