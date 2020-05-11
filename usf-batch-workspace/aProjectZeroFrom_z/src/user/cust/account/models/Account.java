@@ -6,7 +6,9 @@ public class Account {
 	
 	//private int acct_id;
 	//private double balance;
-	private List<Old_Transaction> transactions = null;
+	private List<Transaction> transactions = null;
+	
+	
 
 
 

@@ -8,8 +8,8 @@ import java.sql.SQLException;
 
 import connection.utilities.DAOUtilites;
 import exception.validations.Validation;
-import user.cust.account.models.Account;
-import user.cust.account.models.Customer;
+import log.Log;
+import user.cust.account.controller.UserOptionsDirectory;
 import user.cust.account.models.User;
 
 public class TransactionDaoImpl implements TransactionDAO {
@@ -31,33 +31,28 @@ public class TransactionDaoImpl implements TransactionDAO {
 			// email, contact) values(1, ?, ?, ?, ?)");
 
 			// stored procedure: "b_user_pr"
-			String sql = "{call b_user_pr(?,?,?,?,?)}";
+			String sql = "{call trans_pr(?,?,?)}";
 			CallableStatement callableStatement = conn.prepareCall(sql);
 			callableStatement.registerOutParameter(1, java.sql.Types.VARCHAR);
 			callableStatement.setString(2, user.getUser_id());
-			
-			// what should hold trans or data ?? ? ?? ?? ?? ??
-			
-			callableStatement.setString(3, user.getPassword());
-			callableStatement.setString(4, user.getEmail());
-			callableStatement.setLong(5, user.getContactPhone());
+			callableStatement.setString(3, trans);
 
-			if (v.isValidEmail(user.getEmail())) {
+		
 
-				if (v.isValidContactPhone(user.getContactPhone())) {
+				
 
 					if (callableStatement.executeUpdate() != 0) {
-						System.out.println("User created: log back in...");
-						System.exit(0);
+						Log.logger("Transaction recorded...");
+						//System.exit(0);
 						return true;
 					} else {
-						System.out.println("Sorry something went wrong at the database");
+						Log.logger("Sorry something went wrong at the database");
 						return false;
 					}
 
-				}
+				
 
-			}
+			
 
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -67,6 +62,72 @@ public class TransactionDaoImpl implements TransactionDAO {
 		}
 		return false;
 	}
+	
+	
+	@Override
+	public boolean viewAllTransactions() {
+		
+
+		try {
+			conn = DAOUtilites.getConnection();
+			ps = conn.prepareStatement("SELECT * FROM transaction");
+			rs = ps.executeQuery();
+			
+			while (rs.next()) {
+				
+				Log.logger("" 
+						+ rs.getString("trans_id")
+						+ "\t" + rs.getString("user_id")
+						+ "\t" + rs.getString("trans_data"));
+			}
+			return true;
+		}
+		catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			closeResources();
+		}
+		
+		return false;
+	}
+	
+	
+	@Override
+	public boolean viewCustTransactions(User user) {
+		
+		try{
+
+			conn = DAOUtilites.getConnection();
+			ps = conn.prepareStatement("SELECT * FROM transaction WHERE user_id=?");
+			ps.setString(1, user.getUser_id());
+			
+			rs = ps.executeQuery();
+			
+			
+			while (rs.next()) {			
+
+				Log.logger("" 
+						+ rs.getString("trans_id")
+						+ "\t" + rs.getString("user_id")
+						+ "\t" + rs.getString("trans_data"));
+			} 
+			return true;
+			
+				
+			
+		}
+		catch(SQLException e) {
+			e.printStackTrace();
+		}
+		finally {
+			closeResources();
+			
+		}
+		
+		return false;
+	}
+	
+	
 
 	private void closeResources() {
 
@@ -99,5 +160,10 @@ public class TransactionDaoImpl implements TransactionDAO {
 		}
 
 	}
+
+
+
+
+
 
 }

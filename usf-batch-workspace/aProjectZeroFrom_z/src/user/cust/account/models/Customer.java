@@ -7,7 +7,8 @@ public class Customer {
 
 	private User user;
 
-	private List<Account> account = new ArrayList<>();
+	//private List<Account> accounts = new ArrayList<>();
+	private Account account;
 
 //	private String name;
 //	private String address;
@@ -25,12 +26,23 @@ public class Customer {
 		this.user = user;
 	}
 
-	public List<Account> getAccount() {
+	public Account getAccount() {
 		return account;
 	}
 
-	public void setAccount(List<Account> account) {
+	public void setAccount(Account account) {
 		this.account = account;
 	}
+
+//	public List<Account> getAccount() {
+//		return account;
+//	}
+//
+//	public void setAccount(List<Account> account) {
+//		this.account = account;
+//	}
+	
+	
+	
 
 }

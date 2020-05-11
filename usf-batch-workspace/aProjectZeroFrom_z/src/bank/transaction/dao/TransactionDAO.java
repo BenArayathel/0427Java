@@ -11,6 +11,10 @@ public interface TransactionDAO {
 	
 	public boolean createTransaction(User user, String trans);
 	
+	public boolean viewAllTransactions();
+	
+	public boolean viewCustTransactions(User user);
+	
 	// the stuff below I thought would exist here and maybe it should
 	// ----------------------------------------------
 

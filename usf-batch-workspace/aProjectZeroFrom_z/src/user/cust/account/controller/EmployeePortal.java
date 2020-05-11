@@ -2,11 +2,13 @@ package user.cust.account.controller;
 
 import java.util.Scanner;
 
+import bank.transaction.dao.TransactionDaoImpl;
 import log.Log;
 
 public class EmployeePortal {
 	
 	public static Scanner scanner = new Scanner(System.in);
+	TransactionDaoImpl tDao = new TransactionDaoImpl();
 
 	public void employeePortal() {
 		
@@ -16,8 +18,8 @@ public class EmployeePortal {
 
 		
 		Log.logger("1 - approve or reject an account");
-		Log.logger("2 - view a log of all transactions: Coming Soon");
-		Log.logger("3 - view a customer's bank accounts: Coming Soon");
+		Log.logger("2 - view all transactions");
+		Log.logger("3 - view Customer's transactions");
 		Log.logger("4 - Quit");
 		//System.out.println("Apply for Another Account");
 
@@ -34,11 +36,13 @@ public class EmployeePortal {
 			}
 			
 			if (nav == 2){
-				System.exit(0);
+				tDao.viewAllTransactions();
+				employeePortal(); // recursion ?
 			}
 			
 			if (nav == 3){
-				System.exit(0);
+				EmpViewCust_transactions evc = new EmpViewCust_transactions();
+				evc.empViewCustRecords();
 			}
 			
 			if (nav == 4){

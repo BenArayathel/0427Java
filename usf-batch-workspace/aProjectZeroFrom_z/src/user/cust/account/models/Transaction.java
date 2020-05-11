@@ -16,7 +16,11 @@ public class Transaction {
 	private String description;
 	private double transactionValue; // $
 	private String destination_id;
-	
+
+	public Transaction() {
+		//super();
+	}
+
 	// before database
 	public Transaction(String user_id, String date, String description, double transactionValue,
 			String destination_id) {
@@ -90,12 +94,34 @@ public class Transaction {
 
 	@Override
 	public String toString() {
-		return "Transaction [t_id=" + t_id + ", user_id=" + user_id + ", date=" + date + ", description=" + description
-				+ ", transactionValue=" + transactionValue + ", destination_id=" + destination_id + "]";
+		return ""+ date 
+				+ ", descr.=" + description
+				+ ", transactionValue=" + transactionValue
+				+ ", destination_id=" + destination_id
+				+ ", creator_user_id=" + user_id 
+				 
+				
+				 
+				 
+				+ " t_id=" + t_id + "]";
 	}
 
-	
-	
-	
-
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

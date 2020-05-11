@@ -1,11 +1,18 @@
 package user.cust.account.controller;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
 import bank.transaction.dao.BankDaoImpl;
+import bank.transaction.dao.TransactionDaoImpl;
 import log.Log;
+import oracle.sql.DATE;
+import user.cust.account.models.Account;
+import user.cust.account.models.Customer;
+import user.cust.account.models.Transaction;
 import user.cust.account.models.User;
 
 public class CustViewBal_Depos_Wthdr_Transf {
@@ -14,12 +21,27 @@ public class CustViewBal_Depos_Wthdr_Transf {
 	CustOptionsDirectory cd = new CustOptionsDirectory();
 	BankDaoImpl b = new BankDaoImpl();
 	private static double transferFunds;
+	Transaction t = new Transaction();
+	TransactionDaoImpl tDao = new TransactionDaoImpl();
+	
+	Customer c = new Customer();
+	Account a = new Account();
+	SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+	Date date = new Date();  
+    //System.out.println(formatter.format(date));
 	
 	void viewBalance(User user) {
 		
 		if (user.getA_access() == 1) {
 			
 			Log.logger("Your Balance " + user.getBalance());
+			//c.setUser(user);
+			t.setUser_id(user.getUser_id());
+			t.setDate(formatter.format(date).toString());
+			t.setDescription("Balance Inquery");
+			t.setTransactionValue(0.00);
+			t.setDestination_id("Balance Inquery");
+			tDao.createTransaction(user, t.toString());
 			cd.select(user);
 			
 		} else {
@@ -40,9 +62,16 @@ public class CustViewBal_Depos_Wthdr_Transf {
 				
 				if (deposit > 0) {
 					
+					t.setTransactionValue(deposit); // record deposit before adding to it
 					//double deposit = Double.parseDouble(scanner.nextLine());
 					user.setBalance(deposit += user.getBalance());
-					b.updateBalance(user);
+					b.updateBalance(user);	// database call
+					t.setUser_id(user.getUser_id());
+					t.setDate(formatter.format(date).toString());
+					t.setDescription("DEPOSIT");
+					
+					t.setDestination_id("self");
+					tDao.createTransaction(user, t.toString());
 					
 				} else {
 					Log.logger("Cannot be a negative amout or zero");
@@ -72,6 +101,12 @@ public class CustViewBal_Depos_Wthdr_Transf {
 					if ((user.getBalance() - withdraw) > 0) {
 						user.setBalance(user.getBalance() - withdraw);
 						b.updateBalance(user);
+						t.setUser_id(user.getUser_id());
+						t.setDate(formatter.format(date).toString());
+						t.setDescription("WITHDRAW");
+						t.setTransactionValue(withdraw);
+						t.setDestination_id("self");
+						tDao.createTransaction(user, t.toString());
 						
 					} else {
 						Log.logger("Invalid transaction");
