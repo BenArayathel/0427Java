@@ -1,5 +1,7 @@
 package com.bankofben.presentation;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -58,6 +60,24 @@ public class PresentationLayer {
 		Scanner sc = new Scanner(System.in);
 		String response=null;
 
+		SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
+		Date d=null;
+		try {
+			d = sdf.parse("10/05/1992");
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		
+		try {
+			System.out.println(new Employee("Ben", "Eli", "Swerdlow", "Tobias", d, 564738291L, "ben@gmail.com", 3216621808L,
+							"benswerd", "P4ssw0rd!", "thingy", "stuff", "person", false));
+		} catch (BusinessException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
+		System.exit(0);
+		
 		pl.printUserGreeting();
 		boolean userResponseValidated = false;
 		do {

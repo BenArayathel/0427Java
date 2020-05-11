@@ -38,8 +38,8 @@ public class PlanetDaoImplementation implements PlanetDao {
 //			"jdbc:oracle:thin:@<endpoint>:<portNumber>:orcl";
 	private static String url = 
 			"jdbc:oracle:thin:@myfirstorcl.cyw8bxzbivob.us-east-2.rds.amazonaws.com:1521:orcl";
-	private static String username = "puser";
-	private static String password = "p4ssw0rd";
+	private static String username = "admin";
+	private static String password = "e85c6^a*s%TuWRg&";
 
 	@Override
 	public void insertPlanet(Planet p) {
@@ -71,18 +71,22 @@ public class PlanetDaoImplementation implements PlanetDao {
 			PreparedStatement ps = conn.prepareStatement("SELECT * FROM planets");
 			
 			ResultSet rs = ps.executeQuery();
+//			int count = 0;
 			while (rs.next()) {
+				//System.out.println(rs.getInt("PLANET_ID")+rs.getString("PLANET_NAME")+rs.getString("SLOGAN")+rs.getBoolean("HAS_RINGS")+rs.getInt("NUMBER_OF_MOONS"));
 				planets.add(
 						/*Columns can be accessed by name or by index (not 0 indexed, i.e. column[2] gets the 2nd column )*/
-						new Planet(rs.getInt("planet_id"), rs.getString(2),
-						rs.getString(3), rs.getBoolean(4), rs.getInt(4)));
+						new Planet(rs.getInt("PLANET_ID"), rs.getString("PLANET_NAME"),
+						rs.getString("SLOGAN"), rs.getBoolean("HAS_RINGS"), rs.getInt("NUMBER_OF_MOONS")));
+//				System.out.println(planets.get(count));
+//				count++;
 			}
 		} catch (SQLException e) {
 			//prevent bad stuff
 			//loggy.warn("Not connected: ", e);
 			e.printStackTrace();
 		}
-		return null;
+		return planets;
 	}
 
 	@Override

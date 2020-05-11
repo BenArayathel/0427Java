@@ -60,4 +60,10 @@ public class Planet {
 		this.numberOfMoons = numberOfMoons;
 	}
 
+	@Override
+	public String toString() {
+		return "Planet [planetId=" + planetId + ", planetName=" + planetName + ", slogan=" + slogan + ", hasRings="
+				+ hasRings + ", numberOfMoons=" + numberOfMoons + "]";
+	}
+
 }

@@ -39,6 +39,8 @@ BEGIN
     CREATETRANSACTION(TID, TSTAMP, 3969255661, 10000, 10);
 END;
 
+SELECT * FROM bankofben_transactions WHERE "Timestamp" < CURRENT_TIMESTAMP;
+
 DECLARE
     "TID" VARCHAR(20);
     "TSTAMP" TIMESTAMP(9);
@@ -138,3 +140,18 @@ DECLARE
 BEGIN
     CREATEREQUEST("Request ID", 'CUCAAA2000100000', 9180651690, 3969255661, 200.077, 1);
 END;
+
+
+SELECT last_number FROM SYS.all_sequences WHERE sequence_name='CUSTOMER_SEQ';
+
+SELECT * FROM dba_users;
+
+SELECT * FROM planets;
+
+DELETE FROM bankofben_customers WHERE "Customer ID"='CUTEMC1990100040';
+
+SELECT last_number FROM SYS.all_sequences WHERE sequence_name='CUSTOMER_SEQ'
+
+SELECT CUSTOMER_SEQ.nextval FROM dual;
+
+

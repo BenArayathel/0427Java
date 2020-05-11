@@ -18,8 +18,8 @@ public class MainDriver {
 //		pDaoImpl.insertPlanet(p);
 		
 		List<Planet> planets = pDaoImpl.selectAllPlanets();
-		for (Planet i : planets) {
-			System.out.println(i);
+		for (int i=0; i<planets.size(); i++) {
+			System.out.println(planets.get(i));
 		}
 	}
 

@@ -156,7 +156,7 @@ public interface BankOfBenDAOInterface {
 	// Delete each type of persistent data
 	public void deleteCustomer(String customerId) throws BusinessException;
 	public void deleteEmployee(String employeeId) throws BusinessException;
-	public void deleteAccount(String accountId) throws BusinessException;
+	public void deleteAccount(long accountNumber) throws BusinessException;
 	public void deletePayment(String paymentId) throws BusinessException;
 	public void deleteRequest(String requestId) throws BusinessException;
 	public void deleteTransfer(String transferId) throws BusinessException;

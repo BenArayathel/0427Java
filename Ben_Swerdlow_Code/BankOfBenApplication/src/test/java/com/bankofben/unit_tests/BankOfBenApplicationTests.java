@@ -3,8 +3,10 @@ package com.bankofben.unit_tests;
 import static org.junit.Assert.assertArrayEquals;
 
 import java.io.ByteArrayInputStream;
+import java.util.Date;
 import java.util.Scanner;
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 
 import org.junit.After;
@@ -37,16 +39,17 @@ public class BankOfBenApplicationTests {
 	
 	@Test
 	public void requestUserInfo_properCall_userReturned() throws BusinessException {
+		
 		PresentationLayer pl = new PresentationLayer();
 		User expecteds[] = {new User(
 				"testFirst",
 				"testMiddle",
 				"testLast",
 				"testMom",
-				LocalDate.parse("10-10-2000", DateTimeFormatter.ofPattern("MM-dd-yyyy")), 
-				"111-11-1111",
+				Date.from(LocalDate.parse("10-10-2000", DateTimeFormatter.ofPattern("MM-dd-yyyy")).atStartOfDay(ZoneId.systemDefault()).toInstant()), 
+				111111111L,
 				"test@gmail.com",
-				"1234567890",
+				1234567890L,
 				"testUsername",
 				"P4ssw0rd!")};
 		String inputs = "test@gmail.com\n"
@@ -75,10 +78,10 @@ public class BankOfBenApplicationTests {
 			"testMiddle",
 			"testLast",
 			"testMom",
-			LocalDate.parse("10-10-2000", DateTimeFormatter.ofPattern("MM-dd-yyyy")), 
-			"111-11-1111",
+			Date.from(LocalDate.parse("10-10-2000", DateTimeFormatter.ofPattern("MM-dd-yyyy")).atStartOfDay(ZoneId.systemDefault()).toInstant()), 
+			111111111L,
 			"test@gmail.com",
-			"1234567890",
+			1234567890L,
 			"testUsername",
 			"P4ssw0rd!")};
 		
