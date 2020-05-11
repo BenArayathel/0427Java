@@ -3,6 +3,7 @@ select * from bank_account;
 select * from bank_transaction;
 
 insert into bank_account (account_id, user_id, account_name, account_balance) values (0,0,'UNITtest',5000);
+insert into bank_user (user_id, username, password, approved) values (0, 'UNITtest', 'test', 0);
 
 
 delete from bank_transaction where account_name = 'test' and transaction_id = 173;
