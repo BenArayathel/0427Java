@@ -9,7 +9,7 @@ public class Transaction {
 	private String accountId;
 	private String transactionType;
 	private BigDecimal amount;
-	private Timestamp timestamp;
+	private Timestamp transTime;
 	
 	public Long getTransactionId() {
 		return transactionId;
@@ -35,17 +35,16 @@ public class Transaction {
 	public void setAmount(BigDecimal amount) {
 		this.amount = amount;
 	}
-	public Timestamp getTimestamp() {
-		return timestamp;
+	public Timestamp getTransTime() {
+		return transTime;
 	}
-	public void setTimestamp(Timestamp timestamp) {
-		this.timestamp = timestamp;
+	public void setTransTime(Timestamp transTime) {
+		this.transTime = transTime;
 	}
-	
 	@Override
 	public String toString() {
 		return "Transaction [transactionId=" + transactionId + ", accountId=" + accountId + ", transactionType="
-				+ transactionType + ", amount=" + amount + ", timestamp=" + timestamp + "]";
+				+ transactionType + ", amount=" + amount + ", transTime=" + transTime + "]";
 	}
 	@Override
 	public int hashCode() {
@@ -53,7 +52,7 @@ public class Transaction {
 		int result = 1;
 		result = prime * result + ((accountId == null) ? 0 : accountId.hashCode());
 		result = prime * result + ((amount == null) ? 0 : amount.hashCode());
-		result = prime * result + ((timestamp == null) ? 0 : timestamp.hashCode());
+		result = prime * result + ((transTime == null) ? 0 : transTime.hashCode());
 		result = prime * result + ((transactionId == null) ? 0 : transactionId.hashCode());
 		result = prime * result + ((transactionType == null) ? 0 : transactionType.hashCode());
 		return result;
@@ -77,10 +76,10 @@ public class Transaction {
 				return false;
 		} else if (!amount.equals(other.amount))
 			return false;
-		if (timestamp == null) {
-			if (other.timestamp != null)
+		if (transTime == null) {
+			if (other.transTime != null)
 				return false;
-		} else if (!timestamp.equals(other.timestamp))
+		} else if (!transTime.equals(other.transTime))
 			return false;
 		if (transactionId == null) {
 			if (other.transactionId != null)
@@ -94,7 +93,6 @@ public class Transaction {
 			return false;
 		return true;
 	}
-	
 	
 
 }

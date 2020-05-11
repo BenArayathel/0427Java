@@ -21,7 +21,6 @@ public class CustomerDaoJdbcImplTest {
 	
     CustomerDaoJdbcImpl customerDaoJdbcImpl = new CustomerDaoJdbcImpl();
 
-
   	@Before
 	public void setUp() throws Exception {
 		List<Customer> cList = customerDaoJdbcImpl.getAllCustomers();

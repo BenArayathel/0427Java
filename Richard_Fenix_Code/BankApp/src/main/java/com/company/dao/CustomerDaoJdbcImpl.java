@@ -38,8 +38,6 @@ public class CustomerDaoJdbcImpl implements CustomerDao {
 
     private static final String DELETE_CUSTOMER_SQL =
             "delete from customer where customer_id = ?";
-
-  
     
 	public Customer addCustomer(Customer customer) {
 		try(Connection conn = DriverManager.getConnection(URL, USERNAME, PASSWORD)){

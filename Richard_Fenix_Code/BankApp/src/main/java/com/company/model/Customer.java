@@ -4,6 +4,9 @@ import java.sql.Date;
 
 public class Customer {
 	
+	// Can improve by not setting date here as sql.Date. Just do the conversion in 
+	// CustomerDaoJdbcImpl.addCustomer as it inserts the data into the sql database.
+	
 	private Integer customerId;
 	private String firstName;
 	private String lastName;
