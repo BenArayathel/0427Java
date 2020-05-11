@@ -35,7 +35,6 @@ public class AccountDAOImplementationTest {
 		// fill the empty string list with all the account names
 		for (Transaction t : transactionList) {
 			allNames.add(t.getAccount_name());
-			System.out.println(allNames);
 		}
 
 		// test that we successfully added our test case to the db
@@ -44,8 +43,6 @@ public class AccountDAOImplementationTest {
 		
 		// clean it up afterwards
 		adi.deleteTransaction(account_name);
-		
-		System.out.println(allNames);
 	}
 	
 	@Test
@@ -66,6 +63,7 @@ public class AccountDAOImplementationTest {
 		String depositAmount = "10";
 
 		adi.deposit(user, accountName, depositAmount);
+		System.out.println(account.getBalance());
 		assert(account.getBalance() == 5010);
 		
 		
