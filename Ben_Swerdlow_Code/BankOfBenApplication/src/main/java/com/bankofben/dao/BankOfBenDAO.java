@@ -924,19 +924,17 @@ public class BankOfBenDAO implements BankOfBenDAOInterface {
 			ResultSet rset = ps.executeQuery();
 			if (rset.next()) {
 				// true if there is one record
+				java.util.Date d = new Date(rset.getDate("Date of Birth").getTime());
+				customer = new Customer(rset.getString("First Name"), rset.getString("Middle Name"),
+						rset.getString("Last Name"), rset.getString("Mom's Maiden Name"),
+						d, rset.getLong("Social Security Number"),
+						rset.getString("Email"), rset.getLong("Phone Number"), rset.getString("Username"),
+						rset.getString("Password"), rset.getString("Customer ID"),
+						rset.getBoolean("Application Pending"));
 				if(rset.next()) {
 					// true if there is more than one record
 					throw new BusinessException("Internal database error. Found multiple customers with these "
 							+ "credentials. Please contact your SYSADMIN.");
-				} else {
-					// true if there is only one record
-					java.util.Date d = new Date(rset.getDate("Date of Birth").getTime());
-					customer = new Customer(rset.getString("First Name"), rset.getString("Middle Name"),
-							rset.getString("Last Name"), rset.getString("Mom's Maiden Name"),
-							d, rset.getLong("Social Security Number"),
-							rset.getString("Email"), rset.getLong("Phone Number"), rset.getString("Username"),
-							rset.getString("Password"), rset.getString("Customer ID"),
-							rset.getBoolean("Application Pending"));
 				}
 			} else {
 				throw new BusinessException("Customer does not exist with these credentials. "
@@ -967,19 +965,17 @@ public class BankOfBenDAO implements BankOfBenDAOInterface {
 			ResultSet rset = ps.executeQuery();
 			if (rset.next()) {
 				// true if there is one record
+				java.util.Date d = new Date(rset.getDate("Date of Birth").getTime());
+				employee = new Employee(rset.getString("First Name"), rset.getString("Middle Name"),
+						rset.getString("Last Name"), rset.getString("Mom's Maiden Name"),
+						d, rset.getLong("Social Security Number"),
+						rset.getString("Email"), rset.getLong("Phone Number"), rset.getString("Username"),
+						rset.getString("Password"), rset.getString("Employee ID"), rset.getString("Designation"),
+						rset.getString("Supervisor Employee ID"), rset.getBoolean("Can Hire"));
 				if(rset.next()) {
 					// true if there is more than one record
 					throw new BusinessException("Internal database error. Found multiple employees with these "
 							+ "credentials. Please contact your SYSADMIN.");
-				} else {
-					// true if there is only one record
-					java.util.Date d = new Date(rset.getDate("Date of Birth").getTime());
-					employee = new Employee(rset.getString("First Name"), rset.getString("Middle Name"),
-							rset.getString("Last Name"), rset.getString("Mom's Maiden Name"),
-							d, rset.getLong("Social Security Number"),
-							rset.getString("Email"), rset.getLong("Phone Number"), rset.getString("Username"),
-							rset.getString("Password"), rset.getString("Employee ID"), rset.getString("Designation"),
-							rset.getString("Supervisor Employee ID"), rset.getBoolean("Can Hire"));
 				}
 			} else {
 				throw new BusinessException("Employee does not exist with these credentials. "
@@ -989,6 +985,7 @@ public class BankOfBenDAO implements BankOfBenDAOInterface {
 			ps.close();
 			
 		} catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
 			throw new BusinessException("Internal database error. Please contact your SYSADMIN.");
 		}
 		

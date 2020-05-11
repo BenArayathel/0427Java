@@ -1,9 +1,11 @@
 package com.bankofben.presentation;
 
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 //import java.time.format.DateTimeParseException;
 import java.util.Scanner;
@@ -144,7 +146,7 @@ public class UserInterface {
 							+ "Dates of birth should be of form MM-DD-YYYY (e.g. 01-01-2000)");
 			}
 		}
-		return java.sql.Date.valueOf(dob);
+		return GregorianCalendar.from(dob.atStartOfDay(ZoneId.systemDefault())).getTime();
 //		System.out.println(monthDayYearDobString);
 //		String yearMonthDayDob = monthDayYearDobString;
 //		
@@ -180,7 +182,7 @@ public class UserInterface {
 		}
 		long result;
 		try {
-			result = Long.parseLong(ssn);
+			result = Long.parseLong(ssn.replace("-","").replace(" ", ""));
 		} catch (NumberFormatException e) {
 			throw new BusinessException("Unable to read social security number. "
 					+ "Please restart the process and try again.");
@@ -205,7 +207,7 @@ public class UserInterface {
 		}
 		long result;
 		try {
-			result = Long.parseLong(phoneNumber);
+			result = Long.parseLong(phoneNumber.replace("-","").replace("(","").replace(")","").replace(" ", ""));
 		} catch (NumberFormatException e) {
 			throw new BusinessException("Unable to read phone number. "
 					+ "Please restart the process and try again.");

@@ -154,4 +154,5 @@ SELECT last_number FROM SYS.all_sequences WHERE sequence_name='CUSTOMER_SEQ'
 
 SELECT CUSTOMER_SEQ.nextval FROM dual;
 
+SELECT * FROM bankofben_employees WHERE "Username"='michaelscarn' AND "Password"='Ih34rtH0lly!';
 

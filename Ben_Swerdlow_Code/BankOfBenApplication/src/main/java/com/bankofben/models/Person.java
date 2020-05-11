@@ -26,7 +26,7 @@ public class Person {
 		super();
 	
 		setFirstName(firstName);
-		this.middleName = middleName;
+		setMiddleName(middleName);
 		setLastName(lastName);
 		setMomsMaidenName(momsMaidenName);
 		

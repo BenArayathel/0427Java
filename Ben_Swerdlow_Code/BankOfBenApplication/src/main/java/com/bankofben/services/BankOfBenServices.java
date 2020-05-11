@@ -39,7 +39,7 @@ public class BankOfBenServices {
 				throw bizExceptions.get(0);
 			} else {
 				throw new BusinessException("User does not exist with these credentials. "
-						+ "Please register these credentials as a new user.");
+						+ "Please check your information and try again, or register these credentials as a new user.");
 			}
 		}
 		

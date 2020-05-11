@@ -91,6 +91,11 @@ public class PresentationLayer {
 					pl.printInvalidRegistrationMessage();
 				}
 				if (user!=null) {
+					try {
+						bl.applyForAccount(user);
+					} catch (BusinessException e) {
+						System.out.println(e.getMessage());
+					}
 					userResponseValidated = true;
 				}
 			} else if (response.equalsIgnoreCase("login")) {
@@ -544,7 +549,7 @@ public class PresentationLayer {
 			if (response.equalsIgnoreCase("yes") || response.equalsIgnoreCase("y")) {
 				loginRequested = true;
 				try {
-					user = bl.loginUser(username, sc);
+					user = pl.loginUser(username, sc);
 				} catch (BusinessException e) {
 					e.getMessage();
 				}
@@ -563,7 +568,7 @@ public class PresentationLayer {
 			if (response.equalsIgnoreCase("yes") || response.equalsIgnoreCase("y")) {
 				loginRequested = true;
 				try {
-					user = bl.loginUser(username, sc);
+					user = pl.loginUser(username, sc);
 				} catch (BusinessException e) {
 					e.getMessage();
 				}
@@ -599,14 +604,40 @@ public class PresentationLayer {
 		
 		System.out.println("Thank you for your information.");
 		
-		System.out.println(user);
+//		System.out.println(user);
 		
 		return user;
 	}
 	
 	public User requestLoginUserInfo(Scanner sc) throws BusinessException {
 		String username = UserInterface.requestUsername(sc);
-		return bl.loginUser(username, sc);
+		return pl.loginUser(username, sc);
+	}
+	
+	public User loginUser(String username, Scanner sc) throws BusinessException {
+		String password = null;
+		int loginAttempts = 0;
+		User user = null;
+		for (loginAttempts=0; loginAttempts<4; loginAttempts++) {
+			password = UserInterface.requestPassword(sc);
+			try {
+				user = bl.loginUser(username, password);
+				break;
+			} catch (BusinessException e) {
+				if (loginAttempts < 4) {
+					System.out.println(e.getMessage());
+				} else {
+					throw e;
+				}
+			}
+		}
+//		System.out.println(user);
+		if (loginAttempts >= 4) {
+			throw new BusinessException("Limit of password attempts exceeded. Please try again later.");
+		} else if (user==null) {
+			throw new BusinessException("Could not log in user with these credentials. Please try again later.");
+		}
+		return user;
 	}
 	
 	public Account requestCustomerSelectAccountForDeposit(Customer customer, Scanner sc) throws BusinessException {

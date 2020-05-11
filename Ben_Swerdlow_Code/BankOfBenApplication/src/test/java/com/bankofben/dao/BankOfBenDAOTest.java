@@ -307,6 +307,45 @@ public class BankOfBenDAOTest {
 		assertTrue(revertedCustomer.isApplicationPending()==customer.isApplicationPending());
 	}
 	
+	@Test
+	public void testLoginCustomer() throws BusinessException {
+		String customerUsername = "aabaca";
+		String customerPassword = "P4ssw0rd!";
+		Customer customer = dao.loginCustomer(customerUsername, customerPassword);
+		assertArrayEquals(new String[] {"Aaron"}, new String[]{customer.getFirstName()});
+		assertArrayEquals(new String[] {"Babbish"}, new String[]{customer.getMiddleName()});
+		assertArrayEquals(new String[] {"Calhoun"}, new String[]{customer.getLastName()});
+		assertArrayEquals(new String[] {"Davidson"}, new String[]{customer.getMomsMaidenName()});
+		assertArrayEquals(new Date[] {new GregorianCalendar(2000, 0, 1).getTime()}, new Date[]{customer.getDob()});
+		assertArrayEquals(new long[] {123456789L}, new long[]{customer.getSsn()});
+		assertArrayEquals(new String[] {"aabaca@gmail.com"}, new String[]{customer.getEmail()});
+		assertArrayEquals(new long[] {3216540987L}, new long[] {customer.getPhoneNumber()});
+		assertArrayEquals(new String[] {"aabaca"}, new String[] {customer.getUsername()});
+		assertArrayEquals(new String[] {"P4ssw0rd!"}, new String[] {customer.getPassword()});
+		assertArrayEquals(new boolean[] {false}, new boolean[] {customer.isApplicationPending()});
+		assertArrayEquals(new String[] {"CUCAAA2000100000"}, new String[] {customer.getId()});
+	}
+	
+	@Test
+	public void testLoginEmployee() throws BusinessException {
+		String employeeUsername = "michaelscarn";
+		String employeePassword = "Ih34rtH0lly!";
+		Employee employee = dao.loginEmployee(employeeUsername, employeePassword);
+		assertArrayEquals(new String[] {"Michael"}, new String[]{employee.getFirstName()});
+		assertArrayEquals(new String[] {"Gary"}, new String[]{employee.getMiddleName()});
+		assertArrayEquals(new String[] {"Scott"}, new String[]{employee.getLastName()});
+		assertArrayEquals(new String[] {"Kevis"}, new String[]{employee.getMomsMaidenName()});
+		assertArrayEquals(new Date[] {new GregorianCalendar(1964, 2, 15).getTime()}, new Date[]{employee.getDob()});
+		assertArrayEquals(new long[] {987654321L}, new long[]{employee.getSsn()});
+		assertArrayEquals(new String[] {"michael.scott@dundermifflin.com"}, new String[]{employee.getEmail()});
+		assertArrayEquals(new long[] {9287437243L}, new long[] {employee.getPhoneNumber()});
+		assertArrayEquals(new String[] {"michaelscarn"}, new String[] {employee.getUsername()});
+		assertArrayEquals(new String[] {"Ih34rtH0lly!"}, new String[] {employee.getPassword()});
+		assertArrayEquals(new String[] {"Branch Manager"}, new String[] {employee.getDesignation()});
+		assertArrayEquals(new String[] {"EMSCMI1964100002"}, new String[] {employee.getId()});
+		assertArrayEquals(new String[] {"EMSWBE1992100000"}, new String[] {employee.getSupervisorEmployeeId()});
+	}
+	
 	// Will be executed after each test
 	@After
 	public void testEquals() {

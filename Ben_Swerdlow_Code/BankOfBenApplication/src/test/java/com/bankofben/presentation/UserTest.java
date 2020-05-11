@@ -1,4 +1,4 @@
-package com.bankofben.unit_tests;
+package com.bankofben.presentation;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -6,11 +6,11 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-public class EmployeeTests {
+public class UserTest {
 	/*
-	 * These are tests for actions an employee can do (e.g. view accounts, and approve/deny applications)
+	 * These are unit tests for things that users can do (e.g. apply for an account)
 	 */
-
+	
 	// Will be executed before testing begins
 	@BeforeClass
 	public static void beforeClass() {
@@ -37,5 +37,5 @@ public class EmployeeTests {
 	public static void afterClass() {
 		
 	}
-	
+
 }

@@ -2,7 +2,6 @@ package com.bankofben.business;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
 
 import com.bankofben.exceptions.BusinessException;
@@ -13,30 +12,12 @@ import com.bankofben.models.Payment;
 import com.bankofben.models.Request;
 import com.bankofben.models.Transfer;
 import com.bankofben.models.User;
-import com.bankofben.presentation.UserInterface;
 import com.bankofben.presentation.ValidationTools;
 import com.bankofben.services.BankOfBenServices;
 
 public class BusinessLayer {
 	
 	BankOfBenServices dbs = new BankOfBenServices();
-	
-	public User loginUser(String username, Scanner sc) throws BusinessException {
-		String password = null;
-		int loginAttempts = 0;
-		User user = null;
-		BusinessLayer bl = new BusinessLayer();
-		while (loginAttempts < 4) {
-			password = UserInterface.requestPassword(sc);
-			bl.loginUser(username, password);
-			loginAttempts++;
-			// TODO: Added lag to discourage brute force attempts; not critical, attempt later
-		}
-		if (loginAttempts >= 4) {
-			throw new BusinessException("Limit of password attempts exceeded. Please try again later.");
-		}
-		return user;
-	}
 
 	public User loginUser(String username, String password) throws BusinessException {
 		return dbs.loginUser(username, password);
