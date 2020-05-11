@@ -23,7 +23,9 @@ public class MainMenu {
 	                break;
 	            case 2:
 	                //BankApp.loggy.info("going to enroll page...");
-	                displayEnrollNow();
+	            	EnrollNow enrollNow = new EnrollNow();
+	            	enrollNow.displayEnrollNow();
+	                //displayEnrollNow();
 	                break;
 	            case 3:
 	                //BankApp.loggy.info("applying for an account page...");
@@ -67,60 +69,61 @@ public class MainMenu {
 	    return userChoice;
 	}
 
-	public void displayEnrollNow() {
-	    BankApp.loggy.info("================= Rich Bank Program =================");
-	    BankApp.loggy.info("       ");
-	    BankApp.loggy.info("    Enroll Now Page");
-	    BankApp.loggy.info("       ");
-	    BankApp.loggy.info("       1. Enter your FIRST name:");
-        String firstName = scanner.nextLine();
-
-        BankApp.loggy.info("       2. Enter your LAST name:");
-        String lastName = scanner.nextLine();
-
-        System.out.print("       3. Enter your ACCOUNT Number: ");
-        String accountNumber = scanner.nextLine();
-        
-        // validation method to check if user (name and account number match) with live accounts.
-        // call controller to validate the user
-                
-        if (bankServiceController.validateRegistration(firstName, lastName, accountNumber)){
-        	
-        	if (displayCreateLogin()) {
-        		BankApp.loggy.info("Success! Login username and password CREATED!");
-        	} else {
-        		BankApp.loggy.info("Login username and password creation ABORTED!");
-        	};
-        	
-        } else {
-        	//BankApp.loggy.info("Invalid user and account information.");
-        	BankApp.loggy.error("Invalid user and account information.");
-        };
-                
-        return;
-	}
+//	Move to a separate class
+//	public void displayEnrollNow() {
+//	    BankApp.loggy.info("================= Rich Bank Program =================");
+//	    BankApp.loggy.info("       ");
+//	    BankApp.loggy.info("    Enroll Now Page");
+//	    BankApp.loggy.info("       ");
+//	    BankApp.loggy.info("       1. Enter your FIRST name:");
+//        String firstName = scanner.nextLine();
+//
+//        BankApp.loggy.info("       2. Enter your LAST name:");
+//        String lastName = scanner.nextLine();
+//
+//        System.out.print("       3. Enter your ACCOUNT Number: ");
+//        String accountNumber = scanner.nextLine();
+//        
+//        // validation method to check if user (name and account number match) with live accounts.
+//        // call controller to validate the user
+//                
+//        if (bankServiceController.validateRegistration(firstName, lastName, accountNumber)){
+//        	
+//        	if (displayCreateLogin()) {
+//        		BankApp.loggy.info("Success! Login username and password CREATED!");
+//        	} else {
+//        		BankApp.loggy.info("Login username and password creation ABORTED!");
+//        	};
+//        	
+//        } else {
+//        	//BankApp.loggy.info("Invalid user and account information.");
+//        	BankApp.loggy.error("Invalid user and account information.");
+//        };
+//                
+//        return;
+//	}
 	
-	public boolean displayCreateLogin() {
-	    BankApp.loggy.info("================= Rich Bank Program =================");
-	    BankApp.loggy.info("       ");
-	    BankApp.loggy.info("    Enroll Now Page");
-	    BankApp.loggy.info("       ");
-	    BankApp.loggy.info("       1. Create your LOGIN NAME:");
-        String loginName = scanner.nextLine();
-        BankApp.loggy.info("loginName entered: " + loginName);
-
-        BankApp.loggy.info("       2. Enter your LOGIN PASSWORD:");
-        String password1 = scanner.nextLine();
-
-        BankApp.loggy.info("password1 entered: " + password1);
-
-        BankApp.loggy.info("       3. RE-ENTER LOGIN PASSWORD: ");
-        String password2 = scanner.nextLine();
-
-        BankApp.loggy.info("password2 entered: " + password2);
-
-		return true;
-	}
+//	public boolean displayCreateLogin() {
+//	    BankApp.loggy.info("================= Rich Bank Program =================");
+//	    BankApp.loggy.info("       ");
+//	    BankApp.loggy.info("    Enroll Now Page");
+//	    BankApp.loggy.info("       ");
+//	    BankApp.loggy.info("       1. Create your LOGIN NAME:");
+//        String loginName = scanner.nextLine();
+//        BankApp.loggy.info("loginName entered: " + loginName);
+//
+//        BankApp.loggy.info("       2. Enter your LOGIN PASSWORD:");
+//        String password1 = scanner.nextLine();
+//
+//        BankApp.loggy.info("password1 entered: " + password1);
+//
+//        BankApp.loggy.info("       3. RE-ENTER LOGIN PASSWORD: ");
+//        String password2 = scanner.nextLine();
+//
+//        BankApp.loggy.info("password2 entered: " + password2);
+//
+//		return true;
+//	}
 		
 
 }

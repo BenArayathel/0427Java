@@ -14,13 +14,11 @@ public class BankServiceController {
 	
     private final ServiceLayer serviceLayer = new ServiceLayer();
 	
-	public Boolean validateRegistration(String firstName, String lastName, String accountNumber) {
+	public Customer validateCustomerAccount(String firstName, String lastName, String accountId) {
 		
 		// call on serviceLayer to validate Registration. i.e. serviceLayer.checkRegistration();
-		//BankApp.loggy.info("validateRegistration triggered...");
 		BankApp.loggy.info("validateRegistration triggered...");
-
-		return false;
+		return serviceLayer.validateCustomerAccount(firstName, lastName, accountId);
 	}
 	
 	public Customer validateLogin(String loginName, String password) {	
@@ -45,5 +43,9 @@ public class BankServiceController {
     public List<Transaction> getLogList(){
     	return serviceLayer.getLogList();
     }
+    
+//    public Customer bankServiceController.registerUser(String accountId, String loginName, String password) {
+//    	return serviceLayer.registerUser(accountId, loginName, password);
+//    }
 
 }

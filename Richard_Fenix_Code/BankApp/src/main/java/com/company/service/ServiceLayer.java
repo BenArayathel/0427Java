@@ -18,6 +18,7 @@ import com.company.dao.TransactionDaoJdbcImpl;
 import com.company.model.Account;
 import com.company.model.AccountType;
 import com.company.model.Customer;
+import com.company.model.Registration;
 import com.company.model.Transaction;
 import com.company.view.BankApp;
 import com.company.viewModel.AccountViewModel;
@@ -109,9 +110,14 @@ public class ServiceLayer {
 		Account account = new Account();
 		account = accountDao.getAccount(accountId);
 		
+    	if (account == null) {
+    		BankApp.loggy.info("Account not found!");
+    		return null;
+    	}
+		
 		Customer customer = new Customer();
 		customer = customerDao.getCustomer(account.getCustomerId());
-		
+			
 		AccountType accountType = new AccountType();
 		accountType = accountTypeDao.getAccountType(account.getAccountType());
 	
@@ -161,7 +167,11 @@ public class ServiceLayer {
 		
 		//Update approved status to TRUE;
 		if (!account.isApproved()) {
+			
+			// update account table set isApproved to true;
 			account.setApproved(true);
+			
+			accountDao.updateAccount(account);
 			
 			// create and insert transactions in transaction table.
 			Transaction transaction = new Transaction();
@@ -215,7 +225,47 @@ public class ServiceLayer {
    
     	return tList;
     }
+    
+    public Customer validateCustomerAccount(String firstName, String lastName, String accountId) {
+    	
+    	Account account = new Account();
+    	account = accountDao.getAccount(accountId);
+    	
+    	if (account == null) {
+    		BankApp.loggy.info("Customer name(s) and Account ID does not match!");
+    		return null;
+    	}
+    	
+		Customer customer = new Customer();
+		customer = customerDao.getCustomer(account.getCustomerId());
+		
+    	if (customer == null) {
+    		BankApp.loggy.info("Customer name(s) and Account ID does not match!");
+    		return null;
+    	}
 
+    	if (customer.getFirstName().equals(firstName) && customer.getLastName().equals(lastName)){
+    		if (account.isApproved()) {
+    			BankApp.loggy.info("Customer validated!");
+    			return customer;
+    		} else {
+    			BankApp.loggy.info("Account is not yet approved. Please wait or contact Bank.");
+    			return null;
+    		}
+    	} else {
+    		BankApp.loggy.info("Customer name(s) and Account ID does not match!");
+    		return null;
+    	}
+    	
+    };
 
+    public void registerUser(String accountId, String loginName, String password){
+    	
+//    	Registration registration = new Registration();
+//    	
+//    	registration.);
+//    	
+    	
+    }
 
 }

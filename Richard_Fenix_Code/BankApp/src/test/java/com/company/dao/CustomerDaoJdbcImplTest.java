@@ -73,6 +73,8 @@ public class CustomerDaoJdbcImplTest {
         customer1 = customerDaoJdbcImpl.getCustomer(customer.getCustomerId());
 
         assertNull(customer1);
+        // Can use below format to include message.
+        // assertNull("Customer has been removed from the Customer table.", customer1);
 
 	}
 
