@@ -9,7 +9,7 @@ import com.bank.tools.QuitOption;
 
 public class CreateUserAccountView {
 	
-	public static void userCreate() {
+	public static void userCreate() throws BankException {
 		
 		// create usi to access methods, and blank user object
 		UserServiceInterface usi = new UserServiceImplementation();
@@ -22,50 +22,27 @@ public class CreateUserAccountView {
 		Main.myLog.info("Please enter your preferred password: ");
 		myUser.setPassword(Main.scan.nextLine().toString());
 		
-		try {
-			myUser = usi.createUser(myUser);
-			if (true) {
-				Main.myLog.info("Thank you. Application pending. Please check back later to log in to your new account.");				
-				Main.myLog.info("Returning to Beaver Trust Fiduciary Home Screen");
-				WelcomeView.welcome();
-			} else {
-				//a message about the appropriate problem
-			}
-		} catch (BankException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
+		//
+		if (usi.loginUser(myUser.getUsername(), myUser.getPassword())) {
+			Main.myLog.error("Existing User");
+			Main.myLog.info("User already exists. Log in as existing user from home screen");
+			WelcomeView.welcome();
+		} else {
+			try {
+				myUser = usi.createUser(myUser);
+				if (true) {
+					Main.myLog.info("Thank you. Application pending. Please check back later to log in to your new account.");				
+					Main.myLog.info("Returning to Beaver Trust Fiduciary Home Screen");
+					WelcomeView.welcome();
+				} else {
+					//a message about the appropriate problem
+				}
+			} catch (BankException e) {
+				Main.myLog.error(e);
+			}			
+		}	
 	}
 	
 	//errors to look out for: already existing username, do regex checks,
-	
-	
-	
-	
-//		String createUsername = null;
-//		String createPassword = null;
-////		Scanner createScan = new Scanner(System.in);
-//		
-//		Main.myLog.info("Enter your prefered username: ");
-//		createUsername = myScanner.scan.nextLine().toString();
-//		
-////		for now, making sure credentials just don't equal current hardcoded version
-////		if username doesn't exist, accept
-//
-//		if (createUsername.equalsIgnoreCase("hc")) {
-//			Main.myLog.info("Username is not available! Try again please");
-//			userCreate();
-//		} else if (createUsername.equalsIgnoreCase("quit")) {
-//			quitOption.quit();
-//		} else {
-//			Main.myLog.info("Username is available. Please enter your desired password.");
-//			createPassword = myScanner.scan.nextLine();
-//		}
-//		
-//		Main.myLog.info("Your username is " + createUsername + " and your password is " + createPassword);
-//		Main.myLog.info("You are now logged into your new account.");
-//		UserHome.userWelcome(createUsername);
-//	}
 
 }

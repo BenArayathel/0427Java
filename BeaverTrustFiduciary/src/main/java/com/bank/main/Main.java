@@ -25,7 +25,7 @@ public class Main {
 	public static Logger myLog = Logger.getLogger(Main.class);
 	public static final Scanner scan = new Scanner(System.in);
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws BankException {
 	
 //		if (myLog.isInfoEnabled()) {
 //			myLog.info("trying with filters");			
@@ -49,8 +49,8 @@ public class Main {
 //		}
 
 
-		UserServiceInterface usi = new UserServiceImplementation();
-		User myUser = new User();
+//		UserServiceInterface usi = new UserServiceImplementation();
+//		User myUser = new User();
 		
 //		Main.myLog.info("enter new username");
 //		myUser.setUsername(scan.nextLine());
@@ -76,8 +76,8 @@ public class Main {
 		
 		// TRYING SAME STUFF WITH ACCOUNT
 		
-		AccountServiceInterface asi = new AccountServiceImplementation();
-		Account newAccount = new Account();
+//		AccountServiceInterface asi = new AccountServiceImplementation();
+//		Account newAccount = new Account();
 		
 //		Main.myLog.info("enter new account user_id");
 //		newAccount.setUser_id(scan.nextLine().toString());
@@ -102,9 +102,6 @@ public class Main {
 //			e.printStackTrace();
 //		}
 		
-		
-	
-
 	}
 
 }

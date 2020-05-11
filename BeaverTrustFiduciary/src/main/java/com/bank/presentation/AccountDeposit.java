@@ -3,10 +3,11 @@ package com.bank.presentation;
 import com.bank.main.Main;
 import com.bank.models.User;
 import com.bank.service_implementation.AccountServiceImplementation;
+import com.bank.tools.BankException;
 
 public class AccountDeposit {
 
-	public static void deposit(User user) {
+	public static void deposit(User user) throws BankException {
 		AccountServiceImplementation asi = new AccountServiceImplementation();
 		String username = user.getUsername();
 		String accountName;

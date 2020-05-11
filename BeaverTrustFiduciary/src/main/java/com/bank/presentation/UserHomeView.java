@@ -7,7 +7,7 @@ import com.bank.tools.QuitOption;
 
 public class UserHomeView {
 	
-	public static void userWelcome(User user) {
+	public static void userWelcome(User user) throws BankException {
 		String username = user.getUsername();
 		String userOptions = null;
 		userOptions = Main.scan.nextLine().toString();
@@ -17,7 +17,7 @@ public class UserHomeView {
 		Main.myLog.info(".........................................");
 		Main.myLog.info("Enter '1' to access your existing accounts.");
 		Main.myLog.info("Enter '2' to apply for a new bank account.");
-		Main.myLog.info("Or, as always, enter 'Quit' to exit.");
+		Main.myLog.info("Or enter 'Quit' to exit.");
 		Main.myLog.info(".........................................");
 
 		
@@ -34,7 +34,8 @@ public class UserHomeView {
 		} else if (userOptions.equalsIgnoreCase("quit")) {
 			QuitOption.quit();
 		} else {
-			Main.myLog.info("Please try again.");
+//			Main.myLog.info("Please try again.");
+			Main.myLog.info("\n");
 			userWelcome(user);
 		}
 

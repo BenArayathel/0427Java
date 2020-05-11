@@ -150,9 +150,9 @@ public class AccountDAOImplementation implements AccountDAOInterface {
 					ps2.executeUpdate();
 					
 
-				} catch (SQLException e) {
-					e.printStackTrace();
-					throw new BankException("trouble with make deposit in accout dao");
+				} catch (SQLException | NumberFormatException e) {
+					Main.myLog.error(e);
+					throw new BankException("There was a problem, please try again later.");
 				}
 			}
 
@@ -222,5 +222,21 @@ public class AccountDAOImplementation implements AccountDAOInterface {
 			}			
 			return transactionList;
 		}
+
+	
+	// FOR TESTING and CLEANING UP AFTER TESTS
+	@Override
+	public void deleteTransaction(String account_name) {
+		String sql = "delete from bank_transaction where account_name = ?";
+				
+		try (Connection conn = DataConnection.getConnection()) {
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setString(1, account_name);
+			ps.executeUpdate();
+		
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 	
 }

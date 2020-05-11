@@ -3,10 +3,11 @@ package com.bank.presentation;
 import com.bank.main.Main;
 import com.bank.models.User;
 import com.bank.service_implementation.AccountServiceImplementation;
+import com.bank.tools.BankException;
 
 public class AccountWithdrawal {
 	
-	public static void withdraw(User user) {
+	public static void withdraw(User user) throws BankException {
 		String username = user.getUsername();
 		AccountServiceImplementation asi = new AccountServiceImplementation();
 		String accountName;

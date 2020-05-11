@@ -18,19 +18,26 @@ public class AccountApplication {
 //			QuitOption.quit();
 //		} else {
 		
+		Main.myLog.info("\n");
+		Main.myLog.info("Create a new bank account.");
 		Main.myLog.info("What would you like to name your new account?");
 		accountName = Main.scan.nextLine();
 		Main.myLog.info("How much will you be depositing as your starting balance?");
 		initialDeposit = Main.scan.nextLine().toString();
 		
+//		// unacceptable deposit
+//		if (initialDeposit)
+		
 		try {
 			aci.createAccount(user, accountName, initialDeposit);
-			Main.myLog.info("Your new account, " + accountName + " has been added.");
+			Main.myLog.info("Your new account, " + accountName + ", has been added.");
+			Main.myLog.info(".................................");
 			UserHomeView.userWelcome(user);
-		} catch (BankException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			throw new BankException("something went wrong with creating your new bank account");
+		} catch (NumberFormatException e) {
+			Main.myLog.error(e);
+//			throw new BankException("Deposit entered in incorrect format. Please try again.");
+			Main.myLog.info("Deposit entered in incorrect format. Please try again.");
+			apply(user);
 		}
 		
 	}

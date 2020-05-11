@@ -35,3 +35,8 @@
 2020-05-10 12:12:19 ERROR Main:38 - filters error ONLY
 2020-05-10 13:29:51 ERROR Main:38 - filters error ONLY
 2020-05-10 13:29:51 WARN  Main:40 - this is a warning
+2020-05-10 17:42:13 ERROR Main:34 - java.lang.NumberFormatException: multiple points
+2020-05-10 17:53:53 ERROR Main:34 - java.lang.NumberFormatException: multiple points
+2020-05-10 17:57:16 ERROR Main:34 - java.lang.NumberFormatException: multiple points
+2020-05-10 18:49:36 ERROR Main:37 - java.lang.NumberFormatException: For input string: "lkjsdf"
+2020-05-10 18:51:41 ERROR Main:37 - java.lang.NumberFormatException: For input string: "asdfasd"

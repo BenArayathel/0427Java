@@ -9,8 +9,6 @@ import com.bank.tools.BankException;
 import com.bank.tools.QuitOption;
 
 public class UserLoginView {
-	//temporary login credentials: username == hc, password == pass
-
 	
 	//first, check the users username via input
 	public static void validateLogin() {
@@ -18,8 +16,8 @@ public class UserLoginView {
 		
 		UserServiceImplementation usi = new UserServiceImplementation();
 		UserDAOImplementation udi = new UserDAOImplementation();
-		String username = null;
-		String password = null;
+		String username;
+		String password;
 		
 		Main.myLog.info("Enter your username: ");
 		username = Main.scan.nextLine().toString();
@@ -29,8 +27,10 @@ public class UserLoginView {
 
 		
 		try {
+			// They are the Banker
 			if (username.equals("employee") && password.equals("employee")) {
 				EmployeeView.banking();
+			// They are found in the database
 			} else if (usi.loginUser(username, password)) {
 				Main.myLog.info("Log in successful.");
 				
@@ -43,46 +43,8 @@ public class UserLoginView {
 				validateLogin();
 			}
 		} catch (BankException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			Main.myLog.error(e);
 		}
-		
-		
-		
-		
-		
-		
-		
-//		//either found in db, quit to exit, or try again on failed attempt
-//		//and if it is found, move on to validate password
-//		if (userLoginU.equalsIgnoreCase("hc")) {
-//			validatePassword();
-//		} else if (userLoginU.equalsIgnoreCase("quit")) {
-//			QuitOption.quit();
-//		} else {
-//			Main.myLog.info("Username not recognized. Please try again.");
-//			validateUsername();
-//		}
-//		
-//	}
-//
-//	
-//	public static void validatePassword() {
-//		String userLoginP = null;
-//		
-//		Main.myLog.info("Enter your password: ");
-//		userLoginP = Main.scan.nextLine();
-//		
-//		//hardcoded default password, will be "is in database + connected to username
-//		if (userLoginP.equalsIgnoreCase("pass")) {
-//			Main.myLog.info(userLoginU);
-//			UserHomeView.userWelcome(userLoginU);
-//		} else if (userLoginP.equalsIgnoreCase("quit")) {
-//			QuitOption.quit();
-//		} else {
-//			Main.myLog.info("That username and password combination was not found. Please try again.");
-//			validateUsername();
-//		}
 
 	}
 	

@@ -15,7 +15,7 @@ import com.bank.tools.QuitOption;
 
 public class AccountsView {
 	
-	public static void view(User user) {
+	public static void view(User user) throws BankException {
 		String username = user.getUsername();
 		AccountServiceImplementation asi = new AccountServiceImplementation();
 		String accountAction = null;

@@ -6,10 +6,12 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.ArrayList;
 import java.util.List;
 
 import com.bank.dao_interface.UserDAOInterface;
+import com.bank.main.Main;
 import com.bank.models.User;
 import com.bank.tools.BankException;
 import com.bank.tools.DataConnection;
@@ -37,7 +39,7 @@ public class UserDAOImplementation implements UserDAOInterface {
 			user.setUser_id(cb.getString(1));
 			
 		} catch (SQLException e) {
-			e.printStackTrace();
+			Main.myLog.error(e);
 			throw new BankException("Something went wrong here");
 		}
 		

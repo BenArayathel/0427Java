@@ -1,6 +1,7 @@
 package com.bank.presentation;
 
 import com.bank.main.Main;
+import com.bank.tools.BankException;
 import com.bank.tools.QuitOption;
 import com.bank.presentation.UserLoginView;
 
@@ -9,7 +10,7 @@ import com.bank.presentation.UserLoginView;
 //first view for a user who opened the program
 public class WelcomeView {
 	
-	public static void welcome() {
+	public static void welcome() throws BankException {
 		//first, determine if this is a new user or return user
 		String hasAccount = null;
 
@@ -27,6 +28,8 @@ public class WelcomeView {
 		} else if (hasAccount.equalsIgnoreCase("quit")) {
 			QuitOption.quit();
 		} else {
+			Main.myLog.info("\nPlease enter 'Y' if you have an account, 'N' if you do not have an account yet, or 'Quit' to exit to the main menu.");
+			Main.myLog.info(".............................................................");
 			welcome();
 		}
 	}
