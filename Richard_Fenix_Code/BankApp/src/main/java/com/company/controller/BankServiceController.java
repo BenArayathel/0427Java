@@ -2,10 +2,13 @@ package com.company.controller;
 
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
 
 import com.company.model.Customer;
+import com.company.model.Transaction;
 import com.company.service.ServiceLayer;
 import com.company.view.BankApp;
+import com.company.viewModel.AccountViewModel;
 
 public class BankServiceController {
 	
@@ -29,5 +32,18 @@ public class BankServiceController {
 	public void createCustomerAccount(String firstName, String lastName, String birthday, String usState, String accountType, BigDecimal bigDecimalBalance) {
 		serviceLayer.createCustomerAccount(firstName, lastName, birthday, usState, accountType, bigDecimalBalance);
 	}
+	
+	public AccountViewModel getCustomerAccountDetail(String accountId) {
+		return serviceLayer.getCustomerAccountDetail(accountId);
+	}
+
+	
+    public AccountViewModel approveAccount(String accountId) {
+    	return serviceLayer.approveAccount(accountId);
+    };
+    
+    public List<Transaction> getLogList(){
+    	return serviceLayer.getLogList();
+    }
 
 }

@@ -129,7 +129,7 @@ public class AccountDaoJdbcImpl implements AccountDao{
 		        accounts.add(account);
 			}
 			
-			accounts.forEach(c -> BankApp.loggy.info(c));
+			//accounts.forEach(c -> BankApp.loggy.info(c));
 
 		} catch (SQLException e) {
 				e.printStackTrace();

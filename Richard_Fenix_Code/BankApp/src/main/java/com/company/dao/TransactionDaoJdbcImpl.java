@@ -28,7 +28,7 @@ public class TransactionDaoJdbcImpl implements TransactionDao{
             "select * from transaction where transaction_id = ?";
 
     private static final String SELECT_ALL_TRANSACTIONS_SQL =
-            "select * from transaction";
+            "select * from transaction order by trans_time";
 
     private static final String UPDATE_TRANSACTION_SQL =
             "update transaction set account_id = ?, transaction_type = ?, amount = ?, trans_time = ? " +
@@ -129,7 +129,7 @@ public class TransactionDaoJdbcImpl implements TransactionDao{
 		        transactions.add(transaction);
 			}
 			
-			transactions.forEach(c -> BankApp.loggy.info(c));
+			//transactions.forEach(c -> BankApp.loggy.info(c));
 
 		} catch (SQLException e) {
 				e.printStackTrace();

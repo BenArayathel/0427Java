@@ -32,7 +32,7 @@ public class OpenCustomerAccount {
         BankApp.loggy.info("       5. Account Type (CHEC, SAVI, BROK, CRED, MORT): ");
         String accountType = scanner.nextLine();
         
-        BankApp.loggy.info("       6. Initial Deposit (i.e. $523.25:");
+        BankApp.loggy.info("       6. Initial Deposit (i.e. 500.00):");
         String initBalance = scanner.nextLine();
 
         // Convert initBalance from String to BigDecimal.
@@ -45,9 +45,9 @@ public class OpenCustomerAccount {
 
     };
     
-    public void showList() {
-    	
-    }
+//    public void showList() {
+//    	
+//    }
 
 
 }

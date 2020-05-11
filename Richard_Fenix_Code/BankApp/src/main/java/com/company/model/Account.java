@@ -8,6 +8,7 @@ public class Account {
 	private String accountType;
 	private BigDecimal balance;
 	private boolean	approved;
+	
 	public String getAccountId() {
 		return accountId;
 	}

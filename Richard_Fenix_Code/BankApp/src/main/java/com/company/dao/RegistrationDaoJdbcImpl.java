@@ -138,7 +138,7 @@ public class RegistrationDaoJdbcImpl implements RegistrationDao {
 		        registrations.add(registration);
 			}
 			
-			registrations.forEach(c -> BankApp.loggy.info(c));
+			//registrations.forEach(c -> BankApp.loggy.info(c));
 
 		} catch (SQLException e) {
 				e.printStackTrace();

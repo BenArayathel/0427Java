@@ -127,7 +127,7 @@ public class CustomerDaoJdbcImpl implements CustomerDao {
 		        customers.add(customer);
 			}
 			
-			customers.forEach(c -> BankApp.loggy.info(c));
+			//customers.forEach(c -> BankApp.loggy.info(c));
 
 		} catch (SQLException e) {
 				e.printStackTrace();

@@ -6,14 +6,14 @@ import com.company.model.AccountType;
 
 public interface AccountTypeDao {
 
-	AccountType addAccountType(AccountType accountType);
+//	AccountType addAccountType(AccountType accountType);
 
-	AccountType getAccountType(int id);
+	AccountType getAccountType(String accountType);
 	
-	List<AccountType> getAllAccountType();
-	
-	void updateAccountType(AccountType accountType);
-	
-	void deleteAccountType(int id);
+//	List<AccountType> getAllAccountType();
+//	
+//	void updateAccountType(AccountType accountType);
+//	
+//	void deleteAccountType(String accountType);
 	
 }

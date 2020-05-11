@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 import com.company.controller.BankServiceController;
 import com.company.model.Customer;
+import com.company.view.admin.AdminPage;
 
 public class SignOn {
 	
@@ -31,8 +32,7 @@ public class SignOn {
         
         if (customer != null) {
         	
-        	// UserAccountInfo userAccountInfo = new UserAccountInfo();
-        	System.out.println("Login name and password validated. Display user account info");
+        	BankApp.loggy.info("Login name and password validated.");
         	
         	if (customer.getCustomerId() == 99999) {
         		AdminPage adminPage = new AdminPage();
