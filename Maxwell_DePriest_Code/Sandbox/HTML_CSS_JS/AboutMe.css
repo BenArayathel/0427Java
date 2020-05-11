@@ -1,0 +1,20 @@
+﻿body
+{
+    background-color: black;
+    color : yellow;
+}
+
+header {
+    font-weight: bold;
+    text-align:center;
+    
+}
+
+.red_text {
+    color:red;
+}
+
+.blud_text {
+    color: blue;
+}
+
