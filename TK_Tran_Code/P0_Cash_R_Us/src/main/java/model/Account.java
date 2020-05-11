@@ -62,11 +62,11 @@ public class Account {
 	@Override
 	public String toString() {
 		return "Account Details: {" +
-				"username='" + username + '\'' +
-				", password='" + password + '\'' +
-				", name='" + name + '\'' +
-				", balance=$" + balance +
-				", type='" + type + '\'' +
+				"Username='" + username + '\'' +
+				", Password='" + password + '\'' +
+				", Name='" + name + '\'' +
+				", Balance=$" + balance +
+				", Type='" + type + '\'' +
 				'}';
 	}
 }

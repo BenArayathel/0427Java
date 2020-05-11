@@ -34,7 +34,7 @@ public class Service {
 	public void displayCustEmpPortal() {
 		log.info("\n---[ User Portal ]---");
 		log.info("Select an Option");
-		log.info("1 = View model.Account");
+		log.info("1 = View Account");
 		log.info("2 = Deposit");
 		log.info("3 = Withdraw");
 		log.info("4 = Transfer Money");

@@ -26,7 +26,7 @@ public class DAOImp implements DAO {
 			cs.setString(5, account.getType());
 			cs.execute();
 		} catch (ClassNotFoundException | SQLException e) {
-			log.warn("model.Account " + account.getUsername() + " already exists in the database.");
+			log.warn("Account " + account.getUsername() + " already exists in the database.");
 		}
 	}
 
@@ -95,7 +95,7 @@ public class DAOImp implements DAO {
 //		}
 //		double depositAmount = Double.parseDouble(amount);
 //
-//		model.Account dummyAccount = dao.getAccount(account);
+//		Account dummyAccount = dao.getAccount(account);
 //		double dummyBalance = dummyAccount.getBalance();
 //		dummyBalance += depositAmount;
 //		dummyAccount.setBalance(dummyBalance);
@@ -110,7 +110,7 @@ public class DAOImp implements DAO {
 //		}
 //		double withdrawAmount = Double.parseDouble(amount);
 //
-//		model.Account dummyAccount = dao.getAccount(account);
+//		Account dummyAccount = dao.getAccount(account);
 //		double dummyBalance = dummyAccount.getBalance();
 //		if ((dummyBalance - withdrawAmount) < 0) {
 //			log.warn("Cannot withdraw more than $" + dummyBalance + ".");
