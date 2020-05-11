@@ -22,9 +22,7 @@ public class PloutosConnection {
 		String password = System.getenv("JPASSWORD");
 		
 		//TODO remove this before pushing
-		url = "jdbc:oracle:thin:@myfirstorcl.caacxjx4qkkr.us-east-2.rds.amazonaws.com:1521:orcl";
-		username = "ploutos";
-		password = "hahabank";
+
 		
 		c = DriverManager.getConnection(url, username, password);
 		return c;
