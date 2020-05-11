@@ -1,0 +1,17 @@
+body{
+    background-color: grey;
+    font-size: 14px;
+    font-family: 'Courier New', Courier, monospace;
+}
+.footer{
+    background-color: #f5f5f5;
+}
+.fixed-space{
+    margin: 50px;
+}
+#aboutMe{
+    padding: 50px;
+}
+#aboutMe > .row > div >img{
+    width: 100%;
+} 
