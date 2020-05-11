@@ -1,0 +1,22 @@
+body{ /* Selecting an element by its tag*/
+    background-color: lightblue;
+}
+
+.superheroes{
+    background-color: lightcoral;
+}
+
+#Batman{
+    background-color: lime;
+    text-align: center;
+    font-size: large;
+}
+
+header > h6 {
+    background-color: maroon;
+}
+
+p.superheroes{
+    background-color: orangered;
+}
+
