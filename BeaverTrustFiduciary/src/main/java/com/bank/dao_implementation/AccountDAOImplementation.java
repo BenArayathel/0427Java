@@ -155,11 +155,14 @@ public class AccountDAOImplementation implements AccountDAOInterface {
 					throw new BankException("There was a problem, please try again later.");
 				}
 			}
+	
+	// no deposits of negative money
 
 
 	// WITHDRAW from ACCOUNT
 	@Override
 	public void withdraw(User user, String accountName, String withdrawalAmount) throws BankException {
+			
 		String user_id = user.getUser_id();
 		String sql2 = 
 				"update bank_account set account_balance = (account_balance - ?) where account_name = ? and user_id = ?";
@@ -179,7 +182,7 @@ public class AccountDAOImplementation implements AccountDAOInterface {
 					throw new BankException("trouble with make deposit in accout dao");
 				}
 			}
-
+	// error handling, don't let amount be more than account balance, no deposit of negative money
 
 	
 	// EMPLOYEE APPROVING ACCOUNT

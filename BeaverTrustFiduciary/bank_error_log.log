@@ -40,3 +40,4 @@
 2020-05-10 17:57:16 ERROR Main:34 - java.lang.NumberFormatException: multiple points
 2020-05-10 18:49:36 ERROR Main:37 - java.lang.NumberFormatException: For input string: "lkjsdf"
 2020-05-10 18:51:41 ERROR Main:37 - java.lang.NumberFormatException: For input string: "asdfasd"
+2020-05-10 19:07:25 ERROR Main:27 - Existing User

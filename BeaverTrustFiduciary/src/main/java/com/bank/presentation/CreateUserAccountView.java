@@ -35,7 +35,8 @@ public class CreateUserAccountView {
 					Main.myLog.info("Returning to Beaver Trust Fiduciary Home Screen");
 					WelcomeView.welcome();
 				} else {
-					//a message about the appropriate problem
+					Main.myLog.info("Something went wrong, please try again later.");
+					WelcomeView.welcome();
 				}
 			} catch (BankException e) {
 				Main.myLog.error(e);

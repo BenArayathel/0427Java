@@ -7,7 +7,9 @@ import java.util.List;
 
 import org.junit.Test;
 
+import com.bank.models.Account;
 import com.bank.models.Transaction;
+import com.bank.models.User;
 import com.bank.tools.BankException;
 
 public class AccountDAOImplementationTest {
@@ -47,7 +49,26 @@ public class AccountDAOImplementationTest {
 	}
 	
 	@Test
-	public void depositTest() {
+	public void depositTest() throws BankException {
+		User user = new User();
+		user.setUser_id("0");
+		user.setUsername("UNITtest");
+		user.setPassword("test");
+		user.setApproved(0);
+		
+		Account account = new Account();
+		account.setAccount_id("0");
+		account.setUser_id("0");
+		account.setAccount_name("UNITtest");
+		account.setBalance(5000);
+		
+		String accountName = "UNITtest";
+		String depositAmount = "10";
+
+		adi.deposit(user, accountName, depositAmount);
+		assert(account.getBalance() == 5010);
+		
+		
 		
 	}
 	
