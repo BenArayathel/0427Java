@@ -10,7 +10,6 @@ import java.util.Scanner;
 
 /*
 	Application (Presentation) Layer
-	test
  */
 public class Main {
 
