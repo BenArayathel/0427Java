@@ -1,65 +1,51 @@
+a {
+    color: black;
+    font-weight: bold;
+}
+
 body {
     margin: auto;
     font-family: 'Quicksand', sans-serif;
     background-color: azure;
 }
 
-a {
-    color: black;
-    font-weight: bold;
+header {
+
 }
 
 section {
-    margin-top: 50px;
-    margin-left: 100px;
+    margin: 2%;
 }
 
 h1 {
-    display: block;
-    font-size: 82px;
-    margin-top: 25px;
-    margin-bottom: 25px;
+    font-size: 64px;
+    margin: 2%;
     text-align: center;
 }
 
 h2 {
-    display: block;
     font-size: 36px;
-    margin: auto;
+    margin: 2%;
 }
 
 #headerwallpaper {
-    margin: auto;
-    display: block;
-    padding: 6px;
-    border: 8px solid grey;
+    padding: 4px;
+    border: 6px solid gray;
     border-radius: 25%;
-    width: 95%;
+    width: 100%;
 }
 
-.footer {
+#nextbtn {
+    display: block;
     margin: auto;
-    font-size: 18px;
+}
+
+.container {
+}
+
+.row {
+}
+
+.col-sm {
     text-align: center;
-}
-
-#interestingbutton {
-    display: block;
-    margin: auto;
-}
-
-#smilebutton {
-    display: block;
-    margin: auto;
-}
-
-.section2 {
-    display: block;
-    margin: auto;
-    font-family: 'Quicksand', sans-serif;
-}
-
-.table {
-    display: block;
-    margin: auto;
 }
