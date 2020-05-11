@@ -1,0 +1,133 @@
+package com.hackbank.presentation;
+
+import java.util.Scanner;
+
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
+
+import com.hackbank.business.services.person.PersonService;
+import com.hackbank.business.services.person.PersonServiceImplementation;
+import com.hackbank.business.validations.Validation;
+
+public class Main {
+	
+	final static Logger loggy = Logger.getLogger(Main.class);
+	final static Validation vd = new Validation(); 
+	final static PersonService personSrv = new PersonServiceImplementation();
+
+	public static void main(String[] args) {
+
+		loggy.setLevel(Level.ALL);
+		Scanner sc = new Scanner(System.in);
+		
+		header();
+		mainMenu(sc);
+		
+		// clearScreen();
+
+	}
+
+	private static void mainMenu(Scanner sc){
+		int opt = 0;
+		do {
+			loggy.info("--- Main Menu ---");
+			loggy.info("--- Enter one of the following options:");
+			loggy.info("--- 1 - Login");
+			loggy.info("--- 2 - Finish Register");
+			loggy.info("--- 3 - Exit Program");
+			try {
+				opt = Integer.parseInt(sc.nextLine());
+			} catch (NumberFormatException e) {
+				loggy.info("\nInvalid option.");
+			}
+			switch (opt) {
+			case 1:
+				LoginForm.openForm(sc);
+				break;
+			case 2:
+				loggy.info("Under Construction!");
+				break;
+			case 3:
+				if (exitProgram(sc)) {
+					loggy.info("\nHave a nice day!\n");
+					System.exit(0);
+				}
+				break;
+			default:
+				loggy.info("\nThis is not a valid option -> "+opt);
+				loggy.info("We're sorry try again.\n");
+				break;
+			}
+			opt = 0;
+		}while(opt!=3);
+	}
+	
+	public static void adminMenu(Scanner sc){
+		int opt = 0;
+		loggy.info("\n--- Welcome to the Employee's Portal ---");
+		loggy.info("--- Have a wonderful day!!! ---\n");
+		do {
+			loggy.info("--- Menu ---");
+			loggy.info("--- Enter one of the following options:");
+			loggy.info("--- 1 - Register a New Client");
+			loggy.info("--- 2 - Search Client");
+			loggy.info("--- 3 - Pending to Approve");
+			loggy.info("--- 4 - View Transactions");
+			loggy.info("--- 5 - Logout");
+			try {
+				opt = Integer.parseInt(sc.nextLine());
+			} catch (NumberFormatException e) {
+				opt = 9999;
+			}
+			switch (opt) {
+			case 1:
+				OpeningAccount.openForm(sc);
+				break;
+			case 2:
+				loggy.info("Under Construction!\n");
+				break;
+			case 3:
+				loggy.info("Under Construction!\n");
+				break;
+			case 4:
+				loggy.info("Under Construction!\n");
+				break;
+			case 5:
+				// loggy.info("Under Construction!");
+				break;
+			default:
+				loggy.info("\nThis is not a valid option -> "+opt);
+				loggy.info("We're sorry try again.\n");
+				opt = 0;
+				break;
+			}
+		}while(opt!=5);
+	}
+	
+	private static void header() {
+		loggy.info("Welcome to HACKBANK Management Console App V1.0!!!");
+		loggy.info("Where create an Account is a pleasure :)\n");
+	}
+	
+	private static boolean exitProgram(Scanner sc) {
+		boolean flag = false;
+		String opt = null;
+		loggy.info("\nAre you sure do you want to exit?\n");
+		loggy.info("--- Select one of the follow options:");
+		loggy.info("--- 1 - YES");
+		loggy.info("--- Press Any Key - NO");
+		opt = sc.nextLine();
+		if(opt.equals("1")) {
+			flag = true;
+		}
+		return flag;
+	}
+	
+	public static void clearScreen() {
+		final String ESC = "\033[";
+		System.out.println("\033[H\033[2J");
+		System.out.print(ESC + "2J");
+	}
+	
+
+}
