@@ -1,0 +1,28 @@
+body {
+    background-color: lightblue;
+  }
+  
+  h1 {
+    color: navy;
+    margin-left: 20px;
+    background-color: greenyellow;
+  }
+  h3 {
+    color:springgreen;
+    margin-left: 20px;
+  }
+
+  a{
+    color: magenta;
+    margin-left: 20px;
+  }
+
+  table{
+    color: magenta;
+    margin-left: 20px;
+  }
+
+  ol, ul, footer{
+    color: magenta;
+    margin-left: 20px;
+  }
