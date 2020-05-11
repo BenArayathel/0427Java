@@ -286,7 +286,7 @@ SQL
             Grant(give access permissions)/Revoke(remove access)
         TCL: Transaction Control Language (Transactions)
             Commit/Rollback/SavePoint
-    
+
 PL/SQL? ("Advanced SQL")
     Procedural Language
         Methods/Blocks
@@ -295,7 +295,7 @@ PL/SQL? ("Advanced SQL")
         Conditional structurals (if/else)
         Collection (storage)
         Exception handling
-        Trigger: reusable blocks of code (method) that cannot cannot be called. 
+        Trigger: reusable blocks of code (method) that cannot cannot be called.
             These methods are used during event handling execution.
             Triggers react on DML events.
         Cursors
@@ -309,11 +309,11 @@ PL/SQL? ("Advanced SQL")
     Procedure vs. Function
         Procedures - doesn't return a value.
         Functions - returns a value.
-    
+
     2 Types of Blocks
         1. Anonymous blocks - nameless blocks, used to test procedures or functions; not stored in DB.
         2. Named blocks - our actual procedures or functions; stored in DB until we drop them.
-    
+
     Block syntax:
         --declaration section
         DECLARE --optional
@@ -321,12 +321,23 @@ PL/SQL? ("Advanced SQL")
         --execution block
         BEGIN --mandatory (inherently a try block)
             --logic written between BEGIN and END.
-            
+
 
             --exception block (inherently a catch block)
             EXCEPTION --optional
 
         END --ends execution
+
+    DUAL - a table w/o any columns used for testing.
+
+    Query Statements:
+        Statement(I) - general purpose; useful when usig statinc SQL statements at runtime; cannot accept input params.
+        PreparedStatement(I) - used when plan to use a SQL statement many times; accepts input params.
+        CallableStatement(I) - makes calls to stored procedures and functions in the DB; accepts input params.
+    Execute Statements:
+        boolean execute() - best to use for DDL commands (CREATE, DROP, ALTER, TRUNCATE, RENAME).
+        int executeUpdate() - best to use for DML commands (INSERT, UPDATE, DELETE).
+        ResultSet executeQuery() - best to use for DQL commands (SELECT).
 
 Normalization (review Data Management Foundations in OneNote)
     1NF

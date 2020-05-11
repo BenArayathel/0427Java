@@ -1,0 +1,39 @@
+--[ Java Questions ]--
+
+What is java?
+Why java?
+What is the JVM? JRE? JDK?
+What is a bit? What is a byte? What is a nibble?
+What are the naming conventions in java?
+What are the primitive datatypes in java?
+What is flow control?
+What does the keyword "break" do? What does the keyword "continue" do?
+What is short circuiting?
+What datatypes does a switch case allow?
+What is an array?
+What method do you call to find the size of an array?
+What is a method?
+What is a function vs a method?
+What is method overloading?
+What is var args in java?
+What is a class?
+What is an object?
+What are the four pillars of object oriented programming?
+What is a constructor?
+What does the keyword "new" do in java?
+Can you name 3 types of constructors?
+Is the default constructor and the no args constructor the same thing?
+What is the first implicit line of any constructor?
+What is the difference between "super" and "this"?
+What is the difference between initializing and instantiating?
+What are the scopes of a variable in java?
+What are the access modifiers in java?
+What is shadowing?
+What is the difference between overloading and overriding?
+What is runtime polymorphism? What is compile time polymorphism?
+What is type casting?
+What is the difference between up and down casting?
+What is a wrapper class?
+What is autoboxing? What is unboxing?
+What is a String?
+What is the difference betwen String, StringBuilder, and StringBuffer?
