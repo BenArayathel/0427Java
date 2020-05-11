@@ -10,6 +10,8 @@ import com.bank.dao.CustomerDAO;
 import com.bank.dbutil.BankOracleConnection;
 import com.bank.exception.BankException;
 import com.bank.model.Customer;
+import com.bank.model.Employee;
+
 import oracle.jdbc.driver.OracleConnection;
 import oracle.net.aso.t;
 
@@ -124,9 +126,30 @@ public class CustomerDaoImpl implements CustomerDAO {
 		
 	}
 
-	public Customer acceptTransfer(String acceptance) throws BankException {
-		// TODO Auto-generated method stub
+	public Customer acceptTransfer(String fromAccountNumber, String transferAmount, String toAccountNumber) throws BankException {
+		try (Connection connection= BankOracleConnection.getConnection()){
+			String sql="UPDATE customer set accountbalance = (accountbalance + ?)  where accountnumber =?";
+			String sql2="UPDATE customer set accountbalance = (accountbalance - ?)  where accountnumber =?";
+			CallableStatement callableStatement = connection.prepareCall(sql);
+			PreparedStatement preparedStatement=connection.prepareStatement(sql);
+			preparedStatement.setString(2, fromAccountNumber);
+			preparedStatement.setDouble(1, Double.parseDouble(transferAmount));
+			CallableStatement callableStatement2 = connection.prepareCall(sql2);
+			PreparedStatement preparedStatement2=connection.prepareStatement(sql2);
+			preparedStatement2.setString(2, toAccountNumber);
+			preparedStatement2.setDouble(1, Double.parseDouble(transferAmount));
+			int resultSet=preparedStatement.executeUpdate();
+			int resultSet2=preparedStatement2.executeUpdate();
+			
+			if (resultSet < 0) {
+				throw new BankException("Internal error occured please contact SYSADMIN");
+			}
+			
+			} catch (ClassNotFoundException | SQLException e) {
+				throw new BankException("Internal error occured please contact SYSADMIN");
+			}
 		return null;
+	
 	}
 
 	@Override
@@ -147,5 +170,24 @@ public class CustomerDaoImpl implements CustomerDAO {
 			}
 		return null;
 	}
+
+	@Override
+	public Customer loginVerification(String username, String password) throws BankException {
+			try (Connection connection= BankOracleConnection.getConnection()){
+				String sql="SELECT username, password from employee where username=? and password=?	";
+				PreparedStatement preparedStatement=connection.prepareStatement(sql);
+				preparedStatement.setString(1, username);
+				preparedStatement.setString(2, password);
+				ResultSet resultSet=preparedStatement.executeQuery();
+				if(resultSet.next()) {
+					
+				} else {
+					throw new BankException ("Employee Credentials "+ username+ " "+password+ " are not valid");
+				}
+				}catch (ClassNotFoundException | SQLException e) {
+					throw new BankException("Error contact Customer Support");
+				}
+				return null;
+		}
 
 }

@@ -11,5 +11,6 @@ public interface EmployeeService {
 	public Customer viewCustomerAccount(String accountNumber) throws BankException;
 	public Employee updateEmployee(String newAddress) throws BankException;
 	public Employee deleteEmployee(String username) throws BankException;
-	//Still need a view log of all transactions
+	public Employee viewTransactionLogs(String answer)throws BankException;
+	public Employee loginVerification(String username, String password) throws BankException;
 }

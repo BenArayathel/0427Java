@@ -4,6 +4,7 @@ import com.bank.dao.CustomerDAO;
 import com.bank.dao.impl.CustomerDaoImpl;
 import com.bank.exception.BankException;
 import com.bank.model.Customer;
+import com.bank.model.Employee;
 import com.bank.service.CustomerService;
 
 public class CustomerServiceImpl implements CustomerService {
@@ -85,10 +86,10 @@ public class CustomerServiceImpl implements CustomerService {
 		return customer;
 	}
 
-	public Customer acceptTransfer(String acceptance) throws BankException {
+	public Customer acceptTransfer(String fromAccountNumber, String transferAmount, String toAccountNumber) throws BankException {
 		Customer customer=null;
-		if (acceptance !=null) {
-			customer=dao.acceptTransfer(acceptance);
+		if (validDepositAmount(transferAmount) && validAccountNumber(fromAccountNumber) && validAccountNumber(toAccountNumber)) {
+			customer=dao.acceptTransfer(fromAccountNumber, transferAmount, toAccountNumber);
 		} else{
 			throw new BankException("You have chosen not to accept this transfer");
 		}
@@ -105,6 +106,18 @@ public class CustomerServiceImpl implements CustomerService {
 		}
 		return null;
 	}
+
+
+	@Override
+	public Customer loginVerification(String username, String password) throws BankException {
+			Customer customer= null;
+			if(username !=null && password !=null) {
+				customer=dao.loginVerification(username, password);
+			}else {
+				throw new BankException("Employee Credentials "+ username+ " "+password+ " are not valid");
+			}
+			return customer;
+		}
 
 	}
 

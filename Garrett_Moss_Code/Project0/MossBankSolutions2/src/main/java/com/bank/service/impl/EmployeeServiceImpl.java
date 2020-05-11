@@ -1,11 +1,20 @@
 package com.bank.service.impl;
 
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.InputStreamReader;
+
+import org.apache.log4j.Logger;
+
 import com.bank.dao.EmployeeDAO;
 import com.bank.dao.impl.EmployeeDaoImpl;
 import com.bank.exception.BankException;
+import com.bank.main.MainDriver;
 import com.bank.model.Customer;
 import com.bank.model.Employee;
 import com.bank.service.EmployeeService;
+
+import oracle.net.aso.e;
 
 public class EmployeeServiceImpl implements EmployeeService {
 	private EmployeeDAO dao = new EmployeeDaoImpl();
@@ -68,6 +77,42 @@ public class EmployeeServiceImpl implements EmployeeService {
 	@Override
 	public Employee deleteEmployee(String username) throws BankException {
 		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	@Override
+	public Employee loginVerification(String username, String password) throws BankException {
+		Employee employee = null;
+		if(username !=null && password !=null) {
+			employee=dao.loginVerification(username, password);
+		}else {
+			throw new BankException("Employee Credentials "+ username+ " "+password+ " are not valid");
+		}
+		return employee;
+	}
+
+
+	@Override
+	public Employee viewTransactionLogs(String answer) throws BankException {
+//		if (answer == ) {
+			final Logger log = Logger.getLogger(EmployeeServiceImpl.class);
+			try {
+				FileInputStream readLog= new FileInputStream("G-mossDocumentsJava_Codemy_git_repos0427JavaGarrett_Moss_CodeProject0MossBankSolutions2log4j-application.log");
+				BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(readLog));
+				String readLine;
+				while ((readLine = bufferedReader.readLine()) != null) {
+				
+				log.info(readLine);
+				}
+				readLog.close();
+			} catch (Exception e) {
+				log.error(e.getMessage());
+			}
+			
+//		}else {
+//				throw new BankException("You have chosen not to view Transaction Logs");
+//			}
 		return null;
 	}
 

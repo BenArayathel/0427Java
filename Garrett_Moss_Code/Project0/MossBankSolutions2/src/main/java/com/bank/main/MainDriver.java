@@ -56,10 +56,19 @@ public class MainDriver {
 				case 1:
 				int choice3 = 0;
 				logger.info("Please Login");
-				logger.info("Username");
-				scanner.nextLine();
-				logger.info("Password");
-				scanner.nextLine();
+				Customer customer = new Customer();
+				logger.info("Enter Username");
+				String username=scanner.nextLine();
+				logger.info("Enter Password");
+				String password=scanner.nextLine();
+				try {
+					Customer customer1=service.loginVerification(username, password);
+					if(customer1!=null) {
+						logger.info("Login Verified");
+					}
+				}catch (BankException e) {
+					logger.error(e.getMessage());
+				}
 					do {
 						logger.info("Welcome back!");
 						logger.info("-------------------------------");
@@ -80,12 +89,12 @@ public class MainDriver {
 							logger.info("Enter AccountNumber");
 							String accountNumber=scanner.nextLine();
 							try {
-								Customer customer=service.viewBalance(accountNumber);
-								if(customer!=null) {
-									logger.info("Here is your balance: "+customer);
+								Customer customer1=service.viewBalance(accountNumber);
+								if(customer1!=null) {
+									logger.info("Here is your balance: "+customer1);
 								}
 							}catch (BankException e) {
-								logger.info(e.getMessage());
+								logger.error(e.getMessage());
 							}
 							
 							break;
@@ -94,15 +103,15 @@ public class MainDriver {
 							String accountNumber1=scanner.nextLine();
 							logger.info("Enter Withdrawl Amount to two decimal places");
 							String withdraw=scanner.nextLine();
-							logger.info("Enter Account Balance");
+							logger.info("Enter Account Balance to two decimal places");
 							String accountBalance=scanner.nextLine();
 							try {
-								Customer customer=service.withdraw(accountNumber1, withdraw, accountBalance);
-								if(customer==null) {
+								Customer customer1=service.withdraw(accountNumber1, withdraw, accountBalance);
+								if(customer1==null) {
 									logger.info("You have withdrawn: $"+withdraw);
 								}
 							} catch (BankException e) {
-								logger.info(e.getMessage());
+								logger.error(e.getMessage());
 							}
 							break;
 						case 3:
@@ -111,12 +120,12 @@ public class MainDriver {
 							logger.info("Enter accountNumber");
 							String accountNumber3=scanner.nextLine();
 							try {
-								Customer customer=service.deposit(deposit, accountNumber3);
-								if(customer==null) {
+								Customer customer1=service.deposit(deposit, accountNumber3);
+								if(customer1==null) {
 									logger.info("You have deposited: $"+deposit);
 								}
 							} catch (BankException e) {
-								logger.info(e.getMessage());
+								logger.error(e.getMessage());
 							}
 							break;
 						case 4:
@@ -127,41 +136,45 @@ public class MainDriver {
 							logger.info("Enter Account Number the transfer is going to");
 							String toAccountNumber=scanner.nextLine();
 							try {
-								Customer customer=service.moneyTransfer(accountNumber2, transferAmount, toAccountNumber);
-								if(customer==null) {
-									logger.info("You have sucessfully transfered money to :"+toAccountNumber);
+								Customer customer1=service.moneyTransfer(accountNumber2, transferAmount, toAccountNumber);
+								if(customer1==null) {
+									logger.info("You have sucessfully transfered $"+transferAmount + " to :"+toAccountNumber);
 								}
 							} catch (BankException e) {
-								logger.info(e.getMessage());
+								logger.error(e.getMessage());
 							}
 							break;
 						case 5:
-							logger.info("Would you like to accept a money Transfer");
-							String acceptance=scanner.nextLine();
+							logger.info("Enter Your Account Number");
+							String fromAccountNumber=scanner.nextLine();
+							logger.info("Enter Transfer Amount to two decimal places");
+							String transferAmount1=scanner.nextLine();
+							logger.info("Enter Account Number the transfer is coming from");
+							String toAccountNumber1=scanner.nextLine();
 							try {
-								Customer customer=service.acceptTransfer(acceptance);
-								if(customer==null) {
-									logger.info("You have accepted a money Transfer "+customer);
+								Customer customer1=service.acceptTransfer(fromAccountNumber,transferAmount1, toAccountNumber1);
+								if(customer1==null) {
+									logger.info("You have accepted a money Transfer of $"+ transferAmount1);
 								}
 							} catch (BankException e) {
-								logger.info(e.getMessage());
+								logger.error(e.getMessage());
 							}
 							
 							break;
 						case 6:
-							Customer customer = new Customer();
+							Customer customer1 = new Customer();
 							logger.info("Enter Username");
-							customer.setUsername(scanner.nextLine());
+							customer1.setUsername(scanner.nextLine());
 							try {
 								logger.info("Enter Password");
-								customer.setPassword(scanner.nextLine());
-								logger.info("Enter AccountBalance");
-								customer.setAccountBalance(scanner.nextLine());
-								customer = service.createCustomerAccount(customer);
+								customer1.setPassword(scanner.nextLine());
+								logger.info("Enter AccountBalance to two decimal places");
+								customer1.setAccountBalance(scanner.nextLine());
+								customer1 = service.createCustomerAccount(customer1);
 								logger.info("New Account Created");
-								logger.info(customer);
+								logger.info(customer1);
 							} catch (BankException e) {
-								System.out.println(e.getMessage());
+								logger.error(e.getMessage());
 							}
 							
 							break;
@@ -191,19 +204,19 @@ public class MainDriver {
 						switch (choice4) {
 						
 						case 1:
-							Customer customer = new Customer();
+							Customer customer1 = new Customer();
 							logger.info("Enter Username");
-							customer.setUsername(scanner.nextLine());
+							customer1.setUsername(scanner.nextLine());
 							try {
 								logger.info("Enter Password");
-								customer.setPassword(scanner.nextLine());
-								logger.info("Enter AccountBalance");
-								customer.setAccountBalance(scanner.nextLine());
-								customer = service.createCustomerAccount(customer);
+								customer1.setPassword(scanner.nextLine());
+								logger.info("Enter AccountBalance to two decimal places");
+								customer1.setAccountBalance(scanner.nextLine());
+								customer1 = service.createCustomerAccount(customer1);
 								logger.info("Customer Registered");
-								logger.info(customer);
+								logger.info(customer1);
 							} catch (BankException e) {
-								System.out.println(e.getMessage());
+								logger.error(e.getMessage());
 							}
 							break;
 						case 2:
@@ -244,14 +257,23 @@ public class MainDriver {
 				}
 				switch (choice5) {
 				case 1:
+					
 
 				int choice6 = 0;
 				do {					
 					Employee employee = new Employee();
 					logger.info("Enter Username");
-					employee.setUsername(scanner.nextLine());
+					String username=scanner.nextLine();
 					logger.info("Enter Password");
-					employee.setPassword(scanner.nextLine());
+					String password=scanner.nextLine();
+					try {
+						Employee employee1=employeeService.loginVerification(username, password);
+						if(employee1!=null) {
+							logger.info("Login Verified");
+						}
+					}catch (BankException e) {
+						logger.error(e.getMessage());
+					}
 					logger.info("What would you like to do today");
 					logger.info("-------------------------------");
 					logger.info("1) Approve Accounts");
@@ -276,7 +298,7 @@ public class MainDriver {
 								logger.info("You have approved account: "+accountNumber);
 							}
 						} catch (BankException e) {
-							logger.info(e.getMessage());
+							logger.error(e.getMessage());
 						}
 						
 						break;
@@ -291,7 +313,7 @@ public class MainDriver {
 								logger.info("You have rejected account: "+accountNumber1);
 							}
 						} catch (BankException e) {
-							logger.info(e.getMessage());
+							logger.error(e.getMessage());
 						}
 						
 						
@@ -305,11 +327,20 @@ public class MainDriver {
 								logger.info("Here is the CustomerAccount: "+customer);
 							}
 						}catch (BankException e) {
-							logger.info(e.getMessage());
+							logger.error(e.getMessage());
 						}
 		
 						break;
 					case 4:
+						logger.info("Enter Yes");
+						String answer=scanner.nextLine();
+						try {
+							employeeService.viewTransactionLogs(answer);
+							logger.info("Here are the Transaction Logs: ");
+							
+						} catch (BankException e) {
+							logger.error(e.getMessage());
+						}
 		
 						break;
 					case 5:

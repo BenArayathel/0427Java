@@ -13,4 +13,5 @@ public interface EmployeeDAO {
 	public Employee updateEmployee(String newAddress) throws BankException;
 	public Employee deleteEmployee(String username) throws BankException;
 	//Still need a view log of all transactions
+	public Employee loginVerification(String username, String password) throws BankException;
 }

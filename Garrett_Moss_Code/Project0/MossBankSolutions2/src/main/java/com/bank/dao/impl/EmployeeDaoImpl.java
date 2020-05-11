@@ -126,5 +126,25 @@ public class EmployeeDaoImpl implements EmployeeDAO{
 			
 		}
 
+	@Override
+	public Employee loginVerification(String username, String password) throws BankException {
+		try (Connection connection= BankOracleConnection.getConnection()){
+			String sql="SELECT username, password from employee where username=? and password=?	";
+			PreparedStatement preparedStatement=connection.prepareStatement(sql);
+			preparedStatement.setString(1, username);
+			preparedStatement.setString(2, password);
+			ResultSet resultSet=preparedStatement.executeQuery();
+			if(resultSet.next()) {
+				
+			} else {
+				throw new BankException ("Employee Credentials "+ username+ " "+password+ " are not valid");
+			}
+			}catch (ClassNotFoundException | SQLException e) {
+				throw new BankException("Error contact Customer Support");
+			}
+			return null;
+			
+	}
+
 }
 
