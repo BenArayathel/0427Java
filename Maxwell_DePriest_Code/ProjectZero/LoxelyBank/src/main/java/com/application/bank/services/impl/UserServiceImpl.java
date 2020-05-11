@@ -108,7 +108,8 @@ public class UserServiceImpl implements UserService {
 			}
 			for (Account a : allAccounts) {
 				String printOut = "Email- " + a.getEmail() + ", Checking Account Number- " + a.getCheckingAccountNumber() +
-						", Savings Account Number " + a.getSavingsAccountNumber() + ", Account Active- " + a.getActive();
+						", Savings Account Number " + a.getSavingsAccountNumber() + ", Checking Balance " + a.getCheckingBalance() +
+						", Savings Balance " + a.getSavingsBalance()  + ", Account Active- " + a.getActive();
 				loggy.info(printOut);
 			}
 		}
@@ -116,6 +117,7 @@ public class UserServiceImpl implements UserService {
 			loggy.info("You must be an employee to continue");
 		}
 	}
+
 	
 	public void activatePendingAccounts(User u) {
 		Scanner sc = new Scanner(System.in);
