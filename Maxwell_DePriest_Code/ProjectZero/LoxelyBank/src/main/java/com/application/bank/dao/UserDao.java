@@ -18,7 +18,7 @@ public User selectUserByColumnName(String cName, String cValue) throws BusinessE
 public List<User> selectAllUsers() throws BusinessException;
 
 //Delete
-public void deleteUser(String uEmail) throws BusinessException;
+public int deleteUser(String uEmail) throws BusinessException;
 public void deleteAllUsers() throws BusinessException;
 
 

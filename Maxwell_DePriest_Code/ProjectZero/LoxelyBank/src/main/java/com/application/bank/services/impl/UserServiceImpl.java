@@ -184,7 +184,7 @@ public class UserServiceImpl implements UserService {
 		return randomAccountNumber;
 	}
 	
-	private boolean isValidName(String testName) {
+	public boolean isValidName(String testName) {
 		if (testName.matches("[a-zA-Z ]{2,20}")) {
 			loggy.debug("isValidName passed");
 			return true;
@@ -193,7 +193,7 @@ public class UserServiceImpl implements UserService {
 		return false;
 	}
 	
-	private boolean isValidPhoneNumber(String testNumber) {
+	public boolean isValidPhoneNumber(String testNumber) {
 		if (testNumber.matches("[0-9]{10}")) {
 			loggy.debug("isValidPhoneNumber passed");
 			return true;
@@ -202,7 +202,7 @@ public class UserServiceImpl implements UserService {
 		return false;
 	}
 	
-	private boolean isValidDeposit(String testMoney) {
+	public boolean isValidDeposit(String testMoney) {
 		if(testMoney.matches("[0-9.]{1,7}") && Double.parseDouble(testMoney) > 0 && Double.parseDouble(testMoney) <= 1000.0) {
 			loggy.debug("isValidDeposit passed");
 			return true;
@@ -213,7 +213,7 @@ public class UserServiceImpl implements UserService {
 			return false;
 		}
 	}
-	private boolean isEmployee(User u) {
+	public boolean isEmployee(User u) {
 		return u.getStatus().equals("employee") ? true : false;
 	}
 
@@ -303,7 +303,7 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public void transferFunds(String uEmail, String fromWhichAccount, String receivingAccountNumber, String amt) throws BusinessException {
 		try {
-			Account sendingAccount = aDI.selectAccountByEmail(uEmail);
+			//Account sendingAccount = aDI.selectAccountByEmail(uEmail);
 			Account receivingAccount = aDI.selectAccountByColumnName("checkingNumber", receivingAccountNumber);
 			withdrawMoney(fromWhichAccount, amt, uEmail);
 			depositMoney("checkingBalance", amt, receivingAccount.getEmail());
@@ -329,8 +329,8 @@ public class UserServiceImpl implements UserService {
 	public static String passwordEncryption(String pw) {
 	loggy.info("Encrypting password");
 	StringBuilder newPassword = new StringBuilder();
-	String original = "abcdefghijklmnopqrstuvwxyz0987654321";
-	String alternate = "1234567890zyxwvutsrqponmlkjihgfedcba";
+	String original = "abcdefghijklmnopqrstuvwxyz0987654321";  //james13
+	String alternate = "1234567890zyxwvutsrqponmlkjihgfedcba"; //01x5rac
 	String[] arr = alternate.split("");
 	String[] wordArray = pw.toLowerCase().split("");
 	int tempIndex;

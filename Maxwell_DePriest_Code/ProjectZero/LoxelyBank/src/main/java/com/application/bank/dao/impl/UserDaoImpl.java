@@ -23,6 +23,7 @@ public class UserDaoImpl implements UserDao {
 	public static final String PASSWORD = SecretStuff.getAwsPassword();
 	final static Logger loggy = Logger.getLogger(User.class);
 	
+	
 	public UserDaoImpl() {
 		
 	}
@@ -156,7 +157,7 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	@Override
-	public void deleteUser(String uEmail) throws BusinessException{
+	public int deleteUser(String uEmail) throws BusinessException{
 		try (Connection conn = DriverManager.getConnection(AWSURL, USERNAME, PASSWORD)) {
 			PreparedStatement ps = conn.prepareStatement("DELETE FROM bankuser WHERE email = '" + uEmail + "'");
 			
@@ -168,6 +169,7 @@ public class UserDaoImpl implements UserDao {
 			e.printStackTrace();
 		}
 		
+		return 0;
 	}
 	@Override
 	public void deleteAllUsers() throws BusinessException {
