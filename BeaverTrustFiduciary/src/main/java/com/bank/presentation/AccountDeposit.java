@@ -16,12 +16,18 @@ public class AccountDeposit {
 		Main.myLog.info("Enter the account name that you'd like to deposit into: ");
 		accountName = Main.scan.nextLine().toString();
 		Main.myLog.info("Enter the amount you are depositing: ");
-		depositAmount = Main.scan.nextLine().toString();
+		depositAmount = Main.scan.nextLine();
 		
-		asi.deposit(user, accountName, depositAmount);
-		Main.myLog.info("\nDeposit of $" + depositAmount + " complete!");
-		Main.myLog.info("-----------------------------------------------------");
-		AccountsView.view(user);
+		if (Double.parseDouble(depositAmount) >= 0) {
+			asi.deposit(user, accountName, depositAmount);
+			Main.myLog.info("\nDeposit of $" + depositAmount + " complete!");
+			Main.myLog.info("-----------------------------------------------------");
+			AccountsView.view(user);			
+		} else {
+			Main.myLog.info("Enter an amount greater than $0.");
+			AccountDeposit.deposit(user);
+		}
+		
 	}
 	
 }

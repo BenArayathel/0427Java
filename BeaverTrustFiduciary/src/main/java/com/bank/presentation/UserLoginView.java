@@ -11,7 +11,7 @@ import com.bank.tools.QuitOption;
 public class UserLoginView {
 	
 	//first, check the users username via input
-	public static void validateLogin() {
+	public static void validateLogin() throws BankException {
 		User user = new User();
 		
 		UserServiceImplementation usi = new UserServiceImplementation();
@@ -32,7 +32,7 @@ public class UserLoginView {
 				EmployeeView.banking();
 			// They are found in the database
 			} else if (usi.loginUser(username, password)) {
-				Main.myLog.info("Log in successful.");
+				Main.myLog.info("\nLog in successful.");
 				
 				// this is where the NEW ACTION is happening
 				// it creates an object to use from here on into the program
@@ -43,7 +43,8 @@ public class UserLoginView {
 				validateLogin();
 			}
 		} catch (BankException e) {
-			Main.myLog.error(e);
+			Main.myLog.error(e.getStackTrace());
+			throw new BankException("Something went wrong, please try again later.");
 		}
 
 	}

@@ -22,7 +22,7 @@ public class CreateUserAccountView {
 		Main.myLog.info("Please enter your preferred password: ");
 		myUser.setPassword(Main.scan.nextLine().toString());
 		
-		//
+		//check if they are already in the db
 		if (usi.loginUser(myUser.getUsername(), myUser.getPassword())) {
 			Main.myLog.error("Existing User");
 			Main.myLog.info("User already exists. Log in as existing user from home screen");
@@ -30,16 +30,13 @@ public class CreateUserAccountView {
 		} else {
 			try {
 				myUser = usi.createUser(myUser);
-				if (true) {
-					Main.myLog.info("Thank you. Application pending. Please check back later to log in to your new account.");				
-					Main.myLog.info("Returning to Beaver Trust Fiduciary Home Screen");
-					WelcomeView.welcome();
-				} else {
-					Main.myLog.info("Something went wrong, please try again later.");
-					WelcomeView.welcome();
-				}
+				//check if it is true with boolean?
+				Main.myLog.info("\nThank you. Application pending. Please check back later to log in to your new account.");				
+				Main.myLog.info("\nReturning to Beaver Trust Fiduciary Home Screen");
+				WelcomeView.welcome();
 			} catch (BankException e) {
-				Main.myLog.error(e);
+				Main.myLog.error(e.getMessage());
+				throw new BankException("Could not create account, please try again later.");
 			}			
 		}	
 	}

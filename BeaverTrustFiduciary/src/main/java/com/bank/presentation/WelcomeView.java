@@ -15,7 +15,7 @@ public class WelcomeView {
 		String hasAccount = null;
 
 		Main.myLog.info("Welcome to Beaver Trust Fiduciary");
-		Main.myLog.info("\nPlease type and enter 'Quit' at any time to exit.");
+		Main.myLog.info("\nPlease type and enter 'Quit' to return to the home screen.");
 		Main.myLog.info("\nDo you already have an account? Y or N: ");
 		
 		//takes user input to either log them in or create account

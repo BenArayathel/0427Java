@@ -62,18 +62,17 @@ public class AccountDAOImplementationTest {
 		String accountName = "UNITtest";
 		String depositAmount = "10";
 
+		// this is the key element of test
 		adi.deposit(user, accountName, depositAmount);
 		System.out.println(account.getBalance());
 		assert(account.getBalance() == 5010);
 		
-		
-		
 	}
 	
-	@Test
-	public void withdrawalTest() {
-		
-	}
+//	@Test
+//	public void withdrawalTest() {
+//		
+//	}
 	
 
 }

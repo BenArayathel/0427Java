@@ -13,11 +13,6 @@ import com.bank.tools.BankException;
 import com.bank.tools.QuitOption;
 
 public class EmployeeView {
-	// in this view, stick the logic to 
-	// 1. approve accounts (access them and update boolean)
-	// 2. read all accounts by inputing user_id, or all accounts in general, both, whatever
-	// 3. read in the log of all the transactions 
-	// https://stackoverflow.com/questions/13934818/reading-log-file-in-java
 	
 	public static void banking() throws BankException {
 		UserServiceImplementation usi = new UserServiceImplementation();
@@ -42,8 +37,8 @@ public class EmployeeView {
 		
 		selection = Main.scan.nextLine().toString();
 		
+		// Listing ALL Users
 		if (selection.equals("1")) {
-			// Listing ALL Users
 			try {
 				List<User> users = usi.listUsers();
 				for (User u: users) {
@@ -56,7 +51,7 @@ public class EmployeeView {
 					Main.myLog.info("...........................................");
 				}
 			} catch (BankException e) {
-				e.printStackTrace();
+				Main.myLog.error(e.getStackTrace());
 				throw new BankException("Something wrong with accessing user info.");
 			}
 			banking();
@@ -64,8 +59,7 @@ public class EmployeeView {
 		} else if (selection.equals("2")) {
 			Main.myLog.info("Access customer's accounts with their Username: ");
 			username = Main.scan.nextLine();
-			
-			// list them by the selected username
+			// LIST ACCOUNTS by the selected USERNAME
 			try {
 				List<Account> userAccountsList = asi.listUserAccounts(username);
 				for(Account i: userAccountsList) {
@@ -76,13 +70,24 @@ public class EmployeeView {
 				e.printStackTrace();
 			}
 			banking();
-		// APPROVE account //PROBLEM CHILD
+		// APPROVE ACCOUNT
 		} else if (selection.equals("3")) {
+			List<User> users = usi.listUsers();
+			for (User u: users) {
+				if (u.getApproved() == 0) {
+					showApproval = "(Account not yet approved)";
+				} else {
+					showApproval = "(Account Approved)";
+				}
+				Main.myLog.info("User_Id: " + u.getUser_id() + " " + showApproval);
+				Main.myLog.info("...........................................");
+			}
 			Main.myLog.info("Approve customer's account by entering their User_ID: ");
 			user_id = Main.scan.nextLine().toString();
 			adi.approve(user_id);
-			Main.myLog.info("Account approved.");
-			banking();
+			Main.myLog.info("\nAccount approved.");
+			banking();		
+			// See a LOG of all TRANSACTIONS
 		} else if (selection.equals("4")) {
 			Main.myLog.info("Transaction Log: ");
 			try {
@@ -90,20 +95,16 @@ public class EmployeeView {
 				for(Transaction t: allTransactionsList) {
 					Main.myLog.info(t);
 				}
+				banking();
 			} catch (BankException e) {
 				e.printStackTrace();
 			}
 		} else if (selection.equalsIgnoreCase("quit")) {
 			QuitOption.quit();
 		} else {
-			Main.myLog.info("somethign broke");
+			Main.myLog.info("\nSomething didn't work, try again please.");
+			Main.myLog.info("\n..............................................");
+			banking();
 		}
-		
-
-		
-		// Approve account
-		
-		
 	}
-
 }

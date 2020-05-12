@@ -39,7 +39,7 @@ public class UserDAOImplementation implements UserDAOInterface {
 			user.setUser_id(cb.getString(1));
 			
 		} catch (SQLException e) {
-			Main.myLog.error(e);
+			Main.myLog.error(e.getMessage());
 			throw new BankException("Something went wrong here");
 		}
 		
@@ -62,8 +62,7 @@ public class UserDAOImplementation implements UserDAOInterface {
 			}
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			Main.myLog.error(e.getMessage());
 			throw new BankException("List User problem");
 		}
 		
@@ -95,7 +94,7 @@ public class UserDAOImplementation implements UserDAOInterface {
 			}
 			
 		} catch (SQLException e) {
-			e.printStackTrace();
+			Main.myLog.error(e.getMessage());
 			throw new BankException("login failed at dao");
 		}
 	}
@@ -123,8 +122,7 @@ public class UserDAOImplementation implements UserDAOInterface {
 			}
 
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			Main.myLog.error(e.getMessage());
 			throw new BankException("something wrong with accessing user object");
 		}
 		return user;

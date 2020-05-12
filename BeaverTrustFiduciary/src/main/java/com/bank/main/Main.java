@@ -47,6 +47,15 @@ public class Main {
 //			// TODO Auto-generated catch block
 //			e.printStackTrace();
 //		}
+		
+
+//		try{
+//			int[] myNumbers = {1,2,3};
+//			System.out.println(myNumbers[10]); 
+//			}
+//		catch  (IndexOutOfBoundsException e) {
+//			System.out.println("I caught it!");
+//		}
 
 
 //		UserServiceInterface usi = new UserServiceImplementation();

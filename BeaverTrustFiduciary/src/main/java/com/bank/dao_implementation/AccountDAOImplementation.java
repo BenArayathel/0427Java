@@ -14,11 +14,11 @@ import com.bank.main.Main;
 import com.bank.models.Account;
 import com.bank.models.Transaction;
 import com.bank.models.User;
+import com.bank.presentation.WelcomeView;
 import com.bank.tools.BankException;
 import com.bank.tools.DataConnection;
 
 public class AccountDAOImplementation implements AccountDAOInterface {
-	// use this for the doubles $$$$
 
 	@Override
 	public Account createAccount(User user, String accountName, String depositAmount) throws BankException {
@@ -39,10 +39,9 @@ public class AccountDAOImplementation implements AccountDAOInterface {
 			account.setAccount_id(cb.getString(1));					
 					
 		} catch (SQLException e) {
-			e.printStackTrace();
+			Main.myLog.error(e.getMessage());
 			throw new BankException("ACCOUNT DAO IMPLEMENTATION ERROR");
 		}
-		
 		return account;
 	}
 	
@@ -62,11 +61,11 @@ public class AccountDAOImplementation implements AccountDAOInterface {
 			}
 			
 		} catch (SQLException e) {
-			e.printStackTrace();
-			throw new BankException("trouble with the account dao");
+			Main.myLog.error(e.getMessage());
+			throw new BankException("Unable to list accounts.");
 		}
 		
-		Main.myLog.info("All accounts: " + accountList.toString());
+//		Main.myLog.info("All accounts: " + accountList.toString());
 		return accountList;
 	}
 
@@ -87,16 +86,14 @@ public class AccountDAOImplementation implements AccountDAOInterface {
 			}
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			throw new BankException("something wrong with list users account dao layer");
+			Main.myLog.error(e.getMessage());
+			throw new BankException("Unable to list user accounts.");
 		}
 		return accountList;
 	}
 	
 	// LOG ALL TRANSACTIONS WHEN MAKING DEPOSIT or WITHDRAWAL
 	public void logTransaction(String amount, String accountName, String user_id, String type) throws BankException {
-//		Main.myLog.info(amount + accountName + user_id + type);
 		String sql = "{call create_new_transaction(?,?,?,?,?)}";
 		try (Connection conn = DataConnection.getConnection()) {
 			CallableStatement cs = conn.prepareCall(sql);
@@ -105,34 +102,14 @@ public class AccountDAOImplementation implements AccountDAOInterface {
 			cs.setString(4, user_id);
 			cs.setString(5, type);
 			cs.registerOutParameter(1, java.sql.Types.VARCHAR);
-			
 			cs.execute();
-
-//			int rs2 = ps.executeUpdate();
-			
-//			try (Connection conn = DataConnection.getConnection()) {
-//				String sql = "{call create_new_account(?,?,?,?)}";
-//				CallableStatement cb = conn.prepareCall(sql);
-//				
-//				cb.setString(2, user.getUser_id());
-//				cb.setString(3, accountName);
-//				cb.setDouble(4, Double.parseDouble(depositAmount));
-//				
-//				cb.registerOutParameter(1, java.sql.Types.VARCHAR);
-//				
-//				cb.execute();
-//				
-//				account.setAccount_id(cb.getString(1));	
-			
-
 		} catch (SQLException e) {
-			e.printStackTrace();
-			throw new BankException("trouble with LOG TRANSACTION IN DAO");
+			Main.myLog.error(e.getMessage());
+			throw new BankException("Unable to log transaction.");
 		}
 	}
 	
 
-	
 	// DEPOSIT INTO ACCOUNT
 	@Override
 	public void deposit(User user, String accountName, String depositAmount) throws BankException {
@@ -151,13 +128,11 @@ public class AccountDAOImplementation implements AccountDAOInterface {
 					
 
 				} catch (SQLException | NumberFormatException e) {
-					Main.myLog.error(e);
-					throw new BankException("There was a problem, please try again later.");
+					Main.myLog.error(e.getMessage());
+					throw new BankException("There was a problem with the deposit, please try again later.");
 				}
 			}
 	
-	// no deposits of negative money
-
 
 	// WITHDRAW from ACCOUNT
 	@Override
@@ -165,31 +140,27 @@ public class AccountDAOImplementation implements AccountDAOInterface {
 			
 		String user_id = user.getUser_id();
 		String sql2 = 
-				"update bank_account set account_balance = (account_balance - ?) where account_name = ? and user_id = ?";
+				"update bank_account set account_balance = (account_balance - ?) where account_name = ? and user_id = ? and account_balance > 4";
 
 				try (Connection conn2 = DataConnection.getConnection()) {
 					PreparedStatement ps2 = conn2.prepareStatement(sql2);
 					ps2.setDouble(1, Double.parseDouble(withdrawalAmount));
 					ps2.setString(2, accountName);
 					ps2.setString(3, user_id);
+					ps2.setDouble(4, Double.parseDouble(withdrawalAmount));
 					logTransaction(withdrawalAmount, accountName, user_id, "withdrawal");
 					
 					int rs2 = ps2.executeUpdate();
-					
-
-				} catch (SQLException e) {
-					e.printStackTrace();
-					throw new BankException("trouble with make deposit in accout dao");
+				} catch (SQLException | BankException e) {
+					Main.myLog.error(e.getMessage());
+					throw new BankException("Could not make withdrawal, insufficient funds.");
 				}
 			}
-	// error handling, don't let amount be more than account balance, no deposit of negative money
 
 	
 	// EMPLOYEE APPROVING ACCOUNT
 	@Override
 	public void approve(String user_id) throws BankException {
-//		Main.myLog.info("test at adi level");
-//		Main.myLog.info(user_id);
 		String sql = "update bank_user set approved = 1 where user_id = ?";
 		
 		try (Connection conn = DataConnection.getConnection()) {
@@ -198,8 +169,8 @@ public class AccountDAOImplementation implements AccountDAOInterface {
 			ps.executeUpdate();
 		
 		} catch (SQLException e) {
-			e.printStackTrace();
-			throw new BankException("trouble with approving account at dao level");
+			Main.myLog.error(e.getMessage());
+			throw new BankException("Unable to approve account.");
 		}
 	}
 
@@ -240,23 +211,5 @@ public class AccountDAOImplementation implements AccountDAOInterface {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-	}
-	
-//	public double getAccountBalance(String account_id) {
-//		double account_balance;
-//		String sql = "select account_balance from bank_account where account_id = ?";
-//		
-//		try (Connection conn = DataConnection.getConnection()) {
-//			PreparedStatement ps = conn.prepareStatement(sql);
-//			ps.setString(1, account_id);
-//			ResultSet rs = ps.executeUpdate();
-//		
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//		}
-//		
-//		
-//		return account_balance;
-//	}
-	
+	}	
 }

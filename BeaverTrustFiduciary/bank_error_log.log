@@ -41,3 +41,7 @@
 2020-05-10 18:49:36 ERROR Main:37 - java.lang.NumberFormatException: For input string: "lkjsdf"
 2020-05-10 18:51:41 ERROR Main:37 - java.lang.NumberFormatException: For input string: "asdfasd"
 2020-05-10 19:07:25 ERROR Main:27 - Existing User
+2020-05-11 16:23:24 ERROR Main:27 - Existing User
+2020-05-11 18:59:49 ERROR Main:157 - [Ljava.lang.StackTraceElement;@256f8274
+2020-05-11 19:01:45 ERROR Main:157 - [Ljava.lang.StackTraceElement;@5c10f1c3
+2020-05-11 19:03:15 ERROR Main:155 - [Ljava.lang.StackTraceElement;@aafcffa

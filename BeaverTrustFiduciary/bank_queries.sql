@@ -1,6 +1,8 @@
 select * from bank_user;
-select * from bank_account;
+select * from bank_account where account_name = 'UNITtest';
 select * from bank_transaction;
+
+update bank_account set account_balance = 5000 where account_name = 'UNITtest';
 
 insert into bank_account (account_id, user_id, account_name, account_balance) values (0,0,'UNITtest',5000);
 insert into bank_user (user_id, username, password, approved) values (0, 'UNITtest', 'test', 0);

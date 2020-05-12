@@ -4,20 +4,24 @@ import java.util.List;
 
 import com.bank.dao_implementation.UserDAOImplementation;
 import com.bank.dao_interface.UserDAOInterface;
+import com.bank.main.Main;
 import com.bank.models.User;
 import com.bank.service_interface.UserServiceInterface;
 import com.bank.tools.BankException;
 
 
 public class UserServiceImplementation implements UserServiceInterface {
-	//note for the future: the reason this couldn't be private is because I was
-	//trying to declare it down in the method!!!
 	private UserDAOInterface udi = new UserDAOImplementation();
 
 	@Override
 	public User createUser(User user) throws BankException {
-		udi.createUser(user);
-		return null;
+		try {
+			udi.createUser(user);
+		} catch (BankException e) {
+			Main.myLog.error(e.getMessage());
+			throw new BankException("Something went wrong with account creation");
+		}
+		return null;			
 	}
 
 	@Override
@@ -46,7 +50,6 @@ public class UserServiceImplementation implements UserServiceInterface {
 	
 	// the SERVICES layer does most of the checks and tests before passing
 	// the action down to the DAO, which actually finishes the task
-
 
 
 }

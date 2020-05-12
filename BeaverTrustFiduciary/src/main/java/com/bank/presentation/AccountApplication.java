@@ -9,14 +9,9 @@ import com.bank.tools.QuitOption;
 public class AccountApplication {
 	
 	public static void apply(User user) throws BankException {
-		AccountServiceImplementation aci = new AccountServiceImplementation();
+		AccountServiceImplementation asi = new AccountServiceImplementation();
 		String accountName;
 		String initialDeposit;
-	
-		// maybe use this?
-//		if (accountName.equalsIgnoreCase("quit") || initialDeposit.toString().equalsIgnoreCase("quit")) {
-//			QuitOption.quit();
-//		} else {
 		
 		Main.myLog.info("\n");
 		Main.myLog.info("Create a new bank account.");
@@ -29,12 +24,12 @@ public class AccountApplication {
 //		if (initialDeposit)
 		
 		try {
-			aci.createAccount(user, accountName, initialDeposit);
+			asi.createAccount(user, accountName, initialDeposit);
 			Main.myLog.info("Your new account, " + accountName + ", has been added.");
 			Main.myLog.info(".................................");
 			UserHomeView.userWelcome(user);
 		} catch (NumberFormatException e) {
-			Main.myLog.error(e);
+			Main.myLog.error(e.getMessage());
 //			throw new BankException("Deposit entered in incorrect format. Please try again.");
 			Main.myLog.info("Deposit entered in incorrect format. Please try again.");
 			apply(user);
