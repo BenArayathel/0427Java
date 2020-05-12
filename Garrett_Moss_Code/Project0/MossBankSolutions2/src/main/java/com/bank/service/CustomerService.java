@@ -2,7 +2,6 @@ package com.bank.service;
 
 import com.bank.exception.BankException;
 import com.bank.model.Customer;
-import com.bank.model.Employee;
 
 public interface CustomerService {
 	public Customer createCustomerAccount (Customer createAccount) throws BankException;

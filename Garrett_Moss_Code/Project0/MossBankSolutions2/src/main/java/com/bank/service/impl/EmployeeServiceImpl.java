@@ -1,9 +1,5 @@
 package com.bank.service.impl;
 
-import java.io.BufferedReader;
-import java.io.FileInputStream;
-import java.io.InputStreamReader;
-
 import org.apache.log4j.Logger;
 
 import com.bank.dao.EmployeeDAO;
@@ -14,17 +10,18 @@ import com.bank.model.Customer;
 import com.bank.model.Employee;
 import com.bank.service.EmployeeService;
 
-import oracle.net.aso.e;
-
 public class EmployeeServiceImpl implements EmployeeService {
+	
+	final static Logger logger = Logger.getLogger(MainDriver.class);
+	
 	private EmployeeDAO dao = new EmployeeDaoImpl();
 	public Customer approveAccount(String approve, String accountNumber) throws BankException {
 		
 		Customer customer=null;
-		if(approve != null) {
+		if(approve != null && validAccountNumber(accountNumber)==true) {
 		customer=dao.approveAccount(approve, accountNumber);
-		}else {
-			throw new BankException("Account has been approved already ");
+		}else if(approve != null && (validAccountNumber(accountNumber)==false)) {
+			logger.info("Invalid account number ");
 		}
 		return customer;
 	}
@@ -32,10 +29,10 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 	public Customer rejectAccount(String reject, String accountNumber) throws BankException {
 		Customer customer=null;
-		if(reject != null) {
+		if(reject != null && validAccountNumber(accountNumber)==true) {
 		customer=dao.approveAccount(reject, accountNumber);
-		}else {
-			throw new BankException("Account has been rejected already ");
+		}else if(reject != null && (validAccountNumber(accountNumber)==false)) {
+			logger.info("Invalid account number ");
 		}
 		return customer;
 	}
@@ -50,10 +47,10 @@ public class EmployeeServiceImpl implements EmployeeService {
 	}
 	public Customer viewCustomerAccount(String accountNumber) throws BankException {
 		Customer customer=null;
-		if(validAccountNumber(accountNumber)) {
+		if(validAccountNumber(accountNumber)==true) {
 		customer=dao.viewCustomerAccount(accountNumber);
 		}else {
-			throw new BankException("Account number does not exist");
+			logger.info("Ivalid account number");
 		}
 		return customer;
 	}
@@ -61,7 +58,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 	@Override
 	public Employee createEmployee(Employee employee) throws BankException {
 		if (employee == null) {
-			throw new BankException("Employee account was not created");
+			logger.info("Employee account was not created");
 		}else {
 			employee=dao.createEmployee(employee);
 		}
@@ -69,7 +66,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 	}
 
 	@Override
-	public Employee updateEmployee(String newAddress) throws BankException {
+	public Employee updateEmployee(String newPassword) throws BankException {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -87,34 +84,36 @@ public class EmployeeServiceImpl implements EmployeeService {
 		if(username !=null) {
 			employee=dao.loginVerification(username);
 		}else {
-			throw new BankException("Employee Credentials "+ username+ " are not valid");
+			logger.info("Employee Credentials "+ username+ " are not valid");
 		}
 		return employee;
 	}
 
-
-	@Override
-	public Employee viewTransactionLogs(String answer) throws BankException {
-//		if (answer == ) {
-			final Logger log = Logger.getLogger(EmployeeServiceImpl.class);
-			try {
-				FileInputStream readLog= new FileInputStream("G-mossDocumentsJava_Codemy_git_repos0427JavaGarrett_Moss_CodeProject0MossBankSolutions2log4j-application.log");
-				BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(readLog));
-				String readLine;
-				while ((readLine = bufferedReader.readLine()) != null) {
-				
-				log.info(readLine);
-				}
-				readLog.close();
-			} catch (Exception e) {
-				log.error(e.getMessage());
-			}
-			
-//		}else {
-//				throw new BankException("You have chosen not to view Transaction Logs");
-//			}
-		return null;
+	private boolean validTransactionChoice(String choice) {
+		boolean b = false;
+		if (choice.matches("Yes")) {
+			b=true;
+		} else if(choice.matches("yes")) {
+			b=true;
+		}else if(choice.matches("No")) {
+			b=false;
+		}else if(choice.matches("no")) {
+			b=false;
+		}
+		return b;
 	}
 
+	@Override
+	public Employee viewTransactionLogs(String choice) throws BankException{	
+	Employee accountTransactions=null;
+		if (validTransactionChoice(choice)==true) {
+			accountTransactions=dao.viewTransactionLogs(choice);
+		}else if (validTransactionChoice(choice)==false){
+			logger.info("You have chosen not to view Transaction Logs");
+		}else {
+			logger.info("Not a Valid Input");
+		}
+		return accountTransactions;
+	}
 	
 }

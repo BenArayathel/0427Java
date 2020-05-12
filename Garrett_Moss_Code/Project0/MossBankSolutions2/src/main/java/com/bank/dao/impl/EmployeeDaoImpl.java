@@ -4,8 +4,8 @@ import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
-
 import org.apache.log4j.Logger;
 
 import com.bank.dao.EmployeeDAO;
@@ -18,7 +18,7 @@ import com.bank.model.Employee;
 public class EmployeeDaoImpl implements EmployeeDAO{
 
 	final static Logger logger = Logger.getLogger(MainDriver.class);
-	
+	@Override
 	public Customer approveAccount(String approve, String accountNumber) throws BankException {
 			try (Connection connection= BankOracleConnection.getConnection()){
 				String sql="UPDATE customer set approved = ?  where accountnumber =?";
@@ -29,15 +29,15 @@ public class EmployeeDaoImpl implements EmployeeDAO{
 				int resultSet=preparedStatement.executeUpdate();
 				
 				if (resultSet < 0) {
-					throw new BankException("Internal error occured please contact SYSADMIN");
+					logger.error("Internal error occured please contact SYSADMIN");
 				}
 				
 				} catch (ClassNotFoundException | SQLException e) {
-					throw new BankException("Internal error occured please contact SYSADMIN");
+					logger.error("Internal error occured please contact SYSADMIN");
 				}
 			return null;
 		}
-
+	@Override
 	public Customer rejectAccount(String reject, String accountNumber) throws BankException {
 		try (Connection connection= BankOracleConnection.getConnection()){
 			String sql="UPDATE customer set approved = ?  where accountnumber =?";
@@ -48,11 +48,11 @@ public class EmployeeDaoImpl implements EmployeeDAO{
 			int resultSet=preparedStatement.executeUpdate();
 			
 			if (resultSet < 0) {
-				throw new BankException("Internal error occured please contact SYSADMIN");
+				logger.error("Internal error occured please contact SYSADMIN");
 			}
 			
 			} catch (ClassNotFoundException | SQLException e) {
-				throw new BankException("Internal error occured please contact SYSADMIN");
+				logger.error("Internal error occured please contact SYSADMIN");
 			}
 		return null;
 	}
@@ -73,14 +73,14 @@ public class EmployeeDaoImpl implements EmployeeDAO{
 			employee.setEmployeeId(callableStatement.getString(1));
 			
 		} catch (ClassNotFoundException | SQLException e) {
-			throw new BankException("Internal error occured plase contact SYSADMIN");
+			logger.error("Internal error occured plase contact SYSADMIN");
 		}
 		
 		return employee;
 	}
 
 	@Override
-	public Employee updateEmployee(String newAddress) throws BankException {
+	public Employee updateEmployee(String newPassword) throws BankException {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -95,11 +95,11 @@ public class EmployeeDaoImpl implements EmployeeDAO{
 			int resultSet=preparedStatement.executeUpdate();
 			
 			if (resultSet < 1) {
-				throw new BankException("Internal error occured please contact SYSADMIN");
+				logger.error("Internal error occured please contact SYSADMIN");
 			}
 			
 			} catch (ClassNotFoundException | SQLException e) {
-				throw new BankException("Internal error occured please contact SYSADMIN");
+				logger.error("Internal error occured please contact SYSADMIN");
 			}
 		return null;
 	}
@@ -120,10 +120,10 @@ public class EmployeeDaoImpl implements EmployeeDAO{
 				newCustomer.setAccountBalance(resultSet.getString("accountbalance"));
 				newCustomer.setApproved(resultSet.getString("approved"));
 			} else {
-				throw new BankException ("Customer Account Number "+ accountNumber+ " is not valid");
+				logger.error("Customer Account Number "+ accountNumber+ " is not valid");
 			}
 			}catch (ClassNotFoundException | SQLException e) {
-				throw new BankException("Error contact Customer Support");
+				logger.error("Error contact Customer Support");
 			}
 			return newCustomer;
 			
@@ -145,9 +145,31 @@ public class EmployeeDaoImpl implements EmployeeDAO{
 					 logger.error("Employee Credentials "+ username+ " are not valid");
 				}
 				}catch (ClassNotFoundException | SQLException e) {
-					throw new BankException("Error contact Customer Support");
+					logger.error("Error contact Customer Support");
 				}
 				return account;
+		}
+
+	@Override
+		public Employee viewTransactionLogs(String choice) throws BankException{
+		Employee accountTransactions = null;
+		try (Connection connection= BankOracleConnection.getConnection()){
+				String sql="SELECT accountnumber, transactiontype, transactionamount from transactions";
+				PreparedStatement preparedStatement=connection.prepareStatement(sql);
+				ResultSet resultSet=preparedStatement.executeQuery();
+				ResultSetMetaData rsmd = resultSet.getMetaData();
+				int columnsNumber = rsmd.getColumnCount();
+				while(resultSet.next()) {
+					logger.info("Here are the Transaction Logs: ");
+					for (int i = 1; i <= columnsNumber; i++) {
+						logger.info(resultSet.getString(i)+ " ");
+					}
+				}
+				
+				}catch (ClassNotFoundException | SQLException e) {
+					logger.error("Error contact Customer Support");
+				}
+				return accountTransactions;
 		}
 	}
 

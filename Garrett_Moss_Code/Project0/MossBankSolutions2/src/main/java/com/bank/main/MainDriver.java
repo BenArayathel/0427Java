@@ -109,9 +109,6 @@ public class MainDriver {
 							String accountBalance=scanner.nextLine();
 							try {
 								Customer customer1=service.withdraw(accountNumber1, withdraw, accountBalance);
-								if(customer1==null) {
-									logger.info("You have withdrawn: $"+withdraw);
-								}
 							} catch (BankException e) {
 								logger.error(e.getMessage());
 							}
@@ -123,9 +120,6 @@ public class MainDriver {
 							String accountNumber3=scanner.nextLine();
 							try {
 								Customer customer1=service.deposit(deposit, accountNumber3);
-								if(customer1==null) {
-									logger.info("You have deposited: $"+deposit);
-								}
 							} catch (BankException e) {
 								logger.error(e.getMessage());
 							}
@@ -139,9 +133,6 @@ public class MainDriver {
 							String toAccountNumber=scanner.nextLine();
 							try {
 								Customer customer1=service.moneyTransfer(accountNumber2, transferAmount, toAccountNumber);
-								if(customer1==null) {
-									logger.info("You have sucessfully transfered $"+transferAmount + " to :"+toAccountNumber);
-								}
 							} catch (BankException e) {
 								logger.error(e.getMessage());
 							}
@@ -155,9 +146,6 @@ public class MainDriver {
 							String toAccountNumber1=scanner.nextLine();
 							try {
 								Customer customer1=service.acceptTransfer(fromAccountNumber,transferAmount1, toAccountNumber1);
-								if(customer1==null) {
-									logger.info("You have accepted a money Transfer of $"+ transferAmount1);
-								}
 							} catch (BankException e) {
 								logger.error(e.getMessage());
 							}
@@ -335,11 +323,10 @@ public class MainDriver {
 						break;
 					case 4:
 						logger.info("Enter Yes");
-						String answer=scanner.nextLine();
-						try {
-							employeeService.viewTransactionLogs(answer);
-							logger.info("Here are the Transaction Logs: ");
-							
+						String userchoice=scanner.nextLine();
+						
+						try {				
+							Employee transactionAccounts=employeeService.viewTransactionLogs(userchoice);
 						} catch (BankException e) {
 							logger.error(e.getMessage());
 						}

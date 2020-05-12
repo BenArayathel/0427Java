@@ -1,369 +1,126 @@
-2020-05-11 20:47:05,788 -0400 [main] INFO  (MainDriver.java:24) - ------------------------------
-2020-05-11 20:47:05,796 -0400 [main] INFO  (MainDriver.java:29) - Login
-2020-05-11 20:47:05,796 -0400 [main] INFO  (MainDriver.java:30) - Select an option below
-2020-05-11 20:47:05,796 -0400 [main] INFO  (MainDriver.java:31) - ---------------------------
-2020-05-11 20:47:05,797 -0400 [main] INFO  (MainDriver.java:32) - 1) Are you a Customer?
-2020-05-11 20:47:05,797 -0400 [main] INFO  (MainDriver.java:33) - 2) Are you an Employee
-2020-05-11 20:47:05,797 -0400 [main] INFO  (MainDriver.java:34) - 3) Exit
-2020-05-11 20:47:14,158 -0400 [main] INFO  (MainDriver.java:45) - Welcome to the Customer portal!
-2020-05-11 20:47:14,158 -0400 [main] INFO  (MainDriver.java:46) - -------------------------------
-2020-05-11 20:47:14,158 -0400 [main] INFO  (MainDriver.java:47) - 1) Existing Customer
-2020-05-11 20:47:14,158 -0400 [main] INFO  (MainDriver.java:48) - 2) New Customer
-2020-05-11 20:47:14,158 -0400 [main] INFO  (MainDriver.java:49) - 3) Exit
-2020-05-11 20:47:15,353 -0400 [main] INFO  (MainDriver.java:58) - Please Login
-2020-05-11 20:47:15,354 -0400 [main] INFO  (MainDriver.java:60) - Enter Username
-2020-05-11 20:47:19,697 -0400 [main] INFO  (MainDriver.java:62) - Enter Password
-2020-05-11 20:47:28,389 -0400 [main] INFO  (MainDriver.java:66) - Login Verified
-2020-05-11 20:47:28,389 -0400 [main] INFO  (MainDriver.java:76) - Welcome back!
-2020-05-11 20:47:28,390 -0400 [main] INFO  (MainDriver.java:77) - -------------------------------
-2020-05-11 20:47:28,390 -0400 [main] INFO  (MainDriver.java:78) - 1) View Balance
-2020-05-11 20:47:28,390 -0400 [main] INFO  (MainDriver.java:79) - 2) Make Withdrawl
-2020-05-11 20:47:28,391 -0400 [main] INFO  (MainDriver.java:80) - 3) Make Deposit
-2020-05-11 20:47:28,391 -0400 [main] INFO  (MainDriver.java:81) - 4) Make Transfer
-2020-05-11 20:47:28,391 -0400 [main] INFO  (MainDriver.java:82) - 5) Accept Transfer
-2020-05-11 20:47:28,391 -0400 [main] INFO  (MainDriver.java:83) - 6) Apply for new Account
-2020-05-11 20:47:28,392 -0400 [main] INFO  (MainDriver.java:84) - 7) Exit
-2020-05-11 20:47:31,393 -0400 [main] INFO  (MainDriver.java:185) - Thanks for using our App.......
-2020-05-11 20:47:34,354 -0400 [main] INFO  (MainDriver.java:23) - Welcome to Moss Bank Solutions
-2020-05-11 20:47:34,358 -0400 [main] INFO  (MainDriver.java:24) - ------------------------------
-2020-05-11 20:47:34,362 -0400 [main] INFO  (MainDriver.java:29) - Login
-2020-05-11 20:47:34,362 -0400 [main] INFO  (MainDriver.java:30) - Select an option below
-2020-05-11 20:47:34,362 -0400 [main] INFO  (MainDriver.java:31) - ---------------------------
-2020-05-11 20:47:34,362 -0400 [main] INFO  (MainDriver.java:32) - 1) Are you a Customer?
-2020-05-11 20:47:34,363 -0400 [main] INFO  (MainDriver.java:33) - 2) Are you an Employee
-2020-05-11 20:47:34,363 -0400 [main] INFO  (MainDriver.java:34) - 3) Exit
-2020-05-11 20:47:37,345 -0400 [main] INFO  (MainDriver.java:45) - Welcome to the Customer portal!
-2020-05-11 20:47:37,346 -0400 [main] INFO  (MainDriver.java:46) - -------------------------------
-2020-05-11 20:47:37,346 -0400 [main] INFO  (MainDriver.java:47) - 1) Existing Customer
-2020-05-11 20:47:37,346 -0400 [main] INFO  (MainDriver.java:48) - 2) New Customer
-2020-05-11 20:47:37,346 -0400 [main] INFO  (MainDriver.java:49) - 3) Exit
-2020-05-11 20:47:38,159 -0400 [main] INFO  (MainDriver.java:58) - Please Login
-2020-05-11 20:47:38,160 -0400 [main] INFO  (MainDriver.java:60) - Enter Username
-2020-05-11 20:47:41,216 -0400 [main] INFO  (MainDriver.java:62) - Enter Password
-2020-05-11 20:47:48,757 -0400 [main] INFO  (MainDriver.java:68) - Invalid Login Information
-2020-05-11 20:47:48,758 -0400 [main] INFO  (MainDriver.java:45) - Welcome to the Customer portal!
-2020-05-11 20:47:48,758 -0400 [main] INFO  (MainDriver.java:46) - -------------------------------
-2020-05-11 20:47:48,759 -0400 [main] INFO  (MainDriver.java:47) - 1) Existing Customer
-2020-05-11 20:47:48,759 -0400 [main] INFO  (MainDriver.java:48) - 2) New Customer
-2020-05-11 20:47:48,760 -0400 [main] INFO  (MainDriver.java:49) - 3) Exit
-2020-05-11 20:48:02,967 -0400 [main] INFO  (MainDriver.java:58) - Please Login
-2020-05-11 20:48:02,967 -0400 [main] INFO  (MainDriver.java:60) - Enter Username
-2020-05-11 20:48:05,639 -0400 [main] INFO  (MainDriver.java:62) - Enter Password
-2020-05-11 20:48:08,817 -0400 [main] INFO  (MainDriver.java:66) - Login Verified
-2020-05-11 20:48:08,818 -0400 [main] INFO  (MainDriver.java:76) - Welcome back!
-2020-05-11 20:48:08,818 -0400 [main] INFO  (MainDriver.java:77) - -------------------------------
-2020-05-11 20:48:08,818 -0400 [main] INFO  (MainDriver.java:78) - 1) View Balance
-2020-05-11 20:48:08,819 -0400 [main] INFO  (MainDriver.java:79) - 2) Make Withdrawl
-2020-05-11 20:48:08,819 -0400 [main] INFO  (MainDriver.java:80) - 3) Make Deposit
-2020-05-11 20:48:08,819 -0400 [main] INFO  (MainDriver.java:81) - 4) Make Transfer
-2020-05-11 20:48:08,819 -0400 [main] INFO  (MainDriver.java:82) - 5) Accept Transfer
-2020-05-11 20:48:08,820 -0400 [main] INFO  (MainDriver.java:83) - 6) Apply for new Account
-2020-05-11 20:48:08,820 -0400 [main] INFO  (MainDriver.java:84) - 7) Exit
-2020-05-11 21:44:50,654 -0400 [main] INFO  (MainDriver.java:23) - Welcome to Moss Bank Solutions
-2020-05-11 21:44:50,658 -0400 [main] INFO  (MainDriver.java:24) - ------------------------------
-2020-05-11 21:44:50,663 -0400 [main] INFO  (MainDriver.java:29) - Login
-2020-05-11 21:44:50,663 -0400 [main] INFO  (MainDriver.java:30) - Select an option below
-2020-05-11 21:44:50,664 -0400 [main] INFO  (MainDriver.java:31) - ---------------------------
-2020-05-11 21:44:50,664 -0400 [main] INFO  (MainDriver.java:32) - 1) Are you a Customer?
-2020-05-11 21:44:50,664 -0400 [main] INFO  (MainDriver.java:33) - 2) Are you an Employee
-2020-05-11 21:44:50,664 -0400 [main] INFO  (MainDriver.java:34) - 3) Exit
-2020-05-11 21:44:52,796 -0400 [main] INFO  (MainDriver.java:251) - Welcome to the Employee portal!
-2020-05-11 21:44:52,797 -0400 [main] INFO  (MainDriver.java:252) - -------------------------------
-2020-05-11 21:44:52,797 -0400 [main] INFO  (MainDriver.java:253) - 1) Sign In
-2020-05-11 21:44:52,797 -0400 [main] INFO  (MainDriver.java:254) - 2) Exit
-2020-05-11 21:48:16,843 -0400 [main] INFO  (MainDriver.java:368) - Entered choice should be between(1-2)
-2020-05-11 21:48:16,843 -0400 [main] INFO  (MainDriver.java:251) - Welcome to the Employee portal!
-2020-05-11 21:48:16,843 -0400 [main] INFO  (MainDriver.java:252) - -------------------------------
-2020-05-11 21:48:16,843 -0400 [main] INFO  (MainDriver.java:253) - 1) Sign In
-2020-05-11 21:48:16,845 -0400 [main] INFO  (MainDriver.java:254) - 2) Exit
-2020-05-11 21:48:19,165 -0400 [main] INFO  (MainDriver.java:266) - Please Login
-2020-05-11 21:48:19,165 -0400 [main] INFO  (MainDriver.java:267) - Enter Username
-2020-05-11 21:48:22,360 -0400 [main] INFO  (MainDriver.java:269) - Enter Password
-2020-05-11 21:48:32,420 -0400 [main] INFO  (MainDriver.java:281) - What would you like to do today
-2020-05-11 21:48:32,420 -0400 [main] INFO  (MainDriver.java:282) - -------------------------------
-2020-05-11 21:48:32,420 -0400 [main] INFO  (MainDriver.java:283) - 1) Approve Accounts
-2020-05-11 21:48:32,420 -0400 [main] INFO  (MainDriver.java:284) - 2) Reject Accounts
-2020-05-11 21:48:32,421 -0400 [main] INFO  (MainDriver.java:285) - 3) View Customer Account
-2020-05-11 21:48:32,421 -0400 [main] INFO  (MainDriver.java:286) - 4) View Transaction Logs
-2020-05-11 21:48:32,421 -0400 [main] INFO  (MainDriver.java:287) - 5) Exit
-2020-05-11 21:48:46,247 -0400 [main] INFO  (MainDriver.java:351) - Thanks for using our App.......
-2020-05-11 21:48:49,802 -0400 [main] INFO  (MainDriver.java:23) - Welcome to Moss Bank Solutions
-2020-05-11 21:48:49,805 -0400 [main] INFO  (MainDriver.java:24) - ------------------------------
-2020-05-11 21:48:49,810 -0400 [main] INFO  (MainDriver.java:29) - Login
-2020-05-11 21:48:49,811 -0400 [main] INFO  (MainDriver.java:30) - Select an option below
-2020-05-11 21:48:49,811 -0400 [main] INFO  (MainDriver.java:31) - ---------------------------
-2020-05-11 21:48:49,811 -0400 [main] INFO  (MainDriver.java:32) - 1) Are you a Customer?
-2020-05-11 21:48:49,811 -0400 [main] INFO  (MainDriver.java:33) - 2) Are you an Employee
-2020-05-11 21:48:49,811 -0400 [main] INFO  (MainDriver.java:34) - 3) Exit
-2020-05-11 21:48:52,190 -0400 [main] INFO  (MainDriver.java:251) - Welcome to the Employee portal!
-2020-05-11 21:48:52,190 -0400 [main] INFO  (MainDriver.java:252) - -------------------------------
-2020-05-11 21:48:52,191 -0400 [main] INFO  (MainDriver.java:253) - 1) Sign In
-2020-05-11 21:48:52,191 -0400 [main] INFO  (MainDriver.java:254) - 2) Exit
-2020-05-11 21:48:53,216 -0400 [main] INFO  (MainDriver.java:266) - Please Login
-2020-05-11 21:48:53,216 -0400 [main] INFO  (MainDriver.java:267) - Enter Username
-2020-05-11 21:48:54,276 -0400 [main] INFO  (MainDriver.java:269) - Enter Password
-2020-05-11 21:48:59,636 -0400 [main] INFO  (MainDriver.java:281) - What would you like to do today
-2020-05-11 21:48:59,636 -0400 [main] INFO  (MainDriver.java:282) - -------------------------------
-2020-05-11 21:48:59,636 -0400 [main] INFO  (MainDriver.java:283) - 1) Approve Accounts
-2020-05-11 21:48:59,636 -0400 [main] INFO  (MainDriver.java:284) - 2) Reject Accounts
-2020-05-11 21:48:59,636 -0400 [main] INFO  (MainDriver.java:285) - 3) View Customer Account
-2020-05-11 21:48:59,636 -0400 [main] INFO  (MainDriver.java:286) - 4) View Transaction Logs
-2020-05-11 21:48:59,636 -0400 [main] INFO  (MainDriver.java:287) - 5) Exit
-2020-05-11 21:54:23,377 -0400 [main] INFO  (MainDriver.java:23) - Welcome to Moss Bank Solutions
-2020-05-11 21:54:23,380 -0400 [main] INFO  (MainDriver.java:24) - ------------------------------
-2020-05-11 21:54:23,386 -0400 [main] INFO  (MainDriver.java:29) - Login
-2020-05-11 21:54:23,386 -0400 [main] INFO  (MainDriver.java:30) - Select an option below
-2020-05-11 21:54:23,386 -0400 [main] INFO  (MainDriver.java:31) - ---------------------------
-2020-05-11 21:54:23,386 -0400 [main] INFO  (MainDriver.java:32) - 1) Are you a Customer?
-2020-05-11 21:54:23,386 -0400 [main] INFO  (MainDriver.java:33) - 2) Are you an Employee
-2020-05-11 21:54:23,386 -0400 [main] INFO  (MainDriver.java:34) - 3) Exit
-2020-05-11 21:54:26,019 -0400 [main] INFO  (MainDriver.java:251) - Welcome to the Employee portal!
-2020-05-11 21:54:26,019 -0400 [main] INFO  (MainDriver.java:252) - -------------------------------
-2020-05-11 21:54:26,019 -0400 [main] INFO  (MainDriver.java:253) - 1) Sign In
-2020-05-11 21:54:26,019 -0400 [main] INFO  (MainDriver.java:254) - 2) Exit
-2020-05-11 21:54:27,053 -0400 [main] INFO  (MainDriver.java:265) - Please Login
-2020-05-11 21:54:27,053 -0400 [main] INFO  (MainDriver.java:266) - Enter Username
-2020-05-11 21:54:29,441 -0400 [main] INFO  (MainDriver.java:268) - Enter Password
-2020-05-11 21:54:40,710 -0400 [main] INFO  (MainDriver.java:281) - What would you like to do today
-2020-05-11 21:54:40,710 -0400 [main] INFO  (MainDriver.java:282) - -------------------------------
-2020-05-11 21:54:40,710 -0400 [main] INFO  (MainDriver.java:283) - 1) Approve Accounts
-2020-05-11 21:54:40,710 -0400 [main] INFO  (MainDriver.java:284) - 2) Reject Accounts
-2020-05-11 21:54:40,710 -0400 [main] INFO  (MainDriver.java:285) - 3) View Customer Account
-2020-05-11 21:54:40,711 -0400 [main] INFO  (MainDriver.java:286) - 4) View Transaction Logs
-2020-05-11 21:54:40,711 -0400 [main] INFO  (MainDriver.java:287) - 5) Exit
-2020-05-11 21:58:00,514 -0400 [main] INFO  (MainDriver.java:23) - Welcome to Moss Bank Solutions
-2020-05-11 21:58:00,517 -0400 [main] INFO  (MainDriver.java:24) - ------------------------------
-2020-05-11 21:58:00,522 -0400 [main] INFO  (MainDriver.java:29) - Login
-2020-05-11 21:58:00,523 -0400 [main] INFO  (MainDriver.java:30) - Select an option below
-2020-05-11 21:58:00,523 -0400 [main] INFO  (MainDriver.java:31) - ---------------------------
-2020-05-11 21:58:00,523 -0400 [main] INFO  (MainDriver.java:32) - 1) Are you a Customer?
-2020-05-11 21:58:00,523 -0400 [main] INFO  (MainDriver.java:33) - 2) Are you an Employee
-2020-05-11 21:58:00,523 -0400 [main] INFO  (MainDriver.java:34) - 3) Exit
-2020-05-11 21:58:02,527 -0400 [main] INFO  (MainDriver.java:251) - Welcome to the Employee portal!
-2020-05-11 21:58:02,527 -0400 [main] INFO  (MainDriver.java:252) - -------------------------------
-2020-05-11 21:58:02,527 -0400 [main] INFO  (MainDriver.java:253) - 1) Sign In
-2020-05-11 21:58:02,527 -0400 [main] INFO  (MainDriver.java:254) - 2) Exit
-2020-05-11 21:58:03,252 -0400 [main] INFO  (MainDriver.java:265) - Please Login
-2020-05-11 21:58:03,252 -0400 [main] INFO  (MainDriver.java:266) - Enter Username
-2020-05-11 21:58:03,910 -0400 [main] INFO  (MainDriver.java:268) - Enter Password
-2020-05-11 21:58:09,585 -0400 [main] INFO  (MainDriver.java:281) - What would you like to do today
-2020-05-11 21:58:09,586 -0400 [main] INFO  (MainDriver.java:282) - -------------------------------
-2020-05-11 21:58:09,586 -0400 [main] INFO  (MainDriver.java:283) - 1) Approve Accounts
-2020-05-11 21:58:09,587 -0400 [main] INFO  (MainDriver.java:284) - 2) Reject Accounts
-2020-05-11 21:58:09,587 -0400 [main] INFO  (MainDriver.java:285) - 3) View Customer Account
-2020-05-11 21:58:09,587 -0400 [main] INFO  (MainDriver.java:286) - 4) View Transaction Logs
-2020-05-11 21:58:09,587 -0400 [main] INFO  (MainDriver.java:287) - 5) Exit
-2020-05-11 22:07:26,645 -0400 [main] INFO  (MainDriver.java:23) - Welcome to Moss Bank Solutions
-2020-05-11 22:07:26,663 -0400 [main] INFO  (MainDriver.java:24) - ------------------------------
-2020-05-11 22:07:26,670 -0400 [main] INFO  (MainDriver.java:29) - Login
-2020-05-11 22:07:26,671 -0400 [main] INFO  (MainDriver.java:30) - Select an option below
-2020-05-11 22:07:26,671 -0400 [main] INFO  (MainDriver.java:31) - ---------------------------
-2020-05-11 22:07:26,671 -0400 [main] INFO  (MainDriver.java:32) - 1) Are you a Customer?
-2020-05-11 22:07:26,671 -0400 [main] INFO  (MainDriver.java:33) - 2) Are you an Employee
-2020-05-11 22:07:26,672 -0400 [main] INFO  (MainDriver.java:34) - 3) Exit
-2020-05-11 22:07:29,236 -0400 [main] INFO  (MainDriver.java:251) - Welcome to the Employee portal!
-2020-05-11 22:07:29,236 -0400 [main] INFO  (MainDriver.java:252) - -------------------------------
-2020-05-11 22:07:29,236 -0400 [main] INFO  (MainDriver.java:253) - 1) Sign In
-2020-05-11 22:07:29,236 -0400 [main] INFO  (MainDriver.java:254) - 2) Exit
-2020-05-11 22:07:29,959 -0400 [main] INFO  (MainDriver.java:263) - Please Login
-2020-05-11 22:07:29,959 -0400 [main] INFO  (MainDriver.java:264) - Enter Username
-2020-05-11 22:07:30,487 -0400 [main] INFO  (MainDriver.java:266) - Enter Password
-2020-05-11 22:07:36,481 -0400 [main] INFO  (MainDriver.java:279) - What would you like to do today
-2020-05-11 22:07:36,482 -0400 [main] INFO  (MainDriver.java:280) - -------------------------------
-2020-05-11 22:07:36,482 -0400 [main] INFO  (MainDriver.java:281) - 1) Approve Accounts
-2020-05-11 22:07:36,483 -0400 [main] INFO  (MainDriver.java:282) - 2) Reject Accounts
-2020-05-11 22:07:36,483 -0400 [main] INFO  (MainDriver.java:283) - 3) View Customer Account
-2020-05-11 22:07:36,483 -0400 [main] INFO  (MainDriver.java:284) - 4) View Transaction Logs
-2020-05-11 22:07:36,483 -0400 [main] INFO  (MainDriver.java:285) - 5) Exit
-2020-05-11 22:07:39,289 -0400 [main] INFO  (MainDriver.java:349) - Thanks for using our App.......
-2020-05-11 22:19:11,172 -0400 [main] INFO  (MainDriver.java:23) - Welcome to Moss Bank Solutions
-2020-05-11 22:19:11,175 -0400 [main] INFO  (MainDriver.java:24) - ------------------------------
-2020-05-11 22:19:11,183 -0400 [main] INFO  (MainDriver.java:29) - Enter Username
-2020-05-11 22:19:16,209 -0400 [main] INFO  (MainDriver.java:32) - Enter Password
-2020-05-11 22:19:23,105 -0400 [main] INFO  (MainDriver.java:35) - New Account Created
-2020-05-11 22:19:23,106 -0400 [main] INFO  (MainDriver.java:36) - Employee [username=garrettmoss, password=password, employeeId=EID1000]
-2020-05-11 22:19:23,106 -0400 [main] INFO  (MainDriver.java:46) - Login
-2020-05-11 22:19:23,106 -0400 [main] INFO  (MainDriver.java:47) - Select an option below
-2020-05-11 22:19:23,107 -0400 [main] INFO  (MainDriver.java:48) - ---------------------------
-2020-05-11 22:19:23,107 -0400 [main] INFO  (MainDriver.java:49) - 1) Are you a Customer?
-2020-05-11 22:19:23,107 -0400 [main] INFO  (MainDriver.java:50) - 2) Are you an Employee
-2020-05-11 22:19:23,107 -0400 [main] INFO  (MainDriver.java:51) - 3) Exit
-2020-05-11 22:19:26,867 -0400 [main] INFO  (MainDriver.java:390) - Thanks for using our App.......
-2020-05-11 22:19:48,847 -0400 [main] INFO  (MainDriver.java:23) - Welcome to Moss Bank Solutions
-2020-05-11 22:19:48,851 -0400 [main] INFO  (MainDriver.java:24) - ------------------------------
-2020-05-11 22:19:48,856 -0400 [main] INFO  (MainDriver.java:29) - Login
-2020-05-11 22:19:48,856 -0400 [main] INFO  (MainDriver.java:30) - Select an option below
-2020-05-11 22:19:48,856 -0400 [main] INFO  (MainDriver.java:31) - ---------------------------
-2020-05-11 22:19:48,856 -0400 [main] INFO  (MainDriver.java:32) - 1) Are you a Customer?
-2020-05-11 22:19:48,856 -0400 [main] INFO  (MainDriver.java:33) - 2) Are you an Employee
-2020-05-11 22:19:48,857 -0400 [main] INFO  (MainDriver.java:34) - 3) Exit
-2020-05-11 22:19:53,295 -0400 [main] INFO  (MainDriver.java:251) - Welcome to the Employee portal!
-2020-05-11 22:19:53,295 -0400 [main] INFO  (MainDriver.java:252) - -------------------------------
-2020-05-11 22:19:53,295 -0400 [main] INFO  (MainDriver.java:253) - 1) Sign In
-2020-05-11 22:19:53,296 -0400 [main] INFO  (MainDriver.java:254) - 2) Exit
-2020-05-11 22:19:54,288 -0400 [main] INFO  (MainDriver.java:263) - Please Login
-2020-05-11 22:19:54,289 -0400 [main] INFO  (MainDriver.java:264) - Enter Username
-2020-05-11 22:19:58,724 -0400 [main] INFO  (MainDriver.java:266) - Enter Password
-2020-05-11 22:20:08,491 -0400 [main] INFO  (MainDriver.java:270) - Login Verified
-2020-05-11 22:20:08,493 -0400 [main] INFO  (MainDriver.java:279) - What would you like to do today
-2020-05-11 22:20:08,493 -0400 [main] INFO  (MainDriver.java:280) - -------------------------------
-2020-05-11 22:20:08,493 -0400 [main] INFO  (MainDriver.java:281) - 1) Approve Accounts
-2020-05-11 22:20:08,493 -0400 [main] INFO  (MainDriver.java:282) - 2) Reject Accounts
-2020-05-11 22:20:08,493 -0400 [main] INFO  (MainDriver.java:283) - 3) View Customer Account
-2020-05-11 22:20:08,493 -0400 [main] INFO  (MainDriver.java:284) - 4) View Transaction Logs
-2020-05-11 22:20:08,493 -0400 [main] INFO  (MainDriver.java:285) - 5) Exit
-2020-05-11 22:20:10,795 -0400 [main] INFO  (MainDriver.java:349) - Thanks for using our App.......
-2020-05-11 22:20:14,024 -0400 [main] INFO  (MainDriver.java:23) - Welcome to Moss Bank Solutions
-2020-05-11 22:20:14,027 -0400 [main] INFO  (MainDriver.java:24) - ------------------------------
-2020-05-11 22:20:14,033 -0400 [main] INFO  (MainDriver.java:29) - Login
-2020-05-11 22:20:14,033 -0400 [main] INFO  (MainDriver.java:30) - Select an option below
-2020-05-11 22:20:14,033 -0400 [main] INFO  (MainDriver.java:31) - ---------------------------
-2020-05-11 22:20:14,033 -0400 [main] INFO  (MainDriver.java:32) - 1) Are you a Customer?
-2020-05-11 22:20:14,033 -0400 [main] INFO  (MainDriver.java:33) - 2) Are you an Employee
-2020-05-11 22:20:14,034 -0400 [main] INFO  (MainDriver.java:34) - 3) Exit
-2020-05-11 22:20:16,058 -0400 [main] INFO  (MainDriver.java:251) - Welcome to the Employee portal!
-2020-05-11 22:20:16,058 -0400 [main] INFO  (MainDriver.java:252) - -------------------------------
-2020-05-11 22:20:16,058 -0400 [main] INFO  (MainDriver.java:253) - 1) Sign In
-2020-05-11 22:20:16,059 -0400 [main] INFO  (MainDriver.java:254) - 2) Exit
-2020-05-11 22:20:17,150 -0400 [main] INFO  (MainDriver.java:263) - Please Login
-2020-05-11 22:20:17,150 -0400 [main] INFO  (MainDriver.java:264) - Enter Username
-2020-05-11 22:20:18,875 -0400 [main] INFO  (MainDriver.java:266) - Enter Password
-2020-05-11 22:20:23,359 -0400 [main] INFO  (MainDriver.java:279) - What would you like to do today
-2020-05-11 22:20:23,359 -0400 [main] INFO  (MainDriver.java:280) - -------------------------------
-2020-05-11 22:20:23,360 -0400 [main] INFO  (MainDriver.java:281) - 1) Approve Accounts
-2020-05-11 22:20:23,360 -0400 [main] INFO  (MainDriver.java:282) - 2) Reject Accounts
-2020-05-11 22:20:23,360 -0400 [main] INFO  (MainDriver.java:283) - 3) View Customer Account
-2020-05-11 22:20:23,360 -0400 [main] INFO  (MainDriver.java:284) - 4) View Transaction Logs
-2020-05-11 22:20:23,360 -0400 [main] INFO  (MainDriver.java:285) - 5) Exit
-2020-05-11 22:22:49,011 -0400 [main] INFO  (MainDriver.java:349) - Thanks for using our App.......
-2020-05-11 22:23:06,622 -0400 [main] INFO  (MainDriver.java:23) - Welcome to Moss Bank Solutions
-2020-05-11 22:23:06,625 -0400 [main] INFO  (MainDriver.java:24) - ------------------------------
-2020-05-11 22:23:06,630 -0400 [main] INFO  (MainDriver.java:29) - Login
-2020-05-11 22:23:06,631 -0400 [main] INFO  (MainDriver.java:30) - Select an option below
-2020-05-11 22:23:06,631 -0400 [main] INFO  (MainDriver.java:31) - ---------------------------
-2020-05-11 22:23:06,631 -0400 [main] INFO  (MainDriver.java:32) - 1) Are you a Customer?
-2020-05-11 22:23:06,631 -0400 [main] INFO  (MainDriver.java:33) - 2) Are you an Employee
-2020-05-11 22:23:06,631 -0400 [main] INFO  (MainDriver.java:34) - 3) Exit
-2020-05-11 22:23:08,481 -0400 [main] INFO  (MainDriver.java:45) - Welcome to the Customer portal!
-2020-05-11 22:23:08,482 -0400 [main] INFO  (MainDriver.java:46) - -------------------------------
-2020-05-11 22:23:08,482 -0400 [main] INFO  (MainDriver.java:47) - 1) Existing Customer
-2020-05-11 22:23:08,482 -0400 [main] INFO  (MainDriver.java:48) - 2) New Customer
-2020-05-11 22:23:08,482 -0400 [main] INFO  (MainDriver.java:49) - 3) Exit
-2020-05-11 22:23:11,417 -0400 [main] INFO  (MainDriver.java:58) - Please Login
-2020-05-11 22:23:11,417 -0400 [main] INFO  (MainDriver.java:59) - Enter Username
-2020-05-11 22:23:13,714 -0400 [main] INFO  (MainDriver.java:61) - Enter Password
-2020-05-11 22:23:18,667 -0400 [main] INFO  (MainDriver.java:75) - Welcome back!
-2020-05-11 22:23:18,667 -0400 [main] INFO  (MainDriver.java:76) - -------------------------------
-2020-05-11 22:23:18,668 -0400 [main] INFO  (MainDriver.java:77) - 1) View Balance
-2020-05-11 22:23:18,668 -0400 [main] INFO  (MainDriver.java:78) - 2) Make Withdrawl
-2020-05-11 22:23:18,668 -0400 [main] INFO  (MainDriver.java:79) - 3) Make Deposit
-2020-05-11 22:23:18,668 -0400 [main] INFO  (MainDriver.java:80) - 4) Make Transfer
-2020-05-11 22:23:18,668 -0400 [main] INFO  (MainDriver.java:81) - 5) Accept Transfer
-2020-05-11 22:23:18,668 -0400 [main] INFO  (MainDriver.java:82) - 6) Apply for new Account
-2020-05-11 22:23:18,668 -0400 [main] INFO  (MainDriver.java:83) - 7) Exit
-2020-05-11 22:33:22,997 -0400 [main] INFO  (MainDriver.java:24) - Welcome to Moss Bank Solutions
-2020-05-11 22:33:22,999 -0400 [main] INFO  (MainDriver.java:25) - ------------------------------
-2020-05-11 22:33:23,004 -0400 [main] INFO  (MainDriver.java:30) - Login
-2020-05-11 22:33:23,004 -0400 [main] INFO  (MainDriver.java:31) - Select an option below
-2020-05-11 22:33:23,004 -0400 [main] INFO  (MainDriver.java:32) - ---------------------------
-2020-05-11 22:33:23,004 -0400 [main] INFO  (MainDriver.java:33) - 1) Are you a Customer?
-2020-05-11 22:33:23,004 -0400 [main] INFO  (MainDriver.java:34) - 2) Are you an Employee
-2020-05-11 22:33:23,005 -0400 [main] INFO  (MainDriver.java:35) - 3) Exit
-2020-05-11 22:33:29,200 -0400 [main] INFO  (MainDriver.java:46) - Welcome to the Customer portal!
-2020-05-11 22:33:29,201 -0400 [main] INFO  (MainDriver.java:47) - -------------------------------
-2020-05-11 22:33:29,201 -0400 [main] INFO  (MainDriver.java:48) - 1) Existing Customer
-2020-05-11 22:33:29,201 -0400 [main] INFO  (MainDriver.java:49) - 2) New Customer
-2020-05-11 22:33:29,201 -0400 [main] INFO  (MainDriver.java:50) - 3) Exit
-2020-05-11 22:33:30,167 -0400 [main] INFO  (MainDriver.java:60) - Please Login
-2020-05-11 22:33:30,167 -0400 [main] INFO  (MainDriver.java:61) - Enter Username
-2020-05-11 22:33:32,844 -0400 [main] INFO  (MainDriver.java:63) - Enter Password
-2020-05-11 22:33:38,820 -0400 [main] INFO  (MainDriver.java:69) - Login Verified
-2020-05-11 22:33:38,820 -0400 [main] INFO  (MainDriver.java:75) - Welcome back!
-2020-05-11 22:33:38,820 -0400 [main] INFO  (MainDriver.java:76) - -------------------------------
-2020-05-11 22:33:38,821 -0400 [main] INFO  (MainDriver.java:77) - 1) View Balance
-2020-05-11 22:33:38,821 -0400 [main] INFO  (MainDriver.java:78) - 2) Make Withdrawl
-2020-05-11 22:33:38,821 -0400 [main] INFO  (MainDriver.java:79) - 3) Make Deposit
-2020-05-11 22:33:38,821 -0400 [main] INFO  (MainDriver.java:80) - 4) Make Transfer
-2020-05-11 22:33:38,821 -0400 [main] INFO  (MainDriver.java:81) - 5) Accept Transfer
-2020-05-11 22:33:38,821 -0400 [main] INFO  (MainDriver.java:82) - 6) Apply for new Account
-2020-05-11 22:33:38,821 -0400 [main] INFO  (MainDriver.java:83) - 7) Exit
-2020-05-11 22:33:45,051 -0400 [main] INFO  (MainDriver.java:184) - Thanks for using our App.......
-2020-05-11 22:33:47,654 -0400 [main] INFO  (MainDriver.java:24) - Welcome to Moss Bank Solutions
-2020-05-11 22:33:47,657 -0400 [main] INFO  (MainDriver.java:25) - ------------------------------
-2020-05-11 22:33:47,663 -0400 [main] INFO  (MainDriver.java:30) - Login
-2020-05-11 22:33:47,664 -0400 [main] INFO  (MainDriver.java:31) - Select an option below
-2020-05-11 22:33:47,664 -0400 [main] INFO  (MainDriver.java:32) - ---------------------------
-2020-05-11 22:33:47,664 -0400 [main] INFO  (MainDriver.java:33) - 1) Are you a Customer?
-2020-05-11 22:33:47,665 -0400 [main] INFO  (MainDriver.java:34) - 2) Are you an Employee
-2020-05-11 22:33:47,665 -0400 [main] INFO  (MainDriver.java:35) - 3) Exit
-2020-05-11 22:33:50,669 -0400 [main] INFO  (MainDriver.java:46) - Welcome to the Customer portal!
-2020-05-11 22:33:50,670 -0400 [main] INFO  (MainDriver.java:47) - -------------------------------
-2020-05-11 22:33:50,670 -0400 [main] INFO  (MainDriver.java:48) - 1) Existing Customer
-2020-05-11 22:33:50,670 -0400 [main] INFO  (MainDriver.java:49) - 2) New Customer
-2020-05-11 22:33:50,670 -0400 [main] INFO  (MainDriver.java:50) - 3) Exit
-2020-05-11 22:33:52,084 -0400 [main] INFO  (MainDriver.java:60) - Please Login
-2020-05-11 22:33:52,084 -0400 [main] INFO  (MainDriver.java:61) - Enter Username
-2020-05-11 22:33:54,099 -0400 [main] INFO  (MainDriver.java:63) - Enter Password
-2020-05-11 22:37:34,697 -0400 [main] INFO  (MainDriver.java:23) - Welcome to Moss Bank Solutions
-2020-05-11 22:37:34,700 -0400 [main] INFO  (MainDriver.java:24) - ------------------------------
-2020-05-11 22:37:34,705 -0400 [main] INFO  (MainDriver.java:29) - Login
-2020-05-11 22:37:34,705 -0400 [main] INFO  (MainDriver.java:30) - Select an option below
-2020-05-11 22:37:34,705 -0400 [main] INFO  (MainDriver.java:31) - ---------------------------
-2020-05-11 22:37:34,706 -0400 [main] INFO  (MainDriver.java:32) - 1) Are you a Customer?
-2020-05-11 22:37:34,706 -0400 [main] INFO  (MainDriver.java:33) - 2) Are you an Employee
-2020-05-11 22:37:34,706 -0400 [main] INFO  (MainDriver.java:34) - 3) Exit
-2020-05-11 22:37:36,451 -0400 [main] INFO  (MainDriver.java:45) - Welcome to the Customer portal!
-2020-05-11 22:37:36,452 -0400 [main] INFO  (MainDriver.java:46) - -------------------------------
-2020-05-11 22:37:36,452 -0400 [main] INFO  (MainDriver.java:47) - 1) Existing Customer
-2020-05-11 22:37:36,452 -0400 [main] INFO  (MainDriver.java:48) - 2) New Customer
-2020-05-11 22:37:36,452 -0400 [main] INFO  (MainDriver.java:49) - 3) Exit
-2020-05-11 22:37:37,557 -0400 [main] INFO  (MainDriver.java:58) - Please Login
-2020-05-11 22:37:37,557 -0400 [main] INFO  (MainDriver.java:59) - Enter Username
-2020-05-11 22:37:39,282 -0400 [main] INFO  (MainDriver.java:61) - Enter Password
-2020-05-11 22:37:43,132 -0400 [main] INFO  (MainDriver.java:67) - Invalid Login Information
-2020-05-11 22:37:43,132 -0400 [main] INFO  (MainDriver.java:45) - Welcome to the Customer portal!
-2020-05-11 22:37:43,132 -0400 [main] INFO  (MainDriver.java:46) - -------------------------------
-2020-05-11 22:37:43,133 -0400 [main] INFO  (MainDriver.java:47) - 1) Existing Customer
-2020-05-11 22:37:43,133 -0400 [main] INFO  (MainDriver.java:48) - 2) New Customer
-2020-05-11 22:37:43,133 -0400 [main] INFO  (MainDriver.java:49) - 3) Exit
-2020-05-11 22:37:55,151 -0400 [main] INFO  (MainDriver.java:236) - Thanks for using our App.......
-2020-05-11 22:37:57,541 -0400 [main] INFO  (MainDriver.java:23) - Welcome to Moss Bank Solutions
-2020-05-11 22:37:57,545 -0400 [main] INFO  (MainDriver.java:24) - ------------------------------
-2020-05-11 22:37:57,551 -0400 [main] INFO  (MainDriver.java:29) - Login
-2020-05-11 22:37:57,551 -0400 [main] INFO  (MainDriver.java:30) - Select an option below
-2020-05-11 22:37:57,551 -0400 [main] INFO  (MainDriver.java:31) - ---------------------------
-2020-05-11 22:37:57,551 -0400 [main] INFO  (MainDriver.java:32) - 1) Are you a Customer?
-2020-05-11 22:37:57,552 -0400 [main] INFO  (MainDriver.java:33) - 2) Are you an Employee
-2020-05-11 22:37:57,552 -0400 [main] INFO  (MainDriver.java:34) - 3) Exit
-2020-05-11 22:37:59,039 -0400 [main] INFO  (MainDriver.java:251) - Welcome to the Employee portal!
-2020-05-11 22:37:59,039 -0400 [main] INFO  (MainDriver.java:252) - -------------------------------
-2020-05-11 22:37:59,039 -0400 [main] INFO  (MainDriver.java:253) - 1) Sign In
-2020-05-11 22:37:59,039 -0400 [main] INFO  (MainDriver.java:254) - 2) Exit
-2020-05-11 22:37:59,957 -0400 [main] INFO  (MainDriver.java:263) - Please Login
-2020-05-11 22:37:59,957 -0400 [main] INFO  (MainDriver.java:264) - Enter Username
-2020-05-11 22:38:01,885 -0400 [main] INFO  (MainDriver.java:266) - Enter Password
-2020-05-11 22:38:05,978 -0400 [main] INFO  (MainDriver.java:272) - Invalid Login Information
-2020-05-11 22:38:05,978 -0400 [main] INFO  (MainDriver.java:251) - Welcome to the Employee portal!
-2020-05-11 22:38:05,978 -0400 [main] INFO  (MainDriver.java:252) - -------------------------------
-2020-05-11 22:38:05,978 -0400 [main] INFO  (MainDriver.java:253) - 1) Sign In
-2020-05-11 22:38:05,978 -0400 [main] INFO  (MainDriver.java:254) - 2) Exit
-2020-05-11 22:38:10,483 -0400 [main] INFO  (MainDriver.java:263) - Please Login
-2020-05-11 22:38:10,484 -0400 [main] INFO  (MainDriver.java:264) - Enter Username
-2020-05-11 22:38:12,706 -0400 [main] INFO  (MainDriver.java:266) - Enter Password
-2020-05-11 22:38:16,672 -0400 [main] INFO  (MainDriver.java:272) - Invalid Login Information
-2020-05-11 22:38:16,672 -0400 [main] INFO  (MainDriver.java:251) - Welcome to the Employee portal!
-2020-05-11 22:38:16,672 -0400 [main] INFO  (MainDriver.java:252) - -------------------------------
-2020-05-11 22:38:16,672 -0400 [main] INFO  (MainDriver.java:253) - 1) Sign In
-2020-05-11 22:38:16,672 -0400 [main] INFO  (MainDriver.java:254) - 2) Exit
-2020-05-11 22:38:18,276 -0400 [main] INFO  (MainDriver.java:263) - Please Login
-2020-05-11 22:38:18,276 -0400 [main] INFO  (MainDriver.java:264) - Enter Username
-2020-05-11 22:38:21,593 -0400 [main] INFO  (MainDriver.java:266) - Enter Password
-2020-05-11 22:38:33,037 -0400 [main] INFO  (MainDriver.java:270) - Login Verified
-2020-05-11 22:38:33,037 -0400 [main] INFO  (MainDriver.java:279) - What would you like to do today
-2020-05-11 22:38:33,038 -0400 [main] INFO  (MainDriver.java:280) - -------------------------------
-2020-05-11 22:38:33,038 -0400 [main] INFO  (MainDriver.java:281) - 1) Approve Accounts
-2020-05-11 22:38:33,039 -0400 [main] INFO  (MainDriver.java:282) - 2) Reject Accounts
-2020-05-11 22:38:33,039 -0400 [main] INFO  (MainDriver.java:283) - 3) View Customer Account
-2020-05-11 22:38:33,040 -0400 [main] INFO  (MainDriver.java:284) - 4) View Transaction Logs
-2020-05-11 22:38:33,040 -0400 [main] INFO  (MainDriver.java:285) - 5) Exit
-2020-05-11 22:38:36,178 -0400 [main] INFO  (MainDriver.java:349) - Thanks for using our App.......
+2020-05-12 18:56:01,227 -0400 [main] INFO  (MainDriver.java:24) - ------------------------------
+2020-05-12 18:56:01,236 -0400 [main] INFO  (MainDriver.java:29) - Login
+2020-05-12 18:56:01,236 -0400 [main] INFO  (MainDriver.java:30) - Select an option below
+2020-05-12 18:56:01,237 -0400 [main] INFO  (MainDriver.java:31) - ---------------------------
+2020-05-12 18:56:01,237 -0400 [main] INFO  (MainDriver.java:32) - 1) Are you a Customer?
+2020-05-12 18:56:01,237 -0400 [main] INFO  (MainDriver.java:33) - 2) Are you an Employee
+2020-05-12 18:56:01,238 -0400 [main] INFO  (MainDriver.java:34) - 3) Exit
+2020-05-12 18:56:05,311 -0400 [main] INFO  (MainDriver.java:239) - Welcome to the Employee portal!
+2020-05-12 18:56:05,312 -0400 [main] INFO  (MainDriver.java:240) - -------------------------------
+2020-05-12 18:56:05,312 -0400 [main] INFO  (MainDriver.java:241) - 1) Sign In
+2020-05-12 18:56:05,312 -0400 [main] INFO  (MainDriver.java:242) - 2) Exit
+2020-05-12 18:56:06,431 -0400 [main] INFO  (MainDriver.java:251) - Please Login
+2020-05-12 18:56:06,431 -0400 [main] INFO  (MainDriver.java:252) - Enter Username
+2020-05-12 18:56:09,914 -0400 [main] INFO  (MainDriver.java:254) - Enter Password
+2020-05-12 18:56:15,476 -0400 [main] INFO  (MainDriver.java:258) - Login Verified
+2020-05-12 18:56:15,479 -0400 [main] INFO  (MainDriver.java:267) - What would you like to do today
+2020-05-12 18:56:15,479 -0400 [main] INFO  (MainDriver.java:268) - -------------------------------
+2020-05-12 18:56:15,480 -0400 [main] INFO  (MainDriver.java:269) - 1) Approve Accounts
+2020-05-12 18:56:15,480 -0400 [main] INFO  (MainDriver.java:270) - 2) Reject Accounts
+2020-05-12 18:56:15,481 -0400 [main] INFO  (MainDriver.java:271) - 3) View Customer Account
+2020-05-12 18:56:15,481 -0400 [main] INFO  (MainDriver.java:272) - 4) View Transaction Logs
+2020-05-12 18:56:15,481 -0400 [main] INFO  (MainDriver.java:273) - 5) Exit
+2020-05-12 18:56:17,414 -0400 [main] INFO  (MainDriver.java:325) - Enter Yes
+2020-05-12 18:56:19,955 -0400 [main] INFO  (EmployeeDaoImpl.java:163) - Here are the Transaction Logs: 
+2020-05-12 18:56:19,955 -0400 [main] INFO  (EmployeeDaoImpl.java:165) - 1000000140 
+2020-05-12 18:56:19,956 -0400 [main] INFO  (EmployeeDaoImpl.java:165) - null 
+2020-05-12 18:56:19,956 -0400 [main] INFO  (EmployeeDaoImpl.java:165) - 20.00 
+2020-05-12 18:56:19,956 -0400 [main] INFO  (EmployeeDaoImpl.java:163) - Here are the Transaction Logs: 
+2020-05-12 18:56:19,956 -0400 [main] INFO  (EmployeeDaoImpl.java:165) - 1000000140 
+2020-05-12 18:56:19,956 -0400 [main] INFO  (EmployeeDaoImpl.java:165) - deposit 
+2020-05-12 18:56:19,957 -0400 [main] INFO  (EmployeeDaoImpl.java:165) - 10.00 
+2020-05-12 18:56:19,957 -0400 [main] INFO  (EmployeeDaoImpl.java:163) - Here are the Transaction Logs: 
+2020-05-12 18:56:19,957 -0400 [main] INFO  (EmployeeDaoImpl.java:165) - 1000000140 
+2020-05-12 18:56:19,957 -0400 [main] INFO  (EmployeeDaoImpl.java:165) - Withdrawl 
+2020-05-12 18:56:19,957 -0400 [main] INFO  (EmployeeDaoImpl.java:165) - 10.00 
+2020-05-12 18:56:19,958 -0400 [main] INFO  (EmployeeDaoImpl.java:163) - Here are the Transaction Logs: 
+2020-05-12 18:56:19,958 -0400 [main] INFO  (EmployeeDaoImpl.java:165) - 1000000140 
+2020-05-12 18:56:19,958 -0400 [main] INFO  (EmployeeDaoImpl.java:165) - Withdrawl 
+2020-05-12 18:56:19,958 -0400 [main] INFO  (EmployeeDaoImpl.java:165) - 10.00 
+2020-05-12 18:56:19,958 -0400 [main] INFO  (EmployeeDaoImpl.java:163) - Here are the Transaction Logs: 
+2020-05-12 18:56:19,959 -0400 [main] INFO  (EmployeeDaoImpl.java:165) - From: 1000000140 
+2020-05-12 18:56:19,959 -0400 [main] INFO  (EmployeeDaoImpl.java:165) - Money Transfer 
+2020-05-12 18:56:19,959 -0400 [main] INFO  (EmployeeDaoImpl.java:165) - 30.00 
+2020-05-12 18:56:19,959 -0400 [main] INFO  (EmployeeDaoImpl.java:163) - Here are the Transaction Logs: 
+2020-05-12 18:56:19,959 -0400 [main] INFO  (EmployeeDaoImpl.java:165) - From: 1000000141 To: 1000000140 
+2020-05-12 18:56:19,960 -0400 [main] INFO  (EmployeeDaoImpl.java:165) - Money Transfer 
+2020-05-12 18:56:19,960 -0400 [main] INFO  (EmployeeDaoImpl.java:165) - 30.00 
+2020-05-12 18:56:19,960 -0400 [main] INFO  (EmployeeDaoImpl.java:163) - Here are the Transaction Logs: 
+2020-05-12 18:56:19,960 -0400 [main] INFO  (EmployeeDaoImpl.java:165) - From: 1000000141 To: 1000000140 
+2020-05-12 18:56:19,960 -0400 [main] INFO  (EmployeeDaoImpl.java:165) - Money Transfer 
+2020-05-12 18:56:19,961 -0400 [main] INFO  (EmployeeDaoImpl.java:165) - 20.00 
+2020-05-12 18:56:19,961 -0400 [main] INFO  (EmployeeDaoImpl.java:163) - Here are the Transaction Logs: 
+2020-05-12 18:56:19,961 -0400 [main] INFO  (EmployeeDaoImpl.java:165) - From: 1000000141 To: 1000000140 
+2020-05-12 18:56:19,961 -0400 [main] INFO  (EmployeeDaoImpl.java:165) - Money Transfer Request 
+2020-05-12 18:56:19,961 -0400 [main] INFO  (EmployeeDaoImpl.java:165) - 10.00 
+2020-05-12 18:56:20,024 -0400 [main] INFO  (MainDriver.java:267) - What would you like to do today
+2020-05-12 18:56:20,025 -0400 [main] INFO  (MainDriver.java:268) - -------------------------------
+2020-05-12 18:56:20,025 -0400 [main] INFO  (MainDriver.java:269) - 1) Approve Accounts
+2020-05-12 18:56:20,025 -0400 [main] INFO  (MainDriver.java:270) - 2) Reject Accounts
+2020-05-12 18:56:20,025 -0400 [main] INFO  (MainDriver.java:271) - 3) View Customer Account
+2020-05-12 18:56:20,025 -0400 [main] INFO  (MainDriver.java:272) - 4) View Transaction Logs
+2020-05-12 18:56:20,025 -0400 [main] INFO  (MainDriver.java:273) - 5) Exit
+2020-05-12 18:58:01,128 -0400 [main] INFO  (MainDriver.java:23) - Welcome to Moss Bank Solutions
+2020-05-12 18:58:01,130 -0400 [main] INFO  (MainDriver.java:24) - ------------------------------
+2020-05-12 18:58:01,136 -0400 [main] INFO  (MainDriver.java:29) - Login
+2020-05-12 18:58:01,136 -0400 [main] INFO  (MainDriver.java:30) - Select an option below
+2020-05-12 18:58:01,136 -0400 [main] INFO  (MainDriver.java:31) - ---------------------------
+2020-05-12 18:58:01,136 -0400 [main] INFO  (MainDriver.java:32) - 1) Are you a Customer?
+2020-05-12 18:58:01,136 -0400 [main] INFO  (MainDriver.java:33) - 2) Are you an Employee
+2020-05-12 18:58:01,136 -0400 [main] INFO  (MainDriver.java:34) - 3) Exit
+2020-05-12 18:58:03,694 -0400 [main] INFO  (MainDriver.java:239) - Welcome to the Employee portal!
+2020-05-12 18:58:03,694 -0400 [main] INFO  (MainDriver.java:240) - -------------------------------
+2020-05-12 18:58:03,695 -0400 [main] INFO  (MainDriver.java:241) - 1) Sign In
+2020-05-12 18:58:03,695 -0400 [main] INFO  (MainDriver.java:242) - 2) Exit
+2020-05-12 18:58:04,462 -0400 [main] INFO  (MainDriver.java:251) - Please Login
+2020-05-12 18:58:04,462 -0400 [main] INFO  (MainDriver.java:252) - Enter Username
+2020-05-12 18:58:07,407 -0400 [main] INFO  (MainDriver.java:254) - Enter Password
+2020-05-12 18:58:12,765 -0400 [main] INFO  (MainDriver.java:258) - Login Verified
+2020-05-12 18:58:12,766 -0400 [main] INFO  (MainDriver.java:267) - What would you like to do today
+2020-05-12 18:58:12,766 -0400 [main] INFO  (MainDriver.java:268) - -------------------------------
+2020-05-12 18:58:12,766 -0400 [main] INFO  (MainDriver.java:269) - 1) Approve Accounts
+2020-05-12 18:58:12,766 -0400 [main] INFO  (MainDriver.java:270) - 2) Reject Accounts
+2020-05-12 18:58:12,767 -0400 [main] INFO  (MainDriver.java:271) - 3) View Customer Account
+2020-05-12 18:58:12,767 -0400 [main] INFO  (MainDriver.java:272) - 4) View Transaction Logs
+2020-05-12 18:58:12,767 -0400 [main] INFO  (MainDriver.java:273) - 5) Exit
+2020-05-12 18:58:14,297 -0400 [main] INFO  (MainDriver.java:325) - Enter Yes
+2020-05-12 18:58:16,513 -0400 [main] INFO  (EmployeeDaoImpl.java:163) - Here are the Transaction Logs: 
+2020-05-12 18:58:16,513 -0400 [main] INFO  (EmployeeDaoImpl.java:165) - 1000000140 
+2020-05-12 18:58:16,513 -0400 [main] INFO  (EmployeeDaoImpl.java:165) - null 
+2020-05-12 18:58:16,513 -0400 [main] INFO  (EmployeeDaoImpl.java:165) - 20.00 
+2020-05-12 18:58:16,513 -0400 [main] INFO  (EmployeeDaoImpl.java:163) - Here are the Transaction Logs: 
+2020-05-12 18:58:16,514 -0400 [main] INFO  (EmployeeDaoImpl.java:165) - 1000000140 
+2020-05-12 18:58:16,514 -0400 [main] INFO  (EmployeeDaoImpl.java:165) - deposit 
+2020-05-12 18:58:16,514 -0400 [main] INFO  (EmployeeDaoImpl.java:165) - 10.00 
+2020-05-12 18:58:16,514 -0400 [main] INFO  (EmployeeDaoImpl.java:163) - Here are the Transaction Logs: 
+2020-05-12 18:58:16,514 -0400 [main] INFO  (EmployeeDaoImpl.java:165) - 1000000140 
+2020-05-12 18:58:16,514 -0400 [main] INFO  (EmployeeDaoImpl.java:165) - Withdrawl 
+2020-05-12 18:58:16,515 -0400 [main] INFO  (EmployeeDaoImpl.java:165) - 10.00 
+2020-05-12 18:58:16,515 -0400 [main] INFO  (EmployeeDaoImpl.java:163) - Here are the Transaction Logs: 
+2020-05-12 18:58:16,515 -0400 [main] INFO  (EmployeeDaoImpl.java:165) - 1000000140 
+2020-05-12 18:58:16,515 -0400 [main] INFO  (EmployeeDaoImpl.java:165) - Withdrawl 
+2020-05-12 18:58:16,515 -0400 [main] INFO  (EmployeeDaoImpl.java:165) - 10.00 
+2020-05-12 18:58:16,515 -0400 [main] INFO  (EmployeeDaoImpl.java:163) - Here are the Transaction Logs: 
+2020-05-12 18:58:16,516 -0400 [main] INFO  (EmployeeDaoImpl.java:165) - From: 1000000140 
+2020-05-12 18:58:16,516 -0400 [main] INFO  (EmployeeDaoImpl.java:165) - Money Transfer 
+2020-05-12 18:58:16,516 -0400 [main] INFO  (EmployeeDaoImpl.java:165) - 30.00 
+2020-05-12 18:58:16,516 -0400 [main] INFO  (EmployeeDaoImpl.java:163) - Here are the Transaction Logs: 
+2020-05-12 18:58:16,516 -0400 [main] INFO  (EmployeeDaoImpl.java:165) - From: 1000000141 To: 1000000140 
+2020-05-12 18:58:16,516 -0400 [main] INFO  (EmployeeDaoImpl.java:165) - Money Transfer 
+2020-05-12 18:58:16,517 -0400 [main] INFO  (EmployeeDaoImpl.java:165) - 30.00 
+2020-05-12 18:58:16,517 -0400 [main] INFO  (EmployeeDaoImpl.java:163) - Here are the Transaction Logs: 
+2020-05-12 18:58:16,517 -0400 [main] INFO  (EmployeeDaoImpl.java:165) - From: 1000000141 To: 1000000140 
+2020-05-12 18:58:16,517 -0400 [main] INFO  (EmployeeDaoImpl.java:165) - Money Transfer 
+2020-05-12 18:58:16,517 -0400 [main] INFO  (EmployeeDaoImpl.java:165) - 20.00 
+2020-05-12 18:58:16,517 -0400 [main] INFO  (EmployeeDaoImpl.java:163) - Here are the Transaction Logs: 
+2020-05-12 18:58:16,518 -0400 [main] INFO  (EmployeeDaoImpl.java:165) - From: 1000000141 To: 1000000140 
+2020-05-12 18:58:16,518 -0400 [main] INFO  (EmployeeDaoImpl.java:165) - Money Transfer Request 
+2020-05-12 18:58:16,518 -0400 [main] INFO  (EmployeeDaoImpl.java:165) - 10.00 
+2020-05-12 18:58:16,580 -0400 [main] INFO  (MainDriver.java:267) - What would you like to do today
+2020-05-12 18:58:16,581 -0400 [main] INFO  (MainDriver.java:268) - -------------------------------
+2020-05-12 18:58:16,581 -0400 [main] INFO  (MainDriver.java:269) - 1) Approve Accounts
+2020-05-12 18:58:16,581 -0400 [main] INFO  (MainDriver.java:270) - 2) Reject Accounts
+2020-05-12 18:58:16,582 -0400 [main] INFO  (MainDriver.java:271) - 3) View Customer Account
+2020-05-12 18:58:16,582 -0400 [main] INFO  (MainDriver.java:272) - 4) View Transaction Logs
+2020-05-12 18:58:16,582 -0400 [main] INFO  (MainDriver.java:273) - 5) Exit
+2020-05-12 18:58:25,316 -0400 [main] INFO  (MainDriver.java:336) - Thanks for using our App.......

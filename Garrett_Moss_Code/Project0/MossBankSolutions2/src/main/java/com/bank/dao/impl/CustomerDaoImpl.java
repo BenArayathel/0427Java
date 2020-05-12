@@ -35,7 +35,7 @@ public class CustomerDaoImpl implements CustomerDAO {
 			createAccount.setAccountNumber(callableStatement.getString("accountnumber"));
 			
 		} catch (ClassNotFoundException | SQLException e) {
-			throw new BankException("Customer DAO Exception");
+			logger.error("Customer DAO Exception");
 		}
 		
 		return createAccount;
@@ -54,10 +54,10 @@ public class CustomerDaoImpl implements CustomerDAO {
 			newCustomer.setAccountNumber(accountNumber);
 			newCustomer.setAccountBalance(resultSet.getString("accountbalance"));
 		} else {
-			throw new BankException ("Customer Account Number "+ accountNumber+ " is not valid");
+			logger.error("Customer Account Number "+ accountNumber+ " is not valid");
 		}
 		}catch (ClassNotFoundException | SQLException e) {
-			throw new BankException("Error contact Customer Support");
+			logger.error("Error contact Customer Support");
 		}
 		return newCustomer;
 		
@@ -66,18 +66,25 @@ public class CustomerDaoImpl implements CustomerDAO {
 	public Customer withdraw(String accountNumber, String withdraw) throws BankException {
 		try (Connection connection= BankOracleConnection.getConnection()){
 			String sql="UPDATE customer set accountbalance = (accountbalance - ?)  where accountnumber =?";
+			String sql2="INSERT into transactions (transactionamount, accountnumber, transactiontype) values (?,?,?)";
 			CallableStatement callableStatement = connection.prepareCall(sql);
 			PreparedStatement preparedStatement=connection.prepareStatement(sql);
 			preparedStatement.setString(2, accountNumber);
 			preparedStatement.setDouble(1, Double.parseDouble(withdraw));
 			int resultSet=preparedStatement.executeUpdate();
+			CallableStatement callableStatementTransaction = connection.prepareCall(sql2);
+			PreparedStatement preparedStatementTransaction=connection.prepareStatement(sql2);
+			preparedStatementTransaction.setString(2, accountNumber);
+			preparedStatementTransaction.setString(1, withdraw);
+			preparedStatementTransaction.setString(3, "Withdrawl");
+			int resultSetTransaction=preparedStatementTransaction.executeUpdate();
 			
 			if (resultSet < 0) {
-				throw new BankException("Internal error occured please contact SYSADMIN");
+				logger.error("Internal error occured please contact SYSADMIN");
 			}
 			
 			} catch (ClassNotFoundException | SQLException e) {
-				throw new BankException("Internal error occured please contact SYSADMIN");
+				logger.error("Internal error occured please contact SYSADMIN");
 			}
 		return null;
 	}
@@ -85,18 +92,25 @@ public class CustomerDaoImpl implements CustomerDAO {
 	public Customer deposit(String deposit, String accountNumber) throws BankException {
 		try (Connection connection= BankOracleConnection.getConnection()){
 			String sql="UPDATE customer set accountbalance = (accountbalance + ?)  where accountnumber =?";
+			String sql2="INSERT into transactions (transactionamount, accountnumber, transactiontype) values (?,?,?)";
 			CallableStatement callableStatement = connection.prepareCall(sql);
 			PreparedStatement preparedStatement=connection.prepareStatement(sql);
 			preparedStatement.setString(2, accountNumber);
 			preparedStatement.setDouble(1, Double.parseDouble(deposit));
 			int resultSet=preparedStatement.executeUpdate();
+			CallableStatement callableStatementTransaction = connection.prepareCall(sql2);
+			PreparedStatement preparedStatementTransaction=connection.prepareStatement(sql2);
+			preparedStatementTransaction.setString(2, accountNumber);
+			preparedStatementTransaction.setString(1, deposit);
+			preparedStatementTransaction.setString(3, "Deposit");
+			int resultSetTransaction=preparedStatementTransaction.executeUpdate();
 			
 			if (resultSet < 0) {
-				throw new BankException("Internal error occured please contact SYSADMIN");
+				logger.error("Internal error occured please contact SYSADMIN");
 			}
 			
 			} catch (ClassNotFoundException | SQLException e) {
-				throw new BankException("Internal error occured please contact SYSADMIN");
+				logger.error("Internal error occured please contact SYSADMIN");
 			}
 		return null;
 	}
@@ -105,6 +119,7 @@ public class CustomerDaoImpl implements CustomerDAO {
 		try (Connection connection= BankOracleConnection.getConnection()){
 			String sql="UPDATE customer set accountbalance = (accountbalance - ?)  where accountnumber =?";
 			String sql2="UPDATE customer set accountbalance = (accountbalance + ?)  where accountnumber =?";
+			String sql3="INSERT into transactions (transactionamount, accountnumber, transactiontype) values (?,?,?)";
 			CallableStatement callableStatement = connection.prepareCall(sql);
 			PreparedStatement preparedStatement=connection.prepareStatement(sql);
 			preparedStatement.setString(2, fromAccountNumber);
@@ -115,13 +130,19 @@ public class CustomerDaoImpl implements CustomerDAO {
 			preparedStatement2.setDouble(1, Double.parseDouble(transferAmount));
 			int resultSet=preparedStatement.executeUpdate();
 			int resultSet2=preparedStatement2.executeUpdate();
+			CallableStatement callableStatementTransaction = connection.prepareCall(sql3);
+			PreparedStatement preparedStatementTransaction=connection.prepareStatement(sql3);
+			preparedStatementTransaction.setString(2, ("From: "+fromAccountNumber+" To: "+toAccountNumber));
+			preparedStatementTransaction.setString(1, transferAmount);
+			preparedStatementTransaction.setString(3, "Money Transfer");
+			int resultSetTransaction=preparedStatementTransaction.executeUpdate();
 			
 			if (resultSet < 0) {
-				throw new BankException("Internal error occured please contact SYSADMIN");
+				logger.error("Internal error occured please contact SYSADMIN");
 			}
 			
 			} catch (ClassNotFoundException | SQLException e) {
-				throw new BankException("Internal error occured please contact SYSADMIN");
+				logger.error("Internal error occured please contact SYSADMIN");
 			}
 		return null;
 		
@@ -131,6 +152,7 @@ public class CustomerDaoImpl implements CustomerDAO {
 		try (Connection connection= BankOracleConnection.getConnection()){
 			String sql="UPDATE customer set accountbalance = (accountbalance + ?)  where accountnumber =?";
 			String sql2="UPDATE customer set accountbalance = (accountbalance - ?)  where accountnumber =?";
+			String sql3="INSERT into transactions (transactionamount, accountnumber, transactiontype) values (?,?,?)";
 			CallableStatement callableStatement = connection.prepareCall(sql);
 			PreparedStatement preparedStatement=connection.prepareStatement(sql);
 			preparedStatement.setString(2, fromAccountNumber);
@@ -141,13 +163,19 @@ public class CustomerDaoImpl implements CustomerDAO {
 			preparedStatement2.setDouble(1, Double.parseDouble(transferAmount));
 			int resultSet=preparedStatement.executeUpdate();
 			int resultSet2=preparedStatement2.executeUpdate();
+			CallableStatement callableStatementTransaction = connection.prepareCall(sql3);
+			PreparedStatement preparedStatementTransaction=connection.prepareStatement(sql3);
+			preparedStatementTransaction.setString(2, ("From: "+fromAccountNumber+" To: "+toAccountNumber));
+			preparedStatementTransaction.setString(1, transferAmount);
+			preparedStatementTransaction.setString(3, "Money Transfer Request");
+			int resultSetTransaction=preparedStatementTransaction.executeUpdate();
 			
 			if (resultSet < 0) {
-				throw new BankException("Internal error occured please contact SYSADMIN");
+				logger.error("Internal error occured please contact SYSADMIN");
 			}
 			
 			} catch (ClassNotFoundException | SQLException e) {
-				throw new BankException("Internal error occured please contact SYSADMIN");
+				logger.error("Internal error occured please contact SYSADMIN");
 			}
 		return null;
 	
@@ -163,11 +191,11 @@ public class CustomerDaoImpl implements CustomerDAO {
 			int resultSet=preparedStatement.executeUpdate();
 			
 			if (resultSet < 1) {
-				throw new BankException("Internal error occured please contact SYSADMIN");
+				logger.error("Internal error occured please contact SYSADMIN");
 			}
 			
 			} catch (ClassNotFoundException | SQLException e) {
-				throw new BankException("Internal error occured please contact SYSADMIN");
+				logger.error("Internal error occured please contact SYSADMIN");
 			}
 		return null;
 	}
@@ -190,7 +218,7 @@ public class CustomerDaoImpl implements CustomerDAO {
 					logger.error("Customer Credentials "+ username+ " are not valid");
 				}
 				}catch (ClassNotFoundException | SQLException e) {
-					throw new BankException("Error contact Customer Support");
+					logger.error("Error contact Customer Support");
 				}
 				return account;
 		}
