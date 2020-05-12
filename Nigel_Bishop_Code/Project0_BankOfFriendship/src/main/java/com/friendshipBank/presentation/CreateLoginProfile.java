@@ -9,15 +9,18 @@ import com.friendshipBank.service.impl.userAccessServiceImpl;
 public class CreateLoginProfile 
 {
 	public static String loginCustomerID;
+	private static String Password1;
+	private static String Password2;
+	private static String accountStatus = "PENDING";
 	
 	public static void CreateNewLoginProfile() 
 	{
 		userAccessService userService = new userAccessServiceImpl();
 		userAccess userAccess = new userAccess();
 
-		String Password1;
-		String Password2;
-		String accountStatus = "PENDING";
+//		String Password1;
+//		String Password2;
+//		private static String accountStatus = "PENDING";
 		
     	int userChoice = 0;
  	

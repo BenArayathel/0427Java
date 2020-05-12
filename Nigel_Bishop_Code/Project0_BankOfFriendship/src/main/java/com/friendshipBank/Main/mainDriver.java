@@ -31,7 +31,6 @@ public class mainDriver {
 //		loggy.warn("THIS IS AN INFO UPDATE!!!!  " + name + " This complete");
 //		loggy.error("THIS IS AN INFO UPDATE!!!!  " + name + " This complete");
 		
-
 		
 
 		welcomePage.BankWelcomePage();
@@ -39,3 +38,5 @@ public class mainDriver {
 	}
 
 }
+
+

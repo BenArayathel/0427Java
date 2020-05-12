@@ -5,7 +5,7 @@ public class bankAccount
 	private String accountID;
 	private String customerID;
 	private String accountType;
-	private Double balance;
+	private long balance;
 	private String accountStatus;
 	
 	public bankAccount() {
@@ -36,11 +36,13 @@ public class bankAccount
 		this.accountType = accountType;
 	}
 
-	public Double getBalance() {
+
+
+	public long getBalance() {
 		return balance;
 	}
 
-	public void setBalance(Double balance) {
+	public void setBalance(long balance) {
 		this.balance = balance;
 	}
 

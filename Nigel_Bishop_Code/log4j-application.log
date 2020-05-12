@@ -1,0 +1,20 @@
+2020-05-07 16:27:00 INFO  MainDriver:15 - THIS IS AN INFO UPDATE!!!!
+2020-05-07 16:27:00 WARN  MainDriver:16 - WARNING AGAIN!
+2020-05-07 16:27:00 ERROR MainDriver:25 - This is an error
+java.lang.IndexOutOfBoundsException
+	at com.example.main.MainDriver.main(MainDriver.java:25)
+2020-05-07 16:27:00 FATAL MainDriver:26 - This is fatal!
+2020-05-07 16:27:00 INFO  MainDriver:11 - I'm in another class!
+2020-05-07 16:32:16 INFO  mainDriver:18 - THIS IS AN INFO UPDATE!!!!
+2020-05-07 16:33:29 INFO  mainDriver:18 - THIS IS AN INFO UPDATE!!!!
+2020-05-07 16:35:14 INFO  mainDriver:18 - THIS IS AN INFO UPDATE!!!!
+2020-05-08 14:42:17 INFO  mainDriver:26 - THIS IS AN INFO UPDATE!!!!
+2020-05-08 14:42:57 INFO  mainDriver:26 - THIS IS AN INFO UPDATE!!!!
+2020-05-08 14:43:25 INFO  mainDriver:26 - THIS IS AN INFO UPDATE!!!!
+2020-05-08 14:50:51 INFO  mainDriver:26 - THIS IS AN INFO UPDATE!!!!
+2020-05-08 14:52:10 INFO  mainDriver:26 - THIS IS AN INFO UPDATE!!!!
+2020-05-08 14:53:20 INFO  mainDriver:26 - THIS IS AN INFO UPDATE!!!!Testing Log4jThis complete
+2020-05-08 14:57:24 INFO  mainDriver:26 - THIS IS AN INFO UPDATE!!!!  Testing Log4j This complete
+2020-05-08 15:31:29 INFO  mainDriver:26 - THIS IS AN INFO UPDATE!!!!  Testing Log4j This complete
+2020-05-08 15:31:29 WARN  mainDriver:27 - THIS IS AN INFO UPDATE!!!!  Testing Log4j This complete
+2020-05-08 15:31:29 ERROR mainDriver:28 - THIS IS AN INFO UPDATE!!!!  Testing Log4j This complete

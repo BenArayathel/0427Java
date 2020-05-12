@@ -3,6 +3,7 @@ package com.friendshipBank.dbutil;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.lang.*;
 
 public class OracleConnection {
 
@@ -16,12 +17,12 @@ public class OracleConnection {
 	public static Connection getConnection() throws ClassNotFoundException, SQLException 
 	{
 		Class.forName("oracle.jdbc.OracleDriver");
-		String url="jdbc:oracle:thin:@myfirstoracledata.c1retv5b8x6j.us-east-2.rds.amazonaws.com:1521:orcl";
-		String username="puser";
-		String password="p4ssw0rd";
 		
+		final String URL = System.getenv("P0_URL");
+		final String USERNAME = System.getenv("P0_USERNAME");
+		final String PASSWORD = System.getenv("P0_PASSWORD");
 
-		connection=DriverManager.getConnection(url, username, password);
+		connection=DriverManager.getConnection(URL, USERNAME, PASSWORD);
 		return connection;
 	}
 }
