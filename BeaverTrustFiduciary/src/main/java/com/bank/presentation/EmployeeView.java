@@ -67,7 +67,8 @@ public class EmployeeView {
 				}
 				
 			} catch (BankException e) {
-				e.printStackTrace();
+				Main.myLog.error(e.getMessage());
+				throw new BankException("Unable to list user accounts");
 			}
 			banking();
 		// APPROVE ACCOUNT
@@ -97,7 +98,8 @@ public class EmployeeView {
 				}
 				banking();
 			} catch (BankException e) {
-				e.printStackTrace();
+				Main.myLog.error(e.getMessage());
+				throw new BankException("Unable to print logs.");
 			}
 		} else if (selection.equalsIgnoreCase("quit")) {
 			QuitOption.quit();

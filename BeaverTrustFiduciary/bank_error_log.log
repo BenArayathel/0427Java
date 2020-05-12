@@ -71,3 +71,11 @@
 2020-05-11 19:58:17 ERROR Main:54 - Could not make withdrawal, insufficient funds.
 2020-05-11 19:58:17 ERROR Main:44 - Problem with withdrawal
 2020-05-11 19:58:17 ERROR Main:46 - [Ljava.lang.StackTraceElement;@5f7b97da
+2020-05-11 20:02:14 ERROR Main:155 - Invalid column index
+2020-05-11 20:02:14 ERROR Main:54 - Could not make withdrawal, insufficient funds.
+2020-05-11 20:02:14 ERROR Main:45 - Problem with withdrawal
+2020-05-11 20:02:14 ERROR Main:46 - [Ljava.lang.StackTraceElement;@333dd51e
+2020-05-11 20:38:12 ERROR Main:155 - Invalid column index
+2020-05-11 20:38:12 ERROR Main:54 - Could not make withdrawal, insufficient funds.
+2020-05-11 20:38:12 ERROR Main:29 - Problem with withdrawal
+2020-05-11 20:38:12 ERROR Main:46 - [Ljava.lang.StackTraceElement;@6955cb39

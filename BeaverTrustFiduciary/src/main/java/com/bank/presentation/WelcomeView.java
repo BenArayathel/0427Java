@@ -6,7 +6,6 @@ import com.bank.tools.QuitOption;
 import com.bank.presentation.UserLoginView;
 
 
-
 //first view for a user who opened the program
 public class WelcomeView {
 	

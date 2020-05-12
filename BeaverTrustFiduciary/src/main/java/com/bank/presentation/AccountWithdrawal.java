@@ -26,7 +26,7 @@ public class AccountWithdrawal {
 				Main.myLog.info("-----------------------------------------------------");
 				AccountsView.view(user);			
 			} catch (BankException e) {
-				Main.myLog.error(e.getStackTrace());
+				Main.myLog.error(e.getMessage());
 				throw new BankException("Could not complete that withdrawal, please check amount");
 			}
 		} else {
