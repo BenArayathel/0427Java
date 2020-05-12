@@ -259,13 +259,36 @@ public class ServiceLayer {
     	
     };
 
-    public void registerUser(String accountId, String loginName, String password){
+    public Boolean registerUser(Integer customerId, String loginName, String loginPassword){
     	
-//    	Registration registration = new Registration();
-//    	
-//    	registration.);
-//    	
+    	boolean isRegistered = false;
     	
+    	Registration registration = registrationDao.getRegistrationByCustomerId(customerId);
+    	
+    	if (registration == null) {
+    		
+    		boolean isLoginNameOk = registrationDao.isLoginNameNotUsed(loginName); 
+    		
+    		if (isLoginNameOk) {
+    			registration = new Registration();
+    			registration.setCustomerId(customerId);
+    			registration.setLoginName(loginName);
+    			registration.setLoginPassword(loginPassword);
+    			registration = registrationDao.addRegistration(registration);
+    			if (registration != null) {
+    				isRegistered = true;
+    			}
+    		} else {
+        		BankApp.loggy.info("Login Name already in use. Please try other names.");
+        		isRegistered = false;
+    		}
+    	} else {
+    		BankApp.loggy.info("Login Name and Password not created. It is already existing.");
+    		BankApp.loggy.info("Please Sign On or contact admin if you forgot your Username and Password.");
+    		isRegistered = false;
+    	}
+    	
+    	return isRegistered;
     }
 
 }

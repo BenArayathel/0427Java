@@ -24,28 +24,30 @@ public class EnrollNow {
         System.out.print("       3. Enter your ACCOUNT ID: ");
         String accountId = scanner.nextLine();
         
-        // validation method to check if user (name and account number match) with live accounts.
-        // call controller to validate the user
-          
+        // validation method to check if:
+        // user (name(s) and account number match) and it is an active/approved account.          
         Customer customer = bankServiceController.validateCustomerAccount(firstName, lastName, accountId);
-        
-        // If there is a match and account is approved, customer record will be returned.
+
+        // customer is returned if he can register.
         if (customer != null){
 
     		BankApp.loggy.info("Customer validated! Now, create a login name and password!");
         	
-//        	if (displayCreateLogin(accountId)) {
-//        		BankApp.loggy.info("Success! Login username and password CREATED!");
-//        	} else {
-//        		BankApp.loggy.info("Login username and password creation ABORTED!");
-//        	};
+        	if (displayCreateLogin(customer.getCustomerId())) {
+        		BankApp.loggy.info("Success! Login username and password CREATED!");
+        	} else {
+        		BankApp.loggy.info("Login username and password creation ABORTED!");
+        	};
         	
         } 
                 
         return;
 	}
 	
-	public boolean displayCreateLogin(String accountId) {
+	public boolean displayCreateLogin(Integer customerId) {
+		
+		boolean isRegistered = false;
+		
 	    BankApp.loggy.info("================= Rich Bank Program =================");
 	    BankApp.loggy.info("       ");
 	    BankApp.loggy.info("    Enroll Now Page");
@@ -53,7 +55,7 @@ public class EnrollNow {
 	    BankApp.loggy.info("       1. Create your LOGIN NAME:");
         String loginName = scanner.nextLine();
         BankApp.loggy.info("loginName entered: " + loginName);
-
+     
         BankApp.loggy.info("       2. Enter your LOGIN PASSWORD:");
         String password1 = scanner.nextLine();
 
@@ -64,14 +66,14 @@ public class EnrollNow {
 
         BankApp.loggy.info("password2 entered: " + password2);
         
-        if (password1 != password2) {
+        if (password1.equals(password2)) {
+        	isRegistered = bankServiceController.registerUser(customerId, loginName, password1);
+        } else {
             BankApp.loggy.info("Your password did not match.");
-            return false;
+            isRegistered = false;
         }
         
-        //bankServiceController.registerUser(accountId, loginName, password1);
-
-		return true;
+        return isRegistered;
 	}
 
 

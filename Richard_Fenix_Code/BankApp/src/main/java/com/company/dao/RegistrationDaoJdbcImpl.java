@@ -48,6 +48,13 @@ public class RegistrationDaoJdbcImpl implements RegistrationDao {
     private static final String SELECT_CUSTOMER_ID_BY_LOGIN_NAME_AND_PASSWORD_SQL =
             "select * from registration where login_name = ? and login_password =?";
 
+    // For checking if customerId is already registered
+    private static final String SELECT_REGISTRATION_BY_CUSTOMER_ID_SQL =
+            "select * from registration where customer_id = ?";
+
+    // For checking if login name is already used
+    private static final String SELECT_REGISTRATION_BY_LOGIN_NAME_SQL =
+            "select * from registration where login_name = ?";
 
     
 	@Override
@@ -69,7 +76,7 @@ public class RegistrationDaoJdbcImpl implements RegistrationDao {
 			
 			if (rs!= null && rs.next()) {
 				registration.setRegistrationId(rs.getLong(1));
-				BankApp.loggy.info("Successfully added record id: "+rs.getInt(1));
+				BankApp.loggy.info("Successfully added registration id: "+rs.getLong(1));
 				
 			}
 			return registration;
@@ -86,11 +93,11 @@ public class RegistrationDaoJdbcImpl implements RegistrationDao {
 	}
 
 	@Override
-	public Registration getRegistration(int id) {
+	public Registration getRegistration(long registrationId) {
 		try(Connection conn = DriverManager.getConnection(URL, USERNAME, PASSWORD)) {
 			
 			ps = conn.prepareStatement(SELECT_REGISTRATION_SQL);
-			ps.setInt(1,id);
+			ps.setLong(1,registrationId);
 			
 			rs = ps.executeQuery();
 			
@@ -182,11 +189,11 @@ public class RegistrationDaoJdbcImpl implements RegistrationDao {
 	}
 
 	@Override
-	public void deleteRegistration(int id) {
+	public void deleteRegistration(long registrationId) {
 		try(Connection conn = DriverManager.getConnection(URL, USERNAME, PASSWORD)) {
 			
 			ps = conn.prepareStatement(DELETE_REGISTRATION_SQL);
-			ps.setInt(1,id);
+			ps.setLong(1,registrationId);
 			
 			int deletedRows = ps.executeUpdate();
 			
@@ -292,6 +299,73 @@ public class RegistrationDaoJdbcImpl implements RegistrationDao {
 		}
 		return 0;
 	
+	}
+
+	@Override
+	public Registration getRegistrationByCustomerId(int customerId) {
+			
+		try(Connection conn = DriverManager.getConnection(URL, USERNAME, PASSWORD)) {
+			
+			ps = conn.prepareStatement(SELECT_REGISTRATION_BY_CUSTOMER_ID_SQL);
+			ps.setInt(1,customerId);
+			
+			rs = ps.executeQuery();
+			
+			if (rs.next()) {
+				Registration registration = new Registration();
+				registration.setRegistrationId(rs.getLong("registration_id"));
+		        registration.setCustomerId(rs.getInt("customer_id"));
+		        registration.setLoginName(rs.getString("login_name"));
+		        registration.setLoginPassword(rs.getString("login_password"));
+				return registration;
+			} else {
+				BankApp.loggy.info("Record not found.");
+				return null;
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(rs != null) rs.close();
+				if(ps != null) ps.close();
+			} catch(Exception ex){}
+		}
+		return null;
+
+	}
+
+	@Override
+	public boolean isLoginNameNotUsed(String loginName) {
+		try(Connection conn = DriverManager.getConnection(URL, USERNAME, PASSWORD)) {
+			
+			ps = conn.prepareStatement(SELECT_REGISTRATION_BY_LOGIN_NAME_SQL);
+			ps.setString(1,loginName);
+			
+			rs = ps.executeQuery();
+			
+			if (rs.next()) {
+//				Registration registration = new Registration();
+//				registration.setRegistrationId(rs.getLong("registration_id"));
+//		        registration.setCustomerId(rs.getInt("customer_id"));
+//		        registration.setLoginName(rs.getString("login_name"));
+//		        registration.setLoginPassword(rs.getString("login_password"));
+				BankApp.loggy.info("Login name already exist.");
+				return false;
+			} else {
+				BankApp.loggy.info("Login name not found.");
+				return true;
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(rs != null) rs.close();
+				if(ps != null) ps.close();
+			} catch(Exception ex){}
+		}
+		return false;
 	}
 
 }

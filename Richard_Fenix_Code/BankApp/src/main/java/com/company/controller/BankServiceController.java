@@ -44,8 +44,8 @@ public class BankServiceController {
     	return serviceLayer.getLogList();
     }
     
-//    public Customer bankServiceController.registerUser(String accountId, String loginName, String password) {
-//    	return serviceLayer.registerUser(accountId, loginName, password);
-//    }
+    public Boolean registerUser(Integer customerId, String loginName, String password) {
+    	return serviceLayer.registerUser(customerId, loginName, password);
+    }
 
 }
