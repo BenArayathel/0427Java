@@ -46,8 +46,5 @@ public class UserLoginView {
 			Main.myLog.error(e.getStackTrace());
 			throw new BankException("Something went wrong, please try again later.");
 		}
-
 	}
-	
-
 }

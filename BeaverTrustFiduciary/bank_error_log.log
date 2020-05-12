@@ -45,3 +45,29 @@
 2020-05-11 18:59:49 ERROR Main:157 - [Ljava.lang.StackTraceElement;@256f8274
 2020-05-11 19:01:45 ERROR Main:157 - [Ljava.lang.StackTraceElement;@5c10f1c3
 2020-05-11 19:03:15 ERROR Main:155 - [Ljava.lang.StackTraceElement;@aafcffa
+2020-05-11 19:23:29 ERROR Main:155 - Invalid column index
+2020-05-11 19:23:29 ERROR Main:54 - Could not make withdrawal, insufficient funds.
+2020-05-11 19:23:29 ERROR Main:29 - [Ljava.lang.StackTraceElement;@52d239ba
+2020-05-11 19:23:29 ERROR Main:29 - [Ljava.lang.StackTraceElement;@315f43d5
+2020-05-11 19:23:29 ERROR Main:46 - [Ljava.lang.StackTraceElement;@68fa0ba8
+2020-05-11 19:24:54 ERROR Main:155 - Invalid column index
+2020-05-11 19:24:54 ERROR Main:54 - Could not make withdrawal, insufficient funds.
+2020-05-11 19:24:54 ERROR Main:29 - [Ljava.lang.StackTraceElement;@235a0c16
+2020-05-11 19:24:54 ERROR Main:46 - [Ljava.lang.StackTraceElement;@2b5f4d54
+2020-05-11 19:36:58 ERROR Main:155 - Invalid column index
+2020-05-11 19:36:58 ERROR Main:54 - Could not make withdrawal, insufficient funds.
+2020-05-11 19:36:58 ERROR Main:29 - [Ljava.lang.StackTraceElement;@2f05be7f
+2020-05-11 19:36:58 ERROR Main:38 - [Ljava.lang.StackTraceElement;@640f11a1
+2020-05-11 19:36:58 ERROR Main:46 - [Ljava.lang.StackTraceElement;@5c10f1c3
+2020-05-11 19:54:27 ERROR Main:155 - Invalid column index
+2020-05-11 19:54:27 ERROR Main:54 - Could not make withdrawal, insufficient funds.
+2020-05-11 19:54:27 ERROR Main:45 - Problem with withdrawal
+2020-05-11 19:54:27 ERROR Main:46 - [Ljava.lang.StackTraceElement;@315f43d5
+2020-05-11 19:57:00 ERROR Main:155 - Invalid column index
+2020-05-11 19:57:00 ERROR Main:54 - Could not make withdrawal, insufficient funds.
+2020-05-11 19:57:00 ERROR Main:44 - Problem with withdrawal
+2020-05-11 19:57:00 ERROR Main:46 - [Ljava.lang.StackTraceElement;@2b5f4d54
+2020-05-11 19:58:17 ERROR Main:155 - Invalid column index
+2020-05-11 19:58:17 ERROR Main:54 - Could not make withdrawal, insufficient funds.
+2020-05-11 19:58:17 ERROR Main:44 - Problem with withdrawal
+2020-05-11 19:58:17 ERROR Main:46 - [Ljava.lang.StackTraceElement;@5f7b97da

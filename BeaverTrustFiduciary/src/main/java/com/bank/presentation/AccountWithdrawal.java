@@ -24,7 +24,7 @@ public class AccountWithdrawal {
 				asi.withdraw(user, accountName, withdrawalAmount);
 				Main.myLog.info("\nWithdrawal of $" + withdrawalAmount + " complete!");
 				Main.myLog.info("-----------------------------------------------------");
-				AccountsView.view(user);				
+				AccountsView.view(user);			
 			} catch (BankException e) {
 				Main.myLog.error(e.getStackTrace());
 				throw new BankException("Could not complete that withdrawal, please check amount");

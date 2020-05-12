@@ -191,8 +191,8 @@ public class AccountDAOImplementation implements AccountDAOInterface {
 				}
 				
 			} catch (SQLException e) {
-				e.printStackTrace();
-				throw new BankException("trouble with the account dao");
+				Main.myLog.error(e.getMessage());
+				throw new BankException("Unable to list transactions");
 			}			
 			return transactionList;
 		}
@@ -200,7 +200,7 @@ public class AccountDAOImplementation implements AccountDAOInterface {
 	
 	// FOR TESTING and CLEANING UP AFTER TESTS
 	@Override
-	public void deleteTransaction(String account_name) {
+	public void deleteTransaction(String account_name) throws BankException {
 		String sql = "delete from bank_transaction where account_name = ?";
 				
 		try (Connection conn = DataConnection.getConnection()) {
@@ -209,7 +209,8 @@ public class AccountDAOImplementation implements AccountDAOInterface {
 			ps.executeUpdate();
 		
 		} catch (SQLException e) {
-			e.printStackTrace();
+			Main.myLog.error(e.getMessage());
+			throw new BankException("Unable to delete transaction");
 		}
 	}	
 }

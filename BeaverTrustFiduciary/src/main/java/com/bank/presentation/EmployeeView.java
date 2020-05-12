@@ -51,7 +51,7 @@ public class EmployeeView {
 					Main.myLog.info("...........................................");
 				}
 			} catch (BankException e) {
-				Main.myLog.error(e.getStackTrace());
+				Main.myLog.error(e.getMessage());
 				throw new BankException("Something wrong with accessing user info.");
 			}
 			banking();

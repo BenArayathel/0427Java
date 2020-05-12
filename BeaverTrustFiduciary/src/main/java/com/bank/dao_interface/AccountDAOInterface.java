@@ -20,7 +20,7 @@ public interface AccountDAOInterface {
 	public List<Transaction> listAllTransactions() throws BankException;
 	
 	//for cleaning up tests
-	public void deleteTransaction(String account_name);
+	public void deleteTransaction(String account_name) throws BankException;
 
 	
 

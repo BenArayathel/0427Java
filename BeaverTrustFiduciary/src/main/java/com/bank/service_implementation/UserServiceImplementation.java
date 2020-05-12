@@ -26,12 +26,7 @@ public class UserServiceImplementation implements UserServiceInterface {
 
 	@Override
 	public List<User> listUsers() throws BankException {
-		
-		// always have to call the methods from an instantiation of
-		// a class...why though? they aren't private...it has to do with not being static...
-		// it has to do with instance methods vs static methods. 
 		List<User> users = udi.listUsers();
-		
 		return users;
 	}
 
@@ -45,11 +40,4 @@ public class UserServiceImplementation implements UserServiceInterface {
 		udi.accessUserObject(username);
 		return null;
 	}
-
-	
-	
-	// the SERVICES layer does most of the checks and tests before passing
-	// the action down to the DAO, which actually finishes the task
-
-
 }

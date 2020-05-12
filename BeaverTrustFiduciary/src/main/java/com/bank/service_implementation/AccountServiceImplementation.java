@@ -3,6 +3,7 @@ package com.bank.service_implementation;
 import java.util.List;
 
 import com.bank.dao_implementation.AccountDAOImplementation;
+import com.bank.main.Main;
 import com.bank.models.Account;
 import com.bank.models.Transaction;
 import com.bank.models.User;
@@ -35,22 +36,23 @@ public class AccountServiceImplementation implements AccountServiceInterface {
 
 	// DEPOSIT INTO ACCOUNT
 	@Override
-	public void deposit(User user, String accountName, String depositAmount) {
+	public void deposit(User user, String accountName, String depositAmount) throws BankException {
 		try {
 			adi.deposit(user, accountName, depositAmount);
 		} catch (BankException e) {
-			e.printStackTrace();
+			Main.myLog.error(e.getMessage());
+			throw new BankException("Problem with Deposit");
 		}
 	}
 	
 	// WITHDRAW FROM ACCOUNT
 	@Override
-	public void withdraw(User user, String accountName, String depositAmount) {
+	public void withdraw(User user, String accountName, String depositAmount) throws BankException {
 		try {
 			adi.withdraw(user, accountName, depositAmount);
 		} catch (BankException e) {
-			e.printStackTrace();
-			
+			Main.myLog.error(e.getMessage());
+			throw new BankException("Problem with withdrawal");
 		}
 	}
 

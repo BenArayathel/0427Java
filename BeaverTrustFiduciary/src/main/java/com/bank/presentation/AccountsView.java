@@ -35,8 +35,8 @@ public class AccountsView {
 			}
 			
 		} catch (BankException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			Main.myLog.error(e.getMessage());
+			throw new BankException("Something went wrong with viewing your accounts.");
 		}
 				
 		Main.myLog.info("\nWhat would you like to do?");
@@ -54,9 +54,9 @@ public class AccountsView {
 		} else if (accountAction.equalsIgnoreCase("2")) {
 			AccountWithdrawal.withdraw(user);			
 		} else if (accountAction.equalsIgnoreCase("3")) {
-			Main.myLog.info("Transfer currently unavailable!");
-			AccountsView.view(user);
-//			AccountTransfer.transfer();			
+//			Main.myLog.info("Transfer currently unavailable!");
+//			AccountsView.view(user);
+			AccountTransfer.transfer(user);			
 		} else if (accountAction.equalsIgnoreCase("4")) {
 			UserHomeView.userWelcome(user);			
 		} else if (accountAction.equalsIgnoreCase("quit")) {
