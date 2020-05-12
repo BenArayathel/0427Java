@@ -5,6 +5,8 @@ import java.util.Scanner;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 
+import com.hackbank.business.services.account.AccountService;
+import com.hackbank.business.services.account.AccountServiceImpl;
 import com.hackbank.business.services.person.PersonService;
 import com.hackbank.business.services.person.PersonServiceImplementation;
 import com.hackbank.business.validations.Validation;
@@ -14,6 +16,7 @@ public class Main {
 	final static Logger loggy = Logger.getLogger(Main.class);
 	final static Validation vd = new Validation(); 
 	final static PersonService personSrv = new PersonServiceImplementation();
+	final static AccountService accountSrv = new AccountServiceImpl();
 
 	public static void main(String[] args) {
 
@@ -22,7 +25,7 @@ public class Main {
 		
 		header();
 		mainMenu(sc);
-		
+		// 20051247397
 		// clearScreen();
 
 	}
@@ -45,7 +48,7 @@ public class Main {
 				LoginForm.openForm(sc);
 				break;
 			case 2:
-				loggy.info("Under Construction!");
+				FinishRegister.openForm(sc);
 				break;
 			case 3:
 				if (exitProgram(sc)) {
@@ -102,6 +105,41 @@ public class Main {
 				break;
 			}
 		}while(opt!=5);
+	}
+	
+	public static void customerMenu(Scanner sc){
+		int opt = 0;
+		loggy.info("\n--- Welcome to the Custumer's Portal ---");
+		loggy.info("--- How can we help you today? ---\n");
+		do {
+			loggy.info("--- Menu ---");
+			loggy.info("--- Enter one of the following options:");
+			loggy.info("--- 1 - Accounts");
+			loggy.info("--- 2 - Transfers");
+			loggy.info("--- 3 - Logout");
+			try {
+				opt = Integer.parseInt(sc.nextLine());
+			} catch (NumberFormatException e) {
+				opt = 9999;
+			}
+			switch (opt) {
+			case 1:
+				
+				accountSrv.getAllAccountsByCustomer(id);
+				break;
+			case 2:
+				loggy.info("Under Construction!\n");
+				break;
+			case 3:
+				//loggy.info("Under Construction!\n");
+				break;
+			default:
+				loggy.info("\nThis is not a valid option -> "+opt);
+				loggy.info("We're sorry try again.\n");
+				opt = 0;
+				break;
+			}
+		}while(opt!=3);
 	}
 	
 	private static void header() {

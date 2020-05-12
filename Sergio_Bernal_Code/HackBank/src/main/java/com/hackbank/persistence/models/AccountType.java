@@ -2,22 +2,22 @@ package com.hackbank.persistence.models;
 
 public class AccountType {
 	
-	private int id;
+	private byte id;
 	private String name;
 	
 	public AccountType() {}
 
-	public AccountType(int id, String name) {
+	public AccountType(byte id, String name) {
 		super();
 		this.id = id;
 		this.name = name;
 	}
 
-	public int getId() {
+	public byte getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(byte id) {
 		this.id = id;
 	}
 

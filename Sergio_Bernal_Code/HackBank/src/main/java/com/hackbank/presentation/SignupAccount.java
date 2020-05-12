@@ -19,12 +19,12 @@ public class SignupAccount {
 			Main.loggy.info("--- Last Name:");
 			person.setLastName(sc.nextLine());
 			Main.loggy.info("--- SSN:");
-			person.setSsn(Integer.parseInt(sc.nextLine()));
+			person.setSsn(sc.nextLine());
 			Main.loggy.info("--- Date of Birth:");
 			dob = sc.nextLine();
 			person.setDob(Main.vd.isValidDate(dob));
 			Main.loggy.info("--- Phone Number:");
-			person.setPhoneNumber(Long.parseLong(sc.nextLine()));
+			person.setPhoneNumber(sc.nextLine());
 			Main.loggy.info("--- City:");
 			person.setCityd(sc.nextLine());
 			Main.loggy.info("\nClient's Information:");

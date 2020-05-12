@@ -6,18 +6,18 @@ import java.util.Date;
 public class Person {
 
 	private String Id;
-	private int ssn;
+	private String ssn;
 	private String name;
 	private String lastName;
 	private Date dob;
-	private long phoneNumber;
+	private String phoneNumber;
 	private String city;
 	
 	public Person() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Person(String id, int ssn, String name, String lastName, Date dob, long phoneNumber, String city) {
+	public Person(String id, String ssn, String name, String lastName, Date dob, String phoneNumber, String city) {
 		super();
 		Id = id;
 		this.ssn = ssn;
@@ -36,11 +36,11 @@ public class Person {
 		Id = id;
 	}
 
-	public int getSsn() {
+	public String getSsn() {
 		return ssn;
 	}
 
-	public void setSsn(int ssn) {
+	public void setSsn(String ssn) {
 		this.ssn = ssn;
 	}
 
@@ -68,11 +68,11 @@ public class Person {
 		this.dob = dob;
 	}
 
-	public long getPhoneNumber() {
+	public String getPhoneNumber() {
 		return phoneNumber;
 	}
 
-	public void setPhoneNumber(long phoneNumber) {
+	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
 

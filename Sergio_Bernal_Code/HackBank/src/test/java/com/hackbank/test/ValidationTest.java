@@ -46,17 +46,18 @@ public class ValidationTest {
 
 	@Test
 	public void testIsValidPassword() {
-		assertTrue(vd.isValidPassword("Passw0rd%"));
+//		assertTrue(vd.isValidPassword("Passw0rd%"));
+		assertTrue(vd.isValidPassword("pass0123"));
 	}
 
 	@Test
 	public void testIsValidContact() {
-		assertEquals(true, vd.isValidContact(1234567890));
+		assertEquals(true, vd.isValidContact("1234567890"));
 	}
 
 	@Test
 	public void testIsValidSSN() {
-		assertTrue(vd.isValidSSN(123456789));
+		assertTrue(vd.isValidSSN("123456789"));
 	}
 
 	@Test

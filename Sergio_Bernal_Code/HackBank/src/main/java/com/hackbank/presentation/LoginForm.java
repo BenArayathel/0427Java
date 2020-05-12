@@ -20,12 +20,12 @@ public class LoginForm {
 		Main.loggy.info("--- Password");
 		inpPwd = sc.nextLine();
 		try {
-//			if(auth.login(inpEmail, inpPwd).equals("Employee")) {
-			if(auth.login("employee@hackbank.com", "Passw0rd$").equals("Employee")) {
+			if(auth.login(inpEmail, inpPwd).equals("Employee")) {
+//			if(auth.login("employee@hackbank.com", "Passw0rd$").equals("Employee")) {
 				Main.adminMenu(sc);
 			}else{
-				Main.loggy.info("You are a Customer!");
-			};
+				Main.customerMenu(sc);
+			}
 		} catch (BusinessException e) {
 			Main.loggy.info(e.getMessage()+"\n");
 		}

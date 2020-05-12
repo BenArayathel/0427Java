@@ -39,7 +39,8 @@ public class Validation {
 		 * .				#   match anything with previous condition checking
 		 * {6,10}			#   length at least 6 characters and maximum of 10
 		*/
-		return pwd.matches("((?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{6,10})");
+//		return pwd.matches("((?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{6,10})");
+		return pwd.matches("([a-zA-Z0-9]{6,10})");
 	}
 	
 	public double isValidBalance(double balance) throws BusinessException{
@@ -52,18 +53,18 @@ public class Validation {
 		}
 	}
 	
-	public boolean isValidContact(long contact){
+	public boolean isValidContact(String contact){
 		String parseContact = contact+"";
 		return parseContact.matches("[0-9]{10}");
 	}
 	
-	public boolean isValidSSN(long ssn){
+	public boolean isValidSSN(String ssn){
 		String parseContact = ssn+"";
 		return parseContact.matches("[0-9]{9}");
 	}
 	
 	public boolean isValidEmail(String email){
-		String regexp = "[a-zA-Z]{1}[\\w]+@([\\w]+.)[\\w]+";
+		String regexp = "([a-zA-Z]{1}[\\w]+)@([\\w]+\\.)([\\w])+";
 		return email.matches(regexp);
 	}
 	

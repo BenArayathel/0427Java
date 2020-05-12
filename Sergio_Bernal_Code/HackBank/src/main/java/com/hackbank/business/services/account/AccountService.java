@@ -9,8 +9,9 @@ import com.hackbank.persistence.models.PendingApproval;
 public interface AccountService {
 	
 	public abstract Account createAccount(PendingApproval pApproval) throws BusinessException;
-	public abstract String getAccountById(int id) throws BusinessException;
-	public abstract Account updateBalanceAccount(int id) throws BusinessException;
+	public abstract Account getAccountById(String id) throws BusinessException;
+	public abstract String getPersonAccountById(String id) throws BusinessException;
+	public abstract Account updateBalanceAccount(String id) throws BusinessException;
 	public abstract List<Account> getAllAccountsByCustomer(String id) throws BusinessException;
 
 }

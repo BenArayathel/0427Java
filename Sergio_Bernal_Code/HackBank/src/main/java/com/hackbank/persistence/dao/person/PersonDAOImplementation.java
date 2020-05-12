@@ -25,11 +25,11 @@ public class PersonDAOImplementation implements PersonDAO {
 		String sql = "{call CREATE_PERSON(?,?,?,?,?,?,?)}";
 		try(Connection conn = SingletonDBConnection.getConnection()){
 			CallableStatement callableStatement = conn.prepareCall(sql);
-			callableStatement.setLong(2,person.getSsn());
+			callableStatement.setString(2,person.getSsn());
 			callableStatement.setString(3,person.getName());
 			callableStatement.setString(4,person.getLastName());
 			callableStatement.setDate(5, new java.sql.Date(person.getDob().getTime()));
-			callableStatement.setLong(6,person.getPhoneNumber());
+			callableStatement.setString(6,person.getPhoneNumber());
 			callableStatement.setString(7,person.getCity());
 			
 			callableStatement.registerOutParameter(1, java.sql.Types.VARCHAR);
@@ -37,8 +37,8 @@ public class PersonDAOImplementation implements PersonDAO {
 			
 			person.setId(callableStatement.getString(1));
 		} catch (ClassNotFoundException | SQLException e) {
-			loggy.error("Fatal Error contact SYSADMIN");
-			throw new BusinessException("Connection to DB unsuccessful.");
+			loggy.error("Error, please contact SYSADMIN");
+			throw new BusinessException("Error, please contact SYSADMIN");
 		}
 		return person;
 		
@@ -50,21 +50,22 @@ public class PersonDAOImplementation implements PersonDAO {
 	}
 
 	@Override
-	public boolean getPersonBySSN(int ssn) throws BusinessException {
-		boolean flag = false;
+	public String getPersonIdBySSN(String ssn) throws BusinessException {
+		String personId = "";
 		String sql = "SELECT id FROM HB_PERSON WHERE ssn = ?";
 		try(Connection conn = SingletonDBConnection.getConnection()){
 			PreparedStatement prepared = conn.prepareStatement(sql);
-			prepared.setInt(1, ssn);
+			prepared.setString(1, ssn);
 			ResultSet result = prepared.executeQuery();
 			if (result.next()) {
-				flag = true;
+				personId = result.getString("id");
 			}
 		} catch (ClassNotFoundException | SQLException e) {
-			loggy.error("Fatal Error contact SYSADMIN");
+			loggy.error("Error, please contact SYSADMIN");
+			throw new BusinessException("Error, please contact SYSADMIN");
 		}
 
-		return flag;
+		return personId;
 	}
 
 	

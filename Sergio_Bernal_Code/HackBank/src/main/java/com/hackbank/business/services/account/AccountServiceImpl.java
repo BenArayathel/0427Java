@@ -26,23 +26,30 @@ public class AccountServiceImpl implements AccountService{
 	}
 
 	@Override
-	public String getAccountById(int id) throws BusinessException {
-		if (valid.isValidIntId(id)) {
-			return accountDAO.getAccountById(id);
-		}else {
-			throw new BusinessException("This is not a valid id.");
-		}
-		
+	public String getPersonAccountById(String id) throws BusinessException {
+//		if (valid.isValidIntId(id)) {
+//			return accountDAO.getPersonAccountById(id);
+//		}else {
+//			throw new BusinessException("This is not a valid id.");
+//		}
+		return accountDAO.getPersonAccountById(id);
 	}
 
 	@Override
-	public Account updateBalanceAccount(int id) throws BusinessException {
+	public Account updateBalanceAccount(String id) throws BusinessException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public List<Account> getAllAccountsByCustomer(String id) throws BusinessException {
+//		if (valid.isValisPersonId())
+		List<Account> listAccount = accountDAO.getAllAccountsByCustomer(id);
+		return listAccount;
+	}
+
+	@Override
+	public Account getAccountById(String id) throws BusinessException {
 		// TODO Auto-generated method stub
 		return null;
 	}

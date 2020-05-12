@@ -2,17 +2,19 @@ package com.hackbank.persistence.models;
 
 public class Account {
 	
-	private long Id;
+	private String Id;
 	private short accountTypeId;
-	private long routingNumber;
+	private String routingNumber;
 	private double balance;
+	
 	private Person person;
+	private AccountType accountType;
 	
 	public Account() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Account(long id, short accountTypeId, long routingNumber, double balance, Person person) {
+	public Account(String id, short accountTypeId, String routingNumber, double balance, Person person) {
 		super();
 		Id = id;
 		this.accountTypeId = accountTypeId;
@@ -20,12 +22,20 @@ public class Account {
 		this.balance = balance;
 		this.person = person;
 	}
+	
+	public Account(String id, AccountType accountType, String routingNumber, double balance) {
+		super();
+		Id = id;
+		this.accountType = accountType;
+		this.routingNumber = routingNumber;
+		this.balance = balance;
+	}
 
-	public long getId() {
+	public String getId() {
 		return Id;
 	}
 
-	public void setId(long id) {
+	public void setId(String id) {
 		Id = id;
 	}
 
@@ -37,11 +47,11 @@ public class Account {
 		this.accountTypeId = accountTypeId;
 	}
 
-	public long getRoutingNumber() {
+	public String getRoutingNumber() {
 		return routingNumber;
 	}
 
-	public void setRoutingNumber(long routingNumber) {
+	public void setRoutingNumber(String routingNumber) {
 		this.routingNumber = routingNumber;
 	}
 
@@ -66,6 +76,14 @@ public class Account {
 
 	public void setPerson(Person person) {
 		this.person = person;
+	}
+	
+	public AccountType getAccountType() {
+		return accountType;
+	}
+
+	public void setAccountType(AccountType accountType) {
+		this.accountType = accountType;
 	}
 
 }

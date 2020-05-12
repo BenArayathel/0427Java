@@ -35,7 +35,7 @@ public class PersonServiceImplementation implements PersonService {
 		}else if(!vd.isValidName(person.getCity())) {
 			throw new BusinessException("Person City "+person.getCity()+" is not valid.");
 		}else {
-			if (!personDao.getPersonBySSN(person.getSsn())) {
+			if (!personDao.getPersonIdBySSN(person.getSsn()).equals("")) {
 				iPerson = personDao.createPerson(person);
 			}else {
 				throw new BusinessException("Customer SSN already exist.");
@@ -48,6 +48,17 @@ public class PersonServiceImplementation implements PersonService {
 	public Person getPersonById(String id) throws BusinessException {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public String getPersonIdBySSN(String ssn) throws BusinessException {
+		String personId = "";
+		if(!vd.isValidSSN(ssn)) {
+			throw new BusinessException("Person SSN is not valid.");
+		}else {
+			personId = personDao.getPersonIdBySSN(ssn);
+		}
+		return personId;
 	}
 
 }

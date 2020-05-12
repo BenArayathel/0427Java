@@ -22,17 +22,16 @@ public class PendingApprovalDAOImpl implements PendingApprovalDAO{
 			String query = "{CALL CREATE_P_APPROVAL(?,?,?,?,?)}";
 			CallableStatement call = conn.prepareCall(query);
 			call.setString("PERSON_ID", pApproval.getPerson().getId());
-			call.setShort("ACCOUNT_TYPE_ID", pApproval.getAccountTypeId());
+			call.setByte("ACCOUNT_TYPE_ID", pApproval.getAccountType().getId());
 			call.setDouble("START_BALANCE", pApproval.getStartBalance());
 			call.setString("STATUS", pApproval.getStatus());
 			call.setDate("CREATED_AT", new java.sql.Date(pApproval.getCreatedAt().getTime()));
-			boolean validExe = call.execute();
-			if (validExe) {
-				System.out.println("Execution successful");
-			}
+			call.execute();
+
 		} catch (ClassNotFoundException | SQLException e) {
-			loggy.error("Fatal Error contact SYSADMIN.");
-			throw new BusinessException("Fatal error contact SYSADMIN.");
+			System.out.println(e.getMessage());
+			loggy.error("Error, please contact SYSADMIN");
+			throw new BusinessException("Error, please contact SYSADMIN");
 		}
 		
 	}
