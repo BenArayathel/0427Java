@@ -13,12 +13,12 @@ import com.bhank.service.impl.EmployeeServiceImpl;
 import org.apache.log4j.Logger;
 
 public class Menu {
-	
+
 	CustomerServiceImpl customerService = new CustomerServiceImpl();
 	EmployeeServiceImpl employeeService = new EmployeeServiceImpl();
 	AccountServiceImpl accountService = new AccountServiceImpl();
 	Scanner s = new Scanner(System.in);
-	
+
 	public void mainMenu() {
 		Main.logger.info("Bhank main menu started");
 		System.out.println("Welcome to Bhank!");
@@ -59,18 +59,42 @@ public class Menu {
 		System.out.println("Enter employee password");
 		String employeePassword = s.nextLine();
 		try {
-			employee=employeeService.selectEmployeeByNameAndPassword(employeeName, employeePassword);
+			employee = employeeService.selectEmployeeByNameAndPassword(employeeName, employeePassword);
 		} catch (BusinessException e) {
 			System.out.println(e.getMessage());
 		}
-		if(employee!=null) {
+		if (employee != null) {
 			employeeMenu(employee);
 		}
-		System.out.println("exiting customerLoginMenu");		
+		System.out.println("exiting customerLoginMenu");
 	}
 
 	private void employeeMenu(Employee employee) {
-		// TODO Auto-generated method stub
+		int ch = 0;
+		do {
+			System.out.println("Employee Menu");
+			System.out.println("Logged in as: " + employee.getName());
+			System.out.println("-------------");
+			System.out.println("1)View pending accounts");
+			System.out.println("2)View a customer's accounts");
+			System.out.println("3)View log of transactions");
+			System.out.println("4)Return to main menu");
+			ch = Integer.parseInt(s.nextLine());
+			switch (ch) {
+			case 1:
+				break;
+			case 2:
+				break;
+			case 3:
+				break;
+			case 4:
+				System.out.println("Exiting employee menu...");
+				System.out.println("Returning to main menu");
+				return;
+			default:
+				System.out.println("Enter 1-4");
+			}
+		} while (ch != 4);
 	}
 
 	private void customerRegistrationMenu() {
@@ -85,7 +109,7 @@ public class Menu {
 		try {
 			customer.setDob(CustomerServiceImpl.isValidDob(s.nextLine()));
 			customer = customerService.createCustomer(customer);
-			if(customer.getId()!=null) {
+			if (customer.getId() != null) {
 				System.out.println("Customer registered");
 				System.out.println(customer);
 			}
@@ -104,34 +128,31 @@ public class Menu {
 		System.out.println("Enter customer password");
 		String customerPassword = s.nextLine();
 		try {
-			customer=customerService.selectCustomerByNameAndPassword(customerName, customerPassword);
+			customer = customerService.selectCustomerByNameAndPassword(customerName, customerPassword);
 		} catch (BusinessException e) {
 			System.out.println(e.getMessage());
 		}
-		if(customer!=null) {
+		if (customer != null) {
 			customerMenu(customer);
 		}
-//		System.out.println("exiting customerLoginMenu");
 	}
 
 	private void customerMenu(Customer customer) {
-		int ch=0;
-		System.out.println(customer);
+		int ch = 0;
 		do {
 			System.out.println("Customer Menu");
 			System.out.println("Logged in as: " + customer.getName());
 			System.out.println("-------------");
 			System.out.println("1)Apply for new account");
 			System.out.println("2)View balance of an account");
-			System.out.println("3)Withdraw");
+			System.out.println("3)Withdrawal");
 			System.out.println("4)Deposit");
 			System.out.println("5)Post money transfer");
 			System.out.println("6)Accept money transfer");
 			System.out.println("7)Return to main menu");
 			ch = Integer.parseInt(s.nextLine());
-			switch(ch) {
-			case 1:
-			{
+			switch (ch) {
+			case 1: {
 				System.out.println("Apply for account");
 				System.out.println("-----------------");
 				System.out.println("Enter starting balance");
@@ -146,8 +167,7 @@ public class Menu {
 				}
 				break;
 			}
-			case 2:
-			{
+			case 2: {
 				Account account = null;
 				System.out.println("View account balance");
 				System.out.println("--------------------");
@@ -156,27 +176,73 @@ public class Menu {
 				try {
 					account = accountService.selectAccountById(id);
 				} catch (BusinessException e) {
-					Main.logger.error("Couldn't select account with id: "+id);
+					Main.logger.error("Couldn't select account with id: " + id);
 					e.printStackTrace();
 					System.out.println(e.getMessage());
 				}
 				System.out.println(account);
 				break;
 			}
-			case 3:
+			case 3: {
+				Account account = null;
+				System.out.println("Withdrawal");
+				System.out.println("----------");
+				System.out.println("Enter account id of account to withdraw from");
+				String id = s.nextLine();
+				try {
+					account = accountService.selectAccountById(id);
+				} catch (BusinessException e) {
+					e.printStackTrace();
+					System.out.println(e.getMessage());
+				}
+				System.out.println("Enter amount to withdraw");
+				double amount = Double.parseDouble(s.nextLine());
+				try {
+					account = accountService.withdraw(account, amount);
+				} catch (BusinessException e) {
+					e.printStackTrace();
+					System.out.println(e.getMessage());
+				}
+				System.out.println("Account updated");
+				System.out.println(account);
 				break;
-			case 4:
+			}
+			case 4: {
+				Account account = null;
+				System.out.println("Deposit");
+				System.out.println("-------");
+				System.out.println("Enter account id of account to deposit into");
+				String id = s.nextLine();
+				try {
+					account = accountService.selectAccountById(id);
+				} catch (BusinessException e) {
+					e.printStackTrace();
+					System.out.println(e.getMessage());
+				}
+				System.out.println("Enter amount to deposit");
+				double amount = Double.parseDouble(s.nextLine());
+				try {
+					account = accountService.deposit(account, amount);
+				} catch (BusinessException e) {
+					e.printStackTrace();
+					System.out.println(e.getMessage());
+				}
+				System.out.println("Account updated");
+				System.out.println(account);
 				break;
+			}
 			case 5:
 				break;
 			case 6:
 				break;
 			case 7:
+				System.out.println("Exiting customer menu...");
+				System.out.println("Returning to main menu");
 				return;
 			default:
 				System.out.println("Enter 1-7");
 			}
-		} while(ch!=7);
+		} while (ch != 7);
 		return;
 	}
 }

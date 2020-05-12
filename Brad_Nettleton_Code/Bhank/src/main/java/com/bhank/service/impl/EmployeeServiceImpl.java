@@ -14,17 +14,17 @@ public class EmployeeServiceImpl implements EmployeeService {
 	EmployeeDAOImpl dao=new EmployeeDAOImpl();
 
 	@Override
-	public Employee createEmployee(Employee e) throws BusinessException {
-		if (e == null) {
-			throw new BusinessException("Customer object was not created");
-		} else if (!isValidName(e.getName())) {
-			throw new BusinessException("Customer name is invalid");
-		} else if (!isValidPassword(e.getPassword())) {
-			throw new BusinessException("Customer password is invalid");
+	public Employee createEmployee(Employee employee) throws BusinessException {
+		if (employee == null) {
+			throw new BusinessException("Employee object was not created");
+		} else if (!isValidName(employee.getName())) {
+			throw new BusinessException("Employee name is invalid");
+		} else if (!isValidPassword(employee.getPassword())) {
+			throw new BusinessException("Employee password is invalid");
 		} else {
-			dao.createEmployee(e);
+			employee = dao.createEmployee(employee);
 		}
-		return e;
+		return employee;
 	}
 	
 	public static Date isValidDob(String dob) throws BusinessException {

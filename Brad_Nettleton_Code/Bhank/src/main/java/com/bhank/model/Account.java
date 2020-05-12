@@ -5,6 +5,7 @@ public class Account{
 	private String customerId;
 	private double balance;
 	private boolean pending;
+	private boolean approved;
 	
 	public Account() {};
 	
@@ -38,6 +39,14 @@ public class Account{
 		this.pending = pending;
 	}
 	
+	public boolean isApproved() {
+		return approved;
+	}
+
+	public void setApproved(boolean approved) {
+		this.approved = approved;
+	}
+
 	@Override
 	public String toString() {
 		return "Account [id=" + id + ", customerId=" + customerId + ", balance=" + balance + ", pending=" + pending

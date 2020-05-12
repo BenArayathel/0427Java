@@ -70,7 +70,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 	public Employee selectEmployeeByNameAndPassword(String name, String password) throws BusinessException {
 		Employee employee = new Employee();
 		try (Connection connection = OracleConnection.getConnection()) {
-			String sql = "Select id,dob from customer where name= \'"+name+"\' and password=\'"+password+"\'";
+			String sql = "Select id,dob from employee where name= \'"+name+"\' and password=\'"+password+"\'";
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
 			ResultSet resultSet = preparedStatement.executeQuery();
 			if(resultSet.next()) {

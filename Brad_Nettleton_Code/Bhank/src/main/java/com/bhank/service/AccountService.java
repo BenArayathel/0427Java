@@ -16,10 +16,12 @@ public interface AccountService {
 	Account withdraw(Account account, double amount) throws BusinessException;
 	Account postMoneyTransfer(Account account, double amount) throws BusinessException;
 	Account acceptMoneyTransfer(Account account) throws BusinessException;
+	Account approveAccount(Account account) throws BusinessException;
+	Account declineAccount(Account account) throws BusinessException;
 	
 
 	// read
-	List<Account> selectAllAccounts() throws BusinessException;
+	List<Account> selectAllAccountsByCustomer(Customer customer) throws BusinessException;
 
 	Account selectAccountByNameAndPassword(String name, String Password) throws BusinessException;
 
