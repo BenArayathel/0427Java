@@ -35,7 +35,8 @@ public class TransactionDaoJdbcImplTest {
         transaction.setTransactionType("INIT");
         
         transaction.setAmount(new BigDecimal("567.75"));
-        
+        transaction.setEndingBalance(new BigDecimal("567.75"));
+
         // Insert current local date and time of current local time.
         transaction.setTransTime(Timestamp.valueOf(LocalDateTime.now())); 
                 
@@ -67,7 +68,8 @@ public class TransactionDaoJdbcImplTest {
         transaction.setTransactionType("INIT");
         
         transaction.setAmount(new BigDecimal("567.75"));
-        
+        transaction.setEndingBalance(new BigDecimal("567.75"));
+
         // Insert current local date and time of current local time.
         transaction.setTransTime(Timestamp.valueOf(LocalDateTime.now())); 
                 
@@ -81,6 +83,8 @@ public class TransactionDaoJdbcImplTest {
         transaction.setTransactionType("DEPO");
         
         transaction.setAmount(new BigDecimal("200.00"));
+        transaction.setEndingBalance(new BigDecimal("200.00"));
+
         
         // Insert current local date and time of current local time.
         transaction.setTransTime(Timestamp.valueOf(LocalDateTime.now())); 
@@ -104,6 +108,7 @@ public class TransactionDaoJdbcImplTest {
         transaction.setTransactionType("INIT");
         
         transaction.setAmount(new BigDecimal("567.75"));
+        transaction.setEndingBalance(new BigDecimal("567.75"));
         
         // Insert current local date and time of current local time.
         transaction.setTransTime(Timestamp.valueOf(LocalDateTime.now())); 
@@ -121,9 +126,7 @@ public class TransactionDaoJdbcImplTest {
         System.out.println("Updated transaction from DB... " + transaction1);
 
         assertEquals("APPR", transaction1.getTransactionType());
-        
-        
-                
+              
        
 	}
 

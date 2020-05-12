@@ -21,8 +21,8 @@ public class TransactionDaoJdbcImpl implements TransactionDao{
     PreparedStatement ps = null;
 
     private static final String INSERT_TRANSACTION_SQL =
-            "insert into transaction (account_id, transaction_type, amount, trans_time) " +
-                    "values (?, ?, ?, ?)";
+            "insert into transaction (account_id, transaction_type, amount, ending_balance, trans_time) " +
+                    "values (?, ?, ?, ?, ?)";
 
     private static final String SELECT_TRANSACTION_SQL =
             "select * from transaction where transaction_id = ?";
@@ -31,7 +31,7 @@ public class TransactionDaoJdbcImpl implements TransactionDao{
             "select * from transaction order by trans_time";
 
     private static final String UPDATE_TRANSACTION_SQL =
-            "update transaction set account_id = ?, transaction_type = ?, amount = ?, trans_time = ? " +
+            "update transaction set account_id = ?, transaction_type = ?, amount = ?, ending_balance = ?, trans_time = ? " +
                     "where transaction_id = ?";
 
     private static final String DELETE_TRANSACTION_SQL =
@@ -50,7 +50,8 @@ public class TransactionDaoJdbcImpl implements TransactionDao{
 			ps.setString(1, transaction.getAccountId());
 			ps.setString(2, transaction.getTransactionType());
 			ps.setBigDecimal(3, transaction.getAmount());
-			ps.setTimestamp(4, transaction.getTransTime());
+			ps.setBigDecimal(4, transaction.getEndingBalance());			
+			ps.setTimestamp(5, transaction.getTransTime());
 			
 			ps.executeUpdate();
 			rs = ps.getGeneratedKeys();
@@ -89,10 +90,11 @@ public class TransactionDaoJdbcImpl implements TransactionDao{
 				transaction.setAccountId(rs.getString("account_id"));
 				transaction.setTransactionType(rs.getString("transaction_type"));
 				transaction.setAmount(rs.getBigDecimal("amount"));
+				transaction.setEndingBalance(rs.getBigDecimal("ending_balance"));
 				transaction.setTransTime(rs.getTimestamp("trans_time"));
 				return transaction;
 			} else {
-				BankApp.loggy.info("Record not found.");
+				BankApp.loggy.info("Transaction record not found.");
 				return null;
 			}
 
@@ -124,6 +126,7 @@ public class TransactionDaoJdbcImpl implements TransactionDao{
 				transaction.setAccountId(rs.getString("account_id"));
 				transaction.setTransactionType(rs.getString("transaction_type"));
 				transaction.setAmount(rs.getBigDecimal("amount"));
+				transaction.setEndingBalance(rs.getBigDecimal("ending_balance"));
 				transaction.setTransTime(rs.getTimestamp("trans_time"));
 
 		        transactions.add(transaction);
@@ -151,8 +154,9 @@ public class TransactionDaoJdbcImpl implements TransactionDao{
 			ps.setString(1, transaction.getAccountId());
 			ps.setString(2, transaction.getTransactionType());
 			ps.setBigDecimal(3, transaction.getAmount());
-			ps.setTimestamp(4, transaction.getTransTime());
-			ps.setLong(5,transaction.getTransactionId());
+			ps.setBigDecimal(4, transaction.getEndingBalance());
+			ps.setTimestamp(5, transaction.getTransTime());
+			ps.setLong(6,transaction.getTransactionId());
 			
 			int updatedRows = ps.executeUpdate();
 			

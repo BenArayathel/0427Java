@@ -92,6 +92,9 @@ public class ServiceLayer {
 		
 		account = accountDao.addAccount(account);
 		
+		/* Insert initial transaction replaced by PL/SQL Trigger: 
+		 * TRIGGER account_after_insert
+
 		// create and insert transactions in transaction table.
 		Transaction transaction = new Transaction();
 		transaction.setAccountId(account.getAccountId());
@@ -100,6 +103,7 @@ public class ServiceLayer {
         transaction.setTransTime(Timestamp.valueOf(LocalDateTime.now())); 
         
         transaction = transactionDao.addTransaction(transaction);
+        */
 		
 	}
 	
@@ -120,6 +124,9 @@ public class ServiceLayer {
 		
 		account = accountDao.addAccount(account);
 		
+		/* Insert initial transaction replaced by PL/SQL Trigger: 
+		 * TRIGGER account_after_insert
+		
 		// create and insert transactions in transaction table.
 		Transaction transaction = new Transaction();
 		transaction.setAccountId(account.getAccountId());
@@ -128,6 +135,8 @@ public class ServiceLayer {
         transaction.setTransTime(Timestamp.valueOf(LocalDateTime.now())); 
         
         transaction = transactionDao.addTransaction(transaction);
+        
+        */
 
 		return true;
 	};

@@ -9,8 +9,8 @@ public class Transaction {
 	private String accountId;
 	private String transactionType;
 	private BigDecimal amount;
+	private BigDecimal endingBalance;
 	private Timestamp transTime;
-	
 	public Long getTransactionId() {
 		return transactionId;
 	}
@@ -35,6 +35,12 @@ public class Transaction {
 	public void setAmount(BigDecimal amount) {
 		this.amount = amount;
 	}
+	public BigDecimal getEndingBalance() {
+		return endingBalance;
+	}
+	public void setEndingBalance(BigDecimal endingBalance) {
+		this.endingBalance = endingBalance;
+	}
 	public Timestamp getTransTime() {
 		return transTime;
 	}
@@ -44,7 +50,8 @@ public class Transaction {
 	@Override
 	public String toString() {
 		return "Transaction [transactionId=" + transactionId + ", accountId=" + accountId + ", transactionType="
-				+ transactionType + ", amount=" + amount + ", transTime=" + transTime + "]";
+				+ transactionType + ", amount=" + amount + ", endingBalance=" + endingBalance + ", transTime="
+				+ transTime + "]";
 	}
 	@Override
 	public int hashCode() {
@@ -52,6 +59,7 @@ public class Transaction {
 		int result = 1;
 		result = prime * result + ((accountId == null) ? 0 : accountId.hashCode());
 		result = prime * result + ((amount == null) ? 0 : amount.hashCode());
+		result = prime * result + ((endingBalance == null) ? 0 : endingBalance.hashCode());
 		result = prime * result + ((transTime == null) ? 0 : transTime.hashCode());
 		result = prime * result + ((transactionId == null) ? 0 : transactionId.hashCode());
 		result = prime * result + ((transactionType == null) ? 0 : transactionType.hashCode());
@@ -76,6 +84,11 @@ public class Transaction {
 				return false;
 		} else if (!amount.equals(other.amount))
 			return false;
+		if (endingBalance == null) {
+			if (other.endingBalance != null)
+				return false;
+		} else if (!endingBalance.equals(other.endingBalance))
+			return false;
 		if (transTime == null) {
 			if (other.transTime != null)
 				return false;
@@ -93,6 +106,8 @@ public class Transaction {
 			return false;
 		return true;
 	}
+	
+	
 	
 
 }
