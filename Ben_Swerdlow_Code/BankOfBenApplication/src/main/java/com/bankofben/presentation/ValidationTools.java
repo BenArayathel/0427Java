@@ -24,7 +24,7 @@ public class ValidationTools {
 	}
 	
 	public static boolean isValidUsername(String username) {
-		if (dao.customerUsernameExists(username)) {
+//		if (dao.customerUsernameExists(username)) {
 		if (username==null) {
 			return false;
 		} else if (username.length() < 4 || username.length() > 20) {

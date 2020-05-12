@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
+import com.bankofben.business.BusinessLayer;
 import com.bankofben.dao.BankOfBenDAO;
 import com.bankofben.exceptions.BusinessException;
 import com.bankofben.models.Account;
@@ -18,6 +21,8 @@ import com.bankofben.models.User;
 public class BankOfBenServices {
 	
 	private BankOfBenDAO dao = new BankOfBenDAO();
+	final static Logger loggy = Logger.getLogger(BankOfBenServices.class);
+	private BusinessException b = null;
 
 	public User loginUser(String username, String password) throws BusinessException {
 		User user = null;
@@ -36,10 +41,13 @@ public class BankOfBenServices {
 		
 		if (user==null) {
 			if (bizExceptions.size()==1) {
+				loggy.error(bizExceptions.get(0));
 				throw bizExceptions.get(0);
 			} else {
-				throw new BusinessException("User does not exist with these credentials. "
+				b = new BusinessException("User does not exist with these credentials. "
 						+ "Please check your information and try again, or register these credentials as a new user.");
+				loggy.error(b);
+				throw b;
 			}
 		}
 		
@@ -66,7 +74,7 @@ public class BankOfBenServices {
 	}
 	
 	public boolean usernameExists(String username) throws BusinessException {
-		return (dao.customerUsernameExists(username) || dao.customerUsernameExists(username));
+		return (dao.customerUsernameExists(username) || dao.employeeUsernameExists(username));
 	}
 	
 	public boolean emailExists(String email) throws BusinessException {
@@ -93,13 +101,33 @@ public class BankOfBenServices {
 		return dao.employeeUsernameExists(employeeUsername);
 	}
 
-	public Customer applyForAccount(User user) throws BusinessException {
-		return dao.createCustomer(user);
+	public Customer applyForAccount_newUser(User user, double startingBalance) throws BusinessException {
+		Customer c = dao.createCustomer(user);
+		Account a = new Account(1111111111L, startingBalance, c.getId(), true);
+		a = dao.createAccount(a);
+		return c;
+	}
+
+	public Account applyForAccount_newUser_returnAccount(User user, double startingBalance) throws BusinessException {
+		Customer c = dao.createCustomer(user);
+		Account a = new Account(0, startingBalance, c.getId(), true);
+		a = dao.createAccount(a);
+		return a;
+	}
+
+	public Customer applyForAccount(Customer customer, double startingBalance) throws BusinessException {
+		Account a = new Account(1111111111L, startingBalance, customer.getId(), true);
+		a = dao.createAccount(a);
+		return customer;
+	}
+
+	public Account applyForAccount_returnAccount(Customer customer, double startingBalance) throws BusinessException {
+		Account a = new Account(1111111111L, startingBalance, customer.getId(), true);
+		a = dao.createAccount(a);
+		return a;
 	}
 	
 	public void approveCustomerAccount(String customerId, Double startingBalance, Employee employee) throws BusinessException {
-		Account account = new Account(0L, startingBalance, customerId);
-		account = dao.createAccount(account);
 		dao.updateCustomerApplicationPending_returnNothing(false, customerId);
 	}
 	
@@ -145,8 +173,10 @@ public class BankOfBenServices {
 	public Account getAccount(long accountNumber, long routingNumber) throws BusinessException {
 		// TODO Auto-generated method stub
 		if (routingNumber != Account.getRoutingNumber()) {
-			throw new BusinessException("Recipient account and intended recipient account do not match. Please check "
+			b = new BusinessException("Recipient account and intended recipient account do not match. Please check "
 					+ "that your information is correct. If it is, contact a Bank of Ben employee to remedy the issue.");
+			loggy.error(b);
+			throw b;
 		}
 		return dao.getAccountByAccountNumber(accountNumber);
 	}
@@ -199,7 +229,9 @@ public class BankOfBenServices {
 		if (payment.isPending()) {
 			dao.updatePaymentPendingStatus_returnNothing(false, payment.getId());
 		} else {
-			throw new BusinessException("No need to resolve payment "+payment.getId()+". Payment is not pending.");
+			b = new BusinessException("No need to resolve payment "+payment.getId()+". Payment is not pending.");
+			loggy.error(b);
+			throw b;
 		}
 	}
 
@@ -207,7 +239,9 @@ public class BankOfBenServices {
 		if (request.isPending()) {
 			dao.updatePaymentPendingStatus_returnNothing(false, request.getId());
 		} else {
-			throw new BusinessException("No need to resolve request "+request.getId()+". Request is not pending.");
+			b = new BusinessException("No need to resolve request "+request.getId()+". Request is not pending.");
+			loggy.error(b);
+			throw b;
 		}
 	}
 
@@ -216,7 +250,9 @@ public class BankOfBenServices {
 			dao.deleteTransfer(transfer.getId());
 			// TODO log that customer rejected transfer!!!!! Also, all the other logging of transactions :)
 		} else {
-			throw new BusinessException("No need to reject transfer "+transfer.getId()+". Transfer is not pending.");
+			b = new BusinessException("No need to reject transfer "+transfer.getId()+". Transfer is not pending.");
+			loggy.error(b);
+			throw b;
 		}
 	}
 
@@ -261,6 +297,39 @@ public class BankOfBenServices {
 		}
 		// And... we return the content
 		return outputBuilder.toString();
+	}
+	
+	public List<Account> getAccountsWithPendingStatus(boolean isPending) throws BusinessException{
+		return dao.getAccountsWithPendingStatus(isPending);
+	}
+
+	public void approveNewCustomerAccountApplication(Account a) throws BusinessException {
+		// To approve the new customer and their account, all we have to do is update the customer's \"Application Pending\" entry to false
+		//		and to update the account's \"Pending\" entry to false;
+		dao.updateCustomerApplicationPending_returnNothing(false, a.getCustomerId());
+		dao.updateAccountPendingStatus_returnNothing(false, a.getAccountNumber());
+	}
+
+	public void rejectNewCustomerAccountApplication(Account a) throws BusinessException {
+		// TODO Auto-generated method stub
+		// To reject the customer account application, delete customer entry and account entry
+		// Both will be done on delete customer cascade
+		dao.fakeCascadeDeleteCustomerID_Account(a.getCustomerId());
+	}
+
+	public void approveExistingCustomerAccountApplication(Account a) throws BusinessException {
+		// To approve an existing customer, just change account's \"Pending\" entry to false;
+		dao.updateAccountPendingStatus_returnNothing(false, a.getAccountNumber());
+	}
+
+	public void rejectExistingCustomerAccountApplication(Account a) throws BusinessException {
+		// TODO Auto-generated method stub
+		// This delete account will not cascade and keep the customer data
+		dao.deleteRejectedAccount(a.getAccountNumber());
+	}
+
+	public void updateAccountBalance(Account account) throws BusinessException {
+		dao.updateAccountBalance(account.getBalance(), account.getAccountNumber());
 	}
 
 }

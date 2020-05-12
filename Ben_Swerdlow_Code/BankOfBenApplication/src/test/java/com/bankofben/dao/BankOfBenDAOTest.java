@@ -1,5 +1,6 @@
 package com.bankofben.dao;
 
+import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.*;
 
 import java.sql.Connection;
@@ -10,9 +11,11 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.Month;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.List;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -105,7 +108,7 @@ public class BankOfBenDAOTest {
 		
 		String customerId = "CUCAAA2000100000";
 		
-		Account account = new Account(1234567890, balance, customerId);
+		Account account = new Account(1234567890, balance, customerId, true);
 		
 		account = dao.createAccount(account);
 		
@@ -344,6 +347,40 @@ public class BankOfBenDAOTest {
 		assertArrayEquals(new String[] {"Branch Manager"}, new String[] {employee.getDesignation()});
 		assertArrayEquals(new String[] {"EMSCMI1964100002"}, new String[] {employee.getId()});
 		assertArrayEquals(new String[] {"EMSWBE1992100000"}, new String[] {employee.getSupervisorEmployeeId()});
+	}
+	
+	@Test
+	public void getAllPaymentsWithPayingAccountNumber() throws BusinessException {
+		long accountNumber = 3969255661L;
+		List<Payment> payingAccountPayments = dao.getAllPaymentsWithPayingAccountNumber(accountNumber);
+		Payment p = new Payment("PACU3991100005", "CUGAEA1980100020", true, 3969255661L, 9180651690L, 100.77);
+		Payment q = new Payment("PACU3991100006", "CUGAEA1980100020", true, 3969255661L, 9180651690L, 100.77);
+		List<Payment> expected = new ArrayList<>();
+		expected.add(p);
+		expected.add(q);
+		assertThat(payingAccountPayments, is(expected));
+	}
+	
+	@Test
+	public void testGetAllPaymentsWithReceivingAccountNumber() throws BusinessException {
+		long accountNumber = 9180651690L;
+		List<Payment> payingAccountPayments = dao.getAllPaymentsWithReceivingAccountNumber(accountNumber);
+		Payment p = new Payment("PACU3991100005", "CUGAEA1980100020", true, 3969255661L, 9180651690L, 100.77);
+		Payment q = new Payment("PACU3991100006", "CUGAEA1980100020", true, 3969255661L, 9180651690L, 100.77);
+		List<Payment> expected = new ArrayList<>();
+		expected.add(p);
+		expected.add(q);
+		assertThat(payingAccountPayments, is(expected));
+	}
+	
+	@Test
+	public void testGetAllRequestsWithRequestorAccountNumber() throws BusinessException {
+		long accountNumber = 9180651690L;
+		List<Request> requestorAccountRequests = dao.getAllRequestsWithRequestorAccountNumber(accountNumber);
+		Request r = new Request("RECU9139100000", "CUCAAA2000100000", true, 9180651690L, 3969255661L, 200.08);
+		List<Request> expected = new ArrayList<>();
+		expected.add(r);
+		assertThat(requestorAccountRequests, is(expected));
 	}
 	
 	// Will be executed after each test

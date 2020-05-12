@@ -1,7 +1,10 @@
 package com.bankofben.models;
 
+import org.apache.log4j.Logger;
+
 import com.bankofben.exceptions.BusinessException;
 import com.bankofben.presentation.ValidationTools;
+import com.bankofben.services.BankOfBenServices;
 
 public class Account {
 	
@@ -10,16 +13,21 @@ public class Account {
 	private static final long routingNumber = 123456789;
 	private double balance;
 	private String customerId;
+	private boolean pending;
+	
+	private static BusinessException b = null;
+	final static Logger loggy = Logger.getLogger(BankOfBenServices.class);
 	
 	public Account() {
 		super();
 	}
 	
-	public Account(long accountNumber, double balance, String customerId) throws BusinessException {
+	public Account(long accountNumber, double balance, String customerId, boolean pending) throws BusinessException {
 		super();
 		setAccountNumber(accountNumber);
 		this.balance = balance;
 		setCustomerId(customerId);
+		setPending(pending);
 	}
 	
 	public Long getAccountNumber() {
@@ -28,31 +36,41 @@ public class Account {
 	
 	public void setAccountNumber(String accountNumber) throws BusinessException {
 		if (Long.parseLong(accountNumber) <= 0 || accountNumber.length() != 10) {
-			throw new BusinessException("Invalid account number. Account number must be a positive 10-digit number");
+			b = new BusinessException("Invalid account number. Account number must be a positive 10-digit number");
+			loggy.error(b);
+			throw b;
 		}
 		
 		if (this.accountNumber==0) {
 			try {
 				this.accountNumber = Long.parseLong(accountNumber);
 			} catch (NumberFormatException e) {
-				throw new BusinessException("Invalid account number. Account number must be a positive 10-digit number");
+				b = new BusinessException("Invalid account number. Account number must be a positive 10-digit number");
+				loggy.error(b);
+				throw b;
 			}
 		} else {
-			throw new BusinessException("Attempt to make account failed. Account alreaedy exists and account numbers "
+			b = new BusinessException("Attempt to make account failed. Account alreaedy exists and account numbers "
 					+ "cannot change after creation.");
+			loggy.error(b);
+			throw b;
 		}
 	}
 	
 	public void setAccountNumber(long accountNumber) throws BusinessException {
 		if (accountNumber <= 0 || Long.toString(accountNumber).length() != 10) {
-			throw new BusinessException("Invalid account number. Account number must be a positive 10-digit number");
+			b = new BusinessException("Invalid account number. Account number must be a positive 10-digit number");
+			loggy.error(b);
+			throw b;
 		}
 		
 		if (this.accountNumber==0) {
 			this.accountNumber = accountNumber;
 		} else {
-			throw new BusinessException("Attempt to make account failed. Account alreaedy exists and account numbers "
+			b = new BusinessException("Attempt to make account failed. Account alreaedy exists and account numbers "
 					+ "cannot change after creation.");
+			loggy.error(b);
+			throw b;
 		}
 	}
 	
@@ -71,26 +89,36 @@ public class Account {
 		if (owner.getId().equals(getCustomerId())) {
 			if (ValidationTools.isValidMonetaryAmount(balance)) {
 				if (Double.valueOf(balance)==Double.POSITIVE_INFINITY) {
-					throw new BusinessException("Balances in excess of "+Double.MAX_VALUE+" are handled "
+					b = new BusinessException("Balances in excess of "+Double.MAX_VALUE+" are handled "
 							+ "via another system. Contact a Bank of Ben employee for more details.");
+					loggy.error(b);
+					throw b;
 				} else if (balance < 0) {
-					throw new BusinessException("The balance of an account cannot be a negative number.");
+					b = new BusinessException("The balance of an account cannot be a negative number.");
+					loggy.error(b);
+					throw b;
 				} else {
 					this.balance = balance;
 				}
 			} else {
-				throw new BusinessException("Balance amount must be a positive number that has only "
+				b = new BusinessException("Balance amount must be a positive number that has only "
 						+ "two digits after the decimal point");
+				loggy.error(b);
+				throw b;
 			}
 		} else {
-			throw new BusinessException("Invalid credentials to change account "+this.getAccountNumber()+". "
+			b = new BusinessException("Invalid credentials to change account "+this.getAccountNumber()+". "
 					+ "You are not the owner of this account number. Please check your information and try again.");
+			loggy.error(b);
+			throw b;
 		}
 	}
 	
 	public void setBalance(double balance, Payment payment) throws BusinessException {
-		if (payment.isPending()) {
-			throw new BusinessException("Invalid change in balance. Payment must be accepted by receiving party before changes are made");
+		if (!payment.isPending()) {
+			b = new BusinessException("Invalid payment. Payment has already been resolved.");
+			loggy.error(b);
+			throw b;
 		} else {
 			if (payment.getPayingAccountNumber()==this.accountNumber || payment.getReceivingAccountNumber()==this.accountNumber) {
 				if (ValidationTools.isValidMonetaryAmount(balance)) {
@@ -103,35 +131,49 @@ public class Account {
 						this.balance = balance;
 					}
 				} else {
-					throw new BusinessException("Balance amount must be a positive number that has only "
+					b = new BusinessException("Balance amount must be a positive number that has only "
 							+ "two digits after the decimal point");
+					loggy.error(b);
+					throw b;
 				}
 			} else {
-				throw new BusinessException("Invalid change in balance. Payment does not involve account "+this.accountNumber);
+				b = new BusinessException("Invalid change in balance. Payment does not involve account "+this.accountNumber);
+				loggy.error(b);
+				throw b;
 			}
 		}
 	}
 	
 	public void setBalance(double balance, Request request) throws BusinessException {
-		if (request.isPending()) {
-			throw new BusinessException("Invalid change in balance. Payment must be accepted by receiving party before changes are made");
+		if (!request.isPending()) {
+			b = new BusinessException("Invalid request. Request has already been resolved");
+			loggy.error(b);
+			throw b;
 		} else {
 			if (request.getRequestorAccountNumber()==this.accountNumber || request.getSoughtAccountNumber()==this.accountNumber) {
 				if (ValidationTools.isValidMonetaryAmount(balance)) {
 					if (Double.valueOf(balance)==Double.POSITIVE_INFINITY) {
-						throw new BusinessException("Balances in excess of "+Double.MAX_VALUE+" are handled "
+						b = new BusinessException("Balances in excess of "+Double.MAX_VALUE+" are handled "
 								+ "via another system. Contact a Bank of Ben employee for more details.");
+						loggy.error(b);
+						throw b;
 					} else if (balance < 0) {
-						throw new BusinessException("The balance of an account cannot be a negative number.");
+						b = new BusinessException("The balance of an account cannot be a negative number.");
+						loggy.error(b);
+						throw b;
 					} else {
 						this.balance = balance;
 					}
 				} else {
-					throw new BusinessException("Balance amount must be a positive number that has only "
+					b = new BusinessException("Balance amount must be a positive number that has only "
 							+ "two digits after the decimal point");
+					loggy.error(b);
+					throw b;
 				}
 			} else {
-				throw new BusinessException("Invalid change in balance. Request does not involve account "+this.accountNumber);
+				b = new BusinessException("Invalid change in balance. Request does not involve account "+this.accountNumber);
+				loggy.error(b);
+				throw b;
 			}
 		}
 	}
@@ -139,16 +181,22 @@ public class Account {
 	public void setBalance(double balance, Employee employee) throws BusinessException {
 		if (ValidationTools.isValidMonetaryAmount(balance)) {
 			if (Double.valueOf(balance)==Double.POSITIVE_INFINITY) {
-				throw new BusinessException("Balances in excess of "+Double.MAX_VALUE+" are handled "
+				b = new BusinessException("Balances in excess of "+Double.MAX_VALUE+" are handled "
 						+ "via another system. Contact a Bank of Ben employee for more details.");
+				loggy.error(b);
+				throw b;
 			} else if (balance < 0) {
-				throw new BusinessException("The balance of an account cannot be a negative number.");
+				b = new BusinessException("The balance of an account cannot be a negative number.");
+				loggy.error(b);
+				throw b;
 			} else {
 				this.balance = balance;
 			}
 		} else {
-			throw new BusinessException("Balance amount must be a positive number that has only "
+			b = new BusinessException("Balance amount must be a positive number that has only "
 					+ "two digits after the decimal point");
+			loggy.error(b);
+			throw b;
 		}
 	}
 
@@ -158,6 +206,20 @@ public class Account {
 
 	public void setCustomerId(String customerId) {
 		this.customerId = customerId;
+	}
+
+	public boolean isPending() {
+		return pending;
+	}
+
+	public void setPending(boolean pending) {
+		this.pending = pending;
+	}
+
+	@Override
+	public String toString() {
+		return "Account [accountNumber=" + accountNumber + ", balance=" + balance + ", customerId=" + customerId
+				+ ", pending=" + pending + "]";
 	}
 
 }

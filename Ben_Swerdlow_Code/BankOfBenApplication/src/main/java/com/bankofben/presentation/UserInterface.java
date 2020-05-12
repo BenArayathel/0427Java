@@ -220,7 +220,7 @@ public class UserInterface {
 	}
 	
 	public static String passwordCriteria() {
-		return "Passwords must be at least 8 character and contain"
+		return "Passwords must be at least 8 characters and contain"
 				+ "\n* At least one uppercase English letter"
 				+ "\n* At least one lowercase English letter"
 				+ "\n* At least one digit"
@@ -326,7 +326,7 @@ public class UserInterface {
 			}
 			// Check account information belongs to customer
 			try {
-				sourceAccount = bl.validateAccount(sourceAccountNumber, sourceRoutingNumber, customer);
+				sourceAccount = bl.validateCustomerAccount(sourceAccountNumber, sourceRoutingNumber, customer);
 				sourceChosen = true;
 			} catch (BusinessException e) {
 				loggy.info(e.getMessage()+"\nPlease try again.");
@@ -432,6 +432,24 @@ public class UserInterface {
 			}
 		}
 		return amount;
+	}
+
+	public static double requestStartingBalance(Scanner sc) throws BusinessException {
+		loggy.info("Please specify a starting balance for your account. Please input 0 if you will have no starting balance.");
+		String startingBalanceString = sc.nextLine();
+		while(!ValidationTools.isValidMonetaryAmount(startingBalanceString)) {
+			loggy.info("Your entry of "+startingBalanceString+" is not a valid monetary amount. "
+					+ "The starting balance should be a non-negative number specified to at most 2 decimal places.\n");
+			loggy.info("Please specify a starting balance for your account. Please input 0 if you will have no starting balance.");
+			startingBalanceString = sc.nextLine();
+		}
+		double startingBalance=0;
+		try{
+			startingBalance = Double.parseDouble(startingBalanceString);
+		} catch (NumberFormatException e) {
+			throw new BusinessException("Error in validating monetary amount. Please contact and Bank of Ben employee for assistance.");
+		}
+		return startingBalance;
 	}
 
 }

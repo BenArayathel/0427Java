@@ -64,10 +64,13 @@ public interface BankOfBenDAOInterface {
 	public Account getAccountByAccountNumber(Long accountNumber) throws BusinessException;
 	//Get all accounts
 	public List<Account> getAllAccounts() throws BusinessException;
+	// Get all accounts with column value (i.e. username)
 	public List<Account> getAllAccountsOrderedBy(String columnName) throws BusinessException;
 	public List<Account> getAllAccountsOrderedBy(int columnIndex) throws BusinessException;
-	// Get all accounts with column value (i.e. username)
+	// Get all accounts with customerId
 	public List<Account> getAccountsForCustomerId(String customerId) throws BusinessException;
+	// Get all accounts by pending status
+	public List<Account> getAccountsWithPendingStatus(boolean isPending) throws BusinessException;
 	// Low priority: Get all accounts by balance comparison (i.e. all accounts with balance < 1000)
 	public List<Account> getAccountsByBalanceComparison(String balanceComparison) throws BusinessException;
 	
@@ -143,6 +146,7 @@ public interface BankOfBenDAOInterface {
 	// Update account information
 	public Account updateAccountBalance(double balance, long accountNumber) throws BusinessException;
 	public Account updateAccountCustomerId(int customerId, long accountNumber) throws BusinessException;
+	public Account updateAccountPendingStatus(boolean isPending, long accountNumber) throws BusinessException;
 	// Update payment information
 	public Payment updatePaymentPendingStatus(boolean isPending, String paymentId) throws BusinessException;
 	// Update request information

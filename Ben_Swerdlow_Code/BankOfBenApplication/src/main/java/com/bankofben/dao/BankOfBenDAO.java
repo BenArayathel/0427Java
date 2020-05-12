@@ -17,6 +17,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import org.apache.log4j.Logger;
+
 import com.bankofben.exceptions.BusinessException;
 import com.bankofben.models.Account;
 import com.bankofben.models.Customer;
@@ -26,9 +28,13 @@ import com.bankofben.models.Request;
 import com.bankofben.models.Transaction;
 import com.bankofben.models.Transfer;
 import com.bankofben.models.User;
+import com.bankofben.services.BankOfBenServices;
 
 public class BankOfBenDAO implements BankOfBenDAOInterface {
 
+	final static Logger loggy = Logger.getLogger(BankOfBenServices.class);
+	private BusinessException b = null;
+	
 	@Override
 	public Customer createCustomer(User user) throws BusinessException {
 		
@@ -68,15 +74,19 @@ public class BankOfBenDAO implements BankOfBenDAOInterface {
 						user.getMomsMaidenName(), user.getDob(), user.getSsn(), user.getEmail(),
 						user.getPhoneNumber(), user.getUsername(), user.getPassword(), cs.getString(1), true);
 			} else {
-				throw new BusinessException("Internal database error. Customer could not be created. "
+				b = new BusinessException("Internal database error. Customer could not be created. "
 						+ "Please contact your SYSADMIN");
+				loggy.error(b);
+				throw b;
 			}
 			
 			cs.close();
 			
 		} catch (ClassNotFoundException | SQLException e) {
-			e.printStackTrace();
-			throw new BusinessException("Internal database error. Please contact your SYSADMIN.");
+			loggy.error(e);
+			b = new BusinessException("Internal database error. Please contact your SYSADMIN.");
+			loggy.error(b);
+			throw b;
 		}
 		
 		return customer;
@@ -100,20 +110,25 @@ public class BankOfBenDAO implements BankOfBenDAOInterface {
 				cs.setString(3, account.getCustomerId());
 				int accountCreated = cs.executeUpdate();
 				if (accountCreated>0) {
-					account = new Account(cs.getLong(1), account.getBalance(), account.getCustomerId());
+					account = new Account(cs.getLong(1), account.getBalance(), account.getCustomerId(), account.isPending());
 				} else {
-					throw new BusinessException("Internal database error. Account could not be created. "
+					b = new BusinessException("Internal database error. Account could not be created. "
 							+ "Please contact your SYSADMIN");
+					loggy.error(b);
+					throw b;
 				}
 				cs.close();
 				
 			} catch (ClassNotFoundException | SQLException e) {
-				e.printStackTrace();
-				throw new BusinessException("Internal database error. Please contact your SYSADMIN.");
+				loggy.error(e);
+				b = new BusinessException("Internal database error. Please contact your SYSADMIN.");
+				throw b;
 			}
 		} else {
-			throw new BusinessException("Internal database error. Account could not be created. "
+			b = new BusinessException("Internal database error. Account could not be created. "
 					+ "Please contact your SYSADMIN");
+			loggy.error(b);
+			throw b;
 		}
 		
 		return account;
@@ -139,13 +154,18 @@ public class BankOfBenDAO implements BankOfBenDAOInterface {
 						rset.getString("Username"), rset.getString("Password"), rset.getString("Customer ID"),
 						rset.getBoolean("Application Pending"));
 			} else {
-				throw new BusinessException("Customer ID "+customerId+" does not exist.");
+				b = new BusinessException("Customer ID "+customerId+" does not exist.");
+				loggy.error(b);
+				throw b;
 			}
 			
 			ps.close();
 			
 		} catch (ClassNotFoundException | SQLException e) {
-			throw new BusinessException("Internal database error. Please contact your SYSADMIN.");
+			loggy.error(e);
+			b = new BusinessException("Internal database error. Please contact your SYSADMIN.");
+			loggy.error(b);
+			throw b;
 		}
 		
 		return customer;
@@ -171,13 +191,18 @@ public class BankOfBenDAO implements BankOfBenDAOInterface {
 						rset.getString("Username"), rset.getString("Password"), rset.getString("Customer ID"),
 						rset.getBoolean("Application Pending"));
 			} else {
-				throw new BusinessException("Customer Username "+username+" does not exist.");
+				b = new BusinessException("Customer Username "+username+" does not exist.");
+				loggy.error(b);
+				throw b;
 			}
 			
 			ps.close();
 			
 		} catch (ClassNotFoundException | SQLException e) {
-			throw new BusinessException("Internal database error. Please contact your SYSADMIN.");
+			loggy.error(e);
+			b = new BusinessException("Internal database error. Please contact your SYSADMIN.");
+			loggy.error(b);
+			throw b;
 		}
 		
 		return customer;
@@ -203,13 +228,18 @@ public class BankOfBenDAO implements BankOfBenDAOInterface {
 						rset.getString("Username"), rset.getString("Password"), rset.getString("Customer ID"),
 						rset.getBoolean("Application Pending"));
 			} else {
-				throw new BusinessException("Customer email "+email+" does not exist.");
+				b = new BusinessException("Customer email "+email+" does not exist.");
+				loggy.error(b);
+				throw b;
 			}
 			
 			ps.close();
 			
 		} catch (ClassNotFoundException | SQLException e) {
-			throw new BusinessException("Internal database error. Please contact your SYSADMIN.");
+			loggy.error(e);
+			b = new BusinessException("Internal database error. Please contact your SYSADMIN.");
+			loggy.error(b);
+			throw b;
 		}
 		
 		return customer;
@@ -270,7 +300,10 @@ public class BankOfBenDAO implements BankOfBenDAOInterface {
 			ps.close();
 			
 		} catch (ClassNotFoundException | SQLException e) {
-			throw new BusinessException("Internal database error. Please contact your SYSADMIN.");
+			loggy.error(e);
+			b = new BusinessException("Internal database error. Please contact your SYSADMIN.");
+			loggy.error(b);
+			throw b;
 		}
 		
 		return customers;
@@ -304,14 +337,18 @@ public class BankOfBenDAO implements BankOfBenDAOInterface {
 						rset.getString("Designation"), rset.getString("Supervisor Employee ID"), rset.getBoolean("Can Hire"));
 //				System.out.println(employee);
 			} else {
-				throw new BusinessException("Customer ID "+employeeId+" doesn't exist.");
+				b = new BusinessException("Customer ID "+employeeId+" doesn't exist.");
+				loggy.error(b);
+				throw b;
 			}
 			
 			ps.close();
 			
 		} catch (ClassNotFoundException | SQLException e) {
-			e.printStackTrace();
-			throw new BusinessException("Internal database error. Please contact your SYSADMIN.");
+			loggy.error(e);
+			b = new BusinessException("Internal database error. Please contact your SYSADMIN.");
+			loggy.error(b);
+			throw b;
 		}
 		
 		return employee;
@@ -361,8 +398,34 @@ public class BankOfBenDAO implements BankOfBenDAOInterface {
 
 	@Override
 	public Account getAccountByAccountNumber(Long accountNumber) throws BusinessException {
-		// TODO Auto-generated method stub
-		return null;
+		
+		Account a = null;
+		
+		try(Connection connection = OracleDbConnection.getConnection()){
+			
+			String sqlCall = "SELECT * FROM bankofben_accounts WHERE \"Account Number\"=?";
+			PreparedStatement ps = connection.prepareStatement(sqlCall);
+			ps.setLong(1, accountNumber);
+			
+			ResultSet rset = ps.executeQuery();
+			if (rset.next()) {
+				a = new Account(rset.getLong("Account Number"), rset.getDouble("Balance"), rset.getString("Customer ID"), rset.getBoolean("Pending"));
+			} else {
+				b = new BusinessException("Customer Username "+accountNumber+" does not exist.");
+				loggy.error(b);
+				throw b;
+			}
+			
+			ps.close();
+			
+		} catch (ClassNotFoundException | SQLException e) {
+			loggy.error(e);
+			b = new BusinessException("Internal database error. Please contact your SYSADMIN.");
+			loggy.error(b);
+			throw b;
+		}
+
+		return a;
 	}
 
 	@Override
@@ -378,11 +441,14 @@ public class BankOfBenDAO implements BankOfBenDAOInterface {
 			
 			while (rset.next()) {
 				accounts.add(new Account(rset.getLong("Account Number"), rset.getDouble("Balance"),
-						rset.getString("Customer ID")));
+						rset.getString("Customer ID"), rset.getBoolean("Pending")));
 			}
 			
 		} catch (ClassNotFoundException | SQLException e) {
-			throw new BusinessException("Internal database error. Please contact your SYSADMIN.");
+			loggy.error(e);
+			b = new BusinessException("Internal database error. Please contact your SYSADMIN.");
+			loggy.error(b);
+			throw b;
 		}
 		
 		return accounts;
@@ -401,7 +467,7 @@ public class BankOfBenDAO implements BankOfBenDAOInterface {
 	}
 
 	@Override
-	public List<Account> getAccountsForCustomerId(String customerId) throws BusinessException {		
+	public List<Account> getAccountsForCustomerId(String customerId) throws BusinessException {
 		List<Account> accounts = new ArrayList<>();
 		
 		try(Connection connection = OracleDbConnection.getConnection()){
@@ -414,13 +480,49 @@ public class BankOfBenDAO implements BankOfBenDAOInterface {
 			
 			while (rset.next()) {
 				accounts.add(new Account(rset.getLong("Account Number"), rset.getDouble("Balance"),
-						rset.getString("Customer ID")));
+						rset.getString("Customer ID"), rset.getBoolean("Pending")));
 			}
 			
 			ps.close();
 			
 		} catch (ClassNotFoundException | SQLException e) {
-			throw new BusinessException("Internal database error. Please contact your SYSADMIN.");
+			loggy.error(e);
+			b = new BusinessException("Internal database error. Please contact your SYSADMIN.");
+			loggy.error(b);
+			throw b;
+		}
+		
+		return accounts;
+	}
+	
+	@Override
+	public List<Account> getAccountsWithPendingStatus(boolean isPending) throws BusinessException {
+		List<Account> accounts = new ArrayList<>();
+		
+		try(Connection connection = OracleDbConnection.getConnection()){
+			
+			String sqlCall = "SELECT * FROM bankofben_accounts WHERE \"Pending\"=?";
+			PreparedStatement ps = connection.prepareStatement(sqlCall);
+			ps.setBoolean(1, isPending);
+			
+			ResultSet rset = ps.executeQuery();
+			
+			while (rset.next()) {
+//				if (rset.getBoolean("Pending")==isPending) {
+				accounts.add(new Account(rset.getLong("Account Number"), rset.getDouble("Balance"),
+						rset.getString("Customer ID"), rset.getBoolean("Pending")));
+//				} else {
+//					throw new BusinessException("Could not fetch accounts for Pending="+isPending+"\nPlease try again.");
+//				}
+			}
+			
+			ps.close();
+			
+		} catch (ClassNotFoundException | SQLException e) {
+			loggy.error(e);
+			b = new BusinessException("Internal database error. Please contact your SYSADMIN.");
+			loggy.error(b);
+			throw b;
 		}
 		
 		return accounts;
@@ -512,12 +614,17 @@ public class BankOfBenDAO implements BankOfBenDAOInterface {
 			ps.setString(2, customerId);
 			int rowsUpdated = ps.executeUpdate();
 			if (rowsUpdated<1) {
-				throw new BusinessException("Internal database error. Could not update application status for "
+				b = new BusinessException("Internal database error. Could not update application status for "
 						+customerId+". Contact your SYSADMIN");
+				loggy.error(b);
+				throw b;
 			}
 			ps.close();
 		} catch (ClassNotFoundException | SQLException e) {
-			throw new BusinessException("Internal database error. Please contact your SYSADMIN.");
+			loggy.error(e);
+			b = new BusinessException("Internal database error. Please contact your SYSADMIN.");
+			loggy.error(b);
+			throw b;
 		}
 	}
 
@@ -601,14 +708,64 @@ public class BankOfBenDAO implements BankOfBenDAOInterface {
 
 	@Override
 	public Account updateAccountBalance(double balance, long accountNumber) throws BusinessException {
-		// TODO Auto-generated method stub
-		return null;
+		updateAccountBalance_returnNothing(balance, accountNumber);
+		return getAccountByAccountNumber(accountNumber);
+	}
+	
+	public void updateAccountBalance_returnNothing(double balance, long accountNumber) throws BusinessException {
+		try(Connection connection = OracleDbConnection.getConnection()){
+			String sqlCall = "UPDATE bankofben_accounts SET \"Balance\"=? WHERE \"Account Number\"=?";
+			PreparedStatement ps = connection.prepareStatement(sqlCall);
+			ps.setDouble(1, balance);
+			ps.setLong(2, accountNumber);
+			int rowsUpdated = ps.executeUpdate();
+			if (rowsUpdated<1) {
+				b = new BusinessException("Internal database error. Could not update pending status for "
+						+accountNumber+". Contact your SYSADMIN");
+				loggy.error(b);
+				throw b;
+			}
+			ps.close();
+		} catch (ClassNotFoundException | SQLException e) {
+			loggy.error(e);
+			b = new BusinessException("Internal database error. Please contact your SYSADMIN.");
+			loggy.error(b);
+			throw b;
+		}
 	}
 
 	@Override
 	public Account updateAccountCustomerId(int customerId, long accountNumber) throws BusinessException {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	
+	@Override
+	public Account updateAccountPendingStatus(boolean isPending, long accountNumber) throws BusinessException {
+		updateAccountPendingStatus_returnNothing(isPending, accountNumber);
+		return getAccountByAccountNumber(accountNumber);
+	}
+	
+	public void updateAccountPendingStatus_returnNothing(boolean isPending, long accountNumber) throws BusinessException {
+		try(Connection connection = OracleDbConnection.getConnection()){
+			String sqlCall = "UPDATE bankofben_accounts SET \"Pending\"=? WHERE \"Account Number\"=?";
+			PreparedStatement ps = connection.prepareStatement(sqlCall);
+			ps.setBoolean(1, isPending);
+			ps.setLong(2, accountNumber);
+			int rowsUpdated = ps.executeUpdate();
+			if (rowsUpdated<1) {
+				b = new BusinessException("Internal database error. Could not update pending status for "
+						+accountNumber+". Contact your SYSADMIN");
+				loggy.error(b);
+				throw b;
+			}
+			ps.close();
+		} catch (ClassNotFoundException | SQLException e) {
+			loggy.error(e);
+			b = new BusinessException("Internal database error. Please contact your SYSADMIN.");
+			loggy.error(b);
+			throw b;
+		}
 	}
 
 	@Override
@@ -619,12 +776,17 @@ public class BankOfBenDAO implements BankOfBenDAOInterface {
 			ps.setString(1, customerId);
 			int rowsUpdated = ps.executeUpdate();
 			if (rowsUpdated<1) {
-				throw new BusinessException("Internal database error. Could not remove customer information for "
+				b = new BusinessException("Internal database error. Could not remove customer information for "
 						+customerId+". Contact your SYSADMIN.");
+				loggy.error(b);
+				throw b;
 			}
 			ps.close();
 		} catch (ClassNotFoundException | SQLException e) {
-			throw new BusinessException("Internal database error. Please contact your SYSADMIN.");
+			loggy.error(e);
+			b = new BusinessException("Internal database error. Please contact your SYSADMIN.");
+			loggy.error(b);
+			throw b;
 		}
 	}
 
@@ -636,12 +798,17 @@ public class BankOfBenDAO implements BankOfBenDAOInterface {
 			ps.setString(1, employeeId);
 			int rowsUpdated = ps.executeUpdate();
 			if (rowsUpdated<1) {
-				throw new BusinessException("Internal database error. Could not remove customer information for "
+				b = new BusinessException("Internal database error. Could not remove customer information for "
 						+employeeId+". Contact your SYSADMIN.");
+				loggy.error(b);
+				throw b;
 			}
 			ps.close();
 		} catch (ClassNotFoundException | SQLException e) {
-			throw new BusinessException("Internal database error. Please contact your SYSADMIN.");
+			loggy.error(e);
+			b = new BusinessException("Internal database error. Please contact your SYSADMIN.");
+			loggy.error(b);
+			throw b;
 		}
 	}
 
@@ -653,12 +820,70 @@ public class BankOfBenDAO implements BankOfBenDAOInterface {
 			ps.setLong(1, accountNumber);
 			int rowsUpdated = ps.executeUpdate();
 			if (rowsUpdated<1) {
-				throw new BusinessException("Internal database error. Could not remove customer information for "
+				b = new BusinessException("Internal database error. Could not remove customer information for "
 						+accountNumber+". Contact your SYSADMIN.");
+				loggy.error(b);
+				throw b;
 			}
 			ps.close();
 		} catch (ClassNotFoundException | SQLException e) {
-			throw new BusinessException("Internal database error. Please contact your SYSADMIN.");
+			loggy.error(e);
+			b = new BusinessException("Internal database error. Please contact your SYSADMIN.");
+			loggy.error(b);
+			throw b;
+		}
+	}
+
+	public void deleteRejectedAccount(Long accountNumber) throws BusinessException {
+		// A rejected account has only 1 constraint: to match the customer table with a foreign key.
+		// This procedure will remove the constraint, delete the entry, and reinstate the constraint.
+		// This procedure will work with any account that has only this one relationship (not just 
+		// rejected ones; however, that's it's most common use)
+		try(Connection connection = OracleDbConnection.getConnection()){
+			
+			String sqlCall = "{call removecustomerandaccounts(?)}";
+			CallableStatement cs = connection.prepareCall(sqlCall);
+			
+			cs.setLong(1, accountNumber);
+			
+			boolean executed = cs.execute();
+			if (!executed) {
+				b = new BusinessException("Could not delete both customer ID and account.");
+				loggy.error(b);
+				throw b;
+			}
+			
+		} catch (ClassNotFoundException | SQLException e) {
+			loggy.error(e);
+			b = new BusinessException("Internal database error. Could not delete both customer ID and account. Please contact your SYSADMIN.");
+			loggy.error(b);
+			throw b;
+		}
+		
+	}
+
+	public void fakeCascadeDeleteCustomerID_Account(String customerId) throws BusinessException {
+		// The procedure called here will remove the id from both the customers table and any corresponding entries in the 
+		// accounts table without calling a cascade delete
+		try(Connection connection = OracleDbConnection.getConnection()){
+			
+			String sqlCall = "{call removecustomerandaccounts(?)}";
+			CallableStatement cs = connection.prepareCall(sqlCall);
+			
+			cs.setString(1, customerId);
+			
+			boolean executed = cs.execute();
+			if (!executed) {
+				b = new BusinessException("Could not delete both customer ID and account.");
+				loggy.error(b);
+				throw b;
+			}
+			
+		} catch (ClassNotFoundException | SQLException e) {
+			loggy.error(e);
+			b = new BusinessException("Internal database error. Could not delete both customer ID and account. Please contact your SYSADMIN.");
+			loggy.error(b);
+			throw b;
 		}
 	}
 
@@ -671,7 +896,6 @@ public class BankOfBenDAO implements BankOfBenDAOInterface {
 			
 			try(Connection connection = OracleDbConnection.getConnection()){
 				
-				// TODO NOT DONE YET!!!!! MAKE CREATEEMPLOYEE
 				String sqlCall = "{call createemployee(?,?,?,?,?,?,?,?,?,?,?,?,?)}";
 				CallableStatement cs = connection.prepareCall(sqlCall);
 				
@@ -699,18 +923,25 @@ public class BankOfBenDAO implements BankOfBenDAOInterface {
 							user.getPhoneNumber(), user.getUsername(), user.getPassword(), cs.getString(1),
 							designation, supervisor.getId(), false);
 				} else {
-					throw new BusinessException("Internal database error. Customer could not be created. "
+					b = new BusinessException("Internal database error. Customer could not be created. "
 							+ "Please contact your SYSADMIN.");
+					loggy.error(b);
+					throw b;
 				}
 				
 				cs.close();
 				
 			} catch (ClassNotFoundException | SQLException e) {
-				throw new BusinessException("Internal database error. Please contact your SYSADMIN.");
+				loggy.error(e);
+				b = new BusinessException("Internal database error. Please contact your SYSADMIN.");
+				loggy.error(b);
+				throw b;
 			}
 		} else {
-			throw new BusinessException("You do not have the proper credentials to hire new employees. "
+			b = new BusinessException("You do not have the proper credentials to hire new employees. "
 					+ "Please contact your supervisor if you believe this is incorrect or if you have a hiring recommendation.");
+			loggy.error(b);
+			throw b;
 		}
 		
 		return employee;
@@ -732,7 +963,10 @@ public class BankOfBenDAO implements BankOfBenDAOInterface {
 			ps.close();
 			
 		} catch (ClassNotFoundException | SQLException e) {
-			throw new BusinessException("Internal database error. Please contact your SYSADMIN.");
+			loggy.error(e);
+			b = new BusinessException("Internal database error. Please contact your SYSADMIN.");
+			loggy.error(b);
+			throw b;
 		}
 		
 		return exists;
@@ -754,7 +988,10 @@ public class BankOfBenDAO implements BankOfBenDAOInterface {
 			ps.close();
 			
 		} catch (ClassNotFoundException | SQLException e) {
-			throw new BusinessException("Internal database error. Please contact your SYSADMIN.");
+			loggy.error(e);
+			b = new BusinessException("Internal database error. Please contact your SYSADMIN.");
+			loggy.error(b);
+			throw b;
 		}
 		
 		return exists;
@@ -776,7 +1013,10 @@ public class BankOfBenDAO implements BankOfBenDAOInterface {
 			ps.close();
 			
 		} catch (ClassNotFoundException | SQLException e) {
-			throw new BusinessException("Internal database error. Please contact your SYSADMIN.");
+			loggy.error(e);
+			b = new BusinessException("Internal database error. Please contact your SYSADMIN.");
+			loggy.error(b);
+			throw b;
 		}
 		
 		return exists;
@@ -798,7 +1038,10 @@ public class BankOfBenDAO implements BankOfBenDAOInterface {
 			ps.close();
 			
 		} catch (ClassNotFoundException | SQLException e) {
-			throw new BusinessException("Internal database error. Please contact your SYSADMIN.");
+			loggy.error(e);
+			b = new BusinessException("Internal database error. Please contact your SYSADMIN.");
+			loggy.error(b);
+			throw b;
 		}
 		
 		return exists;
@@ -820,7 +1063,10 @@ public class BankOfBenDAO implements BankOfBenDAOInterface {
 			ps.close();
 			
 		} catch (ClassNotFoundException | SQLException e) {
-			throw new BusinessException("Internal database error. Please contact your SYSADMIN.");
+			loggy.error(e);
+			b = new BusinessException("Internal database error. Please contact your SYSADMIN.");
+			loggy.error(b);
+			throw b;
 		}
 		
 		return exists;
@@ -842,7 +1088,10 @@ public class BankOfBenDAO implements BankOfBenDAOInterface {
 			ps.close();
 			
 		} catch (ClassNotFoundException | SQLException e) {
-			throw new BusinessException("Internal database error. Please contact your SYSADMIN.");
+			loggy.error(e);
+			b = new BusinessException("Internal database error. Please contact your SYSADMIN.");
+			loggy.error(b);
+			throw b;
 		}
 		
 		return exists;
@@ -864,7 +1113,10 @@ public class BankOfBenDAO implements BankOfBenDAOInterface {
 			ps.close();
 			
 		} catch (ClassNotFoundException | SQLException e) {
-			throw new BusinessException("Internal database error. Please contact your SYSADMIN.");
+			loggy.error(e);
+			b = new BusinessException("Internal database error. Please contact your SYSADMIN.");
+			loggy.error(b);
+			throw b;
 		}
 		
 		return exists;
@@ -886,7 +1138,10 @@ public class BankOfBenDAO implements BankOfBenDAOInterface {
 			ps.close();
 			
 		} catch (ClassNotFoundException | SQLException e) {
-			throw new BusinessException("Internal database error. Please contact your SYSADMIN.");
+			loggy.error(e);
+			b = new BusinessException("Internal database error. Please contact your SYSADMIN.");
+			loggy.error(b);
+			throw b;
 		}
 		
 		return exists;
@@ -908,7 +1163,10 @@ public class BankOfBenDAO implements BankOfBenDAOInterface {
 			ps.close();
 			
 		} catch (ClassNotFoundException | SQLException e) {
-			throw new BusinessException("Internal database error. Please contact your SYSADMIN.");
+			loggy.error(e);
+			b = new BusinessException("Internal database error. Please contact your SYSADMIN.");
+			loggy.error(b);
+			throw b;
 		}
 		
 		return exists;
@@ -937,19 +1195,26 @@ public class BankOfBenDAO implements BankOfBenDAOInterface {
 						rset.getBoolean("Application Pending"));
 				if(rset.next()) {
 					// true if there is more than one record
-					throw new BusinessException("Internal database error. Found multiple customers with these "
+					b = new BusinessException("Internal database error. Found multiple customers with these "
 							+ "credentials. Please contact your SYSADMIN.");
+					loggy.error(b);
+					throw b;
 				}
 			} else {
-				throw new BusinessException("Customer does not exist with these credentials. "
+				b = new BusinessException("Customer does not exist with these credentials. "
 						+ "Please register these credentials as a new customer and apply for an account.");
+				loggy.error(b);
+				throw b;
 			}
 			
 			rset.close();
 			ps.close();
 			
 		} catch (ClassNotFoundException | SQLException e) {
-			throw new BusinessException("Internal database error. Please contact your SYSADMIN.");
+			loggy.error(e);
+			b = new BusinessException("Internal database error. Please contact your SYSADMIN.");
+			loggy.error(b);
+			throw b;
 		}
 		
 		return customer;
@@ -978,19 +1243,25 @@ public class BankOfBenDAO implements BankOfBenDAOInterface {
 						rset.getString("Supervisor Employee ID"), rset.getBoolean("Can Hire"));
 				if(rset.next()) {
 					// true if there is more than one record
-					throw new BusinessException("Internal database error. Found multiple employees with these "
+					b = new BusinessException("Internal database error. Found multiple employees with these "
 							+ "credentials. Please contact your SYSADMIN.");
+					loggy.error(b);
+					throw b;
 				}
 			} else {
-				throw new BusinessException("Employee does not exist with these credentials. "
+				b = new BusinessException("Employee does not exist with these credentials. "
 						+ "Please contact the Bank of Ben to become an employee.");
+				loggy.error(b);
+				throw b;
 			}
 			
 			ps.close();
 			
 		} catch (ClassNotFoundException | SQLException e) {
-			e.printStackTrace();
-			throw new BusinessException("Internal database error. Please contact your SYSADMIN.");
+			loggy.error(e);
+			b = new BusinessException("Internal database error. Please contact your SYSADMIN.");
+			loggy.error(b);
+			throw b;
 		}
 		
 		return employee;
@@ -1012,7 +1283,10 @@ public class BankOfBenDAO implements BankOfBenDAOInterface {
 			ps.close();
 			
 		} catch (ClassNotFoundException | SQLException e) {
-			throw new BusinessException("Internal database error. Please contact your SYSADMIN.");
+			loggy.error(e);
+			b = new BusinessException("Internal database error. Please contact your SYSADMIN.");
+			loggy.error(b);
+			throw b;
 		}
 		
 		return exists;
@@ -1034,7 +1308,10 @@ public class BankOfBenDAO implements BankOfBenDAOInterface {
 			ps.close();
 			
 		} catch (ClassNotFoundException | SQLException e) {
-			throw new BusinessException("Internal database error. Please contact your SYSADMIN.");
+			loggy.error(e);
+			b = new BusinessException("Internal database error. Please contact your SYSADMIN.");
+			loggy.error(b);
+			throw b;
 		}
 		
 		return exists;
@@ -1067,14 +1344,19 @@ public class BankOfBenDAO implements BankOfBenDAOInterface {
 				payment = new Payment(cs.getString(1), payment.getInitUserId(), payment.isPending(),
 						payment.getPayingAccountNumber(), payment.getReceivingAccountNumber(), payment.getAmount());
 			} else {
-				throw new BusinessException("Internal database error. Payment could not be created. "
+				b = new BusinessException("Internal database error. Payment could not be created. "
 						+ "Please contact your SYSADMIN");
+				loggy.error(b);
+				throw b;
 			}
 			
 			cs.close();
 			
 		} catch (ClassNotFoundException | SQLException e) {
-			throw new BusinessException("Internal database error. Please contact your SYSADMIN.");
+			loggy.error(e);
+			b = new BusinessException("Internal database error. Please contact your SYSADMIN.");
+			loggy.error(b);
+			throw b;
 		}
 		
 		return payment;
@@ -1103,14 +1385,19 @@ public class BankOfBenDAO implements BankOfBenDAOInterface {
 				request = new Request(cs.getString(1), request.getInitUserId(), request.isPending(),
 						request.getRequestorAccountNumber(), request.getSoughtAccountNumber(), request.getAmount());
 			} else {
-				throw new BusinessException("Internal database error. Request could not be created. "
+				b = new BusinessException("Internal database error. Request could not be created. "
 						+ "Please contact your SYSADMIN");
+				loggy.error(b);
+				throw b;
 			}
 			
 			cs.close();
 			
 		} catch (ClassNotFoundException | SQLException e) {
-			throw new BusinessException("Internal database error. Please contact your SYSADMIN.");
+			loggy.error(e);
+			b = new BusinessException("Internal database error. Please contact your SYSADMIN.");
+			loggy.error(b);
+			throw b;
 		}
 		
 		return request;
@@ -1123,7 +1410,9 @@ public class BankOfBenDAO implements BankOfBenDAOInterface {
 		} else if (transfer instanceof Request) {
 			return createRequest((Request) transfer);
 		} else {
-			throw new BusinessException("Cannot create transfer. Too little information. Input should specify if payment or request.");
+			b = new BusinessException("Cannot create transfer. Too little information. Input should specify if payment or request.");
+			loggy.error(b);
+			throw b;
 		}
 	}
 
@@ -1144,13 +1433,18 @@ public class BankOfBenDAO implements BankOfBenDAOInterface {
 						rset.getBoolean("Pending"), rset.getLong("Paying Account Number"),
 						rset.getLong("Receiving Account Number"), rset.getDouble("Amount"));
 			} else {
-				throw new BusinessException("Customer ID "+paymentId+" does not exist.");
+				b = new BusinessException("Customer ID "+paymentId+" does not exist.");
+				loggy.error(b);
+				throw b;
 			}
 			
 			ps.close();
 			
 		} catch (ClassNotFoundException | SQLException e) {
-			throw new BusinessException("Internal database error. Please contact your SYSADMIN.");
+			loggy.error(e);
+			b = new BusinessException("Internal database error. Please contact your SYSADMIN.");
+			loggy.error(b);
+			throw b;
 		}
 		
 		return payment;
@@ -1175,7 +1469,10 @@ public class BankOfBenDAO implements BankOfBenDAOInterface {
 			}
 			
 		} catch (ClassNotFoundException | SQLException e) {
-			throw new BusinessException("Internal database error. Please contact your SYSADMIN.");
+			loggy.error(e);
+			b = new BusinessException("Internal database error. Please contact your SYSADMIN.");
+			loggy.error(b);
+			throw b;
 		}
 		
 		return payments;
@@ -1202,7 +1499,10 @@ public class BankOfBenDAO implements BankOfBenDAOInterface {
 			ps.close();
 			
 		} catch (ClassNotFoundException | SQLException e) {
-			throw new BusinessException("Internal database error. Please contact your SYSADMIN.");
+			loggy.error(e);
+			b = new BusinessException("Internal database error. Please contact your SYSADMIN.");
+			loggy.error(b);
+			throw b;
 		}
 		
 		return payments;
@@ -1229,7 +1529,10 @@ public class BankOfBenDAO implements BankOfBenDAOInterface {
 			ps.close();
 			
 		} catch (ClassNotFoundException | SQLException e) {
-			throw new BusinessException("Internal database error. Please contact your SYSADMIN.");
+			loggy.error(e);
+			b = new BusinessException("Internal database error. Please contact your SYSADMIN.");
+			loggy.error(b);
+			throw b;
 		}
 		
 		return payments;
@@ -1269,7 +1572,10 @@ public class BankOfBenDAO implements BankOfBenDAOInterface {
 			ps.close();
 			
 		} catch (ClassNotFoundException | SQLException e) {
-			throw new BusinessException("Internal database error. Please contact your SYSADMIN.");
+			loggy.error(e);
+			b = new BusinessException("Internal database error. Please contact your SYSADMIN.");
+			loggy.error(b);
+			throw b;
 		}
 		
 		return payments;
@@ -1297,7 +1603,10 @@ public class BankOfBenDAO implements BankOfBenDAOInterface {
 			ps.close();
 			
 		} catch (ClassNotFoundException | SQLException e) {
-			throw new BusinessException("Internal database error. Please contact your SYSADMIN.");
+			loggy.error(e);
+			b = new BusinessException("Internal database error. Please contact your SYSADMIN.");
+			loggy.error(b);
+			throw b;
 		}
 		
 		return payments;
@@ -1320,13 +1629,18 @@ public class BankOfBenDAO implements BankOfBenDAOInterface {
 						rset.getBoolean("Pending"), rset.getLong("Requestor Account Number"),
 						rset.getLong("Sought Account Number"), rset.getDouble("Amount"));
 			} else {
-				throw new BusinessException("Customer ID "+requestId+" does not exist.");
+				b = new BusinessException("Customer ID "+requestId+" does not exist.");
+				loggy.error(b);
+				throw b;
 			}
 			
 			ps.close();
 			
 		} catch (ClassNotFoundException | SQLException e) {
-			throw new BusinessException("Internal database error. Please contact your SYSADMIN.");
+			loggy.error(e);
+			b = new BusinessException("Internal database error. Please contact your SYSADMIN.");
+			loggy.error(b);
+			throw b;
 		}
 		
 		return request;
@@ -1351,7 +1665,10 @@ public class BankOfBenDAO implements BankOfBenDAOInterface {
 			}
 			
 		} catch (ClassNotFoundException | SQLException e) {
-			throw new BusinessException("Internal database error. Please contact your SYSADMIN.");
+			loggy.error(e);
+			b = new BusinessException("Internal database error. Please contact your SYSADMIN.");
+			loggy.error(b);
+			throw b;
 		}
 		
 		return requests;
@@ -1391,7 +1708,10 @@ public class BankOfBenDAO implements BankOfBenDAOInterface {
 			ps.close();
 			
 		} catch (ClassNotFoundException | SQLException e) {
-			throw new BusinessException("Internal database error. Please contact your SYSADMIN.");
+			loggy.error(e);
+			b = new BusinessException("Internal database error. Please contact your SYSADMIN.");
+			loggy.error(b);
+			throw b;
 		}
 		
 		return requests;
@@ -1419,7 +1739,10 @@ public class BankOfBenDAO implements BankOfBenDAOInterface {
 			ps.close();
 			
 		} catch (ClassNotFoundException | SQLException e) {
-			throw new BusinessException("Internal database error. Please contact your SYSADMIN.");
+			loggy.error(e);
+			b = new BusinessException("Internal database error. Please contact your SYSADMIN.");
+			loggy.error(b);
+			throw b;
 		}
 		
 		return requests;
@@ -1438,7 +1761,7 @@ public class BankOfBenDAO implements BankOfBenDAOInterface {
 			ResultSet rset = ps.executeQuery();
 
 			while (rset.next()) {
-				requests.add(new Request(rset.getString("Payment ID"), rset.getString("Initiator's ID"),
+				requests.add(new Request(rset.getString("Request ID"), rset.getString("Initiator's ID"),
 						rset.getBoolean("Pending"), rset.getLong("Requestor Account Number"),
 						rset.getLong("Sought Account Number"), rset.getDouble("Amount")));
 			}
@@ -1446,7 +1769,10 @@ public class BankOfBenDAO implements BankOfBenDAOInterface {
 			ps.close();
 			
 		} catch (ClassNotFoundException | SQLException e) {
-			throw new BusinessException("Internal database error. Please contact your SYSADMIN.");
+			loggy.error(e);
+			b = new BusinessException("Internal database error. Please contact your SYSADMIN.");
+			loggy.error(b);
+			throw b;
 		}
 		
 		return requests;
@@ -1473,7 +1799,10 @@ public class BankOfBenDAO implements BankOfBenDAOInterface {
 			ps.close();
 			
 		} catch (ClassNotFoundException | SQLException e) {
-			throw new BusinessException("Internal database error. Please contact your SYSADMIN.");
+			loggy.error(e);
+			b = new BusinessException("Internal database error. Please contact your SYSADMIN.");
+			loggy.error(b);
+			throw b;
 		}
 		
 		return requests;
@@ -1535,12 +1864,17 @@ public class BankOfBenDAO implements BankOfBenDAOInterface {
 			ps.setString(2, paymentId);
 			int rowsUpdated = ps.executeUpdate();
 			if (rowsUpdated<1) {
-				throw new BusinessException("Internal database error. Could not update pending status for "
+				b = new BusinessException("Internal database error. Could not update pending status for "
 						+paymentId+". Contact your SYSADMIN");
+				loggy.error(b);
+				throw b;
 			}
 			ps.close();
 		} catch (ClassNotFoundException | SQLException e) {
-			throw new BusinessException("Internal database error. Please contact your SYSADMIN.");
+			loggy.error(e);
+			b = new BusinessException("Internal database error. Please contact your SYSADMIN.");
+			loggy.error(b);
+			throw b;
 		}
 		
 	}
@@ -1559,12 +1893,17 @@ public class BankOfBenDAO implements BankOfBenDAOInterface {
 			ps.setString(2, requestId);
 			int rowsUpdated = ps.executeUpdate();
 			if (rowsUpdated<1) {
-				throw new BusinessException("Internal database error. Could not update pending status for "
+				b = new BusinessException("Internal database error. Could not update pending status for "
 						+requestId+". Contact your SYSADMIN");
+				loggy.error(b);
+				throw b;
 			}
 			ps.close();
 		} catch (ClassNotFoundException | SQLException e) {
-			throw new BusinessException("Internal database error. Please contact your SYSADMIN.");
+			loggy.error(e);
+			b = new BusinessException("Internal database error. Please contact your SYSADMIN.");
+			loggy.error(b);
+			throw b;
 		}
 		
 	}
@@ -1577,7 +1916,9 @@ public class BankOfBenDAO implements BankOfBenDAOInterface {
 		} else if (requestExists(transferId)) {
 			t = updateRequestPendingStatus(isPending, transferId);
 		} else {
-			throw new BusinessException("No payment or request exists with ID "+transferId);
+			b = new BusinessException("No payment or request exists with ID "+transferId);
+			loggy.error(b);
+			throw b;
 		}
 		return t;
 	}
@@ -1588,21 +1929,67 @@ public class BankOfBenDAO implements BankOfBenDAOInterface {
 		} else if (requestExists(transferId)) {
 			updateRequestPendingStatus_returnNothing(isPending, transferId);
 		} else {
-			throw new BusinessException("No payment or request exists with ID "+transferId);
+			b = new BusinessException("No payment or request exists with ID "+transferId);
+			loggy.error(b);
+			throw b;
 		}
 	}
 
 	public List<Payment> getAllPaymentsInvolvingCustomer(Customer customer) throws BusinessException {
 		List<Account> customerAccounts = getAccountsForCustomerId(customer.getId());
-		List<Payment> customerPayments = new ArrayList<>();
-		for (Account ca : customerAccounts) {
-			List<Payment> accountPayments = getAllPaymentsInvolvingAccount(ca);
-			for (Payment p : accountPayments) {
-				customerPayments.add(p);
+		
+		List<Payment> payments = new ArrayList<>();
+		
+		try(Connection connection = OracleDbConnection.getConnection()){
+			
+			StringBuilder sqlCallBuilder = new StringBuilder("SELECT * FROM bankofben_payments WHERE \"Paying Account Number\" IN (?");
+			for (int i=1; i<customerAccounts.size(); i++) {
+				sqlCallBuilder.append(",?");
 			}
+			sqlCallBuilder.append(") OR \"Receiving Account Number\" IN (?");
+			for (int i=1; i<customerAccounts.size(); i++) {
+				sqlCallBuilder.append(",?");
+			}
+			sqlCallBuilder.append(")");
+			String sqlCall = sqlCallBuilder.toString();
+			PreparedStatement ps = connection.prepareStatement(sqlCall);
+			for (int j=0; j<2; j++) {
+				for (int i=0; i<customerAccounts.size(); i++) {
+					ps.setLong(j*customerAccounts.size()+i+1, customerAccounts.get(i).getAccountNumber());
+				}
+			}
+			
+			ResultSet rset = ps.executeQuery();
+
+			while (rset.next()) {
+				payments.add(new Payment(rset.getString("Payment ID"), rset.getString("Initiator's ID"),
+						rset.getBoolean("Pending"), rset.getLong("Paying Account Number"),
+						rset.getLong("Receiving Account Number"), rset.getDouble("Amount")));
+			}
+			
+			ps.close();
+			
+		} catch (ClassNotFoundException | SQLException e) {
+			loggy.error(e);
+			b = new BusinessException("Internal database error. Please contact your SYSADMIN.");
+			loggy.error(b);
+			throw b;
 		}
-		return customerPayments;
+		
+		return payments;
 	}
+		
+//		
+//		
+//		List<Payment> customerPayments = new ArrayList<>();
+//		for (Account ca : customerAccounts) {
+//			List<Payment> accountPayments = getAllPaymentsInvolvingAccount(ca);
+//			for (Payment p : accountPayments) {
+//				customerPayments.add(p);
+//			}
+//		}
+//		return customerPayments;
+//	}
 
 	public List<Payment> getAllPaymentsInvolvingAccount(Account ca) throws BusinessException {
 		List<Payment> paymentsToAccount = getAllPaymentsWithPayingAccountNumber(ca.getAccountNumber());
@@ -1612,28 +1999,111 @@ public class BankOfBenDAO implements BankOfBenDAOInterface {
 
 	public List<Payment> getAllPaymentsInvolvingCustomerWithPendingStatus(Customer customer, boolean isPending) throws BusinessException {
 		List<Account> customerAccounts = getAccountsForCustomerId(customer.getId());
-		List<Payment> customerPayments = new ArrayList<>();
-		for (Account ca : customerAccounts) {
-			List<Payment> accountPayments = getAllPaymentsInvolvingAccount(ca);
-			for (Payment p : accountPayments) {
-				if (p.isPending()==isPending) {
-					customerPayments.add(p);
+		
+		List<Payment> payments = new ArrayList<>();
+		
+		try(Connection connection = OracleDbConnection.getConnection()){
+			
+			StringBuilder sqlCallBuilder = new StringBuilder("SELECT * FROM bankofben_payments WHERE \"Pending\" = ? AND (\"Paying Account Number\" IN (?");
+			for (int i=1; i<customerAccounts.size(); i++) {
+				sqlCallBuilder.append(",?");
+			}
+			sqlCallBuilder.append(") OR \"Receiving Account Number\" IN (?");
+			for (int i=1; i<customerAccounts.size(); i++) {
+				sqlCallBuilder.append(",?");
+			}
+			sqlCallBuilder.append("))");
+			String sqlCall = sqlCallBuilder.toString();
+			PreparedStatement ps = connection.prepareStatement(sqlCall);
+			ps.setBoolean(1, true);
+			for (int j=0; j<2; j++) {
+				for (int i=0; i<customerAccounts.size(); i++) {
+					ps.setLong(j*customerAccounts.size()+i+2, customerAccounts.get(i).getAccountNumber());
 				}
 			}
+			
+			ResultSet rset = ps.executeQuery();
+
+			while (rset.next()) {
+				payments.add(new Payment(rset.getString("Payment ID"), rset.getString("Initiator's ID"),
+						rset.getBoolean("Pending"), rset.getLong("Paying Account Number"),
+						rset.getLong("Receiving Account Number"), rset.getDouble("Amount")));
+			}
+			
+			ps.close();
+			
+		} catch (ClassNotFoundException | SQLException e) {
+			loggy.error(e);
+			b = new BusinessException("Internal database error. Please contact your SYSADMIN.");
+			loggy.error(b);
+			throw b;
 		}
-		return customerPayments;
+		
+		return payments;
+//		List<Account> customerAccounts = getAccountsForCustomerId(customer.getId());
+//		List<Payment> customerPayments = new ArrayList<>();
+//		for (Account ca : customerAccounts) {
+//			List<Payment> accountPayments = getAllPaymentsInvolvingAccount(ca);
+//			for (Payment p : accountPayments) {
+//				if (p.isPending()==isPending) {
+//					customerPayments.add(p);
+//				}
+//			}
+//		}
+//		return customerPayments;
 	}
 
 	public List<Request> getAllRequestsInvolvingCustomer(Customer customer) throws BusinessException {
 		List<Account> customerAccounts = getAccountsForCustomerId(customer.getId());
-		List<Request> customerRequests = new ArrayList<>();
-		for (Account ca : customerAccounts) {
-			List<Request> accountPayments = getAllRequestsInvolvingAccount(ca);
-			for (Request r : accountPayments) {
-				customerRequests.add(r);
+		
+		List<Request> requests = new ArrayList<>();
+		
+		try(Connection connection = OracleDbConnection.getConnection()){
+			
+			StringBuilder sqlCallBuilder = new StringBuilder("SELECT * FROM bankofben_requests WHERE \"Requestor Account Number\" IN (?");
+			for (int i=1; i<customerAccounts.size(); i++) {
+				sqlCallBuilder.append(",?");
 			}
+			sqlCallBuilder.append(") OR \"Sought Account Number\" IN (?");
+			for (int i=1; i<customerAccounts.size(); i++) {
+				sqlCallBuilder.append(",?");
+			}
+			sqlCallBuilder.append(")");
+			String sqlCall = sqlCallBuilder.toString();
+			PreparedStatement ps = connection.prepareStatement(sqlCall);
+			for (int j=0; j<2; j++) {
+				for (int i=0; i<customerAccounts.size(); i++) {
+					ps.setLong(j*customerAccounts.size()+i+1, customerAccounts.get(i).getAccountNumber());
+				}
+			}
+			
+			ResultSet rset = ps.executeQuery();
+
+			while (rset.next()) {
+				requests.add(new Request(rset.getString("Request ID"), rset.getString("Initiator's ID"),
+						rset.getBoolean("Pending"), rset.getLong("Requestor Account Number"),
+						rset.getLong("Sought Account Number"), rset.getDouble("Amount")));
+			}
+			
+			ps.close();
+			
+		} catch (ClassNotFoundException | SQLException e) {
+			loggy.error(e);
+			b = new BusinessException("Internal database error. Please contact your SYSADMIN.");
+			loggy.error(b);
+			throw b;
 		}
-		return customerRequests;
+		
+		return requests;
+//		List<Account> customerAccounts = getAccountsForCustomerId(customer.getId());
+//		List<Request> customerRequests = new ArrayList<>();
+//		for (Account ca : customerAccounts) {
+//			List<Request> accountPayments = getAllRequestsInvolvingAccount(ca);
+//			for (Request r : accountPayments) {
+//				customerRequests.add(r);
+//			}
+//		}
+//		return customerRequests;
 	}
 
 	public List<Request> getAllRequestsInvolvingAccount(Account ca) throws BusinessException {
@@ -1644,16 +2114,58 @@ public class BankOfBenDAO implements BankOfBenDAOInterface {
 
 	public List<Request> getAllRequestsInvolvingCustomerWithPendingStatus(Customer customer, boolean isPending) throws BusinessException {
 		List<Account> customerAccounts = getAccountsForCustomerId(customer.getId());
-		List<Request> customerRequests = new ArrayList<>();
-		for (Account ca : customerAccounts) {
-			List<Request> accountRequests = getAllRequestsInvolvingAccount(ca);
-			for (Request p : accountRequests) {
-				if (p.isPending()==isPending) {
-					customerRequests.add(p);
+		
+		List<Request> requests = new ArrayList<>();
+		
+		try(Connection connection = OracleDbConnection.getConnection()){
+			
+			StringBuilder sqlCallBuilder = new StringBuilder("SELECT * FROM bankofben_requests WHERE \"Pending\" = ? AND (\"Requestor Account Number\" IN (?");
+			for (int i=1; i<customerAccounts.size(); i++) {
+				sqlCallBuilder.append(",?");
+			}
+			sqlCallBuilder.append(") OR \"Sought Account Number\" IN (?");
+			for (int i=1; i<customerAccounts.size(); i++) {
+				sqlCallBuilder.append(",?");
+			}
+			sqlCallBuilder.append("))");
+			String sqlCall = sqlCallBuilder.toString();
+			PreparedStatement ps = connection.prepareStatement(sqlCall);
+			ps.setBoolean(1, true);
+			for (int j=0; j<2; j++) {
+				for (int i=0; i<customerAccounts.size(); i++) {
+					ps.setLong(j*customerAccounts.size()+i+2, customerAccounts.get(i).getAccountNumber());
 				}
 			}
+			
+			ResultSet rset = ps.executeQuery();
+
+			while (rset.next()) {
+				requests.add(new Request(rset.getString("Request ID"), rset.getString("Initiator's ID"),
+						rset.getBoolean("Pending"), rset.getLong("Requestor Account Number"),
+						rset.getLong("Sought Account Number"), rset.getDouble("Amount")));
+			}
+			
+			ps.close();
+			
+		} catch (ClassNotFoundException | SQLException e) {
+			loggy.error(e);
+			b = new BusinessException("Internal database error. Please contact your SYSADMIN.");
+			loggy.error(b);
+			throw b;
 		}
-		return customerRequests;
+		
+		return requests;
+//		List<Account> customerAccounts = getAccountsForCustomerId(customer.getId());
+//		List<Request> customerRequests = new ArrayList<>();
+//		for (Account ca : customerAccounts) {
+//			List<Request> accountRequests = getAllRequestsInvolvingAccount(ca);
+//			for (Request p : accountRequests) {
+//				if (p.isPending()==isPending) {
+//					customerRequests.add(p);
+//				}
+//			}
+//		}
+//		return customerRequests;
 	}
 
 	public List<Transfer> getTransfersInvolvingCustomer(Customer customer) throws BusinessException {
@@ -1694,12 +2206,17 @@ public class BankOfBenDAO implements BankOfBenDAOInterface {
 			ps.setString(1, paymentId);
 			int rowsUpdated = ps.executeUpdate();
 			if (rowsUpdated<1) {
-				throw new BusinessException("Internal database error. Could not delete payment with Payment ID "
+				b = new BusinessException("Internal database error. Could not delete payment with Payment ID "
 						+paymentId+". Contact your SYSADMIN");
+				loggy.error(b);
+				throw b;
 			}
 			ps.close();
 		} catch (ClassNotFoundException | SQLException e) {
-			throw new BusinessException("Internal database error. Please contact your SYSADMIN.");
+			loggy.error(e);
+			b = new BusinessException("Internal database error. Please contact your SYSADMIN.");
+			loggy.error(b);
+			throw b;
 		}
 	}
 
@@ -1711,12 +2228,17 @@ public class BankOfBenDAO implements BankOfBenDAOInterface {
 			ps.setString(1, requestId);
 			int rowsUpdated = ps.executeUpdate();
 			if (rowsUpdated<1) {
-				throw new BusinessException("Internal database error. Could not delete request with Request ID "
+				b = new BusinessException("Internal database error. Could not delete request with Request ID "
 						+requestId+". Contact your SYSADMIN");
+				loggy.error(b);
+				throw b;
 			}
 			ps.close();
 		} catch (ClassNotFoundException | SQLException e) {
-			throw new BusinessException("Internal database error. Please contact your SYSADMIN.");
+			loggy.error(e);
+			b = new BusinessException("Internal database error. Please contact your SYSADMIN.");
+			loggy.error(b);
+			throw b;
 		}
 	}
 
@@ -1727,7 +2249,9 @@ public class BankOfBenDAO implements BankOfBenDAOInterface {
 		} else if (requestExists(transferId)) {
 			deleteRequest(transferId);
 		} else {
-			throw new BusinessException("No payment or request exists with ID "+transferId);
+			b = new BusinessException("No payment or request exists with ID "+transferId);
+			loggy.error(b);
+			throw b;
 		}
 	}
 
@@ -1760,7 +2284,10 @@ public class BankOfBenDAO implements BankOfBenDAOInterface {
 			cs.close();
 			
 		} catch (ClassNotFoundException | SQLException e) {
-			throw new BusinessException("Internal database error. Please contact your SYSADMIN.");
+			loggy.error(e);
+			b = new BusinessException("Internal database error. Please contact your SYSADMIN.");
+			loggy.error(b);
+			throw b;
 		}
 		
 		return transaction;
@@ -1785,7 +2312,9 @@ public class BankOfBenDAO implements BankOfBenDAOInterface {
 			}
 			
 		} catch (ClassNotFoundException | SQLException e) {
-			throw new BusinessException("Internal database error. Please contact your SYSADMIN.");
+			loggy.error(e);
+			b = new BusinessException("Internal database error. Please contact your SYSADMIN.");
+			throw b;
 		}
 		
 		return transactions;
@@ -1813,7 +2342,10 @@ public class BankOfBenDAO implements BankOfBenDAOInterface {
 			ps.close();
 			
 		} catch (ClassNotFoundException | SQLException e) {
-			throw new BusinessException("Internal database error. Please contact your SYSADMIN.");
+			loggy.error(e);
+			b = new BusinessException("Internal database error. Please contact your SYSADMIN.");
+			loggy.error(b);
+			throw b;
 		}
 		
 		return transactions;

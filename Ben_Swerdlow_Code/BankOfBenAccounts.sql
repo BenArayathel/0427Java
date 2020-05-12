@@ -156,3 +156,62 @@ SELECT CUSTOMER_SEQ.nextval FROM dual;
 
 SELECT * FROM bankofben_employees WHERE "Username"='michaelscarn' AND "Password"='Ih34rtH0lly!';
 
+ALTER TABLE bankofben_accounts ADD "Pending" NUMBER CHECK("Pending">-1 AND "Pending"<2);
+
+UPDATE bankofben_accounts SET "Pending"=0;
+
+ALTER TABLE bankofben_accounts MODIFY "Pending" DEFAULT 1;
+
+ALTER TABLE bankofben_accounts MODIFY "Pending" NOT NULL;
+
+DECLARE
+ACTN NUMBER(10);
+N_IDS NUMBER;
+BEGIN
+    CREATEACCOUNT(ACTN, 100, 'CUCAAA2000100000', N_IDS);
+END;
+
+DECLARE
+    "Customer ID" VARCHAR(20);
+BEGIN
+    CREATECUSTOMER(
+        "Customer ID",
+        'Ian',
+        'Jacob',
+        'Khan',
+        'Larson',
+        to_date('08/16/1983', 'mm/dd/yyyy'),
+        778449013,
+        'iajakh@gmail.com',
+        4079993450,
+        'iajakh',
+        '!!H0rs3!!');
+END;
+
+
+DECLARE
+ACTN NUMBER(10);
+N_IDS NUMBER;
+BEGIN
+    CREATEACCOUNT(ACTN, 132.18, 'CUCAAA2000100000', N_IDS);
+END;
+
+BEGIN
+    removecustomerandaccounts('CUKHIA1983100240');
+END;
+
+BEGIN
+    removeaccountnotcustomer(9180651690);
+END;
+
+ALTER TABLE bankofben_accounts DROP CONSTRAINT "FK Customer ID";
+DELETE FROM bankofben_accounts WHERE "Account Number"=9180651690;
+ALTER TABLE bankofben_accounts ADD CONSTRAINT "FK Customer ID" FOREIGN KEY ("Customer ID") 
+    REFERENCES bankofben_customers("Customer ID");
+
+--This is to test a psuedo-cascade delete
+ALTER TABLE bankofben_accounts DROP CONSTRAINT "FK Customer ID";
+DELETE FROM bankofben_customers WHERE "Customer ID"='CUROBE1986100229';
+DELETE FROM bankofben_accounts WHERE "Customer ID"='CUROBE1986100229';
+ALTER TABLE bankofben_accounts ADD CONSTRAINT "FK Customer ID" FOREIGN KEY ("Customer ID") 
+    REFERENCES bankofben_customers("Customer ID");

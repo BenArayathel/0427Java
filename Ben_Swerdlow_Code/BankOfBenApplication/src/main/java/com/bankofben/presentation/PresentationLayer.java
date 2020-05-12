@@ -4,8 +4,10 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Scanner;
+import java.util.Map.Entry;
 
 import org.apache.log4j.Logger;
 import org.apache.log4j.Level;
@@ -37,14 +39,10 @@ public class PresentationLayer {
 	 * answer. Mention best practices you used.
 	 * 
 	 * should not use sysout, should only be log.info and log.error
-	 * 		NEED TO EDIT TO MAKE THIS HAPPEN
 	 * 
 	 * Can have dummy data to speed up presentation, but should show all functionality
 	 * 
 	 * Project due on Monday, May 11, presentation on Wednesday, May 13
-	 * 
-	 * QUIZ WILL STILL BE ON MONDAY
-	 * 		WILL COVER ONLY SQL, SEE QUESTION BANK!!!!
 	 * 
 	 */
 
@@ -86,23 +84,36 @@ public class PresentationLayer {
 				try {
 					user = pl.requestUserInfo(sc);
 				} catch (BusinessException e) {
-					loggy.info(e.getMessage());
+					loggy.info(e.getMessage()+"\nPlease try again.");
 					pl.printInvalidRegistrationMessage();
 				}
 				if (user!=null) {
+					boolean exists = false;
 					try {
-						bl.applyForAccount(user);
+						exists = bl.userExists(user.getUsername());
+						if (!exists) {
+							double startingBalance = UserInterface.requestStartingBalance(sc);
+							user = bl.applyForAccount_newUser(user, startingBalance);
+							loggy.info("Thank you for applying for your account. Your application will be reviewed by a "
+									+ "Bank of Ben employee in a timely manner.");
+						}
 					} catch (BusinessException e) {
-						loggy.info(e.getMessage());
+						loggy.info(e.getMessage()+"\nPlease try again.");
 					}
 					userResponseValidated = true;
 				}
 			} else if (response.equalsIgnoreCase("login")) {
 				try {
 					user = pl.requestLoginUserInfo(sc);
+					if(!bl.userExists(user.getUsername())) {
+						double startingBalance = UserInterface.requestStartingBalance(sc);
+						user = bl.applyForAccount_newUser(user, startingBalance);
+						loggy.info("Thank you for applying for your account. Your application will be reviewed by a "
+								+ "Bank of Ben employee in a timely manner.");
+					}
 				} catch (BusinessException e) {
-					loggy.info(e.getMessage());
-					pl.printInvalidLoginMessage();
+					loggy.info(e.getMessage()+"\nPlease try again.");
+//					pl.printInvalidLoginMessage();
 				}
 				if (user!=null) {
 					userResponseValidated = true;
@@ -128,7 +139,7 @@ public class PresentationLayer {
 					try {
 						accountView = bl.viewBalances(customer);
 					} catch (BusinessException e) {
-						loggy.info(e.getMessage());
+						loggy.info(e.getMessage()+"\nPlease try again.");
 					}
 					loggy.info(accountView);
 					
@@ -137,15 +148,11 @@ public class PresentationLayer {
 					Account account = null;
 					try {
 						account = pl.requestCustomerSelectAccountForDeposit(customer, sc);
-					} catch (BusinessException e) {
-						loggy.info(e.getMessage());
-					}
-					
-					double deposit = pl.requestDepositAmount(account.getBalance(), sc);
-					try {
+						double deposit = pl.requestDepositAmount(account.getBalance(), sc);
 						bl.makeDeposit(deposit, account, customer);
+						loggy.info("Deposit successful!\nNew Balance in account "+account.getAccountNumber()+": "+account.getBalance());
 					} catch (BusinessException e) {
-						loggy.info(e.getMessage());
+						loggy.info(e.getMessage()+"\nPlease try again.");
 					}
 					
 				} else if (response.equalsIgnoreCase("withdraw")) {
@@ -153,28 +160,24 @@ public class PresentationLayer {
 					Account account = null;
 					try {
 						account = pl.requestCustomerSelectAccountForWithdrawal(customer, sc);
-					} catch (BusinessException e) {
-						loggy.info(e.getMessage());
-					}
-					
-					double withdrawal = pl.requestDepositAmount(account.getBalance(), sc);
-					try {
+						double withdrawal = pl.requestWithdrawalAmount(account.getBalance(), sc);
 						bl.makeWithdrawal(withdrawal, account, customer);
+						loggy.info("Withdrawal successful!\nNew Balance in account "+account.getAccountNumber()+": "+account.getBalance());
 					} catch (BusinessException e) {
-						loggy.info(e.getMessage());
+						loggy.info(e.getMessage()+"\nPlease try again.");
 					}
 					
 				} else if (response.equalsIgnoreCase("transfers")) {
 					boolean exitTransfers = false;
 					boolean selectingOptions = false;
+					List<Transfer> transfers = null;
 					while (!exitTransfers) {
 						selectingOptions = true;
 						String transferResponse = null;
-						List<Transfer> transfers = null;
 						try {
 							transfers = bl.getTransfers(customer);
 						} catch (BusinessException e) {
-							loggy.info(e.getMessage());
+							loggy.info(e.getMessage()+"\nPlease try again.");
 							break;
 						}
 						if (transfers.size()==0) {
@@ -306,11 +309,18 @@ public class PresentationLayer {
 						}
 					}
 				} else if (response.equalsIgnoreCase("apply")) {
-					
+					double startingBalance=0;
 					try {
-						customer = bl.applyForAccount(customer);
+						startingBalance = UserInterface.requestStartingBalance(sc);
 					} catch (BusinessException e) {
-						loggy.info(e.getMessage());
+						loggy.info(e.getMessage()+"\nPlease try again.");
+					}
+					try {
+						customer = bl.applyForAccount(customer, startingBalance);
+						loggy.info("Thank you for applying for your account. Your application will be reviewed by a "
+								+ "Bank of Ben employee in a timely manner.");
+					} catch (BusinessException e) {
+						loggy.info(e.getMessage()+"\nPlease try again.");
 					}
 					
 				} else if (response.equalsIgnoreCase("quit")) {
@@ -354,10 +364,70 @@ public class PresentationLayer {
 						}
 					}
 				} else if (response.equalsIgnoreCase("applications")) {
-					try {
-						loggy.info(bl.viewPendingApplications());
-					} catch (BusinessException e) {
-						loggy.info(e.getMessage());
+					String applicationMenuOption = null;
+					boolean workingOnApplications = true;
+					while (workingOnApplications) {
+						loggy.info("Type \"new\" to view all new customer account applications.\n"
+								+ "Type \"all\" to view account applications for all customers.");
+						applicationMenuOption = sc.nextLine();
+						if (applicationMenuOption.equalsIgnoreCase("new")) {
+							try {
+								HashMap<Customer, List<Account>> newCustomerAccountsMap = bl.makeNewCustomerPendingAccountsMap();
+								loggy.info(pl.viewCustomerAccountMap(newCustomerAccountsMap));
+								Account a = pl.requestAccountByAccountNumber(sc);
+								if (a==null) break;
+								boolean selectedAcceptOrReject = false;
+								String responseApproveOrReject = null;
+								while (!selectedAcceptOrReject) {
+									pl.printApproveOrRejectApplicationNotice(a);
+									responseApproveOrReject = sc.nextLine();
+									if (responseApproveOrReject.equalsIgnoreCase("approve")) {
+										bl.approveNewCustomerAccountApplication(a);
+										loggy.info("You have approved the application for account number "+a.getAccountNumber()
+										+" for new customer "+a.getCustomerId()+".");
+									} else if(responseApproveOrReject.equalsIgnoreCase("reject")) {
+										bl.rejectNewCustomerAccountApplication(a);
+										loggy.info("You have rejected the application for account number "+a.getAccountNumber()
+											+" for customer "+a.getCustomerId()+". This customer has been removed from our records.");
+									} else {
+										pl.printInvalidResponseMessage(responseApproveOrReject);
+									}
+								}
+							} catch (BusinessException e) {
+								loggy.info(e.getMessage()+"\nPlease try again later.");
+								workingOnApplications=false;
+							}
+						} else if (applicationMenuOption.equalsIgnoreCase("all")) {
+							try {
+								HashMap<Customer, List<Account>> customerPendingAccountsMap = bl.makePendingAccountsMap();
+								loggy.info(pl.viewCustomerAccountMap(customerPendingAccountsMap));
+								Account a = pl.requestAccountByAccountNumber(sc);
+								if (a==null) break;
+								boolean selectedAcceptOrReject = false;
+								String responseApproveOrReject = null;
+								while (!selectedAcceptOrReject) {
+									pl.printApproveOrRejectApplicationNotice(a);
+									responseApproveOrReject = sc.nextLine();
+									if (responseApproveOrReject.equalsIgnoreCase("approve")) {
+										bl.approveExistingCustomerAccountApplication(a);
+										loggy.info("You have approved the application for account number "+a.getAccountNumber()
+										+" for customer "+a.getCustomerId()+".");
+									} else if(responseApproveOrReject.equalsIgnoreCase("reject")) {
+										bl.rejectExistingCustomerAccountApplication(a);
+										loggy.info("You have rejected the application for account number "+a.getAccountNumber()
+											+" for customer "+a.getCustomerId()+". If this customer was not an already existing customer,"
+											+ " their information has been removed from our records.");
+									} else {
+										pl.printInvalidResponseMessage(responseApproveOrReject);
+									}
+								}
+							} catch (BusinessException e) {
+								loggy.info(e.getMessage()+"\nPlease try again later.");
+								workingOnApplications=false;
+							}
+						} else {
+							pl.printInvalidResponseMessage(applicationMenuOption);
+						}
 					}
 				} else if (response.equalsIgnoreCase("log")) {
 					boolean choosingLogViews = true;
@@ -400,17 +470,36 @@ public class PresentationLayer {
 				}
 			}
 		} else {
-			try {
-				bl.applyForAccount_returnNothing(user);
-				loggy.info("Thank you for applying for your account. Your application will be reviewed by a "
-						+ "Bank of Ben employee in a timely manner.");
-			} catch (BusinessException e) {
-				loggy.info(e.getMessage());
-			}
-			loggy.info("Exiting the Bank of Ben Application. Goodbye!");
-			System.exit(0);
+			loggy.info("The Bank of Ben has no further functionality for this user at this time. Please check back again soon for updates!");
 		}
 		
+	}
+
+	private Account requestAccountByAccountNumber(Scanner sc) {
+		String accountString = null;
+		boolean selectedAccount = false;
+		Account account = null;
+
+		while(!selectedAccount) {
+			loggy.info("Please type in the account number for the application you would like to accept or reject. Please type \"cancel\" to cancel.");
+			accountString = sc.nextLine();
+			if (accountString.equalsIgnoreCase("cancel")) {
+				break;
+			}
+			while (!accountString.matches("[0-9]{10}")) {
+				loggy.info("Your entry "+accountString+" is not a valid account number. Account numbers should be positive 10-digit numbers.\n"
+						+ "Please try again.");
+				loggy.info("Please type in the account number for the application you would like to accept or reject.");
+				accountString = sc.nextLine();
+			}
+			try {
+				account = bl.getAccount(bl.validateAccountNumber(accountString), Account.getRoutingNumber());
+				selectedAccount = true;
+			} catch (BusinessException e) {
+				loggy.info(e.getMessage()+"\nPlease try again.");
+			}
+		}
+		return account;
 	}
 
 	public void printInvalidResponseMessage(String response) {
@@ -484,7 +573,6 @@ public class PresentationLayer {
 	
 	public void printEmployeeGreeting(Employee employee) {
 		loggy.info("Welcome "+employee.getFirstName()+" "+employee.getLastName()+"!");
-		loggy.info("Please select from the following options:");
 	}
 	
 	public void printEmployeeOptions() {
@@ -517,13 +605,20 @@ public class PresentationLayer {
 		loggy.info("Type any whole number to view that number of most recent log entries.");
 		loggy.info("Type \"back\" if you would like to go back to the other employee options.");
 	}
+
+	public void printApproveOrRejectApplicationNotice(Account a) {
+		loggy.info("Please type \"approve\" to approve the account application.\n"
+				+ "\tApproving will permanently store the information concerning customer "+a.getCustomerId()
+				+" and create their account with account number "+a.getAccountNumber()+".\n"
+				+ "Please type \"reject\" to reject the account application.\n"
+				+ "\tRejecting will permanently delete the account with account number "+a.getAccountNumber()
+				+ " and, if the user is not an already existing customer, will remove their data from the database.");
+	}
 	
 	public User requestUserInfo(Scanner sc) throws BusinessException {
 		User user = null;
 		registrationDisclaimer();
 		String email = UserInterface.requestEmail(sc);
-		String username = UserInterface.requestUsername(sc);
-		long ssn = UserInterface.requestSsn(sc);
 		boolean loginRequested = false;
 		boolean goBack = false;
 		while (bl.emailExists(email)) {
@@ -540,6 +635,10 @@ public class PresentationLayer {
 			} else {
 				email = UserInterface.requestEmail(sc);
 			}
+		}
+		String username=null;
+		if (!loginRequested) {
+			username = UserInterface.requestUsername(sc);
 		}
 		while (bl.userExists(username) && !(loginRequested)) {
 			loggy.info("The username "+username+" already exists. Would you like to login?\n"
@@ -560,6 +659,11 @@ public class PresentationLayer {
 				username = UserInterface.requestUsername(sc);
 			}
 		}
+		long ssn=0;
+		if (!loginRequested) {
+			ssn = UserInterface.requestSsn(sc);
+		}
+//		long ssn = UserInterface.requestSsn(sc);
 		while (bl.userExists(ssn) && !(loginRequested)){
 			loggy.info("The ssn "+ssn+" already exists. Would you like to login?\n" 
 					+ "(yes or y to confirm, back or b to go back)");
@@ -609,8 +713,25 @@ public class PresentationLayer {
 	}
 	
 	public User requestLoginUserInfo(Scanner sc) throws BusinessException {
-		String username = UserInterface.requestUsername(sc);
-		return pl.loginUser(username, sc);
+		User user = null;
+		String username = null;
+		String response = null;
+		boolean loggedIn = false;
+		while (!loggedIn) {
+			username = UserInterface.requestUsername(sc);
+			if (bl.userExists(username)) {
+				user = pl.loginUser(username, sc);
+				loggedIn = true;
+			} else {
+				loggy.info("A user with username "+username+" does not exist. Would you like to register instead? (yes or y to confirm)");
+				response = sc.nextLine();
+				if (response.equalsIgnoreCase("yes") || response.equalsIgnoreCase("y")) {
+					user = pl.requestUserInfo(sc);
+					loggedIn = true;
+				}
+			}
+		}
+		return user;
 	}
 	
 	public User loginUser(String username, Scanner sc) throws BusinessException {
@@ -632,9 +753,9 @@ public class PresentationLayer {
 		}
 //		loggy.info(user);
 		if (loginAttempts >= 4) {
-			throw new BusinessException("Limit of password attempts exceeded. Please try again later.");
+			throw new BusinessException("Limit of password attempts exceeded.");
 		} else if (user==null) {
-			throw new BusinessException("Could not log in user with these credentials. Please try again later.");
+			throw new BusinessException("Could not log in user with these credentials.");
 		}
 		return user;
 	}
@@ -764,6 +885,7 @@ public class PresentationLayer {
 					transferEntryString = sc.nextLine();
 					if (transferEntryString.equalsIgnoreCase("accept")) {
 						transfer = transfers.get(transferIndex);
+						break;
 					} else if (transferEntryString.equalsIgnoreCase("back")) {
 						acceptingTransfers=false;
 					}
@@ -806,6 +928,7 @@ public class PresentationLayer {
 					transferEntryString = sc.nextLine();
 					if (transferEntryString.equalsIgnoreCase("reject")) {
 						transfer = transfers.get(transferIndex);
+						break;
 					} else if (transferEntryString.equalsIgnoreCase("back")) {
 						rejectingTransfers=false;
 					}
@@ -827,54 +950,66 @@ public class PresentationLayer {
 			} else if (t instanceof Request) {
 				requests.add((Request) t);
 			} else {
-				throw new BusinessException("Unrecognized transfer type "+transfers.getClass()+". Please contact a Bank of Ben"
+				BusinessException b = new BusinessException("Unrecognized transfer type "+transfers.getClass()+". Please contact a Bank of Ben"
 						+ "employee to remedy this issue.");
+				loggy.error(b);
+				throw b;
 			}
 		}
 		
 		int counter = 0;
 		Customer customer = null;
 		
-		String[] paymentHeadingNames = {"Payment ID", "Initiator's Name (Last, First)", "Receiving Account #", "Amount", "Status"};
-		System.out.print("PENDING PAYMENTS");
+		String[] paymentHeadingNames = {"Payment ID", "Initiator", "Receiving Account #", "Amount", "Status"};
+		loggy.info("PENDING PAYMENTS");
+		StringBuilder sb = new StringBuilder();
+		sb.append("No.");
 		for (int i=0; i<paymentHeadingNames.length; i++) {
-			System.out.print("\t|\t"+paymentHeadingNames[i]);
+			sb.append("\t|\t"+paymentHeadingNames[i]);
 		}
-		System.out.print("\n");
+		sb.append("\t|");
+		loggy.info(sb);
 		for (Payment p : payments) {
+			sb = new StringBuilder();
 			counter++;
-			loggy.info(counter+"\t|\t");
-			System.out.print(p.getId()+"\t|\t");
+			sb.append(counter+"\t|\t");
+			sb.append(p.getId()+"\t|\t");
 			customer = dbs.getCustomerById(p.getInitUserId());
-			System.out.print(customer.getLastName()+", "+customer.getFirstName()+"\t|\t");
-			System.out.print(p.getReceivingAccountNumber()+"\t|\t");
-			System.out.print(p.getAmount()+"\t|\t");
+			sb.append(customer.getLastName()+", "+customer.getFirstName()+"\t|\t");
+			sb.append(p.getReceivingAccountNumber()+"\t|\t");
+			sb.append(p.getAmount()+"\t|\t");
 			if (p.isPending()) {
-				loggy.info("Pending");
+				sb.append("Pending\t|");
 			} else {
-				loggy.info("Accepted");
+				sb.append("Accepted\t|");
 			}
+			loggy.info(sb);
 		}
 		
-		String[] requestHeadingNames = {"Request ID", "Initiator's Name (Last, First)", "Source Account #", "Amount", "Status"};
-		System.out.print("PENDING REQUESTS");
+		String[] requestHeadingNames = {"Request ID", "Initiator", "Source Account #", "Amount", "Status"};
+		loggy.info("PENDING REQUESTS");
+		sb = new StringBuilder();
+		sb.append("No.");
 		for (int i=0; i<requestHeadingNames.length; i++) {
-			System.out.print("\t|\t"+requestHeadingNames[i]);
+			sb.append("\t|\t"+requestHeadingNames[i]);
 		}
-		System.out.print("\n");
+		sb.append("\t|");
+		loggy.info(sb);
 		for (Request r : requests) {
+			sb = new StringBuilder();
 			counter++;
-			loggy.info(counter+"\t|\t");
-			System.out.print(r.getId()+"\t|\t");
+			sb.append(counter+"\t|\t");
+			sb.append(r.getId()+"\t|\t");
 			customer = dbs.getCustomerById(r.getInitUserId());
-			System.out.print(customer.getLastName()+", "+customer.getFirstName()+"\t|\t");
-			System.out.print(r.getSoughtAccountNumber()+"\t|\t");
-			System.out.print(r.getAmount()+"\t|\t");
+			sb.append(customer.getLastName()+", "+customer.getFirstName()+"\t|\t");
+			sb.append(r.getSoughtAccountNumber()+"\t|\t");
+			sb.append(r.getAmount()+"\t|\t");
 			if (r.isPending()) {
-				loggy.info("Pending");
+				sb.append("Pending\t|");
 			} else {
-				loggy.info("Accepted");
+				sb.append("Accepted\t|");
 			}
+			loggy.info(sb);
 		}
 	}
 
@@ -890,50 +1025,87 @@ public class PresentationLayer {
 			} else if (t instanceof Request) {
 				requests.add((Request) t);
 			} else {
-				throw new BusinessException("Unrecognized transfer type "+transfers.getClass()+". Please contact a Bank of Ben"
+				BusinessException b = new BusinessException("Unrecognized transfer type "+transfers.getClass()+". Please contact a Bank of Ben"
 						+ "employee to remedy this issue.");
+				loggy.error(b);
+				throw b;
 			}
 		}
 		
 		Customer customer = null;
 		
-		String[] paymentHeadingNames = {"Payment ID", "Initiator's Name (Last, First)", "Receiving Account #", "Amount", "Status"};
-		System.out.print("PENDING PAYMENTS\n");
-		for (int i=0; i<paymentHeadingNames.length; i++) {
-			System.out.print("\t|\t"+paymentHeadingNames[i]);
+		String[] paymentHeadingNames = {"Payment ID", "Initiator", "Rec. Acct. #", "Amount", "Status"};
+		loggy.info("PENDING PAYMENTS\n");
+		StringBuilder sb = new StringBuilder();
+		sb.append(paymentHeadingNames[0]);
+		for (int i=1; i<paymentHeadingNames.length; i++) {
+			sb.append("\t|\t"+paymentHeadingNames[i]);
 		}
-		System.out.print("\n");
+		sb.append("\t|");
+		loggy.info(sb);
 		for (Payment p : payments) {
-			System.out.print(p.getId()+"\t|\t");
+			sb = new StringBuilder();
+			sb.append(p.getId()+"\t|\t");
 			customer = dbs.getCustomerById(p.getInitUserId());
-			System.out.print(customer.getLastName()+", "+customer.getFirstName()+"\t|\t");
-			System.out.print(p.getReceivingAccountNumber()+"\t|\t");
-			System.out.print(p.getAmount()+"\t|\t");
+			sb.append(customer.getLastName()+", "+customer.getFirstName()+"\t|\t");
+			sb.append(p.getReceivingAccountNumber()+"\t|\t");
+			sb.append(p.getAmount()+"\t|\t");
 			if (p.isPending()) {
-				loggy.info("Pending");
+				sb.append("Pending\t|");
 			} else {
-				loggy.info("Accepted");
+				sb.append("Accepted\t|");
 			}
+			loggy.info(sb);
 		}
-		
-		String[] requestHeadingNames = {"Request ID", "Initiator's Name (Last, First)", "Source Account #", "Amount", "Status"};
-		System.out.print("PENDING REQUESTS\n");
-		for (int i=0; i<requestHeadingNames.length; i++) {
-			System.out.print("\t|\t"+requestHeadingNames[i]);
+		loggy.info("\n");
+		String[] requestHeadingNames = {"Request ID", "Initiator", "Src. Acct. #", "Amount", "Status"};
+		loggy.info("PENDING REQUESTS\n");
+		sb = new StringBuilder();
+		sb.append(requestHeadingNames[0]);
+		for (int i=1; i<requestHeadingNames.length; i++) {
+			sb.append("\t|\t"+requestHeadingNames[i]);
 		}
-		System.out.print("\n");
+		sb.append("\t|");
+		loggy.info(sb);
 		for (Request r : requests) {
-			System.out.print(r.getId()+"\t|\t");
+			sb = new StringBuilder();
+			sb.append(r.getId()+"\t|\t");
 			customer = dbs.getCustomerById(r.getInitUserId());
-			System.out.print(customer.getLastName()+", "+customer.getFirstName()+"\t|\t");
-			System.out.print(r.getSoughtAccountNumber()+"\t|\t");
-			System.out.print(r.getAmount()+"\t|\t");
+			sb.append(customer.getLastName()+", "+customer.getFirstName()+"\t|\t");
+			sb.append(r.getSoughtAccountNumber()+"\t|\t");
+			sb.append(r.getAmount()+"\t|\t");
 			if (r.isPending()) {
-				loggy.info("Pending");
+				sb.append("Pending\t|");
 			} else {
-				loggy.info("Accepted");
+				sb.append("Accepted\t|");
+			}
+			loggy.info(sb);
+		}
+	}
+
+	public String viewCustomerAccountMap(HashMap<Customer, List<Account>> accountsMap) throws BusinessException {
+		StringBuilder outputBuilder = new StringBuilder();
+//		// We'll start by organizing the columns
+//		outputBuilder.append("Last Name\t|\tFirst Name\t|\tDate of Birth\t|\t"
+//				+ "SSN\t|\tEmail\t|\tPhone #\t|\tUsername\t|\tApplication Pending");
+		// Now we get the content
+		Customer c = null;
+		for (Entry<Customer, List<Account>> entry : accountsMap.entrySet()) {
+			c = entry.getKey();
+			outputBuilder.append("Name: "+c.getLastName()+", "+c.getFirstName()+", "
+					+ "Username: "+c.getUsername()+", DOB: "+c.getDob()+", SSN: "+c.getSsn()
+					+", Email: "+c.getEmail()+", Phone #: "+c.getPhoneNumber());
+			if (c.isApplicationPending()) {
+				outputBuilder.append(", New Customer Application Pending\n");
+			} else {
+				outputBuilder.append(", Existing Customer\n");
+			}
+			for (Account a : entry.getValue()) {
+				outputBuilder.append("Pending Act. #: "+a.getAccountNumber()+", Starting Balance: "+a.getBalance());
 			}
 		}
+		// And... we return the content
+		return outputBuilder.toString();
 	}
 
 }
