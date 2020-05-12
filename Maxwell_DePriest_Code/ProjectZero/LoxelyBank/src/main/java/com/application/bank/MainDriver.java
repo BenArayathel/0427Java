@@ -18,7 +18,7 @@ import org.apache.log4j.Logger;
 public class MainDriver {
 	final static Logger loggy = Logger.getLogger(User.class);
 
-	public static void main(String[] args) {
+	public void intro() {
 		UserDaoImpl uDI = new UserDaoImpl();
 		AccountDaoImpl aDI = new AccountDaoImpl();
 		AccountServiceImpl aSI = new AccountServiceImpl();
