@@ -50,7 +50,7 @@ public class Service {
 		if (username.matches("[a-zA-Z0-9]{3,15}")) { // {3,20} means {min,max}
 			b = true;
 		} else {
-			log.warn("Invalid, username must be between [3-15] alphanumeric characters.");
+			log.error("Invalid, username must be between [3-15] alphanumeric characters.");
 		}
 		return b;
 	}
@@ -60,7 +60,7 @@ public class Service {
 		if (password.matches("(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*_]).{8,}")) {
 			b = true;
 		} else {
-			log.warn("Invalid, password must be a minimum of 8 characters including 1 uppercase, 1 lowercase, 1 digit, and 1 special character [!@#$%^&*_].");
+			log.error("Invalid, password must be a minimum of 8 characters including 1 uppercase, 1 lowercase, 1 digit, and 1 special character [!@#$%^&*_].");
 		}
 		return b;
 	}
@@ -70,7 +70,7 @@ public class Service {
 		if (amount.matches("^\\d{1,5}")) {
 			b = true;
 		} else {
-			log.warn("Invalid, amount must be whole numbers between 1-5 digits long.");
+			log.error("Invalid, amount must be whole numbers between 1-5 digits long.");
 		}
 		return b;
 	}

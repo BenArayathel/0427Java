@@ -113,7 +113,7 @@ public class Main {
 										Account dummyAcc3 = dao.getAccount(inputUsername);
 										double dummyBal3 = dummyAcc3.getBalance();
 										if ((dummyBal3 - withdrawAmount) < 0) {
-											log.warn("Cannot withdraw more than $" + dummyBal3 + ".");
+											log.error("Cannot withdraw more than $" + dummyBal3 + ".");
 										} else {
 											dummyBal3 -= withdrawAmount;
 										}
@@ -135,7 +135,7 @@ public class Main {
 										}
 										double transferWithdrawAmount = Double.parseDouble(inputTransferAmount);
 										if ((payerBalance - transferWithdrawAmount) < 0) {
-											log.warn("Cannot withdraw more than $" + payerBalance + ".");
+											log.error("Cannot withdraw more than $" + payerBalance + ".");
 										} else {
 											payerBalance -= transferWithdrawAmount;
 										}

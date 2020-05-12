@@ -1,4 +1,5 @@
 import dbutil.OracleConnection;
+import exception.BusinessException;
 import model.Account;
 import org.apache.log4j.Logger;
 
@@ -26,12 +27,13 @@ public class DAOImp implements DAO {
 			cs.setString(5, account.getType());
 			cs.execute();
 		} catch (ClassNotFoundException | SQLException e) {
-			log.warn("Account " + account.getUsername() + " already exists in the database.");
+			log.info("Account " + account.getUsername() + " already exists in the database.");
+			log.error("User attempted to create a duplicate account.", new BusinessException());
 		}
 	}
 
 	@Override // Updates existing account in DB
-	public void updateAccount(Account account) {
+	public void updateAccount(Account account) throws BusinessException {
 		try (Connection conn = OracleConnection.getConn()) {
 			String sql = "UPDATE bank SET username=?, password=?, name=?, balance=?, type=? WHERE username='" + account.getUsername() + "'";
 			PreparedStatement ps = conn.prepareStatement(sql);
@@ -42,12 +44,12 @@ public class DAOImp implements DAO {
 			ps.setString(5, account.getType());
 			ps.executeUpdate();
 		} catch (ClassNotFoundException | SQLException e) {
-			e.printStackTrace();
+			log.error("Internal error, unable to update account.", new BusinessException());
 		}
 	}
 
 	@Override // Returns all accounts
-	public List<Account> getAllAccounts() {
+	public List<Account> getAllAccounts() throws BusinessException {
 		List<Account> accountList = new ArrayList<>(); // Creates an ArrayList to be spit out
 		try (Connection conn = OracleConnection.getConn()) {
 			String sql = "SELECT * FROM bank";
@@ -63,13 +65,13 @@ public class DAOImp implements DAO {
 				accountList.add(account); // ..continually add objects into ArrayList
 			}
 		} catch (ClassNotFoundException | SQLException e) {
-			e.printStackTrace();
+			log.error("Internal error, unable to fetch all accounts.", new BusinessException());
 		}
 		return accountList; // Spits out the now-populated ArrayList
 	}
 
 	@Override // Returns a single account by username
-	public Account getAccount(String username) {
+	public Account getAccount(String username) throws BusinessException {
 		Account account = new Account();
 		try (Connection conn = OracleConnection.getConn()) {
 			String sql = "SELECT * FROM bank WHERE username = '" + username + "'";
@@ -83,7 +85,7 @@ public class DAOImp implements DAO {
 				account.setType(rs.getString("type"));
 			}
 		} catch (ClassNotFoundException | SQLException e) {
-			e.printStackTrace();
+			log.error("Internal error, unable to fetch account.", new BusinessException());
 		}
 		return account;
 	}
@@ -113,7 +115,7 @@ public class DAOImp implements DAO {
 //		Account dummyAccount = dao.getAccount(account);
 //		double dummyBalance = dummyAccount.getBalance();
 //		if ((dummyBalance - withdrawAmount) < 0) {
-//			log.warn("Cannot withdraw more than $" + dummyBalance + ".");
+//			log.error("Cannot withdraw more than $" + dummyBalance + ".");
 //		} else {
 //			dummyBalance -= withdrawAmount;
 //		}

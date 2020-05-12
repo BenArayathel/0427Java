@@ -2,6 +2,8 @@
   <dictionary name="TK Tran">
     <words>
       <w>createaccount</w>
+      <w>errorlog</w>
+      <w>infolog</w>
       <w>jdbc</w>
       <w>loggy</w>
       <w>xxxxxxxxxx</w>
