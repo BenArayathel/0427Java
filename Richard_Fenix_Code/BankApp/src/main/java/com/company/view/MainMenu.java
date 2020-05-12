@@ -32,6 +32,11 @@ public class MainMenu {
 	                OpenCustomerAccount openCustomerAccount = new OpenCustomerAccount();
 	                openCustomerAccount.displayForm();;
 	                break;
+	            case 4:
+	                //BankApp.loggy.info("applying for an account page...");
+	                OpenAdditionalAccount openAdditionalAccount = new OpenAdditionalAccount();
+	                openAdditionalAccount.displayForm();;
+	                break;
 	            case 0:
 	            	BankApp.loggy.info("\n *** Thank you for using my application. Have a great day! ***");
 	                break;
@@ -55,7 +60,11 @@ public class MainMenu {
 		BankApp.loggy.info("       ");
 		BankApp.loggy.info("       1. Sign On");
 		BankApp.loggy.info("       2. Enroll Now (must have an active account)");
-		BankApp.loggy.info("       3. Apply for an Account");
+		BankApp.loggy.info("       ");
+		BankApp.loggy.info("    Apply for new Account:");
+		BankApp.loggy.info("       ");
+		BankApp.loggy.info("       3. New Customer");
+		BankApp.loggy.info("       4. Existing Customer");
 		BankApp.loggy.info("       ");
 		BankApp.loggy.info("       0. Exit Program");
 		BankApp.loggy.info("       ");

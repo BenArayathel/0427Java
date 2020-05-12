@@ -5,6 +5,7 @@ import java.util.Scanner;
 import com.company.controller.BankServiceController;
 import com.company.model.Customer;
 import com.company.view.admin.AdminPage;
+import com.company.view.customer.CustomerPage;
 
 public class SignOn {
 	
@@ -26,7 +27,6 @@ public class SignOn {
         
         // validation method to check if user (login name and password exists in db) .
         // call controller to validate login account
-                
         
         Customer customer = bankServiceController.validateLogin(loginName, password);
         
@@ -36,10 +36,10 @@ public class SignOn {
         	
         	if (customer.getCustomerId() == 99999) {
         		AdminPage adminPage = new AdminPage();
-        		adminPage.AdminOptions();
+        		adminPage.adminOptions();
         	} else {
-        		// CustomerPage();
-            	BankApp.loggy.info("Display Customer Page.");
+        		CustomerPage customerPage = new CustomerPage();
+            	customerPage.customerOptions(customer);
         	}
         	
         } else {

@@ -16,5 +16,7 @@ public interface AccountDao {
 	
 	void deleteAccount(String accountId);
 	
-
+	List<Account> getAllAccountsByCustomerId(Integer customerId);
+	
+	
 }

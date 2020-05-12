@@ -31,7 +31,7 @@ public class AdminPage {
 	}
 
 	
-    public void AdminOptions() {
+    public void adminOptions() {
     	
     	//OpenCustomerAccount openCustomerAccount = new OpenCustomerAccount();
     	

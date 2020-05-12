@@ -37,6 +37,9 @@ public class AccountDaoJdbcImpl implements AccountDao{
     private static final String DELETE_ACCOUNT_SQL =
             "delete from account where account_id = ?";
 
+    // For list of accounts for customer to view
+    private static final String SELECT_ACCOUNT_BY_CUSTOMER_ID_SQL =
+            "select * from account where customer_id = ? and approved = ?";
 
 	
 	@Override
@@ -196,6 +199,44 @@ public class AccountDaoJdbcImpl implements AccountDao{
 			} catch(Exception ex){}
 		}
 		
+	}
+
+	@Override
+	public List<Account> getAllAccountsByCustomerId(Integer customerId) {
+		
+		List<Account> accounts = new ArrayList<Account>();
+
+		try(Connection conn = DriverManager.getConnection(URL, USERNAME, PASSWORD)) {
+			
+			ps = conn.prepareStatement(SELECT_ACCOUNT_BY_CUSTOMER_ID_SQL);
+			ps.setInt(1,customerId);
+			ps.setBoolean(2,true);
+			
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				Account account = new Account();
+				account.setAccountId(rs.getString("account_id"));
+		        account.setCustomerId(rs.getInt("customer_id"));
+		        account.setAccountType(rs.getString("account_type"));
+		        account.setBalance(rs.getBigDecimal("balance"));
+		        account.setApproved(rs.getBoolean("approved"));
+		        
+		        accounts.add(account);
+			}
+			
+			//accounts.forEach(c -> BankApp.loggy.info(c));
+
+		} catch (SQLException e) {
+				e.printStackTrace();
+		} finally {
+			try {
+				if(rs != null) rs.close();
+				if(ps != null) ps.close();
+			} catch(Exception ex){}
+		}
+		
+		return accounts;
 	}
 
 }

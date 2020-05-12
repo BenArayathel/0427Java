@@ -103,6 +103,36 @@ public class ServiceLayer {
 		
 	}
 	
+	public Boolean createAdditionalAccount(Integer customerId, String accountType, BigDecimal bigDecimalBalance) {
+		
+		Customer customer = new Customer();
+		customer = customerDao.getCustomer(customerId);
+		if (customer == null) {
+			return false;
+		}
+		
+		//Create and insert Account 
+		Account account = new Account();
+		account.setCustomerId(customer.getCustomerId());
+		account.setAccountType(accountType);
+		account.setBalance(bigDecimalBalance);
+		account.setApproved(false);
+		
+		account = accountDao.addAccount(account);
+		
+		// create and insert transactions in transaction table.
+		Transaction transaction = new Transaction();
+		transaction.setAccountId(account.getAccountId());
+		transaction.setTransactionType("INIT");
+		transaction.setAmount(bigDecimalBalance);
+        transaction.setTransTime(Timestamp.valueOf(LocalDateTime.now())); 
+        
+        transaction = transactionDao.addTransaction(transaction);
+
+		return true;
+	};
+
+	
 	public AccountViewModel getCustomerAccountDetail(String accountId) {
 
 		AccountViewModel avm = new AccountViewModel();
@@ -291,4 +321,15 @@ public class ServiceLayer {
     	return isRegistered;
     }
 
+    
+    public List<Account> getAccountListByCustomerId(Integer customerId) {
+    	List<Account> aList = new ArrayList<Account>();
+    	
+    	aList = accountDao.getAllAccountsByCustomerId(customerId);
+    	
+    	return aList;
+    	
+    }
+
+    
 }

@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
+import com.company.model.Account;
 import com.company.model.Customer;
 import com.company.model.Transaction;
 import com.company.service.ServiceLayer;
@@ -31,6 +32,11 @@ public class BankServiceController {
 		serviceLayer.createCustomerAccount(firstName, lastName, birthday, usState, accountType, bigDecimalBalance);
 	}
 	
+    public Boolean createAdditionalAccount(Integer customerId, String accountType, BigDecimal bigDecimalBalance) {
+    	return serviceLayer.createAdditionalAccount(customerId, accountType, bigDecimalBalance);
+    };
+
+	
 	public AccountViewModel getCustomerAccountDetail(String accountId) {
 		return serviceLayer.getCustomerAccountDetail(accountId);
 	}
@@ -46,6 +52,10 @@ public class BankServiceController {
     
     public Boolean registerUser(Integer customerId, String loginName, String password) {
     	return serviceLayer.registerUser(customerId, loginName, password);
+    }
+    
+    public List<Account> getAccountListByCustomerId(Integer customerId) {
+    	return serviceLayer.getAccountListByCustomerId(customerId);
     }
 
 }
