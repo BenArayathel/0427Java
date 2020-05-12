@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forms</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <style>
+        div#container {
+            width: 760px;
+            margin: 0px auto;
+            border: 3px solid red;
+            text-align: center;
+        }
+        h1 {
+            border-bottom: 3px solid red;
+            padding-bottom: 10px;
+        }
+        div.custom-control {
+            text-align: left;
+            padding-left: 100px;
+        }
+        button {
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+    <h1>Form Homework 05/11/2020 <span class="badge badge-secondary">New</span></h1>
+
+    <h4>Please Choose your Favorite Ice Cream Flavor...</h4>
+    <form method="GET" action="https://www.google.com/search?q=neapolitan+ice+cream&source=lnms&tbm=isch&sa=X&ved=2ahUKEwjHpsCgwq3pAhWRqp4KHa5zCMQQ_AUoAXoECBQQAw&biw=1280&bih=614&dpr=1.5">
+    <div class="custom-control custom-radio">
+        <input type="radio" id="customRadio1" name="customRadio" class="custom-control-input">
+        <label class="custom-control-label" for="customRadio1">Vanilla</label>
+      </div>
+      <div class="custom-control custom-radio">
+        <input type="radio" id="customRadio2" name="customRadio" class="custom-control-input">
+        <label class="custom-control-label" for="customRadio2">Strawberry</label>
+      </div>
+      <div class="custom-control custom-radio">
+        <input type="radio" id="customRadio3" name="customRadio" class="custom-control-input">
+        <label class="custom-control-label" for="customRadio3">Chocolate</label>
+      </div>
+
+      <button type="submit" class="btn btn-outline-danger">Submit</button>
+    </form>
+
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</body>
+</html>

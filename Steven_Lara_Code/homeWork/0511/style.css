@@ -1,0 +1,23 @@
+div#container { width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    border: 5px solid black;}
+header { background-color: red;
+        padding: 20px;
+        text-align: center;
+        color: white;}
+a { text-decoration: none;
+    display: inline-block;
+    margin-left: 200px;
+    margin-top: 30px;
+    background-color: red;
+    padding: 5px;
+    color: white;}
+div#contents { padding-left: 10px;
+                padding-right: 10px;}
+h3 { border-bottom: 3px solid black;
+    padding-bottom: 5px;}
+img { margin: 0px auto;} /* does not center tag probably a inline element instead of block */
+div#footer { background-color: red;
+    text-align: center;
+    color: white;}
