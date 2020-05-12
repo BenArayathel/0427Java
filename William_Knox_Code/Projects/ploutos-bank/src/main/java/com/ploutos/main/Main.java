@@ -13,10 +13,10 @@ import com.ploutos.model.Login;
 import com.ploutos.service.PloutosService;
 import com.ploutos.service.PloutosServiceImpl;
 
-public class Main { //SPAGHET
+public class Main {
 	final static Logger L = Logger.getLogger(Main.class);
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) { // SOMEBODY TOUCH-A MY  S P A G H E T
 		L.setLevel(Level.ALL);
 		Scanner s = new Scanner(System.in);
 		PloutosService psi = new PloutosServiceImpl();
@@ -32,21 +32,24 @@ public class Main { //SPAGHET
 			try {
 				choice = Integer.parseInt(s.nextLine());
 			} catch (NumberFormatException e) {
-				L.warn("Customer tried to enter a non-number in the menu.");
-				L.info("Invalid input! Please enter a number.");
+				L.info("\nInvalid input! Please enter a number.\n");
 			}
 			switch (choice) {
 			case 1: // Customer Login
 				boolean inCust = false;
 				do {
-					L.info("Please enter your username: ");
+					L.info("Please enter your username, or enter nothing to leave: ");
 					String username = s.nextLine();
+					if (username.equals("")) {
+						break;
+					}
 					L.info("Please enter your password: ");
 					String password = s.nextLine();
 					Login login = null;
 					try {
-						login = psi.logIn(username, password);
+						login = psi.getLogin(username, password);
 					} catch (BusinessException e) {
+						L.warn(e.getStackTrace() + " " + e.getMessage());
 						L.info(e.getMessage());
 					}
 					inCust = (login != null);
@@ -62,13 +65,12 @@ public class Main { //SPAGHET
 							try {
 								choice2 = Integer.parseInt(s.nextLine());
 							} catch (NumberFormatException e) {
-								L.warn("Customer tried to enter a non-number in the menu.");
-								L.info("Invalid input! Please enter a number.");
+								L.info("\nInvalid input! Please enter a number.\n");
 							}
 							switch (choice2) {
 							case 1: // View my bank accounts
 								List<Account> accList = new ArrayList<Account>();
-								int choice3 = 0;
+								int choice3 = -1;
 								do {
 									L.info("\nHere are your bank accounts:\n"
 											+ "+--------------------------+");
@@ -85,10 +87,9 @@ public class Main { //SPAGHET
 										choice3 = Integer.parseInt(s.nextLine()) - 1;
 										accessAccount(accList.get(choice3), login, s, psi); 
 									} catch (NumberFormatException e) {
-										L.warn("Customer tried to enter a non-number in the menu.");
-										L.info("Invalid input! Please enter a number.");
+										L.info("\nInvalid input! Please enter a number.\n");
 									} catch (IndexOutOfBoundsException e) {
-										L.info("That is not a valid choice, please try again.");
+										L.info("\nThat is not a valid choice, please try again.\n");
 									}
 								} while (choice3 != -1);
 								break;
@@ -97,14 +98,14 @@ public class Main { //SPAGHET
 								try {
 									psi.makeAccount(login, Integer.parseInt(s.nextLine()));
 								} catch (NumberFormatException e) {
-									L.warn("Customer tried to enter a non-number in the menu.");
-									L.info("Invalid input! Please enter a number.");
+									L.info("\nInvalid input! Please enter a number.\n");
 								} catch (BusinessException e) {
+									L.warn(e.getStackTrace() + " " + e.getMessage());
 									L.info(e.getMessage());
 								}
 								break;
 							case 3: // Log out
-								L.info("Have a good day, and thank you for choosing Ploutos Bank.");
+								L.info("Have a good day, and thank you for choosing Ploutos Bank.\n\n");
 								break;
 							}
 							if (choice2 != 3)
@@ -119,14 +120,13 @@ public class Main { //SPAGHET
 							try {
 								choice2 = Integer.parseInt(s.nextLine());
 							} catch (NumberFormatException e) {
-								L.warn("Customer tried to enter a non-number in the menu.");
-								L.info("Invalid input! Please enter a number.");
+								L.info("\nInvalid input! Please enter a number.\n");
 							}
 							if (choice2 == 1) {
 								inCust = true;
-								L.info("Returning to main menu.");
-							} else {
-								L.info("Retrying login.");
+								L.info("Returning to main menu.\n");
+							} else if (choice2 == 2) {
+								L.info("Retrying login.\n");
 							}
 						} while (choice2 != 1 && choice2 != 2);
 					}
@@ -145,15 +145,19 @@ public class Main { //SPAGHET
 					try {
 						psi.makeLoginRequest(username, password);
 						L.info("Request has been made! Please wait for an employee to approve of your new Login.");
-						L.warn("A new Login is pending approval.");
+						L.warn("A new Login is pending approval.\n\n");
 					} catch (BusinessException e) {
+						L.warn(e.getStackTrace() + " " + e.getMessage());
 						L.info(e.getMessage());
 					}
 				}
 				break;
 			case 3: // Employee Login
-				L.info("Please enter your username:");
+				L.info("Please enter your username, or enter nothing to leave:");
 				String eUsername = s.nextLine();
+				if (eUsername.equals("")) {
+					break;
+				}
 				L.info("Please enter your password:");
 				String ePassword = s.nextLine();
 				boolean b = false;
@@ -165,9 +169,9 @@ public class Main { //SPAGHET
 				}
 				if (!b) {
 					L.warn("An invalid Employee login attempt was made.");
-					L.info("Invalid login. Please try again.");
+					L.info("Invalid login. Please try again.\n\n");
 				} else { // I'm in.
-					int choice2 = 0;
+					int choice2 = 4;
 					do {
 						L.info("Welcome valued employee.\nWhat would you like to do?\n"
 								+ "+--------------------------------------------------+\n"
@@ -178,59 +182,63 @@ public class Main { //SPAGHET
 						try {
 							choice2 = Integer.parseInt(s.nextLine());
 						} catch (NumberFormatException e) {
-							L.warn("Customer tried to enter a non-number in the menu.");
-							L.info("Invalid input! Please enter a number.");
+							L.info("\nInvalid input! Please enter a number.\n");
 						}
 						switch (choice2) {
 						case 1: // View Login requests
 							
 							int choice3 = 0;
 							do {
-								L.info("Please enter the listing that you would like to approve.\n"
-										+ "Enter the listing as a negative number to reject.\n"
-										+ "Enter 0 to quit.");
+								L.info("Printing list of login requests:");
 								try {
 									List<Login> requests = psi.listLoginsInactive();
 									L.info(psi.loginListString(requests));
+									L.info("Please enter the listing that you would like to approve.\n"
+										+ "Enter the listing as a negative number to reject.\n"
+										+ "Enter 0 to quit.");
 									choice3 = Integer.parseInt(s.nextLine());
 									if (choice3 > 0) {
-										psi.approveLoginRequest(requests.get(choice3 - 1));
+										psi.updateLoginRequest(requests.get(choice3 - 1), 1);
 									} else if (choice3 < 0) {
-										psi.rejectLoginRequest(requests.get((choice3 * -1) - 1));
+										psi.updateLoginRequest(requests.get((choice3 * -1) - 1), -1);
 									}
-								} catch (NumberFormatException e) {
-									L.info("Not a valid input. Please enter a number.");
-									L.warn(e.getStackTrace() + "Employee invalid input." + e.getMessage());
-									break;
+								} catch (NumberFormatException | IndexOutOfBoundsException e) {
+									L.info("\nNot a valid input. Please enter a number that is displayed on the list.\n");
+									L.warn(e.getStackTrace() + " Employee invalid input. " + e.getMessage());
+									choice3 = 1;
 								} catch (BusinessException e) {
 									L.info(e.getMessage());
 									L.warn(e.getStackTrace() + e.getMessage());
-									break;
+									choice3 = 0;
 								} catch (NullPointerException e) {
-									L.info("Couldn't get the list of login requests.");
+									L.info("\nCouldn't get the list of login requests.\n");
 									L.warn(e.getStackTrace() + e.getMessage());
-									break;
+									choice3 = 0;
 								}
 							} while (choice3 != 0);
 							break;
 						case 2: // Inspect Customer
 							int choice4 = 0;
 							do {
-								L.info("Please select a customer. Enter 0 to exit.");
+								L.info("Printing list of active customers:");
 								try {
 									List<Login> loginList = psi.listLoginsActive();
 									L.info(psi.loginListString(loginList));
+									L.info("Select a customer by entering their numeric listing. Enter 0 to exit.");
 									choice4 = Integer.parseInt(s.nextLine());
 									L.info(psi.accountListString(psi.accountListByLogin(loginList.get(choice4 - 1))));
-								} catch (NumberFormatException e) {
-									L.info("Not a valid input. Please input a number.");
-									L.warn(e.getStackTrace() + "Employee invalid input." + e.getMessage());
-								} catch (IndexOutOfBoundsException e) {
-									L.info("That value is out of range.");
-									L.warn(e.getStackTrace() + "Employee invalid input." + e.getMessage());
+								} catch (NumberFormatException | IndexOutOfBoundsException e) {
+									L.info("\nNot a valid input. Please input a number that is displayed on the list.\n");
+									L.warn(e.getStackTrace() + " Employee invalid input. " + e.getMessage());
+									choice4 = 1;
 								} catch (BusinessException e) {
 									L.info(e.getMessage());
-									L.warn(e.getStackTrace() + "Employee invalid input." + e.getMessage());
+									L.warn(e.getStackTrace() + " Employee invalid input. " + e.getMessage());
+									choice4 = 0;
+								} catch (NullPointerException e) {
+									L.info("\nCouldn't get the list of customers.\n");
+									L.warn(e.getStackTrace() + e.getMessage());
+									choice3 = 0;
 								}
 							} while (choice4 > 0);
 							break;
@@ -283,8 +291,9 @@ public class Main { //SPAGHET
 					amount = Integer.parseInt(s.nextLine());
 					psi.withdraw(account, amount);
 				} catch (NumberFormatException e) {
-					L.info("Invalid input. Please enter a number.");
+					L.info("\nInvalid input. Please enter a number.\n");
 				} catch (BusinessException e) {
+					L.warn(e.getStackTrace() + " " + e.getMessage());
 					L.info(e.getMessage());
 				}
 				break;
@@ -295,8 +304,9 @@ public class Main { //SPAGHET
 					amount2 = Integer.parseInt(s.nextLine());
 					psi.deposit(account, amount2);
 				} catch (NumberFormatException e) {
-					L.info("Invalid input. Please enter a number.");
+					L.info("\nInvalid input. Please enter a number.\n");
 				} catch (BusinessException e) {
+					L.warn(e.getStackTrace() + " " + e.getMessage());
 					L.info(e.getMessage());
 				}
 				break;
@@ -319,10 +329,9 @@ public class Main { //SPAGHET
 					choice3 = Integer.parseInt(s.nextLine()) - 1;
 					account2 = accList.get(choice3);
 				} catch (NumberFormatException e) {
-					L.warn("Customer tried to enter a non-number in the menu.");
-					L.info("Invalid input! Please enter a number.");
+					L.info("\nInvalid input! Please enter a number.\n");
 				} catch (IndexOutOfBoundsException e) {
-					L.info("That is not a valid choice, please try again.");
+					L.info("\nThat is not a valid choice, please try again.\n");
 				}
 				if (account2 != null) {
 					L.info("Please input the non-negative amount you'd like to transfer to this account.");
@@ -330,8 +339,9 @@ public class Main { //SPAGHET
 						int amount3 = Integer.parseInt(s.nextLine());
 						psi.makeTransaction(account2, account, amount3);
 					} catch (NumberFormatException e) {
-						L.info("Not a valid input. Please input a number.");
+						L.info("\nNot a valid input. Please input a number.\n");
 					} catch (BusinessException e) {
+						L.warn(e.getStackTrace() + " " + e.getMessage());
 						L.info(e.getMessage());
 					}
 				}
@@ -345,6 +355,7 @@ public class Main { //SPAGHET
 				} catch (NumberFormatException e) {
 					L.info("Invalid input. Please input a number.");
 				} catch (BusinessException e) {
+					L.warn(e.getStackTrace() + " " + e.getMessage());
 					L.info(e.getMessage());
 				}
 				if (account3 != null) {
@@ -356,6 +367,7 @@ public class Main { //SPAGHET
 					} catch (NumberFormatException e) {
 						L.info("Invalid input. Please enter a number.");
 					} catch (BusinessException e) {
+						L.warn(e.getStackTrace() + " " + e.getMessage());
 						L.info(e.getMessage());
 					}
 				}

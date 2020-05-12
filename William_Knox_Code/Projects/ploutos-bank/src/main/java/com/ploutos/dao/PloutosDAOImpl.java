@@ -32,76 +32,14 @@ public class PloutosDAOImpl implements PloutosDAO {
 			throw new BusinessException("Internal error occured please contact SYSADMIN");
 		}
 	}
-
-	@Override
-	public Login getLogin(String username) throws BusinessException {
-		Login login = null;
-		try (Connection c = PloutosConnection.getConnection()) {
-			String sql = "select username, password, is_active from logins where username = ?";
-			PreparedStatement ps = c.prepareStatement(sql);
-			ps.setString(1, username);
-			ResultSet rs = ps.executeQuery();
-			if (rs.next()) {
-				login = new Login(rs.getString("username"), rs.getString("password"), rs.getInt("is_active"));
-			}
-		} catch (SQLException e) {
-			L.error(e.getStackTrace() + " " + e.getMessage());
-			throw new BusinessException("Internal error occurred please contact SYSADMIN.");
-		} catch (BusinessException e) {
-			L.warn(e.getStackTrace() + " " + e.getMessage());
-			L.info(e.getMessage());
-		}
-		return login;
-	}
-
-	@Override
-	public List<Login> getLoginList() throws BusinessException {
-		List<Login> res = new ArrayList<>();
-		try (Connection c = PloutosConnection.getConnection()) {
-			String sql = "Select * from logins";
-			PreparedStatement ps = c.prepareStatement(sql);
-			ResultSet rs = ps.executeQuery();
-			while (rs.next()) {
-				Login l = new Login(rs.getString("username"), rs.getString("password"), rs.getInt("is_active"));
-				res.add(l);
-			}
-		} catch (SQLException e) {
-			L.error(e.getStackTrace() + " " + e.getMessage());
-			throw new BusinessException("Internal error occurred please contact SYSADMIN.");
-		} catch (BusinessException e) {
-			L.error(e.getStackTrace() + " " + e.getMessage());
-			L.info(e.getMessage());
-		}
-		return res;
-	}
 	
 	@Override
-	public List<Login> getLoginListActive() throws BusinessException {
-		List<Login> res = new ArrayList<>();
-		try (Connection c = PloutosConnection.getConnection()) {
-			String sql = "Select * from logins where is_active = 1";
-			PreparedStatement ps = c.prepareStatement(sql);
-			ResultSet rs = ps.executeQuery();
-			while (rs.next()) {
-				Login l = new Login(rs.getString("username"), rs.getString("password"), rs.getInt("is_active"));
-				res.add(l);
-			}
-		} catch (SQLException e) {
-			L.error(e.getStackTrace() + " " + e.getMessage());
-			throw new BusinessException("Internal error occurred please contact SYSADMIN.");
-		} catch (BusinessException e) {
-			L.error(e.getStackTrace() + " " + e.getMessage());
-			L.info(e.getMessage());
-		}
-		return res;
-	}
-	
-	@Override
-	public List<Login> getPendingLoginList() throws BusinessException {
+	public List<Login> getLoginList(int status) throws BusinessException {
 		List<Login> result = new ArrayList<>();
 		try (Connection c = PloutosConnection.getConnection()) {
-			String sql = "select * from logins where is_active = 0";
+			String sql = "select * from logins where is_active = ?";
 			PreparedStatement ps = c.prepareStatement(sql);
+			ps.setInt(1, status);
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
 				Login l = new Login(rs.getString("Username"), rs.getString("password"), rs.getInt("is_active"));
@@ -110,9 +48,6 @@ public class PloutosDAOImpl implements PloutosDAO {
 		} catch (SQLException e) {
 			L.error(e.getStackTrace() + " " + e.getMessage());
 			throw new BusinessException("Internal error occurred please contact SYSADMIN.");
-		} catch (BusinessException e) {
-			L.error(e.getStackTrace() + " " + e.getMessage());
-			L.info(e.getMessage());
 		}
 		return result;
 	}
@@ -130,9 +65,6 @@ public class PloutosDAOImpl implements PloutosDAO {
 		} catch (SQLException e) {
 			L.error(e.getStackTrace() + " " + e.getMessage());
 			throw new BusinessException("Internal error occurred please contact SYSADMIN.");
-		} catch (BusinessException e) {
-			L.warn(e.getStackTrace() + " " + e.getMessage());
-			L.info(e.getMessage());
 		}
 		return account;
 	}
@@ -151,30 +83,6 @@ public class PloutosDAOImpl implements PloutosDAO {
 		} catch (SQLException e) {
 			L.error(e.getStackTrace() + " " + e.getMessage());
 			throw new BusinessException("Internal error occurred please contact SYSADMIN.");
-		} catch (BusinessException e) {
-			L.warn(e.getStackTrace() + " " + e.getMessage());
-			L.info(e.getMessage());
-		}
-		return res;
-	}
-
-	@Override
-	public List<Account> getAccountList() throws BusinessException {
-		List<Account> res = new ArrayList<>();
-		try (Connection c = PloutosConnection.getConnection()) {
-			String sql = "Select * from bank_accounts";
-			PreparedStatement ps = c.prepareStatement(sql);
-			ResultSet rs = ps.executeQuery();
-			while (rs.next()) {
-				Account a = new Account(rs.getInt("Account_num"), rs.getString("user_id"), rs.getInt("Balance"));
-				res.add(a);
-			}
-		} catch (SQLException e) {
-			L.error(e.getStackTrace() + " " + e.getMessage());
-			throw new BusinessException("Internal error occurred please contact SYSADMIN.");
-		} catch (BusinessException e) {
-			L.warn(e.getStackTrace() + " " + e.getMessage());
-			L.info(e.getMessage());
 		}
 		return res;
 	}
@@ -194,9 +102,6 @@ public class PloutosDAOImpl implements PloutosDAO {
 		} catch (SQLException e) {
 			L.error(e.getStackTrace() + " " + e.getMessage());
 			throw new BusinessException("Internal error occurred please contact SYSADMIN.");
-		} catch (BusinessException e) {
-			L.warn(e.getStackTrace() + " " + e.getMessage());
-			L.info(e.getMessage());
 		}
 		return res;
 	}
@@ -218,9 +123,6 @@ public class PloutosDAOImpl implements PloutosDAO {
 		} catch (SQLException e) {
 			L.error(e.getStackTrace() + " " + e.getMessage());
 			throw new BusinessException("Internal error occurred please contact SYSADMIN. Most Likely culprit: invalid Account Number was entered.");
-		} catch (BusinessException e) {
-			L.warn(e.getStackTrace() + " " + e.getMessage());
-			L.info(e.getMessage());
 		}
 		return transaction;
 	}
@@ -239,9 +141,6 @@ public class PloutosDAOImpl implements PloutosDAO {
 		} catch (SQLException e) {
 			L.error(e.getStackTrace() + " " + e.getMessage());
 			throw new BusinessException("Internal error occurred please contact SYSADMIN.");
-		} catch (BusinessException e) {
-			L.warn(e.getStackTrace() + " " + e.getMessage());
-			L.info(e.getMessage());
 		}
 		return result;
 	}
@@ -262,9 +161,6 @@ public class PloutosDAOImpl implements PloutosDAO {
 		} catch (SQLException e) {
 			L.error(e.getStackTrace() + " " + e.getMessage());
 			throw new BusinessException("Internal error occurred please contact SYSADMIN.");
-		} catch (BusinessException e) {
-			L.warn(e.getStackTrace() + " " + e.getMessage());
-			L.info(e.getMessage());
 		}
 	}
 
@@ -283,9 +179,6 @@ public class PloutosDAOImpl implements PloutosDAO {
 		} catch (SQLException e) {
 			L.error(e.getStackTrace() + " " + e.getMessage());
 			throw new BusinessException("Internal error occurred please contact SYSADMIN.");
-		} catch (BusinessException e) {
-			L.warn(e.getStackTrace() + " " + e.getMessage());
-			L.info(e.getMessage());
 		}
 		return login;
 	}
@@ -304,9 +197,6 @@ public class PloutosDAOImpl implements PloutosDAO {
 		} catch (SQLException e) {
 			L.error(e.getStackTrace() + " " + e.getMessage());
 			throw new BusinessException("Internal error occurred please contact SYSADMIN.");
-		} catch (BusinessException e) {
-			L.warn(e.getStackTrace() + " " + e.getMessage());
-			L.info(e.getMessage());
 		}
 	}
 
