@@ -365,6 +365,33 @@ public class ServiceLayer {
     	return account;
     	
     }
+    
+    public Account withdrawAmount(Account account, BigDecimal withdrawAmount) {
+    	
+    	BigDecimal currentBalance = account.getBalance();
+    	BigDecimal newBalance = currentBalance.subtract(withdrawAmount);
+    	
+    	account.setBalance(newBalance);
+    	
+    	accountDao.updateAccount(account);
+    	
+    	account = accountDao.getAccount(account.getAccountId());
+    	
+    	// Update Transaction Table
+    	Transaction transaction = new Transaction();
+		transaction.setAccountId(account.getAccountId());
+		transaction.setTransactionType("WITH");
+		transaction.setAmount(withdrawAmount);
+		transaction.setEndingBalance(account.getBalance());
+        transaction.setTransTime(Timestamp.valueOf(LocalDateTime.now())); 
+        
+        transaction = transactionDao.addTransaction(transaction);
+    	
+    	return account;
+
+    	
+    };
+
 
     
 }

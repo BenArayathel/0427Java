@@ -61,5 +61,10 @@ public class BankServiceController {
     public Account depositAmount(Account account, BigDecimal depositAmount) {
     	return serviceLayer.depositAmount(account, depositAmount);
     };
+    
+    public Account withdrawAmount(Account account, BigDecimal withdrawAmount) {
+    	return serviceLayer.withdrawAmount(account, withdrawAmount);
+    };
+
 
 }

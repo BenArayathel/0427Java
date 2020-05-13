@@ -64,21 +64,17 @@ public class CustomerPage {
 	        userChoice = displayCustomerMenu(customer);
 	        switch(userChoice) {
 	            case 1:
-	                BankApp.loggy.info("Deposit to account...");
-//	                ViewCustomerAccount viewCustomerAccount = new ViewCustomerAccount();
-//	                viewCustomerAccount.customerAccountDetail();
 	                DepositPage depositPage = new DepositPage();
 	                depositPage.depositForm(customer);
 	                break;
 	            case 2:
-	                BankApp.loggy.info("Withdraw from account...");
-//	                ApprovePendingAccount approvePendingAccount = new ApprovePendingAccount();
-//	                approvePendingAccount.customerAccountDetail();
+	                WithdrawPage withdrawPage = new WithdrawPage();
+	                withdrawPage.withdrawForm(customer);
 	                break;
 	            case 3:
 	                BankApp.loggy.info("Transfer to account...");
-//	                ViewTransactionLog viewTransactionLog = new ViewTransactionLog();
-//	                viewTransactionLog.displayAllTransactionLog();
+//	                TransferPage transferPage = new TransferPage();
+//	                transferPage.transferForm(customer);
 	                break;
 	            case 0:
 	            	BankApp.loggy.info("\n *** Exiting customer page... ***");
