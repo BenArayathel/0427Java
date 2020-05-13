@@ -113,12 +113,14 @@ public class ValidationTools {
 		return valid;
 	}
 	
-	public static boolean isValidMonetaryAmount(String ammountString) {
-		boolean valid;
-		try {
-			valid = isValidMonetaryAmount(Double.parseDouble(ammountString));
-		} catch (NumberFormatException e) {
-			valid = false;
+	public static boolean isValidMonetaryAmount(String amountString) {
+		boolean valid = false;
+		if (amountString.matches("^[0-9]+$") || amountString.matches("^[0-9]+\\.[0-9]{2}$")) {
+			try {
+				valid = isValidMonetaryAmount(Double.parseDouble(amountString));
+			} catch (NumberFormatException e) {
+				valid = false;
+			}
 		}
 		return valid;
 	}

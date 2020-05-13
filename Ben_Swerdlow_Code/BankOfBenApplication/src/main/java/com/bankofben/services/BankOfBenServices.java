@@ -163,7 +163,7 @@ public class BankOfBenServices {
 		outputBuilder.append("Account Number\t|\tBalance\t|\tStatus\t|\n");
 		// Now we get the content
 		for (Account a : accounts) {
-			outputBuilder.append(a.getAccountNumber()+"\t|\t"+a.getBalance()+"\t|\t"+a.isPending()+"\t|\t");
+			outputBuilder.append(a.getAccountNumber()+"\t|\t"+a.getBalance()+"\t|\t");
 			if (a.isPending()) {
 				outputBuilder.append("Pending\t|\n");
 			} else {
@@ -339,7 +339,7 @@ public class BankOfBenServices {
 
 	public Account updateAccountBalance(Account account, double amount, Account otherAccount) throws BusinessException {
 		Account a = dao.updateAccountBalance(account.getBalance()+amount, account.getAccountNumber());
-		if (a.getBalance()!=account.getBalance()+amount) {
+		if (a.getBalance()!=Math.floor((account.getBalance()+amount)*100)/100) {
 			b = new BusinessException("Internal database error. Account not updated correctly. Please contact a Bank of Ben employee "
 					+ "soon as possible to remedy the issue.");
 			loggy.error(b);

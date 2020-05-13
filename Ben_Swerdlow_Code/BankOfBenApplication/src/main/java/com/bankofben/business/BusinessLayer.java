@@ -403,8 +403,10 @@ public class BusinessLayer {
 			loggy.error(b);
 			throw b;
 		}
-		payingAccount.setBalance(payingAccount.getBalance()-payment.getAmount(), payment);
-		receivingAccount.setBalance(receivingAccount.getBalance()+payment.getAmount(), payment);
+		double payingAccountBalance = Math.floor((payingAccount.getBalance()-payment.getAmount())*100)/100;
+		payingAccount.setBalance(payingAccountBalance, payment);
+		double receivingAccountBalance = Math.floor((payingAccount.getBalance()-payment.getAmount())*100)/100;
+		receivingAccount.setBalance(receivingAccountBalance, payment);
 		payingAccount = dbs.updateAccountBalance(payingAccount, -payment.getAmount(), receivingAccount);
 		receivingAccount = dbs.updateAccountBalance(receivingAccount, payment.getAmount(), payingAccount);
 		dbs.resolvePendingPayment(payment);
@@ -423,8 +425,10 @@ public class BusinessLayer {
 			loggy.error(b);
 			throw b;
 		}
-		requestorAccount.setBalance(requestorAccount.getBalance()+request.getAmount(), request);
-		soughtAccount.setBalance(soughtAccount.getBalance()-request.getAmount(), request);
+		double requestorAccountBalance = Math.floor((requestorAccount.getBalance()+request.getAmount())*100)/100;
+		requestorAccount.setBalance(requestorAccountBalance, request);
+		double soughtAccountBalance = Math.floor((soughtAccount.getBalance()-request.getAmount())*100)/100;
+		soughtAccount.setBalance(soughtAccountBalance, request);
 		requestorAccount = dbs.updateAccountBalance(requestorAccount, request.getAmount(), soughtAccount);
 		soughtAccount = dbs.updateAccountBalance(soughtAccount, -request.getAmount(), requestorAccount);
 		dbs.resolvePendingRequest(request);

@@ -335,6 +335,8 @@ public class PresentationLayer {
 						pl.printInvalidResponseMessage(response);
 					}
 				} while (!(userResponseValidated));
+			} else {
+				loggy.info("Thank you for following up with the Bank of Ben. Unfortunately your account is still under review. Please check back later.");
 			}
 		} else if (user instanceof Employee) {
 			Employee employee = (Employee) user;
@@ -806,6 +808,10 @@ public class PresentationLayer {
 			String depositString = sc.nextLine();
 			try {
 				deposit = Double.parseDouble(depositString);
+				if (deposit < 0) {
+					loggy.info("Invalid deposit amount. Deposit amount must be a positive number that has only"
+							+"two digits after the decimal point. Please try again.");
+				}
 				if (!ValidationTools.isValidMonetaryAmount(deposit)) {
 					loggy.info("Invalid deposit amount. Deposit amount must be a positive number that has only"
 							+"two digits after the decimal point. Please try again.");
@@ -852,6 +858,10 @@ public class PresentationLayer {
 			String withdrawalString = sc.nextLine();
 			try {
 				withdrawal = Double.parseDouble(withdrawalString);
+				if (withdrawal < 0) {
+					loggy.info("Invalid withdrawal amount. Withdrawal amount must be a positive number that has only"
+							+"two digits after the decimal point. Please try again.");
+				}
 				if (!ValidationTools.isValidMonetaryAmount(withdrawal)) {
 					loggy.info("Invalid withdrawal amount. Withdrawal amount must be a positive number that has only"
 							+"two digits after the decimal point. Please try again.");
