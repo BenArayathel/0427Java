@@ -57,5 +57,9 @@ public class BankServiceController {
     public List<Account> getAccountListByCustomerId(Integer customerId) {
     	return serviceLayer.getAccountListByCustomerId(customerId);
     }
+    
+    public Account depositAmount(Account account, BigDecimal depositAmount) {
+    	return serviceLayer.depositAmount(account, depositAmount);
+    };
 
 }

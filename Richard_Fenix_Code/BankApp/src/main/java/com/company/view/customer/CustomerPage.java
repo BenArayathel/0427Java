@@ -67,6 +67,8 @@ public class CustomerPage {
 	                BankApp.loggy.info("Deposit to account...");
 //	                ViewCustomerAccount viewCustomerAccount = new ViewCustomerAccount();
 //	                viewCustomerAccount.customerAccountDetail();
+	                DepositPage depositPage = new DepositPage();
+	                depositPage.depositForm(customer);
 	                break;
 	            case 2:
 	                BankApp.loggy.info("Withdraw from account...");

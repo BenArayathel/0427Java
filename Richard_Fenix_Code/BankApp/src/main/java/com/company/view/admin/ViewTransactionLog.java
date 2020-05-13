@@ -20,14 +20,15 @@ public class ViewTransactionLog {
 		
 	    BankApp.loggy.info("================ TRANSACTION LOG ================");
 	    BankApp.loggy.info("       ");
-	    BankApp.loggy.info(" Trans_ID     Account    Trans_Code       Amount          Transaction Time ");
-	    BankApp.loggy.info(" --------     --------   ----------   -------------   ------------------------");
+	    BankApp.loggy.info(" Trans_ID     Account    Trans_Code       Amount      Ending_Balance    Transaction Time ");
+	    BankApp.loggy.info(" --------     --------   ----------   -------------   ---------------   --------------------");
 
 
 	    
 		tList.forEach(t ->
-		    BankApp.loggy.info ("  " + t.getTransactionId() + "     " + t.getAccountId() + "           " 
-		    		+ t.getTransactionType() + "          " + t.getAmount() + "        " + t.getTransTime())
+		    BankApp.loggy.info ("  " + t.getTransactionId() + "          " + t.getAccountId() + "       " 
+		    		+ t.getTransactionType() + "             " + t.getAmount() + "         " + t.getEndingBalance() + "            " 
+		    		+ t.getTransTime())
 		    );
 		
 	    BankApp.loggy.info("       ");
