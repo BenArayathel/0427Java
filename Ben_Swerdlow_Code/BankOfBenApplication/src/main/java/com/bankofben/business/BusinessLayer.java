@@ -269,6 +269,10 @@ public class BusinessLayer {
 		}
 		return accountsMap;
 	}
+	
+	public Customer getCustomerById(String customerId) throws BusinessException {
+		return dbs.getCustomerById(customerId);
+	}
 
 //	public String viewPendingAccountApplications() throws BusinessException {
 //		List<Account> accounts = dbs.getAccountsWithPendingStatus(true);

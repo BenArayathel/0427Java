@@ -126,16 +126,18 @@ public class BankOfBenServices {
 		return a;
 	}
 	
-	public void approveCustomerAccount(String customerId, Double startingBalance, Employee employee) throws BusinessException {
+	public void approveCustomerAccount(String customerId, long accountNumber, Double startingBalance, Employee employee) throws BusinessException {
 		dao.updateCustomerApplicationPending_returnNothing(false, customerId);
+		dao.updateAccountPendingStatus_returnNothing(false, accountNumber);
 	}
 	
-	public void rejectCustomerAccount(String customerId, Employee employee) throws BusinessException {
+	public void rejectCustomerAccount(String customerId, long accountNumber, Employee employee) throws BusinessException {
 		dao.deleteCustomer(customerId);
+		dao.deleteAccount(accountNumber);
 	}
 	
-	public void approveCustomerAccount(String customerId, Employee employee) throws BusinessException {
-		approveCustomerAccount(customerId, 0.0, employee);
+	public void approveCustomerAccount(String customerId, long accountNumber, Employee employee) throws BusinessException {
+		approveCustomerAccount(customerId, accountNumber, 0.0, employee);
 	}
 
 	public String getBalances() throws BusinessException {

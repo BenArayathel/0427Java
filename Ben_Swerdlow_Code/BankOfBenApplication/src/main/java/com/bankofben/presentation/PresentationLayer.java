@@ -50,28 +50,9 @@ public class PresentationLayer {
 
 	public static void main(String[] args) {
 		loggy.setLevel(Level.INFO);
-//		loggy.info("This is a test! Use this method for all stdout.");
 		User user = null;
 		Scanner sc = new Scanner(System.in);
 		String response=null;
-
-//		SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
-//		Date d=null;
-//		try {
-//			d = sdf.parse("10/05/1992");
-//		} catch (ParseException e) {
-//			e.printStackTrace();
-//		}
-//		
-//		try {
-//			loggy.info(new Employee("Ben", "Eli", "Swerdlow", "Tobias", d, 564738291L, "ben@gmail.com", 3216621808L,
-//							"benswerd", "P4ssw0rd!", "thingy", "stuff", "person", false));
-//		} catch (BusinessException e1) {
-//			// TODO Auto-generated catch block
-//			e1.printStackTrace();
-//		}
-//		
-//		System.exit(0);
 		
 		pl.printUserGreeting();
 		boolean userResponseValidated = false;
@@ -414,18 +395,27 @@ public class PresentationLayer {
 								loggy.info(pl.viewCustomerAccountMap(customerPendingAccountsMap));
 								Account a = pl.requestApplicationAccountByAccountNumber(sc);
 								if (a==null) break;
+								Customer c = bl.getCustomerById(a.getCustomerId());
 								boolean selectedAcceptOrReject = false;
 								String responseApproveOrReject = null;
 								while (!selectedAcceptOrReject) {
 									pl.printApproveOrRejectApplicationNotice(a);
 									responseApproveOrReject = sc.nextLine();
 									if (responseApproveOrReject.equalsIgnoreCase("approve")) {
-										bl.approveExistingCustomerAccountApplication(a);
+										if (c.isApplicationPending()){
+											bl.approveNewCustomerAccountApplication(a);
+										} else {
+											bl.approveExistingCustomerAccountApplication(a);
+										}
 										loggy.info("You have approved the application for account number "+a.getAccountNumber()
 										+" for customer "+a.getCustomerId()+".");
 										selectedAcceptOrReject = true;
 									} else if(responseApproveOrReject.equalsIgnoreCase("reject")) {
-										bl.rejectExistingCustomerAccountApplication(a);
+										if (c.isApplicationPending()) {
+											bl.rejectNewCustomerAccountApplication(a);
+										} else {
+											bl.rejectExistingCustomerAccountApplication(a);
+										}
 										loggy.info("You have rejected the application for account number "+a.getAccountNumber()
 											+" for customer "+a.getCustomerId()+". If this customer was not an already existing customer,"
 											+ " their information has been removed from our records.");

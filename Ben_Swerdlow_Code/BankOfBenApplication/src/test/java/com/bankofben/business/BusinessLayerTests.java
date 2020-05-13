@@ -58,11 +58,6 @@ public class BusinessLayerTests {
 		}
 	}
 	
-	@Test
-	public void approve() {
-		// Test the 
-	}
-	
 	// Will be executed after each test
 	@After
 	public void testEquals() {

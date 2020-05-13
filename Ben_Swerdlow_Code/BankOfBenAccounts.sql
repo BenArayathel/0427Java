@@ -197,7 +197,7 @@ BEGIN
 END;
 
 BEGIN
-    removecustomerandaccounts('CUKHIA1983100240');
+    removecustomerandaccounts('CUTETE1987100268');
 END;
 
 BEGIN

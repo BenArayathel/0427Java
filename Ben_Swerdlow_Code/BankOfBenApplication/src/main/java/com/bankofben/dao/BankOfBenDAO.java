@@ -802,7 +802,7 @@ public class BankOfBenDAO implements BankOfBenDAOInterface {
 	@Override
 	public void deleteCustomer(String customerId) throws BusinessException {
 		try(Connection connection = OracleDbConnection.getConnection()){
-			String sqlCall = "DELETE bankofben_customers WHERE \"Customer ID\"=?";
+			String sqlCall = "DELETE FROM bankofben_customers WHERE \"Customer ID\"=?";
 			PreparedStatement ps = connection.prepareStatement(sqlCall);
 			ps.setString(1, customerId);
 			int rowsUpdated = ps.executeUpdate();
@@ -824,7 +824,7 @@ public class BankOfBenDAO implements BankOfBenDAOInterface {
 	@Override
 	public void deleteEmployee(String employeeId) throws BusinessException {
 		try(Connection connection = OracleDbConnection.getConnection()){
-			String sqlCall = "DELETE bankofben_employees WHERE \"Employee ID\"=?";
+			String sqlCall = "DELETE FROM bankofben_employees WHERE \"Employee ID\"=?";
 			PreparedStatement ps = connection.prepareStatement(sqlCall);
 			ps.setString(1, employeeId);
 			int rowsUpdated = ps.executeUpdate();
@@ -846,7 +846,7 @@ public class BankOfBenDAO implements BankOfBenDAOInterface {
 	@Override
 	public void deleteAccount(long accountNumber) throws BusinessException {
 		try(Connection connection = OracleDbConnection.getConnection()){
-			String sqlCall = "DELETE bankofben_accounts WHERE \"Account Number\"=?";
+			String sqlCall = "DELETE FROME bankofben_accounts WHERE \"Account Number\"=?";
 			PreparedStatement ps = connection.prepareStatement(sqlCall);
 			ps.setLong(1, accountNumber);
 			int rowsUpdated = ps.executeUpdate();
@@ -900,15 +900,15 @@ public class BankOfBenDAO implements BankOfBenDAOInterface {
 			
 			String sqlCall = "{call removecustomerandaccounts(?)}";
 			CallableStatement cs = connection.prepareCall(sqlCall);
-			
+
 			cs.setString(1, customerId);
 			
-//			boolean executed = cs.execute();
-//			if (!executed) {
-//				b = new BusinessException("Could not delete both customer ID and account.");
-//				loggy.error(b);
-//				throw b;
-//			}
+			boolean executed = cs.execute();
+			if (!executed) {
+				b = new BusinessException("Could not delete both customer ID and account.");
+				loggy.error(b);
+				throw b;
+			}
 			
 		} catch (ClassNotFoundException | SQLException e) {
 			loggy.error(e);
