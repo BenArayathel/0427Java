@@ -878,11 +878,11 @@ public class BankOfBenDAO implements BankOfBenDAOInterface {
 			cs.setLong(1, accountNumber);
 			
 			boolean executed = cs.execute();
-			if (!executed) {
-				b = new BusinessException("Problem encountered when trying to reject existing user's account. Please contact your SYSADMIN.");
-				loggy.error(b);
-				throw b;
-			}
+//			if (!executed) {
+//				b = new BusinessException("Problem encountered when trying to reject existing user's account. Please contact your SYSADMIN.");
+//				loggy.error(b);
+//				throw b;
+//			}
 			
 		} catch (ClassNotFoundException | SQLException e) {
 			loggy.error(e);
