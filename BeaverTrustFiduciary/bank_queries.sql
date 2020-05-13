@@ -2,6 +2,8 @@ select * from bank_user;
 select * from bank_account;
 select * from bank_transaction;
 
+delete from bank_user where username = 'UNITtest2';
+delete from bank_account where account_name = 'UNITtest';
 
 
 update bank_account set account_balance = 5000 where account_name = 'UNITtest';

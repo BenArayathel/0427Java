@@ -15,6 +15,7 @@ import com.bank.tools.BankException;
 public class AccountDAOImplementationTest {
 	
 	AccountDAOImplementation adi = new AccountDAOImplementation();
+	UserDAOImplementation udi = new UserDAOImplementation();
 
 	@Test
 	public void loggingTransactionDepositTest() throws BankException {
@@ -45,27 +46,58 @@ public class AccountDAOImplementationTest {
 		adi.deleteTransaction(account_name);
 	}
 	
+	
 	@Test
-	public void depositTest() throws BankException {
-		User user = new User();
-		user.setUser_id("0");
-		user.setUsername("UNITtest");
-		user.setPassword("test");
-		user.setApproved(0);
+	public void testCreateAccount() throws BankException {
 		
 		Account account = new Account();
-		account.setAccount_id("0");
-		account.setUser_id("0");
-		account.setAccount_name("UNITtest");
-		account.setBalance(5000);
+		String accountName = "TESTtestUNIT";
+		String depositAmount = "100";
 		
+		User user = new User();
+		user.setUsername("UNITtest2");
+		user.setPassword("UNITtest2");
+		
+		udi.createUser(user);
+		
+		List<Account> accountsBefore = adi.listAccounts();
+		int sizeBefore = accountsBefore.size();
+		
+		adi.createAccount(user, accountName, depositAmount);
+
+		List<Account> accountsAfter = adi.listAccounts();
+		int sizeAfter = accountsAfter.size();
+		
+		assert(sizeBefore < sizeAfter);
+						
+		udi.deleteUser("UNITtest2");
+		adi.deleteAccount("TESTtestUNIT");
+	}
+	
+	@Test
+	public void depositTest() throws BankException {
+//		User user, String accountName, String depositAmount
+		
+		//first create a new user in the db
+		User user = new User();
+		user.setUsername("UNITtest");
+		user.setPassword("test");
+		udi.createUser(user);
+		
+		//then create a new account for that user
+		Account account = new Account();
 		String accountName = "UNITtest";
 		String depositAmount = "10";
+		adi.createAccount(user, accountName, depositAmount);
 
 		// this is the key element of test
 		adi.deposit(user, accountName, depositAmount);
 		System.out.println(account.getBalance());
-		assert(account.getBalance() == 5010);
+		assert(account.getBalance() == 20);
+		
+		//clean up
+		adi.deleteAccount(accountName);
+		udi.deleteUser("UNITtest");
 		
 	}
 	

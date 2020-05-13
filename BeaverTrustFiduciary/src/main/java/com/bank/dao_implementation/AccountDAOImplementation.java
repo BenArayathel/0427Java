@@ -213,4 +213,19 @@ public class AccountDAOImplementation implements AccountDAOInterface {
 			throw new BankException("Unable to delete transaction");
 		}
 	}	
+	
+	// FOR TESTING and CLEANING UP AFTER TESTS
+	public void deleteAccount(String accountName) throws BankException {
+		String sql = "delete from bank_account where account_name = ?";
+				
+		try (Connection conn = DataConnection.getConnection()) {
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setString(1, accountName);
+			ps.executeUpdate();
+		
+		} catch (SQLException e) {
+			Main.myLog.error(e.getMessage() + e.getStackTrace());
+			throw new BankException("Unable to delete account");
+		}
+	}	
 }

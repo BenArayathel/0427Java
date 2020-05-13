@@ -127,4 +127,19 @@ public class UserDAOImplementation implements UserDAOInterface {
 		}
 		return user;
 	}
+	
+	// FOR TESTING and CLEANING UP AFTER TESTS
+	public void deleteUser(String username) throws BankException {
+		String sql = "delete from bank_user where username = ?";
+				
+		try (Connection conn = DataConnection.getConnection()) {
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setString(1, username);
+			ps.executeUpdate();
+		
+		} catch (SQLException e) {
+			Main.myLog.error(e.getMessage() + e.getStackTrace());
+			throw new BankException("Unable to delete user");
+		}
+	}	
 }

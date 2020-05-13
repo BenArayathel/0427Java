@@ -102,3 +102,83 @@
 2020-05-12 13:58:00 ERROR Main:91 - Unable to approve account.
 2020-05-12 14:18:06 ERROR Main:27 - Existing User
 2020-05-12 18:42:05 ERROR Main:29 - empty String[Ljava.lang.StackTraceElement;@85e6769
+2020-05-12 20:05:29 ERROR Main:42 - ORA-00001: unique constraint (ADMIN.BANK_USER_UNIQUE) violated
+ORA-06512: at "ADMIN.CREATE_NEW_USER", line 6
+ORA-06512: at line 1
+[Ljava.lang.StackTraceElement;@22b53226
+2020-05-12 20:05:37 ERROR Main:42 - ORA-00001: unique constraint (ADMIN.BANK_USER_UNIQUE) violated
+ORA-06512: at "ADMIN.CREATE_NEW_USER", line 6
+ORA-06512: at line 1
+[Ljava.lang.StackTraceElement;@60d1a32f
+2020-05-12 20:08:10 ERROR Main:42 - ORA-00001: unique constraint (ADMIN.BANK_USER_UNIQUE) violated
+ORA-06512: at "ADMIN.CREATE_NEW_USER", line 6
+ORA-06512: at line 1
+[Ljava.lang.StackTraceElement;@22b53226
+2020-05-12 20:08:29 ERROR Main:42 - ORA-00001: unique constraint (ADMIN.BANK_USER_UNIQUE) violated
+ORA-06512: at "ADMIN.CREATE_NEW_USER", line 6
+ORA-06512: at line 1
+[Ljava.lang.StackTraceElement;@6f8f9349
+2020-05-12 20:26:51 ERROR Main:42 - ORA-00001: unique constraint (ADMIN.BANK_USER_UNIQUE) violated
+ORA-06512: at "ADMIN.CREATE_NEW_USER", line 6
+ORA-06512: at line 1
+[Ljava.lang.StackTraceElement;@183e8023
+2020-05-12 20:32:01 ERROR Main:42 - ORA-00001: unique constraint (ADMIN.BANK_USER_UNIQUE) violated
+ORA-06512: at "ADMIN.CREATE_NEW_USER", line 6
+ORA-06512: at line 1
+[Ljava.lang.StackTraceElement;@75d0911a
+2020-05-12 20:32:51 ERROR Main:42 - ORA-00001: unique constraint (ADMIN.BANK_USER_UNIQUE) violated
+ORA-06512: at "ADMIN.CREATE_NEW_USER", line 6
+ORA-06512: at line 1
+[Ljava.lang.StackTraceElement;@60d1a32f
+2020-05-12 20:36:58 ERROR Main:42 - ORA-00001: unique constraint (ADMIN.BANK_USER_UNIQUE) violated
+ORA-06512: at "ADMIN.CREATE_NEW_USER", line 6
+ORA-06512: at line 1
+[Ljava.lang.StackTraceElement;@5f031ebd
+2020-05-12 20:44:56 ERROR Main:42 - ORA-00001: unique constraint (ADMIN.BANK_USER_UNIQUE) violated
+ORA-06512: at "ADMIN.CREATE_NEW_USER", line 6
+ORA-06512: at line 1
+[Ljava.lang.StackTraceElement;@22b53226
+2020-05-12 20:44:56 ERROR Main:42 - ORA-00001: unique constraint (ADMIN.BANK_USER_UNIQUE) violated
+ORA-06512: at "ADMIN.CREATE_NEW_USER", line 6
+ORA-06512: at line 1
+[Ljava.lang.StackTraceElement;@22b53226
+2020-05-12 20:59:09 ERROR Main:42 - ORA-00001: unique constraint (ADMIN.BANK_USER_UNIQUE) violated
+ORA-06512: at "ADMIN.CREATE_NEW_USER", line 6
+ORA-06512: at line 1
+[Ljava.lang.StackTraceElement;@75390459
+2020-05-12 21:01:01 ERROR Main:42 - ORA-00001: unique constraint (ADMIN.BANK_USER_UNIQUE) violated
+ORA-06512: at "ADMIN.CREATE_NEW_USER", line 6
+ORA-06512: at line 1
+[Ljava.lang.StackTraceElement;@58359ebd
+2020-05-12 21:19:30 ERROR Main:42 - ORA-00001: unique constraint (ADMIN.BANK_USER_UNIQUE) violated
+ORA-06512: at "ADMIN.CREATE_NEW_USER", line 6
+ORA-06512: at line 1
+[Ljava.lang.StackTraceElement;@2e11485
+2020-05-12 21:49:38 ERROR Main:42 - ORA-00001: unique constraint (ADMIN.BANK_USER_UNIQUE) violated
+ORA-06512: at "ADMIN.CREATE_NEW_USER", line 6
+ORA-06512: at line 1
+[Ljava.lang.StackTraceElement;@4fbda97b
+2020-05-12 21:49:38 ERROR Main:42 - ORA-00001: unique constraint (ADMIN.BANK_USER_UNIQUE) violated
+ORA-06512: at "ADMIN.CREATE_NEW_USER", line 6
+ORA-06512: at line 1
+[Ljava.lang.StackTraceElement;@6b9ce1bf
+2020-05-12 21:49:53 ERROR Main:42 - ORA-00001: unique constraint (ADMIN.BANK_USER_UNIQUE) violated
+ORA-06512: at "ADMIN.CREATE_NEW_USER", line 6
+ORA-06512: at line 1
+[Ljava.lang.StackTraceElement;@2e11485
+2020-05-12 21:49:58 ERROR Main:42 - ORA-00001: unique constraint (ADMIN.BANK_USER_UNIQUE) violated
+ORA-06512: at "ADMIN.CREATE_NEW_USER", line 6
+ORA-06512: at line 1
+[Ljava.lang.StackTraceElement;@4b672daa
+2020-05-12 21:49:59 ERROR Main:42 - ORA-00001: unique constraint (ADMIN.BANK_USER_UNIQUE) violated
+ORA-06512: at "ADMIN.CREATE_NEW_USER", line 6
+ORA-06512: at line 1
+[Ljava.lang.StackTraceElement;@41813449
+2020-05-12 21:53:34 ERROR Main:42 - ORA-00001: unique constraint (ADMIN.BANK_USER_UNIQUE) violated
+ORA-06512: at "ADMIN.CREATE_NEW_USER", line 6
+ORA-06512: at line 1
+[Ljava.lang.StackTraceElement;@7b324585
+2020-05-12 21:54:22 ERROR Main:42 - ORA-00001: unique constraint (ADMIN.BANK_USER_UNIQUE) violated
+ORA-06512: at "ADMIN.CREATE_NEW_USER", line 6
+ORA-06512: at line 1
+[Ljava.lang.StackTraceElement;@1c7fd41f
