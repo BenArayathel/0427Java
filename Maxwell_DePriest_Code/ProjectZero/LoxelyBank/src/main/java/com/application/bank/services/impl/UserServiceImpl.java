@@ -11,6 +11,7 @@ import org.apache.log4j.Logger;
 
 import com.application.bank.exception.BusinessException;
 import com.application.bank.models.User;
+import com.application.bank.secrets.SecretStuff;
 import com.application.bank.models.Account;
 import com.application.bank.services.UserService;
 import com.application.bank.dao.impl.AccountDaoImpl;
@@ -347,8 +348,8 @@ public class UserServiceImpl implements UserService {
 	loggy.debug("Encrypting password");
 	try {
 		StringBuilder newPassword = new StringBuilder();
-		String original = "ZYXWVUTSRQPONMLKJIHGFEDCBAabcdefghijklmnopqrstuvwxyz0987654321";  
-		String alternate = "1234567890zyxwvutsrqponmlkjihgfedcbaABCDEFGHIJKLMNOPQRSTUVWXYZ"; 
+		String original = SecretStuff.getOriginalString();  
+		String alternate = SecretStuff.getAltString(); 
 		String[] arr = alternate.split("");
 		String[] wordArray = pw.toLowerCase().split("");
 		int tempIndex;
