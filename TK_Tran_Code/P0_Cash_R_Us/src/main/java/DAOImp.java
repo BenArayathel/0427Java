@@ -2,6 +2,7 @@ import dbutil.OracleConnection;
 import exception.BusinessException;
 import model.Account;
 import org.apache.log4j.Logger;
+import service.Service;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -15,8 +16,11 @@ public class DAOImp implements DAO {
 
 	final static Logger log = Logger.getLogger(DAOImp.class);
 
-	@Override // Creates a new account in DB
-	public void createAccount(Account account) {
+	Service service = new Service();
+
+	// Creates a new account in DB
+	@Override
+	public void createAccount(Account account) throws BusinessException {
 		try (Connection conn = OracleConnection.getConn()) {
 			String sql = "{CALL CREATEACCOUNT(?, ?, ?, ?, ?)}";
 			CallableStatement cs = conn.prepareCall(sql);
@@ -27,12 +31,12 @@ public class DAOImp implements DAO {
 			cs.setString(5, account.getType());
 			cs.execute();
 		} catch (ClassNotFoundException | SQLException e) {
-			log.info("Account " + account.getUsername() + " already exists in the database.");
-			log.error("User attempted to create a duplicate account.", new BusinessException());
+			log.warn("Account " + account.getUsername() + " already exists!");
 		}
 	}
 
-	@Override // Updates existing account in DB
+	// Updates existing account in DB
+	@Override
 	public void updateAccount(Account account) throws BusinessException {
 		try (Connection conn = OracleConnection.getConn()) {
 			String sql = "UPDATE bank SET username=?, password=?, name=?, balance=?, type=? WHERE username='" + account.getUsername() + "'";
@@ -44,11 +48,12 @@ public class DAOImp implements DAO {
 			ps.setString(5, account.getType());
 			ps.executeUpdate();
 		} catch (ClassNotFoundException | SQLException e) {
-			log.error("Internal error, unable to update account.", new BusinessException());
+			log.error("Internal error, please contact SYSADMIN.");
 		}
 	}
 
-	@Override // Returns all accounts
+	// Returns all accounts
+	@Override
 	public List<Account> getAllAccounts() throws BusinessException {
 		List<Account> accountList = new ArrayList<>(); // Creates an ArrayList to be spit out
 		try (Connection conn = OracleConnection.getConn()) {
@@ -65,12 +70,13 @@ public class DAOImp implements DAO {
 				accountList.add(account); // ..continually add objects into ArrayList
 			}
 		} catch (ClassNotFoundException | SQLException e) {
-			log.error("Internal error, unable to fetch all accounts.", new BusinessException());
+			log.error("Internal error, please contact SYSADMIN.");
 		}
 		return accountList; // Spits out the now-populated ArrayList
 	}
 
-	@Override // Returns a single account by username
+	// Returns a single account by username
+	@Override
 	public Account getAccount(String username) throws BusinessException {
 		Account account = new Account();
 		try (Connection conn = OracleConnection.getConn()) {
@@ -85,18 +91,13 @@ public class DAOImp implements DAO {
 				account.setType(rs.getString("type"));
 			}
 		} catch (ClassNotFoundException | SQLException e) {
-			log.error("Internal error, unable to fetch account.", new BusinessException());
+			log.error("Internal error, please contact SYSADMIN.");
 		}
 		return account;
 	}
 
 //	@Override
-//	public void deposit(String account, String amount) throws BusinessException {
-//		while (!service.isValidAmount(amount)) {
-//			amount = sc.nextLine();
-//		}
-//		double depositAmount = Double.parseDouble(amount);
-//
+//	public void deposit(String account, double amount) throws BusinessException {
 //		Account dummyAccount = dao.getAccount(account);
 //		double dummyBalance = dummyAccount.getBalance();
 //		dummyBalance += depositAmount;
@@ -104,7 +105,7 @@ public class DAOImp implements DAO {
 //		dao.updateAccount(dummyAccount);
 //		log.info("Balance: $" + dummyAccount.getBalance());
 //	}
-
+//
 //	@Override
 //	public void withdraw(String account, String amount) throws BusinessException {
 //		while (!service.isValidAmount(amount)) {

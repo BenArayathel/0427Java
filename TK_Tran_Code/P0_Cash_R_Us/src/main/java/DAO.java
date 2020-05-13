@@ -17,7 +17,7 @@ public interface DAO {
 
 	public abstract Account getAccount(String name) throws BusinessException;
 
-//	public abstract void deposit(String account, String amount) throws BusinessException;
+//	public abstract void deposit(String account, double amount) throws BusinessException;
 
 //	public abstract void withdraw(String account, String amount) throws BusinessException;
 

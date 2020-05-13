@@ -10,7 +10,7 @@ public class Service {
 
 	final static Logger log = Logger.getLogger(Service.class);
 
-	// GENERIC
+	// GENERIC METHODS
 	public void displayWelcome() {
 		log.info("Welcome to Cash R' Us, where your money is ours!");
 	}
@@ -44,23 +44,23 @@ public class Service {
 		log.info("7 = Log Out");
 	}
 
-	// VALIDATION
+	// FIRST-LEVEL VALIDATION
 	public boolean isValidUsername(String username) {
 		boolean b = false;
 		if (username.matches("[a-zA-Z0-9]{3,15}")) { // {3,20} means {min,max}
 			b = true;
 		} else {
-			log.error("Invalid, username must be between [3-15] alphanumeric characters.");
+			log.warn("Invalid, username must be between [3-15] alphanumeric characters.");
 		}
 		return b;
 	}
 
 	public boolean isValidPassword(String password) {
 		boolean b = false;
-		if (password.matches("(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*_]).{8,}")) {
+		if (password.matches("(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*_]).{8,}")) { // {8,} means at least eight
 			b = true;
 		} else {
-			log.error("Invalid, password must be a minimum of 8 characters including 1 uppercase, 1 lowercase, 1 digit, and 1 special character [!@#$%^&*_].");
+			log.warn("Invalid, password must be a minimum of 8 characters including 1 uppercase, 1 lowercase, 1 digit, and 1 special character [!@#$%^&*_].");
 		}
 		return b;
 	}
@@ -70,7 +70,7 @@ public class Service {
 		if (amount.matches("^\\d{1,5}")) {
 			b = true;
 		} else {
-			log.error("Invalid, amount must be whole numbers between 1-5 digits long.");
+			log.warn("Invalid, amount must be whole numbers between 1-5 digits long.");
 		}
 		return b;
 	}

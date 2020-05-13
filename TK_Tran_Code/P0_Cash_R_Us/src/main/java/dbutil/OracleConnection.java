@@ -1,5 +1,8 @@
 package dbutil;
 
+import exception.BusinessException;
+import org.apache.log4j.Logger;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -12,6 +15,8 @@ import java.sql.SQLException;
 	Simply call OracleConnection.getConn() to open a connection.
  */
 public class OracleConnection {
+
+	final static Logger log = Logger.getLogger(BusinessException.class);
 
 	private static Connection conn = null;
 
@@ -26,7 +31,7 @@ public class OracleConnection {
 		try {
 			conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);
 		} catch (SQLException e) {
-			e.printStackTrace();
+			log.error("Internal error, please contact SYSADMIN");
 		}
 		return conn;
 	}

@@ -51,11 +51,12 @@ public class Main {
 					dummyAcc1.setName(name);
 
 					log.info("Enter an initial deposit amount: ");
-					String initInpAmt = sc.nextLine();
+					String initInpAmt = sc.nextLine(); // accept number as string to validate w/ RegEx
 					while (!service.isValidAmount(initInpAmt)) {
 						initInpAmt = sc.nextLine();
 					}
-					double initDepAmt = Double.parseDouble(initInpAmt);
+					double initDepAmt = Double.parseDouble(initInpAmt); // if valid format, parses to double
+
 					dummyAcc1.setBalance(initDepAmt);
 					transactionList.add(String.format("$" + initInpAmt + " was deposited into " + dummyAcc1.getUsername() + " on %1$tD %1$tT", new Date()));
 
