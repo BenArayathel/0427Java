@@ -1,0 +1,607 @@
+2020-05-13 07:07:04,927 -0700 [main] INFO  (Menu.java:189) - --------------------------------------
+2020-05-13 07:07:04,929 -0700 [main] INFO  (Menu.java:190) - Welcome to Monet & Bagges LLC Inc ATM
+2020-05-13 07:07:04,929 -0700 [main] INFO  (Menu.java:191) - --------------------------------------
+2020-05-13 07:07:04,929 -0700 [main] INFO  (Menu.java:195) - Please choose your login.
+2020-05-13 07:07:04,930 -0700 [main] INFO  (Menu.java:196) - 1) Customer Login
+2020-05-13 07:07:04,931 -0700 [main] INFO  (Menu.java:197) - 2) Employee Login
+2020-05-13 07:07:04,931 -0700 [main] INFO  (Menu.java:198) - 3) Sign up for a new customer account
+2020-05-13 07:07:04,931 -0700 [main] INFO  (Menu.java:199) - 0) To exit application at any time
+2020-05-13 07:07:07,712 -0700 [main] INFO  (Menu.java:96) - --------------
+2020-05-13 07:07:07,712 -0700 [main] INFO  (Menu.java:97) - Customer Login
+2020-05-13 07:07:07,712 -0700 [main] INFO  (Menu.java:98) - --------------
+
+2020-05-13 07:07:07,712 -0700 [main] INFO  (Menu.java:99) - Please enter your username
+2020-05-13 07:07:11,172 -0700 [main] INFO  (Menu.java:105) - Please enter your password
+2020-05-13 07:07:13,090 -0700 [main] INFO  (Menu.java:189) - --------------------------------------
+2020-05-13 07:07:13,090 -0700 [main] INFO  (Menu.java:190) - Welcome to Monet & Bagges LLC Inc ATM
+2020-05-13 07:07:13,090 -0700 [main] INFO  (Menu.java:191) - --------------------------------------
+2020-05-13 07:07:13,090 -0700 [main] INFO  (Menu.java:195) - Please choose your login.
+2020-05-13 07:07:13,090 -0700 [main] INFO  (Menu.java:196) - 1) Customer Login
+2020-05-13 07:07:13,090 -0700 [main] INFO  (Menu.java:197) - 2) Employee Login
+2020-05-13 07:07:13,090 -0700 [main] INFO  (Menu.java:198) - 3) Sign up for a new customer account
+2020-05-13 07:07:13,090 -0700 [main] INFO  (Menu.java:199) - 0) To exit application at any time
+2020-05-13 07:16:31,000 -0700 [main] INFO  (Menu.java:150) - ----------------------
+2020-05-13 07:16:31,000 -0700 [main] INFO  (Menu.java:151) - New Customer Sign Up
+2020-05-13 07:16:31,000 -0700 [main] INFO  (Menu.java:152) - ----------------------
+2020-05-13 07:16:31,000 -0700 [main] INFO  (Menu.java:155) - Please enter your desired username.
+2020-05-13 07:16:35,787 -0700 [main] INFO  (Menu.java:159) - Please enter your desired password
+2020-05-13 07:16:44,856 -0700 [main] INFO  (CustomerDaoImpl.java:117) - You have been logged in. 
+Welcome NewUser
+2020-05-13 07:16:44,883 -0700 [main] INFO  (CustomerDaoImpl.java:42) - Customer account successfully created.
+2020-05-13 07:16:44,912 -0700 [main] INFO  (Menu.java:189) - --------------------------------------
+2020-05-13 07:16:44,912 -0700 [main] INFO  (Menu.java:190) - Welcome to Monet & Bagges LLC Inc ATM
+2020-05-13 07:16:44,912 -0700 [main] INFO  (Menu.java:191) - --------------------------------------
+2020-05-13 07:16:44,912 -0700 [main] INFO  (Menu.java:195) - Please choose your login.
+2020-05-13 07:16:44,912 -0700 [main] INFO  (Menu.java:196) - 1) Customer Login
+2020-05-13 07:16:44,912 -0700 [main] INFO  (Menu.java:197) - 2) Employee Login
+2020-05-13 07:16:44,912 -0700 [main] INFO  (Menu.java:198) - 3) Sign up for a new customer account
+2020-05-13 07:16:44,912 -0700 [main] INFO  (Menu.java:199) - 0) To exit application at any time
+2020-05-13 07:16:50,003 -0700 [main] INFO  (Menu.java:96) - --------------
+2020-05-13 07:16:50,003 -0700 [main] INFO  (Menu.java:97) - Customer Login
+2020-05-13 07:16:50,003 -0700 [main] INFO  (Menu.java:98) - --------------
+
+2020-05-13 07:16:50,003 -0700 [main] INFO  (Menu.java:99) - Please enter your username
+2020-05-13 07:16:53,826 -0700 [main] INFO  (Menu.java:105) - Please enter your password
+2020-05-13 07:16:55,244 -0700 [main] INFO  (CustomerDaoImpl.java:117) - You have been logged in. 
+Welcome NewUser
+2020-05-13 07:16:55,272 -0700 [main] INFO  (Menu.java:61) - 
+--------------
+2020-05-13 07:16:55,272 -0700 [main] INFO  (Menu.java:62) - Customer Menu
+2020-05-13 07:16:55,272 -0700 [main] INFO  (Menu.java:63) - --------------
+2020-05-13 07:16:55,272 -0700 [main] INFO  (Menu.java:64) - 1) Check Balance
+2020-05-13 07:16:55,272 -0700 [main] INFO  (Menu.java:65) - 2) Deposit
+2020-05-13 07:16:55,272 -0700 [main] INFO  (Menu.java:66) - 3) Withdraw
+2020-05-13 07:16:55,272 -0700 [main] INFO  (Menu.java:67) - 4) Transfer funds to another M & B Customer
+2020-05-13 07:16:55,273 -0700 [main] INFO  (Menu.java:70) - 0) Log out
+2020-05-13 07:16:57,106 -0700 [main] INFO  (Menu.java:35) - NewUser balance for account: MBA1074 is currently: $0.0
+2020-05-13 07:16:57,106 -0700 [main] INFO  (Menu.java:61) - 
+--------------
+2020-05-13 07:16:57,106 -0700 [main] INFO  (Menu.java:62) - Customer Menu
+2020-05-13 07:16:57,106 -0700 [main] INFO  (Menu.java:63) - --------------
+2020-05-13 07:16:57,106 -0700 [main] INFO  (Menu.java:64) - 1) Check Balance
+2020-05-13 07:16:57,106 -0700 [main] INFO  (Menu.java:65) - 2) Deposit
+2020-05-13 07:16:57,106 -0700 [main] INFO  (Menu.java:66) - 3) Withdraw
+2020-05-13 07:16:57,106 -0700 [main] INFO  (Menu.java:67) - 4) Transfer funds to another M & B Customer
+2020-05-13 07:16:57,107 -0700 [main] INFO  (Menu.java:70) - 0) Log out
+2020-05-13 07:17:12,161 -0700 [main] INFO  (Menu.java:41) - 
+------------
+2020-05-13 07:17:12,161 -0700 [main] INFO  (Menu.java:42) - Deposit Menu
+2020-05-13 07:17:12,161 -0700 [main] INFO  (Menu.java:43) - ------------
+2020-05-13 07:17:12,161 -0700 [main] INFO  (Menu.java:44) - How much would you like to deposit?
+2020-05-13 07:17:18,283 -0700 [main] INFO  (Menu.java:35) - NewUser balance for account: MBA1074 is currently: $1500.25
+2020-05-13 07:17:18,284 -0700 [main] INFO  (Menu.java:61) - 
+--------------
+2020-05-13 07:17:18,284 -0700 [main] INFO  (Menu.java:62) - Customer Menu
+2020-05-13 07:17:18,284 -0700 [main] INFO  (Menu.java:63) - --------------
+2020-05-13 07:17:18,284 -0700 [main] INFO  (Menu.java:64) - 1) Check Balance
+2020-05-13 07:17:18,284 -0700 [main] INFO  (Menu.java:65) - 2) Deposit
+2020-05-13 07:17:18,284 -0700 [main] INFO  (Menu.java:66) - 3) Withdraw
+2020-05-13 07:17:18,284 -0700 [main] INFO  (Menu.java:67) - 4) Transfer funds to another M & B Customer
+2020-05-13 07:17:18,284 -0700 [main] INFO  (Menu.java:70) - 0) Log out
+2020-05-13 07:17:27,506 -0700 [main] INFO  (Menu.java:123) - ------------
+2020-05-13 07:17:27,506 -0700 [main] INFO  (Menu.java:124) - Withdraw Menu
+2020-05-13 07:17:27,506 -0700 [main] INFO  (Menu.java:125) - ------------
+2020-05-13 07:17:27,506 -0700 [main] INFO  (Menu.java:126) - How much would you like to withdraw?
+2020-05-13 07:17:30,269 -0700 [main] INFO  (Menu.java:35) - NewUser balance for account: MBA1074 is currently: $1257.25
+2020-05-13 07:17:30,269 -0700 [main] INFO  (Menu.java:61) - 
+--------------
+2020-05-13 07:17:30,269 -0700 [main] INFO  (Menu.java:62) - Customer Menu
+2020-05-13 07:17:30,269 -0700 [main] INFO  (Menu.java:63) - --------------
+2020-05-13 07:17:30,269 -0700 [main] INFO  (Menu.java:64) - 1) Check Balance
+2020-05-13 07:17:30,270 -0700 [main] INFO  (Menu.java:65) - 2) Deposit
+2020-05-13 07:17:30,270 -0700 [main] INFO  (Menu.java:66) - 3) Withdraw
+2020-05-13 07:17:30,270 -0700 [main] INFO  (Menu.java:67) - 4) Transfer funds to another M & B Customer
+2020-05-13 07:17:30,270 -0700 [main] INFO  (Menu.java:70) - 0) Log out
+2020-05-13 07:17:33,634 -0700 [main] INFO  (Menu.java:123) - ------------
+2020-05-13 07:17:33,634 -0700 [main] INFO  (Menu.java:124) - Withdraw Menu
+2020-05-13 07:17:33,634 -0700 [main] INFO  (Menu.java:125) - ------------
+2020-05-13 07:17:33,634 -0700 [main] INFO  (Menu.java:126) - How much would you like to withdraw?
+2020-05-13 07:17:34,626 -0700 [main] INFO  (Menu.java:137) - Wrong input format.
+2020-05-13 07:17:34,626 -0700 [main] INFO  (Menu.java:61) - 
+--------------
+2020-05-13 07:17:34,626 -0700 [main] INFO  (Menu.java:62) - Customer Menu
+2020-05-13 07:17:34,626 -0700 [main] INFO  (Menu.java:63) - --------------
+2020-05-13 07:17:34,626 -0700 [main] INFO  (Menu.java:64) - 1) Check Balance
+2020-05-13 07:17:34,626 -0700 [main] INFO  (Menu.java:65) - 2) Deposit
+2020-05-13 07:17:34,626 -0700 [main] INFO  (Menu.java:66) - 3) Withdraw
+2020-05-13 07:17:34,626 -0700 [main] INFO  (Menu.java:67) - 4) Transfer funds to another M & B Customer
+2020-05-13 07:17:34,626 -0700 [main] INFO  (Menu.java:70) - 0) Log out
+2020-05-13 07:25:30,726 -0700 [main] INFO  (Menu.java:189) - --------------------------------------
+2020-05-13 07:25:30,728 -0700 [main] INFO  (Menu.java:190) - Welcome to Monet & Bagges LLC Inc ATM
+2020-05-13 07:25:30,728 -0700 [main] INFO  (Menu.java:191) - --------------------------------------
+2020-05-13 07:25:30,728 -0700 [main] INFO  (Menu.java:195) - Please choose your login.
+2020-05-13 07:25:30,730 -0700 [main] INFO  (Menu.java:196) - 1) Customer Login
+2020-05-13 07:25:30,730 -0700 [main] INFO  (Menu.java:197) - 2) Employee Login
+2020-05-13 07:25:30,730 -0700 [main] INFO  (Menu.java:198) - 3) Sign up for a new customer account
+2020-05-13 07:25:30,730 -0700 [main] INFO  (Menu.java:199) - 0) To exit application at any time
+2020-05-13 07:25:36,219 -0700 [main] INFO  (Menu.java:150) - ----------------------
+2020-05-13 07:25:36,219 -0700 [main] INFO  (Menu.java:151) - New Customer Sign Up
+2020-05-13 07:25:36,219 -0700 [main] INFO  (Menu.java:152) - ----------------------
+2020-05-13 07:25:36,220 -0700 [main] INFO  (Menu.java:155) - Please enter your desired username.
+2020-05-13 07:25:40,267 -0700 [main] INFO  (Menu.java:159) - Please enter your desired password
+2020-05-13 07:25:49,497 -0700 [main] INFO  (Menu.java:189) - --------------------------------------
+2020-05-13 07:25:49,497 -0700 [main] INFO  (Menu.java:190) - Welcome to Monet & Bagges LLC Inc ATM
+2020-05-13 07:25:49,498 -0700 [main] INFO  (Menu.java:191) - --------------------------------------
+2020-05-13 07:25:49,498 -0700 [main] INFO  (Menu.java:195) - Please choose your login.
+2020-05-13 07:25:49,498 -0700 [main] INFO  (Menu.java:196) - 1) Customer Login
+2020-05-13 07:25:49,498 -0700 [main] INFO  (Menu.java:197) - 2) Employee Login
+2020-05-13 07:25:49,498 -0700 [main] INFO  (Menu.java:198) - 3) Sign up for a new customer account
+2020-05-13 07:25:49,499 -0700 [main] INFO  (Menu.java:199) - 0) To exit application at any time
+2020-05-13 07:25:53,097 -0700 [main] INFO  (Menu.java:96) - --------------
+2020-05-13 07:25:53,097 -0700 [main] INFO  (Menu.java:97) - Customer Login
+2020-05-13 07:25:53,097 -0700 [main] INFO  (Menu.java:98) - --------------
+
+2020-05-13 07:25:53,097 -0700 [main] INFO  (Menu.java:99) - Please enter your username
+2020-05-13 07:26:00,911 -0700 [main] INFO  (Menu.java:105) - Please enter your password
+2020-05-13 07:26:04,100 -0700 [main] INFO  (Menu.java:189) - --------------------------------------
+2020-05-13 07:26:04,100 -0700 [main] INFO  (Menu.java:190) - Welcome to Monet & Bagges LLC Inc ATM
+2020-05-13 07:26:04,100 -0700 [main] INFO  (Menu.java:191) - --------------------------------------
+2020-05-13 07:26:04,100 -0700 [main] INFO  (Menu.java:195) - Please choose your login.
+2020-05-13 07:26:04,100 -0700 [main] INFO  (Menu.java:196) - 1) Customer Login
+2020-05-13 07:26:04,100 -0700 [main] INFO  (Menu.java:197) - 2) Employee Login
+2020-05-13 07:26:04,100 -0700 [main] INFO  (Menu.java:198) - 3) Sign up for a new customer account
+2020-05-13 07:26:04,100 -0700 [main] INFO  (Menu.java:199) - 0) To exit application at any time
+2020-05-13 07:26:25,286 -0700 [main] INFO  (Menu.java:189) - --------------------------------------
+2020-05-13 07:26:25,287 -0700 [main] INFO  (Menu.java:190) - Welcome to Monet & Bagges LLC Inc ATM
+2020-05-13 07:26:25,287 -0700 [main] INFO  (Menu.java:191) - --------------------------------------
+2020-05-13 07:26:25,288 -0700 [main] INFO  (Menu.java:195) - Please choose your login.
+2020-05-13 07:26:25,289 -0700 [main] INFO  (Menu.java:196) - 1) Customer Login
+2020-05-13 07:26:25,289 -0700 [main] INFO  (Menu.java:197) - 2) Employee Login
+2020-05-13 07:26:25,289 -0700 [main] INFO  (Menu.java:198) - 3) Sign up for a new customer account
+2020-05-13 07:26:25,289 -0700 [main] INFO  (Menu.java:199) - 0) To exit application at any time
+2020-05-13 07:35:23,135 -0700 [main] INFO  (Menu.java:189) - --------------------------------------
+2020-05-13 07:35:23,136 -0700 [main] INFO  (Menu.java:190) - Welcome to Monet & Bagges LLC Inc ATM
+2020-05-13 07:35:23,137 -0700 [main] INFO  (Menu.java:191) - --------------------------------------
+2020-05-13 07:35:23,137 -0700 [main] INFO  (Menu.java:195) - Please choose your login.
+2020-05-13 07:35:23,138 -0700 [main] INFO  (Menu.java:196) - 1) Customer Login
+2020-05-13 07:35:23,138 -0700 [main] INFO  (Menu.java:197) - 2) Employee Login
+2020-05-13 07:35:23,138 -0700 [main] INFO  (Menu.java:198) - 3) Sign up for a new customer account
+2020-05-13 07:35:23,139 -0700 [main] INFO  (Menu.java:199) - 0) To exit application at any time
+2020-05-13 07:35:25,737 -0700 [main] INFO  (Menu.java:150) - ----------------------
+2020-05-13 07:35:25,737 -0700 [main] INFO  (Menu.java:151) - New Customer Sign Up
+2020-05-13 07:35:25,737 -0700 [main] INFO  (Menu.java:152) - ----------------------
+2020-05-13 07:35:25,737 -0700 [main] INFO  (Menu.java:155) - Please enter your desired username.
+2020-05-13 07:35:32,537 -0700 [main] INFO  (Menu.java:159) - Please enter your desired password
+2020-05-13 07:35:37,706 -0700 [main] INFO  (CustomerDaoImpl.java:117) - You have been logged in. 
+Welcome n3wt
+2020-05-13 07:35:37,734 -0700 [main] INFO  (CustomerDaoImpl.java:42) - Customer account successfully created.
+2020-05-13 07:35:37,766 -0700 [main] INFO  (Menu.java:189) - --------------------------------------
+2020-05-13 07:35:37,767 -0700 [main] INFO  (Menu.java:190) - Welcome to Monet & Bagges LLC Inc ATM
+2020-05-13 07:35:37,768 -0700 [main] INFO  (Menu.java:191) - --------------------------------------
+2020-05-13 07:35:37,768 -0700 [main] INFO  (Menu.java:195) - Please choose your login.
+2020-05-13 07:35:37,768 -0700 [main] INFO  (Menu.java:196) - 1) Customer Login
+2020-05-13 07:35:37,768 -0700 [main] INFO  (Menu.java:197) - 2) Employee Login
+2020-05-13 07:35:37,768 -0700 [main] INFO  (Menu.java:198) - 3) Sign up for a new customer account
+2020-05-13 07:35:37,768 -0700 [main] INFO  (Menu.java:199) - 0) To exit application at any time
+2020-05-13 07:35:43,488 -0700 [main] INFO  (Menu.java:96) - --------------
+2020-05-13 07:35:43,488 -0700 [main] INFO  (Menu.java:97) - Customer Login
+2020-05-13 07:35:43,488 -0700 [main] INFO  (Menu.java:98) - --------------
+
+2020-05-13 07:35:43,488 -0700 [main] INFO  (Menu.java:99) - Please enter your username
+2020-05-13 07:35:45,962 -0700 [main] INFO  (Menu.java:105) - Please enter your password
+2020-05-13 07:35:48,569 -0700 [main] INFO  (CustomerDaoImpl.java:117) - You have been logged in. 
+Welcome n3wt
+2020-05-13 07:35:48,597 -0700 [main] INFO  (Menu.java:61) - 
+--------------
+2020-05-13 07:35:48,597 -0700 [main] INFO  (Menu.java:62) - Customer Menu
+2020-05-13 07:35:48,597 -0700 [main] INFO  (Menu.java:63) - --------------
+2020-05-13 07:35:48,597 -0700 [main] INFO  (Menu.java:64) - 1) Check Balance
+2020-05-13 07:35:48,597 -0700 [main] INFO  (Menu.java:65) - 2) Deposit
+2020-05-13 07:35:48,597 -0700 [main] INFO  (Menu.java:66) - 3) Withdraw
+2020-05-13 07:35:48,597 -0700 [main] INFO  (Menu.java:67) - 4) Transfer funds to another M & B Customer
+2020-05-13 07:35:48,597 -0700 [main] INFO  (Menu.java:70) - 0) Log out
+2020-05-13 07:36:29,345 -0700 [main] INFO  (Menu.java:189) - --------------------------------------
+2020-05-13 07:36:29,346 -0700 [main] INFO  (Menu.java:190) - Welcome to Monet & Bagges LLC Inc ATM
+2020-05-13 07:36:29,347 -0700 [main] INFO  (Menu.java:191) - --------------------------------------
+2020-05-13 07:36:29,347 -0700 [main] INFO  (Menu.java:195) - Please choose your login.
+2020-05-13 07:36:29,348 -0700 [main] INFO  (Menu.java:196) - 1) Customer Login
+2020-05-13 07:36:29,348 -0700 [main] INFO  (Menu.java:197) - 2) Employee Login
+2020-05-13 07:36:29,349 -0700 [main] INFO  (Menu.java:198) - 3) Sign up for a new customer account
+2020-05-13 07:36:29,349 -0700 [main] INFO  (Menu.java:199) - 0) To exit application at any time
+2020-05-13 07:36:30,720 -0700 [main] INFO  (Menu.java:96) - --------------
+2020-05-13 07:36:30,720 -0700 [main] INFO  (Menu.java:97) - Customer Login
+2020-05-13 07:36:30,720 -0700 [main] INFO  (Menu.java:98) - --------------
+
+2020-05-13 07:36:30,720 -0700 [main] INFO  (Menu.java:99) - Please enter your username
+2020-05-13 07:36:32,827 -0700 [main] INFO  (Menu.java:105) - Please enter your password
+2020-05-13 07:36:35,392 -0700 [main] INFO  (CustomerDaoImpl.java:117) - You have been logged in. 
+Welcome n3wt
+
+2020-05-13 07:36:35,421 -0700 [main] INFO  (Menu.java:61) - 
+--------------
+2020-05-13 07:36:35,421 -0700 [main] INFO  (Menu.java:62) - Customer Menu
+2020-05-13 07:36:35,422 -0700 [main] INFO  (Menu.java:63) - --------------
+2020-05-13 07:36:35,422 -0700 [main] INFO  (Menu.java:64) - 1) Check Balance
+2020-05-13 07:36:35,422 -0700 [main] INFO  (Menu.java:65) - 2) Deposit
+2020-05-13 07:36:35,422 -0700 [main] INFO  (Menu.java:66) - 3) Withdraw
+2020-05-13 07:36:35,422 -0700 [main] INFO  (Menu.java:67) - 4) Transfer funds to another M & B Customer
+2020-05-13 07:36:35,422 -0700 [main] INFO  (Menu.java:70) - 0) Log out
+2020-05-13 07:37:08,239 -0700 [main] INFO  (Menu.java:189) - --------------------------------------
+2020-05-13 07:37:08,241 -0700 [main] INFO  (Menu.java:190) - Welcome to Monet & Bagges LLC Inc ATM
+2020-05-13 07:37:08,241 -0700 [main] INFO  (Menu.java:191) - --------------------------------------
+2020-05-13 07:37:08,241 -0700 [main] INFO  (Menu.java:195) - Please choose your login.
+2020-05-13 07:37:08,243 -0700 [main] INFO  (Menu.java:196) - 1) Customer Login
+2020-05-13 07:37:08,243 -0700 [main] INFO  (Menu.java:197) - 2) Employee Login
+2020-05-13 07:37:08,243 -0700 [main] INFO  (Menu.java:198) - 3) Sign up for a new customer account
+2020-05-13 07:37:08,243 -0700 [main] INFO  (Menu.java:199) - 0) To exit application at any time
+2020-05-13 07:37:09,533 -0700 [main] INFO  (Menu.java:96) - --------------
+2020-05-13 07:37:09,533 -0700 [main] INFO  (Menu.java:97) - Customer Login
+2020-05-13 07:37:09,533 -0700 [main] INFO  (Menu.java:98) - --------------
+
+2020-05-13 07:37:09,533 -0700 [main] INFO  (Menu.java:99) - Please enter your username
+2020-05-13 07:37:12,611 -0700 [main] INFO  (Menu.java:105) - Please enter your password
+2020-05-13 07:37:14,647 -0700 [main] INFO  (CustomerDaoImpl.java:117) - 
+You have been logged in. 
+Welcome n3wt
+2020-05-13 07:37:14,675 -0700 [main] INFO  (Menu.java:61) - 
+--------------
+2020-05-13 07:37:14,675 -0700 [main] INFO  (Menu.java:62) - Customer Menu
+2020-05-13 07:37:14,676 -0700 [main] INFO  (Menu.java:63) - --------------
+2020-05-13 07:37:14,676 -0700 [main] INFO  (Menu.java:64) - 1) Check Balance
+2020-05-13 07:37:14,676 -0700 [main] INFO  (Menu.java:65) - 2) Deposit
+2020-05-13 07:37:14,677 -0700 [main] INFO  (Menu.java:66) - 3) Withdraw
+2020-05-13 07:37:14,677 -0700 [main] INFO  (Menu.java:67) - 4) Transfer funds to another M & B Customer
+2020-05-13 07:37:14,677 -0700 [main] INFO  (Menu.java:70) - 0) Log out
+2020-05-13 07:47:48,805 -0700 [main] INFO  (Menu.java:35) - n3wt balance for account: MBA1076 is currently: $0.0
+2020-05-13 07:47:48,805 -0700 [main] INFO  (Menu.java:61) - 
+--------------
+2020-05-13 07:47:48,805 -0700 [main] INFO  (Menu.java:62) - Customer Menu
+2020-05-13 07:47:48,805 -0700 [main] INFO  (Menu.java:63) - --------------
+2020-05-13 07:47:48,805 -0700 [main] INFO  (Menu.java:64) - 1) Check Balance
+2020-05-13 07:47:48,805 -0700 [main] INFO  (Menu.java:65) - 2) Deposit
+2020-05-13 07:47:48,805 -0700 [main] INFO  (Menu.java:66) - 3) Withdraw
+2020-05-13 07:47:48,805 -0700 [main] INFO  (Menu.java:67) - 4) Transfer funds to another M & B Customer
+2020-05-13 07:47:48,805 -0700 [main] INFO  (Menu.java:70) - 0) Log out
+2020-05-13 07:47:52,219 -0700 [main] INFO  (Menu.java:123) - ------------
+2020-05-13 07:47:52,219 -0700 [main] INFO  (Menu.java:124) - Withdraw Menu
+2020-05-13 07:47:52,219 -0700 [main] INFO  (Menu.java:125) - ------------
+2020-05-13 07:47:52,219 -0700 [main] INFO  (Menu.java:126) - How much would you like to withdraw?
+2020-05-13 07:47:53,898 -0700 [main] INFO  (Menu.java:61) - 
+--------------
+2020-05-13 07:47:53,898 -0700 [main] INFO  (Menu.java:62) - Customer Menu
+2020-05-13 07:47:53,898 -0700 [main] INFO  (Menu.java:63) - --------------
+2020-05-13 07:47:53,898 -0700 [main] INFO  (Menu.java:64) - 1) Check Balance
+2020-05-13 07:47:53,898 -0700 [main] INFO  (Menu.java:65) - 2) Deposit
+2020-05-13 07:47:53,898 -0700 [main] INFO  (Menu.java:66) - 3) Withdraw
+2020-05-13 07:47:53,898 -0700 [main] INFO  (Menu.java:67) - 4) Transfer funds to another M & B Customer
+2020-05-13 07:47:53,899 -0700 [main] INFO  (Menu.java:70) - 0) Log out
+2020-05-13 07:58:10,462 -0700 [main] INFO  (Menu.java:436) - ------------------------------------
+2020-05-13 07:58:10,462 -0700 [main] INFO  (Menu.java:437) - Transfer Funds to Another Customer
+2020-05-13 07:58:10,462 -0700 [main] INFO  (Menu.java:438) - ------------------------------------
+
+2020-05-13 07:58:10,462 -0700 [main] INFO  (Menu.java:439) - Please enter the recipient's username: 
+2020-05-13 07:58:15,866 -0700 [main] INFO  (Menu.java:445) - Please enter the amount you'd like to transfer: 
+2020-05-13 07:58:19,284 -0700 [main] INFO  (Menu.java:61) - 
+--------------
+2020-05-13 07:58:19,284 -0700 [main] INFO  (Menu.java:62) - Customer Menu
+2020-05-13 07:58:19,284 -0700 [main] INFO  (Menu.java:63) - --------------
+2020-05-13 07:58:19,284 -0700 [main] INFO  (Menu.java:64) - 1) Check Balance
+2020-05-13 07:58:19,284 -0700 [main] INFO  (Menu.java:65) - 2) Deposit
+2020-05-13 07:58:19,284 -0700 [main] INFO  (Menu.java:66) - 3) Withdraw
+2020-05-13 07:58:19,284 -0700 [main] INFO  (Menu.java:67) - 4) Transfer funds to another M & B Customer
+2020-05-13 07:58:19,284 -0700 [main] INFO  (Menu.java:70) - 0) Log out
+2020-05-13 08:29:02,677 -0700 [main] INFO  (Menu.java:189) - --------------------------------------
+2020-05-13 08:29:02,678 -0700 [main] INFO  (Menu.java:190) - Welcome to Monet & Bagges LLC Inc ATM
+2020-05-13 08:29:02,678 -0700 [main] INFO  (Menu.java:191) - --------------------------------------
+2020-05-13 08:29:02,679 -0700 [main] INFO  (Menu.java:195) - Please choose your login.
+2020-05-13 08:29:02,680 -0700 [main] INFO  (Menu.java:196) - 1) Customer Login
+2020-05-13 08:29:02,680 -0700 [main] INFO  (Menu.java:197) - 2) Employee Login
+2020-05-13 08:29:02,680 -0700 [main] INFO  (Menu.java:198) - 3) Sign up for a new customer account
+2020-05-13 08:29:02,680 -0700 [main] INFO  (Menu.java:199) - 0) To exit application at any time
+2020-05-13 09:55:45,988 -0700 [main] INFO  (Menu.java:204) - --------------------------------------
+2020-05-13 09:55:45,989 -0700 [main] INFO  (Menu.java:205) - Welcome to Monet & Bagges LLC Inc ATM
+2020-05-13 09:55:45,989 -0700 [main] INFO  (Menu.java:206) - --------------------------------------
+2020-05-13 09:55:45,990 -0700 [main] INFO  (Menu.java:210) - Please choose your login.
+2020-05-13 09:55:45,991 -0700 [main] INFO  (Menu.java:211) - 1) Customer Login
+2020-05-13 09:55:45,991 -0700 [main] INFO  (Menu.java:212) - 2) Employee Login
+2020-05-13 09:55:45,991 -0700 [main] INFO  (Menu.java:213) - 3) Sign up for a new customer account
+2020-05-13 09:55:45,991 -0700 [main] INFO  (Menu.java:214) - 0) To exit application at any time
+2020-05-13 09:55:52,209 -0700 [main] INFO  (Menu.java:235) - 1
+2020-05-13 09:55:52,210 -0700 [main] INFO  (Menu.java:102) - --------------
+2020-05-13 09:55:52,210 -0700 [main] INFO  (Menu.java:103) - Customer Login
+2020-05-13 09:55:52,210 -0700 [main] INFO  (Menu.java:104) - --------------
+
+2020-05-13 09:55:52,210 -0700 [main] INFO  (Menu.java:105) - Please enter your username
+2020-05-13 09:55:54,602 -0700 [main] INFO  (Menu.java:112) - Please enter your password
+2020-05-13 09:55:55,721 -0700 [main] INFO  (Menu.java:114) - woops...shhhhhhhh
+2020-05-13 09:55:56,781 -0700 [main] INFO  (CustomerDaoImpl.java:117) - 
+You have been logged in. 
+Welcome superuser
+2020-05-13 09:55:56,810 -0700 [main] INFO  (Menu.java:62) - 
+--------------
+2020-05-13 09:55:56,810 -0700 [main] INFO  (Menu.java:63) - Customer Menu
+2020-05-13 09:55:56,810 -0700 [main] INFO  (Menu.java:64) - --------------
+2020-05-13 09:55:56,810 -0700 [main] INFO  (Menu.java:65) - 1) Check Balance
+2020-05-13 09:55:56,811 -0700 [main] INFO  (Menu.java:66) - 2) Deposit
+2020-05-13 09:55:56,811 -0700 [main] INFO  (Menu.java:67) - 3) Withdraw
+2020-05-13 09:55:56,811 -0700 [main] INFO  (Menu.java:68) - 4) Transfer funds to another M & B Customer
+2020-05-13 09:55:56,811 -0700 [main] INFO  (Menu.java:71) - 0) Log out
+2020-05-13 09:59:51,454 -0700 [main] INFO  (Menu.java:202) - --------------------------------------
+2020-05-13 09:59:51,457 -0700 [main] INFO  (Menu.java:203) - Welcome to Monet & Bagges LLC Inc ATM
+2020-05-13 09:59:51,457 -0700 [main] INFO  (Menu.java:204) - --------------------------------------
+2020-05-13 09:59:51,457 -0700 [main] INFO  (Menu.java:208) - Please choose your login.
+2020-05-13 09:59:51,459 -0700 [main] INFO  (Menu.java:209) - 1) Customer Login
+2020-05-13 09:59:51,459 -0700 [main] INFO  (Menu.java:210) - 2) Employee Login
+2020-05-13 09:59:51,460 -0700 [main] INFO  (Menu.java:211) - 3) Sign up for a new customer account
+2020-05-13 09:59:51,460 -0700 [main] INFO  (Menu.java:212) - 0) To exit application at any time
+2020-05-13 09:59:53,847 -0700 [main] INFO  (Menu.java:233) - 1
+2020-05-13 09:59:53,847 -0700 [main] INFO  (Menu.java:102) - --------------
+2020-05-13 09:59:53,847 -0700 [main] INFO  (Menu.java:103) - Customer Login
+2020-05-13 09:59:53,847 -0700 [main] INFO  (Menu.java:104) - --------------
+
+2020-05-13 09:59:53,847 -0700 [main] INFO  (Menu.java:105) - Please enter your username
+2020-05-13 09:59:57,425 -0700 [main] INFO  (Menu.java:112) - Please enter your password
+2020-05-13 10:00:04,809 -0700 [main] INFO  (CustomerDaoImpl.java:117) - 
+You have been logged in. 
+Welcome superuser
+2020-05-13 10:00:04,839 -0700 [main] INFO  (Menu.java:62) - 
+--------------
+2020-05-13 10:00:04,840 -0700 [main] INFO  (Menu.java:63) - Customer Menu
+2020-05-13 10:00:04,841 -0700 [main] INFO  (Menu.java:64) - --------------
+2020-05-13 10:00:04,841 -0700 [main] INFO  (Menu.java:65) - 1) Check Balance
+2020-05-13 10:00:04,841 -0700 [main] INFO  (Menu.java:66) - 2) Deposit
+2020-05-13 10:00:04,841 -0700 [main] INFO  (Menu.java:67) - 3) Withdraw
+2020-05-13 10:00:04,841 -0700 [main] INFO  (Menu.java:68) - 4) Transfer funds to another M & B Customer
+2020-05-13 10:00:04,841 -0700 [main] INFO  (Menu.java:71) - 0) Log out
+2020-05-13 10:28:49,045 -0700 [main] INFO  (Menu.java:202) - --------------------------------------
+2020-05-13 10:28:49,047 -0700 [main] INFO  (Menu.java:203) - Welcome to Monet & Bagges LLC Inc ATM
+2020-05-13 10:28:49,047 -0700 [main] INFO  (Menu.java:204) - --------------------------------------
+2020-05-13 10:28:49,047 -0700 [main] INFO  (Menu.java:208) - Please choose your login.
+2020-05-13 10:28:49,049 -0700 [main] INFO  (Menu.java:209) - 1) Customer Login
+2020-05-13 10:28:49,049 -0700 [main] INFO  (Menu.java:210) - 2) Employee Login
+2020-05-13 10:28:49,049 -0700 [main] INFO  (Menu.java:211) - 3) Sign up for a new customer account
+2020-05-13 10:28:49,049 -0700 [main] INFO  (Menu.java:212) - 0) To exit application at any time
+2020-05-13 10:29:00,330 -0700 [main] INFO  (Menu.java:233) - 3
+2020-05-13 10:29:00,336 -0700 [main] INFO  (Menu.java:159) - ----------------------
+2020-05-13 10:29:00,336 -0700 [main] INFO  (Menu.java:160) - New Customer Sign Up
+2020-05-13 10:29:00,336 -0700 [main] INFO  (Menu.java:161) - ----------------------
+2020-05-13 10:29:00,336 -0700 [main] INFO  (Menu.java:164) - Please enter your desired username.
+2020-05-13 10:29:06,436 -0700 [main] INFO  (Menu.java:167) - SuperTest
+2020-05-13 10:29:06,436 -0700 [main] INFO  (Menu.java:171) - Please enter your desired password
+2020-05-13 10:29:10,790 -0700 [main] INFO  (CustomerDaoImpl.java:117) - 
+You have been logged in. 
+Welcome SuperTest
+2020-05-13 10:29:10,820 -0700 [main] INFO  (CustomerDaoImpl.java:42) - Customer account successfully created.
+2020-05-13 10:29:10,849 -0700 [main] INFO  (Menu.java:202) - --------------------------------------
+2020-05-13 10:29:10,849 -0700 [main] INFO  (Menu.java:203) - Welcome to Monet & Bagges LLC Inc ATM
+2020-05-13 10:29:10,849 -0700 [main] INFO  (Menu.java:204) - --------------------------------------
+2020-05-13 10:29:10,850 -0700 [main] INFO  (Menu.java:208) - Please choose your login.
+2020-05-13 10:29:10,850 -0700 [main] INFO  (Menu.java:209) - 1) Customer Login
+2020-05-13 10:29:10,850 -0700 [main] INFO  (Menu.java:210) - 2) Employee Login
+2020-05-13 10:29:10,850 -0700 [main] INFO  (Menu.java:211) - 3) Sign up for a new customer account
+2020-05-13 10:29:10,850 -0700 [main] INFO  (Menu.java:212) - 0) To exit application at any time
+2020-05-13 10:29:23,310 -0700 [main] INFO  (Menu.java:233) - 2
+2020-05-13 10:29:23,311 -0700 [main] INFO  (Menu.java:75) - 
+--------------
+2020-05-13 10:29:23,311 -0700 [main] INFO  (Menu.java:76) - Employee Login
+2020-05-13 10:29:23,311 -0700 [main] INFO  (Menu.java:77) - --------------
+
+2020-05-13 10:29:23,311 -0700 [main] INFO  (Menu.java:78) - Please enter your username
+2020-05-13 10:29:28,374 -0700 [main] INFO  (Menu.java:84) - admin
+2020-05-13 10:29:28,374 -0700 [main] INFO  (Menu.java:86) - Please enter your password
+2020-05-13 10:29:29,999 -0700 [main] INFO  (EmployeeDaoImpl.java:31) - You have been logged in. 
+Welcome admin
+2020-05-13 10:29:30,028 -0700 [main] INFO  (Menu.java:189) - --------------
+2020-05-13 10:29:30,028 -0700 [main] INFO  (Menu.java:190) - Employee Menu
+2020-05-13 10:29:30,028 -0700 [main] INFO  (Menu.java:191) - --------------
+2020-05-13 10:29:30,028 -0700 [main] INFO  (Menu.java:192) - 1) Look up customer account by account ID
+2020-05-13 10:29:30,028 -0700 [main] INFO  (Menu.java:193) - 2) Look up a customer account by username
+2020-05-13 10:29:30,029 -0700 [main] INFO  (Menu.java:194) - 3) View all customer accounts
+2020-05-13 10:29:30,029 -0700 [main] INFO  (Menu.java:195) - 4) View all transactions
+2020-05-13 10:29:51,151 -0700 [main] INFO  (Menu.java:233) - 2
+2020-05-13 10:29:51,151 -0700 [main] INFO  (Menu.java:357) - ---------------------------
+2020-05-13 10:29:51,151 -0700 [main] INFO  (Menu.java:358) - Find Customer By Username
+2020-05-13 10:29:51,151 -0700 [main] INFO  (Menu.java:359) - ---------------------------
+2020-05-13 10:29:51,151 -0700 [main] INFO  (Menu.java:360) - Please enter the Username of the account you wish to find: 
+2020-05-13 10:29:54,507 -0700 [main] INFO  (Menu.java:366) - SuperTest
+2020-05-13 10:29:54,853 -0700 [main] INFO  (Menu.java:35) - SuperTest balance for account: MBA1078 is currently: $0.0
+2020-05-13 10:29:54,853 -0700 [main] INFO  (Menu.java:189) - --------------
+2020-05-13 10:29:54,853 -0700 [main] INFO  (Menu.java:190) - Employee Menu
+2020-05-13 10:29:54,853 -0700 [main] INFO  (Menu.java:191) - --------------
+2020-05-13 10:29:54,853 -0700 [main] INFO  (Menu.java:192) - 1) Look up customer account by account ID
+2020-05-13 10:29:54,853 -0700 [main] INFO  (Menu.java:193) - 2) Look up a customer account by username
+2020-05-13 10:29:54,853 -0700 [main] INFO  (Menu.java:194) - 3) View all customer accounts
+2020-05-13 10:29:54,853 -0700 [main] INFO  (Menu.java:195) - 4) View all transactions
+2020-05-13 10:30:06,647 -0700 [main] INFO  (Menu.java:233) - 3
+2020-05-13 10:30:06,647 -0700 [main] INFO  (Menu.java:330) - --------------------------
+2020-05-13 10:30:06,647 -0700 [main] INFO  (Menu.java:331) - All Monet & Bagges Users
+2020-05-13 10:30:06,647 -0700 [main] INFO  (Menu.java:332) - --------------------------
+2020-05-13 10:30:07,003 -0700 [main] INFO  (Menu.java:341) - Username: Hero | UserID: MBU1070 | Account: MBA1071 | Balance: 7334.0
+2020-05-13 10:30:07,003 -0700 [main] INFO  (Menu.java:341) - Username: superuser | UserID: MBU1055 | Account: MBA1056 | Balance: 5680.000000000001
+2020-05-13 10:30:07,003 -0700 [main] INFO  (Menu.java:341) - Username: Let | UserID: MBU1057 | Account: MBA1058 | Balance: 222.0
+2020-05-13 10:30:07,003 -0700 [main] INFO  (Menu.java:341) - Username: bob | UserID: MBU1062 | Account: MBA1063 | Balance: 148.69
+2020-05-13 10:30:07,004 -0700 [main] INFO  (Menu.java:341) - Username: user | UserID: MBU1053 | Account: MBA1054 | Balance: 1000.0
+2020-05-13 10:30:07,004 -0700 [main] INFO  (Menu.java:341) - Username: tab | UserID: MBU1064 | Account: MBA1065 | Balance: 2000.0
+2020-05-13 10:30:07,004 -0700 [main] INFO  (Menu.java:341) - Username: n3wt | UserID: MBU1075 | Account: MBA1076 | Balance: 0.0
+2020-05-13 10:30:07,004 -0700 [main] INFO  (Menu.java:341) - Username: SuperTest | UserID: MBU1077 | Account: MBA1078 | Balance: 0.0
+2020-05-13 10:30:07,004 -0700 [main] INFO  (Menu.java:341) - Username: New | UserID: MBU1060 | Account: MBA1061 | Balance: 0.0
+2020-05-13 10:30:07,004 -0700 [main] INFO  (Menu.java:341) - Username: NewUser | UserID: MBU1073 | Account: MBA1074 | Balance: 1257.25
+2020-05-13 10:30:07,004 -0700 [main] INFO  (Menu.java:189) - --------------
+2020-05-13 10:30:07,004 -0700 [main] INFO  (Menu.java:190) - Employee Menu
+2020-05-13 10:30:07,004 -0700 [main] INFO  (Menu.java:191) - --------------
+2020-05-13 10:30:07,004 -0700 [main] INFO  (Menu.java:192) - 1) Look up customer account by account ID
+2020-05-13 10:30:07,004 -0700 [main] INFO  (Menu.java:193) - 2) Look up a customer account by username
+2020-05-13 10:30:07,004 -0700 [main] INFO  (Menu.java:194) - 3) View all customer accounts
+2020-05-13 10:30:07,004 -0700 [main] INFO  (Menu.java:195) - 4) View all transactions
+2020-05-13 10:30:21,477 -0700 [main] INFO  (Menu.java:233) - 4
+2020-05-13 10:30:21,477 -0700 [main] INFO  (Menu.java:313) - ---------------------------------
+2020-05-13 10:30:21,477 -0700 [main] INFO  (Menu.java:314) - All Monet & Bagges Transactions
+2020-05-13 10:30:21,477 -0700 [main] INFO  (Menu.java:315) - ---------------------------------
+2020-05-13 10:30:21,841 -0700 [main] INFO  (Menu.java:322) - Transaction ID: TRN1066 | Sender ID: MBA1056 | Receiver ID: MBA1063 | Amount: $100.0
+2020-05-13 10:30:21,841 -0700 [main] INFO  (Menu.java:322) - Transaction ID: TRN1067 | Sender ID: MBA1056 | Receiver ID: MBA1063 | Amount: $100.0
+2020-05-13 10:30:21,841 -0700 [main] INFO  (Menu.java:322) - Transaction ID: TRN1068 | Sender ID: MBA1056 | Receiver ID: MBA1063 | Amount: $28.69
+2020-05-13 10:30:21,841 -0700 [main] INFO  (Menu.java:322) - Transaction ID: TRN1069 | Sender ID: MBA1056 | Receiver ID: MBA1063 | Amount: $20.0
+2020-05-13 10:30:21,841 -0700 [main] INFO  (Menu.java:322) - Transaction ID: TRN1072 | Sender ID: MBA1071 | Receiver ID: MBA1065 | Amount: $2000.0
+2020-05-13 10:30:21,841 -0700 [main] INFO  (Menu.java:189) - --------------
+2020-05-13 10:30:21,841 -0700 [main] INFO  (Menu.java:190) - Employee Menu
+2020-05-13 10:30:21,841 -0700 [main] INFO  (Menu.java:191) - --------------
+2020-05-13 10:30:21,841 -0700 [main] INFO  (Menu.java:192) - 1) Look up customer account by account ID
+2020-05-13 10:30:21,841 -0700 [main] INFO  (Menu.java:193) - 2) Look up a customer account by username
+2020-05-13 10:30:21,841 -0700 [main] INFO  (Menu.java:194) - 3) View all customer accounts
+2020-05-13 10:30:21,841 -0700 [main] INFO  (Menu.java:195) - 4) View all transactions
+2020-05-13 10:30:31,369 -0700 [main] INFO  (Menu.java:233) - 0
+2020-05-13 10:30:31,369 -0700 [main] INFO  (Menu.java:216) - Would you like to log out?
+2020-05-13 10:30:31,369 -0700 [main] INFO  (Menu.java:217) - 1) Yes
+2020-05-13 10:30:31,369 -0700 [main] INFO  (Menu.java:218) - 2) No
+2020-05-13 10:30:35,275 -0700 [main] INFO  (Menu.java:233) - 1
+2020-05-13 10:30:41,220 -0700 [main] INFO  (Menu.java:202) - --------------------------------------
+2020-05-13 10:30:41,222 -0700 [main] INFO  (Menu.java:203) - Welcome to Monet & Bagges LLC Inc ATM
+2020-05-13 10:30:41,222 -0700 [main] INFO  (Menu.java:204) - --------------------------------------
+2020-05-13 10:30:41,223 -0700 [main] INFO  (Menu.java:208) - Please choose your login.
+2020-05-13 10:30:41,225 -0700 [main] INFO  (Menu.java:209) - 1) Customer Login
+2020-05-13 10:30:41,225 -0700 [main] INFO  (Menu.java:210) - 2) Employee Login
+2020-05-13 10:30:41,225 -0700 [main] INFO  (Menu.java:211) - 3) Sign up for a new customer account
+2020-05-13 10:30:41,225 -0700 [main] INFO  (Menu.java:212) - 0) To exit application at any time
+2020-05-13 10:30:44,379 -0700 [main] INFO  (Menu.java:233) - 1
+2020-05-13 10:30:44,379 -0700 [main] INFO  (Menu.java:102) - --------------
+2020-05-13 10:30:44,379 -0700 [main] INFO  (Menu.java:103) - Customer Login
+2020-05-13 10:30:44,379 -0700 [main] INFO  (Menu.java:104) - --------------
+
+2020-05-13 10:30:44,379 -0700 [main] INFO  (Menu.java:105) - Please enter your username
+2020-05-13 10:30:46,006 -0700 [main] INFO  (Menu.java:112) - Please enter your password
+2020-05-13 10:30:47,082 -0700 [main] INFO  (Menu.java:202) - --------------------------------------
+2020-05-13 10:30:47,082 -0700 [main] INFO  (Menu.java:203) - Welcome to Monet & Bagges LLC Inc ATM
+2020-05-13 10:30:47,082 -0700 [main] INFO  (Menu.java:204) - --------------------------------------
+2020-05-13 10:30:47,082 -0700 [main] INFO  (Menu.java:208) - Please choose your login.
+2020-05-13 10:30:47,082 -0700 [main] INFO  (Menu.java:209) - 1) Customer Login
+2020-05-13 10:30:47,082 -0700 [main] INFO  (Menu.java:210) - 2) Employee Login
+2020-05-13 10:30:47,082 -0700 [main] INFO  (Menu.java:211) - 3) Sign up for a new customer account
+2020-05-13 10:30:47,083 -0700 [main] INFO  (Menu.java:212) - 0) To exit application at any time
+2020-05-13 10:30:53,099 -0700 [main] INFO  (Menu.java:233) - 2
+2020-05-13 10:30:53,099 -0700 [main] INFO  (Menu.java:75) - 
+--------------
+2020-05-13 10:30:53,099 -0700 [main] INFO  (Menu.java:76) - Employee Login
+2020-05-13 10:30:53,099 -0700 [main] INFO  (Menu.java:77) - --------------
+
+2020-05-13 10:30:53,099 -0700 [main] INFO  (Menu.java:78) - Please enter your username
+2020-05-13 10:30:53,945 -0700 [main] INFO  (Menu.java:84) - alskdjf
+2020-05-13 10:30:53,945 -0700 [main] INFO  (Menu.java:86) - Please enter your password
+2020-05-13 10:30:55,819 -0700 [main] INFO  (Menu.java:202) - --------------------------------------
+2020-05-13 10:30:55,819 -0700 [main] INFO  (Menu.java:203) - Welcome to Monet & Bagges LLC Inc ATM
+2020-05-13 10:30:55,819 -0700 [main] INFO  (Menu.java:204) - --------------------------------------
+2020-05-13 10:30:55,819 -0700 [main] INFO  (Menu.java:208) - Please choose your login.
+2020-05-13 10:30:55,820 -0700 [main] INFO  (Menu.java:209) - 1) Customer Login
+2020-05-13 10:30:55,820 -0700 [main] INFO  (Menu.java:210) - 2) Employee Login
+2020-05-13 10:30:55,820 -0700 [main] INFO  (Menu.java:211) - 3) Sign up for a new customer account
+2020-05-13 10:30:55,820 -0700 [main] INFO  (Menu.java:212) - 0) To exit application at any time
+2020-05-13 10:31:09,402 -0700 [main] INFO  (Menu.java:233) - 1
+2020-05-13 10:31:09,402 -0700 [main] INFO  (Menu.java:102) - --------------
+2020-05-13 10:31:09,402 -0700 [main] INFO  (Menu.java:103) - Customer Login
+2020-05-13 10:31:09,402 -0700 [main] INFO  (Menu.java:104) - --------------
+
+2020-05-13 10:31:09,402 -0700 [main] INFO  (Menu.java:105) - Please enter your username
+2020-05-13 10:31:14,468 -0700 [main] INFO  (Menu.java:112) - Please enter your password
+2020-05-13 10:31:16,984 -0700 [main] INFO  (Menu.java:202) - --------------------------------------
+2020-05-13 10:31:16,984 -0700 [main] INFO  (Menu.java:203) - Welcome to Monet & Bagges LLC Inc ATM
+2020-05-13 10:31:16,984 -0700 [main] INFO  (Menu.java:204) - --------------------------------------
+2020-05-13 10:31:16,984 -0700 [main] INFO  (Menu.java:208) - Please choose your login.
+2020-05-13 10:31:16,984 -0700 [main] INFO  (Menu.java:209) - 1) Customer Login
+2020-05-13 10:31:16,984 -0700 [main] INFO  (Menu.java:210) - 2) Employee Login
+2020-05-13 10:31:16,984 -0700 [main] INFO  (Menu.java:211) - 3) Sign up for a new customer account
+2020-05-13 10:31:16,984 -0700 [main] INFO  (Menu.java:212) - 0) To exit application at any time
+2020-05-13 10:31:27,747 -0700 [main] INFO  (Menu.java:233) - 3
+2020-05-13 10:31:27,747 -0700 [main] INFO  (Menu.java:159) - ----------------------
+2020-05-13 10:31:27,748 -0700 [main] INFO  (Menu.java:160) - New Customer Sign Up
+2020-05-13 10:31:27,748 -0700 [main] INFO  (Menu.java:161) - ----------------------
+2020-05-13 10:31:27,748 -0700 [main] INFO  (Menu.java:164) - Please enter your desired username.
+2020-05-13 10:31:32,817 -0700 [main] INFO  (Menu.java:167) - remember
+2020-05-13 10:31:32,817 -0700 [main] INFO  (Menu.java:171) - Please enter your desired password
+2020-05-13 10:31:35,231 -0700 [main] INFO  (CustomerDaoImpl.java:117) - 
+You have been logged in. 
+Welcome remember
+2020-05-13 10:31:35,259 -0700 [main] INFO  (CustomerDaoImpl.java:42) - Customer account successfully created.
+2020-05-13 10:31:35,287 -0700 [main] INFO  (Menu.java:202) - --------------------------------------
+2020-05-13 10:31:35,288 -0700 [main] INFO  (Menu.java:203) - Welcome to Monet & Bagges LLC Inc ATM
+2020-05-13 10:31:35,288 -0700 [main] INFO  (Menu.java:204) - --------------------------------------
+2020-05-13 10:31:35,288 -0700 [main] INFO  (Menu.java:208) - Please choose your login.
+2020-05-13 10:31:35,288 -0700 [main] INFO  (Menu.java:209) - 1) Customer Login
+2020-05-13 10:31:35,288 -0700 [main] INFO  (Menu.java:210) - 2) Employee Login
+2020-05-13 10:31:35,288 -0700 [main] INFO  (Menu.java:211) - 3) Sign up for a new customer account
+2020-05-13 10:31:35,288 -0700 [main] INFO  (Menu.java:212) - 0) To exit application at any time
+2020-05-13 10:31:36,986 -0700 [main] INFO  (Menu.java:233) - 1
+2020-05-13 10:31:36,987 -0700 [main] INFO  (Menu.java:102) - --------------
+2020-05-13 10:31:36,987 -0700 [main] INFO  (Menu.java:103) - Customer Login
+2020-05-13 10:31:36,987 -0700 [main] INFO  (Menu.java:104) - --------------
+
+2020-05-13 10:31:36,987 -0700 [main] INFO  (Menu.java:105) - Please enter your username
+2020-05-13 10:31:39,706 -0700 [main] INFO  (Menu.java:112) - Please enter your password
+2020-05-13 10:31:43,017 -0700 [main] INFO  (CustomerDaoImpl.java:117) - 
+You have been logged in. 
+Welcome remember
+2020-05-13 10:31:43,052 -0700 [main] INFO  (Menu.java:62) - 
+--------------
+2020-05-13 10:31:43,052 -0700 [main] INFO  (Menu.java:63) - Customer Menu
+2020-05-13 10:31:43,052 -0700 [main] INFO  (Menu.java:64) - --------------
+2020-05-13 10:31:43,053 -0700 [main] INFO  (Menu.java:65) - 1) Check Balance
+2020-05-13 10:31:43,053 -0700 [main] INFO  (Menu.java:66) - 2) Deposit
+2020-05-13 10:31:43,053 -0700 [main] INFO  (Menu.java:67) - 3) Withdraw
+2020-05-13 10:31:43,053 -0700 [main] INFO  (Menu.java:68) - 4) Transfer funds to another M & B Customer
+2020-05-13 10:31:43,053 -0700 [main] INFO  (Menu.java:71) - 0) Log out
+2020-05-13 10:32:35,216 -0700 [main] INFO  (Menu.java:233) - 1
+2020-05-13 10:32:35,217 -0700 [main] INFO  (Menu.java:35) - remember balance for account: MBA1080 is currently: $0.0
+2020-05-13 10:32:35,217 -0700 [main] INFO  (Menu.java:62) - 
+--------------
+2020-05-13 10:32:35,217 -0700 [main] INFO  (Menu.java:63) - Customer Menu
+2020-05-13 10:32:35,217 -0700 [main] INFO  (Menu.java:64) - --------------
+2020-05-13 10:32:35,217 -0700 [main] INFO  (Menu.java:65) - 1) Check Balance
+2020-05-13 10:32:35,217 -0700 [main] INFO  (Menu.java:66) - 2) Deposit
+2020-05-13 10:32:35,217 -0700 [main] INFO  (Menu.java:67) - 3) Withdraw
+2020-05-13 10:32:35,217 -0700 [main] INFO  (Menu.java:68) - 4) Transfer funds to another M & B Customer
+2020-05-13 10:32:35,217 -0700 [main] INFO  (Menu.java:71) - 0) Log out
+2020-05-13 10:32:37,569 -0700 [main] INFO  (Menu.java:233) - 2
+2020-05-13 10:32:37,569 -0700 [main] INFO  (Menu.java:41) - 
+------------
+2020-05-13 10:32:37,569 -0700 [main] INFO  (Menu.java:42) - Deposit Menu
+2020-05-13 10:32:37,569 -0700 [main] INFO  (Menu.java:43) - ------------
+2020-05-13 10:32:37,569 -0700 [main] INFO  (Menu.java:44) - How much would you like to deposit?
+2020-05-13 10:32:41,425 -0700 [main] INFO  (Menu.java:49) - -109.0
+2020-05-13 10:32:41,426 -0700 [main] INFO  (Menu.java:62) - 
+--------------
+2020-05-13 10:32:41,426 -0700 [main] INFO  (Menu.java:63) - Customer Menu
+2020-05-13 10:32:41,426 -0700 [main] INFO  (Menu.java:64) - --------------
+2020-05-13 10:32:41,426 -0700 [main] INFO  (Menu.java:65) - 1) Check Balance
+2020-05-13 10:32:41,426 -0700 [main] INFO  (Menu.java:66) - 2) Deposit
+2020-05-13 10:32:41,426 -0700 [main] INFO  (Menu.java:67) - 3) Withdraw
+2020-05-13 10:32:41,426 -0700 [main] INFO  (Menu.java:68) - 4) Transfer funds to another M & B Customer
+2020-05-13 10:32:41,426 -0700 [main] INFO  (Menu.java:71) - 0) Log out
+2020-05-13 10:32:48,201 -0700 [main] INFO  (Menu.java:233) - 2
+2020-05-13 10:32:48,201 -0700 [main] INFO  (Menu.java:41) - 
+------------
+2020-05-13 10:32:48,201 -0700 [main] INFO  (Menu.java:42) - Deposit Menu
+2020-05-13 10:32:48,201 -0700 [main] INFO  (Menu.java:43) - ------------
+2020-05-13 10:32:48,201 -0700 [main] INFO  (Menu.java:44) - How much would you like to deposit?
+2020-05-13 10:32:49,853 -0700 [main] INFO  (Menu.java:49) - 123.0
+2020-05-13 10:32:50,240 -0700 [main] INFO  (Menu.java:35) - remember balance for account: MBA1080 is currently: $123.0
+2020-05-13 10:32:50,240 -0700 [main] INFO  (Menu.java:62) - 
+--------------
+2020-05-13 10:32:50,240 -0700 [main] INFO  (Menu.java:63) - Customer Menu
+2020-05-13 10:32:50,240 -0700 [main] INFO  (Menu.java:64) - --------------
+2020-05-13 10:32:50,240 -0700 [main] INFO  (Menu.java:65) - 1) Check Balance
+2020-05-13 10:32:50,240 -0700 [main] INFO  (Menu.java:66) - 2) Deposit
+2020-05-13 10:32:50,241 -0700 [main] INFO  (Menu.java:67) - 3) Withdraw
+2020-05-13 10:32:50,241 -0700 [main] INFO  (Menu.java:68) - 4) Transfer funds to another M & B Customer
+2020-05-13 10:32:50,241 -0700 [main] INFO  (Menu.java:71) - 0) Log out
+2020-05-13 10:33:41,960 -0700 [main] INFO  (Menu.java:233) - 2
+2020-05-13 10:33:41,960 -0700 [main] INFO  (Menu.java:41) - 
+------------
+2020-05-13 10:33:41,960 -0700 [main] INFO  (Menu.java:42) - Deposit Menu
+2020-05-13 10:33:41,960 -0700 [main] INFO  (Menu.java:43) - ------------
+2020-05-13 10:33:41,960 -0700 [main] INFO  (Menu.java:44) - How much would you like to deposit?
+2020-05-13 10:33:48,160 -0700 [main] INFO  (Menu.java:49) - 1.0
+2020-05-13 10:33:48,533 -0700 [main] INFO  (Menu.java:35) - remember balance for account: MBA1080 is currently: $124.0
+2020-05-13 10:33:48,533 -0700 [main] INFO  (Menu.java:62) - 
+--------------
+2020-05-13 10:33:48,533 -0700 [main] INFO  (Menu.java:63) - Customer Menu
+2020-05-13 10:33:48,533 -0700 [main] INFO  (Menu.java:64) - --------------
+2020-05-13 10:33:48,534 -0700 [main] INFO  (Menu.java:65) - 1) Check Balance
+2020-05-13 10:33:48,534 -0700 [main] INFO  (Menu.java:66) - 2) Deposit
+2020-05-13 10:33:48,534 -0700 [main] INFO  (Menu.java:67) - 3) Withdraw
+2020-05-13 10:33:48,534 -0700 [main] INFO  (Menu.java:68) - 4) Transfer funds to another M & B Customer
+2020-05-13 10:33:48,534 -0700 [main] INFO  (Menu.java:71) - 0) Log out
+2020-05-13 10:35:16,259 -0700 [main] INFO  (Menu.java:233) - 4
+2020-05-13 10:35:16,259 -0700 [main] INFO  (Menu.java:450) - ------------------------------------
+2020-05-13 10:35:16,259 -0700 [main] INFO  (Menu.java:451) - Transfer Funds to Another Customer
+2020-05-13 10:35:16,259 -0700 [main] INFO  (Menu.java:452) - ------------------------------------
+
+2020-05-13 10:35:16,259 -0700 [main] INFO  (Menu.java:453) - Please enter the recipient's username: 
+2020-05-13 10:35:25,216 -0700 [main] INFO  (Menu.java:459) - Please enter the amount you'd like to transfer: 

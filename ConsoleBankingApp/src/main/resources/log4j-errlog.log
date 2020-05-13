@@ -1,0 +1,24 @@
+2020-05-13 07:07:13,088 -0700 [main] ERROR (CustomerServiceImpl.java:40) - Username lkajsd does not exist
+2020-05-13 07:07:13,089 -0700 [main] ERROR (Menu.java:116) - Customer was not found.
+2020-05-13 07:07:13,089 -0700 [main] ERROR (Menu.java:485) - Log in credentials incorrect. Please try again.
+2020-05-13 07:25:49,497 -0700 [main] ERROR (Menu.java:502) - Customer could not be created.
+2020-05-13 07:26:04,099 -0700 [main] ERROR (CustomerServiceImpl.java:40) - Username is invalid.
+2020-05-13 07:26:04,099 -0700 [main] ERROR (Menu.java:116) - Customer was not found.
+2020-05-13 07:26:04,099 -0700 [main] ERROR (Menu.java:485) - Log in credentials incorrect. Please try again.
+2020-05-13 07:47:53,898 -0700 [main] ERROR (Menu.java:410) - Insufficient funds.
+2020-05-13 07:58:19,284 -0700 [main] ERROR (Account.java:79) - Invalid amount entered.
+2020-05-13 07:58:19,284 -0700 [main] ERROR (Menu.java:466) - Transfer could not be completed.
+2020-05-13 10:30:47,080 -0700 [main] ERROR (CustomerServiceImpl.java:40) - Username is invalid.
+2020-05-13 10:30:47,081 -0700 [main] ERROR (Menu.java:124) - Customer was not found.
+2020-05-13 10:30:47,082 -0700 [main] ERROR (Menu.java:500) - Log in credentials incorrect. Please try again.
+2020-05-13 10:30:55,819 -0700 [main] ERROR (EmployeeServiceImpl.java:25) - Username alskdjf does not exist
+2020-05-13 10:30:55,819 -0700 [main] ERROR (Menu.java:509) - Log in credentials incorrect.
+2020-05-13 10:31:16,983 -0700 [main] ERROR (CustomerServiceImpl.java:40) - Username SuperTest does not exist
+2020-05-13 10:31:16,984 -0700 [main] ERROR (Menu.java:124) - Customer was not found.
+2020-05-13 10:31:16,984 -0700 [main] ERROR (Menu.java:500) - Log in credentials incorrect. Please try again.
+2020-05-13 10:32:41,426 -0700 [main] ERROR (Menu.java:416) - Invalid amount entered.
+2020-05-13 10:43:40,734 -0700 [main] ERROR (CustomerServiceImpl.java:40) - Username is invalid.
+2020-05-13 10:43:40,735 -0700 [main] ERROR (Menu.java:116) - Customer was not found.
+2020-05-13 10:43:40,735 -0700 [main] ERROR (Menu.java:485) - Log in credentials incorrect. Please try again.
+2020-05-13 10:44:09,245 -0700 [main] ERROR (Menu.java:502) - Customer could not be created.
+2020-05-13 10:45:52,043 -0700 [main] ERROR (Menu.java:402) - Invalid amount entered.
