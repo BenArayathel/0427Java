@@ -27,6 +27,7 @@ public class UserServiceImpl implements UserService {
 	
 	@Override
 	public void registerNewUser() throws BusinessException {
+		boolean accountValidated = true;
 		User newUser = new User();
 		Scanner sc = new Scanner(System.in);
 		loggy.info("Please enter your first and last names");
@@ -35,32 +36,48 @@ public class UserServiceImpl implements UserService {
 		newUser.setEmail(sc.nextLine());
 		loggy.info("Please enter your phone number. Ex 3048675309");
 		newUser.setPhoneNumber(sc.nextLine());
-		loggy.info("Create a password");
-		newUser.setPassword(sc.nextLine());
+		loggy.info("Create a password. Alpha-numerical characters only.");
+		String pw = sc.nextLine();
+		String ePassword = passwordEncryption(pw);
 		newUser.setStatus("customer");
-		
 		if (!isValidName(newUser.getName())) {
 			loggy.info("Error. Please use only letters in the name field. Please try again.");
+			accountValidated = false;
 		}
 		else if (!isValidPhoneNumber(newUser.getPhoneNumber())) {
 			loggy.info("Error. Please input your phone number with 10 digits. Ex. 1234567890");
+			accountValidated = false;
 		}
-		else {
-			uDI.insertUser(newUser);
-			loggy.debug("new customer account created with email " + newUser.getEmail());
-			loggy.info("We'll review your application and get back to you shortly");
+		else if (ePassword.equals("fail")) {
+			loggy.info("Password cannot contain any special characters. Letters and numbers only");
+			accountValidated = false;
+		}
+		if(accountValidated) {
+			newUser.setPassword(ePassword);
+			loggy.info(newUser.getPassword()); 
+			try {
+				uDI.insertUser(newUser);
+				loggy.debug("new customer account created with email " + newUser.getEmail());
+				loggy.info("We'll review your application and get back to you shortly");
+			} catch (BusinessException e) {
+				loggy.info(e.getMessage());
+				loggy.info("Please try again");
+			}
 			System.exit(0);
 		}
+		registerNewUser();
 		sc.close();
+		//System.exit(0);
 		
 	}// end of registerNewUser
 	
 	@Override
 	public boolean userLogin(String email, String password) throws BusinessException {
 		User u = uDI.selectUserByEmail(email);
+		String ePassword = passwordEncryption(password);
 		if (u != null) {
 			try {
-				if (u.getPassword().equals(password)) {
+				if (u.getPassword().equals(ePassword)) {
 					loggy.debug("Passwords match");
 					return true;
 				}
@@ -327,20 +344,26 @@ public class UserServiceImpl implements UserService {
 	
 	
 	public static String passwordEncryption(String pw) {
-	loggy.info("Encrypting password");
-	StringBuilder newPassword = new StringBuilder();
-	String original = "abcdefghijklmnopqrstuvwxyz0987654321";  //james13
-	String alternate = "1234567890zyxwvutsrqponmlkjihgfedcba"; //01x5rac
-	String[] arr = alternate.split("");
-	String[] wordArray = pw.toLowerCase().split("");
-	int tempIndex;
-	for(int k = 0; k < (wordArray.length); k++) {
-		String tempLetter = wordArray[k];
-		tempIndex = original.indexOf(tempLetter); 
-		newPassword.append(arr[tempIndex]);
+	loggy.debug("Encrypting password");
+	try {
+		StringBuilder newPassword = new StringBuilder();
+		String original = "ZYXWVUTSRQPONMLKJIHGFEDCBAabcdefghijklmnopqrstuvwxyz0987654321";  
+		String alternate = "1234567890zyxwvutsrqponmlkjihgfedcbaABCDEFGHIJKLMNOPQRSTUVWXYZ"; 
+		String[] arr = alternate.split("");
+		String[] wordArray = pw.toLowerCase().split("");
+		int tempIndex;
+		for(int k = 0; k < (wordArray.length); k++) {
+			String tempLetter = wordArray[k];
+			tempIndex = original.indexOf(tempLetter); 
+			newPassword.append(arr[tempIndex]);
+		}
+		return newPassword.toString();
 	}
-	return newPassword.toString();
+	catch (IndexOutOfBoundsException e) {
+		loggy.error("IndexOOB exception");
+		return "fail";
 	
+		}
 	}
 
 }// End of class

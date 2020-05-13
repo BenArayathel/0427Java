@@ -6,6 +6,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -39,7 +40,13 @@ public class UserDaoImpl implements UserDao {
 			ps.setString(4, u.getPhoneNumber());
 			ps.setString(5, u.getPassword());
 			ps.setString(6, u.getStatus());
-			ps.executeUpdate();
+			try {
+					ps.executeUpdate();			
+				} catch (SQLIntegrityConstraintViolationException e) {
+					loggy.debug("An account already exists with that email address");
+					throw new BusinessException("An account already exists with that email address");
+				}
+			
 			loggy.debug("Created and stored new user with email " + u.getEmail());
 			u = this.selectUserByEmail(u.getEmail());
 			

@@ -27,26 +27,26 @@ public class UserServiceImplTest {
 		assertEquals(false, uSI.isValidName("Mary-Sue Johnson"));
 		
 	}
-	
+	@Test
 	public void isValidPhoneNumber() {
 		assertEquals(true, uSI.isValidPhoneNumber("1234568765"));
 		assertEquals(false, uSI.isValidPhoneNumber("764-322-3456"));
 		assertEquals(false, uSI.isValidPhoneNumber("2345678"));
 	}
-	
+	@Test
 	public void isValidDepositTest() {
 		assertEquals(true, uSI.isValidDeposit("100.00"));
 		assertEquals(false, uSI.isValidDeposit("Eleven dollars"));
 		assertEquals(false, uSI.isValidDeposit("$100.00"));
 	}
-	
+	@Test
 	public void isEmployee() {
 		assertEquals(false, uSI.isEmployee(user)); 
 	}
-	
+	@Test
 	public void passwordEncryptionTest() {
-		assertEquals("xvx", uSI.passwordEncryption("mom"));
-		assertEquals("01x5rac", uSI.passwordEncryption("james13"));
+		assertEquals("djBjNOGKfIJZR", uSI.passwordEncryption("GalaxyQuest19"));
+		assertEquals("hBEKghbJOSRQQ", uSI.passwordEncryption("CloudCity8900"));
 	}
 	
 	

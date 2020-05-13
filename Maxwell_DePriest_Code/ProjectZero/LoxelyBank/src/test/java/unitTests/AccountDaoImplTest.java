@@ -22,7 +22,7 @@ public class AccountDaoImplTest {
 			e.printStackTrace();
 		}
 	}
-	
+	@Test
 	public void selectAllAccountsTest() {
 		try {
 			assertNotNull(aDI.selectAllAccounts());
@@ -31,7 +31,7 @@ public class AccountDaoImplTest {
 			e.printStackTrace();
 		}
 	}
-	
+	@Test
 	public void selectAccountByColumnNameTest() {
 		try {
 			Account aTest = aDI.selectAccountByColumnName("email", "han@email.com");

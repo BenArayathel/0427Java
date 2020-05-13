@@ -26,8 +26,7 @@ public class MainDriver {
 		User currentUser = null;
 		int intChoice = 0;
 		Scanner sc = new Scanner(System.in);
-		
-		
+	
 		while(currentUser == null) {
 			//Scanner sc = new Scanner(System.in);
 			loggy.info("\nWelcome to Loxely Bank, where we save for the rich and loan to the poor.\n");
@@ -40,13 +39,11 @@ public class MainDriver {
 				if(c.matches("[1-3]{1}")) {
 					if(c.equals("1")) {
 						try {
-							uSI.registerNewUser();
+						uSI.registerNewUser();
 							
-							
-						} catch (BusinessException e) {
+						} catch (BusinessException | IndexOutOfBoundsException e) {
 							loggy.error("Error thrown during new user registry");
 						}
-						
 					}
 					else if (c.equals("2")) {
 						
@@ -67,6 +64,7 @@ public class MainDriver {
 					else if (c.equals("3")) {
 						loggy.info("Have a nice day");
 						System.exit(0);
+						
 					}// end of 1-3 if block
 				}// end of 1-3 regex if block
 
@@ -261,6 +259,7 @@ public class MainDriver {
 			}
 		
 		}while (intChoice != 9); // end while loop
+		
 
 	}// End of main
 

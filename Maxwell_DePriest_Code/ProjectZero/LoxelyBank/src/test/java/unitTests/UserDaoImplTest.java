@@ -23,17 +23,7 @@ public class UserDaoImplTest {
 		}
 	}
 	
-	public void updateUserTest() {
-		try {
-			user = uDI.updateUser("bob@email.com", "name", "Robert Smith");
-			assertEquals("Robert Smith", user.getName());
-			assertEquals("customer", user.getStatus());
-		} catch (BusinessException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-	}
+	@Test
 	public void deleteUserTest() {
 		try {
 			assertEquals(0, uDI.deleteUser("bob@email.com"));
@@ -42,6 +32,7 @@ public class UserDaoImplTest {
 			e.printStackTrace();
 		}
 	}
+	@Test
 	public void selectAllUsersTest() {
 		try {
 			assertNotNull(uDI.selectAllUsers());
