@@ -69,7 +69,7 @@ public class MainMenu {
 		BankApp.loggy.info("       0. Exit Program");
 		BankApp.loggy.info("       ");
 		BankApp.loggy.info("=====================================================");
-		BankApp.loggy.info("    Enter your choice: ");
+		System.out.print("    Enter your choice: ");
 		
 	    userChoice = Integer.parseInt(scanner.nextLine());
 	

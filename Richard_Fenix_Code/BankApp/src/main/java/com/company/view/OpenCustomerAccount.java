@@ -17,7 +17,7 @@ public class OpenCustomerAccount {
 	    BankApp.loggy.info("       ");
 	    BankApp.loggy.info("    CREATE NEW CUSTOMER ACCOUNT Page");
 	    BankApp.loggy.info("       ");
-	    BankApp.loggy.info("       1. Enter FIRST name:");
+	    System.out.print("       1. Enter FIRST name:");
         String firstName = scanner.nextLine();
         
         if (!isStringOnlyAlphabet(firstName)) {
@@ -26,7 +26,7 @@ public class OpenCustomerAccount {
         }
         
 
-        BankApp.loggy.info("       2. Enter LAST name:");
+        System.out.print("       2. Enter LAST name:");
         String lastName = scanner.nextLine();
         
         if (!isStringOnlyAlphabet(lastName)) {
@@ -34,16 +34,16 @@ public class OpenCustomerAccount {
         	return;
         }
 
-        BankApp.loggy.info("       3. Enter Birthday (MM/dd/yyyy): ");
+        System.out.print("       3. Enter Birthday (MM/dd/yyyy): ");
         String birthday = scanner.nextLine();
         
-        BankApp.loggy.info("       4. Enter State (i.e. GA, NY, CA): ");
+        System.out.print("       4. Enter State (i.e. GA, NY, CA): ");
         String usState = scanner.nextLine();
         
-        BankApp.loggy.info("       5. Account Type (CHEC, SAVI, BROK, CRED, MORT): ");
+        System.out.print("       5. Account Type (CHEC, SAVI, BROK, CRED, MORT): ");
         String accountType = scanner.nextLine();
         
-        BankApp.loggy.info("       6. Initial Deposit (i.e. 500.00):");
+        System.out.print("       6. Initial Deposit (i.e. 500.00):");
         String initBalance = scanner.nextLine();
                 
         try {

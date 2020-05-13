@@ -15,10 +15,10 @@ public class EnrollNow {
 	    BankApp.loggy.info("       ");
 	    BankApp.loggy.info("    Enroll Now Page");
 	    BankApp.loggy.info("       ");
-	    BankApp.loggy.info("       1. Enter your FIRST name:");
+	    System.out.print("       1. Enter your FIRST name:");
         String firstName = scanner.nextLine();
 
-        BankApp.loggy.info("       2. Enter your LAST name:");
+        System.out.print("       2. Enter your LAST name:");
         String lastName = scanner.nextLine();
 
         System.out.print("       3. Enter your ACCOUNT ID: ");
@@ -52,19 +52,19 @@ public class EnrollNow {
 	    BankApp.loggy.info("       ");
 	    BankApp.loggy.info("    Enroll Now Page");
 	    BankApp.loggy.info("       ");
-	    BankApp.loggy.info("       1. Create your LOGIN NAME:");
+	    System.out.print("       1. Create your LOGIN NAME:");
         String loginName = scanner.nextLine();
         BankApp.loggy.info("loginName entered: " + loginName);
      
-        BankApp.loggy.info("       2. Enter your LOGIN PASSWORD:");
+        System.out.print("       2. Enter your LOGIN PASSWORD:");
         String password1 = scanner.nextLine();
 
-        BankApp.loggy.info("password1 entered: " + password1);
+        //BankApp.loggy.info("password1 entered: " + password1);
 
-        BankApp.loggy.info("       3. RE-ENTER LOGIN PASSWORD: ");
+        System.out.print("       3. RE-ENTER LOGIN PASSWORD: ");
         String password2 = scanner.nextLine();
 
-        BankApp.loggy.info("password2 entered: " + password2);
+        //BankApp.loggy.info("password2 entered: " + password2);
         
         if (password1.equals(password2)) {
         	isRegistered = bankServiceController.registerUser(customerId, loginName, password1);

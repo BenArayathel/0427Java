@@ -16,13 +16,13 @@ public class OpenAdditionalAccount {
 	    BankApp.loggy.info("       ");
 	    BankApp.loggy.info("    CREATE ADDITIONAL ACCOUNT Page");
 	    BankApp.loggy.info("       ");
-	    BankApp.loggy.info("       1. Enter Customer ID:");
+	    System.out.print("       1. Enter Customer ID:");
         String customerId = scanner.nextLine();
         
-        BankApp.loggy.info("       2. Account Type (CHEC, SAVI, BROK, CRED, MORT): ");
+        System.out.print("       2. Account Type (CHEC, SAVI, BROK, CRED, MORT): ");
         String accountType = scanner.nextLine();
         
-        BankApp.loggy.info("       3. Initial Deposit (i.e. 500.00):");
+        System.out.print("       3. Initial Deposit (i.e. 500.00):");
         String initBalance = scanner.nextLine();
 
         // Convert initBalance from String to BigDecimal.

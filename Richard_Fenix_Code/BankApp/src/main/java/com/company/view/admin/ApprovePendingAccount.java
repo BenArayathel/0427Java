@@ -17,7 +17,7 @@ public class ApprovePendingAccount {
 	    BankApp.loggy.info("       ");
 	    BankApp.loggy.info("    **** APPROVE CUSTOMER ACCOUNT PAGE ****");
 	    BankApp.loggy.info("       ");
-	    BankApp.loggy.info("       1. Enter Account ID:");
+	    System.out.print("       1. Enter Account ID:");
         String accountId = scanner.nextLine();
                 
         AccountViewModel avm = bankServiceController.approveAccount(accountId);

@@ -18,7 +18,7 @@ public class ViewCustomerAccount {
 	    BankApp.loggy.info("       ");
 	    BankApp.loggy.info("    **** VIEW CUSTOMER ACCOUNT PAGE ****");
 	    BankApp.loggy.info("       ");
-	    BankApp.loggy.info("       1. Enter Account ID:");
+	    System.out.print("       1. Enter Account ID:");
         String accountId = scanner.nextLine();
                 
         AccountViewModel avm = bankServiceController.getCustomerAccountDetail(accountId);
