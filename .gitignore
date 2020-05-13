@@ -72,4 +72,8 @@ local.properties
 
 # End of https://www.gitignore.io/api/eclipse
 
+<<<<<<< HEAD
 
+=======
+.metadata
+>>>>>>> 68c4c6469857bfa701f3c2b080063777e990a0de
