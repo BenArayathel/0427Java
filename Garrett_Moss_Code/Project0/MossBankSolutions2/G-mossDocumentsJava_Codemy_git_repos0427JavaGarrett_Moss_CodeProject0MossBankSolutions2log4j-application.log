@@ -124,3 +124,393 @@
 2020-05-12 18:58:16,582 -0400 [main] INFO  (MainDriver.java:272) - 4) View Transaction Logs
 2020-05-12 18:58:16,582 -0400 [main] INFO  (MainDriver.java:273) - 5) Exit
 2020-05-12 18:58:25,316 -0400 [main] INFO  (MainDriver.java:336) - Thanks for using our App.......
+2020-05-12 22:03:57,792 -0400 [main] INFO  (MainDriver.java:23) - Welcome to Moss Bank Solutions
+2020-05-12 22:03:57,798 -0400 [main] INFO  (MainDriver.java:24) - ------------------------------
+2020-05-12 22:03:57,812 -0400 [main] INFO  (MainDriver.java:29) - Login
+2020-05-12 22:03:57,813 -0400 [main] INFO  (MainDriver.java:30) - Select an option below
+2020-05-12 22:03:57,813 -0400 [main] INFO  (MainDriver.java:31) - ---------------------------
+2020-05-12 22:03:57,813 -0400 [main] INFO  (MainDriver.java:32) - 1) Are you a Customer?
+2020-05-12 22:03:57,813 -0400 [main] INFO  (MainDriver.java:33) - 2) Are you an Employee
+2020-05-12 22:03:57,813 -0400 [main] INFO  (MainDriver.java:34) - 3) Exit
+2020-05-12 22:05:13,871 -0400 [main] INFO  (MainDriver.java:45) - Welcome to the Customer portal!
+2020-05-12 22:05:13,871 -0400 [main] INFO  (MainDriver.java:46) - -------------------------------
+2020-05-12 22:05:13,871 -0400 [main] INFO  (MainDriver.java:47) - 1) Existing Customer
+2020-05-12 22:05:13,871 -0400 [main] INFO  (MainDriver.java:48) - 2) New Customer
+2020-05-12 22:05:13,871 -0400 [main] INFO  (MainDriver.java:49) - 3) Exit
+2020-05-12 22:05:16,768 -0400 [main] INFO  (MainDriver.java:58) - Please Login
+2020-05-12 22:05:16,768 -0400 [main] INFO  (MainDriver.java:59) - Enter Username
+2020-05-12 22:05:20,176 -0400 [main] INFO  (MainDriver.java:61) - Enter Password
+2020-05-12 22:05:23,961 -0400 [main] INFO  (MainDriver.java:67) - Invalid Login Information
+2020-05-12 22:05:23,961 -0400 [main] INFO  (MainDriver.java:45) - Welcome to the Customer portal!
+2020-05-12 22:05:23,961 -0400 [main] INFO  (MainDriver.java:46) - -------------------------------
+2020-05-12 22:05:23,961 -0400 [main] INFO  (MainDriver.java:47) - 1) Existing Customer
+2020-05-12 22:05:23,962 -0400 [main] INFO  (MainDriver.java:48) - 2) New Customer
+2020-05-12 22:05:23,962 -0400 [main] INFO  (MainDriver.java:49) - 3) Exit
+2020-05-12 22:05:28,366 -0400 [main] INFO  (MainDriver.java:58) - Please Login
+2020-05-12 22:05:28,366 -0400 [main] INFO  (MainDriver.java:59) - Enter Username
+2020-05-12 22:05:32,352 -0400 [main] INFO  (MainDriver.java:61) - Enter Password
+2020-05-12 22:05:37,150 -0400 [main] INFO  (MainDriver.java:65) - Login Verified
+2020-05-12 22:05:37,150 -0400 [main] INFO  (MainDriver.java:75) - Welcome back!
+2020-05-12 22:05:37,150 -0400 [main] INFO  (MainDriver.java:76) - -------------------------------
+2020-05-12 22:05:37,151 -0400 [main] INFO  (MainDriver.java:77) - 1) View Balance
+2020-05-12 22:05:37,151 -0400 [main] INFO  (MainDriver.java:78) - 2) Make Withdrawl
+2020-05-12 22:05:37,151 -0400 [main] INFO  (MainDriver.java:79) - 3) Make Deposit
+2020-05-12 22:05:37,152 -0400 [main] INFO  (MainDriver.java:80) - 4) Make Transfer
+2020-05-12 22:05:37,152 -0400 [main] INFO  (MainDriver.java:81) - 5) Accept Transfer
+2020-05-12 22:05:37,152 -0400 [main] INFO  (MainDriver.java:82) - 6) Apply for new Account
+2020-05-12 22:05:37,152 -0400 [main] INFO  (MainDriver.java:83) - 7) Exit
+2020-05-12 22:05:42,700 -0400 [main] INFO  (MainDriver.java:156) - Enter Username
+2020-05-12 22:05:46,380 -0400 [main] INFO  (MainDriver.java:159) - Enter Password
+2020-05-12 22:05:49,224 -0400 [main] INFO  (MainDriver.java:161) - Enter AccountBalance to two decimal places
+2020-05-12 22:06:06,322 -0400 [main] INFO  (MainDriver.java:164) - New Account Created
+2020-05-12 22:06:06,322 -0400 [main] INFO  (MainDriver.java:165) - Customer [username=garrettmoss, password=password, accountBalance=40.00, accountNumber=null, approved=null]
+2020-05-12 22:06:06,323 -0400 [main] INFO  (MainDriver.java:75) - Welcome back!
+2020-05-12 22:06:06,323 -0400 [main] INFO  (MainDriver.java:76) - -------------------------------
+2020-05-12 22:06:06,323 -0400 [main] INFO  (MainDriver.java:77) - 1) View Balance
+2020-05-12 22:06:06,324 -0400 [main] INFO  (MainDriver.java:78) - 2) Make Withdrawl
+2020-05-12 22:06:06,324 -0400 [main] INFO  (MainDriver.java:79) - 3) Make Deposit
+2020-05-12 22:06:06,324 -0400 [main] INFO  (MainDriver.java:80) - 4) Make Transfer
+2020-05-12 22:06:06,324 -0400 [main] INFO  (MainDriver.java:81) - 5) Accept Transfer
+2020-05-12 22:06:06,325 -0400 [main] INFO  (MainDriver.java:82) - 6) Apply for new Account
+2020-05-12 22:06:06,325 -0400 [main] INFO  (MainDriver.java:83) - 7) Exit
+2020-05-12 22:07:28,996 -0400 [main] INFO  (MainDriver.java:91) - Enter AccountNumber
+2020-05-12 22:07:35,645 -0400 [main] INFO  (MainDriver.java:96) - Here is your balance: Customer [username=null, password=null, accountBalance=40.00, accountNumber=1000000160, approved=null]
+2020-05-12 22:07:35,646 -0400 [main] INFO  (MainDriver.java:75) - Welcome back!
+2020-05-12 22:07:35,646 -0400 [main] INFO  (MainDriver.java:76) - -------------------------------
+2020-05-12 22:07:35,647 -0400 [main] INFO  (MainDriver.java:77) - 1) View Balance
+2020-05-12 22:07:35,647 -0400 [main] INFO  (MainDriver.java:78) - 2) Make Withdrawl
+2020-05-12 22:07:35,647 -0400 [main] INFO  (MainDriver.java:79) - 3) Make Deposit
+2020-05-12 22:07:35,648 -0400 [main] INFO  (MainDriver.java:80) - 4) Make Transfer
+2020-05-12 22:07:35,648 -0400 [main] INFO  (MainDriver.java:81) - 5) Accept Transfer
+2020-05-12 22:07:35,648 -0400 [main] INFO  (MainDriver.java:82) - 6) Apply for new Account
+2020-05-12 22:07:35,649 -0400 [main] INFO  (MainDriver.java:83) - 7) Exit
+2020-05-12 22:07:47,953 -0400 [main] INFO  (MainDriver.java:104) - Enter accountNumber
+2020-05-12 22:07:53,793 -0400 [main] INFO  (MainDriver.java:106) - Enter Withdrawl Amount to two decimal places
+2020-05-12 22:07:56,471 -0400 [main] INFO  (MainDriver.java:108) - Enter Account Balance to two decimal places
+2020-05-12 22:08:02,851 -0400 [main] INFO  (CustomerServiceImpl.java:59) - You have withdrawn: $10.00
+2020-05-12 22:08:02,851 -0400 [main] INFO  (MainDriver.java:75) - Welcome back!
+2020-05-12 22:08:02,851 -0400 [main] INFO  (MainDriver.java:76) - -------------------------------
+2020-05-12 22:08:02,851 -0400 [main] INFO  (MainDriver.java:77) - 1) View Balance
+2020-05-12 22:08:02,852 -0400 [main] INFO  (MainDriver.java:78) - 2) Make Withdrawl
+2020-05-12 22:08:02,852 -0400 [main] INFO  (MainDriver.java:79) - 3) Make Deposit
+2020-05-12 22:08:02,852 -0400 [main] INFO  (MainDriver.java:80) - 4) Make Transfer
+2020-05-12 22:08:02,852 -0400 [main] INFO  (MainDriver.java:81) - 5) Accept Transfer
+2020-05-12 22:08:02,853 -0400 [main] INFO  (MainDriver.java:82) - 6) Apply for new Account
+2020-05-12 22:08:02,853 -0400 [main] INFO  (MainDriver.java:83) - 7) Exit
+2020-05-12 22:08:15,982 -0400 [main] INFO  (MainDriver.java:104) - Enter accountNumber
+2020-05-12 22:08:19,917 -0400 [main] INFO  (MainDriver.java:106) - Enter Withdrawl Amount to two decimal places
+2020-05-12 22:08:25,113 -0400 [main] INFO  (MainDriver.java:108) - Enter Account Balance to two decimal places
+2020-05-12 22:08:29,077 -0400 [main] INFO  (MainDriver.java:75) - Welcome back!
+2020-05-12 22:08:29,077 -0400 [main] INFO  (MainDriver.java:76) - -------------------------------
+2020-05-12 22:08:29,077 -0400 [main] INFO  (MainDriver.java:77) - 1) View Balance
+2020-05-12 22:08:29,077 -0400 [main] INFO  (MainDriver.java:78) - 2) Make Withdrawl
+2020-05-12 22:08:29,077 -0400 [main] INFO  (MainDriver.java:79) - 3) Make Deposit
+2020-05-12 22:08:29,077 -0400 [main] INFO  (MainDriver.java:80) - 4) Make Transfer
+2020-05-12 22:08:29,077 -0400 [main] INFO  (MainDriver.java:81) - 5) Accept Transfer
+2020-05-12 22:08:29,077 -0400 [main] INFO  (MainDriver.java:82) - 6) Apply for new Account
+2020-05-12 22:08:29,077 -0400 [main] INFO  (MainDriver.java:83) - 7) Exit
+2020-05-12 22:08:49,005 -0400 [main] INFO  (MainDriver.java:104) - Enter accountNumber
+2020-05-12 22:08:52,771 -0400 [main] INFO  (MainDriver.java:106) - Enter Withdrawl Amount to two decimal places
+2020-05-12 22:08:56,254 -0400 [main] INFO  (MainDriver.java:108) - Enter Account Balance to two decimal places
+2020-05-12 22:09:01,884 -0400 [main] INFO  (CustomerServiceImpl.java:61) - Withdrawl ammount must be greater than 0 or less than account balance
+2020-05-12 22:09:01,884 -0400 [main] INFO  (MainDriver.java:75) - Welcome back!
+2020-05-12 22:09:01,884 -0400 [main] INFO  (MainDriver.java:76) - -------------------------------
+2020-05-12 22:09:01,884 -0400 [main] INFO  (MainDriver.java:77) - 1) View Balance
+2020-05-12 22:09:01,884 -0400 [main] INFO  (MainDriver.java:78) - 2) Make Withdrawl
+2020-05-12 22:09:01,884 -0400 [main] INFO  (MainDriver.java:79) - 3) Make Deposit
+2020-05-12 22:09:01,884 -0400 [main] INFO  (MainDriver.java:80) - 4) Make Transfer
+2020-05-12 22:09:01,885 -0400 [main] INFO  (MainDriver.java:81) - 5) Accept Transfer
+2020-05-12 22:09:01,885 -0400 [main] INFO  (MainDriver.java:82) - 6) Apply for new Account
+2020-05-12 22:09:01,885 -0400 [main] INFO  (MainDriver.java:83) - 7) Exit
+2020-05-12 22:09:18,954 -0400 [main] INFO  (MainDriver.java:117) - Enter Deposit Amount to two decimal places
+2020-05-12 22:09:23,505 -0400 [main] INFO  (MainDriver.java:119) - Enter accountNumber
+2020-05-12 22:09:28,609 -0400 [main] INFO  (CustomerServiceImpl.java:80) - You have deposited: $10.00
+2020-05-12 22:09:28,609 -0400 [main] INFO  (MainDriver.java:75) - Welcome back!
+2020-05-12 22:09:28,609 -0400 [main] INFO  (MainDriver.java:76) - -------------------------------
+2020-05-12 22:09:28,610 -0400 [main] INFO  (MainDriver.java:77) - 1) View Balance
+2020-05-12 22:09:28,610 -0400 [main] INFO  (MainDriver.java:78) - 2) Make Withdrawl
+2020-05-12 22:09:28,610 -0400 [main] INFO  (MainDriver.java:79) - 3) Make Deposit
+2020-05-12 22:09:28,610 -0400 [main] INFO  (MainDriver.java:80) - 4) Make Transfer
+2020-05-12 22:09:28,610 -0400 [main] INFO  (MainDriver.java:81) - 5) Accept Transfer
+2020-05-12 22:09:28,610 -0400 [main] INFO  (MainDriver.java:82) - 6) Apply for new Account
+2020-05-12 22:09:28,611 -0400 [main] INFO  (MainDriver.java:83) - 7) Exit
+2020-05-12 22:09:36,795 -0400 [main] INFO  (MainDriver.java:117) - Enter Deposit Amount to two decimal places
+2020-05-12 22:09:38,639 -0400 [main] INFO  (MainDriver.java:119) - Enter accountNumber
+2020-05-12 22:09:42,902 -0400 [main] INFO  (CustomerServiceImpl.java:82) - Deposit ammount must be greater than 0
+2020-05-12 22:09:42,902 -0400 [main] INFO  (MainDriver.java:75) - Welcome back!
+2020-05-12 22:09:42,902 -0400 [main] INFO  (MainDriver.java:76) - -------------------------------
+2020-05-12 22:09:42,902 -0400 [main] INFO  (MainDriver.java:77) - 1) View Balance
+2020-05-12 22:09:42,902 -0400 [main] INFO  (MainDriver.java:78) - 2) Make Withdrawl
+2020-05-12 22:09:42,902 -0400 [main] INFO  (MainDriver.java:79) - 3) Make Deposit
+2020-05-12 22:09:42,902 -0400 [main] INFO  (MainDriver.java:80) - 4) Make Transfer
+2020-05-12 22:09:42,902 -0400 [main] INFO  (MainDriver.java:81) - 5) Accept Transfer
+2020-05-12 22:09:42,902 -0400 [main] INFO  (MainDriver.java:82) - 6) Apply for new Account
+2020-05-12 22:09:42,902 -0400 [main] INFO  (MainDriver.java:83) - 7) Exit
+2020-05-12 22:09:56,225 -0400 [main] INFO  (MainDriver.java:128) - Enter Your Account Number
+2020-05-12 22:10:02,871 -0400 [main] INFO  (MainDriver.java:130) - Enter Transfer Amount to two decimal places
+2020-05-12 22:10:12,151 -0400 [main] INFO  (MainDriver.java:132) - Enter Account Number the transfer is going to
+2020-05-12 22:10:18,716 -0400 [main] INFO  (CustomerServiceImpl.java:94) - You have sucessfully transfered $20.00 to :1000000141
+2020-05-12 22:10:18,717 -0400 [main] INFO  (MainDriver.java:75) - Welcome back!
+2020-05-12 22:10:18,717 -0400 [main] INFO  (MainDriver.java:76) - -------------------------------
+2020-05-12 22:10:18,718 -0400 [main] INFO  (MainDriver.java:77) - 1) View Balance
+2020-05-12 22:10:18,718 -0400 [main] INFO  (MainDriver.java:78) - 2) Make Withdrawl
+2020-05-12 22:10:18,719 -0400 [main] INFO  (MainDriver.java:79) - 3) Make Deposit
+2020-05-12 22:10:18,719 -0400 [main] INFO  (MainDriver.java:80) - 4) Make Transfer
+2020-05-12 22:10:18,719 -0400 [main] INFO  (MainDriver.java:81) - 5) Accept Transfer
+2020-05-12 22:10:18,719 -0400 [main] INFO  (MainDriver.java:82) - 6) Apply for new Account
+2020-05-12 22:10:18,719 -0400 [main] INFO  (MainDriver.java:83) - 7) Exit
+2020-05-12 22:10:28,504 -0400 [main] INFO  (MainDriver.java:128) - Enter Your Account Number
+2020-05-12 22:10:35,758 -0400 [main] INFO  (MainDriver.java:130) - Enter Transfer Amount to two decimal places
+2020-05-12 22:10:39,676 -0400 [main] INFO  (MainDriver.java:132) - Enter Account Number the transfer is going to
+2020-05-12 22:10:44,145 -0400 [main] INFO  (CustomerServiceImpl.java:100) - Transfer Amount is invalid
+2020-05-12 22:10:44,145 -0400 [main] INFO  (MainDriver.java:75) - Welcome back!
+2020-05-12 22:10:44,145 -0400 [main] INFO  (MainDriver.java:76) - -------------------------------
+2020-05-12 22:10:44,145 -0400 [main] INFO  (MainDriver.java:77) - 1) View Balance
+2020-05-12 22:10:44,145 -0400 [main] INFO  (MainDriver.java:78) - 2) Make Withdrawl
+2020-05-12 22:10:44,145 -0400 [main] INFO  (MainDriver.java:79) - 3) Make Deposit
+2020-05-12 22:10:44,145 -0400 [main] INFO  (MainDriver.java:80) - 4) Make Transfer
+2020-05-12 22:10:44,145 -0400 [main] INFO  (MainDriver.java:81) - 5) Accept Transfer
+2020-05-12 22:10:44,145 -0400 [main] INFO  (MainDriver.java:82) - 6) Apply for new Account
+2020-05-12 22:10:44,146 -0400 [main] INFO  (MainDriver.java:83) - 7) Exit
+2020-05-12 22:11:08,589 -0400 [main] INFO  (MainDriver.java:128) - Enter Your Account Number
+2020-05-12 22:11:10,567 -0400 [main] INFO  (MainDriver.java:130) - Enter Transfer Amount to two decimal places
+2020-05-12 22:11:14,633 -0400 [main] INFO  (MainDriver.java:132) - Enter Account Number the transfer is going to
+2020-05-12 22:11:19,904 -0400 [main] INFO  (CustomerServiceImpl.java:96) - Account Number invalid
+2020-05-12 22:11:19,904 -0400 [main] INFO  (MainDriver.java:75) - Welcome back!
+2020-05-12 22:11:19,904 -0400 [main] INFO  (MainDriver.java:76) - -------------------------------
+2020-05-12 22:11:19,904 -0400 [main] INFO  (MainDriver.java:77) - 1) View Balance
+2020-05-12 22:11:19,904 -0400 [main] INFO  (MainDriver.java:78) - 2) Make Withdrawl
+2020-05-12 22:11:19,904 -0400 [main] INFO  (MainDriver.java:79) - 3) Make Deposit
+2020-05-12 22:11:19,904 -0400 [main] INFO  (MainDriver.java:80) - 4) Make Transfer
+2020-05-12 22:11:19,905 -0400 [main] INFO  (MainDriver.java:81) - 5) Accept Transfer
+2020-05-12 22:11:19,905 -0400 [main] INFO  (MainDriver.java:82) - 6) Apply for new Account
+2020-05-12 22:11:19,905 -0400 [main] INFO  (MainDriver.java:83) - 7) Exit
+2020-05-12 22:11:29,216 -0400 [main] INFO  (MainDriver.java:141) - Enter Your Account Number
+2020-05-12 22:11:36,501 -0400 [main] INFO  (MainDriver.java:143) - Enter Transfer Amount to two decimal places
+2020-05-12 22:11:40,754 -0400 [main] INFO  (MainDriver.java:145) - Enter Account Number the transfer is coming from
+2020-05-12 22:12:01,301 -0400 [main] INFO  (CustomerServiceImpl.java:116) - You have accepted a money Transfer of $30.00
+2020-05-12 22:12:01,301 -0400 [main] INFO  (MainDriver.java:75) - Welcome back!
+2020-05-12 22:12:01,302 -0400 [main] INFO  (MainDriver.java:76) - -------------------------------
+2020-05-12 22:12:01,302 -0400 [main] INFO  (MainDriver.java:77) - 1) View Balance
+2020-05-12 22:12:01,302 -0400 [main] INFO  (MainDriver.java:78) - 2) Make Withdrawl
+2020-05-12 22:12:01,302 -0400 [main] INFO  (MainDriver.java:79) - 3) Make Deposit
+2020-05-12 22:12:01,303 -0400 [main] INFO  (MainDriver.java:80) - 4) Make Transfer
+2020-05-12 22:12:01,303 -0400 [main] INFO  (MainDriver.java:81) - 5) Accept Transfer
+2020-05-12 22:12:01,304 -0400 [main] INFO  (MainDriver.java:82) - 6) Apply for new Account
+2020-05-12 22:12:01,304 -0400 [main] INFO  (MainDriver.java:83) - 7) Exit
+2020-05-12 22:12:26,035 -0400 [main] INFO  (MainDriver.java:172) - Thanks for using our App.......
+2020-05-12 22:12:31,203 -0400 [main] INFO  (MainDriver.java:23) - Welcome to Moss Bank Solutions
+2020-05-12 22:12:31,206 -0400 [main] INFO  (MainDriver.java:24) - ------------------------------
+2020-05-12 22:12:31,215 -0400 [main] INFO  (MainDriver.java:29) - Login
+2020-05-12 22:12:31,215 -0400 [main] INFO  (MainDriver.java:30) - Select an option below
+2020-05-12 22:12:31,215 -0400 [main] INFO  (MainDriver.java:31) - ---------------------------
+2020-05-12 22:12:31,215 -0400 [main] INFO  (MainDriver.java:32) - 1) Are you a Customer?
+2020-05-12 22:12:31,216 -0400 [main] INFO  (MainDriver.java:33) - 2) Are you an Employee
+2020-05-12 22:12:31,216 -0400 [main] INFO  (MainDriver.java:34) - 3) Exit
+2020-05-12 22:12:33,095 -0400 [main] INFO  (MainDriver.java:45) - Welcome to the Customer portal!
+2020-05-12 22:12:33,095 -0400 [main] INFO  (MainDriver.java:46) - -------------------------------
+2020-05-12 22:12:33,095 -0400 [main] INFO  (MainDriver.java:47) - 1) Existing Customer
+2020-05-12 22:12:33,095 -0400 [main] INFO  (MainDriver.java:48) - 2) New Customer
+2020-05-12 22:12:33,095 -0400 [main] INFO  (MainDriver.java:49) - 3) Exit
+2020-05-12 22:12:34,897 -0400 [main] INFO  (MainDriver.java:185) - Welcome new customer!
+2020-05-12 22:12:34,897 -0400 [main] INFO  (MainDriver.java:186) - -------------------------------
+2020-05-12 22:12:34,898 -0400 [main] INFO  (MainDriver.java:187) - 1) Create Account
+2020-05-12 22:12:34,900 -0400 [main] INFO  (MainDriver.java:188) - 2) Exit
+2020-05-12 22:12:35,988 -0400 [main] INFO  (MainDriver.java:198) - Enter Username
+2020-05-12 22:12:39,932 -0400 [main] INFO  (MainDriver.java:201) - Enter Password
+2020-05-12 22:12:48,796 -0400 [main] INFO  (MainDriver.java:203) - Enter AccountBalance to two decimal places
+2020-05-12 22:13:00,694 -0400 [main] INFO  (MainDriver.java:206) - Customer Registered
+2020-05-12 22:13:00,694 -0400 [main] INFO  (MainDriver.java:207) - Customer [username=Kevin, password=Ilikecake, accountBalance=100.00, accountNumber=null, approved=null]
+2020-05-12 22:13:00,695 -0400 [main] INFO  (MainDriver.java:185) - Welcome new customer!
+2020-05-12 22:13:00,695 -0400 [main] INFO  (MainDriver.java:186) - -------------------------------
+2020-05-12 22:13:00,695 -0400 [main] INFO  (MainDriver.java:187) - 1) Create Account
+2020-05-12 22:13:00,695 -0400 [main] INFO  (MainDriver.java:188) - 2) Exit
+2020-05-12 22:13:10,623 -0400 [main] INFO  (MainDriver.java:213) - Thanks for using our App.......
+2020-05-12 22:14:25,295 -0400 [main] INFO  (MainDriver.java:23) - Welcome to Moss Bank Solutions
+2020-05-12 22:14:25,298 -0400 [main] INFO  (MainDriver.java:24) - ------------------------------
+2020-05-12 22:14:25,304 -0400 [main] INFO  (MainDriver.java:29) - Login
+2020-05-12 22:14:25,304 -0400 [main] INFO  (MainDriver.java:30) - Select an option below
+2020-05-12 22:14:25,304 -0400 [main] INFO  (MainDriver.java:31) - ---------------------------
+2020-05-12 22:14:25,304 -0400 [main] INFO  (MainDriver.java:32) - 1) Are you a Customer?
+2020-05-12 22:14:25,304 -0400 [main] INFO  (MainDriver.java:33) - 2) Are you an Employee
+2020-05-12 22:14:25,304 -0400 [main] INFO  (MainDriver.java:34) - 3) Exit
+2020-05-12 22:14:27,136 -0400 [main] INFO  (MainDriver.java:239) - Welcome to the Employee portal!
+2020-05-12 22:14:27,136 -0400 [main] INFO  (MainDriver.java:240) - -------------------------------
+2020-05-12 22:14:27,136 -0400 [main] INFO  (MainDriver.java:241) - 1) Sign In
+2020-05-12 22:14:27,136 -0400 [main] INFO  (MainDriver.java:242) - 2) Exit
+2020-05-12 22:14:29,350 -0400 [main] INFO  (MainDriver.java:251) - Please Login
+2020-05-12 22:14:29,350 -0400 [main] INFO  (MainDriver.java:252) - Enter Username
+2020-05-12 22:14:32,569 -0400 [main] INFO  (MainDriver.java:254) - Enter Password
+2020-05-12 22:14:38,682 -0400 [main] INFO  (MainDriver.java:258) - Login Verified
+2020-05-12 22:14:38,683 -0400 [main] INFO  (MainDriver.java:267) - What would you like to do today
+2020-05-12 22:14:38,684 -0400 [main] INFO  (MainDriver.java:268) - -------------------------------
+2020-05-12 22:14:38,684 -0400 [main] INFO  (MainDriver.java:269) - 1) Approve Accounts
+2020-05-12 22:14:38,684 -0400 [main] INFO  (MainDriver.java:270) - 2) Reject Accounts
+2020-05-12 22:14:38,684 -0400 [main] INFO  (MainDriver.java:271) - 3) View Customer Account
+2020-05-12 22:14:38,684 -0400 [main] INFO  (MainDriver.java:272) - 4) View Transaction Logs
+2020-05-12 22:14:38,684 -0400 [main] INFO  (MainDriver.java:273) - 5) Exit
+2020-05-12 22:14:41,557 -0400 [main] INFO  (MainDriver.java:281) - Enter the Account Number You would like to approve
+2020-05-12 22:15:08,153 -0400 [main] INFO  (MainDriver.java:283) - Please Enter 'Approved by and then your EmployeeID'
+2020-05-12 22:15:17,729 -0400 [main] INFO  (MainDriver.java:288) - You have approved account: 1000000160
+2020-05-12 22:15:17,729 -0400 [main] INFO  (MainDriver.java:267) - What would you like to do today
+2020-05-12 22:15:17,729 -0400 [main] INFO  (MainDriver.java:268) - -------------------------------
+2020-05-12 22:15:17,730 -0400 [main] INFO  (MainDriver.java:269) - 1) Approve Accounts
+2020-05-12 22:15:17,730 -0400 [main] INFO  (MainDriver.java:270) - 2) Reject Accounts
+2020-05-12 22:15:17,731 -0400 [main] INFO  (MainDriver.java:271) - 3) View Customer Account
+2020-05-12 22:15:17,731 -0400 [main] INFO  (MainDriver.java:272) - 4) View Transaction Logs
+2020-05-12 22:15:17,732 -0400 [main] INFO  (MainDriver.java:273) - 5) Exit
+2020-05-12 22:15:31,696 -0400 [main] INFO  (MainDriver.java:296) - Enter the Account Number You would like to reject
+2020-05-12 22:15:37,093 -0400 [main] INFO  (MainDriver.java:298) - Please Enter 'Rejected by and then your EmployeeID'
+2020-05-12 22:15:49,147 -0400 [main] INFO  (MainDriver.java:303) - You have rejected account: 1000000160
+2020-05-12 22:15:49,148 -0400 [main] INFO  (MainDriver.java:267) - What would you like to do today
+2020-05-12 22:15:49,148 -0400 [main] INFO  (MainDriver.java:268) - -------------------------------
+2020-05-12 22:15:49,148 -0400 [main] INFO  (MainDriver.java:269) - 1) Approve Accounts
+2020-05-12 22:15:49,149 -0400 [main] INFO  (MainDriver.java:270) - 2) Reject Accounts
+2020-05-12 22:15:49,149 -0400 [main] INFO  (MainDriver.java:271) - 3) View Customer Account
+2020-05-12 22:15:49,149 -0400 [main] INFO  (MainDriver.java:272) - 4) View Transaction Logs
+2020-05-12 22:15:49,150 -0400 [main] INFO  (MainDriver.java:273) - 5) Exit
+2020-05-12 22:15:56,907 -0400 [main] INFO  (MainDriver.java:312) - Enter Account Number
+2020-05-12 22:16:02,040 -0400 [main] INFO  (MainDriver.java:317) - Here is the CustomerAccount: Customer [username=garrettmoss, password=null, accountBalance=50, accountNumber=1000000160, approved=Rejected by EID1000]
+2020-05-12 22:16:02,040 -0400 [main] INFO  (MainDriver.java:267) - What would you like to do today
+2020-05-12 22:16:02,041 -0400 [main] INFO  (MainDriver.java:268) - -------------------------------
+2020-05-12 22:16:02,042 -0400 [main] INFO  (MainDriver.java:269) - 1) Approve Accounts
+2020-05-12 22:16:02,042 -0400 [main] INFO  (MainDriver.java:270) - 2) Reject Accounts
+2020-05-12 22:16:02,042 -0400 [main] INFO  (MainDriver.java:271) - 3) View Customer Account
+2020-05-12 22:16:02,042 -0400 [main] INFO  (MainDriver.java:272) - 4) View Transaction Logs
+2020-05-12 22:16:02,042 -0400 [main] INFO  (MainDriver.java:273) - 5) Exit
+2020-05-12 22:16:12,923 -0400 [main] INFO  (MainDriver.java:325) - Enter Yes
+2020-05-12 22:16:15,594 -0400 [main] INFO  (EmployeeDaoImpl.java:163) - Here are the Transaction Logs: 
+2020-05-12 22:16:15,594 -0400 [main] INFO  (EmployeeDaoImpl.java:165) - 1000000160 
+2020-05-12 22:16:15,594 -0400 [main] INFO  (EmployeeDaoImpl.java:165) - Withdrawl 
+2020-05-12 22:16:15,594 -0400 [main] INFO  (EmployeeDaoImpl.java:165) - 10.00 
+2020-05-12 22:16:15,594 -0400 [main] INFO  (EmployeeDaoImpl.java:163) - Here are the Transaction Logs: 
+2020-05-12 22:16:15,594 -0400 [main] INFO  (EmployeeDaoImpl.java:165) - 1000000160 
+2020-05-12 22:16:15,595 -0400 [main] INFO  (EmployeeDaoImpl.java:165) - Deposit 
+2020-05-12 22:16:15,595 -0400 [main] INFO  (EmployeeDaoImpl.java:165) - 10.00 
+2020-05-12 22:16:15,595 -0400 [main] INFO  (EmployeeDaoImpl.java:163) - Here are the Transaction Logs: 
+2020-05-12 22:16:15,595 -0400 [main] INFO  (EmployeeDaoImpl.java:165) - From: 1000000160 To: 1000000141 
+2020-05-12 22:16:15,595 -0400 [main] INFO  (EmployeeDaoImpl.java:165) - Money Transfer 
+2020-05-12 22:16:15,595 -0400 [main] INFO  (EmployeeDaoImpl.java:165) - 20.00 
+2020-05-12 22:16:15,595 -0400 [main] INFO  (EmployeeDaoImpl.java:163) - Here are the Transaction Logs: 
+2020-05-12 22:16:15,595 -0400 [main] INFO  (EmployeeDaoImpl.java:165) - 1000000140 
+2020-05-12 22:16:15,595 -0400 [main] INFO  (EmployeeDaoImpl.java:165) - null 
+2020-05-12 22:16:15,596 -0400 [main] INFO  (EmployeeDaoImpl.java:165) - 20.00 
+2020-05-12 22:16:15,596 -0400 [main] INFO  (EmployeeDaoImpl.java:163) - Here are the Transaction Logs: 
+2020-05-12 22:16:15,596 -0400 [main] INFO  (EmployeeDaoImpl.java:165) - 1000000140 
+2020-05-12 22:16:15,596 -0400 [main] INFO  (EmployeeDaoImpl.java:165) - deposit 
+2020-05-12 22:16:15,596 -0400 [main] INFO  (EmployeeDaoImpl.java:165) - 10.00 
+2020-05-12 22:16:15,596 -0400 [main] INFO  (EmployeeDaoImpl.java:163) - Here are the Transaction Logs: 
+2020-05-12 22:16:15,596 -0400 [main] INFO  (EmployeeDaoImpl.java:165) - 1000000140 
+2020-05-12 22:16:15,596 -0400 [main] INFO  (EmployeeDaoImpl.java:165) - Withdrawl 
+2020-05-12 22:16:15,597 -0400 [main] INFO  (EmployeeDaoImpl.java:165) - 10.00 
+2020-05-12 22:16:15,597 -0400 [main] INFO  (EmployeeDaoImpl.java:163) - Here are the Transaction Logs: 
+2020-05-12 22:16:15,597 -0400 [main] INFO  (EmployeeDaoImpl.java:165) - 1000000140 
+2020-05-12 22:16:15,597 -0400 [main] INFO  (EmployeeDaoImpl.java:165) - Withdrawl 
+2020-05-12 22:16:15,597 -0400 [main] INFO  (EmployeeDaoImpl.java:165) - 10.00 
+2020-05-12 22:16:15,597 -0400 [main] INFO  (EmployeeDaoImpl.java:163) - Here are the Transaction Logs: 
+2020-05-12 22:16:15,597 -0400 [main] INFO  (EmployeeDaoImpl.java:165) - From: 1000000140 
+2020-05-12 22:16:15,597 -0400 [main] INFO  (EmployeeDaoImpl.java:165) - Money Transfer 
+2020-05-12 22:16:15,597 -0400 [main] INFO  (EmployeeDaoImpl.java:165) - 30.00 
+2020-05-12 22:16:15,597 -0400 [main] INFO  (EmployeeDaoImpl.java:163) - Here are the Transaction Logs: 
+2020-05-12 22:16:15,597 -0400 [main] INFO  (EmployeeDaoImpl.java:165) - From: 1000000141 To: 1000000140 
+2020-05-12 22:16:15,598 -0400 [main] INFO  (EmployeeDaoImpl.java:165) - Money Transfer 
+2020-05-12 22:16:15,598 -0400 [main] INFO  (EmployeeDaoImpl.java:165) - 30.00 
+2020-05-12 22:16:15,598 -0400 [main] INFO  (EmployeeDaoImpl.java:163) - Here are the Transaction Logs: 
+2020-05-12 22:16:15,598 -0400 [main] INFO  (EmployeeDaoImpl.java:165) - From: 1000000141 To: 1000000140 
+2020-05-12 22:16:15,598 -0400 [main] INFO  (EmployeeDaoImpl.java:165) - Money Transfer 
+2020-05-12 22:16:15,598 -0400 [main] INFO  (EmployeeDaoImpl.java:165) - 20.00 
+2020-05-12 22:16:15,660 -0400 [main] INFO  (EmployeeDaoImpl.java:163) - Here are the Transaction Logs: 
+2020-05-12 22:16:15,660 -0400 [main] INFO  (EmployeeDaoImpl.java:165) - From: 1000000141 To: 1000000140 
+2020-05-12 22:16:15,661 -0400 [main] INFO  (EmployeeDaoImpl.java:165) - Money Transfer Request 
+2020-05-12 22:16:15,661 -0400 [main] INFO  (EmployeeDaoImpl.java:165) - 10.00 
+2020-05-12 22:16:15,661 -0400 [main] INFO  (EmployeeDaoImpl.java:163) - Here are the Transaction Logs: 
+2020-05-12 22:16:15,661 -0400 [main] INFO  (EmployeeDaoImpl.java:165) - From: 1000000160 To: 1000000141 
+2020-05-12 22:16:15,661 -0400 [main] INFO  (EmployeeDaoImpl.java:165) - Money Transfer Request 
+2020-05-12 22:16:15,661 -0400 [main] INFO  (EmployeeDaoImpl.java:165) - 30.00 
+2020-05-12 22:16:15,729 -0400 [main] INFO  (MainDriver.java:267) - What would you like to do today
+2020-05-12 22:16:15,729 -0400 [main] INFO  (MainDriver.java:268) - -------------------------------
+2020-05-12 22:16:15,729 -0400 [main] INFO  (MainDriver.java:269) - 1) Approve Accounts
+2020-05-12 22:16:15,729 -0400 [main] INFO  (MainDriver.java:270) - 2) Reject Accounts
+2020-05-12 22:16:15,729 -0400 [main] INFO  (MainDriver.java:271) - 3) View Customer Account
+2020-05-12 22:16:15,729 -0400 [main] INFO  (MainDriver.java:272) - 4) View Transaction Logs
+2020-05-12 22:16:15,729 -0400 [main] INFO  (MainDriver.java:273) - 5) Exit
+2020-05-12 22:16:22,400 -0400 [main] INFO  (MainDriver.java:336) - Thanks for using our App.......
+2020-05-12 22:17:04,501 -0400 [main] INFO  (MainDriver.java:23) - Welcome to Moss Bank Solutions
+2020-05-12 22:17:04,505 -0400 [main] INFO  (MainDriver.java:24) - ------------------------------
+2020-05-12 22:17:04,510 -0400 [main] INFO  (MainDriver.java:29) - Login
+2020-05-12 22:17:04,510 -0400 [main] INFO  (MainDriver.java:30) - Select an option below
+2020-05-12 22:17:04,510 -0400 [main] INFO  (MainDriver.java:31) - ---------------------------
+2020-05-12 22:17:04,510 -0400 [main] INFO  (MainDriver.java:32) - 1) Are you a Customer?
+2020-05-12 22:17:04,510 -0400 [main] INFO  (MainDriver.java:33) - 2) Are you an Employee
+2020-05-12 22:17:04,511 -0400 [main] INFO  (MainDriver.java:34) - 3) Exit
+2020-05-12 22:17:06,031 -0400 [main] INFO  (MainDriver.java:45) - Welcome to the Customer portal!
+2020-05-12 22:17:06,031 -0400 [main] INFO  (MainDriver.java:46) - -------------------------------
+2020-05-12 22:17:06,031 -0400 [main] INFO  (MainDriver.java:47) - 1) Existing Customer
+2020-05-12 22:17:06,032 -0400 [main] INFO  (MainDriver.java:48) - 2) New Customer
+2020-05-12 22:17:06,032 -0400 [main] INFO  (MainDriver.java:49) - 3) Exit
+2020-05-12 22:17:07,574 -0400 [main] INFO  (MainDriver.java:58) - Please Login
+2020-05-12 22:17:07,574 -0400 [main] INFO  (MainDriver.java:59) - Enter Username
+2020-05-12 22:17:11,017 -0400 [main] INFO  (MainDriver.java:61) - Enter Password
+2020-05-12 22:17:16,570 -0400 [main] INFO  (MainDriver.java:65) - Login Verified
+2020-05-12 22:17:16,570 -0400 [main] INFO  (MainDriver.java:75) - Welcome back!
+2020-05-12 22:17:16,570 -0400 [main] INFO  (MainDriver.java:76) - -------------------------------
+2020-05-12 22:17:16,571 -0400 [main] INFO  (MainDriver.java:77) - 1) View Balance
+2020-05-12 22:17:16,571 -0400 [main] INFO  (MainDriver.java:78) - 2) Make Withdrawl
+2020-05-12 22:17:16,571 -0400 [main] INFO  (MainDriver.java:79) - 3) Make Deposit
+2020-05-12 22:17:16,572 -0400 [main] INFO  (MainDriver.java:80) - 4) Make Transfer
+2020-05-12 22:17:16,572 -0400 [main] INFO  (MainDriver.java:81) - 5) Accept Transfer
+2020-05-12 22:17:16,572 -0400 [main] INFO  (MainDriver.java:82) - 6) Apply for new Account
+2020-05-12 22:17:16,573 -0400 [main] INFO  (MainDriver.java:83) - 7) Exit
+2020-05-12 22:17:19,659 -0400 [main] INFO  (MainDriver.java:104) - Enter accountNumber
+2020-05-12 22:17:23,753 -0400 [main] INFO  (MainDriver.java:106) - Enter Withdrawl Amount to two decimal places
+2020-05-12 22:17:28,397 -0400 [main] INFO  (MainDriver.java:108) - Enter Account Balance to two decimal places
+2020-05-12 22:17:32,972 -0400 [main] INFO  (CustomerServiceImpl.java:59) - You have withdrawn: $20.00
+2020-05-12 22:17:32,972 -0400 [main] INFO  (MainDriver.java:75) - Welcome back!
+2020-05-12 22:17:32,972 -0400 [main] INFO  (MainDriver.java:76) - -------------------------------
+2020-05-12 22:17:32,973 -0400 [main] INFO  (MainDriver.java:77) - 1) View Balance
+2020-05-12 22:17:32,973 -0400 [main] INFO  (MainDriver.java:78) - 2) Make Withdrawl
+2020-05-12 22:17:32,973 -0400 [main] INFO  (MainDriver.java:79) - 3) Make Deposit
+2020-05-12 22:17:32,973 -0400 [main] INFO  (MainDriver.java:80) - 4) Make Transfer
+2020-05-12 22:17:32,973 -0400 [main] INFO  (MainDriver.java:81) - 5) Accept Transfer
+2020-05-12 22:17:32,973 -0400 [main] INFO  (MainDriver.java:82) - 6) Apply for new Account
+2020-05-12 22:17:32,973 -0400 [main] INFO  (MainDriver.java:83) - 7) Exit
+2020-05-12 22:17:55,792 -0400 [main] INFO  (MainDriver.java:117) - Enter Deposit Amount to two decimal places
+2020-05-12 22:18:20,619 -0400 [main] INFO  (MainDriver.java:119) - Enter accountNumber
+2020-05-12 22:18:25,813 -0400 [main] INFO  (CustomerServiceImpl.java:80) - You have deposited: $60.00
+2020-05-12 22:18:25,813 -0400 [main] INFO  (MainDriver.java:75) - Welcome back!
+2020-05-12 22:18:25,813 -0400 [main] INFO  (MainDriver.java:76) - -------------------------------
+2020-05-12 22:18:25,814 -0400 [main] INFO  (MainDriver.java:77) - 1) View Balance
+2020-05-12 22:18:25,814 -0400 [main] INFO  (MainDriver.java:78) - 2) Make Withdrawl
+2020-05-12 22:18:25,814 -0400 [main] INFO  (MainDriver.java:79) - 3) Make Deposit
+2020-05-12 22:18:25,814 -0400 [main] INFO  (MainDriver.java:80) - 4) Make Transfer
+2020-05-12 22:18:25,815 -0400 [main] INFO  (MainDriver.java:81) - 5) Accept Transfer
+2020-05-12 22:18:25,815 -0400 [main] INFO  (MainDriver.java:82) - 6) Apply for new Account
+2020-05-12 22:18:25,815 -0400 [main] INFO  (MainDriver.java:83) - 7) Exit
+2020-05-12 22:18:39,512 -0400 [main] INFO  (MainDriver.java:172) - Thanks for using our App.......
+2020-05-12 22:21:31,495 -0400 [main] INFO  (MainDriver.java:23) - Welcome to Moss Bank Solutions
+2020-05-12 22:21:31,498 -0400 [main] INFO  (MainDriver.java:24) - ------------------------------
+2020-05-12 22:21:31,503 -0400 [main] INFO  (MainDriver.java:29) - Login
+2020-05-12 22:21:31,504 -0400 [main] INFO  (MainDriver.java:30) - Select an option below
+2020-05-12 22:21:31,504 -0400 [main] INFO  (MainDriver.java:31) - ---------------------------
+2020-05-12 22:21:31,504 -0400 [main] INFO  (MainDriver.java:32) - 1) Are you a Customer?
+2020-05-12 22:21:31,504 -0400 [main] INFO  (MainDriver.java:33) - 2) Are you an Employee
+2020-05-12 22:21:31,504 -0400 [main] INFO  (MainDriver.java:34) - 3) Exit
+2020-05-12 22:21:33,469 -0400 [main] INFO  (MainDriver.java:45) - Welcome to the Customer portal!
+2020-05-12 22:21:33,469 -0400 [main] INFO  (MainDriver.java:46) - -------------------------------
+2020-05-12 22:21:33,469 -0400 [main] INFO  (MainDriver.java:47) - 1) Existing Customer
+2020-05-12 22:21:33,469 -0400 [main] INFO  (MainDriver.java:48) - 2) New Customer
+2020-05-12 22:21:33,469 -0400 [main] INFO  (MainDriver.java:49) - 3) Exit
+2020-05-12 22:21:36,126 -0400 [main] INFO  (MainDriver.java:185) - Welcome new customer!
+2020-05-12 22:21:36,126 -0400 [main] INFO  (MainDriver.java:186) - -------------------------------
+2020-05-12 22:21:36,126 -0400 [main] INFO  (MainDriver.java:187) - 1) Create Account
+2020-05-12 22:21:36,128 -0400 [main] INFO  (MainDriver.java:188) - 2) Exit
+2020-05-12 22:21:40,460 -0400 [main] INFO  (MainDriver.java:198) - Enter Username
+2020-05-12 22:21:43,496 -0400 [main] INFO  (MainDriver.java:201) - Enter Password
+2020-05-12 22:21:54,580 -0400 [main] INFO  (MainDriver.java:203) - Enter AccountBalance to two decimal places
+2020-05-12 22:22:02,139 -0400 [main] INFO  (MainDriver.java:206) - Customer Registered
+2020-05-12 22:22:02,140 -0400 [main] INFO  (MainDriver.java:207) - Customer [username=Jodh, password=I am jodh, accountBalance=20.00, accountNumber=null, approved=null]
+2020-05-12 22:22:02,140 -0400 [main] INFO  (MainDriver.java:185) - Welcome new customer!
+2020-05-12 22:22:02,140 -0400 [main] INFO  (MainDriver.java:186) - -------------------------------
+2020-05-12 22:22:02,141 -0400 [main] INFO  (MainDriver.java:187) - 1) Create Account
+2020-05-12 22:22:02,141 -0400 [main] INFO  (MainDriver.java:188) - 2) Exit
+2020-05-12 22:22:41,158 -0400 [main] INFO  (MainDriver.java:213) - Thanks for using our App.......

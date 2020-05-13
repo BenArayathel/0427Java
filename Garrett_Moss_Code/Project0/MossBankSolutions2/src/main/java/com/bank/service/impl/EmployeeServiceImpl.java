@@ -66,14 +66,24 @@ public class EmployeeServiceImpl implements EmployeeService {
 	}
 
 	@Override
-	public Employee updateEmployee(String newPassword) throws BankException {
-		// TODO Auto-generated method stub
-		return null;
+	public Employee updateEmployee(String newPassword, String accountNumber) throws BankException {
+		Employee employee=null;
+		if(newPassword != null && validAccountNumber(accountNumber)==true) {
+		employee=dao.updateEmployee(newPassword, accountNumber);
+		}else if(newPassword != null && (validAccountNumber(accountNumber)==false)) {
+			logger.info("Invalid account number ");
+		}
+		return employee;
 	}
 
 	@Override
-	public Employee deleteEmployee(String username) throws BankException {
-		// TODO Auto-generated method stub
+	public String deleteEmployee(String employeeId) throws BankException {
+		
+		if (employeeId == null) {
+			logger.info("Employee account does not exist");
+		}else {
+			employeeId=dao.deleteEmployee(employeeId);
+		}
 		return null;
 	}
 

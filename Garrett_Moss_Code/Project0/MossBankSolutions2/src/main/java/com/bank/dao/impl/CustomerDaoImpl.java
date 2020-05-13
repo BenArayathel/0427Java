@@ -13,6 +13,7 @@ import com.bank.dbutil.BankOracleConnection;
 import com.bank.exception.BankException;
 import com.bank.main.MainDriver;
 import com.bank.model.Customer;
+import com.bank.model.Employee;
 
 public class CustomerDaoImpl implements CustomerDAO {
 
@@ -222,5 +223,20 @@ public class CustomerDaoImpl implements CustomerDAO {
 				}
 				return account;
 		}
-
+	@Override
+	public Customer updateCustomer(String newPassword, String accountNumber) throws BankException {
+		try (Connection connection= BankOracleConnection.getConnection()){
+			String sql="UPDATE customer set password = ? where accountnumber =?";
+			CallableStatement callableStatement = connection.prepareCall(sql);
+			callableStatement.setString(1, newPassword);
+			callableStatement.setString(2, accountNumber);
+			
+			callableStatement.execute();
+			
+		} catch (ClassNotFoundException | SQLException e) {
+			logger.error("Internal error occured plase contact SYSADMIN");
+		}
+		
+		return null;
+	}
 }

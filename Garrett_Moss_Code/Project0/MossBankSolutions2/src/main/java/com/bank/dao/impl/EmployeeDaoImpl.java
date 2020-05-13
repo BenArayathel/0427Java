@@ -80,18 +80,29 @@ public class EmployeeDaoImpl implements EmployeeDAO{
 	}
 
 	@Override
-	public Employee updateEmployee(String newPassword) throws BankException {
-		// TODO Auto-generated method stub
+	public Employee updateEmployee(String newPassword, String accountNumber) throws BankException {
+		try (Connection connection= BankOracleConnection.getConnection()){
+			String sql="UPDATE customer set password = ? where accountnumber =?";
+			CallableStatement callableStatement = connection.prepareCall(sql);
+			callableStatement.setString(1, newPassword);
+			callableStatement.setString(2, accountNumber);
+			
+			callableStatement.execute();
+			
+		} catch (ClassNotFoundException | SQLException e) {
+			logger.error("Internal error occured plase contact SYSADMIN");
+		}
+		
 		return null;
 	}
 
 	@Override
-	public Employee deleteEmployee(String employeeid) throws BankException {
+	public String deleteEmployee(String employeeId) throws BankException {
 		try (Connection connection= BankOracleConnection.getConnection()){
 			String sql="DELETE from employee where employeeid =?	";
 			CallableStatement callableStatement = connection.prepareCall(sql);
 			PreparedStatement preparedStatement=connection.prepareStatement(sql);
-			preparedStatement.setString(1, employeeid);
+			preparedStatement.setString(1, employeeId);
 			int resultSet=preparedStatement.executeUpdate();
 			
 			if (resultSet < 1) {

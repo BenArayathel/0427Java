@@ -12,4 +12,5 @@ public interface CustomerService {
 	public Customer acceptTransfer (String fromAccountNumber, String transferAmount, String toAccountNumber) throws BankException;
 	public String deleteCustomer(String accountNumber) throws BankException;
 	public Customer loginVerification(String username) throws BankException;
+	public Customer updateCustomer(String newPassword, String accountNumber) throws BankException;
 }

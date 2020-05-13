@@ -12,5 +12,6 @@ public interface CustomerDAO {
 	public Customer acceptTransfer (String fromAccountNumber, String transferAmount, String toAccountNumber) throws BankException;
 	public String deleteCustomer(String accountnumber) throws BankException;
 	public Customer loginVerification(String username) throws BankException;
+	public Customer updateCustomer(String newPassword, String accountNumber) throws BankException;
 
 }

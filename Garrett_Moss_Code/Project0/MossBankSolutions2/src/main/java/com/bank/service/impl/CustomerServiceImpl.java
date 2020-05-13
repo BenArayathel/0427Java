@@ -7,6 +7,7 @@ import com.bank.dao.impl.CustomerDaoImpl;
 import com.bank.exception.BankException;
 import com.bank.main.MainDriver;
 import com.bank.model.Customer;
+import com.bank.model.Employee;
 import com.bank.service.CustomerService;
 
 public class CustomerServiceImpl implements CustomerService {
@@ -48,6 +49,8 @@ public class CustomerServiceImpl implements CustomerService {
 		boolean b = false;
 		if (withdraw.matches("[0-9]{1,10}[.]{1}[0-9]{2}") && (Double.parseDouble(withdraw) < Double.parseDouble(accountBalance))) {
 			b=true;
+		} else if (withdraw.matches("[0-9]{1,10}[.]{1}[0-9]{2}") && (Double.parseDouble(withdraw) > Double.parseDouble(accountBalance))) {
+			b=false;
 		}
 		return b;
 	}
@@ -152,7 +155,16 @@ public class CustomerServiceImpl implements CustomerService {
 			}
 			return customer;
 		}
-
+	@Override
+	public Customer updateCustomer(String newPassword, String accountNumber) throws BankException{
+		Customer customer=null;
+		if(newPassword != null && validAccountNumber(accountNumber)==true) {
+		customer=dao.updateCustomer(newPassword, accountNumber);
+		}else if(newPassword != null && (validAccountNumber(accountNumber)==false)) {
+			logger.info("Invalid account number ");
+		}
+		return customer;
+	}
 	}
 
 
