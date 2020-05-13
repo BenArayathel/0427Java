@@ -62,7 +62,7 @@ public class ViewCustomerAccount {
 	    BankApp.loggy.info("       9. Approved? : " + avm.isApproved());
 	    BankApp.loggy.info("       ");
 	    BankApp.loggy.info("       Note: " + message);
-	    BankApp.loggy.info("       HIT ANY KEY TO GO TO PREVIOUS MENU...");
+	    BankApp.loggy.info("       Hit ENTER to go to previous menu...");
 	    
         String accountId = scanner.nextLine();
 

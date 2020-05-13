@@ -124,7 +124,7 @@ public class ServiceLayer {
 		
 		account = accountDao.addAccount(account);
 		
-		/* Insert initial transaction replaced by PL/SQL Trigger: 
+		/* Initial transaction inserted by PL/SQL Trigger: 
 		 * TRIGGER account_after_insert
 		
 		// create and insert transactions in transaction table.
@@ -212,15 +212,18 @@ public class ServiceLayer {
 			
 			accountDao.updateAccount(account);
 			
+			// Record transaction with the amount unchanged
+	    	recordTransaction(account, "APPR", account.getBalance());
+			
 			// create and insert transactions in transaction table.
-			Transaction transaction = new Transaction();
-			transaction.setAccountId(account.getAccountId());
-			transaction.setTransactionType("APPR");
-			transaction.setAmount(account.getBalance());
-			transaction.setEndingBalance(account.getBalance());
-	        transaction.setTransTime(Timestamp.valueOf(LocalDateTime.now())); 
-	        
-	        transaction = transactionDao.addTransaction(transaction);
+//			Transaction transaction = new Transaction();
+//			transaction.setAccountId(account.getAccountId());
+//			transaction.setTransactionType("APPR");
+//			transaction.setAmount(account.getBalance());
+//			transaction.setEndingBalance(account.getBalance());
+//	        transaction.setTransTime(Timestamp.valueOf(LocalDateTime.now())); 
+//	        
+//	        transaction = transactionDao.addTransaction(transaction);
 			
 		}
 		
@@ -341,6 +344,11 @@ public class ServiceLayer {
     	
     }
     
+    public List<Account> getAllAccountList(){
+    	return accountDao.getAllAccounts();    	
+	}
+
+    
     public Account depositAmount(Account account, BigDecimal depositAmount) {
     	
     	BigDecimal currentBalance = account.getBalance();
@@ -351,16 +359,19 @@ public class ServiceLayer {
     	accountDao.updateAccount(account);
     	
     	account = accountDao.getAccount(account.getAccountId());
+
     	
+    	recordTransaction(account, "DEPO", depositAmount);
+
     	// Update Transaction Table
-    	Transaction transaction = new Transaction();
-		transaction.setAccountId(account.getAccountId());
-		transaction.setTransactionType("DEPO");
-		transaction.setAmount(depositAmount);
-		transaction.setEndingBalance(account.getBalance());
-        transaction.setTransTime(Timestamp.valueOf(LocalDateTime.now())); 
-        
-        transaction = transactionDao.addTransaction(transaction);
+//    	Transaction transaction = new Transaction();
+//		transaction.setAccountId(account.getAccountId());
+//		transaction.setTransactionType("DEPO");
+//		transaction.setAmount(depositAmount);
+//		transaction.setEndingBalance(account.getBalance());
+//        transaction.setTransTime(Timestamp.valueOf(LocalDateTime.now())); 
+//        
+//        transaction = transactionDao.addTransaction(transaction);
     	
     	return account;
     	
@@ -377,21 +388,52 @@ public class ServiceLayer {
     	
     	account = accountDao.getAccount(account.getAccountId());
     	
+    	recordTransaction(account, "WITH", withdrawAmount);
+    	
     	// Update Transaction Table
-    	Transaction transaction = new Transaction();
-		transaction.setAccountId(account.getAccountId());
-		transaction.setTransactionType("WITH");
-		transaction.setAmount(withdrawAmount);
-		transaction.setEndingBalance(account.getBalance());
-        transaction.setTransTime(Timestamp.valueOf(LocalDateTime.now())); 
-        
-        transaction = transactionDao.addTransaction(transaction);
+//    	Transaction transaction = new Transaction();
+//		transaction.setAccountId(account.getAccountId());
+//		transaction.setTransactionType("WITH");
+//		transaction.setAmount(withdrawAmount);
+//		transaction.setEndingBalance(account.getBalance());
+//        transaction.setTransTime(Timestamp.valueOf(LocalDateTime.now())); 
+//        
+//        transaction = transactionDao.addTransaction(transaction);
     	
     	return account;
 
     	
     };
 
-
+    public Account transferAmount(Account fromAccount, String toAccountId, BigDecimal transferAmount) {
+    	
+    	
+    	Account sourceAccount = withdrawAmount(fromAccount, transferAmount);
+    	
+    	//recordTransaction(sourceAccount, "TRAN", transferAmount);
+    	
+    	Account toAccount = accountDao.getAccount(toAccountId);
+    	
+    	toAccount = depositAmount(toAccount, transferAmount);
+    	
+    	//record
+    	
+		return sourceAccount;
+	};
+	
+	//helper
+	public void recordTransaction(Account account, String transactionType, BigDecimal amount) {
+    	Transaction transaction = new Transaction();
+		transaction.setAccountId(account.getAccountId());
+		transaction.setTransactionType(transactionType);
+		transaction.setAmount(amount);
+		transaction.setEndingBalance(account.getBalance());
+        transaction.setTransTime(Timestamp.valueOf(LocalDateTime.now())); 
+        
+        transaction = transactionDao.addTransaction(transaction);
+		
+	}
+	
+	
     
 }

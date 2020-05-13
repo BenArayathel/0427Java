@@ -135,7 +135,8 @@ public class AccountDaoJdbcImpl implements AccountDao{
 			//accounts.forEach(c -> BankApp.loggy.info(c));
 
 		} catch (SQLException e) {
-				e.printStackTrace();
+			BankApp.loggy.error(e.getMessage());
+			e.printStackTrace();
 		} finally {
 			try {
 				if(rs != null) rs.close();
@@ -161,11 +162,12 @@ public class AccountDaoJdbcImpl implements AccountDao{
 			int updatedRows = ps.executeUpdate();
 			
 			if (updatedRows == 0) {
-				BankApp.loggy.info("No records updated.");
+				BankApp.loggy.info("No account records updated.");
 			} else {
-				BankApp.loggy.info(updatedRows + " rows updated.");
+				BankApp.loggy.info(updatedRows + " account updated.");
 			}		
 		} catch (SQLException e) {
+			BankApp.loggy.error(e.getMessage());
 			e.printStackTrace();
 		} finally {
 			try {

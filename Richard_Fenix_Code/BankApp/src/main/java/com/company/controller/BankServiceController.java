@@ -18,12 +18,12 @@ public class BankServiceController {
 	public Customer validateCustomerAccount(String firstName, String lastName, String accountId) {
 		
 		// call on serviceLayer to validate Registration. i.e. serviceLayer.checkRegistration();
-		BankApp.loggy.info("validateRegistration triggered...");
+		//BankApp.loggy.info("validateRegistration triggered...");
 		return serviceLayer.validateCustomerAccount(firstName, lastName, accountId);
 	}
 	
 	public Customer validateLogin(String loginName, String password) {	
-		BankApp.loggy.info("validateLogin triggered...");
+		//BankApp.loggy.info("validateLogin triggered...");
 		return serviceLayer.validateLogin(loginName, password);
 		
 	}
@@ -58,6 +58,10 @@ public class BankServiceController {
     	return serviceLayer.getAccountListByCustomerId(customerId);
     }
     
+    public List<Account> getAllAccountList(){
+    	return serviceLayer.getAllAccountList();
+    };
+    
     public Account depositAmount(Account account, BigDecimal depositAmount) {
     	return serviceLayer.depositAmount(account, depositAmount);
     };
@@ -66,5 +70,9 @@ public class BankServiceController {
     	return serviceLayer.withdrawAmount(account, withdrawAmount);
     };
 
+	public Account transferAmount(Account fromAccount, String toAccountId, BigDecimal transferAmount) {
+		return serviceLayer.transferAmount(fromAccount, toAccountId, transferAmount);
+	};
 
+    
 }

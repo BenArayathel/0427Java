@@ -72,9 +72,8 @@ public class CustomerPage {
 	                withdrawPage.withdrawForm(customer);
 	                break;
 	            case 3:
-	                BankApp.loggy.info("Transfer to account...");
-//	                TransferPage transferPage = new TransferPage();
-//	                transferPage.transferForm(customer);
+	                TransferPage transferPage = new TransferPage();
+	                transferPage.transferForm(customer);
 	                break;
 	            case 0:
 	            	BankApp.loggy.info("\n *** Exiting customer page... ***");

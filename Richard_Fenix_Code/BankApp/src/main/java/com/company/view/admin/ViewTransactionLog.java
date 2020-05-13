@@ -32,7 +32,7 @@ public class ViewTransactionLog {
 		    );
 		
 	    BankApp.loggy.info("       ");
-	    BankApp.loggy.info("       HIT ANY KEY TO GO TO PREVIOUS MENU...");
+	    BankApp.loggy.info("       Hit ENTER to go to previous menu...");
 	    
         scanner.nextLine();
 
