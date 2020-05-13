@@ -55,7 +55,6 @@ public class UserServiceImpl implements UserService {
 		}
 		if(accountValidated) {
 			newUser.setPassword(ePassword);
-			loggy.info(newUser.getPassword()); 
 			try {
 				uDI.insertUser(newUser);
 				loggy.debug("new customer account created with email " + newUser.getEmail());
@@ -89,7 +88,7 @@ public class UserServiceImpl implements UserService {
 			}
 			
 		}
-		loggy.error("Email or password could not be found matched in DB");
+		loggy.error("Email or password could not be found matched in database");
 		loggy.info("Either your email or password is incorrect. Please try again.");
 		return false;
 	} // end of userLogin

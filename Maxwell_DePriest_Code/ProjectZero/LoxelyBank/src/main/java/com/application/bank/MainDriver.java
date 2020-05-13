@@ -54,6 +54,7 @@ public class MainDriver {
 							try {
 								if(uSI.userLogin(em, pw)) {
 									currentUser = uSI.setCurrentUser(em);
+									loggy.debug("Current User = " + currentUser.getEmail());
 								}
 							} catch (BusinessException e1) {
 								loggy.info(e1.getMessage());
