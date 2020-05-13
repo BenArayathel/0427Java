@@ -69,6 +69,19 @@ public class Account {
 				"\nRouting Number: "+ routingNumber +			 
 				"\nBalance: " + balance;
 	}
+	
+	public String preview() {
+		return "Account Type: " + accountType.getName() + 
+				"\nAccount Number: " + Id + 
+				"\nRouting Number: "+ routingNumber;
+	}
+	
+	public String printBalance() {
+		return "Account Type: " + accountType.getName() + 
+				"\nAccount Number: " + Id + 
+				"\nRouting Number: "+ routingNumber +
+				"\nBalance: "+ balance;
+	}
 
 	public Person getPerson() {
 		return person;

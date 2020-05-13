@@ -1,5 +1,6 @@
 package com.hackbank.business.services.account;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 import com.hackbank.business.exceptions.BusinessException;
@@ -36,14 +37,7 @@ public class AccountServiceImpl implements AccountService{
 	}
 
 	@Override
-	public Account updateBalanceAccount(String id) throws BusinessException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public List<Account> getAllAccountsByCustomer(String id) throws BusinessException {
-//		if (valid.isValisPersonId())
 		List<Account> listAccount = accountDAO.getAllAccountsByCustomer(id);
 		return listAccount;
 	}
@@ -52,6 +46,41 @@ public class AccountServiceImpl implements AccountService{
 	public Account getAccountById(String id) throws BusinessException {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	
+	@Override
+	public Account depositBalanceAccount(Account account, double balance) throws BusinessException {
+		Account iAccount = null;
+		try {
+			double nBalance = valid.isValidBalance(balance);
+			double addBalance = Double.parseDouble(new DecimalFormat("0.00").format(account.getBalance() + nBalance));
+			iAccount = accountDAO.updateBalanceAccount(account.getId(), addBalance);
+		} catch (BusinessException e) {
+			throw new BusinessException("The Bank doesn't allow you to have negative balance, we're sorry.");
+		}
+		return iAccount;
+	}
+
+	@Override
+	public Account withdrawBalanceAccount(Account account, double balance) throws BusinessException {
+		Account iAccount = null;
+		try {
+			double nBalance = valid.isValidBalance(balance);
+			double subBalance = Double.parseDouble(new DecimalFormat("0.00").format(account.getBalance() - nBalance));
+			if (subBalance >= 0) {
+				iAccount = accountDAO.updateBalanceAccount(account.getId(), subBalance);
+			}else {
+				throw new BusinessException("The BANK doesn't allow you to have negative balance, we're sorry.");
+			}
+		} catch (BusinessException e) {
+			throw new BusinessException("The BANK doesn't allow you to have negative balance, we're sorry.");
+		}
+		return iAccount;
+	}
+
+	@Override
+	public boolean getAccountByIdAndRoutingNumber(String id, String routingNumber) throws BusinessException {
+		return accountDAO.getAccountByIdAndRoutingNumber(id, routingNumber);
 	}
 
 }

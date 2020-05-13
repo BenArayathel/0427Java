@@ -1,5 +1,7 @@
 package com.hackbank.business.services.approval;
 
+import java.util.List;
+
 import com.hackbank.business.exceptions.BusinessException;
 import com.hackbank.business.services.account.AccountService;
 import com.hackbank.business.services.account.AccountServiceImpl;
@@ -17,7 +19,7 @@ public class PendingApprovalSrvImpl implements PendingApprovalService{
 	public Account createApproval(PendingApproval pApproval) throws BusinessException{
 		Account iAccount = null;
 		if(pApproval == null) {
-			throw new BusinessException();
+			throw new BusinessException("Object Error, please contact SYSADMIN.");
 		}else {
 			pApprovalDAO.createApproval(pApproval);
 			if(pApproval.getStatus().equals("Approve")) {
@@ -25,6 +27,28 @@ public class PendingApprovalSrvImpl implements PendingApprovalService{
 			}
 		}
 		return iAccount;
+	}
+
+	@Override
+	public List<PendingApproval> listApproval() throws BusinessException { 
+		return pApprovalDAO.listApproval();
+	}
+
+	@Override
+	public Account updateApproval(PendingApproval pApproval) throws BusinessException {
+		Account iAccount = null;
+		if(pApproval == null) {
+			throw new BusinessException("Object Error, please contact SYSADMIN.");
+		}else {
+			boolean flag = pApprovalDAO.updateApproval(pApproval);
+			if (flag) {
+				if(pApproval.getStatus().equals("Approve")) {
+					iAccount = accountSrv.createAccount(pApproval);
+				}
+			}
+		}
+		return iAccount;
+		
 	}
 	
 }

@@ -5,7 +5,7 @@ import java.util.Date;
 
 public class PendingApproval {
 	
-	private long Id;
+	private int Id;
 	private String personId;
 	private byte accountTypeId;
 	private double startBalance;
@@ -19,7 +19,7 @@ public class PendingApproval {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public PendingApproval(long id, double startBalance, String status,Date createdAt, Person person, AccountType accountType) {
+	public PendingApproval(int id, double startBalance, String status,Date createdAt, Person person, AccountType accountType) {
 		super();
 		Id = id;
 		this.startBalance = startBalance;
@@ -29,7 +29,7 @@ public class PendingApproval {
 		this.accountType = accountType;
 	}
 
-	public PendingApproval(long id, String personId, byte accountTypeId, double startBalance, String status,
+	public PendingApproval(int id, String personId, byte accountTypeId, double startBalance, String status,
 			Date createdAt) {
 		super();
 		Id = id;
@@ -40,11 +40,11 @@ public class PendingApproval {
 		this.createdAt = createdAt;
 	}
 
-	public long getId() {
+	public int getId() {
 		return Id;
 	}
 
-	public void setId(long id) {
+	public void setId(int id) {
 		Id = id;
 	}
 

@@ -33,12 +33,15 @@ public class FinishRegister {
 			if(!rePwd.equals(user.getPassword())) {
 				Main.loggy.info("Your Password and Your Re-Password don't match. Try again.");
 			}else {
+				Main.loggy.info("\nIs it the information correct?");
 				String choice = WindowAccept.openWindow(sc);
 				if (choice.equals("1")) {
 					String res = accountSrv.getPersonAccountById(accountNumber);
 					if (!res.equals(null)) {
 						user.setPersonId(res);
-						if (userSrv.createUser(user) != null) {
+						User iUser = userSrv.createUser(user);
+						if (iUser != null) {
+							Main.sUser.iUser = iUser;
 							LoginForm.openForm(sc);
 						}else {
 							Main.loggy.info("The user can not be created, please try again.");

@@ -4,6 +4,7 @@ import com.hackbank.business.exceptions.BusinessException;
 import com.hackbank.business.validations.Validation;
 import com.hackbank.persistence.dao.auth.AuthDAOImplementation;
 import com.hackbank.persistence.dao.auth.AuthenticationDAO;
+import com.hackbank.persistence.models.User;
 
 public class AuthenticationSercviceImplementation implements AuthenticationService {
 
@@ -11,14 +12,14 @@ public class AuthenticationSercviceImplementation implements AuthenticationServi
 	private static AuthenticationDAO authDao = new AuthDAOImplementation();
 	
 	@Override
-	public String login(String email, String password) throws BusinessException{
-		String userType = null;
+	public User login(String email, String password) throws BusinessException{
+		User user = null;
 		if (vd.isValidEmail(email) && vd.isValidPassword(password)) {
-			userType = authDao.authentication(email, password);
+			user = authDao.authentication(email, password);
 		}else {
 			throw new BusinessException("\nThe email -> "+email+" or Password *** isn't valid.");
 		}
-		return userType;
+		return user;
 	}
 
 	@Override

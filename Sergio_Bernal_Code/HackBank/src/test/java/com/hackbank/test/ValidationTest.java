@@ -83,5 +83,10 @@ public class ValidationTest {
 	public void testIsValidIntId() {
 		assertEquals(true, vd.isValidIntId(123456));
 	}
+	
+	@Test
+	public void testIsValidAccountNumber() {
+		assertEquals(true, vd.isValidAccountNumber("200512636492"));
+	}
 
 }

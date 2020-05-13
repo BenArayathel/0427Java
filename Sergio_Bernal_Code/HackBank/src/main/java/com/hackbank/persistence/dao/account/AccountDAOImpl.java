@@ -51,12 +51,12 @@ public class AccountDAOImpl implements AccountDAO{
 			iAccount.setRoutingNumber(call.getString(4));
 			iAccount.setPerson(pApproval.getPerson());
 			iAccount.setBalance(pApproval.getStartBalance());
+			iAccount.setAccountType(pApproval.getAccountType());
 			iAccount.setAccountTypeId(pApproval.getAccountType().getId());
 
 		} catch (ClassNotFoundException | SQLException e) {
-			loggy.error("Error, please contact SYSADMIN");
-			System.out.println(e.getMessage());
-			throw new BusinessException("Error, please contact SYSADMIN");
+			loggy.error("SQL Error, please contact SYSADMIN");
+			throw new BusinessException("SQL Error, please contact SYSADMIN");
 		}
 		return iAccount;
 	}
@@ -76,43 +76,95 @@ public class AccountDAOImpl implements AccountDAO{
 				throw new BusinessException("Account Number: "+id+" not found.");
 			}
 		} catch (ClassNotFoundException | SQLException e) {
-			loggy.error("Fatal Error contact SYSADMIN");
-			throw new BusinessException("Fatal Error contact SYSADMIN");
+			loggy.error("SQL Error, please contact SYSADMIN");
+			throw new BusinessException("SQL Error, please contact SYSADMIN");
 		}
 		return personId;
 	}
 
 	@Override
-	public Account updateBalanceAccount(String id) throws BusinessException {
-		// TODO Auto-generated method stub
-		return null;
+	public Account updateBalanceAccount(String id, double balance) throws BusinessException {
+		Account account = null;
+		String sql = "UPDATE HB_ACCOUNT SET BALANCE = ? WHERE ID = ?";
+		try(Connection conn = SingletonDBConnection.getConnection()){
+			PreparedStatement prepared = conn.prepareStatement(sql);
+			prepared.setDouble(1, balance);
+			prepared.setString(2, id);
+			
+			int result = prepared.executeUpdate();
+			if (result > 0) {
+				account = getAccountById(id);
+			}
+			
+		} catch (ClassNotFoundException | SQLException e) {
+			loggy.error("SQL Error, please contact SYSADMIN");
+			throw new BusinessException("SQL Error, please contact SYSADMIN");
+		}
+		return account;
 	}
 
 	@Override
 	public List<Account> getAllAccountsByCustomer(String id) throws BusinessException {
 		List<Account> listAccount = new ArrayList<>();
-		String sql = "SELECT ha.id, hat.name, hat.id AS accountTypeId ha.routing_number, ha.balance FROM HB_ACCOUNT ha " + 
-						"INNER JOIN HB_ACCOUNT_TYPE hat ON ha.account_type_id = hat.id WHERE person_id = ?;";
+		String sql = "SELECT ha.id, hat.id, hat.name, ha.routing_number, ha.balance "
+					+ "FROM HB_ACCOUNT ha INNER JOIN HB_ACCOUNT_TYPE hat ON ha.account_type_id = hat.id "
+					+ "WHERE person_id = ?";
 		try(Connection conn = SingletonDBConnection.getConnection()){
 			PreparedStatement prepared = conn.prepareStatement(sql);
 			prepared.setString(1, id);
 			
 			ResultSet result = prepared.executeQuery();
 			while(result.next()) {
-				listAccount.add(new Account(result.getString(1), new AccountType(result.getByte(2),result.getString(3)), 
-								result.getString(4), result.getDouble(5)));
+				AccountType at = new AccountType(result.getByte(2), result.getString(3));
+				listAccount.add(new Account(result.getString(1), at, result.getString(4), result.getDouble(5)));
 			}
 		} catch (ClassNotFoundException | SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			loggy.error("SQL Error, please contact SYSADMIN");
+			throw new BusinessException("SQL Error, please contact SYSADMIN");
 		}
 		return listAccount;
 	}
 
 	@Override
 	public Account getAccountById(String id) throws BusinessException {
-		// TODO Auto-generated method stub
-		return null;
+		Account account = null;
+		String sql = "SELECT ha.id, hat.id, hat.name, ha.routing_number, ha.balance "
+					+ "FROM HB_ACCOUNT ha INNER JOIN HB_ACCOUNT_TYPE hat ON ha.account_type_id = hat.id "
+					+ "WHERE ha.id = ?";
+		try(Connection conn = SingletonDBConnection.getConnection()){
+			PreparedStatement prepared = conn.prepareStatement(sql);
+			prepared.setString(1, id);
+			
+			ResultSet result = prepared.executeQuery();
+			while(result.next()) {
+				AccountType at = new AccountType(result.getByte(2), result.getString(3));
+				account = new Account(result.getString(1), at, result.getString(4), result.getDouble(5));
+			}
+		} catch (ClassNotFoundException | SQLException e) {
+			loggy.error("SQL Error, please contact SYSADMIN");
+			throw new BusinessException("SQL Error, please contact SYSADMIN");
+		}
+		return account;
+	}
+
+	@Override
+	public boolean getAccountByIdAndRoutingNumber(String id, String routingNumber) throws BusinessException {
+		boolean flag = false;
+		String sql = "SELECT id FROM HB_ACCOUNT WHERE id = ? AND routing_number = ?";
+		try(Connection conn = SingletonDBConnection.getConnection()){
+			PreparedStatement prepared = conn.prepareStatement(sql);
+			prepared.setString(1, id);
+			prepared.setString(2, routingNumber);
+			
+			ResultSet result = prepared.executeQuery();
+			while(result.next()) {
+				flag = true;
+			}
+		} catch (ClassNotFoundException | SQLException e) {
+			loggy.error("SQL Error, please contact SYSADMIN");
+			throw new BusinessException("SQL Error, please contact SYSADMIN");
+		}
+		return flag;
 	}
 	
 }

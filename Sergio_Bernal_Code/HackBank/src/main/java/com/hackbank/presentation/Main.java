@@ -1,22 +1,33 @@
 package com.hackbank.presentation;
 
+import java.util.List;
 import java.util.Scanner;
 
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 
+import com.hackbank.business.exceptions.BusinessException;
 import com.hackbank.business.services.account.AccountService;
 import com.hackbank.business.services.account.AccountServiceImpl;
+import com.hackbank.business.services.approval.PendingApprovalService;
+import com.hackbank.business.services.approval.PendingApprovalSrvImpl;
 import com.hackbank.business.services.person.PersonService;
 import com.hackbank.business.services.person.PersonServiceImplementation;
+import com.hackbank.business.services.transfer.TransferService;
+import com.hackbank.business.services.transfer.TransferServiceImpl;
+import com.hackbank.business.services.user.SingletonUser;
 import com.hackbank.business.validations.Validation;
+import com.hackbank.persistence.models.Account;
 
 public class Main {
 	
 	final static Logger loggy = Logger.getLogger(Main.class);
+	final static SingletonUser sUser = SingletonUser.getUser();
 	final static Validation vd = new Validation(); 
 	final static PersonService personSrv = new PersonServiceImplementation();
 	final static AccountService accountSrv = new AccountServiceImpl();
+	final static PendingApprovalService pApprovalSrv = new PendingApprovalSrvImpl();
+	final static TransferService transferSrv = new TransferServiceImpl();
 
 	public static void main(String[] args) {
 
@@ -25,9 +36,8 @@ public class Main {
 		
 		header();
 		mainMenu(sc);
-		// 20051247397
+		// 200512636492
 		// clearScreen();
-
 	}
 
 	private static void mainMenu(Scanner sc){
@@ -87,10 +97,10 @@ public class Main {
 				OpeningAccount.openForm(sc);
 				break;
 			case 2:
-				loggy.info("Under Construction!\n");
+				AccountMenu.searchCustomer(sc);
 				break;
 			case 3:
-				loggy.info("Under Construction!\n");
+				PendingAccountMenu.showPendingApproval(sc);
 				break;
 			case 4:
 				loggy.info("Under Construction!\n");
@@ -112,11 +122,12 @@ public class Main {
 		loggy.info("\n--- Welcome to the Custumer's Portal ---");
 		loggy.info("--- How can we help you today? ---\n");
 		do {
-			loggy.info("--- Menu ---");
+			loggy.info("--- Customer Menu ---");
 			loggy.info("--- Enter one of the following options:");
-			loggy.info("--- 1 - Accounts");
-			loggy.info("--- 2 - Transfers");
-			loggy.info("--- 3 - Logout");
+			loggy.info("--- 1 - Show Accounts");
+			loggy.info("--- 2 - Open Account");
+			loggy.info("--- 3 - Pending Transfers");
+			loggy.info("--- 4 - Logout");
 			try {
 				opt = Integer.parseInt(sc.nextLine());
 			} catch (NumberFormatException e) {
@@ -124,13 +135,21 @@ public class Main {
 			}
 			switch (opt) {
 			case 1:
-				
-				accountSrv.getAllAccountsByCustomer(id);
+				try {
+					List<Account> iList = accountSrv.getAllAccountsByCustomer(sUser.iUser.getPersonId());
+					AccountMenu.showAccounts(iList, sc);
+				} catch (BusinessException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				break;
 			case 2:
-				loggy.info("Under Construction!\n");
+				OpeningAccount.customerForm(sc);
 				break;
 			case 3:
+				loggy.info("Under Construction!\n");
+				break;
+			case 4:
 				//loggy.info("Under Construction!\n");
 				break;
 			default:

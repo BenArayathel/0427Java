@@ -78,4 +78,8 @@ public class Validation {
 		return parseId.matches("([0-9]+)");
 	}
 	
+	public boolean isValidAccountNumber(String id) {
+		return id.matches("([0-9]+)");
+	}
+	
 }
