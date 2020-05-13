@@ -40,7 +40,7 @@ public class AccountServiceImplementation implements AccountServiceInterface {
 		try {
 			adi.deposit(user, accountName, depositAmount);
 		} catch (BankException e) {
-			Main.myLog.error(e.getMessage());
+			Main.myLog.error(e.getMessage() + e.getStackTrace());
 			throw new BankException("Problem with Deposit");
 		}
 	}
@@ -51,7 +51,7 @@ public class AccountServiceImplementation implements AccountServiceInterface {
 		try {
 			adi.withdraw(user, accountName, depositAmount);
 		} catch (BankException e) {
-			Main.myLog.error(e.getMessage());
+			Main.myLog.error(e.getMessage() + e.getStackTrace());
 			throw new BankException("Problem with withdrawal");
 		}
 	}

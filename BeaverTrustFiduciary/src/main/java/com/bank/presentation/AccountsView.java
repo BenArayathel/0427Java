@@ -35,8 +35,9 @@ public class AccountsView {
 			}
 			
 		} catch (BankException e) {
-			Main.myLog.error(e.getMessage());
-			throw new BankException("Something went wrong with viewing your accounts.");
+			Main.myLog.error(e.getMessage() + e.getStackTrace());
+			Main.myLog.info("Something went wrong with viewing your accounts.");
+			AccountsView.view(user);
 		}
 				
 		Main.myLog.info("\nWhat would you like to do?");

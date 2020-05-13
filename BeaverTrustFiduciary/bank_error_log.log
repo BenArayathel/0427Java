@@ -79,3 +79,26 @@
 2020-05-11 20:38:12 ERROR Main:54 - Could not make withdrawal, insufficient funds.
 2020-05-11 20:38:12 ERROR Main:29 - Problem with withdrawal
 2020-05-11 20:38:12 ERROR Main:46 - [Ljava.lang.StackTraceElement;@6955cb39
+2020-05-12 13:35:18 ERROR Main:27 - Existing User
+2020-05-12 13:38:44 ERROR Main:172 - ORA-01722: invalid number
+
+2020-05-12 13:38:44 ERROR Main:46 - [Ljava.lang.StackTraceElement;@1755e85b
+2020-05-12 13:38:44 ERROR Main:46 - [Ljava.lang.StackTraceElement;@736d6a5c
+2020-05-12 13:38:44 ERROR Main:38 - Something went wrong, please try again later.
+2020-05-12 13:38:44 ERROR Main:46 - [Ljava.lang.StackTraceElement;@2371aaca
+2020-05-12 13:44:27 ERROR Main:172 - ORA-01722: invalid number
+
+2020-05-12 13:44:27 ERROR Main:46 - [Ljava.lang.StackTraceElement;@4b9df8a
+2020-05-12 13:44:48 ERROR Main:172 - ORA-01722: invalid number
+
+2020-05-12 13:44:48 ERROR Main:91 - Unable to approve account.
+2020-05-12 13:44:48 ERROR Main:46 - [Ljava.lang.StackTraceElement;@4b9df8a
+2020-05-12 13:52:57 ERROR Main:172 - ORA-01722: invalid number
+
+2020-05-12 13:52:57 ERROR Main:91 - Unable to approve account.
+2020-05-12 13:52:57 ERROR Main:46 - [Ljava.lang.StackTraceElement;@4b9df8a
+2020-05-12 13:58:00 ERROR Main:172 - ORA-01722: invalid number
+
+2020-05-12 13:58:00 ERROR Main:91 - Unable to approve account.
+2020-05-12 14:18:06 ERROR Main:27 - Existing User
+2020-05-12 18:42:05 ERROR Main:29 - empty String[Ljava.lang.StackTraceElement;@85e6769

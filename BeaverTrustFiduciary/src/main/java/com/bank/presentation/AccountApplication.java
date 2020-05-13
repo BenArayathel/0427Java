@@ -20,17 +20,13 @@ public class AccountApplication {
 		Main.myLog.info("How much will you be depositing as your starting balance?");
 		initialDeposit = Main.scan.nextLine().toString();
 		
-//		// unacceptable deposit
-//		if (initialDeposit)
-		
 		try {
 			asi.createAccount(user, accountName, initialDeposit);
 			Main.myLog.info("Your new account, " + accountName + ", has been added.");
 			Main.myLog.info(".................................");
 			UserHomeView.userWelcome(user);
 		} catch (NumberFormatException e) {
-			Main.myLog.error(e.getMessage());
-//			throw new BankException("Deposit entered in incorrect format. Please try again.");
+			Main.myLog.error(e.getMessage() + e.getStackTrace());
 			Main.myLog.info("Deposit entered in incorrect format. Please try again.");
 			apply(user);
 		}

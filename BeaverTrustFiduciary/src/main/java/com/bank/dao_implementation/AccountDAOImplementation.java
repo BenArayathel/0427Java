@@ -39,7 +39,7 @@ public class AccountDAOImplementation implements AccountDAOInterface {
 			account.setAccount_id(cb.getString(1));					
 					
 		} catch (SQLException e) {
-			Main.myLog.error(e.getMessage());
+			Main.myLog.error(e.getMessage() + e.getStackTrace());
 			throw new BankException("ACCOUNT DAO IMPLEMENTATION ERROR");
 		}
 		return account;
@@ -61,7 +61,7 @@ public class AccountDAOImplementation implements AccountDAOInterface {
 			}
 			
 		} catch (SQLException e) {
-			Main.myLog.error(e.getMessage());
+			Main.myLog.error(e.getMessage() + e.getStackTrace());
 			throw new BankException("Unable to list accounts.");
 		}
 		
@@ -86,7 +86,7 @@ public class AccountDAOImplementation implements AccountDAOInterface {
 			}
 			
 		} catch (SQLException e) {
-			Main.myLog.error(e.getMessage());
+			Main.myLog.error(e.getMessage() + e.getStackTrace());
 			throw new BankException("Unable to list user accounts.");
 		}
 		return accountList;
@@ -104,7 +104,7 @@ public class AccountDAOImplementation implements AccountDAOInterface {
 			cs.registerOutParameter(1, java.sql.Types.VARCHAR);
 			cs.execute();
 		} catch (SQLException e) {
-			Main.myLog.error(e.getMessage());
+			Main.myLog.error(e.getMessage() + e.getStackTrace());
 			throw new BankException("Unable to log transaction.");
 		}
 	}
@@ -128,7 +128,7 @@ public class AccountDAOImplementation implements AccountDAOInterface {
 					
 
 				} catch (SQLException | NumberFormatException e) {
-					Main.myLog.error(e.getMessage());
+					Main.myLog.error(e.getMessage() + e.getStackTrace());
 					throw new BankException("There was a problem with the deposit, please try again later.");
 				}
 			}
@@ -152,7 +152,7 @@ public class AccountDAOImplementation implements AccountDAOInterface {
 					
 					int rs2 = ps2.executeUpdate();
 				} catch (SQLException | BankException e) {
-					Main.myLog.error(e.getMessage());
+					Main.myLog.error(e.getMessage() + e.getStackTrace());
 					throw new BankException("Could not make withdrawal, insufficient funds.");
 				}
 			}
@@ -169,7 +169,7 @@ public class AccountDAOImplementation implements AccountDAOInterface {
 			ps.executeUpdate();
 		
 		} catch (SQLException e) {
-			Main.myLog.error(e.getMessage());
+			Main.myLog.error(e.getMessage() + e.getStackTrace());
 			throw new BankException("Unable to approve account.");
 		}
 	}
@@ -191,7 +191,7 @@ public class AccountDAOImplementation implements AccountDAOInterface {
 				}
 				
 			} catch (SQLException e) {
-				Main.myLog.error(e.getMessage());
+				Main.myLog.error(e.getMessage() + e.getStackTrace());
 				throw new BankException("Unable to list transactions");
 			}			
 			return transactionList;
@@ -209,7 +209,7 @@ public class AccountDAOImplementation implements AccountDAOInterface {
 			ps.executeUpdate();
 		
 		} catch (SQLException e) {
-			Main.myLog.error(e.getMessage());
+			Main.myLog.error(e.getMessage() + e.getStackTrace());
 			throw new BankException("Unable to delete transaction");
 		}
 	}	

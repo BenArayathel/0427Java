@@ -28,11 +28,11 @@ public class EmployeeView {
 		// Employee options
 		Main.myLog.info("........................................");
 		Main.myLog.info("Choose an option: ");
-		Main.myLog.info("Enter '1' to make see all customers.");
-		Main.myLog.info("Enter '2' to make see specific user's account details.");
+		Main.myLog.info("Enter '1' to see all customers.");
+		Main.myLog.info("Enter '2' to see specific user's account details.");
 		Main.myLog.info("Enter '3' to approve a new account application.");
 		Main.myLog.info("Enter '4' to see all transactions.");
-		Main.myLog.info("Enter 'quit' to exit to Home screen.");
+		Main.myLog.info("Enter 'Quit' to exit to Home screen.");
 
 		
 		selection = Main.scan.nextLine().toString();
@@ -51,8 +51,9 @@ public class EmployeeView {
 					Main.myLog.info("...........................................");
 				}
 			} catch (BankException e) {
-				Main.myLog.error(e.getMessage());
-				throw new BankException("Something wrong with accessing user info.");
+				Main.myLog.error(e.getMessage() + e.getStackTrace());
+				Main.myLog.info("Something wrong with accessing user info.");
+				EmployeeView.banking();
 			}
 			banking();
 		// See SPECIFIC customer accounts
@@ -67,8 +68,9 @@ public class EmployeeView {
 				}
 				
 			} catch (BankException e) {
-				Main.myLog.error(e.getMessage());
-				throw new BankException("Unable to list user accounts");
+				Main.myLog.error(e.getMessage() + e.getStackTrace());
+				Main.myLog.info("Unable to list user accounts");
+				EmployeeView.banking();
 			}
 			banking();
 		// APPROVE ACCOUNT
@@ -80,14 +82,20 @@ public class EmployeeView {
 				} else {
 					showApproval = "(Account Approved)";
 				}
-				Main.myLog.info("User_Id: " + u.getUser_id() + " " + showApproval);
+				Main.myLog.info("Username: " + u.getUsername() + " " + "User_Id: " + u.getUser_id() + " " + showApproval);
 				Main.myLog.info("...........................................");
 			}
 			Main.myLog.info("Approve customer's account by entering their User_ID: ");
 			user_id = Main.scan.nextLine().toString();
-			adi.approve(user_id);
+			try {
+				adi.approve(user_id);		
+			} catch (BankException e) {
+				Main.myLog.error(e.getMessage() + e.getStackTrace());
+				Main.myLog.info("Unable to approve that account.");
+				banking();
+			}
 			Main.myLog.info("\nAccount approved.");
-			banking();		
+			banking();
 			// See a LOG of all TRANSACTIONS
 		} else if (selection.equals("4")) {
 			Main.myLog.info("Transaction Log: ");
@@ -98,8 +106,9 @@ public class EmployeeView {
 				}
 				banking();
 			} catch (BankException e) {
-				Main.myLog.error(e.getMessage());
-				throw new BankException("Unable to print logs.");
+				Main.myLog.error(e.getMessage() + e.getStackTrace());
+				Main.myLog.info("Unable to print logs.");
+				EmployeeView.banking();
 			}
 		} else if (selection.equalsIgnoreCase("quit")) {
 			QuitOption.quit();

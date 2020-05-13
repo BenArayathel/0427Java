@@ -18,7 +18,7 @@ public class UserServiceImplementation implements UserServiceInterface {
 		try {
 			udi.createUser(user);
 		} catch (BankException e) {
-			Main.myLog.error(e.getMessage());
+			Main.myLog.error(e.getMessage() + e.getStackTrace());
 			throw new BankException("Something went wrong with account creation");
 		}
 		return null;			

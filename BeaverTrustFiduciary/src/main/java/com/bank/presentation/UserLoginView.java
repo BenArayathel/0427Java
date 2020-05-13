@@ -28,7 +28,7 @@ public class UserLoginView {
 		
 		try {
 			// They are the Banker
-			if (username.equals("employee") && password.equals("employee")) {
+			if (username.equalsIgnoreCase("employee") && password.equalsIgnoreCase("employee")) {
 				EmployeeView.banking();
 			// They are found in the database
 			} else if (usi.loginUser(username, password)) {
@@ -43,8 +43,9 @@ public class UserLoginView {
 				validateLogin();
 			}
 		} catch (BankException e) {
-			Main.myLog.error(e.getStackTrace());
-			throw new BankException("Something went wrong, please try again later.");
+			Main.myLog.error(e.getMessage() + e.getStackTrace());
+			Main.myLog.info("Something went wrong, please try again later.");
+			WelcomeView.welcome();
 		}
 	}
 }

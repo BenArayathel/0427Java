@@ -36,11 +36,9 @@ public class CreateUserAccountView {
 				WelcomeView.welcome();
 			} catch (BankException e) {
 				Main.myLog.error(e.getMessage());
-				throw new BankException("Could not create account, please try again later.");
+				Main.myLog.info("Could not create account, please try again later.");
+				CreateUserAccountView.userCreate();
 			}			
 		}	
 	}
-	
-	//errors to look out for: already existing username, do regex checks,
-
 }

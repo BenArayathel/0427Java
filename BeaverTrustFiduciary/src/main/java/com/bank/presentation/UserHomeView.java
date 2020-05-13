@@ -35,8 +35,9 @@ public class UserHomeView {
 				try {
 					AccountApplication.apply(user);
 				} catch (BankException e) {
-					Main.myLog.error(e.getStackTrace());
-					throw new BankException("Unable to access accounts.");
+					Main.myLog.error(e.getMessage() + e.getStackTrace());
+					Main.myLog.info("Unable to access accounts.");
+					UserHomeView.userWelcome(user);
 				}
 			} else if (userOptions.equalsIgnoreCase("quit")) {
 				QuitOption.quit();
