@@ -32,7 +32,7 @@ public class userAccessDAOImpl implements userAccessDAO{
 		userAccess.setUserID(callableStatement.getString(1));
 		
 		} catch (ClassNotFoundException | SQLException e) {
-		throw new BusinessException("SYSTEM: An internal ERROR has occured, please contact SYSADMIN");
+		throw new BusinessException("SYSTEM: AN INTERNAL ERROR HAS OCCURED, PLEASE CONTACT YOUR SYSTEM ADMINISTRATOR (CRE USER)");
 		}
 	return userAccess;
 	}
@@ -57,7 +57,7 @@ public class userAccessDAOImpl implements userAccessDAO{
 				throw new BusinessException("SYSTEM: UserName or Password entered is incorrect");
 			}
 		} catch (ClassNotFoundException | SQLException e) {
-			throw new BusinessException("SYSTEM: An internal ERROR has occured, please contact SYSADMIN");
+			throw new BusinessException("SYSTEM: AN INTERNAL ERROR HAS OCCURED, PLEASE CONTACT YOUR SYSTEM ADMINISTRATOR (INFO USER)");
 		}
 		return uAccess;
 	}
@@ -72,7 +72,7 @@ public class userAccessDAOImpl implements userAccessDAO{
 			preparedStatement.setString(2, cId);
 			preparedStatement.execute();
 		} catch (ClassNotFoundException | SQLException e) {
-			throw new BusinessException("Internal Error contact SYSADMIN");
+			throw new BusinessException("SYSTEM: AN INTERNAL ERROR HAS OCCURED, PLEASE CONTACT YOUR SYSTEM ADMINISTRATOR (UPD USER)");
 		}
 		return uAccess;
 	}
@@ -85,7 +85,7 @@ public class userAccessDAOImpl implements userAccessDAO{
 			preparedStatement.setString(1, cId);
 			preparedStatement.execute();
 		} catch (ClassNotFoundException | SQLException e) {
-			throw new BusinessException("Internal Error contact SYSADMIN");
+			throw new BusinessException("SYSTEM: AN INTERNAL ERROR HAS OCCURED, PLEASE CONTACT YOUR SYSTEM ADMINISTRATOR (DEL USER)");
 		}
 	}
 	
@@ -98,7 +98,7 @@ public class userAccessDAOImpl implements userAccessDAO{
 			preparedStatement.setString(2, cId);
 			preparedStatement.execute();
 		} catch (ClassNotFoundException | SQLException e) {
-			throw new BusinessException("Internal Error contact SYSADMIN");
+			throw new BusinessException("SYSTEM: AN INTERNAL ERROR HAS OCCURED, PLEASE CONTACT YOUR SYSTEM ADMINISTRATOR (UPD USER)");
 		}
 		
 	}
@@ -121,12 +121,35 @@ public class userAccessDAOImpl implements userAccessDAO{
 				userAccessList.add(uAccess);			
 			}
 		} catch (ClassNotFoundException | SQLException e) {
-			throw new BusinessException("Internal Error contact SYSADMIN");
+			throw new BusinessException("SYSTEM: AN INTERNAL ERROR HAS OCCURED, PLEASE CONTACT YOUR SYSTEM ADMINISTRATOR (INFO AL USER)");
 		}
 		
 		return userAccessList;
 	}
 
 
+	@Override
+	public List<userAccess> getAllUserLoginAccountsStatus(String aStatus) throws BusinessException {
+		List<userAccess> userAccessList = new ArrayList<>();
+		try(Connection connection=OracleConnection.getConnection()){
+			String sql="Select USERID,CUSTOMERID,USERNAME,USERPASSWORD,ACCOUNTSTATUS from USERACCESS where ACCOUNTSTATUS=?";
+			PreparedStatement preparedStatement=connection.prepareStatement(sql);
+			preparedStatement.setString(1, aStatus);
+			ResultSet resultSet=preparedStatement.executeQuery();
+			while(resultSet.next()) {			
+				userAccess uAccess=new userAccess();
+				uAccess.setUserID(resultSet.getString("USERID"));
+				uAccess.setCustomerID(resultSet.getString("CUSTOMERID"));
+				uAccess.setUserName(resultSet.getString("USERNAME"));
+				uAccess.setUserPassword(resultSet.getString("USERPASSWORD"));
+				uAccess.setAccountStatus(resultSet.getString("ACCOUNTSTATUS"));	
+				userAccessList.add(uAccess);			
+			}
+		} catch (ClassNotFoundException | SQLException e) {
+			throw new BusinessException("SYSTEM: AN INTERNAL ERROR HAS OCCURED, PLEASE CONTACT YOUR SYSTEM ADMINISTRATOR (INFO AL USER)");
+		}
+		
+		return userAccessList;
+	}
 
 }

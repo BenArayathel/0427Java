@@ -19,13 +19,22 @@ public class bankAccountServiceImpl implements bankAccountService{
 		}
 		return b;
 	}
+	
+//	FBAC10011
+	private boolean isValidAccountId(String id) {
+		boolean b = false;
+		if (id.matches("FBAC[0-9]{5}")) {
+			b = true;
+		}
+		return b;
+	}
 
 	@Override
 	public bankAccount createNewBankAccount(bankAccount bankAccount) throws BusinessException {
 		if (bankAccount == null) {
-			throw new BusinessException("BANK ACCOUNT Object was not created");
+			throw new BusinessException("SYSTEM: BANK ACCOUNT OBJECT WAS NOT CREATED");
 		} else if (!isValidCustomerId(bankAccount.getCustomerID())) {
-			throw new BusinessException("The entered CUSTOMERID " + bankAccount.getCustomerID() + " is invalid");
+			throw new BusinessException("SYSTEM: THE ENTERED CUSTOMERID " + bankAccount.getCustomerID() + " IS INVALID");
 		} else {
 			bankAccount = bankDAO.createNewBankAccount(bankAccount);			
 		}
@@ -39,7 +48,19 @@ public class bankAccountServiceImpl implements bankAccountService{
 		if(isValidCustomerId(cId)) {
 			bankAccount = bankDAO.getAccountInfo(cId, aType);
 		}else {
-			throw new BusinessException("The entered CUSTOMERID " + cId + " is invalid");
+			throw new BusinessException("SYSTEM: THE ENTERED CUSTOMERID " + cId + " IS INVALID");
+		}
+		return bankAccount;
+	}
+	
+	@Override
+	public bankAccount getAccountInfoByAccountID(String aId) throws BusinessException {
+		bankAccount bankAccount = null;
+
+		if(isValidAccountId(aId)) {
+			bankAccount = bankDAO.getAccountInfoByAccountID(aId);
+		}else {
+			throw new BusinessException("SYSTEM: THE ENTERED ACCOUNT ID " + aId + " IS INVALID");
 		}
 		return bankAccount;
 	}
@@ -49,7 +70,7 @@ public class bankAccountServiceImpl implements bankAccountService{
 		if(isValidCustomerId(cId)) {
 			bankDAO.deleteBankAccount(cId, aType);
 		}else {
-			throw new BusinessException("The entered CUSTOMER ID " + cId + " is invalid");
+			throw new BusinessException("SYSTEM: THE ENTERED CUSTOMERID " + cId + " IS INVALID");
 		}
 		
 	}
@@ -59,7 +80,7 @@ public class bankAccountServiceImpl implements bankAccountService{
 		if(isValidCustomerId(cId)) {
 			bankDAO.updateBankAccountBalance(cId, aType, aBalance);
 		}else {
-			throw new BusinessException("The entered CUSTOMER ID " + cId + " is invalid");
+			throw new BusinessException("SYSTEM: THE ENTERED CUSTOMERID " + cId + " IS INVALID");
 		}
 		
 	}
@@ -69,10 +90,21 @@ public class bankAccountServiceImpl implements bankAccountService{
 		if(isValidCustomerId(cId)) {
 			bankDAO.updateBankAccountStatus(cId, aType, aStatus);
 		}else {
-			throw new BusinessException("The entered CUSTOMER ID " + cId + " is invalid");
+			throw new BusinessException("SYSTEM: THE ENTERED CUSTOMERID " + cId + " IS INVALID");
 		}
 		
 	}
+
+	@Override
+	public void updateByTransfer(String aId, Double aBalance) throws BusinessException {
+		if(isValidAccountId(aId)) {
+			bankDAO.updateByTransfer(aId, aBalance);
+		}else {
+			throw new BusinessException("SYSTEM: THE ENTERED ACCOUNTR ID " + aId + " IS INVALID");
+		}
+	}
+
+
 
 
 }

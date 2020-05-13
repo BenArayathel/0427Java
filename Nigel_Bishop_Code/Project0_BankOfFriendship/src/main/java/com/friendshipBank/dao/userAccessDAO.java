@@ -12,4 +12,5 @@ public interface userAccessDAO
 	public void deleteUserAccess(String cId) throws BusinessException;
 	public void updateUserAccessStatus(String cId, String aStatus) throws BusinessException;
 	public List<userAccess> getAllUserLoginAccounts() throws BusinessException;
+	public List<userAccess> getAllUserLoginAccountsStatus(String aStatus) throws BusinessException;
 }

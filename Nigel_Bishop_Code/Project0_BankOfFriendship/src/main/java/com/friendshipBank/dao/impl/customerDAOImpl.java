@@ -40,7 +40,7 @@ public class customerDAOImpl implements customerDAO{
 		customer.setCustomerID(callableStatement.getString(1));
 	
 		} catch (ClassNotFoundException | SQLException e) {
-		throw new BusinessException("Internal error occured please contact SYSADMIN");
+		throw new BusinessException("SYSTEM: AN INTERNAL ERROR HAS OCCURED, PLEASE CONTACT YOUR SYSTEM ADMINISTRATOR (CREATE CUS)");
 		}
 	
 	return customer;
@@ -66,10 +66,10 @@ public class customerDAOImpl implements customerDAO{
 				cust.setCity(resultSet.getString("CITY"));
 				cust.setState(resultSet.getString("STATE"));		
 			}else {
-				throw new BusinessException("CUSTOMER ID: "+cId+" does not exist");
+				throw new BusinessException("SYSTEM: CUSTOMER ID: "+cId+" DOES NOT EXIST");
 			}
 		} catch (ClassNotFoundException | SQLException e) {
-			throw new BusinessException("Internal Error contact SYSADMIN");
+			throw new BusinessException("SYSTEM: AN INTERNAL ERROR HAS OCCURED, PLEASE CONTACT YOUR SYSTEM ADMINISTRATOR (INFO CUS)");
 		}
 		
 		return cust;
@@ -85,7 +85,7 @@ public class customerDAOImpl implements customerDAO{
 			preparedStatement.setString(2, cId);
 			preparedStatement.execute();
 		} catch (ClassNotFoundException | SQLException e) {
-			throw new BusinessException("Internal Error contact SYSADMIN");
+			throw new BusinessException("SYSTEM: AN INTERNAL ERROR HAS OCCURED, PLEASE CONTACT YOUR SYSTEM ADMINISTRATOR (UPDATE CUS)");
 		}
 		
 		return cust;
@@ -99,7 +99,7 @@ public class customerDAOImpl implements customerDAO{
 			preparedStatement.setString(1, cId);
 			preparedStatement.execute();
 		} catch (ClassNotFoundException | SQLException e) {
-			throw new BusinessException("Internal Error contact SYSADMIN");
+			throw new BusinessException("SYSTEM: AN INTERNAL ERROR HAS OCCURED, PLEASE CONTACT YOUR SYSTEM ADMINISTRATOR (DELETE CUS)");
 		}
 	}
 
@@ -125,7 +125,7 @@ public class customerDAOImpl implements customerDAO{
 				customerList.add(cust);
 			}
 		} catch (ClassNotFoundException | SQLException e) {
-			throw new BusinessException("Internal Error contact SYSADMIN");
+			throw new BusinessException("SYSTEM: AN INTERNAL ERROR HAS OCCURED, PLEASE CONTACT YOUR SYSTEM ADMINISTRATOR (INFO CUS)");
 		}
 		return customerList;	
 	}
@@ -152,7 +152,7 @@ public class customerDAOImpl implements customerDAO{
 				customerList.add(cust);
 			}
 		} catch (ClassNotFoundException | SQLException e) {
-			throw new BusinessException("Internal Error contact SYSADMIN");
+			throw new BusinessException("SYSTEM: AN INTERNAL ERROR HAS OCCURED, PLEASE CONTACT YOUR SYSTEM ADMINISTRATOR (INFO CUS)");
 		}
 		return customerList;	
 	}
@@ -178,7 +178,7 @@ public class customerDAOImpl implements customerDAO{
 				customerList.add(cust);
 			}
 		} catch (ClassNotFoundException | SQLException e) {
-			throw new BusinessException("Internal Error contact SYSADMIN");
+			throw new BusinessException("SYSTEM: AN INTERNAL ERROR HAS OCCURED, PLEASE CONTACT YOUR SYSTEM ADMINISTRATOR (INFO CUS)");
 		}
 		
 		return customerList;

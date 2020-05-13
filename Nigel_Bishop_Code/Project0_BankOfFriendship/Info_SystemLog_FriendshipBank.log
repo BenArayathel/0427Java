@@ -1,0 +1,1255 @@
+2020-05-12 23:52:03,641 -0400 [main] INFO  (welcomePage.java:15) - ************************************************
+2020-05-12 23:52:03,643 -0400 [main] INFO  (welcomePage.java:16) - *        WELCOME TO BANK OF FRIENDSHIP         *
+2020-05-12 23:52:03,643 -0400 [main] INFO  (welcomePage.java:17) - ************************************************
+2020-05-12 23:52:03,644 -0400 [main] INFO  (welcomePage.java:19) - SELECT: (1) LOGIN PAGE
+2020-05-12 23:52:03,644 -0400 [main] INFO  (welcomePage.java:20) - SELECT: (2) NEW USER CREATION PAGE
+2020-05-12 23:52:03,644 -0400 [main] INFO  (welcomePage.java:21) - SELECT: (3) EXIT APPLICATION
+2020-05-12 23:52:20,893 -0400 [main] INFO  (welcomePage.java:15) - ************************************************
+2020-05-12 23:52:20,893 -0400 [main] INFO  (welcomePage.java:16) - *        WELCOME TO BANK OF FRIENDSHIP         *
+2020-05-12 23:52:20,893 -0400 [main] INFO  (welcomePage.java:17) - ************************************************
+2020-05-12 23:52:20,893 -0400 [main] INFO  (welcomePage.java:19) - SELECT: (1) LOGIN PAGE
+2020-05-12 23:52:20,894 -0400 [main] INFO  (welcomePage.java:20) - SELECT: (2) NEW USER CREATION PAGE
+2020-05-12 23:52:20,894 -0400 [main] INFO  (welcomePage.java:21) - SELECT: (3) EXIT APPLICATION
+2020-05-12 23:52:24,300 -0400 [main] INFO  (welcomePage.java:35) - THANK YOU FOR USING MY BANKING APPLICATION
+2020-05-13 00:07:57,722 -0400 [main] INFO  (welcomePage.java:15) - ************************************************
+2020-05-13 00:07:57,724 -0400 [main] INFO  (welcomePage.java:16) - *        WELCOME TO BANK OF FRIENDSHIP         *
+2020-05-13 00:07:57,724 -0400 [main] INFO  (welcomePage.java:17) - ************************************************
+2020-05-13 00:07:57,724 -0400 [main] INFO  (welcomePage.java:19) - SELECT: (1) LOGIN PAGE
+2020-05-13 00:07:57,724 -0400 [main] INFO  (welcomePage.java:20) - SELECT: (2) NEW USER CREATION PAGE
+2020-05-13 00:07:57,724 -0400 [main] INFO  (welcomePage.java:21) - SELECT: (3) EXIT APPLICATION
+2020-05-13 00:07:59,750 -0400 [main] INFO  (BankApplicationLogin.java:30) -   BANK OF FRIENDSHIP LOGIN PAGE   
+2020-05-13 00:07:59,750 -0400 [main] INFO  (BankApplicationLogin.java:31) - **************************************************
+2020-05-13 00:07:59,750 -0400 [main] INFO  (BankApplicationLogin.java:32) - SELECT: (1) LOGIN TO BANK APPLICATION
+2020-05-13 00:07:59,750 -0400 [main] INFO  (BankApplicationLogin.java:33) - SELECT: (2) EXIT THE APPLICATION
+2020-05-13 00:07:59,750 -0400 [main] INFO  (BankApplicationLogin.java:34) - SELECT: (3) BACK TO HOMEPAGE
+2020-05-13 00:08:00,737 -0400 [main] INFO  (BankApplicationLogin.java:42) - SYSTEM:  ENTER USERNAME
+2020-05-13 00:08:02,970 -0400 [main] INFO  (BankApplicationLogin.java:44) - SYSTEM:  ENTER PASSWORD
+2020-05-13 00:08:03,921 -0400 [main] INFO  (BankApplicationLogin.java:30) -   BANK OF FRIENDSHIP LOGIN PAGE   
+2020-05-13 00:08:03,921 -0400 [main] INFO  (BankApplicationLogin.java:31) - **************************************************
+2020-05-13 00:08:03,923 -0400 [main] INFO  (BankApplicationLogin.java:32) - SELECT: (1) LOGIN TO BANK APPLICATION
+2020-05-13 00:08:03,923 -0400 [main] INFO  (BankApplicationLogin.java:33) - SELECT: (2) EXIT THE APPLICATION
+2020-05-13 00:08:03,923 -0400 [main] INFO  (BankApplicationLogin.java:34) - SELECT: (3) BACK TO HOMEPAGE
+2020-05-13 00:08:10,336 -0400 [main] INFO  (BankApplicationLogin.java:75) - THANK YOU FOR USING MY BANKING APPLICATION
+2020-05-13 01:20:34,588 -0400 [main] INFO  (welcomePage.java:15) - ************************************************
+2020-05-13 01:20:34,591 -0400 [main] INFO  (welcomePage.java:16) - *        WELCOME TO BANK OF FRIENDSHIP         *
+2020-05-13 01:20:34,591 -0400 [main] INFO  (welcomePage.java:17) - ************************************************
+2020-05-13 01:20:34,591 -0400 [main] INFO  (welcomePage.java:19) - SELECT: (1) LOGIN PAGE
+2020-05-13 01:20:34,591 -0400 [main] INFO  (welcomePage.java:20) - SELECT: (2) NEW USER CREATION PAGE
+2020-05-13 01:20:34,592 -0400 [main] INFO  (welcomePage.java:21) - SELECT: (3) EXIT APPLICATION
+2020-05-13 01:20:36,253 -0400 [main] INFO  (BankApplicationLogin.java:30) -   BANK OF FRIENDSHIP LOGIN PAGE   
+2020-05-13 01:20:36,254 -0400 [main] INFO  (BankApplicationLogin.java:31) - **************************************************
+2020-05-13 01:20:36,254 -0400 [main] INFO  (BankApplicationLogin.java:32) - SELECT: (1) LOGIN TO BANK APPLICATION
+2020-05-13 01:20:36,254 -0400 [main] INFO  (BankApplicationLogin.java:33) - SELECT: (2) EXIT THE APPLICATION
+2020-05-13 01:20:36,254 -0400 [main] INFO  (BankApplicationLogin.java:34) - SELECT: (3) BACK TO HOMEPAGE
+2020-05-13 01:20:36,919 -0400 [main] INFO  (BankApplicationLogin.java:42) - SYSTEM:  ENTER USERNAME
+2020-05-13 01:20:41,104 -0400 [main] INFO  (BankApplicationLogin.java:44) - SYSTEM:  ENTER PASSWORD
+2020-05-13 01:20:52,367 -0400 [main] INFO  (BankApplicationLogin.java:51) - SYSTEM:  LOGIN SUCCESSFULL
+2020-05-13 01:20:52,367 -0400 [main] INFO  (BankApplicationLogin.java:30) -   BANK OF FRIENDSHIP LOGIN PAGE   
+2020-05-13 01:20:52,367 -0400 [main] INFO  (BankApplicationLogin.java:31) - **************************************************
+2020-05-13 01:20:52,368 -0400 [main] INFO  (BankApplicationLogin.java:32) - SELECT: (1) LOGIN TO BANK APPLICATION
+2020-05-13 01:20:52,368 -0400 [main] INFO  (BankApplicationLogin.java:33) - SELECT: (2) EXIT THE APPLICATION
+2020-05-13 01:20:52,368 -0400 [main] INFO  (BankApplicationLogin.java:34) - SELECT: (3) BACK TO HOMEPAGE
+2020-05-13 01:21:01,239 -0400 [main] INFO  (BankApplicationLogin.java:76) - THANK YOU FOR USING MY BANKING APPLICATION
+2020-05-13 01:23:04,026 -0400 [main] INFO  (welcomePage.java:15) - ************************************************
+2020-05-13 01:23:04,029 -0400 [main] INFO  (welcomePage.java:16) - *        WELCOME TO BANK OF FRIENDSHIP         *
+2020-05-13 01:23:04,029 -0400 [main] INFO  (welcomePage.java:17) - ************************************************
+2020-05-13 01:23:04,030 -0400 [main] INFO  (welcomePage.java:19) - SELECT: (1) LOGIN PAGE
+2020-05-13 01:23:04,030 -0400 [main] INFO  (welcomePage.java:20) - SELECT: (2) NEW USER CREATION PAGE
+2020-05-13 01:23:04,030 -0400 [main] INFO  (welcomePage.java:21) - SELECT: (3) EXIT APPLICATION
+2020-05-13 01:23:05,788 -0400 [main] INFO  (BankApplicationLogin.java:31) -   BANK OF FRIENDSHIP LOGIN PAGE   
+2020-05-13 01:23:05,789 -0400 [main] INFO  (BankApplicationLogin.java:32) - **************************************************
+2020-05-13 01:23:05,789 -0400 [main] INFO  (BankApplicationLogin.java:33) - SELECT: (1) LOGIN TO BANK APPLICATION
+2020-05-13 01:23:05,789 -0400 [main] INFO  (BankApplicationLogin.java:34) - SELECT: (2) EXIT THE APPLICATION
+2020-05-13 01:23:05,789 -0400 [main] INFO  (BankApplicationLogin.java:35) - SELECT: (3) BACK TO HOMEPAGE
+2020-05-13 01:23:06,815 -0400 [main] INFO  (BankApplicationLogin.java:43) - SYSTEM:  ENTER USERNAME
+2020-05-13 01:23:09,335 -0400 [main] INFO  (BankApplicationLogin.java:45) - SYSTEM:  ENTER PASSWORD
+2020-05-13 01:23:15,540 -0400 [main] INFO  (BankApplicationLogin.java:52) - SYSTEM:  LOGIN SUCCESSFULL
+2020-05-13 01:23:15,541 -0400 [main] INFO  (BankAppLoginWelcome_EmployeeAccount.java:20) -   WELCOME TO BANK OF FRIENDSHIP EMPLOYEE DASHBOARD   
+2020-05-13 01:23:15,541 -0400 [main] INFO  (BankAppLoginWelcome_EmployeeAccount.java:21) - **************************************************
+2020-05-13 01:23:15,542 -0400 [main] INFO  (BankAppLoginWelcome_EmployeeAccount.java:23) - SELECT: (1) VIEW LOGIN ACCOUNTS
+2020-05-13 01:23:15,542 -0400 [main] INFO  (BankAppLoginWelcome_EmployeeAccount.java:24) - SELECT: (2) VIEW BANK ACCOUNTS (CHK - SAV)
+2020-05-13 01:23:15,542 -0400 [main] INFO  (BankAppLoginWelcome_EmployeeAccount.java:25) - SELECT: (3) EXIT THE APPLICATION
+2020-05-13 01:23:15,542 -0400 [main] INFO  (BankAppLoginWelcome_EmployeeAccount.java:26) - SELECT: (4) BACK TO HOMEPAGE
+2020-05-13 01:23:17,943 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:32) -   -  EMPLOYEE CUSOMTER LOGIN DASHBOARD  -    
+2020-05-13 01:23:17,943 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:33) - ******************************************
+2020-05-13 01:23:17,944 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:35) - SELECT: (1) VIEW ALL LOGIN ACCOUNTS
+2020-05-13 01:23:17,944 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:36) - SELECT: (2) VIEW ALL LOGIN ACCOUNTS WITH PENDING STATUS 
+2020-05-13 01:23:17,944 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:37) - SELECT: (3) WITHDRAWL 
+2020-05-13 01:23:17,944 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:38) - SELECT: (4) TRANSFER (TO YOUR SAVING ACCOUNT)
+2020-05-13 01:23:17,944 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:39) - SELECT: (5) TRANSFER (TO A ANOTHER BANK QUALIFIED ACCOUNT)
+2020-05-13 01:23:17,944 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:40) - SELECT: (6) BACK TO ACCOUNT SUMMARY HOMEPAGE
+2020-05-13 01:23:17,944 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:41) - SELECT: (7) EXIT THE APPLICATION
+2020-05-13 01:23:17,945 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:42) - SELECT: (8) BACK TO HOMEPAGE
+2020-05-13 01:23:27,006 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:32) -   -  EMPLOYEE CUSOMTER LOGIN DASHBOARD  -    
+2020-05-13 01:23:27,007 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:33) - ******************************************
+2020-05-13 01:23:27,008 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:35) - SELECT: (1) VIEW ALL LOGIN ACCOUNTS
+2020-05-13 01:23:27,009 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:36) - SELECT: (2) VIEW ALL LOGIN ACCOUNTS WITH PENDING STATUS 
+2020-05-13 01:23:27,010 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:37) - SELECT: (3) WITHDRAWL 
+2020-05-13 01:23:27,010 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:38) - SELECT: (4) TRANSFER (TO YOUR SAVING ACCOUNT)
+2020-05-13 01:23:27,011 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:39) - SELECT: (5) TRANSFER (TO A ANOTHER BANK QUALIFIED ACCOUNT)
+2020-05-13 01:23:27,012 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:40) - SELECT: (6) BACK TO ACCOUNT SUMMARY HOMEPAGE
+2020-05-13 01:23:27,013 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:41) - SELECT: (7) EXIT THE APPLICATION
+2020-05-13 01:23:27,013 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:42) - SELECT: (8) BACK TO HOMEPAGE
+2020-05-13 07:42:04,223 -0400 [main] INFO  (welcomePage.java:15) - ************************************************
+2020-05-13 07:42:04,225 -0400 [main] INFO  (welcomePage.java:16) - *        WELCOME TO BANK OF FRIENDSHIP         *
+2020-05-13 07:42:04,225 -0400 [main] INFO  (welcomePage.java:17) - ************************************************
+2020-05-13 07:42:04,225 -0400 [main] INFO  (welcomePage.java:19) - SELECT: (1) LOGIN PAGE
+2020-05-13 07:42:04,225 -0400 [main] INFO  (welcomePage.java:20) - SELECT: (2) NEW USER CREATION PAGE
+2020-05-13 07:42:04,225 -0400 [main] INFO  (welcomePage.java:21) - SELECT: (3) EXIT APPLICATION
+2020-05-13 07:42:06,619 -0400 [main] INFO  (BankApplicationLogin.java:32) -   BANK OF FRIENDSHIP LOGIN PAGE   
+2020-05-13 07:42:06,620 -0400 [main] INFO  (BankApplicationLogin.java:33) - **************************************************
+2020-05-13 07:42:06,620 -0400 [main] INFO  (BankApplicationLogin.java:34) - SELECT: (1) LOGIN TO BANK APPLICATION
+2020-05-13 07:42:06,620 -0400 [main] INFO  (BankApplicationLogin.java:35) - SELECT: (2) EXIT THE APPLICATION
+2020-05-13 07:42:06,620 -0400 [main] INFO  (BankApplicationLogin.java:36) - SELECT: (3) BACK TO HOMEPAGE
+2020-05-13 07:42:08,870 -0400 [main] INFO  (BankApplicationLogin.java:44) - SYSTEM:  ENTER USERNAME
+2020-05-13 07:42:12,927 -0400 [main] INFO  (BankApplicationLogin.java:46) - SYSTEM:  ENTER PASSWORD
+2020-05-13 07:42:23,005 -0400 [main] INFO  (BankApplicationLogin.java:70) - SYSTEM:  LOGIN SUCCESSFULL
+2020-05-13 07:42:23,006 -0400 [main] INFO  (BankAppLoginWelcome_EmployeeAccount.java:19) -   WELCOME TO BANK OF FRIENDSHIP EMPLOYEE DASHBOARD   
+2020-05-13 07:42:23,006 -0400 [main] INFO  (BankAppLoginWelcome_EmployeeAccount.java:20) - **************************************************
+2020-05-13 07:42:23,007 -0400 [main] INFO  (BankAppLoginWelcome_EmployeeAccount.java:22) - SELECT: (1) VIEW LOGIN ACCOUNTS
+2020-05-13 07:42:23,007 -0400 [main] INFO  (BankAppLoginWelcome_EmployeeAccount.java:23) - SELECT: (2) VIEW BANK ACCOUNTS (CHK - SAV)
+2020-05-13 07:42:23,007 -0400 [main] INFO  (BankAppLoginWelcome_EmployeeAccount.java:24) - SELECT: (3) EXIT THE APPLICATION
+2020-05-13 07:42:23,007 -0400 [main] INFO  (BankAppLoginWelcome_EmployeeAccount.java:25) - SELECT: (4) BACK TO HOMEPAGE
+2020-05-13 07:42:29,355 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:40) -   -  EMPLOYEE CUSOMTER LOGIN DASHBOARD  -    
+2020-05-13 07:42:29,355 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:41) - ******************************************
+2020-05-13 07:42:29,355 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:43) - SELECT: (1) VIEW ALL LOGIN ACCOUNTS
+2020-05-13 07:42:29,355 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:44) - SELECT: (2) VIEW ALL LOGIN ACCOUNTS WITH PENDING STATUS 
+2020-05-13 07:42:29,356 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:45) - SELECT: (3) APPROVE PENDING LOGIN ACCOUNTS 
+2020-05-13 07:42:29,356 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:46) - SELECT: (4) REJECT PENDING LOGIN ACCOUNTS
+2020-05-13 07:42:29,356 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:47) - SELECT: (5) VIEW ALL CUSTOMER
+2020-05-13 07:42:29,356 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:48) - SELECT: (6) DELETE A CUSTOMER
+2020-05-13 07:42:29,356 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:49) - SELECT: (7) EXIT THE APPLICATION
+2020-05-13 07:42:29,356 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:50) - SELECT: (8) BACK TO EMPLOYEE DASHBOARD
+2020-05-13 07:42:29,356 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:51) - SELECT: (9) BACK TO HOMEPAGE
+2020-05-13 07:42:33,723 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:61) - userAccess [userID = FBUA10000, customerID = FBJS196710040, userName = johnsmith, userPassword = JohnSmith18, accountStatus = EMPLOYEE]
+2020-05-13 07:42:33,723 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:61) - userAccess [userID = FBUA10020, customerID = FBGC198610064, userName = glenncooper, userPassword = GlennCooper18, accountStatus = PENDING]
+2020-05-13 07:42:33,723 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:61) - userAccess [userID = FBUA10040, customerID = FBJA199910082, userName = johnabram, userPassword = JohnAbram18, accountStatus = CUSTOMER]
+2020-05-13 07:42:33,723 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:40) -   -  EMPLOYEE CUSOMTER LOGIN DASHBOARD  -    
+2020-05-13 07:42:33,723 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:41) - ******************************************
+2020-05-13 07:42:33,723 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:43) - SELECT: (1) VIEW ALL LOGIN ACCOUNTS
+2020-05-13 07:42:33,723 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:44) - SELECT: (2) VIEW ALL LOGIN ACCOUNTS WITH PENDING STATUS 
+2020-05-13 07:42:33,723 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:45) - SELECT: (3) APPROVE PENDING LOGIN ACCOUNTS 
+2020-05-13 07:42:33,725 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:46) - SELECT: (4) REJECT PENDING LOGIN ACCOUNTS
+2020-05-13 07:42:33,725 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:47) - SELECT: (5) VIEW ALL CUSTOMER
+2020-05-13 07:42:33,725 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:48) - SELECT: (6) DELETE A CUSTOMER
+2020-05-13 07:42:33,725 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:49) - SELECT: (7) EXIT THE APPLICATION
+2020-05-13 07:42:33,725 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:50) - SELECT: (8) BACK TO EMPLOYEE DASHBOARD
+2020-05-13 07:42:33,725 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:51) - SELECT: (9) BACK TO HOMEPAGE
+2020-05-13 07:42:43,272 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:75) - userAccess [userID = FBUA10020, customerID = FBGC198610064, userName = glenncooper, userPassword = GlennCooper18, accountStatus = PENDING]
+2020-05-13 07:42:43,273 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:40) -   -  EMPLOYEE CUSOMTER LOGIN DASHBOARD  -    
+2020-05-13 07:42:43,273 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:41) - ******************************************
+2020-05-13 07:42:43,274 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:43) - SELECT: (1) VIEW ALL LOGIN ACCOUNTS
+2020-05-13 07:42:43,274 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:44) - SELECT: (2) VIEW ALL LOGIN ACCOUNTS WITH PENDING STATUS 
+2020-05-13 07:42:43,274 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:45) - SELECT: (3) APPROVE PENDING LOGIN ACCOUNTS 
+2020-05-13 07:42:43,275 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:46) - SELECT: (4) REJECT PENDING LOGIN ACCOUNTS
+2020-05-13 07:42:43,275 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:47) - SELECT: (5) VIEW ALL CUSTOMER
+2020-05-13 07:42:43,275 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:48) - SELECT: (6) DELETE A CUSTOMER
+2020-05-13 07:42:43,276 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:49) - SELECT: (7) EXIT THE APPLICATION
+2020-05-13 07:42:43,276 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:50) - SELECT: (8) BACK TO EMPLOYEE DASHBOARD
+2020-05-13 07:42:43,277 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:51) - SELECT: (9) BACK TO HOMEPAGE
+2020-05-13 07:42:56,998 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:86) - SYSTEM:  APPROVE PENDING LOGIN ACCOUNTS 
+2020-05-13 07:42:56,998 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:87) - SYSTEM:  ENTER THE CUSTOMER ID NUMBER
+2020-05-13 07:43:10,503 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:90) - SYSTEM:  FBGC198610064 PENDING ACCOUNT HAS BEEN APPROVED.. 
+2020-05-13 07:43:10,504 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:40) -   -  EMPLOYEE CUSOMTER LOGIN DASHBOARD  -    
+2020-05-13 07:43:10,504 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:41) - ******************************************
+2020-05-13 07:43:10,505 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:43) - SELECT: (1) VIEW ALL LOGIN ACCOUNTS
+2020-05-13 07:43:10,506 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:44) - SELECT: (2) VIEW ALL LOGIN ACCOUNTS WITH PENDING STATUS 
+2020-05-13 07:43:10,506 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:45) - SELECT: (3) APPROVE PENDING LOGIN ACCOUNTS 
+2020-05-13 07:43:10,507 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:46) - SELECT: (4) REJECT PENDING LOGIN ACCOUNTS
+2020-05-13 07:43:10,507 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:47) - SELECT: (5) VIEW ALL CUSTOMER
+2020-05-13 07:43:10,508 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:48) - SELECT: (6) DELETE A CUSTOMER
+2020-05-13 07:43:10,508 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:49) - SELECT: (7) EXIT THE APPLICATION
+2020-05-13 07:43:10,509 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:50) - SELECT: (8) BACK TO EMPLOYEE DASHBOARD
+2020-05-13 07:43:10,509 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:51) - SELECT: (9) BACK TO HOMEPAGE
+2020-05-13 07:43:20,736 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:40) -   -  EMPLOYEE CUSOMTER LOGIN DASHBOARD  -    
+2020-05-13 07:43:20,737 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:41) - ******************************************
+2020-05-13 07:43:20,737 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:43) - SELECT: (1) VIEW ALL LOGIN ACCOUNTS
+2020-05-13 07:43:20,737 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:44) - SELECT: (2) VIEW ALL LOGIN ACCOUNTS WITH PENDING STATUS 
+2020-05-13 07:43:20,737 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:45) - SELECT: (3) APPROVE PENDING LOGIN ACCOUNTS 
+2020-05-13 07:43:20,737 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:46) - SELECT: (4) REJECT PENDING LOGIN ACCOUNTS
+2020-05-13 07:43:20,737 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:47) - SELECT: (5) VIEW ALL CUSTOMER
+2020-05-13 07:43:20,737 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:48) - SELECT: (6) DELETE A CUSTOMER
+2020-05-13 07:43:20,737 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:49) - SELECT: (7) EXIT THE APPLICATION
+2020-05-13 07:43:20,738 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:50) - SELECT: (8) BACK TO EMPLOYEE DASHBOARD
+2020-05-13 07:43:20,738 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:51) - SELECT: (9) BACK TO HOMEPAGE
+2020-05-13 07:43:38,732 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:118) - customer [Customer ID = FBJS196710040, Last Name = Smith, First Name = John, Email Address = john18@gmail.com, Contact Number = 4041231234, Date Of Birth (DOB) = 1967-09-05, Street = 5686 Mynew Street, City = Harlem, State = NY]
+2020-05-13 07:43:38,733 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:118) - customer [Customer ID = FBJS198910062, Last Name = smithsmith, First Name = johnsni, Email Address = josngsn@gmail.com, Contact Number = 3423451234, Date Of Birth (DOB) = 1989-10-24, Street = 123 hiasdf street, City = westville, State = NJ]
+2020-05-13 07:43:38,733 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:118) - customer [Customer ID = FBGC198610064, Last Name = Cooper, First Name = Glenn, Email Address = gcooper@gmail.com, Contact Number = 2021345731, Date Of Birth (DOB) = 1986-11-24, Street = 1234 first street, City = Brookdale, State = NY]
+2020-05-13 07:43:38,733 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:118) - customer [Customer ID = FBRG199110000, Last Name = Glenn, First Name = Randy, Email Address = rglenn@gmail.com, Contact Number = 309874563, Date Of Birth (DOB) = 1991-09-23, Street = 1234 Spooner Street, City = Smallville, State = WV]
+2020-05-13 07:43:38,734 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:118) - customer [Customer ID = FBJA199910082, Last Name = Abram, First Name = John, Email Address = johnabram@gmail.com, Contact Number = 3421231234, Date Of Birth (DOB) = 1999-10-20, Street = 435 newstreet street, City = brooklyn, State = NY]
+2020-05-13 07:43:38,734 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:40) -   -  EMPLOYEE CUSOMTER LOGIN DASHBOARD  -    
+2020-05-13 07:43:38,734 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:41) - ******************************************
+2020-05-13 07:43:38,734 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:43) - SELECT: (1) VIEW ALL LOGIN ACCOUNTS
+2020-05-13 07:43:38,734 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:44) - SELECT: (2) VIEW ALL LOGIN ACCOUNTS WITH PENDING STATUS 
+2020-05-13 07:43:38,735 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:45) - SELECT: (3) APPROVE PENDING LOGIN ACCOUNTS 
+2020-05-13 07:43:38,735 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:46) - SELECT: (4) REJECT PENDING LOGIN ACCOUNTS
+2020-05-13 07:43:38,735 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:47) - SELECT: (5) VIEW ALL CUSTOMER
+2020-05-13 07:43:38,735 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:48) - SELECT: (6) DELETE A CUSTOMER
+2020-05-13 07:43:38,735 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:49) - SELECT: (7) EXIT THE APPLICATION
+2020-05-13 07:43:38,736 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:50) - SELECT: (8) BACK TO EMPLOYEE DASHBOARD
+2020-05-13 07:43:38,736 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:51) - SELECT: (9) BACK TO HOMEPAGE
+2020-05-13 07:44:15,958 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:130) - SYSTEM:  DELETE A CUSTOMER ACCOUNT 
+2020-05-13 07:44:15,958 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:131) - SYSTEM:  ENTER THE CUSTOMER ID NUMBER
+2020-05-13 07:44:27,136 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:135) - SYSTEM:  THE REQUESTED CUSTOMER HAS BEEN DELETED
+2020-05-13 07:44:27,136 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:40) -   -  EMPLOYEE CUSOMTER LOGIN DASHBOARD  -    
+2020-05-13 07:44:27,136 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:41) - ******************************************
+2020-05-13 07:44:27,137 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:43) - SELECT: (1) VIEW ALL LOGIN ACCOUNTS
+2020-05-13 07:44:27,137 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:44) - SELECT: (2) VIEW ALL LOGIN ACCOUNTS WITH PENDING STATUS 
+2020-05-13 07:44:27,137 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:45) - SELECT: (3) APPROVE PENDING LOGIN ACCOUNTS 
+2020-05-13 07:44:27,137 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:46) - SELECT: (4) REJECT PENDING LOGIN ACCOUNTS
+2020-05-13 07:44:27,138 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:47) - SELECT: (5) VIEW ALL CUSTOMER
+2020-05-13 07:44:27,138 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:48) - SELECT: (6) DELETE A CUSTOMER
+2020-05-13 07:44:27,138 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:49) - SELECT: (7) EXIT THE APPLICATION
+2020-05-13 07:44:27,138 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:50) - SELECT: (8) BACK TO EMPLOYEE DASHBOARD
+2020-05-13 07:44:27,139 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:51) - SELECT: (9) BACK TO HOMEPAGE
+2020-05-13 07:44:34,762 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:118) - customer [Customer ID = FBJS196710040, Last Name = Smith, First Name = John, Email Address = john18@gmail.com, Contact Number = 4041231234, Date Of Birth (DOB) = 1967-09-05, Street = 5686 Mynew Street, City = Harlem, State = NY]
+2020-05-13 07:44:34,763 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:118) - customer [Customer ID = FBGC198610064, Last Name = Cooper, First Name = Glenn, Email Address = gcooper@gmail.com, Contact Number = 2021345731, Date Of Birth (DOB) = 1986-11-24, Street = 1234 first street, City = Brookdale, State = NY]
+2020-05-13 07:44:34,763 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:118) - customer [Customer ID = FBRG199110000, Last Name = Glenn, First Name = Randy, Email Address = rglenn@gmail.com, Contact Number = 309874563, Date Of Birth (DOB) = 1991-09-23, Street = 1234 Spooner Street, City = Smallville, State = WV]
+2020-05-13 07:44:34,763 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:118) - customer [Customer ID = FBJA199910082, Last Name = Abram, First Name = John, Email Address = johnabram@gmail.com, Contact Number = 3421231234, Date Of Birth (DOB) = 1999-10-20, Street = 435 newstreet street, City = brooklyn, State = NY]
+2020-05-13 07:44:34,763 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:40) -   -  EMPLOYEE CUSOMTER LOGIN DASHBOARD  -    
+2020-05-13 07:44:34,763 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:41) - ******************************************
+2020-05-13 07:44:34,763 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:43) - SELECT: (1) VIEW ALL LOGIN ACCOUNTS
+2020-05-13 07:44:34,764 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:44) - SELECT: (2) VIEW ALL LOGIN ACCOUNTS WITH PENDING STATUS 
+2020-05-13 07:44:34,764 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:45) - SELECT: (3) APPROVE PENDING LOGIN ACCOUNTS 
+2020-05-13 07:44:34,764 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:46) - SELECT: (4) REJECT PENDING LOGIN ACCOUNTS
+2020-05-13 07:44:34,764 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:47) - SELECT: (5) VIEW ALL CUSTOMER
+2020-05-13 07:44:34,764 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:48) - SELECT: (6) DELETE A CUSTOMER
+2020-05-13 07:44:34,764 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:49) - SELECT: (7) EXIT THE APPLICATION
+2020-05-13 07:44:34,764 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:50) - SELECT: (8) BACK TO EMPLOYEE DASHBOARD
+2020-05-13 07:44:34,765 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:51) - SELECT: (9) BACK TO HOMEPAGE
+2020-05-13 07:44:46,229 -0400 [main] INFO  (BankAppLoginWelcome_EmployeeAccount.java:19) -   WELCOME TO BANK OF FRIENDSHIP EMPLOYEE DASHBOARD   
+2020-05-13 07:44:46,230 -0400 [main] INFO  (BankAppLoginWelcome_EmployeeAccount.java:20) - **************************************************
+2020-05-13 07:44:46,230 -0400 [main] INFO  (BankAppLoginWelcome_EmployeeAccount.java:22) - SELECT: (1) VIEW LOGIN ACCOUNTS
+2020-05-13 07:44:46,230 -0400 [main] INFO  (BankAppLoginWelcome_EmployeeAccount.java:23) - SELECT: (2) VIEW BANK ACCOUNTS (CHK - SAV)
+2020-05-13 07:44:46,230 -0400 [main] INFO  (BankAppLoginWelcome_EmployeeAccount.java:24) - SELECT: (3) EXIT THE APPLICATION
+2020-05-13 07:44:46,230 -0400 [main] INFO  (BankAppLoginWelcome_EmployeeAccount.java:25) - SELECT: (4) BACK TO HOMEPAGE
+2020-05-13 07:44:47,690 -0400 [main] INFO  (CustomerAccount_Saving.java:29) -   WELCOME TO BANK OF FRIENDSHIP SAVING ACCOUNT SUMMARY   
+2020-05-13 07:44:47,690 -0400 [main] INFO  (CustomerAccount_Saving.java:30) - ************************************************************
+2020-05-13 07:44:47,691 -0400 [main] INFO  (CustomerAccount_Saving.java:32) - SELECT: (1) GET BALANCE
+2020-05-13 07:44:47,691 -0400 [main] INFO  (CustomerAccount_Saving.java:33) - SELECT: (2) DEPOSIT 
+2020-05-13 07:44:47,691 -0400 [main] INFO  (CustomerAccount_Saving.java:34) - SELECT: (3) WITHDRAWL 
+2020-05-13 07:44:47,691 -0400 [main] INFO  (CustomerAccount_Saving.java:35) - SELECT: (4) TRANSFER (TO YOUR CHECKING ACCOUNT)
+2020-05-13 07:44:47,691 -0400 [main] INFO  (CustomerAccount_Saving.java:36) - SELECT: (5) TRANSFER (TO A ANOTHER BANK QUALIFIED ACCOUNT)
+2020-05-13 07:44:47,691 -0400 [main] INFO  (CustomerAccount_Saving.java:37) - SELECT: (6) BACK TO ACCOUNT SUMMARY HOMEPAGE
+2020-05-13 07:44:47,691 -0400 [main] INFO  (CustomerAccount_Saving.java:38) - SELECT: (7) EXIT THE APPLICATION
+2020-05-13 07:44:47,691 -0400 [main] INFO  (CustomerAccount_Saving.java:39) - SELECT: (8) BACK TO HOMEPAGE
+2020-05-13 07:45:02,334 -0400 [main] INFO  (CustomerAccount_Saving.java:248) - THANK YOU FOR USING MY BANKING APPLICATION
+2020-05-13 07:46:02,015 -0400 [main] INFO  (welcomePage.java:15) - ************************************************
+2020-05-13 07:46:02,018 -0400 [main] INFO  (welcomePage.java:16) - *        WELCOME TO BANK OF FRIENDSHIP         *
+2020-05-13 07:46:02,018 -0400 [main] INFO  (welcomePage.java:17) - ************************************************
+2020-05-13 07:46:02,019 -0400 [main] INFO  (welcomePage.java:19) - SELECT: (1) LOGIN PAGE
+2020-05-13 07:46:02,019 -0400 [main] INFO  (welcomePage.java:20) - SELECT: (2) NEW USER CREATION PAGE
+2020-05-13 07:46:02,019 -0400 [main] INFO  (welcomePage.java:21) - SELECT: (3) EXIT APPLICATION
+2020-05-13 07:46:04,636 -0400 [main] INFO  (BankApplicationLogin.java:32) -   BANK OF FRIENDSHIP LOGIN PAGE   
+2020-05-13 07:46:04,636 -0400 [main] INFO  (BankApplicationLogin.java:33) - **************************************************
+2020-05-13 07:46:04,636 -0400 [main] INFO  (BankApplicationLogin.java:34) - SELECT: (1) LOGIN TO BANK APPLICATION
+2020-05-13 07:46:04,636 -0400 [main] INFO  (BankApplicationLogin.java:35) - SELECT: (2) EXIT THE APPLICATION
+2020-05-13 07:46:04,636 -0400 [main] INFO  (BankApplicationLogin.java:36) - SELECT: (3) BACK TO HOMEPAGE
+2020-05-13 07:46:05,333 -0400 [main] INFO  (BankApplicationLogin.java:44) - SYSTEM:  ENTER USERNAME
+2020-05-13 07:46:09,990 -0400 [main] INFO  (BankApplicationLogin.java:46) - SYSTEM:  ENTER PASSWORD
+2020-05-13 07:46:16,897 -0400 [main] INFO  (BankApplicationLogin.java:70) - SYSTEM:  LOGIN SUCCESSFULL
+2020-05-13 07:46:16,899 -0400 [main] INFO  (BankAppLoginWelcome_EmployeeAccount.java:18) -   WELCOME TO BANK OF FRIENDSHIP EMPLOYEE DASHBOARD   
+2020-05-13 07:46:16,900 -0400 [main] INFO  (BankAppLoginWelcome_EmployeeAccount.java:19) - **************************************************
+2020-05-13 07:46:16,901 -0400 [main] INFO  (BankAppLoginWelcome_EmployeeAccount.java:21) - SELECT: (1) VIEW LOGIN ACCOUNTS
+2020-05-13 07:46:16,902 -0400 [main] INFO  (BankAppLoginWelcome_EmployeeAccount.java:22) - SELECT: (2) VIEW BANK ACCOUNTS (CHK - SAV)
+2020-05-13 07:46:16,902 -0400 [main] INFO  (BankAppLoginWelcome_EmployeeAccount.java:23) - SELECT: (3) EXIT THE APPLICATION
+2020-05-13 07:46:16,902 -0400 [main] INFO  (BankAppLoginWelcome_EmployeeAccount.java:24) - SELECT: (4) BACK TO HOMEPAGE
+2020-05-13 07:46:18,465 -0400 [main] INFO  (EmployeeWelcomePage_ViewBankAccounts.java:34) -   -  EMPLOYEE CUSOMTER LOGIN DASHBOARD  -    
+2020-05-13 07:46:18,465 -0400 [main] INFO  (EmployeeWelcomePage_ViewBankAccounts.java:35) - ******************************************
+2020-05-13 07:46:18,465 -0400 [main] INFO  (EmployeeWelcomePage_ViewBankAccounts.java:37) - SELECT: (1) VIEW ALL BANK ACCOUNTS
+2020-05-13 07:46:18,465 -0400 [main] INFO  (EmployeeWelcomePage_ViewBankAccounts.java:38) - SELECT: (2) VIEW ALL BANK ACCOUNTS WITH PENDING STATUS 
+2020-05-13 07:46:18,465 -0400 [main] INFO  (EmployeeWelcomePage_ViewBankAccounts.java:39) - SELECT: (3) APPROVE PENDING BANK ACCOUNTS 
+2020-05-13 07:46:18,465 -0400 [main] INFO  (EmployeeWelcomePage_ViewBankAccounts.java:40) - SELECT: (4) REJECT BANK LOGIN ACCOUNTS
+2020-05-13 07:46:18,465 -0400 [main] INFO  (EmployeeWelcomePage_ViewBankAccounts.java:41) - SELECT: (5) EXIT THE APPLICATION
+2020-05-13 07:46:18,466 -0400 [main] INFO  (EmployeeWelcomePage_ViewBankAccounts.java:42) - SELECT: (6) BACK TO EMPLOYEE DASHBOARD
+2020-05-13 07:46:18,466 -0400 [main] INFO  (EmployeeWelcomePage_ViewBankAccounts.java:43) - SELECT: (7) BACK TO HOMEPAGE
+2020-05-13 07:46:22,546 -0400 [main] INFO  (EmployeeWelcomePage_ViewBankAccounts.java:53) - bankAccount [accountID=FBAC10011, customerID=FBJA199910082, accountType=CHECKING, balance=630.0, accountStatus=ACTIVE]
+2020-05-13 07:46:22,547 -0400 [main] INFO  (EmployeeWelcomePage_ViewBankAccounts.java:53) - bankAccount [accountID=FBAC10012, customerID=FBJA199910082, accountType=SAVING, balance=400.0, accountStatus=ACTIVE]
+2020-05-13 07:46:22,548 -0400 [main] INFO  (EmployeeWelcomePage_ViewBankAccounts.java:53) - bankAccount [accountID=FBAC10009, customerID=FBGC198610064, accountType=CHECKING, balance=300.0, accountStatus=PENDING]
+2020-05-13 07:46:22,548 -0400 [main] INFO  (EmployeeWelcomePage_ViewBankAccounts.java:53) - bankAccount [accountID=FBAC10010, customerID=FBGC198610064, accountType=SAVING, balance=100.0, accountStatus=PENDING]
+2020-05-13 07:46:22,549 -0400 [main] INFO  (EmployeeWelcomePage_ViewBankAccounts.java:34) -   -  EMPLOYEE CUSOMTER LOGIN DASHBOARD  -    
+2020-05-13 07:46:22,549 -0400 [main] INFO  (EmployeeWelcomePage_ViewBankAccounts.java:35) - ******************************************
+2020-05-13 07:46:22,550 -0400 [main] INFO  (EmployeeWelcomePage_ViewBankAccounts.java:37) - SELECT: (1) VIEW ALL BANK ACCOUNTS
+2020-05-13 07:46:22,550 -0400 [main] INFO  (EmployeeWelcomePage_ViewBankAccounts.java:38) - SELECT: (2) VIEW ALL BANK ACCOUNTS WITH PENDING STATUS 
+2020-05-13 07:46:22,551 -0400 [main] INFO  (EmployeeWelcomePage_ViewBankAccounts.java:39) - SELECT: (3) APPROVE PENDING BANK ACCOUNTS 
+2020-05-13 07:46:22,551 -0400 [main] INFO  (EmployeeWelcomePage_ViewBankAccounts.java:40) - SELECT: (4) REJECT BANK LOGIN ACCOUNTS
+2020-05-13 07:46:22,551 -0400 [main] INFO  (EmployeeWelcomePage_ViewBankAccounts.java:41) - SELECT: (5) EXIT THE APPLICATION
+2020-05-13 07:46:22,552 -0400 [main] INFO  (EmployeeWelcomePage_ViewBankAccounts.java:42) - SELECT: (6) BACK TO EMPLOYEE DASHBOARD
+2020-05-13 07:46:22,553 -0400 [main] INFO  (EmployeeWelcomePage_ViewBankAccounts.java:43) - SELECT: (7) BACK TO HOMEPAGE
+2020-05-13 07:46:43,577 -0400 [main] INFO  (EmployeeWelcomePage_ViewBankAccounts.java:67) - bankAccount [accountID=FBAC10009, customerID=FBGC198610064, accountType=CHECKING, balance=300.0, accountStatus=PENDING]
+2020-05-13 07:46:43,577 -0400 [main] INFO  (EmployeeWelcomePage_ViewBankAccounts.java:67) - bankAccount [accountID=FBAC10010, customerID=FBGC198610064, accountType=SAVING, balance=100.0, accountStatus=PENDING]
+2020-05-13 07:46:43,578 -0400 [main] INFO  (EmployeeWelcomePage_ViewBankAccounts.java:34) -   -  EMPLOYEE CUSOMTER LOGIN DASHBOARD  -    
+2020-05-13 07:46:43,578 -0400 [main] INFO  (EmployeeWelcomePage_ViewBankAccounts.java:35) - ******************************************
+2020-05-13 07:46:43,578 -0400 [main] INFO  (EmployeeWelcomePage_ViewBankAccounts.java:37) - SELECT: (1) VIEW ALL BANK ACCOUNTS
+2020-05-13 07:46:43,578 -0400 [main] INFO  (EmployeeWelcomePage_ViewBankAccounts.java:38) - SELECT: (2) VIEW ALL BANK ACCOUNTS WITH PENDING STATUS 
+2020-05-13 07:46:43,578 -0400 [main] INFO  (EmployeeWelcomePage_ViewBankAccounts.java:39) - SELECT: (3) APPROVE PENDING BANK ACCOUNTS 
+2020-05-13 07:46:43,578 -0400 [main] INFO  (EmployeeWelcomePage_ViewBankAccounts.java:40) - SELECT: (4) REJECT BANK LOGIN ACCOUNTS
+2020-05-13 07:46:43,578 -0400 [main] INFO  (EmployeeWelcomePage_ViewBankAccounts.java:41) - SELECT: (5) EXIT THE APPLICATION
+2020-05-13 07:46:43,578 -0400 [main] INFO  (EmployeeWelcomePage_ViewBankAccounts.java:42) - SELECT: (6) BACK TO EMPLOYEE DASHBOARD
+2020-05-13 07:46:43,578 -0400 [main] INFO  (EmployeeWelcomePage_ViewBankAccounts.java:43) - SELECT: (7) BACK TO HOMEPAGE
+2020-05-13 07:46:53,525 -0400 [main] INFO  (EmployeeWelcomePage_ViewBankAccounts.java:78) - SYSTEM:  APPROVE PENDING BANK ACCOUNTS 
+2020-05-13 07:46:53,525 -0400 [main] INFO  (EmployeeWelcomePage_ViewBankAccounts.java:79) - SYSTEM:  ENTER THE CUSTOMER ID NUMBER
+2020-05-13 07:47:13,812 -0400 [main] INFO  (EmployeeWelcomePage_ViewBankAccounts.java:81) - SYSTEM:  ENTER ACCOUNT TYPE (CHECKING OR SAVING
+2020-05-13 07:47:25,992 -0400 [main] INFO  (EmployeeWelcomePage_ViewBankAccounts.java:84) - SYSTEM:  FBGC198610064 PENDING ACCOUNT HAS BEEN APPROVED.. 
+2020-05-13 07:47:25,992 -0400 [main] INFO  (EmployeeWelcomePage_ViewBankAccounts.java:34) -   -  EMPLOYEE CUSOMTER LOGIN DASHBOARD  -    
+2020-05-13 07:47:25,993 -0400 [main] INFO  (EmployeeWelcomePage_ViewBankAccounts.java:35) - ******************************************
+2020-05-13 07:47:25,993 -0400 [main] INFO  (EmployeeWelcomePage_ViewBankAccounts.java:37) - SELECT: (1) VIEW ALL BANK ACCOUNTS
+2020-05-13 07:47:25,994 -0400 [main] INFO  (EmployeeWelcomePage_ViewBankAccounts.java:38) - SELECT: (2) VIEW ALL BANK ACCOUNTS WITH PENDING STATUS 
+2020-05-13 07:47:25,994 -0400 [main] INFO  (EmployeeWelcomePage_ViewBankAccounts.java:39) - SELECT: (3) APPROVE PENDING BANK ACCOUNTS 
+2020-05-13 07:47:25,995 -0400 [main] INFO  (EmployeeWelcomePage_ViewBankAccounts.java:40) - SELECT: (4) REJECT BANK LOGIN ACCOUNTS
+2020-05-13 07:47:25,996 -0400 [main] INFO  (EmployeeWelcomePage_ViewBankAccounts.java:41) - SELECT: (5) EXIT THE APPLICATION
+2020-05-13 07:47:25,997 -0400 [main] INFO  (EmployeeWelcomePage_ViewBankAccounts.java:42) - SELECT: (6) BACK TO EMPLOYEE DASHBOARD
+2020-05-13 07:47:25,997 -0400 [main] INFO  (EmployeeWelcomePage_ViewBankAccounts.java:43) - SELECT: (7) BACK TO HOMEPAGE
+2020-05-13 07:47:35,270 -0400 [main] INFO  (EmployeeWelcomePage_ViewBankAccounts.java:67) - bankAccount [accountID=FBAC10010, customerID=FBGC198610064, accountType=SAVING, balance=100.0, accountStatus=PENDING]
+2020-05-13 07:47:35,270 -0400 [main] INFO  (EmployeeWelcomePage_ViewBankAccounts.java:34) -   -  EMPLOYEE CUSOMTER LOGIN DASHBOARD  -    
+2020-05-13 07:47:35,270 -0400 [main] INFO  (EmployeeWelcomePage_ViewBankAccounts.java:35) - ******************************************
+2020-05-13 07:47:35,270 -0400 [main] INFO  (EmployeeWelcomePage_ViewBankAccounts.java:37) - SELECT: (1) VIEW ALL BANK ACCOUNTS
+2020-05-13 07:47:35,270 -0400 [main] INFO  (EmployeeWelcomePage_ViewBankAccounts.java:38) - SELECT: (2) VIEW ALL BANK ACCOUNTS WITH PENDING STATUS 
+2020-05-13 07:47:35,271 -0400 [main] INFO  (EmployeeWelcomePage_ViewBankAccounts.java:39) - SELECT: (3) APPROVE PENDING BANK ACCOUNTS 
+2020-05-13 07:47:35,271 -0400 [main] INFO  (EmployeeWelcomePage_ViewBankAccounts.java:40) - SELECT: (4) REJECT BANK LOGIN ACCOUNTS
+2020-05-13 07:47:35,271 -0400 [main] INFO  (EmployeeWelcomePage_ViewBankAccounts.java:41) - SELECT: (5) EXIT THE APPLICATION
+2020-05-13 07:47:35,271 -0400 [main] INFO  (EmployeeWelcomePage_ViewBankAccounts.java:42) - SELECT: (6) BACK TO EMPLOYEE DASHBOARD
+2020-05-13 07:47:35,271 -0400 [main] INFO  (EmployeeWelcomePage_ViewBankAccounts.java:43) - SELECT: (7) BACK TO HOMEPAGE
+2020-05-13 07:47:41,357 -0400 [main] INFO  (EmployeeWelcomePage_ViewBankAccounts.java:78) - SYSTEM:  APPROVE PENDING BANK ACCOUNTS 
+2020-05-13 07:47:41,357 -0400 [main] INFO  (EmployeeWelcomePage_ViewBankAccounts.java:79) - SYSTEM:  ENTER THE CUSTOMER ID NUMBER
+2020-05-13 07:47:46,908 -0400 [main] INFO  (EmployeeWelcomePage_ViewBankAccounts.java:81) - SYSTEM:  ENTER ACCOUNT TYPE (CHECKING OR SAVING
+2020-05-13 07:47:54,496 -0400 [main] INFO  (EmployeeWelcomePage_ViewBankAccounts.java:84) - SYSTEM:  FBGC198610064 PENDING ACCOUNT HAS BEEN APPROVED.. 
+2020-05-13 07:47:54,497 -0400 [main] INFO  (EmployeeWelcomePage_ViewBankAccounts.java:34) -   -  EMPLOYEE CUSOMTER LOGIN DASHBOARD  -    
+2020-05-13 07:47:54,497 -0400 [main] INFO  (EmployeeWelcomePage_ViewBankAccounts.java:35) - ******************************************
+2020-05-13 07:47:54,497 -0400 [main] INFO  (EmployeeWelcomePage_ViewBankAccounts.java:37) - SELECT: (1) VIEW ALL BANK ACCOUNTS
+2020-05-13 07:47:54,497 -0400 [main] INFO  (EmployeeWelcomePage_ViewBankAccounts.java:38) - SELECT: (2) VIEW ALL BANK ACCOUNTS WITH PENDING STATUS 
+2020-05-13 07:47:54,497 -0400 [main] INFO  (EmployeeWelcomePage_ViewBankAccounts.java:39) - SELECT: (3) APPROVE PENDING BANK ACCOUNTS 
+2020-05-13 07:47:54,498 -0400 [main] INFO  (EmployeeWelcomePage_ViewBankAccounts.java:40) - SELECT: (4) REJECT BANK LOGIN ACCOUNTS
+2020-05-13 07:47:54,498 -0400 [main] INFO  (EmployeeWelcomePage_ViewBankAccounts.java:41) - SELECT: (5) EXIT THE APPLICATION
+2020-05-13 07:47:54,498 -0400 [main] INFO  (EmployeeWelcomePage_ViewBankAccounts.java:42) - SELECT: (6) BACK TO EMPLOYEE DASHBOARD
+2020-05-13 07:47:54,499 -0400 [main] INFO  (EmployeeWelcomePage_ViewBankAccounts.java:43) - SELECT: (7) BACK TO HOMEPAGE
+2020-05-13 07:48:05,437 -0400 [main] INFO  (BankAppLoginWelcome_EmployeeAccount.java:18) -   WELCOME TO BANK OF FRIENDSHIP EMPLOYEE DASHBOARD   
+2020-05-13 07:48:05,437 -0400 [main] INFO  (BankAppLoginWelcome_EmployeeAccount.java:19) - **************************************************
+2020-05-13 07:48:05,437 -0400 [main] INFO  (BankAppLoginWelcome_EmployeeAccount.java:21) - SELECT: (1) VIEW LOGIN ACCOUNTS
+2020-05-13 07:48:05,437 -0400 [main] INFO  (BankAppLoginWelcome_EmployeeAccount.java:22) - SELECT: (2) VIEW BANK ACCOUNTS (CHK - SAV)
+2020-05-13 07:48:05,437 -0400 [main] INFO  (BankAppLoginWelcome_EmployeeAccount.java:23) - SELECT: (3) EXIT THE APPLICATION
+2020-05-13 07:48:05,437 -0400 [main] INFO  (BankAppLoginWelcome_EmployeeAccount.java:24) - SELECT: (4) BACK TO HOMEPAGE
+2020-05-13 07:48:13,957 -0400 [main] INFO  (welcomePage.java:15) - ************************************************
+2020-05-13 07:48:13,957 -0400 [main] INFO  (welcomePage.java:16) - *        WELCOME TO BANK OF FRIENDSHIP         *
+2020-05-13 07:48:13,957 -0400 [main] INFO  (welcomePage.java:17) - ************************************************
+2020-05-13 07:48:13,957 -0400 [main] INFO  (welcomePage.java:19) - SELECT: (1) LOGIN PAGE
+2020-05-13 07:48:13,957 -0400 [main] INFO  (welcomePage.java:20) - SELECT: (2) NEW USER CREATION PAGE
+2020-05-13 07:48:13,957 -0400 [main] INFO  (welcomePage.java:21) - SELECT: (3) EXIT APPLICATION
+2020-05-13 07:51:39,933 -0400 [main] INFO  (welcomePage.java:15) - ************************************************
+2020-05-13 07:51:39,934 -0400 [main] INFO  (welcomePage.java:16) - *        WELCOME TO BANK OF FRIENDSHIP         *
+2020-05-13 07:51:39,935 -0400 [main] INFO  (welcomePage.java:17) - ************************************************
+2020-05-13 07:51:39,935 -0400 [main] INFO  (welcomePage.java:19) - SELECT: (1) LOGIN PAGE
+2020-05-13 07:51:39,935 -0400 [main] INFO  (welcomePage.java:20) - SELECT: (2) NEW USER CREATION PAGE
+2020-05-13 07:51:39,935 -0400 [main] INFO  (welcomePage.java:21) - SELECT: (3) EXIT APPLICATION
+2020-05-13 07:51:50,073 -0400 [main] INFO  (CreateNewCustomer.java:23) - ****************************************************
+2020-05-13 07:51:50,073 -0400 [main] INFO  (CreateNewCustomer.java:24) -   WELCOME TO BANK OF FRIENDSHIP NEW USER CREATION   
+2020-05-13 07:51:50,074 -0400 [main] INFO  (CreateNewCustomer.java:25) - ****************************************************
+2020-05-13 07:51:50,074 -0400 [main] INFO  (CreateNewCustomer.java:26) - SELECT: (1) CREATE NEW CUSTOMER PROFILE
+2020-05-13 07:51:50,074 -0400 [main] INFO  (CreateNewCustomer.java:27) - SELECT: (2) EXIT THE APPLICATION
+2020-05-13 07:51:50,074 -0400 [main] INFO  (CreateNewCustomer.java:28) - SELECT: (3) BACK TO HOMEPAGE
+2020-05-13 07:51:59,371 -0400 [main] INFO  (CreateNewCustomer.java:35) - SYSTEM:  PLEASE ENTER VALID CUSTOMER INFORMATION (NEW CUSTOMER PROFILE)
+2020-05-13 07:51:59,372 -0400 [main] INFO  (CreateNewCustomer.java:37) - SYSTEM:  ENTER LAST NAME
+2020-05-13 07:52:16,395 -0400 [main] INFO  (CreateNewCustomer.java:39) - SYSTEM:  ENTER FIRST NAME
+2020-05-13 07:52:21,780 -0400 [main] INFO  (CreateNewCustomer.java:41) - SYSTEM:  ENTER EMAIL ADDRESS
+2020-05-13 07:52:42,108 -0400 [main] INFO  (CreateNewCustomer.java:45) - SYSTEM:  ENTER CONTACT NUMBER (10 numbers 0-9)
+2020-05-13 07:53:00,668 -0400 [main] INFO  (CreateNewCustomer.java:47) - SYSTEM:  ENTER DATE OF BIRTH(DOB) IN (dd-MM-yyyy format only)
+2020-05-13 07:53:11,236 -0400 [main] INFO  (CreateNewCustomer.java:50) - SYSTEM:   ENTER STREET ADDRESS
+2020-05-13 07:53:18,499 -0400 [main] INFO  (CreateNewCustomer.java:52) - SYSTEM:   ENTER CITY
+2020-05-13 07:53:22,843 -0400 [main] INFO  (CreateNewCustomer.java:54) - SYSTEM:   ENTER STATE (Two letter format only. eg: 'NY' (for New York state) 
+2020-05-13 07:53:27,155 -0400 [main] INFO  (CreateNewCustomer.java:77) - The entered CUSTOMER Lastname User1 is invalid
+2020-05-13 07:53:27,155 -0400 [main] INFO  (CreateNewCustomer.java:23) - ****************************************************
+2020-05-13 07:53:27,155 -0400 [main] INFO  (CreateNewCustomer.java:24) -   WELCOME TO BANK OF FRIENDSHIP NEW USER CREATION   
+2020-05-13 07:53:27,156 -0400 [main] INFO  (CreateNewCustomer.java:25) - ****************************************************
+2020-05-13 07:53:27,156 -0400 [main] INFO  (CreateNewCustomer.java:26) - SELECT: (1) CREATE NEW CUSTOMER PROFILE
+2020-05-13 07:53:27,156 -0400 [main] INFO  (CreateNewCustomer.java:27) - SELECT: (2) EXIT THE APPLICATION
+2020-05-13 07:53:27,156 -0400 [main] INFO  (CreateNewCustomer.java:28) - SELECT: (3) BACK TO HOMEPAGE
+2020-05-13 07:53:45,219 -0400 [main] INFO  (CreateNewCustomer.java:85) - THANK YOU FOR USING MY BANKING APPLICATION
+2020-05-13 07:54:23,223 -0400 [main] INFO  (welcomePage.java:15) - ************************************************
+2020-05-13 07:54:23,225 -0400 [main] INFO  (welcomePage.java:16) - *        WELCOME TO BANK OF FRIENDSHIP         *
+2020-05-13 07:54:23,225 -0400 [main] INFO  (welcomePage.java:17) - ************************************************
+2020-05-13 07:54:23,226 -0400 [main] INFO  (welcomePage.java:19) - SELECT: (1) LOGIN PAGE
+2020-05-13 07:54:23,226 -0400 [main] INFO  (welcomePage.java:20) - SELECT: (2) NEW USER CREATION PAGE
+2020-05-13 07:54:23,226 -0400 [main] INFO  (welcomePage.java:21) - SELECT: (3) EXIT APPLICATION
+2020-05-13 07:54:25,633 -0400 [main] INFO  (CreateNewCustomer.java:23) - ****************************************************
+2020-05-13 07:54:25,633 -0400 [main] INFO  (CreateNewCustomer.java:24) -   WELCOME TO BANK OF FRIENDSHIP NEW USER CREATION   
+2020-05-13 07:54:25,633 -0400 [main] INFO  (CreateNewCustomer.java:25) - ****************************************************
+2020-05-13 07:54:25,633 -0400 [main] INFO  (CreateNewCustomer.java:26) - SELECT: (1) CREATE NEW CUSTOMER PROFILE
+2020-05-13 07:54:25,633 -0400 [main] INFO  (CreateNewCustomer.java:27) - SELECT: (2) EXIT THE APPLICATION
+2020-05-13 07:54:25,634 -0400 [main] INFO  (CreateNewCustomer.java:28) - SELECT: (3) BACK TO HOMEPAGE
+2020-05-13 07:54:29,226 -0400 [main] INFO  (CreateNewCustomer.java:35) - SYSTEM:  PLEASE ENTER VALID CUSTOMER INFORMATION (NEW CUSTOMER PROFILE)
+2020-05-13 07:54:29,227 -0400 [main] INFO  (CreateNewCustomer.java:37) - SYSTEM:  ENTER LAST NAME
+2020-05-13 07:54:35,731 -0400 [main] INFO  (CreateNewCustomer.java:39) - SYSTEM:  ENTER FIRST NAME
+2020-05-13 07:54:46,035 -0400 [main] INFO  (CreateNewCustomer.java:41) - SYSTEM:  ENTER EMAIL ADDRESS
+2020-05-13 07:54:56,180 -0400 [main] INFO  (CreateNewCustomer.java:45) - SYSTEM:  ENTER CONTACT NUMBER (10 numbers 0-9)
+2020-05-13 07:55:02,347 -0400 [main] INFO  (CreateNewCustomer.java:47) - SYSTEM:  ENTER DATE OF BIRTH(DOB) IN (dd-MM-yyyy format only)
+2020-05-13 07:55:09,083 -0400 [main] INFO  (CreateNewCustomer.java:50) - SYSTEM:   ENTER STREET ADDRESS
+2020-05-13 07:55:15,132 -0400 [main] INFO  (CreateNewCustomer.java:52) - SYSTEM:   ENTER CITY
+2020-05-13 07:55:18,179 -0400 [main] INFO  (CreateNewCustomer.java:54) - SYSTEM:   ENTER STATE (Two letter format only. eg: 'NY' (for New York state) 
+2020-05-13 07:55:22,282 -0400 [main] INFO  (CreateNewCustomer.java:60) - SYSTEM:  CUSTOMER: UserOne DemoOne HAS REGISTERED WITH BANK OF FRIENDSHIP
+2020-05-13 07:55:22,300 -0400 [main] INFO  (CreateNewCustomer.java:63) - Please make a note for your CUSOTMER ID: FBUD200110100
+2020-05-13 07:55:22,301 -0400 [main] INFO  (CreateNewCustomer.java:65) - customer [Customer ID = FBUD200110100, Last Name = DemoOne, First Name = UserOne, Email Address = demo1@gmail.com, Contact Number = 2021231234, Date Of Birth (DOB) = Wed Oct 10 00:00:00 EDT 2001, Street = 1234 Demo Street, City = DemoCity, State = DC]
+2020-05-13 07:55:22,311 -0400 [main] INFO  (CreateLoginProfile.java:27) -   BANK OF FRIENDSHIP NEW LOGIN PROFILE CREATION   
+2020-05-13 07:55:22,312 -0400 [main] INFO  (CreateLoginProfile.java:28) - **************************************************
+2020-05-13 07:55:22,312 -0400 [main] INFO  (CreateLoginProfile.java:29) - SELECT: (1) CREATE NEW LOGIN PROFILE     
+2020-05-13 07:55:22,312 -0400 [main] INFO  (CreateLoginProfile.java:30) - SELECT: (2) EXIT THE APPLICATION
+2020-05-13 07:55:22,313 -0400 [main] INFO  (CreateLoginProfile.java:31) - SELECT: (3) BACK TO HOMEPAGE
+2020-05-13 07:55:29,586 -0400 [main] INFO  (CreateLoginProfile.java:39) - SYSTEM:  PLEASE ENTER VALID INFORMATION FOR NEW LOGIN PROFILE CREATION
+2020-05-13 07:55:29,587 -0400 [main] INFO  (CreateLoginProfile.java:42) - SYSTEM:  UserName: (Must be eight(8) or more Alpha Numeric characters
+2020-05-13 07:55:29,587 -0400 [main] INFO  (CreateLoginProfile.java:43) - SYSTEM:  ENTER USERNAME
+2020-05-13 07:55:47,933 -0400 [main] INFO  (CreateLoginProfile.java:45) - SYSTEM:  Password:  Must be eight(8) or more Alpha Numeric characters
+2020-05-13 07:55:47,934 -0400 [main] INFO  (CreateLoginProfile.java:46) -                     Must contain at least: One(1) Lowercase letter, One(1) Uppercase letter and One(1) Number
+2020-05-13 07:55:47,934 -0400 [main] INFO  (CreateLoginProfile.java:47) - SYSTEM:  ENTER PASSWORD
+2020-05-13 07:56:07,490 -0400 [main] INFO  (CreateLoginProfile.java:49) - SYSTEM:  RE-ENTER PASSWORD: (Confirmation)
+2020-05-13 07:56:12,539 -0400 [main] INFO  (welcomePage.java:15) - ************************************************
+2020-05-13 07:56:12,540 -0400 [main] INFO  (welcomePage.java:16) - *        WELCOME TO BANK OF FRIENDSHIP         *
+2020-05-13 07:56:12,540 -0400 [main] INFO  (welcomePage.java:17) - ************************************************
+2020-05-13 07:56:12,541 -0400 [main] INFO  (welcomePage.java:19) - SELECT: (1) LOGIN PAGE
+2020-05-13 07:56:12,541 -0400 [main] INFO  (welcomePage.java:20) - SELECT: (2) NEW USER CREATION PAGE
+2020-05-13 07:56:12,541 -0400 [main] INFO  (welcomePage.java:21) - SELECT: (3) EXIT APPLICATION
+2020-05-13 07:56:21,100 -0400 [main] INFO  (BankApplicationLogin.java:32) -   BANK OF FRIENDSHIP LOGIN PAGE   
+2020-05-13 07:56:21,100 -0400 [main] INFO  (BankApplicationLogin.java:33) - **************************************************
+2020-05-13 07:56:21,100 -0400 [main] INFO  (BankApplicationLogin.java:34) - SELECT: (1) LOGIN TO BANK APPLICATION
+2020-05-13 07:56:21,100 -0400 [main] INFO  (BankApplicationLogin.java:35) - SELECT: (2) EXIT THE APPLICATION
+2020-05-13 07:56:21,100 -0400 [main] INFO  (BankApplicationLogin.java:36) - SELECT: (3) BACK TO HOMEPAGE
+2020-05-13 07:56:22,914 -0400 [main] INFO  (BankApplicationLogin.java:44) - SYSTEM:  ENTER USERNAME
+2020-05-13 07:56:27,019 -0400 [main] INFO  (BankApplicationLogin.java:46) - SYSTEM:  ENTER PASSWORD
+2020-05-13 07:56:32,053 -0400 [main] INFO  (BankApplicationLogin.java:81) - SYSTEM: UserName or Password entered is incorrect
+2020-05-13 07:56:32,053 -0400 [main] INFO  (BankApplicationLogin.java:32) -   BANK OF FRIENDSHIP LOGIN PAGE   
+2020-05-13 07:56:32,053 -0400 [main] INFO  (BankApplicationLogin.java:33) - **************************************************
+2020-05-13 07:56:32,053 -0400 [main] INFO  (BankApplicationLogin.java:34) - SELECT: (1) LOGIN TO BANK APPLICATION
+2020-05-13 07:56:32,053 -0400 [main] INFO  (BankApplicationLogin.java:35) - SELECT: (2) EXIT THE APPLICATION
+2020-05-13 07:56:32,054 -0400 [main] INFO  (BankApplicationLogin.java:36) - SELECT: (3) BACK TO HOMEPAGE
+2020-05-13 07:56:37,322 -0400 [main] INFO  (BankApplicationLogin.java:44) - SYSTEM:  ENTER USERNAME
+2020-05-13 07:56:40,491 -0400 [main] INFO  (BankApplicationLogin.java:46) - SYSTEM:  ENTER PASSWORD
+2020-05-13 07:56:48,802 -0400 [main] INFO  (BankApplicationLogin.java:55) - SYSTEM:  LOGIN SUCCESSFULL
+2020-05-13 07:56:48,807 -0400 [main] INFO  (BankAppLoginWelcome_PendingAccount.java:36) -   WELCOME TO BANK OF FRIENDSHIP ACCOUNT SUMMARY   
+2020-05-13 07:56:48,807 -0400 [main] INFO  (BankAppLoginWelcome_PendingAccount.java:37) - **************************************************
+2020-05-13 07:56:48,807 -0400 [main] INFO  (BankAppLoginWelcome_PendingAccount.java:39) - SYSTEM:  ACCOUNT IS IN PENDING STATUS
+2020-05-13 07:56:48,807 -0400 [main] INFO  (BankAppLoginWelcome_PendingAccount.java:40) -          FUNCTIONALITY WILL BE LIMITED
+2020-05-13 07:56:48,808 -0400 [main] INFO  (BankAppLoginWelcome_PendingAccount.java:42) - SELECT: (1) REQUEST CHECKING ACCOUNT
+2020-05-13 07:56:48,808 -0400 [main] INFO  (BankAppLoginWelcome_PendingAccount.java:43) - SELECT: (2) REQUEST SAVING ACCOUNT
+2020-05-13 07:56:48,808 -0400 [main] INFO  (BankAppLoginWelcome_PendingAccount.java:44) - SELECT: (3) EXIT THE APPLICATION
+2020-05-13 07:56:48,808 -0400 [main] INFO  (BankAppLoginWelcome_PendingAccount.java:45) - SELECT: (4) BACK TO HOMEPAGE
+2020-05-13 07:57:06,133 -0400 [main] INFO  (BankAppLoginWelcome_PendingAccount.java:74) - SYSTEM: YOUR REQUEST FOR A CHECKING ACCOUNT HAS BEEN COMPLETED
+2020-05-13 07:57:06,133 -0400 [main] INFO  (BankAppLoginWelcome_PendingAccount.java:75) -         A DEFAULT BALANCE OF $300 HAS BEEN ADDED TO THE ACCOUNT
+2020-05-13 07:57:06,133 -0400 [main] INFO  (BankAppLoginWelcome_PendingAccount.java:76) -         PER REQUIREMENT TO OPEN A CHECKING ACCOUNT
+2020-05-13 07:57:06,134 -0400 [main] INFO  (BankAppLoginWelcome_PendingAccount.java:78) - SYSTEM: PLEASE MAKE A NOTE OF YOUR ACCOUNT NUMBER: FBAC10020
+2020-05-13 07:57:06,134 -0400 [main] INFO  (BankAppLoginWelcome_PendingAccount.java:36) -   WELCOME TO BANK OF FRIENDSHIP ACCOUNT SUMMARY   
+2020-05-13 07:57:06,134 -0400 [main] INFO  (BankAppLoginWelcome_PendingAccount.java:37) - **************************************************
+2020-05-13 07:57:06,134 -0400 [main] INFO  (BankAppLoginWelcome_PendingAccount.java:39) - SYSTEM:  ACCOUNT IS IN PENDING STATUS
+2020-05-13 07:57:06,135 -0400 [main] INFO  (BankAppLoginWelcome_PendingAccount.java:40) -          FUNCTIONALITY WILL BE LIMITED
+2020-05-13 07:57:06,135 -0400 [main] INFO  (BankAppLoginWelcome_PendingAccount.java:42) - SELECT: (1) REQUEST CHECKING ACCOUNT
+2020-05-13 07:57:06,135 -0400 [main] INFO  (BankAppLoginWelcome_PendingAccount.java:43) - SELECT: (2) REQUEST SAVING ACCOUNT
+2020-05-13 07:57:06,135 -0400 [main] INFO  (BankAppLoginWelcome_PendingAccount.java:44) - SELECT: (3) EXIT THE APPLICATION
+2020-05-13 07:57:06,135 -0400 [main] INFO  (BankAppLoginWelcome_PendingAccount.java:45) - SELECT: (4) BACK TO HOMEPAGE
+2020-05-13 07:57:14,062 -0400 [main] INFO  (BankAppLoginWelcome_PendingAccount.java:114) - SYSTEM: YOUR REQUEST FOR A SAVING ACCOUNT HAS BEEN COMPLETED
+2020-05-13 07:57:14,062 -0400 [main] INFO  (BankAppLoginWelcome_PendingAccount.java:115) -         A DEFAULT BALANCE OF $100 HAS BEEN ADDED TO THE ACCOUNT
+2020-05-13 07:57:14,062 -0400 [main] INFO  (BankAppLoginWelcome_PendingAccount.java:116) -         PER REQUIREMENT TO OPEN A SAVING ACCOUNT
+2020-05-13 07:57:14,062 -0400 [main] INFO  (BankAppLoginWelcome_PendingAccount.java:118) - SYSTEM: PLEASE MAKE A NOTE OF YOUR ACCOUNT NUMBER: FBAC10021
+2020-05-13 07:57:14,063 -0400 [main] INFO  (BankAppLoginWelcome_PendingAccount.java:36) -   WELCOME TO BANK OF FRIENDSHIP ACCOUNT SUMMARY   
+2020-05-13 07:57:14,063 -0400 [main] INFO  (BankAppLoginWelcome_PendingAccount.java:37) - **************************************************
+2020-05-13 07:57:14,063 -0400 [main] INFO  (BankAppLoginWelcome_PendingAccount.java:39) - SYSTEM:  ACCOUNT IS IN PENDING STATUS
+2020-05-13 07:57:14,063 -0400 [main] INFO  (BankAppLoginWelcome_PendingAccount.java:40) -          FUNCTIONALITY WILL BE LIMITED
+2020-05-13 07:57:14,063 -0400 [main] INFO  (BankAppLoginWelcome_PendingAccount.java:42) - SELECT: (1) REQUEST CHECKING ACCOUNT
+2020-05-13 07:57:14,063 -0400 [main] INFO  (BankAppLoginWelcome_PendingAccount.java:43) - SELECT: (2) REQUEST SAVING ACCOUNT
+2020-05-13 07:57:14,063 -0400 [main] INFO  (BankAppLoginWelcome_PendingAccount.java:44) - SELECT: (3) EXIT THE APPLICATION
+2020-05-13 07:57:14,063 -0400 [main] INFO  (BankAppLoginWelcome_PendingAccount.java:45) - SELECT: (4) BACK TO HOMEPAGE
+2020-05-13 07:57:20,043 -0400 [main] INFO  (welcomePage.java:15) - ************************************************
+2020-05-13 07:57:20,043 -0400 [main] INFO  (welcomePage.java:16) - *        WELCOME TO BANK OF FRIENDSHIP         *
+2020-05-13 07:57:20,043 -0400 [main] INFO  (welcomePage.java:17) - ************************************************
+2020-05-13 07:57:20,043 -0400 [main] INFO  (welcomePage.java:19) - SELECT: (1) LOGIN PAGE
+2020-05-13 07:57:20,043 -0400 [main] INFO  (welcomePage.java:20) - SELECT: (2) NEW USER CREATION PAGE
+2020-05-13 07:57:20,044 -0400 [main] INFO  (welcomePage.java:21) - SELECT: (3) EXIT APPLICATION
+2020-05-13 07:57:21,923 -0400 [main] INFO  (CreateNewCustomer.java:23) - ****************************************************
+2020-05-13 07:57:21,923 -0400 [main] INFO  (CreateNewCustomer.java:24) -   WELCOME TO BANK OF FRIENDSHIP NEW USER CREATION   
+2020-05-13 07:57:21,923 -0400 [main] INFO  (CreateNewCustomer.java:25) - ****************************************************
+2020-05-13 07:57:21,923 -0400 [main] INFO  (CreateNewCustomer.java:26) - SELECT: (1) CREATE NEW CUSTOMER PROFILE
+2020-05-13 07:57:21,923 -0400 [main] INFO  (CreateNewCustomer.java:27) - SELECT: (2) EXIT THE APPLICATION
+2020-05-13 07:57:21,923 -0400 [main] INFO  (CreateNewCustomer.java:28) - SELECT: (3) BACK TO HOMEPAGE
+2020-05-13 07:57:23,307 -0400 [main] INFO  (CreateNewCustomer.java:35) - SYSTEM:  PLEASE ENTER VALID CUSTOMER INFORMATION (NEW CUSTOMER PROFILE)
+2020-05-13 07:57:23,307 -0400 [main] INFO  (CreateNewCustomer.java:37) - SYSTEM:  ENTER LAST NAME
+2020-05-13 07:57:35,658 -0400 [main] INFO  (CreateNewCustomer.java:39) - SYSTEM:  ENTER FIRST NAME
+2020-05-13 07:57:40,594 -0400 [main] INFO  (CreateNewCustomer.java:41) - SYSTEM:  ENTER EMAIL ADDRESS
+2020-05-13 07:58:06,290 -0400 [main] INFO  (CreateNewCustomer.java:45) - SYSTEM:  ENTER CONTACT NUMBER (10 numbers 0-9)
+2020-05-13 07:58:13,154 -0400 [main] INFO  (CreateNewCustomer.java:47) - SYSTEM:  ENTER DATE OF BIRTH(DOB) IN (dd-MM-yyyy format only)
+2020-05-13 07:58:19,794 -0400 [main] INFO  (CreateNewCustomer.java:50) - SYSTEM:   ENTER STREET ADDRESS
+2020-05-13 07:58:25,177 -0400 [main] INFO  (CreateNewCustomer.java:52) - SYSTEM:   ENTER CITY
+2020-05-13 07:58:31,610 -0400 [main] INFO  (CreateNewCustomer.java:54) - SYSTEM:   ENTER STATE (Two letter format only. eg: 'NY' (for New York state) 
+2020-05-13 07:58:34,779 -0400 [main] INFO  (CreateNewCustomer.java:60) - SYSTEM:  CUSTOMER: Usertwo Demotwo HAS REGISTERED WITH BANK OF FRIENDSHIP
+2020-05-13 07:58:34,780 -0400 [main] INFO  (CreateNewCustomer.java:63) - Please make a note for your CUSOTMER ID: FBUD199010101
+2020-05-13 07:58:34,780 -0400 [main] INFO  (CreateNewCustomer.java:65) - customer [Customer ID = FBUD199010101, Last Name = Demotwo, First Name = Usertwo, Email Address = demouser2@gmail.com, Contact Number = 2021231234, Date Of Birth (DOB) = Wed Oct 10 00:00:00 EDT 1990, Street = 1234 Demo Street, City = DemoCity, State = DC]
+2020-05-13 07:58:34,781 -0400 [main] INFO  (CreateLoginProfile.java:27) -   BANK OF FRIENDSHIP NEW LOGIN PROFILE CREATION   
+2020-05-13 07:58:34,781 -0400 [main] INFO  (CreateLoginProfile.java:28) - **************************************************
+2020-05-13 07:58:34,782 -0400 [main] INFO  (CreateLoginProfile.java:29) - SELECT: (1) CREATE NEW LOGIN PROFILE     
+2020-05-13 07:58:34,782 -0400 [main] INFO  (CreateLoginProfile.java:30) - SELECT: (2) EXIT THE APPLICATION
+2020-05-13 07:58:34,782 -0400 [main] INFO  (CreateLoginProfile.java:31) - SELECT: (3) BACK TO HOMEPAGE
+2020-05-13 07:58:36,994 -0400 [main] INFO  (CreateLoginProfile.java:39) - SYSTEM:  PLEASE ENTER VALID INFORMATION FOR NEW LOGIN PROFILE CREATION
+2020-05-13 07:58:36,995 -0400 [main] INFO  (CreateLoginProfile.java:42) - SYSTEM:  UserName: (Must be eight(8) or more Alpha Numeric characters
+2020-05-13 07:58:36,995 -0400 [main] INFO  (CreateLoginProfile.java:43) - SYSTEM:  ENTER USERNAME
+2020-05-13 07:58:45,250 -0400 [main] INFO  (CreateLoginProfile.java:45) - SYSTEM:  Password:  Must be eight(8) or more Alpha Numeric characters
+2020-05-13 07:58:45,251 -0400 [main] INFO  (CreateLoginProfile.java:46) -                     Must contain at least: One(1) Lowercase letter, One(1) Uppercase letter and One(1) Number
+2020-05-13 07:58:45,251 -0400 [main] INFO  (CreateLoginProfile.java:47) - SYSTEM:  ENTER PASSWORD
+2020-05-13 07:58:49,634 -0400 [main] INFO  (CreateLoginProfile.java:49) - SYSTEM:  RE-ENTER PASSWORD: (Confirmation)
+2020-05-13 07:58:54,457 -0400 [main] INFO  (welcomePage.java:15) - ************************************************
+2020-05-13 07:58:54,457 -0400 [main] INFO  (welcomePage.java:16) - *        WELCOME TO BANK OF FRIENDSHIP         *
+2020-05-13 07:58:54,458 -0400 [main] INFO  (welcomePage.java:17) - ************************************************
+2020-05-13 07:58:54,458 -0400 [main] INFO  (welcomePage.java:19) - SELECT: (1) LOGIN PAGE
+2020-05-13 07:58:54,458 -0400 [main] INFO  (welcomePage.java:20) - SELECT: (2) NEW USER CREATION PAGE
+2020-05-13 07:58:54,458 -0400 [main] INFO  (welcomePage.java:21) - SELECT: (3) EXIT APPLICATION
+2020-05-13 07:58:58,266 -0400 [main] INFO  (BankApplicationLogin.java:32) -   BANK OF FRIENDSHIP LOGIN PAGE   
+2020-05-13 07:58:58,266 -0400 [main] INFO  (BankApplicationLogin.java:33) - **************************************************
+2020-05-13 07:58:58,266 -0400 [main] INFO  (BankApplicationLogin.java:34) - SELECT: (1) LOGIN TO BANK APPLICATION
+2020-05-13 07:58:58,266 -0400 [main] INFO  (BankApplicationLogin.java:35) - SELECT: (2) EXIT THE APPLICATION
+2020-05-13 07:58:58,266 -0400 [main] INFO  (BankApplicationLogin.java:36) - SELECT: (3) BACK TO HOMEPAGE
+2020-05-13 07:58:59,490 -0400 [main] INFO  (BankApplicationLogin.java:44) - SYSTEM:  ENTER USERNAME
+2020-05-13 07:59:03,131 -0400 [main] INFO  (BankApplicationLogin.java:46) - SYSTEM:  ENTER PASSWORD
+2020-05-13 07:59:07,122 -0400 [main] INFO  (BankApplicationLogin.java:55) - SYSTEM:  LOGIN SUCCESSFULL
+2020-05-13 07:59:07,123 -0400 [main] INFO  (BankAppLoginWelcome_PendingAccount.java:36) -   WELCOME TO BANK OF FRIENDSHIP ACCOUNT SUMMARY   
+2020-05-13 07:59:07,124 -0400 [main] INFO  (BankAppLoginWelcome_PendingAccount.java:37) - **************************************************
+2020-05-13 07:59:07,124 -0400 [main] INFO  (BankAppLoginWelcome_PendingAccount.java:39) - SYSTEM:  ACCOUNT IS IN PENDING STATUS
+2020-05-13 07:59:07,124 -0400 [main] INFO  (BankAppLoginWelcome_PendingAccount.java:40) -          FUNCTIONALITY WILL BE LIMITED
+2020-05-13 07:59:07,125 -0400 [main] INFO  (BankAppLoginWelcome_PendingAccount.java:42) - SELECT: (1) REQUEST CHECKING ACCOUNT
+2020-05-13 07:59:07,125 -0400 [main] INFO  (BankAppLoginWelcome_PendingAccount.java:43) - SELECT: (2) REQUEST SAVING ACCOUNT
+2020-05-13 07:59:07,126 -0400 [main] INFO  (BankAppLoginWelcome_PendingAccount.java:44) - SELECT: (3) EXIT THE APPLICATION
+2020-05-13 07:59:07,126 -0400 [main] INFO  (BankAppLoginWelcome_PendingAccount.java:45) - SELECT: (4) BACK TO HOMEPAGE
+2020-05-13 07:59:18,013 -0400 [main] INFO  (BankAppLoginWelcome_PendingAccount.java:74) - SYSTEM: YOUR REQUEST FOR A CHECKING ACCOUNT HAS BEEN COMPLETED
+2020-05-13 07:59:18,014 -0400 [main] INFO  (BankAppLoginWelcome_PendingAccount.java:75) -         A DEFAULT BALANCE OF $300 HAS BEEN ADDED TO THE ACCOUNT
+2020-05-13 07:59:18,015 -0400 [main] INFO  (BankAppLoginWelcome_PendingAccount.java:76) -         PER REQUIREMENT TO OPEN A CHECKING ACCOUNT
+2020-05-13 07:59:18,016 -0400 [main] INFO  (BankAppLoginWelcome_PendingAccount.java:78) - SYSTEM: PLEASE MAKE A NOTE OF YOUR ACCOUNT NUMBER: FBAC10022
+2020-05-13 07:59:18,017 -0400 [main] INFO  (BankAppLoginWelcome_PendingAccount.java:36) -   WELCOME TO BANK OF FRIENDSHIP ACCOUNT SUMMARY   
+2020-05-13 07:59:18,017 -0400 [main] INFO  (BankAppLoginWelcome_PendingAccount.java:37) - **************************************************
+2020-05-13 07:59:18,018 -0400 [main] INFO  (BankAppLoginWelcome_PendingAccount.java:39) - SYSTEM:  ACCOUNT IS IN PENDING STATUS
+2020-05-13 07:59:18,019 -0400 [main] INFO  (BankAppLoginWelcome_PendingAccount.java:40) -          FUNCTIONALITY WILL BE LIMITED
+2020-05-13 07:59:18,019 -0400 [main] INFO  (BankAppLoginWelcome_PendingAccount.java:42) - SELECT: (1) REQUEST CHECKING ACCOUNT
+2020-05-13 07:59:18,020 -0400 [main] INFO  (BankAppLoginWelcome_PendingAccount.java:43) - SELECT: (2) REQUEST SAVING ACCOUNT
+2020-05-13 07:59:18,020 -0400 [main] INFO  (BankAppLoginWelcome_PendingAccount.java:44) - SELECT: (3) EXIT THE APPLICATION
+2020-05-13 07:59:18,020 -0400 [main] INFO  (BankAppLoginWelcome_PendingAccount.java:45) - SELECT: (4) BACK TO HOMEPAGE
+2020-05-13 07:59:20,474 -0400 [main] INFO  (BankAppLoginWelcome_PendingAccount.java:114) - SYSTEM: YOUR REQUEST FOR A SAVING ACCOUNT HAS BEEN COMPLETED
+2020-05-13 07:59:20,474 -0400 [main] INFO  (BankAppLoginWelcome_PendingAccount.java:115) -         A DEFAULT BALANCE OF $100 HAS BEEN ADDED TO THE ACCOUNT
+2020-05-13 07:59:20,474 -0400 [main] INFO  (BankAppLoginWelcome_PendingAccount.java:116) -         PER REQUIREMENT TO OPEN A SAVING ACCOUNT
+2020-05-13 07:59:20,474 -0400 [main] INFO  (BankAppLoginWelcome_PendingAccount.java:118) - SYSTEM: PLEASE MAKE A NOTE OF YOUR ACCOUNT NUMBER: FBAC10023
+2020-05-13 07:59:20,474 -0400 [main] INFO  (BankAppLoginWelcome_PendingAccount.java:36) -   WELCOME TO BANK OF FRIENDSHIP ACCOUNT SUMMARY   
+2020-05-13 07:59:20,474 -0400 [main] INFO  (BankAppLoginWelcome_PendingAccount.java:37) - **************************************************
+2020-05-13 07:59:20,474 -0400 [main] INFO  (BankAppLoginWelcome_PendingAccount.java:39) - SYSTEM:  ACCOUNT IS IN PENDING STATUS
+2020-05-13 07:59:20,475 -0400 [main] INFO  (BankAppLoginWelcome_PendingAccount.java:40) -          FUNCTIONALITY WILL BE LIMITED
+2020-05-13 07:59:20,475 -0400 [main] INFO  (BankAppLoginWelcome_PendingAccount.java:42) - SELECT: (1) REQUEST CHECKING ACCOUNT
+2020-05-13 07:59:20,475 -0400 [main] INFO  (BankAppLoginWelcome_PendingAccount.java:43) - SELECT: (2) REQUEST SAVING ACCOUNT
+2020-05-13 07:59:20,475 -0400 [main] INFO  (BankAppLoginWelcome_PendingAccount.java:44) - SELECT: (3) EXIT THE APPLICATION
+2020-05-13 07:59:20,475 -0400 [main] INFO  (BankAppLoginWelcome_PendingAccount.java:45) - SELECT: (4) BACK TO HOMEPAGE
+2020-05-13 07:59:39,330 -0400 [main] INFO  (welcomePage.java:15) - ************************************************
+2020-05-13 07:59:39,330 -0400 [main] INFO  (welcomePage.java:16) - *        WELCOME TO BANK OF FRIENDSHIP         *
+2020-05-13 07:59:39,331 -0400 [main] INFO  (welcomePage.java:17) - ************************************************
+2020-05-13 07:59:39,331 -0400 [main] INFO  (welcomePage.java:19) - SELECT: (1) LOGIN PAGE
+2020-05-13 07:59:39,331 -0400 [main] INFO  (welcomePage.java:20) - SELECT: (2) NEW USER CREATION PAGE
+2020-05-13 07:59:39,331 -0400 [main] INFO  (welcomePage.java:21) - SELECT: (3) EXIT APPLICATION
+2020-05-13 07:59:49,339 -0400 [main] INFO  (CreateNewCustomer.java:23) - ****************************************************
+2020-05-13 07:59:49,339 -0400 [main] INFO  (CreateNewCustomer.java:24) -   WELCOME TO BANK OF FRIENDSHIP NEW USER CREATION   
+2020-05-13 07:59:49,339 -0400 [main] INFO  (CreateNewCustomer.java:25) - ****************************************************
+2020-05-13 07:59:49,339 -0400 [main] INFO  (CreateNewCustomer.java:26) - SELECT: (1) CREATE NEW CUSTOMER PROFILE
+2020-05-13 07:59:49,339 -0400 [main] INFO  (CreateNewCustomer.java:27) - SELECT: (2) EXIT THE APPLICATION
+2020-05-13 07:59:49,339 -0400 [main] INFO  (CreateNewCustomer.java:28) - SELECT: (3) BACK TO HOMEPAGE
+2020-05-13 07:59:52,242 -0400 [main] INFO  (CreateNewCustomer.java:35) - SYSTEM:  PLEASE ENTER VALID CUSTOMER INFORMATION (NEW CUSTOMER PROFILE)
+2020-05-13 07:59:52,242 -0400 [main] INFO  (CreateNewCustomer.java:37) - SYSTEM:  ENTER LAST NAME
+2020-05-13 08:00:57,361 -0400 [main] INFO  (CreateNewCustomer.java:39) - SYSTEM:  ENTER FIRST NAME
+2020-05-13 08:01:02,337 -0400 [main] INFO  (CreateNewCustomer.java:41) - SYSTEM:  ENTER EMAIL ADDRESS
+2020-05-13 08:01:11,867 -0400 [main] INFO  (CreateNewCustomer.java:45) - SYSTEM:  ENTER CONTACT NUMBER (10 numbers 0-9)
+2020-05-13 08:01:19,153 -0400 [main] INFO  (CreateNewCustomer.java:47) - SYSTEM:  ENTER DATE OF BIRTH(DOB) IN (dd-MM-yyyy format only)
+2020-05-13 08:01:28,642 -0400 [main] INFO  (CreateNewCustomer.java:50) - SYSTEM:   ENTER STREET ADDRESS
+2020-05-13 08:01:37,753 -0400 [main] INFO  (CreateNewCustomer.java:52) - SYSTEM:   ENTER CITY
+2020-05-13 08:01:43,313 -0400 [main] INFO  (CreateNewCustomer.java:54) - SYSTEM:   ENTER STATE (Two letter format only. eg: 'NY' (for New York state) 
+2020-05-13 08:01:50,681 -0400 [main] INFO  (CreateNewCustomer.java:77) - SYSTEM: AN INTERNAL ERROR HAS OCCURED, PLEASE CONTACT YOUR SYSTEM ADMINISTRATOR (CREATE CUS)
+2020-05-13 08:01:50,682 -0400 [main] INFO  (CreateNewCustomer.java:23) - ****************************************************
+2020-05-13 08:01:50,682 -0400 [main] INFO  (CreateNewCustomer.java:24) -   WELCOME TO BANK OF FRIENDSHIP NEW USER CREATION   
+2020-05-13 08:01:50,682 -0400 [main] INFO  (CreateNewCustomer.java:25) - ****************************************************
+2020-05-13 08:01:50,683 -0400 [main] INFO  (CreateNewCustomer.java:26) - SELECT: (1) CREATE NEW CUSTOMER PROFILE
+2020-05-13 08:01:50,683 -0400 [main] INFO  (CreateNewCustomer.java:27) - SELECT: (2) EXIT THE APPLICATION
+2020-05-13 08:01:50,683 -0400 [main] INFO  (CreateNewCustomer.java:28) - SELECT: (3) BACK TO HOMEPAGE
+2020-05-13 08:02:21,689 -0400 [main] INFO  (CreateNewCustomer.java:35) - SYSTEM:  PLEASE ENTER VALID CUSTOMER INFORMATION (NEW CUSTOMER PROFILE)
+2020-05-13 08:02:21,689 -0400 [main] INFO  (CreateNewCustomer.java:37) - SYSTEM:  ENTER LAST NAME
+2020-05-13 08:02:27,825 -0400 [main] INFO  (CreateNewCustomer.java:39) - SYSTEM:  ENTER FIRST NAME
+2020-05-13 08:02:31,033 -0400 [main] INFO  (CreateNewCustomer.java:41) - SYSTEM:  ENTER EMAIL ADDRESS
+2020-05-13 08:02:39,465 -0400 [main] INFO  (CreateNewCustomer.java:45) - SYSTEM:  ENTER CONTACT NUMBER (10 numbers 0-9)
+2020-05-13 08:02:47,001 -0400 [main] INFO  (CreateNewCustomer.java:47) - SYSTEM:  ENTER DATE OF BIRTH(DOB) IN (dd-MM-yyyy format only)
+2020-05-13 08:02:52,577 -0400 [main] INFO  (CreateNewCustomer.java:50) - SYSTEM:   ENTER STREET ADDRESS
+2020-05-13 08:03:00,617 -0400 [main] INFO  (CreateNewCustomer.java:52) - SYSTEM:   ENTER CITY
+2020-05-13 08:03:03,969 -0400 [main] INFO  (CreateNewCustomer.java:54) - SYSTEM:   ENTER STATE (Two letter format only. eg: 'NY' (for New York state) 
+2020-05-13 08:03:09,629 -0400 [main] INFO  (CreateNewCustomer.java:77) - SYSTEM: AN INTERNAL ERROR HAS OCCURED, PLEASE CONTACT YOUR SYSTEM ADMINISTRATOR (CREATE CUS)
+2020-05-13 08:03:09,629 -0400 [main] INFO  (CreateNewCustomer.java:23) - ****************************************************
+2020-05-13 08:03:09,629 -0400 [main] INFO  (CreateNewCustomer.java:24) -   WELCOME TO BANK OF FRIENDSHIP NEW USER CREATION   
+2020-05-13 08:03:09,630 -0400 [main] INFO  (CreateNewCustomer.java:25) - ****************************************************
+2020-05-13 08:03:09,630 -0400 [main] INFO  (CreateNewCustomer.java:26) - SELECT: (1) CREATE NEW CUSTOMER PROFILE
+2020-05-13 08:03:09,630 -0400 [main] INFO  (CreateNewCustomer.java:27) - SELECT: (2) EXIT THE APPLICATION
+2020-05-13 08:03:09,630 -0400 [main] INFO  (CreateNewCustomer.java:28) - SELECT: (3) BACK TO HOMEPAGE
+2020-05-13 08:03:40,985 -0400 [main] INFO  (CreateNewCustomer.java:35) - SYSTEM:  PLEASE ENTER VALID CUSTOMER INFORMATION (NEW CUSTOMER PROFILE)
+2020-05-13 08:03:40,985 -0400 [main] INFO  (CreateNewCustomer.java:37) - SYSTEM:  ENTER LAST NAME
+2020-05-13 08:03:47,009 -0400 [main] INFO  (CreateNewCustomer.java:39) - SYSTEM:  ENTER FIRST NAME
+2020-05-13 08:03:50,345 -0400 [main] INFO  (CreateNewCustomer.java:41) - SYSTEM:  ENTER EMAIL ADDRESS
+2020-05-13 08:03:59,257 -0400 [main] INFO  (CreateNewCustomer.java:45) - SYSTEM:  ENTER CONTACT NUMBER (10 numbers 0-9)
+2020-05-13 08:04:05,393 -0400 [main] INFO  (CreateNewCustomer.java:47) - SYSTEM:  ENTER DATE OF BIRTH(DOB) IN (dd-MM-yyyy format only)
+2020-05-13 08:04:10,969 -0400 [main] INFO  (CreateNewCustomer.java:50) - SYSTEM:   ENTER STREET ADDRESS
+2020-05-13 08:04:33,792 -0400 [main] INFO  (CreateNewCustomer.java:52) - SYSTEM:   ENTER CITY
+2020-05-13 08:04:44,129 -0400 [main] INFO  (CreateNewCustomer.java:54) - SYSTEM:   ENTER STATE (Two letter format only. eg: 'NY' (for New York state) 
+2020-05-13 08:04:47,870 -0400 [main] INFO  (CreateNewCustomer.java:77) - SYSTEM: AN INTERNAL ERROR HAS OCCURED, PLEASE CONTACT YOUR SYSTEM ADMINISTRATOR (CREATE CUS)
+2020-05-13 08:04:47,870 -0400 [main] INFO  (CreateNewCustomer.java:23) - ****************************************************
+2020-05-13 08:04:47,870 -0400 [main] INFO  (CreateNewCustomer.java:24) -   WELCOME TO BANK OF FRIENDSHIP NEW USER CREATION   
+2020-05-13 08:04:47,870 -0400 [main] INFO  (CreateNewCustomer.java:25) - ****************************************************
+2020-05-13 08:04:47,871 -0400 [main] INFO  (CreateNewCustomer.java:26) - SELECT: (1) CREATE NEW CUSTOMER PROFILE
+2020-05-13 08:04:47,871 -0400 [main] INFO  (CreateNewCustomer.java:27) - SELECT: (2) EXIT THE APPLICATION
+2020-05-13 08:04:47,871 -0400 [main] INFO  (CreateNewCustomer.java:28) - SELECT: (3) BACK TO HOMEPAGE
+2020-05-13 08:04:55,040 -0400 [main] INFO  (CreateNewCustomer.java:85) - THANK YOU FOR USING MY BANKING APPLICATION
+2020-05-13 08:04:58,528 -0400 [main] INFO  (welcomePage.java:15) - ************************************************
+2020-05-13 08:04:58,530 -0400 [main] INFO  (welcomePage.java:16) - *        WELCOME TO BANK OF FRIENDSHIP         *
+2020-05-13 08:04:58,531 -0400 [main] INFO  (welcomePage.java:17) - ************************************************
+2020-05-13 08:04:58,531 -0400 [main] INFO  (welcomePage.java:19) - SELECT: (1) LOGIN PAGE
+2020-05-13 08:04:58,531 -0400 [main] INFO  (welcomePage.java:20) - SELECT: (2) NEW USER CREATION PAGE
+2020-05-13 08:04:58,531 -0400 [main] INFO  (welcomePage.java:21) - SELECT: (3) EXIT APPLICATION
+2020-05-13 08:05:01,944 -0400 [main] INFO  (CreateNewCustomer.java:23) - ****************************************************
+2020-05-13 08:05:01,945 -0400 [main] INFO  (CreateNewCustomer.java:24) -   WELCOME TO BANK OF FRIENDSHIP NEW USER CREATION   
+2020-05-13 08:05:01,945 -0400 [main] INFO  (CreateNewCustomer.java:25) - ****************************************************
+2020-05-13 08:05:01,945 -0400 [main] INFO  (CreateNewCustomer.java:26) - SELECT: (1) CREATE NEW CUSTOMER PROFILE
+2020-05-13 08:05:01,945 -0400 [main] INFO  (CreateNewCustomer.java:27) - SELECT: (2) EXIT THE APPLICATION
+2020-05-13 08:05:01,945 -0400 [main] INFO  (CreateNewCustomer.java:28) - SELECT: (3) BACK TO HOMEPAGE
+2020-05-13 08:05:02,520 -0400 [main] INFO  (CreateNewCustomer.java:35) - SYSTEM:  PLEASE ENTER VALID CUSTOMER INFORMATION (NEW CUSTOMER PROFILE)
+2020-05-13 08:05:02,520 -0400 [main] INFO  (CreateNewCustomer.java:37) - SYSTEM:  ENTER LAST NAME
+2020-05-13 08:05:05,513 -0400 [main] INFO  (CreateNewCustomer.java:39) - SYSTEM:  ENTER FIRST NAME
+2020-05-13 08:05:07,576 -0400 [main] INFO  (CreateNewCustomer.java:41) - SYSTEM:  ENTER EMAIL ADDRESS
+2020-05-13 08:05:22,233 -0400 [main] INFO  (CreateNewCustomer.java:45) - SYSTEM:  ENTER CONTACT NUMBER (10 numbers 0-9)
+2020-05-13 08:05:27,392 -0400 [main] INFO  (CreateNewCustomer.java:47) - SYSTEM:  ENTER DATE OF BIRTH(DOB) IN (dd-MM-yyyy format only)
+2020-05-13 08:05:32,105 -0400 [main] INFO  (CreateNewCustomer.java:50) - SYSTEM:   ENTER STREET ADDRESS
+2020-05-13 08:05:38,528 -0400 [main] INFO  (CreateNewCustomer.java:52) - SYSTEM:   ENTER CITY
+2020-05-13 08:05:42,841 -0400 [main] INFO  (CreateNewCustomer.java:54) - SYSTEM:   ENTER STATE (Two letter format only. eg: 'NY' (for New York state) 
+2020-05-13 08:05:47,584 -0400 [main] INFO  (CreateNewCustomer.java:77) - SYSTEM: AN INTERNAL ERROR HAS OCCURED, PLEASE CONTACT YOUR SYSTEM ADMINISTRATOR (CREATE CUS)
+2020-05-13 08:05:47,584 -0400 [main] INFO  (CreateNewCustomer.java:23) - ****************************************************
+2020-05-13 08:05:47,585 -0400 [main] INFO  (CreateNewCustomer.java:24) -   WELCOME TO BANK OF FRIENDSHIP NEW USER CREATION   
+2020-05-13 08:05:47,585 -0400 [main] INFO  (CreateNewCustomer.java:25) - ****************************************************
+2020-05-13 08:05:47,585 -0400 [main] INFO  (CreateNewCustomer.java:26) - SELECT: (1) CREATE NEW CUSTOMER PROFILE
+2020-05-13 08:05:47,585 -0400 [main] INFO  (CreateNewCustomer.java:27) - SELECT: (2) EXIT THE APPLICATION
+2020-05-13 08:05:47,585 -0400 [main] INFO  (CreateNewCustomer.java:28) - SELECT: (3) BACK TO HOMEPAGE
+2020-05-13 08:06:29,768 -0400 [main] INFO  (welcomePage.java:15) - ************************************************
+2020-05-13 08:06:29,770 -0400 [main] INFO  (welcomePage.java:16) - *        WELCOME TO BANK OF FRIENDSHIP         *
+2020-05-13 08:06:29,770 -0400 [main] INFO  (welcomePage.java:17) - ************************************************
+2020-05-13 08:06:29,770 -0400 [main] INFO  (welcomePage.java:19) - SELECT: (1) LOGIN PAGE
+2020-05-13 08:06:29,770 -0400 [main] INFO  (welcomePage.java:20) - SELECT: (2) NEW USER CREATION PAGE
+2020-05-13 08:06:29,770 -0400 [main] INFO  (welcomePage.java:21) - SELECT: (3) EXIT APPLICATION
+2020-05-13 08:06:42,422 -0400 [main] INFO  (CreateNewCustomer.java:23) - ****************************************************
+2020-05-13 08:06:42,422 -0400 [main] INFO  (CreateNewCustomer.java:24) -   WELCOME TO BANK OF FRIENDSHIP NEW USER CREATION   
+2020-05-13 08:06:42,423 -0400 [main] INFO  (CreateNewCustomer.java:25) - ****************************************************
+2020-05-13 08:06:42,423 -0400 [main] INFO  (CreateNewCustomer.java:26) - SELECT: (1) CREATE NEW CUSTOMER PROFILE
+2020-05-13 08:06:42,423 -0400 [main] INFO  (CreateNewCustomer.java:27) - SELECT: (2) EXIT THE APPLICATION
+2020-05-13 08:06:42,423 -0400 [main] INFO  (CreateNewCustomer.java:28) - SELECT: (3) BACK TO HOMEPAGE
+2020-05-13 08:06:47,024 -0400 [main] INFO  (welcomePage.java:15) - ************************************************
+2020-05-13 08:06:47,024 -0400 [main] INFO  (welcomePage.java:16) - *        WELCOME TO BANK OF FRIENDSHIP         *
+2020-05-13 08:06:47,025 -0400 [main] INFO  (welcomePage.java:17) - ************************************************
+2020-05-13 08:06:47,025 -0400 [main] INFO  (welcomePage.java:19) - SELECT: (1) LOGIN PAGE
+2020-05-13 08:06:47,028 -0400 [main] INFO  (welcomePage.java:20) - SELECT: (2) NEW USER CREATION PAGE
+2020-05-13 08:06:47,028 -0400 [main] INFO  (welcomePage.java:21) - SELECT: (3) EXIT APPLICATION
+2020-05-13 08:06:48,014 -0400 [main] INFO  (BankApplicationLogin.java:32) -   BANK OF FRIENDSHIP LOGIN PAGE   
+2020-05-13 08:06:48,014 -0400 [main] INFO  (BankApplicationLogin.java:33) - **************************************************
+2020-05-13 08:06:48,015 -0400 [main] INFO  (BankApplicationLogin.java:34) - SELECT: (1) LOGIN TO BANK APPLICATION
+2020-05-13 08:06:48,015 -0400 [main] INFO  (BankApplicationLogin.java:35) - SELECT: (2) EXIT THE APPLICATION
+2020-05-13 08:06:48,015 -0400 [main] INFO  (BankApplicationLogin.java:36) - SELECT: (3) BACK TO HOMEPAGE
+2020-05-13 08:06:54,385 -0400 [main] INFO  (BankApplicationLogin.java:44) - SYSTEM:  ENTER USERNAME
+2020-05-13 08:06:57,864 -0400 [main] INFO  (BankApplicationLogin.java:46) - SYSTEM:  ENTER PASSWORD
+2020-05-13 08:07:04,388 -0400 [main] INFO  (BankApplicationLogin.java:70) - SYSTEM:  LOGIN SUCCESSFULL
+2020-05-13 08:07:04,389 -0400 [main] INFO  (BankAppLoginWelcome_EmployeeAccount.java:18) -   WELCOME TO BANK OF FRIENDSHIP EMPLOYEE DASHBOARD   
+2020-05-13 08:07:04,389 -0400 [main] INFO  (BankAppLoginWelcome_EmployeeAccount.java:19) - **************************************************
+2020-05-13 08:07:04,389 -0400 [main] INFO  (BankAppLoginWelcome_EmployeeAccount.java:21) - SELECT: (1) VIEW LOGIN ACCOUNTS
+2020-05-13 08:07:04,390 -0400 [main] INFO  (BankAppLoginWelcome_EmployeeAccount.java:22) - SELECT: (2) VIEW BANK ACCOUNTS (CHK - SAV)
+2020-05-13 08:07:04,390 -0400 [main] INFO  (BankAppLoginWelcome_EmployeeAccount.java:23) - SELECT: (3) EXIT THE APPLICATION
+2020-05-13 08:07:04,390 -0400 [main] INFO  (BankAppLoginWelcome_EmployeeAccount.java:24) - SELECT: (4) BACK TO HOMEPAGE
+2020-05-13 08:07:08,120 -0400 [main] INFO  (welcomePage.java:15) - ************************************************
+2020-05-13 08:07:08,120 -0400 [main] INFO  (welcomePage.java:16) - *        WELCOME TO BANK OF FRIENDSHIP         *
+2020-05-13 08:07:08,120 -0400 [main] INFO  (welcomePage.java:17) - ************************************************
+2020-05-13 08:07:08,120 -0400 [main] INFO  (welcomePage.java:19) - SELECT: (1) LOGIN PAGE
+2020-05-13 08:07:08,120 -0400 [main] INFO  (welcomePage.java:20) - SELECT: (2) NEW USER CREATION PAGE
+2020-05-13 08:07:08,120 -0400 [main] INFO  (welcomePage.java:21) - SELECT: (3) EXIT APPLICATION
+2020-05-13 08:07:11,000 -0400 [main] INFO  (CreateNewCustomer.java:23) - ****************************************************
+2020-05-13 08:07:11,000 -0400 [main] INFO  (CreateNewCustomer.java:24) -   WELCOME TO BANK OF FRIENDSHIP NEW USER CREATION   
+2020-05-13 08:07:11,001 -0400 [main] INFO  (CreateNewCustomer.java:25) - ****************************************************
+2020-05-13 08:07:11,001 -0400 [main] INFO  (CreateNewCustomer.java:26) - SELECT: (1) CREATE NEW CUSTOMER PROFILE
+2020-05-13 08:07:11,001 -0400 [main] INFO  (CreateNewCustomer.java:27) - SELECT: (2) EXIT THE APPLICATION
+2020-05-13 08:07:11,001 -0400 [main] INFO  (CreateNewCustomer.java:28) - SELECT: (3) BACK TO HOMEPAGE
+2020-05-13 08:07:13,016 -0400 [main] INFO  (CreateNewCustomer.java:35) - SYSTEM:  PLEASE ENTER VALID CUSTOMER INFORMATION (NEW CUSTOMER PROFILE)
+2020-05-13 08:07:13,016 -0400 [main] INFO  (CreateNewCustomer.java:37) - SYSTEM:  ENTER LAST NAME
+2020-05-13 08:07:38,288 -0400 [main] INFO  (CreateNewCustomer.java:39) - SYSTEM:  ENTER FIRST NAME
+2020-05-13 08:07:42,063 -0400 [main] INFO  (CreateNewCustomer.java:41) - SYSTEM:  ENTER EMAIL ADDRESS
+2020-05-13 08:07:48,799 -0400 [main] INFO  (CreateNewCustomer.java:45) - SYSTEM:  ENTER CONTACT NUMBER (10 numbers 0-9)
+2020-05-13 08:07:55,424 -0400 [main] INFO  (CreateNewCustomer.java:47) - SYSTEM:  ENTER DATE OF BIRTH(DOB) IN (dd-MM-yyyy format only)
+2020-05-13 08:08:01,480 -0400 [main] INFO  (CreateNewCustomer.java:50) - SYSTEM:   ENTER STREET ADDRESS
+2020-05-13 08:08:09,528 -0400 [main] INFO  (CreateNewCustomer.java:52) - SYSTEM:   ENTER CITY
+2020-05-13 08:08:16,000 -0400 [main] INFO  (CreateNewCustomer.java:54) - SYSTEM:   ENTER STATE (Two letter format only. eg: 'NY' (for New York state) 
+2020-05-13 08:08:20,719 -0400 [main] INFO  (CreateNewCustomer.java:77) - SYSTEM: AN INTERNAL ERROR HAS OCCURED, PLEASE CONTACT YOUR SYSTEM ADMINISTRATOR (CREATE CUS)
+2020-05-13 08:08:20,720 -0400 [main] INFO  (CreateNewCustomer.java:23) - ****************************************************
+2020-05-13 08:08:20,720 -0400 [main] INFO  (CreateNewCustomer.java:24) -   WELCOME TO BANK OF FRIENDSHIP NEW USER CREATION   
+2020-05-13 08:08:20,720 -0400 [main] INFO  (CreateNewCustomer.java:25) - ****************************************************
+2020-05-13 08:08:20,721 -0400 [main] INFO  (CreateNewCustomer.java:26) - SELECT: (1) CREATE NEW CUSTOMER PROFILE
+2020-05-13 08:08:20,721 -0400 [main] INFO  (CreateNewCustomer.java:27) - SELECT: (2) EXIT THE APPLICATION
+2020-05-13 08:08:20,722 -0400 [main] INFO  (CreateNewCustomer.java:28) - SELECT: (3) BACK TO HOMEPAGE
+2020-05-13 08:09:58,007 -0400 [main] INFO  (welcomePage.java:15) - ************************************************
+2020-05-13 08:09:58,010 -0400 [main] INFO  (welcomePage.java:16) - *        WELCOME TO BANK OF FRIENDSHIP         *
+2020-05-13 08:09:58,010 -0400 [main] INFO  (welcomePage.java:17) - ************************************************
+2020-05-13 08:09:58,011 -0400 [main] INFO  (welcomePage.java:19) - SELECT: (1) LOGIN PAGE
+2020-05-13 08:09:58,011 -0400 [main] INFO  (welcomePage.java:20) - SELECT: (2) NEW USER CREATION PAGE
+2020-05-13 08:09:58,011 -0400 [main] INFO  (welcomePage.java:21) - SELECT: (3) EXIT APPLICATION
+2020-05-13 08:10:00,796 -0400 [main] INFO  (BankApplicationLogin.java:32) -   BANK OF FRIENDSHIP LOGIN PAGE   
+2020-05-13 08:10:00,796 -0400 [main] INFO  (BankApplicationLogin.java:33) - **************************************************
+2020-05-13 08:10:00,796 -0400 [main] INFO  (BankApplicationLogin.java:34) - SELECT: (1) LOGIN TO BANK APPLICATION
+2020-05-13 08:10:00,796 -0400 [main] INFO  (BankApplicationLogin.java:35) - SELECT: (2) EXIT THE APPLICATION
+2020-05-13 08:10:00,796 -0400 [main] INFO  (BankApplicationLogin.java:36) - SELECT: (3) BACK TO HOMEPAGE
+2020-05-13 08:10:02,047 -0400 [main] INFO  (BankApplicationLogin.java:44) - SYSTEM:  ENTER USERNAME
+2020-05-13 08:10:08,431 -0400 [main] INFO  (BankApplicationLogin.java:46) - SYSTEM:  ENTER PASSWORD
+2020-05-13 08:10:14,147 -0400 [main] INFO  (BankApplicationLogin.java:70) - SYSTEM:  LOGIN SUCCESSFULL
+2020-05-13 08:10:14,148 -0400 [main] INFO  (BankAppLoginWelcome_EmployeeAccount.java:18) -   WELCOME TO BANK OF FRIENDSHIP EMPLOYEE DASHBOARD   
+2020-05-13 08:10:14,148 -0400 [main] INFO  (BankAppLoginWelcome_EmployeeAccount.java:19) - **************************************************
+2020-05-13 08:10:14,149 -0400 [main] INFO  (BankAppLoginWelcome_EmployeeAccount.java:21) - SELECT: (1) VIEW LOGIN ACCOUNTS
+2020-05-13 08:10:14,149 -0400 [main] INFO  (BankAppLoginWelcome_EmployeeAccount.java:22) - SELECT: (2) VIEW BANK ACCOUNTS (CHK - SAV)
+2020-05-13 08:10:14,149 -0400 [main] INFO  (BankAppLoginWelcome_EmployeeAccount.java:23) - SELECT: (3) EXIT THE APPLICATION
+2020-05-13 08:10:14,149 -0400 [main] INFO  (BankAppLoginWelcome_EmployeeAccount.java:24) - SELECT: (4) BACK TO HOMEPAGE
+2020-05-13 08:10:20,924 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:40) -   -  EMPLOYEE CUSOMTER LOGIN DASHBOARD  -    
+2020-05-13 08:10:20,924 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:41) - ******************************************
+2020-05-13 08:10:20,925 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:43) - SELECT: (1) VIEW ALL LOGIN ACCOUNTS
+2020-05-13 08:10:20,925 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:44) - SELECT: (2) VIEW ALL LOGIN ACCOUNTS WITH PENDING STATUS 
+2020-05-13 08:10:20,925 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:45) - SELECT: (3) APPROVE PENDING LOGIN ACCOUNTS 
+2020-05-13 08:10:20,925 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:46) - SELECT: (4) REJECT PENDING LOGIN ACCOUNTS
+2020-05-13 08:10:20,925 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:47) - SELECT: (5) VIEW ALL CUSTOMER
+2020-05-13 08:10:20,925 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:48) - SELECT: (6) DELETE A CUSTOMER
+2020-05-13 08:10:20,925 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:49) - SELECT: (7) EXIT THE APPLICATION
+2020-05-13 08:10:20,926 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:50) - SELECT: (8) BACK TO EMPLOYEE DASHBOARD
+2020-05-13 08:10:20,926 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:51) - SELECT: (9) BACK TO HOMEPAGE
+2020-05-13 08:10:23,873 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:61) - userAccess [userID = FBUA10000, customerID = FBJS196710040, userName = johnsmith, userPassword = JohnSmith18, accountStatus = EMPLOYEE]
+2020-05-13 08:10:23,874 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:61) - userAccess [userID = FBUA10020, customerID = FBGC198610064, userName = glenncooper, userPassword = GlennCooper18, accountStatus = CUSTOMER]
+2020-05-13 08:10:23,874 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:61) - userAccess [userID = FBUA10040, customerID = FBJA199910082, userName = johnabram, userPassword = JohnAbram18, accountStatus = CUSTOMER]
+2020-05-13 08:10:23,874 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:61) - userAccess [userID = FBUA10060, customerID = FBUD200110100, userName = demouser1, userPassword = DemoUser1, accountStatus = PENDING]
+2020-05-13 08:10:23,874 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:61) - userAccess [userID = FBUA10061, customerID = FBUD199010101, userName = demouser2, userPassword = DemoUser2, accountStatus = PENDING]
+2020-05-13 08:10:23,874 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:40) -   -  EMPLOYEE CUSOMTER LOGIN DASHBOARD  -    
+2020-05-13 08:10:23,875 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:41) - ******************************************
+2020-05-13 08:10:23,875 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:43) - SELECT: (1) VIEW ALL LOGIN ACCOUNTS
+2020-05-13 08:10:23,875 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:44) - SELECT: (2) VIEW ALL LOGIN ACCOUNTS WITH PENDING STATUS 
+2020-05-13 08:10:23,875 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:45) - SELECT: (3) APPROVE PENDING LOGIN ACCOUNTS 
+2020-05-13 08:10:23,875 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:46) - SELECT: (4) REJECT PENDING LOGIN ACCOUNTS
+2020-05-13 08:10:23,875 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:47) - SELECT: (5) VIEW ALL CUSTOMER
+2020-05-13 08:10:23,875 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:48) - SELECT: (6) DELETE A CUSTOMER
+2020-05-13 08:10:23,875 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:49) - SELECT: (7) EXIT THE APPLICATION
+2020-05-13 08:10:23,875 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:50) - SELECT: (8) BACK TO EMPLOYEE DASHBOARD
+2020-05-13 08:10:23,875 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:51) - SELECT: (9) BACK TO HOMEPAGE
+2020-05-13 08:10:38,665 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:75) - userAccess [userID = FBUA10060, customerID = FBUD200110100, userName = demouser1, userPassword = DemoUser1, accountStatus = PENDING]
+2020-05-13 08:10:38,666 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:75) - userAccess [userID = FBUA10061, customerID = FBUD199010101, userName = demouser2, userPassword = DemoUser2, accountStatus = PENDING]
+2020-05-13 08:10:38,667 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:40) -   -  EMPLOYEE CUSOMTER LOGIN DASHBOARD  -    
+2020-05-13 08:10:38,667 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:41) - ******************************************
+2020-05-13 08:10:38,667 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:43) - SELECT: (1) VIEW ALL LOGIN ACCOUNTS
+2020-05-13 08:10:38,668 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:44) - SELECT: (2) VIEW ALL LOGIN ACCOUNTS WITH PENDING STATUS 
+2020-05-13 08:10:38,668 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:45) - SELECT: (3) APPROVE PENDING LOGIN ACCOUNTS 
+2020-05-13 08:10:38,669 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:46) - SELECT: (4) REJECT PENDING LOGIN ACCOUNTS
+2020-05-13 08:10:38,669 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:47) - SELECT: (5) VIEW ALL CUSTOMER
+2020-05-13 08:10:38,670 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:48) - SELECT: (6) DELETE A CUSTOMER
+2020-05-13 08:10:38,670 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:49) - SELECT: (7) EXIT THE APPLICATION
+2020-05-13 08:10:38,670 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:50) - SELECT: (8) BACK TO EMPLOYEE DASHBOARD
+2020-05-13 08:10:38,671 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:51) - SELECT: (9) BACK TO HOMEPAGE
+2020-05-13 08:10:51,304 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:86) - SYSTEM:  APPROVE PENDING LOGIN ACCOUNTS 
+2020-05-13 08:10:51,304 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:87) - SYSTEM:  ENTER THE CUSTOMER ID NUMBER
+2020-05-13 08:10:59,976 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:90) - SYSTEM:  FBUD200110100 PENDING ACCOUNT HAS BEEN APPROVED.. 
+2020-05-13 08:10:59,977 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:40) -   -  EMPLOYEE CUSOMTER LOGIN DASHBOARD  -    
+2020-05-13 08:10:59,977 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:41) - ******************************************
+2020-05-13 08:10:59,978 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:43) - SELECT: (1) VIEW ALL LOGIN ACCOUNTS
+2020-05-13 08:10:59,978 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:44) - SELECT: (2) VIEW ALL LOGIN ACCOUNTS WITH PENDING STATUS 
+2020-05-13 08:10:59,978 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:45) - SELECT: (3) APPROVE PENDING LOGIN ACCOUNTS 
+2020-05-13 08:10:59,978 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:46) - SELECT: (4) REJECT PENDING LOGIN ACCOUNTS
+2020-05-13 08:10:59,978 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:47) - SELECT: (5) VIEW ALL CUSTOMER
+2020-05-13 08:10:59,979 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:48) - SELECT: (6) DELETE A CUSTOMER
+2020-05-13 08:10:59,979 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:49) - SELECT: (7) EXIT THE APPLICATION
+2020-05-13 08:10:59,980 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:50) - SELECT: (8) BACK TO EMPLOYEE DASHBOARD
+2020-05-13 08:10:59,980 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:51) - SELECT: (9) BACK TO HOMEPAGE
+2020-05-13 08:11:14,551 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:86) - SYSTEM:  APPROVE PENDING LOGIN ACCOUNTS 
+2020-05-13 08:11:14,551 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:87) - SYSTEM:  ENTER THE CUSTOMER ID NUMBER
+2020-05-13 08:11:18,375 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:94) - The entered CUSTOMER ID 12 is invalid
+2020-05-13 08:11:18,375 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:40) -   -  EMPLOYEE CUSOMTER LOGIN DASHBOARD  -    
+2020-05-13 08:11:18,375 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:41) - ******************************************
+2020-05-13 08:11:18,375 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:43) - SELECT: (1) VIEW ALL LOGIN ACCOUNTS
+2020-05-13 08:11:18,375 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:44) - SELECT: (2) VIEW ALL LOGIN ACCOUNTS WITH PENDING STATUS 
+2020-05-13 08:11:18,375 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:45) - SELECT: (3) APPROVE PENDING LOGIN ACCOUNTS 
+2020-05-13 08:11:18,375 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:46) - SELECT: (4) REJECT PENDING LOGIN ACCOUNTS
+2020-05-13 08:11:18,375 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:47) - SELECT: (5) VIEW ALL CUSTOMER
+2020-05-13 08:11:18,375 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:48) - SELECT: (6) DELETE A CUSTOMER
+2020-05-13 08:11:18,376 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:49) - SELECT: (7) EXIT THE APPLICATION
+2020-05-13 08:11:18,376 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:50) - SELECT: (8) BACK TO EMPLOYEE DASHBOARD
+2020-05-13 08:11:18,376 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:51) - SELECT: (9) BACK TO HOMEPAGE
+2020-05-13 08:11:28,703 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:75) - userAccess [userID = FBUA10061, customerID = FBUD199010101, userName = demouser2, userPassword = DemoUser2, accountStatus = PENDING]
+2020-05-13 08:11:28,704 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:40) -   -  EMPLOYEE CUSOMTER LOGIN DASHBOARD  -    
+2020-05-13 08:11:28,704 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:41) - ******************************************
+2020-05-13 08:11:28,704 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:43) - SELECT: (1) VIEW ALL LOGIN ACCOUNTS
+2020-05-13 08:11:28,705 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:44) - SELECT: (2) VIEW ALL LOGIN ACCOUNTS WITH PENDING STATUS 
+2020-05-13 08:11:28,705 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:45) - SELECT: (3) APPROVE PENDING LOGIN ACCOUNTS 
+2020-05-13 08:11:28,705 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:46) - SELECT: (4) REJECT PENDING LOGIN ACCOUNTS
+2020-05-13 08:11:28,706 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:47) - SELECT: (5) VIEW ALL CUSTOMER
+2020-05-13 08:11:28,706 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:48) - SELECT: (6) DELETE A CUSTOMER
+2020-05-13 08:11:28,707 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:49) - SELECT: (7) EXIT THE APPLICATION
+2020-05-13 08:11:28,707 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:50) - SELECT: (8) BACK TO EMPLOYEE DASHBOARD
+2020-05-13 08:11:28,707 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:51) - SELECT: (9) BACK TO HOMEPAGE
+2020-05-13 08:11:37,774 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:101) - SYSTEM:  REJECT PENDING LOGIN ACCOUNTS 
+2020-05-13 08:11:37,774 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:102) - SYSTEM:  ENTER THE CUSTOMER ID NUMBER
+2020-05-13 08:11:45,501 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:105) - SYSTEM:  FBUD199010101 PENDING ACCOUNT HAS BEEN REJECTED FOR LOGIN STATUS.. 
+2020-05-13 08:11:45,502 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:40) -   -  EMPLOYEE CUSOMTER LOGIN DASHBOARD  -    
+2020-05-13 08:11:45,503 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:41) - ******************************************
+2020-05-13 08:11:45,503 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:43) - SELECT: (1) VIEW ALL LOGIN ACCOUNTS
+2020-05-13 08:11:45,503 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:44) - SELECT: (2) VIEW ALL LOGIN ACCOUNTS WITH PENDING STATUS 
+2020-05-13 08:11:45,504 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:45) - SELECT: (3) APPROVE PENDING LOGIN ACCOUNTS 
+2020-05-13 08:11:45,504 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:46) - SELECT: (4) REJECT PENDING LOGIN ACCOUNTS
+2020-05-13 08:11:45,505 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:47) - SELECT: (5) VIEW ALL CUSTOMER
+2020-05-13 08:11:45,505 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:48) - SELECT: (6) DELETE A CUSTOMER
+2020-05-13 08:11:45,505 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:49) - SELECT: (7) EXIT THE APPLICATION
+2020-05-13 08:11:45,506 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:50) - SELECT: (8) BACK TO EMPLOYEE DASHBOARD
+2020-05-13 08:11:45,506 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:51) - SELECT: (9) BACK TO HOMEPAGE
+2020-05-13 08:11:57,632 -0400 [main] INFO  (welcomePage.java:15) - ************************************************
+2020-05-13 08:11:57,632 -0400 [main] INFO  (welcomePage.java:16) - *        WELCOME TO BANK OF FRIENDSHIP         *
+2020-05-13 08:11:57,632 -0400 [main] INFO  (welcomePage.java:17) - ************************************************
+2020-05-13 08:11:57,632 -0400 [main] INFO  (welcomePage.java:19) - SELECT: (1) LOGIN PAGE
+2020-05-13 08:11:57,633 -0400 [main] INFO  (welcomePage.java:20) - SELECT: (2) NEW USER CREATION PAGE
+2020-05-13 08:11:57,633 -0400 [main] INFO  (welcomePage.java:21) - SELECT: (3) EXIT APPLICATION
+2020-05-13 08:11:59,119 -0400 [main] INFO  (BankApplicationLogin.java:32) -   BANK OF FRIENDSHIP LOGIN PAGE   
+2020-05-13 08:11:59,119 -0400 [main] INFO  (BankApplicationLogin.java:33) - **************************************************
+2020-05-13 08:11:59,119 -0400 [main] INFO  (BankApplicationLogin.java:34) - SELECT: (1) LOGIN TO BANK APPLICATION
+2020-05-13 08:11:59,119 -0400 [main] INFO  (BankApplicationLogin.java:35) - SELECT: (2) EXIT THE APPLICATION
+2020-05-13 08:11:59,120 -0400 [main] INFO  (BankApplicationLogin.java:36) - SELECT: (3) BACK TO HOMEPAGE
+2020-05-13 08:12:07,479 -0400 [main] INFO  (BankApplicationLogin.java:44) - SYSTEM:  ENTER USERNAME
+2020-05-13 08:12:11,174 -0400 [main] INFO  (BankApplicationLogin.java:46) - SYSTEM:  ENTER PASSWORD
+2020-05-13 08:12:15,859 -0400 [main] INFO  (BankApplicationLogin.java:75) - SYSTEM:  YOUR ACCOUNT HAS BEEN REJECTED AND MARK FOR DELETION
+2020-05-13 08:12:15,859 -0400 [main] INFO  (BankApplicationLogin.java:32) -   BANK OF FRIENDSHIP LOGIN PAGE   
+2020-05-13 08:12:15,860 -0400 [main] INFO  (BankApplicationLogin.java:33) - **************************************************
+2020-05-13 08:12:15,860 -0400 [main] INFO  (BankApplicationLogin.java:34) - SELECT: (1) LOGIN TO BANK APPLICATION
+2020-05-13 08:12:15,860 -0400 [main] INFO  (BankApplicationLogin.java:35) - SELECT: (2) EXIT THE APPLICATION
+2020-05-13 08:12:15,860 -0400 [main] INFO  (BankApplicationLogin.java:36) - SELECT: (3) BACK TO HOMEPAGE
+2020-05-13 08:12:24,391 -0400 [main] INFO  (BankApplicationLogin.java:44) - SYSTEM:  ENTER USERNAME
+2020-05-13 08:12:30,423 -0400 [main] INFO  (BankApplicationLogin.java:46) - SYSTEM:  ENTER PASSWORD
+2020-05-13 08:12:34,899 -0400 [main] INFO  (BankApplicationLogin.java:70) - SYSTEM:  LOGIN SUCCESSFULL
+2020-05-13 08:12:34,900 -0400 [main] INFO  (BankAppLoginWelcome_EmployeeAccount.java:18) -   WELCOME TO BANK OF FRIENDSHIP EMPLOYEE DASHBOARD   
+2020-05-13 08:12:34,900 -0400 [main] INFO  (BankAppLoginWelcome_EmployeeAccount.java:19) - **************************************************
+2020-05-13 08:12:34,901 -0400 [main] INFO  (BankAppLoginWelcome_EmployeeAccount.java:21) - SELECT: (1) VIEW LOGIN ACCOUNTS
+2020-05-13 08:12:34,901 -0400 [main] INFO  (BankAppLoginWelcome_EmployeeAccount.java:22) - SELECT: (2) VIEW BANK ACCOUNTS (CHK - SAV)
+2020-05-13 08:12:34,901 -0400 [main] INFO  (BankAppLoginWelcome_EmployeeAccount.java:23) - SELECT: (3) EXIT THE APPLICATION
+2020-05-13 08:12:34,902 -0400 [main] INFO  (BankAppLoginWelcome_EmployeeAccount.java:24) - SELECT: (4) BACK TO HOMEPAGE
+2020-05-13 08:12:37,999 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:40) -   -  EMPLOYEE CUSOMTER LOGIN DASHBOARD  -    
+2020-05-13 08:12:38,000 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:41) - ******************************************
+2020-05-13 08:12:38,000 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:43) - SELECT: (1) VIEW ALL LOGIN ACCOUNTS
+2020-05-13 08:12:38,000 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:44) - SELECT: (2) VIEW ALL LOGIN ACCOUNTS WITH PENDING STATUS 
+2020-05-13 08:12:38,000 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:45) - SELECT: (3) APPROVE PENDING LOGIN ACCOUNTS 
+2020-05-13 08:12:38,001 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:46) - SELECT: (4) REJECT PENDING LOGIN ACCOUNTS
+2020-05-13 08:12:38,001 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:47) - SELECT: (5) VIEW ALL CUSTOMER
+2020-05-13 08:12:38,001 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:48) - SELECT: (6) DELETE A CUSTOMER
+2020-05-13 08:12:38,001 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:49) - SELECT: (7) EXIT THE APPLICATION
+2020-05-13 08:12:38,001 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:50) - SELECT: (8) BACK TO EMPLOYEE DASHBOARD
+2020-05-13 08:12:38,001 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:51) - SELECT: (9) BACK TO HOMEPAGE
+2020-05-13 08:12:46,044 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:118) - customer [Customer ID = FBJS196710040, Last Name = Smith, First Name = John, Email Address = john18@gmail.com, Contact Number = 4041231234, Date Of Birth (DOB) = 1967-09-05, Street = 5686 Mynew Street, City = Harlem, State = NY]
+2020-05-13 08:12:46,045 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:118) - customer [Customer ID = FBGC198610064, Last Name = Cooper, First Name = Glenn, Email Address = gcooper@gmail.com, Contact Number = 2021345731, Date Of Birth (DOB) = 1986-11-24, Street = 1234 first street, City = Brookdale, State = NY]
+2020-05-13 08:12:46,045 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:118) - customer [Customer ID = FBRG199110000, Last Name = Glenn, First Name = Randy, Email Address = rglenn@gmail.com, Contact Number = 309874563, Date Of Birth (DOB) = 1991-09-23, Street = 1234 Spooner Street, City = Smallville, State = WV]
+2020-05-13 08:12:46,045 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:118) - customer [Customer ID = FBJA199910082, Last Name = Abram, First Name = John, Email Address = johnabram@gmail.com, Contact Number = 3421231234, Date Of Birth (DOB) = 1999-10-20, Street = 435 newstreet street, City = brooklyn, State = NY]
+2020-05-13 08:12:46,045 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:118) - customer [Customer ID = FBUD200110100, Last Name = DemoOne, First Name = UserOne, Email Address = demo1@gmail.com, Contact Number = 2021231234, Date Of Birth (DOB) = 2001-10-10, Street = 1234 Demo Street, City = DemoCity, State = DC]
+2020-05-13 08:12:46,045 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:118) - customer [Customer ID = FBUD199010101, Last Name = Demotwo, First Name = Usertwo, Email Address = demouser2@gmail.com, Contact Number = 2021231234, Date Of Birth (DOB) = 1990-10-10, Street = 1234 Demo Street, City = DemoCity, State = DC]
+2020-05-13 08:12:46,046 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:40) -   -  EMPLOYEE CUSOMTER LOGIN DASHBOARD  -    
+2020-05-13 08:12:46,046 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:41) - ******************************************
+2020-05-13 08:12:46,046 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:43) - SELECT: (1) VIEW ALL LOGIN ACCOUNTS
+2020-05-13 08:12:46,046 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:44) - SELECT: (2) VIEW ALL LOGIN ACCOUNTS WITH PENDING STATUS 
+2020-05-13 08:12:46,046 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:45) - SELECT: (3) APPROVE PENDING LOGIN ACCOUNTS 
+2020-05-13 08:12:46,047 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:46) - SELECT: (4) REJECT PENDING LOGIN ACCOUNTS
+2020-05-13 08:12:46,047 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:47) - SELECT: (5) VIEW ALL CUSTOMER
+2020-05-13 08:12:46,047 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:48) - SELECT: (6) DELETE A CUSTOMER
+2020-05-13 08:12:46,047 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:49) - SELECT: (7) EXIT THE APPLICATION
+2020-05-13 08:12:46,047 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:50) - SELECT: (8) BACK TO EMPLOYEE DASHBOARD
+2020-05-13 08:12:46,048 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:51) - SELECT: (9) BACK TO HOMEPAGE
+2020-05-13 08:13:06,207 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:130) - SYSTEM:  DELETE A CUSTOMER ACCOUNT 
+2020-05-13 08:13:06,208 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:131) - SYSTEM:  ENTER THE CUSTOMER ID NUMBER
+2020-05-13 08:13:18,221 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:135) - SYSTEM:  THE REQUESTED CUSTOMER HAS BEEN DELETED
+2020-05-13 08:13:18,222 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:40) -   -  EMPLOYEE CUSOMTER LOGIN DASHBOARD  -    
+2020-05-13 08:13:18,222 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:41) - ******************************************
+2020-05-13 08:13:18,223 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:43) - SELECT: (1) VIEW ALL LOGIN ACCOUNTS
+2020-05-13 08:13:18,223 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:44) - SELECT: (2) VIEW ALL LOGIN ACCOUNTS WITH PENDING STATUS 
+2020-05-13 08:13:18,224 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:45) - SELECT: (3) APPROVE PENDING LOGIN ACCOUNTS 
+2020-05-13 08:13:18,224 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:46) - SELECT: (4) REJECT PENDING LOGIN ACCOUNTS
+2020-05-13 08:13:18,225 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:47) - SELECT: (5) VIEW ALL CUSTOMER
+2020-05-13 08:13:18,225 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:48) - SELECT: (6) DELETE A CUSTOMER
+2020-05-13 08:13:18,225 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:49) - SELECT: (7) EXIT THE APPLICATION
+2020-05-13 08:13:18,225 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:50) - SELECT: (8) BACK TO EMPLOYEE DASHBOARD
+2020-05-13 08:13:18,226 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:51) - SELECT: (9) BACK TO HOMEPAGE
+2020-05-13 08:13:28,246 -0400 [main] INFO  (welcomePage.java:15) - ************************************************
+2020-05-13 08:13:28,247 -0400 [main] INFO  (welcomePage.java:16) - *        WELCOME TO BANK OF FRIENDSHIP         *
+2020-05-13 08:13:28,247 -0400 [main] INFO  (welcomePage.java:17) - ************************************************
+2020-05-13 08:13:28,247 -0400 [main] INFO  (welcomePage.java:19) - SELECT: (1) LOGIN PAGE
+2020-05-13 08:13:28,247 -0400 [main] INFO  (welcomePage.java:20) - SELECT: (2) NEW USER CREATION PAGE
+2020-05-13 08:13:28,247 -0400 [main] INFO  (welcomePage.java:21) - SELECT: (3) EXIT APPLICATION
+2020-05-13 08:13:29,166 -0400 [main] INFO  (BankApplicationLogin.java:32) -   BANK OF FRIENDSHIP LOGIN PAGE   
+2020-05-13 08:13:29,167 -0400 [main] INFO  (BankApplicationLogin.java:33) - **************************************************
+2020-05-13 08:13:29,167 -0400 [main] INFO  (BankApplicationLogin.java:34) - SELECT: (1) LOGIN TO BANK APPLICATION
+2020-05-13 08:13:29,167 -0400 [main] INFO  (BankApplicationLogin.java:35) - SELECT: (2) EXIT THE APPLICATION
+2020-05-13 08:13:29,167 -0400 [main] INFO  (BankApplicationLogin.java:36) - SELECT: (3) BACK TO HOMEPAGE
+2020-05-13 08:13:30,383 -0400 [main] INFO  (BankApplicationLogin.java:44) - SYSTEM:  ENTER USERNAME
+2020-05-13 08:13:33,518 -0400 [main] INFO  (BankApplicationLogin.java:46) - SYSTEM:  ENTER PASSWORD
+2020-05-13 08:13:38,668 -0400 [main] INFO  (BankApplicationLogin.java:81) - SYSTEM: UserName or Password entered is incorrect
+2020-05-13 08:13:38,669 -0400 [main] INFO  (BankApplicationLogin.java:32) -   BANK OF FRIENDSHIP LOGIN PAGE   
+2020-05-13 08:13:38,669 -0400 [main] INFO  (BankApplicationLogin.java:33) - **************************************************
+2020-05-13 08:13:38,669 -0400 [main] INFO  (BankApplicationLogin.java:34) - SELECT: (1) LOGIN TO BANK APPLICATION
+2020-05-13 08:13:38,669 -0400 [main] INFO  (BankApplicationLogin.java:35) - SELECT: (2) EXIT THE APPLICATION
+2020-05-13 08:13:38,670 -0400 [main] INFO  (BankApplicationLogin.java:36) - SELECT: (3) BACK TO HOMEPAGE
+2020-05-13 08:13:46,335 -0400 [main] INFO  (BankApplicationLogin.java:44) - SYSTEM:  ENTER USERNAME
+2020-05-13 08:13:50,422 -0400 [main] INFO  (BankApplicationLogin.java:46) - SYSTEM:  ENTER PASSWORD
+2020-05-13 08:14:00,173 -0400 [main] INFO  (BankApplicationLogin.java:70) - SYSTEM:  LOGIN SUCCESSFULL
+2020-05-13 08:14:00,173 -0400 [main] INFO  (BankAppLoginWelcome_EmployeeAccount.java:18) -   WELCOME TO BANK OF FRIENDSHIP EMPLOYEE DASHBOARD   
+2020-05-13 08:14:00,173 -0400 [main] INFO  (BankAppLoginWelcome_EmployeeAccount.java:19) - **************************************************
+2020-05-13 08:14:00,173 -0400 [main] INFO  (BankAppLoginWelcome_EmployeeAccount.java:21) - SELECT: (1) VIEW LOGIN ACCOUNTS
+2020-05-13 08:14:00,173 -0400 [main] INFO  (BankAppLoginWelcome_EmployeeAccount.java:22) - SELECT: (2) VIEW BANK ACCOUNTS (CHK - SAV)
+2020-05-13 08:14:00,173 -0400 [main] INFO  (BankAppLoginWelcome_EmployeeAccount.java:23) - SELECT: (3) EXIT THE APPLICATION
+2020-05-13 08:14:00,173 -0400 [main] INFO  (BankAppLoginWelcome_EmployeeAccount.java:24) - SELECT: (4) BACK TO HOMEPAGE
+2020-05-13 08:14:05,783 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:40) -   -  EMPLOYEE CUSOMTER LOGIN DASHBOARD  -    
+2020-05-13 08:14:05,783 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:41) - ******************************************
+2020-05-13 08:14:05,783 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:43) - SELECT: (1) VIEW ALL LOGIN ACCOUNTS
+2020-05-13 08:14:05,783 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:44) - SELECT: (2) VIEW ALL LOGIN ACCOUNTS WITH PENDING STATUS 
+2020-05-13 08:14:05,783 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:45) - SELECT: (3) APPROVE PENDING LOGIN ACCOUNTS 
+2020-05-13 08:14:05,783 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:46) - SELECT: (4) REJECT PENDING LOGIN ACCOUNTS
+2020-05-13 08:14:05,783 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:47) - SELECT: (5) VIEW ALL CUSTOMER
+2020-05-13 08:14:05,784 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:48) - SELECT: (6) DELETE A CUSTOMER
+2020-05-13 08:14:05,784 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:49) - SELECT: (7) EXIT THE APPLICATION
+2020-05-13 08:14:05,784 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:50) - SELECT: (8) BACK TO EMPLOYEE DASHBOARD
+2020-05-13 08:14:05,784 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:51) - SELECT: (9) BACK TO HOMEPAGE
+2020-05-13 08:14:08,373 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:40) -   -  EMPLOYEE CUSOMTER LOGIN DASHBOARD  -    
+2020-05-13 08:14:08,373 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:41) - ******************************************
+2020-05-13 08:14:08,374 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:43) - SELECT: (1) VIEW ALL LOGIN ACCOUNTS
+2020-05-13 08:14:08,374 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:44) - SELECT: (2) VIEW ALL LOGIN ACCOUNTS WITH PENDING STATUS 
+2020-05-13 08:14:08,374 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:45) - SELECT: (3) APPROVE PENDING LOGIN ACCOUNTS 
+2020-05-13 08:14:08,375 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:46) - SELECT: (4) REJECT PENDING LOGIN ACCOUNTS
+2020-05-13 08:14:08,375 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:47) - SELECT: (5) VIEW ALL CUSTOMER
+2020-05-13 08:14:08,375 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:48) - SELECT: (6) DELETE A CUSTOMER
+2020-05-13 08:14:08,375 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:49) - SELECT: (7) EXIT THE APPLICATION
+2020-05-13 08:14:08,376 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:50) - SELECT: (8) BACK TO EMPLOYEE DASHBOARD
+2020-05-13 08:14:08,376 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:51) - SELECT: (9) BACK TO HOMEPAGE
+2020-05-13 08:14:26,166 -0400 [main] INFO  (welcomePage.java:15) - ************************************************
+2020-05-13 08:14:26,166 -0400 [main] INFO  (welcomePage.java:16) - *        WELCOME TO BANK OF FRIENDSHIP         *
+2020-05-13 08:14:26,166 -0400 [main] INFO  (welcomePage.java:17) - ************************************************
+2020-05-13 08:14:26,167 -0400 [main] INFO  (welcomePage.java:19) - SELECT: (1) LOGIN PAGE
+2020-05-13 08:14:26,167 -0400 [main] INFO  (welcomePage.java:20) - SELECT: (2) NEW USER CREATION PAGE
+2020-05-13 08:14:26,167 -0400 [main] INFO  (welcomePage.java:21) - SELECT: (3) EXIT APPLICATION
+2020-05-13 08:14:27,174 -0400 [main] INFO  (BankApplicationLogin.java:32) -   BANK OF FRIENDSHIP LOGIN PAGE   
+2020-05-13 08:14:27,175 -0400 [main] INFO  (BankApplicationLogin.java:33) - **************************************************
+2020-05-13 08:14:27,175 -0400 [main] INFO  (BankApplicationLogin.java:34) - SELECT: (1) LOGIN TO BANK APPLICATION
+2020-05-13 08:14:27,175 -0400 [main] INFO  (BankApplicationLogin.java:35) - SELECT: (2) EXIT THE APPLICATION
+2020-05-13 08:14:27,175 -0400 [main] INFO  (BankApplicationLogin.java:36) - SELECT: (3) BACK TO HOMEPAGE
+2020-05-13 08:14:28,574 -0400 [main] INFO  (BankApplicationLogin.java:44) - SYSTEM:  ENTER USERNAME
+2020-05-13 08:14:33,519 -0400 [main] INFO  (BankApplicationLogin.java:46) - SYSTEM:  ENTER PASSWORD
+2020-05-13 08:14:37,905 -0400 [main] INFO  (BankApplicationLogin.java:62) - SYSTEM:  LOGIN SUCCESSFULL
+2020-05-13 08:14:37,916 -0400 [main] INFO  (BankAppLoginWelcome_CustomerAccount.java:21) -   WELCOME TO BANK OF FRIENDSHIP ACCOUNT SUMMARY   
+2020-05-13 08:14:37,916 -0400 [main] INFO  (BankAppLoginWelcome_CustomerAccount.java:22) - **************************************************
+2020-05-13 08:14:37,917 -0400 [main] INFO  (BankAppLoginWelcome_CustomerAccount.java:24) - SELECT: (1) CHECKING ACCOUNT
+2020-05-13 08:14:37,917 -0400 [main] INFO  (BankAppLoginWelcome_CustomerAccount.java:25) - SELECT: (2) SAVING ACCOUNT
+2020-05-13 08:14:37,917 -0400 [main] INFO  (BankAppLoginWelcome_CustomerAccount.java:26) - SELECT: (3) EXIT THE APPLICATION
+2020-05-13 08:14:37,918 -0400 [main] INFO  (BankAppLoginWelcome_CustomerAccount.java:27) - SELECT: (4) BACK TO HOMEPAGE
+2020-05-13 08:14:44,034 -0400 [main] INFO  (CustomerAccount_Checking.java:31) -   WELCOME TO BANK OF FRIENDSHIP CHECKING ACCOUNT SUMMARY   
+2020-05-13 08:14:44,034 -0400 [main] INFO  (CustomerAccount_Checking.java:32) - ************************************************************
+2020-05-13 08:14:44,035 -0400 [main] INFO  (CustomerAccount_Checking.java:34) - SELECT: (1) GET BALANCE
+2020-05-13 08:14:44,035 -0400 [main] INFO  (CustomerAccount_Checking.java:35) - SELECT: (2) DEPOSIT 
+2020-05-13 08:14:44,035 -0400 [main] INFO  (CustomerAccount_Checking.java:36) - SELECT: (3) WITHDRAWL 
+2020-05-13 08:14:44,035 -0400 [main] INFO  (CustomerAccount_Checking.java:37) - SELECT: (4) TRANSFER (TO YOUR SAVING ACCOUNT)
+2020-05-13 08:14:44,035 -0400 [main] INFO  (CustomerAccount_Checking.java:38) - SELECT: (5) TRANSFER (TO A ANOTHER BANK QUALIFIED ACCOUNT)
+2020-05-13 08:14:44,035 -0400 [main] INFO  (CustomerAccount_Checking.java:39) - SELECT: (6) BACK TO ACCOUNT SUMMARY HOMEPAGE
+2020-05-13 08:14:44,035 -0400 [main] INFO  (CustomerAccount_Checking.java:40) - SELECT: (7) EXIT THE APPLICATION
+2020-05-13 08:14:44,035 -0400 [main] INFO  (CustomerAccount_Checking.java:41) - SELECT: (8) BACK TO HOMEPAGE
+2020-05-13 08:14:50,046 -0400 [main] INFO  (CustomerAccount_Checking.java:54) - 
+2020-05-13 08:14:50,047 -0400 [main] INFO  (CustomerAccount_Checking.java:55) - ACCOUNT STATUS:   PENDING
+2020-05-13 08:14:50,047 -0400 [main] INFO  (CustomerAccount_Checking.java:56) - SYSTEM: ACCOUNT IS IN PENDING STATUS, FUNCTIONALITY WILL BE LIMITED
+2020-05-13 08:14:50,047 -0400 [main] INFO  (CustomerAccount_Checking.java:57) -         PLEASE CONTACT A BANK EMPLOYEE
+2020-05-13 08:14:50,047 -0400 [main] INFO  (CustomerAccount_Checking.java:31) -   WELCOME TO BANK OF FRIENDSHIP CHECKING ACCOUNT SUMMARY   
+2020-05-13 08:14:50,047 -0400 [main] INFO  (CustomerAccount_Checking.java:32) - ************************************************************
+2020-05-13 08:14:50,047 -0400 [main] INFO  (CustomerAccount_Checking.java:34) - SELECT: (1) GET BALANCE
+2020-05-13 08:14:50,047 -0400 [main] INFO  (CustomerAccount_Checking.java:35) - SELECT: (2) DEPOSIT 
+2020-05-13 08:14:50,047 -0400 [main] INFO  (CustomerAccount_Checking.java:36) - SELECT: (3) WITHDRAWL 
+2020-05-13 08:14:50,047 -0400 [main] INFO  (CustomerAccount_Checking.java:37) - SELECT: (4) TRANSFER (TO YOUR SAVING ACCOUNT)
+2020-05-13 08:14:50,047 -0400 [main] INFO  (CustomerAccount_Checking.java:38) - SELECT: (5) TRANSFER (TO A ANOTHER BANK QUALIFIED ACCOUNT)
+2020-05-13 08:14:50,047 -0400 [main] INFO  (CustomerAccount_Checking.java:39) - SELECT: (6) BACK TO ACCOUNT SUMMARY HOMEPAGE
+2020-05-13 08:14:50,047 -0400 [main] INFO  (CustomerAccount_Checking.java:40) - SELECT: (7) EXIT THE APPLICATION
+2020-05-13 08:14:50,048 -0400 [main] INFO  (CustomerAccount_Checking.java:41) - SELECT: (8) BACK TO HOMEPAGE
+2020-05-13 08:15:14,470 -0400 [main] INFO  (welcomePage.java:15) - ************************************************
+2020-05-13 08:15:14,470 -0400 [main] INFO  (welcomePage.java:16) - *        WELCOME TO BANK OF FRIENDSHIP         *
+2020-05-13 08:15:14,471 -0400 [main] INFO  (welcomePage.java:17) - ************************************************
+2020-05-13 08:15:14,471 -0400 [main] INFO  (welcomePage.java:19) - SELECT: (1) LOGIN PAGE
+2020-05-13 08:15:14,471 -0400 [main] INFO  (welcomePage.java:20) - SELECT: (2) NEW USER CREATION PAGE
+2020-05-13 08:15:14,471 -0400 [main] INFO  (welcomePage.java:21) - SELECT: (3) EXIT APPLICATION
+2020-05-13 08:15:16,109 -0400 [main] INFO  (BankApplicationLogin.java:32) -   BANK OF FRIENDSHIP LOGIN PAGE   
+2020-05-13 08:15:16,110 -0400 [main] INFO  (BankApplicationLogin.java:33) - **************************************************
+2020-05-13 08:15:16,110 -0400 [main] INFO  (BankApplicationLogin.java:34) - SELECT: (1) LOGIN TO BANK APPLICATION
+2020-05-13 08:15:16,110 -0400 [main] INFO  (BankApplicationLogin.java:35) - SELECT: (2) EXIT THE APPLICATION
+2020-05-13 08:15:16,110 -0400 [main] INFO  (BankApplicationLogin.java:36) - SELECT: (3) BACK TO HOMEPAGE
+2020-05-13 08:15:17,166 -0400 [main] INFO  (BankApplicationLogin.java:44) - SYSTEM:  ENTER USERNAME
+2020-05-13 08:15:21,541 -0400 [main] INFO  (BankApplicationLogin.java:46) - SYSTEM:  ENTER PASSWORD
+2020-05-13 08:15:27,822 -0400 [main] INFO  (BankApplicationLogin.java:70) - SYSTEM:  LOGIN SUCCESSFULL
+2020-05-13 08:15:27,823 -0400 [main] INFO  (BankAppLoginWelcome_EmployeeAccount.java:18) -   WELCOME TO BANK OF FRIENDSHIP EMPLOYEE DASHBOARD   
+2020-05-13 08:15:27,823 -0400 [main] INFO  (BankAppLoginWelcome_EmployeeAccount.java:19) - **************************************************
+2020-05-13 08:15:27,823 -0400 [main] INFO  (BankAppLoginWelcome_EmployeeAccount.java:21) - SELECT: (1) VIEW LOGIN ACCOUNTS
+2020-05-13 08:15:27,823 -0400 [main] INFO  (BankAppLoginWelcome_EmployeeAccount.java:22) - SELECT: (2) VIEW BANK ACCOUNTS (CHK - SAV)
+2020-05-13 08:15:27,823 -0400 [main] INFO  (BankAppLoginWelcome_EmployeeAccount.java:23) - SELECT: (3) EXIT THE APPLICATION
+2020-05-13 08:15:27,823 -0400 [main] INFO  (BankAppLoginWelcome_EmployeeAccount.java:24) - SELECT: (4) BACK TO HOMEPAGE
+2020-05-13 08:15:29,016 -0400 [main] INFO  (EmployeeWelcomePage_ViewBankAccounts.java:34) -   -  EMPLOYEE CUSOMTER LOGIN DASHBOARD  -    
+2020-05-13 08:15:29,016 -0400 [main] INFO  (EmployeeWelcomePage_ViewBankAccounts.java:35) - ******************************************
+2020-05-13 08:15:29,016 -0400 [main] INFO  (EmployeeWelcomePage_ViewBankAccounts.java:37) - SELECT: (1) VIEW ALL BANK ACCOUNTS
+2020-05-13 08:15:29,016 -0400 [main] INFO  (EmployeeWelcomePage_ViewBankAccounts.java:38) - SELECT: (2) VIEW ALL BANK ACCOUNTS WITH PENDING STATUS 
+2020-05-13 08:15:29,017 -0400 [main] INFO  (EmployeeWelcomePage_ViewBankAccounts.java:39) - SELECT: (3) APPROVE PENDING BANK ACCOUNTS 
+2020-05-13 08:15:29,017 -0400 [main] INFO  (EmployeeWelcomePage_ViewBankAccounts.java:40) - SELECT: (4) REJECT BANK LOGIN ACCOUNTS
+2020-05-13 08:15:29,017 -0400 [main] INFO  (EmployeeWelcomePage_ViewBankAccounts.java:41) - SELECT: (5) EXIT THE APPLICATION
+2020-05-13 08:15:29,017 -0400 [main] INFO  (EmployeeWelcomePage_ViewBankAccounts.java:42) - SELECT: (6) BACK TO EMPLOYEE DASHBOARD
+2020-05-13 08:15:29,017 -0400 [main] INFO  (EmployeeWelcomePage_ViewBankAccounts.java:43) - SELECT: (7) BACK TO HOMEPAGE
+2020-05-13 08:15:34,931 -0400 [main] INFO  (EmployeeWelcomePage_ViewBankAccounts.java:53) - bankAccount [accountID=FBAC10011, customerID=FBJA199910082, accountType=CHECKING, balance=630.0, accountStatus=ACTIVE]
+2020-05-13 08:15:34,931 -0400 [main] INFO  (EmployeeWelcomePage_ViewBankAccounts.java:53) - bankAccount [accountID=FBAC10012, customerID=FBJA199910082, accountType=SAVING, balance=400.0, accountStatus=ACTIVE]
+2020-05-13 08:15:34,931 -0400 [main] INFO  (EmployeeWelcomePage_ViewBankAccounts.java:53) - bankAccount [accountID=FBAC10009, customerID=FBGC198610064, accountType=CHECKING, balance=300.0, accountStatus=ACTIVE]
+2020-05-13 08:15:34,931 -0400 [main] INFO  (EmployeeWelcomePage_ViewBankAccounts.java:53) - bankAccount [accountID=FBAC10010, customerID=FBGC198610064, accountType=SAVING, balance=100.0, accountStatus=ACTIVE]
+2020-05-13 08:15:34,932 -0400 [main] INFO  (EmployeeWelcomePage_ViewBankAccounts.java:53) - bankAccount [accountID=FBAC10020, customerID=FBUD200110100, accountType=CHECKING, balance=300.0, accountStatus=PENDING]
+2020-05-13 08:15:34,932 -0400 [main] INFO  (EmployeeWelcomePage_ViewBankAccounts.java:53) - bankAccount [accountID=FBAC10021, customerID=FBUD200110100, accountType=SAVING, balance=100.0, accountStatus=PENDING]
+2020-05-13 08:15:34,932 -0400 [main] INFO  (EmployeeWelcomePage_ViewBankAccounts.java:34) -   -  EMPLOYEE CUSOMTER LOGIN DASHBOARD  -    
+2020-05-13 08:15:34,932 -0400 [main] INFO  (EmployeeWelcomePage_ViewBankAccounts.java:35) - ******************************************
+2020-05-13 08:15:34,932 -0400 [main] INFO  (EmployeeWelcomePage_ViewBankAccounts.java:37) - SELECT: (1) VIEW ALL BANK ACCOUNTS
+2020-05-13 08:15:34,932 -0400 [main] INFO  (EmployeeWelcomePage_ViewBankAccounts.java:38) - SELECT: (2) VIEW ALL BANK ACCOUNTS WITH PENDING STATUS 
+2020-05-13 08:15:34,932 -0400 [main] INFO  (EmployeeWelcomePage_ViewBankAccounts.java:39) - SELECT: (3) APPROVE PENDING BANK ACCOUNTS 
+2020-05-13 08:15:34,932 -0400 [main] INFO  (EmployeeWelcomePage_ViewBankAccounts.java:40) - SELECT: (4) REJECT BANK LOGIN ACCOUNTS
+2020-05-13 08:15:34,933 -0400 [main] INFO  (EmployeeWelcomePage_ViewBankAccounts.java:41) - SELECT: (5) EXIT THE APPLICATION
+2020-05-13 08:15:34,933 -0400 [main] INFO  (EmployeeWelcomePage_ViewBankAccounts.java:42) - SELECT: (6) BACK TO EMPLOYEE DASHBOARD
+2020-05-13 08:15:34,933 -0400 [main] INFO  (EmployeeWelcomePage_ViewBankAccounts.java:43) - SELECT: (7) BACK TO HOMEPAGE
+2020-05-13 08:15:56,603 -0400 [main] INFO  (EmployeeWelcomePage_ViewBankAccounts.java:67) - bankAccount [accountID=FBAC10020, customerID=FBUD200110100, accountType=CHECKING, balance=300.0, accountStatus=PENDING]
+2020-05-13 08:15:56,604 -0400 [main] INFO  (EmployeeWelcomePage_ViewBankAccounts.java:67) - bankAccount [accountID=FBAC10021, customerID=FBUD200110100, accountType=SAVING, balance=100.0, accountStatus=PENDING]
+2020-05-13 08:15:56,604 -0400 [main] INFO  (EmployeeWelcomePage_ViewBankAccounts.java:34) -   -  EMPLOYEE CUSOMTER LOGIN DASHBOARD  -    
+2020-05-13 08:15:56,604 -0400 [main] INFO  (EmployeeWelcomePage_ViewBankAccounts.java:35) - ******************************************
+2020-05-13 08:15:56,604 -0400 [main] INFO  (EmployeeWelcomePage_ViewBankAccounts.java:37) - SELECT: (1) VIEW ALL BANK ACCOUNTS
+2020-05-13 08:15:56,604 -0400 [main] INFO  (EmployeeWelcomePage_ViewBankAccounts.java:38) - SELECT: (2) VIEW ALL BANK ACCOUNTS WITH PENDING STATUS 
+2020-05-13 08:15:56,604 -0400 [main] INFO  (EmployeeWelcomePage_ViewBankAccounts.java:39) - SELECT: (3) APPROVE PENDING BANK ACCOUNTS 
+2020-05-13 08:15:56,604 -0400 [main] INFO  (EmployeeWelcomePage_ViewBankAccounts.java:40) - SELECT: (4) REJECT BANK LOGIN ACCOUNTS
+2020-05-13 08:15:56,605 -0400 [main] INFO  (EmployeeWelcomePage_ViewBankAccounts.java:41) - SELECT: (5) EXIT THE APPLICATION
+2020-05-13 08:15:56,605 -0400 [main] INFO  (EmployeeWelcomePage_ViewBankAccounts.java:42) - SELECT: (6) BACK TO EMPLOYEE DASHBOARD
+2020-05-13 08:15:56,605 -0400 [main] INFO  (EmployeeWelcomePage_ViewBankAccounts.java:43) - SELECT: (7) BACK TO HOMEPAGE
+2020-05-13 08:16:04,470 -0400 [main] INFO  (EmployeeWelcomePage_ViewBankAccounts.java:78) - SYSTEM:  APPROVE PENDING BANK ACCOUNTS 
+2020-05-13 08:16:04,470 -0400 [main] INFO  (EmployeeWelcomePage_ViewBankAccounts.java:79) - SYSTEM:  ENTER THE CUSTOMER ID NUMBER
+2020-05-13 08:16:12,693 -0400 [main] INFO  (EmployeeWelcomePage_ViewBankAccounts.java:81) - SYSTEM:  ENTER ACCOUNT TYPE (CHECKING OR SAVING)
+2020-05-13 08:16:21,183 -0400 [main] INFO  (EmployeeWelcomePage_ViewBankAccounts.java:84) - SYSTEM:  FBUD200110100 PENDING ACCOUNT HAS BEEN APPROVED.. 
+2020-05-13 08:16:21,184 -0400 [main] INFO  (EmployeeWelcomePage_ViewBankAccounts.java:34) -   -  EMPLOYEE CUSOMTER LOGIN DASHBOARD  -    
+2020-05-13 08:16:21,185 -0400 [main] INFO  (EmployeeWelcomePage_ViewBankAccounts.java:35) - ******************************************
+2020-05-13 08:16:21,185 -0400 [main] INFO  (EmployeeWelcomePage_ViewBankAccounts.java:37) - SELECT: (1) VIEW ALL BANK ACCOUNTS
+2020-05-13 08:16:21,186 -0400 [main] INFO  (EmployeeWelcomePage_ViewBankAccounts.java:38) - SELECT: (2) VIEW ALL BANK ACCOUNTS WITH PENDING STATUS 
+2020-05-13 08:16:21,186 -0400 [main] INFO  (EmployeeWelcomePage_ViewBankAccounts.java:39) - SELECT: (3) APPROVE PENDING BANK ACCOUNTS 
+2020-05-13 08:16:21,187 -0400 [main] INFO  (EmployeeWelcomePage_ViewBankAccounts.java:40) - SELECT: (4) REJECT BANK LOGIN ACCOUNTS
+2020-05-13 08:16:21,187 -0400 [main] INFO  (EmployeeWelcomePage_ViewBankAccounts.java:41) - SELECT: (5) EXIT THE APPLICATION
+2020-05-13 08:16:21,187 -0400 [main] INFO  (EmployeeWelcomePage_ViewBankAccounts.java:42) - SELECT: (6) BACK TO EMPLOYEE DASHBOARD
+2020-05-13 08:16:21,188 -0400 [main] INFO  (EmployeeWelcomePage_ViewBankAccounts.java:43) - SELECT: (7) BACK TO HOMEPAGE
+2020-05-13 08:16:28,717 -0400 [main] INFO  (EmployeeWelcomePage_ViewBankAccounts.java:78) - SYSTEM:  APPROVE PENDING BANK ACCOUNTS 
+2020-05-13 08:16:28,718 -0400 [main] INFO  (EmployeeWelcomePage_ViewBankAccounts.java:79) - SYSTEM:  ENTER THE CUSTOMER ID NUMBER
+2020-05-13 08:16:34,015 -0400 [main] INFO  (EmployeeWelcomePage_ViewBankAccounts.java:81) - SYSTEM:  ENTER ACCOUNT TYPE (CHECKING OR SAVING)
+2020-05-13 08:16:42,230 -0400 [main] INFO  (EmployeeWelcomePage_ViewBankAccounts.java:84) - SYSTEM:  FBUD200110100 PENDING ACCOUNT HAS BEEN APPROVED.. 
+2020-05-13 08:16:42,230 -0400 [main] INFO  (EmployeeWelcomePage_ViewBankAccounts.java:34) -   -  EMPLOYEE CUSOMTER LOGIN DASHBOARD  -    
+2020-05-13 08:16:42,230 -0400 [main] INFO  (EmployeeWelcomePage_ViewBankAccounts.java:35) - ******************************************
+2020-05-13 08:16:42,230 -0400 [main] INFO  (EmployeeWelcomePage_ViewBankAccounts.java:37) - SELECT: (1) VIEW ALL BANK ACCOUNTS
+2020-05-13 08:16:42,230 -0400 [main] INFO  (EmployeeWelcomePage_ViewBankAccounts.java:38) - SELECT: (2) VIEW ALL BANK ACCOUNTS WITH PENDING STATUS 
+2020-05-13 08:16:42,231 -0400 [main] INFO  (EmployeeWelcomePage_ViewBankAccounts.java:39) - SELECT: (3) APPROVE PENDING BANK ACCOUNTS 
+2020-05-13 08:16:42,231 -0400 [main] INFO  (EmployeeWelcomePage_ViewBankAccounts.java:40) - SELECT: (4) REJECT BANK LOGIN ACCOUNTS
+2020-05-13 08:16:42,231 -0400 [main] INFO  (EmployeeWelcomePage_ViewBankAccounts.java:41) - SELECT: (5) EXIT THE APPLICATION
+2020-05-13 08:16:42,231 -0400 [main] INFO  (EmployeeWelcomePage_ViewBankAccounts.java:42) - SELECT: (6) BACK TO EMPLOYEE DASHBOARD
+2020-05-13 08:16:42,231 -0400 [main] INFO  (EmployeeWelcomePage_ViewBankAccounts.java:43) - SELECT: (7) BACK TO HOMEPAGE
+2020-05-13 08:17:20,318 -0400 [main] INFO  (welcomePage.java:15) - ************************************************
+2020-05-13 08:17:20,318 -0400 [main] INFO  (welcomePage.java:16) - *        WELCOME TO BANK OF FRIENDSHIP         *
+2020-05-13 08:17:20,319 -0400 [main] INFO  (welcomePage.java:17) - ************************************************
+2020-05-13 08:17:20,319 -0400 [main] INFO  (welcomePage.java:19) - SELECT: (1) LOGIN PAGE
+2020-05-13 08:17:20,319 -0400 [main] INFO  (welcomePage.java:20) - SELECT: (2) NEW USER CREATION PAGE
+2020-05-13 08:17:20,319 -0400 [main] INFO  (welcomePage.java:21) - SELECT: (3) EXIT APPLICATION
+2020-05-13 08:17:21,254 -0400 [main] INFO  (BankApplicationLogin.java:32) -   BANK OF FRIENDSHIP LOGIN PAGE   
+2020-05-13 08:17:21,254 -0400 [main] INFO  (BankApplicationLogin.java:33) - **************************************************
+2020-05-13 08:17:21,254 -0400 [main] INFO  (BankApplicationLogin.java:34) - SELECT: (1) LOGIN TO BANK APPLICATION
+2020-05-13 08:17:21,254 -0400 [main] INFO  (BankApplicationLogin.java:35) - SELECT: (2) EXIT THE APPLICATION
+2020-05-13 08:17:21,254 -0400 [main] INFO  (BankApplicationLogin.java:36) - SELECT: (3) BACK TO HOMEPAGE
+2020-05-13 08:17:22,205 -0400 [main] INFO  (BankApplicationLogin.java:44) - SYSTEM:  ENTER USERNAME
+2020-05-13 08:17:25,414 -0400 [main] INFO  (BankApplicationLogin.java:46) - SYSTEM:  ENTER PASSWORD
+2020-05-13 08:17:29,130 -0400 [main] INFO  (BankApplicationLogin.java:62) - SYSTEM:  LOGIN SUCCESSFULL
+2020-05-13 08:17:29,130 -0400 [main] INFO  (BankAppLoginWelcome_CustomerAccount.java:21) -   WELCOME TO BANK OF FRIENDSHIP ACCOUNT SUMMARY   
+2020-05-13 08:17:29,131 -0400 [main] INFO  (BankAppLoginWelcome_CustomerAccount.java:22) - **************************************************
+2020-05-13 08:17:29,131 -0400 [main] INFO  (BankAppLoginWelcome_CustomerAccount.java:24) - SELECT: (1) CHECKING ACCOUNT
+2020-05-13 08:17:29,131 -0400 [main] INFO  (BankAppLoginWelcome_CustomerAccount.java:25) - SELECT: (2) SAVING ACCOUNT
+2020-05-13 08:17:29,131 -0400 [main] INFO  (BankAppLoginWelcome_CustomerAccount.java:26) - SELECT: (3) EXIT THE APPLICATION
+2020-05-13 08:17:29,131 -0400 [main] INFO  (BankAppLoginWelcome_CustomerAccount.java:27) - SELECT: (4) BACK TO HOMEPAGE
+2020-05-13 08:17:30,367 -0400 [main] INFO  (CustomerAccount_Checking.java:31) -   WELCOME TO BANK OF FRIENDSHIP CHECKING ACCOUNT SUMMARY   
+2020-05-13 08:17:30,367 -0400 [main] INFO  (CustomerAccount_Checking.java:32) - ************************************************************
+2020-05-13 08:17:30,367 -0400 [main] INFO  (CustomerAccount_Checking.java:34) - SELECT: (1) GET BALANCE
+2020-05-13 08:17:30,368 -0400 [main] INFO  (CustomerAccount_Checking.java:35) - SELECT: (2) DEPOSIT 
+2020-05-13 08:17:30,368 -0400 [main] INFO  (CustomerAccount_Checking.java:36) - SELECT: (3) WITHDRAWL 
+2020-05-13 08:17:30,368 -0400 [main] INFO  (CustomerAccount_Checking.java:37) - SELECT: (4) TRANSFER (TO YOUR SAVING ACCOUNT)
+2020-05-13 08:17:30,369 -0400 [main] INFO  (CustomerAccount_Checking.java:38) - SELECT: (5) TRANSFER (TO A ANOTHER BANK QUALIFIED ACCOUNT)
+2020-05-13 08:17:30,369 -0400 [main] INFO  (CustomerAccount_Checking.java:39) - SELECT: (6) BACK TO ACCOUNT SUMMARY HOMEPAGE
+2020-05-13 08:17:30,369 -0400 [main] INFO  (CustomerAccount_Checking.java:40) - SELECT: (7) EXIT THE APPLICATION
+2020-05-13 08:17:30,369 -0400 [main] INFO  (CustomerAccount_Checking.java:41) - SELECT: (8) BACK TO HOMEPAGE
+2020-05-13 08:17:31,882 -0400 [main] INFO  (CustomerAccount_Checking.java:61) - ACCOUNT NUMBER: FBAC10020
+2020-05-13 08:17:31,883 -0400 [main] INFO  (CustomerAccount_Checking.java:62) - ACCOUNT TYPE:   CHECKING
+2020-05-13 08:17:31,883 -0400 [main] INFO  (CustomerAccount_Checking.java:63) - BALANCE:        300.0
+2020-05-13 08:17:31,883 -0400 [main] INFO  (CustomerAccount_Checking.java:31) -   WELCOME TO BANK OF FRIENDSHIP CHECKING ACCOUNT SUMMARY   
+2020-05-13 08:17:31,883 -0400 [main] INFO  (CustomerAccount_Checking.java:32) - ************************************************************
+2020-05-13 08:17:31,883 -0400 [main] INFO  (CustomerAccount_Checking.java:34) - SELECT: (1) GET BALANCE
+2020-05-13 08:17:31,883 -0400 [main] INFO  (CustomerAccount_Checking.java:35) - SELECT: (2) DEPOSIT 
+2020-05-13 08:17:31,883 -0400 [main] INFO  (CustomerAccount_Checking.java:36) - SELECT: (3) WITHDRAWL 
+2020-05-13 08:17:31,883 -0400 [main] INFO  (CustomerAccount_Checking.java:37) - SELECT: (4) TRANSFER (TO YOUR SAVING ACCOUNT)
+2020-05-13 08:17:31,883 -0400 [main] INFO  (CustomerAccount_Checking.java:38) - SELECT: (5) TRANSFER (TO A ANOTHER BANK QUALIFIED ACCOUNT)
+2020-05-13 08:17:31,883 -0400 [main] INFO  (CustomerAccount_Checking.java:39) - SELECT: (6) BACK TO ACCOUNT SUMMARY HOMEPAGE
+2020-05-13 08:17:31,884 -0400 [main] INFO  (CustomerAccount_Checking.java:40) - SELECT: (7) EXIT THE APPLICATION
+2020-05-13 08:17:31,884 -0400 [main] INFO  (CustomerAccount_Checking.java:41) - SELECT: (8) BACK TO HOMEPAGE
+2020-05-13 08:17:36,861 -0400 [main] INFO  (CustomerAccount_Checking.java:87) - SYSTEM: ENTER DEPOSIT AMOUNT
+2020-05-13 08:17:42,814 -0400 [main] INFO  (CustomerAccount_Checking.java:93) - SYSTEM: $150.55 HAS BEEN DEPOSIT INTO YOUR CHECKING ACCOUNT
+2020-05-13 08:17:43,499 -0400 [main] INFO  (CustomerAccount_Checking.java:96) - ACCOUNT TYPE: CHECKING
+2020-05-13 08:17:43,500 -0400 [main] INFO  (CustomerAccount_Checking.java:97) - BALANCE:      450.55
+2020-05-13 08:17:43,500 -0400 [main] INFO  (CustomerAccount_Checking.java:31) -   WELCOME TO BANK OF FRIENDSHIP CHECKING ACCOUNT SUMMARY   
+2020-05-13 08:17:43,500 -0400 [main] INFO  (CustomerAccount_Checking.java:32) - ************************************************************
+2020-05-13 08:17:43,501 -0400 [main] INFO  (CustomerAccount_Checking.java:34) - SELECT: (1) GET BALANCE
+2020-05-13 08:17:43,501 -0400 [main] INFO  (CustomerAccount_Checking.java:35) - SELECT: (2) DEPOSIT 
+2020-05-13 08:17:43,501 -0400 [main] INFO  (CustomerAccount_Checking.java:36) - SELECT: (3) WITHDRAWL 
+2020-05-13 08:17:43,502 -0400 [main] INFO  (CustomerAccount_Checking.java:37) - SELECT: (4) TRANSFER (TO YOUR SAVING ACCOUNT)
+2020-05-13 08:17:43,502 -0400 [main] INFO  (CustomerAccount_Checking.java:38) - SELECT: (5) TRANSFER (TO A ANOTHER BANK QUALIFIED ACCOUNT)
+2020-05-13 08:17:43,502 -0400 [main] INFO  (CustomerAccount_Checking.java:39) - SELECT: (6) BACK TO ACCOUNT SUMMARY HOMEPAGE
+2020-05-13 08:17:43,503 -0400 [main] INFO  (CustomerAccount_Checking.java:40) - SELECT: (7) EXIT THE APPLICATION
+2020-05-13 08:17:43,503 -0400 [main] INFO  (CustomerAccount_Checking.java:41) - SELECT: (8) BACK TO HOMEPAGE
+2020-05-13 08:17:49,794 -0400 [main] INFO  (CustomerAccount_Checking.java:120) - SYSTEM: ENTER WITHDRAWL AMOUNT
+2020-05-13 08:17:56,455 -0400 [main] INFO  (CustomerAccount_Checking.java:133) - SYSTEM: $50.25 HAS BEEN WITHDRAWL FROM YOUR CHECKING ACCOUNT
+2020-05-13 08:17:57,127 -0400 [main] INFO  (CustomerAccount_Checking.java:136) - ACCOUNT TYPE: CHECKING
+2020-05-13 08:17:57,127 -0400 [main] INFO  (CustomerAccount_Checking.java:137) - BALANCE:      400.3
+2020-05-13 08:17:57,127 -0400 [main] INFO  (CustomerAccount_Checking.java:31) -   WELCOME TO BANK OF FRIENDSHIP CHECKING ACCOUNT SUMMARY   
+2020-05-13 08:17:57,128 -0400 [main] INFO  (CustomerAccount_Checking.java:32) - ************************************************************
+2020-05-13 08:17:57,128 -0400 [main] INFO  (CustomerAccount_Checking.java:34) - SELECT: (1) GET BALANCE
+2020-05-13 08:17:57,128 -0400 [main] INFO  (CustomerAccount_Checking.java:35) - SELECT: (2) DEPOSIT 
+2020-05-13 08:17:57,129 -0400 [main] INFO  (CustomerAccount_Checking.java:36) - SELECT: (3) WITHDRAWL 
+2020-05-13 08:17:57,129 -0400 [main] INFO  (CustomerAccount_Checking.java:37) - SELECT: (4) TRANSFER (TO YOUR SAVING ACCOUNT)
+2020-05-13 08:17:57,129 -0400 [main] INFO  (CustomerAccount_Checking.java:38) - SELECT: (5) TRANSFER (TO A ANOTHER BANK QUALIFIED ACCOUNT)
+2020-05-13 08:17:57,129 -0400 [main] INFO  (CustomerAccount_Checking.java:39) - SELECT: (6) BACK TO ACCOUNT SUMMARY HOMEPAGE
+2020-05-13 08:17:57,130 -0400 [main] INFO  (CustomerAccount_Checking.java:40) - SELECT: (7) EXIT THE APPLICATION
+2020-05-13 08:17:57,130 -0400 [main] INFO  (CustomerAccount_Checking.java:41) - SELECT: (8) BACK TO HOMEPAGE
+2020-05-13 08:18:04,778 -0400 [main] INFO  (CustomerAccount_Checking.java:161) - SYSTEM: ENTER TRANSFER AMOUNT
+2020-05-13 08:18:17,915 -0400 [main] INFO  (CustomerAccount_Checking.java:178) - SYSTEM: $100.0 HAS BEEN TRANSFERED TO YOUR CHECKING ACCOUNT
+2020-05-13 08:18:18,599 -0400 [main] INFO  (CustomerAccount_Checking.java:181) - ACCOUNT TYPE: CHECKING
+2020-05-13 08:18:18,599 -0400 [main] INFO  (CustomerAccount_Checking.java:182) - BALANCE:      300.3
+2020-05-13 08:18:19,262 -0400 [main] INFO  (CustomerAccount_Checking.java:185) - ACCOUNT TYPE: SAVING
+2020-05-13 08:18:19,262 -0400 [main] INFO  (CustomerAccount_Checking.java:186) - BALANCE:      200.0
+2020-05-13 08:18:19,262 -0400 [main] INFO  (CustomerAccount_Checking.java:31) -   WELCOME TO BANK OF FRIENDSHIP CHECKING ACCOUNT SUMMARY   
+2020-05-13 08:18:19,262 -0400 [main] INFO  (CustomerAccount_Checking.java:32) - ************************************************************
+2020-05-13 08:18:19,262 -0400 [main] INFO  (CustomerAccount_Checking.java:34) - SELECT: (1) GET BALANCE
+2020-05-13 08:18:19,263 -0400 [main] INFO  (CustomerAccount_Checking.java:35) - SELECT: (2) DEPOSIT 
+2020-05-13 08:18:19,263 -0400 [main] INFO  (CustomerAccount_Checking.java:36) - SELECT: (3) WITHDRAWL 
+2020-05-13 08:18:19,263 -0400 [main] INFO  (CustomerAccount_Checking.java:37) - SELECT: (4) TRANSFER (TO YOUR SAVING ACCOUNT)
+2020-05-13 08:18:19,263 -0400 [main] INFO  (CustomerAccount_Checking.java:38) - SELECT: (5) TRANSFER (TO A ANOTHER BANK QUALIFIED ACCOUNT)
+2020-05-13 08:18:19,263 -0400 [main] INFO  (CustomerAccount_Checking.java:39) - SELECT: (6) BACK TO ACCOUNT SUMMARY HOMEPAGE
+2020-05-13 08:18:19,263 -0400 [main] INFO  (CustomerAccount_Checking.java:40) - SELECT: (7) EXIT THE APPLICATION
+2020-05-13 08:18:19,263 -0400 [main] INFO  (CustomerAccount_Checking.java:41) - SELECT: (8) BACK TO HOMEPAGE
+2020-05-13 08:19:53,194 -0400 [main] INFO  (CustomerAccount_Checking.java:211) - SYSTEM: ENTER DESTINATION ACCOUNT FOR THE TRANSFER
+2020-05-13 08:19:58,117 -0400 [main] INFO  (CustomerAccount_Checking.java:213) - SYSTEM: ENTER TRANSFER AMOUNT
+2020-05-13 08:20:09,588 -0400 [main] INFO  (CustomerAccount_Checking.java:232) - SYSTEM: $150.0 HAS BEEN TRANSFERED TO ACCOUNT NUMBER FBAC10021
+2020-05-13 08:20:10,260 -0400 [main] INFO  (CustomerAccount_Checking.java:235) - ACCOUNT TYPE: CHECKING
+2020-05-13 08:20:10,260 -0400 [main] INFO  (CustomerAccount_Checking.java:236) - BALANCE:      150.3
+2020-05-13 08:20:10,261 -0400 [main] INFO  (CustomerAccount_Checking.java:31) -   WELCOME TO BANK OF FRIENDSHIP CHECKING ACCOUNT SUMMARY   
+2020-05-13 08:20:10,261 -0400 [main] INFO  (CustomerAccount_Checking.java:32) - ************************************************************
+2020-05-13 08:20:10,262 -0400 [main] INFO  (CustomerAccount_Checking.java:34) - SELECT: (1) GET BALANCE
+2020-05-13 08:20:10,262 -0400 [main] INFO  (CustomerAccount_Checking.java:35) - SELECT: (2) DEPOSIT 
+2020-05-13 08:20:10,262 -0400 [main] INFO  (CustomerAccount_Checking.java:36) - SELECT: (3) WITHDRAWL 
+2020-05-13 08:20:10,263 -0400 [main] INFO  (CustomerAccount_Checking.java:37) - SELECT: (4) TRANSFER (TO YOUR SAVING ACCOUNT)
+2020-05-13 08:20:10,263 -0400 [main] INFO  (CustomerAccount_Checking.java:38) - SELECT: (5) TRANSFER (TO A ANOTHER BANK QUALIFIED ACCOUNT)
+2020-05-13 08:20:10,263 -0400 [main] INFO  (CustomerAccount_Checking.java:39) - SELECT: (6) BACK TO ACCOUNT SUMMARY HOMEPAGE
+2020-05-13 08:20:10,263 -0400 [main] INFO  (CustomerAccount_Checking.java:40) - SELECT: (7) EXIT THE APPLICATION
+2020-05-13 08:20:10,264 -0400 [main] INFO  (CustomerAccount_Checking.java:41) - SELECT: (8) BACK TO HOMEPAGE
+2020-05-13 08:20:39,253 -0400 [main] INFO  (BankAppLoginWelcome_CustomerAccount.java:21) -   WELCOME TO BANK OF FRIENDSHIP ACCOUNT SUMMARY   
+2020-05-13 08:20:39,253 -0400 [main] INFO  (BankAppLoginWelcome_CustomerAccount.java:22) - **************************************************
+2020-05-13 08:20:39,253 -0400 [main] INFO  (BankAppLoginWelcome_CustomerAccount.java:24) - SELECT: (1) CHECKING ACCOUNT
+2020-05-13 08:20:39,253 -0400 [main] INFO  (BankAppLoginWelcome_CustomerAccount.java:25) - SELECT: (2) SAVING ACCOUNT
+2020-05-13 08:20:39,253 -0400 [main] INFO  (BankAppLoginWelcome_CustomerAccount.java:26) - SELECT: (3) EXIT THE APPLICATION
+2020-05-13 08:20:39,253 -0400 [main] INFO  (BankAppLoginWelcome_CustomerAccount.java:27) - SELECT: (4) BACK TO HOMEPAGE
+2020-05-13 08:20:40,492 -0400 [main] INFO  (CustomerAccount_Saving.java:29) -   WELCOME TO BANK OF FRIENDSHIP SAVING ACCOUNT SUMMARY   
+2020-05-13 08:20:40,493 -0400 [main] INFO  (CustomerAccount_Saving.java:30) - ************************************************************
+2020-05-13 08:20:40,493 -0400 [main] INFO  (CustomerAccount_Saving.java:32) - SELECT: (1) GET BALANCE
+2020-05-13 08:20:40,493 -0400 [main] INFO  (CustomerAccount_Saving.java:33) - SELECT: (2) DEPOSIT 
+2020-05-13 08:20:40,493 -0400 [main] INFO  (CustomerAccount_Saving.java:34) - SELECT: (3) WITHDRAWL 
+2020-05-13 08:20:40,493 -0400 [main] INFO  (CustomerAccount_Saving.java:35) - SELECT: (4) TRANSFER (TO YOUR CHECKING ACCOUNT)
+2020-05-13 08:20:40,493 -0400 [main] INFO  (CustomerAccount_Saving.java:36) - SELECT: (5) TRANSFER (TO A ANOTHER BANK QUALIFIED ACCOUNT)
+2020-05-13 08:20:40,493 -0400 [main] INFO  (CustomerAccount_Saving.java:37) - SELECT: (6) BACK TO ACCOUNT SUMMARY HOMEPAGE
+2020-05-13 08:20:40,493 -0400 [main] INFO  (CustomerAccount_Saving.java:38) - SELECT: (7) EXIT THE APPLICATION
+2020-05-13 08:20:40,493 -0400 [main] INFO  (CustomerAccount_Saving.java:39) - SELECT: (8) BACK TO HOMEPAGE
+2020-05-13 08:20:42,296 -0400 [main] INFO  (CustomerAccount_Saving.java:59) - ACCOUNT NUMBER: FBAC10021
+2020-05-13 08:20:42,296 -0400 [main] INFO  (CustomerAccount_Saving.java:60) - ACCOUNT TYPE:   SAVING
+2020-05-13 08:20:42,297 -0400 [main] INFO  (CustomerAccount_Saving.java:61) - BALANCE:        350.0
+2020-05-13 08:20:42,297 -0400 [main] INFO  (CustomerAccount_Saving.java:29) -   WELCOME TO BANK OF FRIENDSHIP SAVING ACCOUNT SUMMARY   
+2020-05-13 08:20:42,297 -0400 [main] INFO  (CustomerAccount_Saving.java:30) - ************************************************************
+2020-05-13 08:20:42,298 -0400 [main] INFO  (CustomerAccount_Saving.java:32) - SELECT: (1) GET BALANCE
+2020-05-13 08:20:42,298 -0400 [main] INFO  (CustomerAccount_Saving.java:33) - SELECT: (2) DEPOSIT 
+2020-05-13 08:20:42,298 -0400 [main] INFO  (CustomerAccount_Saving.java:34) - SELECT: (3) WITHDRAWL 
+2020-05-13 08:20:42,299 -0400 [main] INFO  (CustomerAccount_Saving.java:35) - SELECT: (4) TRANSFER (TO YOUR CHECKING ACCOUNT)
+2020-05-13 08:20:42,299 -0400 [main] INFO  (CustomerAccount_Saving.java:36) - SELECT: (5) TRANSFER (TO A ANOTHER BANK QUALIFIED ACCOUNT)
+2020-05-13 08:20:42,299 -0400 [main] INFO  (CustomerAccount_Saving.java:37) - SELECT: (6) BACK TO ACCOUNT SUMMARY HOMEPAGE
+2020-05-13 08:20:42,299 -0400 [main] INFO  (CustomerAccount_Saving.java:38) - SELECT: (7) EXIT THE APPLICATION
+2020-05-13 08:20:42,300 -0400 [main] INFO  (CustomerAccount_Saving.java:39) - SELECT: (8) BACK TO HOMEPAGE
+2020-05-13 08:20:59,292 -0400 [main] INFO  (CustomerAccount_Saving.java:248) - THANK YOU FOR USING MY BANKING APPLICATION
+2020-05-13 08:45:55,990 -0400 [main] INFO  (welcomePage.java:15) - ************************************************
+2020-05-13 08:45:55,992 -0400 [main] INFO  (welcomePage.java:16) - *        WELCOME TO BANK OF FRIENDSHIP         *
+2020-05-13 08:45:55,992 -0400 [main] INFO  (welcomePage.java:17) - ************************************************
+2020-05-13 08:45:55,993 -0400 [main] INFO  (welcomePage.java:19) - SELECT: (1) LOGIN PAGE
+2020-05-13 08:45:55,993 -0400 [main] INFO  (welcomePage.java:20) - SELECT: (2) NEW USER CREATION PAGE
+2020-05-13 08:45:55,993 -0400 [main] INFO  (welcomePage.java:21) - SELECT: (3) EXIT APPLICATION
+2020-05-13 08:46:02,429 -0400 [main] INFO  (BankApplicationLogin.java:32) -   BANK OF FRIENDSHIP LOGIN PAGE   
+2020-05-13 08:46:02,430 -0400 [main] INFO  (BankApplicationLogin.java:33) - **************************************************
+2020-05-13 08:46:02,430 -0400 [main] INFO  (BankApplicationLogin.java:34) - SELECT: (1) LOGIN TO BANK APPLICATION
+2020-05-13 08:46:02,430 -0400 [main] INFO  (BankApplicationLogin.java:35) - SELECT: (2) EXIT THE APPLICATION
+2020-05-13 08:46:02,430 -0400 [main] INFO  (BankApplicationLogin.java:36) - SELECT: (3) BACK TO HOMEPAGE
+2020-05-13 08:46:03,680 -0400 [main] INFO  (BankApplicationLogin.java:44) - SYSTEM:  ENTER USERNAME
+2020-05-13 08:46:08,343 -0400 [main] INFO  (BankApplicationLogin.java:46) - SYSTEM:  ENTER PASSWORD
+2020-05-13 08:46:14,525 -0400 [main] INFO  (BankApplicationLogin.java:70) - SYSTEM:  LOGIN SUCCESSFULL
+2020-05-13 08:46:14,528 -0400 [main] INFO  (BankAppLoginWelcome_EmployeeAccount.java:18) -   WELCOME TO BANK OF FRIENDSHIP EMPLOYEE DASHBOARD   
+2020-05-13 08:46:14,529 -0400 [main] INFO  (BankAppLoginWelcome_EmployeeAccount.java:19) - **************************************************
+2020-05-13 08:46:14,531 -0400 [main] INFO  (BankAppLoginWelcome_EmployeeAccount.java:21) - SELECT: (1) VIEW LOGIN ACCOUNTS
+2020-05-13 08:46:14,532 -0400 [main] INFO  (BankAppLoginWelcome_EmployeeAccount.java:22) - SELECT: (2) VIEW BANK ACCOUNTS (CHK - SAV)
+2020-05-13 08:46:14,532 -0400 [main] INFO  (BankAppLoginWelcome_EmployeeAccount.java:23) - SELECT: (3) EXIT THE APPLICATION
+2020-05-13 08:46:14,533 -0400 [main] INFO  (BankAppLoginWelcome_EmployeeAccount.java:24) - SELECT: (4) BACK TO HOMEPAGE
+2020-05-13 08:46:16,683 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:40) -   -  EMPLOYEE CUSOMTER LOGIN DASHBOARD  -    
+2020-05-13 08:46:16,683 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:41) - ******************************************
+2020-05-13 08:46:16,683 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:43) - SELECT: (1) VIEW ALL LOGIN ACCOUNTS
+2020-05-13 08:46:16,683 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:44) - SELECT: (2) VIEW ALL LOGIN ACCOUNTS WITH PENDING STATUS 
+2020-05-13 08:46:16,683 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:45) - SELECT: (3) APPROVE PENDING LOGIN ACCOUNTS 
+2020-05-13 08:46:16,684 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:46) - SELECT: (4) REJECT PENDING LOGIN ACCOUNTS
+2020-05-13 08:46:16,684 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:47) - SELECT: (5) VIEW ALL CUSTOMER
+2020-05-13 08:46:16,684 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:48) - SELECT: (6) DELETE A CUSTOMER
+2020-05-13 08:46:16,684 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:49) - SELECT: (7) EXIT THE APPLICATION
+2020-05-13 08:46:16,684 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:50) - SELECT: (8) BACK TO EMPLOYEE DASHBOARD
+2020-05-13 08:46:16,684 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:51) - SELECT: (9) BACK TO HOMEPAGE
+2020-05-13 08:46:20,346 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:118) - customer [Customer ID = FBJS196710040, Last Name = Smith, First Name = John, Email Address = john18@gmail.com, Contact Number = 4041231234, Date Of Birth (DOB) = 1967-09-05, Street = 5686 Mynew Street, City = Harlem, State = NY]
+2020-05-13 08:46:20,348 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:118) - customer [Customer ID = FBGC198610064, Last Name = Cooper, First Name = Glenn, Email Address = gcooper@gmail.com, Contact Number = 2021345731, Date Of Birth (DOB) = 1986-11-24, Street = 1234 first street, City = Brookdale, State = NY]
+2020-05-13 08:46:20,349 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:118) - customer [Customer ID = FBRG199110000, Last Name = Glenn, First Name = Randy, Email Address = rglenn@gmail.com, Contact Number = 309874563, Date Of Birth (DOB) = 1991-09-23, Street = 1234 Spooner Street, City = Smallville, State = WV]
+2020-05-13 08:46:20,350 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:118) - customer [Customer ID = FBJA199910082, Last Name = Abram, First Name = John, Email Address = johnabram@gmail.com, Contact Number = 3421231234, Date Of Birth (DOB) = 1999-10-20, Street = 435 newstreet street, City = brooklyn, State = NY]
+2020-05-13 08:46:20,351 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:118) - customer [Customer ID = FBUD200110100, Last Name = DemoOne, First Name = UserOne, Email Address = demo1@gmail.com, Contact Number = 2021231234, Date Of Birth (DOB) = 2001-10-10, Street = 1234 Demo Street, City = DemoCity, State = DC]
+2020-05-13 08:46:20,352 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:40) -   -  EMPLOYEE CUSOMTER LOGIN DASHBOARD  -    
+2020-05-13 08:46:20,353 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:41) - ******************************************
+2020-05-13 08:46:20,354 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:43) - SELECT: (1) VIEW ALL LOGIN ACCOUNTS
+2020-05-13 08:46:20,354 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:44) - SELECT: (2) VIEW ALL LOGIN ACCOUNTS WITH PENDING STATUS 
+2020-05-13 08:46:20,355 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:45) - SELECT: (3) APPROVE PENDING LOGIN ACCOUNTS 
+2020-05-13 08:46:20,356 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:46) - SELECT: (4) REJECT PENDING LOGIN ACCOUNTS
+2020-05-13 08:46:20,356 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:47) - SELECT: (5) VIEW ALL CUSTOMER
+2020-05-13 08:46:20,357 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:48) - SELECT: (6) DELETE A CUSTOMER
+2020-05-13 08:46:20,357 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:49) - SELECT: (7) EXIT THE APPLICATION
+2020-05-13 08:46:20,358 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:50) - SELECT: (8) BACK TO EMPLOYEE DASHBOARD
+2020-05-13 08:46:20,359 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:51) - SELECT: (9) BACK TO HOMEPAGE
+2020-05-13 08:46:29,015 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:130) - SYSTEM:  DELETE A CUSTOMER ACCOUNT 
+2020-05-13 08:46:29,015 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:131) - SYSTEM:  ENTER THE CUSTOMER ID NUMBER
+2020-05-13 08:46:54,981 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:135) - SYSTEM:  THE REQUESTED CUSTOMER HAS BEEN DELETED
+2020-05-13 08:46:54,981 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:40) -   -  EMPLOYEE CUSOMTER LOGIN DASHBOARD  -    
+2020-05-13 08:46:54,981 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:41) - ******************************************
+2020-05-13 08:46:54,982 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:43) - SELECT: (1) VIEW ALL LOGIN ACCOUNTS
+2020-05-13 08:46:54,982 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:44) - SELECT: (2) VIEW ALL LOGIN ACCOUNTS WITH PENDING STATUS 
+2020-05-13 08:46:54,982 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:45) - SELECT: (3) APPROVE PENDING LOGIN ACCOUNTS 
+2020-05-13 08:46:54,982 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:46) - SELECT: (4) REJECT PENDING LOGIN ACCOUNTS
+2020-05-13 08:46:54,982 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:47) - SELECT: (5) VIEW ALL CUSTOMER
+2020-05-13 08:46:54,982 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:48) - SELECT: (6) DELETE A CUSTOMER
+2020-05-13 08:46:54,982 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:49) - SELECT: (7) EXIT THE APPLICATION
+2020-05-13 08:46:54,983 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:50) - SELECT: (8) BACK TO EMPLOYEE DASHBOARD
+2020-05-13 08:46:54,983 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:51) - SELECT: (9) BACK TO HOMEPAGE
+2020-05-13 08:47:03,034 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:118) - customer [Customer ID = FBJS196710040, Last Name = Smith, First Name = John, Email Address = john18@gmail.com, Contact Number = 4041231234, Date Of Birth (DOB) = 1967-09-05, Street = 5686 Mynew Street, City = Harlem, State = NY]
+2020-05-13 08:47:03,034 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:118) - customer [Customer ID = FBGC198610064, Last Name = Cooper, First Name = Glenn, Email Address = gcooper@gmail.com, Contact Number = 2021345731, Date Of Birth (DOB) = 1986-11-24, Street = 1234 first street, City = Brookdale, State = NY]
+2020-05-13 08:47:03,035 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:118) - customer [Customer ID = FBRG199110000, Last Name = Glenn, First Name = Randy, Email Address = rglenn@gmail.com, Contact Number = 309874563, Date Of Birth (DOB) = 1991-09-23, Street = 1234 Spooner Street, City = Smallville, State = WV]
+2020-05-13 08:47:03,035 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:118) - customer [Customer ID = FBJA199910082, Last Name = Abram, First Name = John, Email Address = johnabram@gmail.com, Contact Number = 3421231234, Date Of Birth (DOB) = 1999-10-20, Street = 435 newstreet street, City = brooklyn, State = NY]
+2020-05-13 08:47:03,035 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:40) -   -  EMPLOYEE CUSOMTER LOGIN DASHBOARD  -    
+2020-05-13 08:47:03,035 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:41) - ******************************************
+2020-05-13 08:47:03,036 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:43) - SELECT: (1) VIEW ALL LOGIN ACCOUNTS
+2020-05-13 08:47:03,036 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:44) - SELECT: (2) VIEW ALL LOGIN ACCOUNTS WITH PENDING STATUS 
+2020-05-13 08:47:03,036 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:45) - SELECT: (3) APPROVE PENDING LOGIN ACCOUNTS 
+2020-05-13 08:47:03,036 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:46) - SELECT: (4) REJECT PENDING LOGIN ACCOUNTS
+2020-05-13 08:47:03,036 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:47) - SELECT: (5) VIEW ALL CUSTOMER
+2020-05-13 08:47:03,036 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:48) - SELECT: (6) DELETE A CUSTOMER
+2020-05-13 08:47:03,037 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:49) - SELECT: (7) EXIT THE APPLICATION
+2020-05-13 08:47:03,037 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:50) - SELECT: (8) BACK TO EMPLOYEE DASHBOARD
+2020-05-13 08:47:03,037 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:51) - SELECT: (9) BACK TO HOMEPAGE
+2020-05-13 08:47:12,847 -0400 [main] INFO  (EmployeeWelcomePage_ViewLoginAccounts.java:146) - THANK YOU FOR USING MY BANKING APPLICATION

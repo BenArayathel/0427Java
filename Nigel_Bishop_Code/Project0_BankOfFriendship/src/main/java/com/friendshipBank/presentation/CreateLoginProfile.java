@@ -1,5 +1,6 @@
 package com.friendshipBank.presentation;
 
+import com.friendshipBank.Main.mainDriver;
 import com.friendshipBank.exception.BusinessException;
 import com.friendshipBank.model.userAccess;
 import com.friendshipBank.service.userAccessService;
@@ -17,21 +18,17 @@ public class CreateLoginProfile
 	{
 		userAccessService userService = new userAccessServiceImpl();
 		userAccess userAccess = new userAccess();
-
-//		String Password1;
-//		String Password2;
-//		private static String accountStatus = "PENDING";
-		
+	
     	int userChoice = 0;
  	
     	do {
     		
         	System.out.println();
-        	System.out.println("  BANK OF FRIENDSHIP NEW LOGIN PROFILE CREATION   ");
-        	System.out.println("**************************************************");
-        	System.out.println("SELECT: (1) CREATE NEW LOGIN PROFILE     ");
-        	System.out.println("SELECT: (2) EXIT THE APPLICATION");
-        	System.out.println("SELECT: (3) BACK TO HOMEPAGE");
+        	mainDriver.SystemLog.info("  BANK OF FRIENDSHIP NEW LOGIN PROFILE CREATION   ");
+        	mainDriver.SystemLog.info("**************************************************");
+        	mainDriver.SystemLog.info("SELECT: (1) CREATE NEW LOGIN PROFILE     ");
+        	mainDriver.SystemLog.info("SELECT: (2) EXIT THE APPLICATION");
+        	mainDriver.SystemLog.info("SELECT: (3) BACK TO HOMEPAGE");
 
 			userChoice = myScanner.UserInput_Int();
 
@@ -39,21 +36,23 @@ public class CreateLoginProfile
 			case 1:
 	        	try 
 	        	{
-					System.out.println("PLEASE ENTER VALID INFORMATION FOR NEW LOGIN PROFILE CREATION");
+	        		mainDriver.SystemLog.info("SYSTEM:  PLEASE ENTER VALID INFORMATION FOR NEW LOGIN PROFILE CREATION");
 					System.out.println();
 					userAccess.setCustomerID(loginCustomerID);
-		        	System.out.println("ENTER - UserName: (Must be eight(8) or more Alpha Numeric characters");
+					mainDriver.SystemLog.info("SYSTEM:  UserName: (Must be eight(8) or more Alpha Numeric characters");
+					mainDriver.SystemLog.info("SYSTEM:  ENTER USERNAME");
 		        	userAccess.setUserName(myScanner.UserInput_LongString());
-		        	System.out.println("ENTER - Password: (Must be eight(8) or more Alpha Numeric characters" );
-		        	System.out.println("        PASWORD must contain at least: One(1) Lowercase letter, One(1) Uppercase letter and One(1) Number ");
+		        	mainDriver.SystemLog.info("SYSTEM:  Password:  Must be eight(8) or more Alpha Numeric characters" );
+		        	mainDriver.SystemLog.info("                    Must contain at least: One(1) Lowercase letter, One(1) Uppercase letter and One(1) Number" );
+		        	mainDriver.SystemLog.info("SYSTEM:  ENTER PASSWORD");
 		        	Password1 = myScanner.UserInput_LongString();
-		        	System.out.println("ENTER - Password: (Confirmation)");
+		        	mainDriver.SystemLog.info("SYSTEM:  RE-ENTER PASSWORD: (Confirmation)");
 		        	Password2 = myScanner.UserInput_LongString();
 		        	if(Password1.equals(Password2)) {
 			        	userAccess.setUserPassword(Password2);
 		        	}
 		        	else {
-		        		System.out.println("PASSWORD MISMATCH PLEASE RE-ENTER INFOMRATION");
+		        		mainDriver.SystemLog.info("SYSTEM:  PASSWORD MISMATCH, PLEASE RE-ENTER INFOMRATION");
 		        		CreateNewLoginProfile();
 		        	}
 		        	userAccess.setAccountStatus(accountStatus);
@@ -67,14 +66,15 @@ public class CreateLoginProfile
 	        	}
 	        	catch (BusinessException e)
 	        	{
-	    			System.out.println(e.getMessage());
+	        		mainDriver.SystemLog.error(e.getMessage());
+	        		mainDriver.SystemLog.info(e.getMessage());
 	        	}
 	        	
 
 				break;
 			case 2:
             	System.out.println();
-            	System.out.println("THANK YOU FOR USING MY BANKING APPLICATION");
+            	mainDriver.SystemLog.info("THANK YOU FOR USING MY BANKING APPLICATION");
             	System.out.println();
 				System.exit(0);
          		break;
