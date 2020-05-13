@@ -1,6 +1,7 @@
 package com.ploutos.service;
 
 import java.util.List;
+import java.util.Set;
 
 import org.apache.log4j.Logger;
 
@@ -18,6 +19,13 @@ public class PloutosServiceImpl implements PloutosService {
 	@Override
 	public boolean isValidUsername(String username) {
 		if (username.matches("[a-z0-9]{1,32}"))
+			return true;
+		return false;
+	}
+	
+	@Override
+	public boolean isValidPassword(String password) {
+		if (password.matches("[A-Za-z0-9]{1,32}"))
 			return true;
 		return false;
 	}
@@ -77,6 +85,9 @@ public class PloutosServiceImpl implements PloutosService {
 
 	@Override
 	public Account makeAccount(Login login, int balance) throws BusinessException {
+		if (balance < 0) {
+			throw new BusinessException("You cannot create an account with a negative balance.");
+		}
 		Account res = new Account();
 		if (isValidUsername(login.getUsername())) {
 			if (isValidLogin(login)) {
@@ -114,10 +125,28 @@ public class PloutosServiceImpl implements PloutosService {
 	}
 	
 	@Override
+	public Set<String> listUsernames() throws BusinessException {
+		return dao.getUsernameList();
+	}
+	
+	@Override
 	public void updateLoginRequest(Login login, int status) throws BusinessException {
 		if (isValidUsername(login.getUsername())) {
 			if (isValidLogin(login)) {
 				dao.updateLoginStatus(login, status);
+			} else {
+				throw new BusinessException("The login with username " + login.getUsername() + " either does not exist or has an incorrect password.");
+			}
+		} else {
+			throw new BusinessException("The username " + login.getUsername() + " associated with this account is invalid. Please contact your SYSADMIN for help.");
+		}
+	}
+	
+	@Override
+	public void deleteLogin(Login login) throws BusinessException {
+		if (isValidUsername(login.getUsername())) {
+			if (isValidLogin(login)) {
+				dao.deleteLogin(login);
 			} else {
 				throw new BusinessException("The login with username " + login.getUsername() + " either does not exist or has an incorrect password.");
 			}
@@ -139,7 +168,7 @@ public class PloutosServiceImpl implements PloutosService {
 			L.warn("Customer tried to withdraw a negative amount from a Bank Account.");
 			throw new BusinessException("You cannot withdraw a negative amount.");
 		}
-		if (account.getBalance() > amount) {
+		if (account.getBalance() >= amount) {
 			dao.updateAccountAmount(account, account.getBalance() - amount);
 		} else {
 			L.warn("Customer tried to withdraw too much money.");
@@ -162,7 +191,7 @@ public class PloutosServiceImpl implements PloutosService {
 			L.warn("Customer tried to withdraw a negative amount from a Bank Account.");
 			throw new BusinessException("You cannot withdraw a negative amount.");
 		}
-		if (from.getBalance() > amount) {
+		if (from.getBalance() >= amount) {
 			Transaction t = dao.insertTransaction(new Transaction(to.getAccountNumber(), from.getAccountNumber(), amount));
 			withdraw(from, amount);
 			deposit(to, amount);

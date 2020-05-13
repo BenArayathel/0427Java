@@ -6,7 +6,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.apache.log4j.Logger;
 
@@ -44,6 +46,22 @@ public class PloutosDAOImpl implements PloutosDAO {
 			while (rs.next()) {
 				Login l = new Login(rs.getString("Username"), rs.getString("password"), rs.getInt("is_active"));
 				result.add(l);
+			}
+		} catch (SQLException e) {
+			L.error(e.getStackTrace() + " " + e.getMessage());
+			throw new BusinessException("Internal error occurred please contact SYSADMIN.");
+		}
+		return result;
+	}
+	
+	@Override
+	public Set<String> getUsernameList() throws BusinessException {
+		Set<String> result = new HashSet<>();
+		try (Connection c = PloutosConnection.getConnection()) {
+			PreparedStatement ps = c.prepareStatement("select username from logins");
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				result.add(rs.getString("Username"));
 			}
 		} catch (SQLException e) {
 			L.error(e.getStackTrace() + " " + e.getMessage());
@@ -135,7 +153,7 @@ public class PloutosDAOImpl implements PloutosDAO {
 			PreparedStatement ps = c.prepareStatement(sql);
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
-				Transaction t = new Transaction(rs.getInt("transaction_id"), rs.getInt("bank_account_to"), rs.getInt("bank_account_from"));
+				Transaction t = new Transaction(rs.getInt("transaction_id"), rs.getInt("bank_account_to"), rs.getInt("bank_account_from"), rs.getInt("transfer_amount"));
 				result.add(t);
 			}
 		} catch (SQLException e) {
@@ -193,6 +211,20 @@ public class PloutosDAOImpl implements PloutosDAO {
 			CallableStatement cs = c.prepareCall(sql);
 			cs.setInt(1, status);
 			cs.setString(2, login.getUsername());
+			cs.execute();
+		} catch (SQLException e) {
+			L.error(e.getStackTrace() + " " + e.getMessage());
+			throw new BusinessException("Internal error occurred please contact SYSADMIN.");
+		}
+	}
+	
+	@Override
+	public void deleteLogin(Login login) throws BusinessException {
+		try (Connection c = PloutosConnection.getConnection()) {
+			String sql = "delete from logins where username = ? and password = ?";
+			CallableStatement cs = c.prepareCall(sql);
+			cs.setString(1, login.getUsername());
+			cs.setString(2, login.getPassword());
 			cs.execute();
 		} catch (SQLException e) {
 			L.error(e.getStackTrace() + " " + e.getMessage());

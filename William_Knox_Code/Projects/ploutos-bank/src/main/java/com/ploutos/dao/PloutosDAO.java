@@ -1,6 +1,7 @@
 package com.ploutos.dao;
 
 import java.util.List;
+import java.util.Set;
 
 import com.ploutos.exception.BusinessException;
 import com.ploutos.model.Account;
@@ -15,10 +16,12 @@ public interface PloutosDAO { // C R U D  //////////////////////////////////////
 	// Read
 	public Login getLogin(String username, String password) throws BusinessException; // get a login
 	public List<Login> getLoginList(int status) throws BusinessException; // list logins based on status
+	public Set<String> getUsernameList() throws BusinessException;
 	// Update
 	public void updateLoginStatus(Login login, int status) throws BusinessException;
 	// Delete
-
+	public void deleteLogin(Login login) throws BusinessException;
+	
 	  ///////////////////////////////////////////////////////////////////////////
 	 /// Bank Accounts /////////////////////////////////////////////////////////
 	/// Create
@@ -39,4 +42,6 @@ public interface PloutosDAO { // C R U D  //////////////////////////////////////
 	  ///////////////////////////////////////////////////////////////////////////
 	 /// Employees /////////////////////////////////////////////////////////////
 	public boolean isEmployee(String username, String password) throws BusinessException;
+	
+	
 }

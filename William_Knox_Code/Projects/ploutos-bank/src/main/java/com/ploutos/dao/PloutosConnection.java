@@ -16,7 +16,6 @@ public class PloutosConnection {
 		String username = System.getenv("JUSERNAME");
 		String password = System.getenv("JPASSWORD");
 		
-		//TODO remove this before pushing
 
 		
 		/*

@@ -1,6 +1,7 @@
 package com.ploutos.service;
 
 import java.util.List;
+import java.util.Set;
 
 import com.ploutos.exception.BusinessException;
 import com.ploutos.model.Account;
@@ -9,6 +10,7 @@ import com.ploutos.model.Transaction;
 
 public interface PloutosService {
 	public boolean isValidUsername(String username);
+	public boolean isValidPassword(String password);
 	public boolean isValidEmployee(String username, String password) throws BusinessException;
 	public boolean isValidLogin(Login login) throws BusinessException;
 	
@@ -18,8 +20,8 @@ public interface PloutosService {
 	public void updateLoginRequest(Login login, int status) throws BusinessException;
 	public List<Login> listLoginsActive() throws BusinessException; // active = 1
 	public List<Login> listLoginsInactive() throws BusinessException; // active = 0
-
-	
+	public Set<String> listUsernames() throws BusinessException;
+	public void deleteLogin(Login login) throws BusinessException;
 	
 	// Each list should start at 1 (ONE)
 	public String accountListString(List<Account> accounts) throws BusinessException;
@@ -36,4 +38,6 @@ public interface PloutosService {
 	
 	public Transaction makeTransaction(Account to, Account from, int amount) throws BusinessException; // Pre-Approve Transactions where both accounts are owned by the same person.
 	public List<Transaction> getTransactionList() throws BusinessException;
+	
+	
 }
