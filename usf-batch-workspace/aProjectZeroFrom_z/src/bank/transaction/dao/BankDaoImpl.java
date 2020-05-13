@@ -6,21 +6,16 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
 
-import log.Log;
-import not.used.Account;
-import not.used.Customer;
 import connection.utilities.DAOUtilites;
 import exception.validations.BusinessException;
 import exception.validations.Validation;
+import log.Log;
 import user.cust.account.controller.CustOptionsDirectory;
 import user.cust.account.controller.UserOptionsDirectory;
+import user.cust.account.controller.UserWelcome;
 import user.cust.account.models.User;
 
 public class BankDaoImpl implements BankDAO {
@@ -311,6 +306,9 @@ public class BankDaoImpl implements BankDAO {
 				Log.logger("Invalid");
 				Log.logger("Please check credentials..");
 				Log.logger("You may need to register if you have not");
+				Log.logger("Redirecting back to Login...\n\n");
+				UserWelcome uw = new UserWelcome();
+				uw.greetUser();
 				//return false;
 			}
 			

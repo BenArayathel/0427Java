@@ -11,7 +11,7 @@ import user.cust.account.models.User;
 
 public class UserWelcome {
 
-	//private static Scanner scanner = new Scanner(System.in);
+	private static Scanner scanner = new Scanner(System.in);// latest line
 
 	public static void main(String[] args) {
 		
@@ -27,16 +27,17 @@ public class UserWelcome {
 			Log.logger(user.toString());			
 		}
 
-		Scanner scanner = new Scanner(System.in);
+		//Scanner scanner = new Scanner(System.in);		// latest line undo
 
 		UserWelcome uw = new UserWelcome();
-		uw.greetUser(scanner);
-		//greetUser();
+		//uw.greetUser(scanner);							// latest line undo
+		greetUser();									// latest line
 		//greetUser(scanner);
 		scanner.close();
 	}
 
-	private void greetUser(Scanner scanner) {
+	// used to pass: Scanner scanner
+	public static void greetUser() {
 
 		Log.logger("\nHello, Welcome to the Bank\n");
 		Log.logger("-----------------------------------");;
