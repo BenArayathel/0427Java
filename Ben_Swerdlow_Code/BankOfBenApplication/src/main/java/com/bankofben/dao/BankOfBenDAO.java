@@ -904,11 +904,12 @@ public class BankOfBenDAO implements BankOfBenDAOInterface {
 			cs.setString(1, customerId);
 			
 			boolean executed = cs.execute();
-			if (!executed) {
-				b = new BusinessException("Could not delete both customer ID and account.");
-				loggy.error(b);
-				throw b;
-			}
+			// For some reason executed returns false regardless of whether procedure completed or not.
+//			if (!executed) {
+//				b = new BusinessException("Could not delete both customer ID and account.");
+//				loggy.error(b);
+//				throw b;
+//			}
 			
 		} catch (ClassNotFoundException | SQLException e) {
 			loggy.error(e);

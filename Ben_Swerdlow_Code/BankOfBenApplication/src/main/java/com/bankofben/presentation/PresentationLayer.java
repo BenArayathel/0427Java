@@ -49,6 +49,7 @@ public class PresentationLayer {
 	final static Logger loggy = Logger.getLogger(PresentationLayer.class);
 
 	public static void main(String[] args) {
+		boolean registrationSession=false;
 		loggy.setLevel(Level.INFO);
 		User user = null;
 		Scanner sc = new Scanner(System.in);
@@ -73,6 +74,7 @@ public class PresentationLayer {
 						if (!exists) {
 							double startingBalance = UserInterface.requestStartingBalance(sc);
 							user = bl.applyForAccount_newUser(user, startingBalance);
+							registrationSession = true;
 							loggy.info("Thank you for applying for your account. Your application will be reviewed by a "
 									+ "Bank of Ben employee in a timely manner.");
 						}
@@ -87,6 +89,7 @@ public class PresentationLayer {
 					if(!bl.userExists(user.getUsername())) {
 						double startingBalance = UserInterface.requestStartingBalance(sc);
 						user = bl.applyForAccount_newUser(user, startingBalance);
+						registrationSession = true;
 						loggy.info("Thank you for applying for your account. Your application will be reviewed by a "
 								+ "Bank of Ben employee in a timely manner.\nGoodbye!");
 					}
@@ -316,7 +319,7 @@ public class PresentationLayer {
 						pl.printInvalidResponseMessage(response);
 					}
 				} while (!(userResponseValidated));
-			} else {
+			} else if (!registrationSession) {
 				loggy.info("Thank you for following up with the Bank of Ben. Unfortunately your account is still under review. Please check back later.");
 			}
 		} else if (user instanceof Employee) {
