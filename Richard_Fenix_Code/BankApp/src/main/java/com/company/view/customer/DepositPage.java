@@ -59,10 +59,13 @@ public class DepositPage {
 				BankApp.loggy.info("   WARNING: Amount is not valid. No deposit made.");
 				return;
 			};
+//		} catch(NumberFormatException err) {
+//			throw new BusinessException("Deposit amount should be a valid, positive number. ");
 		} catch (Exception e) {
 			BankApp.loggy.info("   WARNING: Amount is not valid. No deposit made.");
+			BankApp.loggy.error("   Deposit amount is not a valid, positive number.");
 			return;
-		}
+		} 
 				
 		account = bankServiceController.depositAmount(account, new BigDecimal(depositAmount));
 		

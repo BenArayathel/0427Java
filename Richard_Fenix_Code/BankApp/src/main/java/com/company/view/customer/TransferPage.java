@@ -59,8 +59,12 @@ public class TransferPage {
 				BankApp.loggy.info("   WARNING: Amount is not valid. No transfer made.");
 				return;
 			};
+//		} catch(NumberFormatException err) {
+//			BankApp.loggy.error("   Transfer amount is not a valid, positive number.");
+//			throw new BusinessException("Transfer amount should be a valid, positive number. ", err);
 		} catch (Exception e) {
 			BankApp.loggy.info("   WARNING: Amount is not valid. No transfer made.");
+			BankApp.loggy.error("   Transfer amount is not a valid, positive number.");
 			return;
 		}
 		

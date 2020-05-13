@@ -60,8 +60,12 @@ public class WithdrawPage {
 				BankApp.loggy.info("   WARNING: Amount is not valid. No withrawal made.");
 				return;
 			};
+//		} catch(NumberFormatException err) {
+//			BankApp.loggy.error("   Withdrawal amount is not a valid, positive number.");
+//			throw new BusinessException("Withdrawal amount should be a valid, positive number. ", err);
 		} catch (Exception e) {
 			BankApp.loggy.info("   WARNING: Amount is not valid. No withdrawal made.");
+			BankApp.loggy.error("   Withdrawal amount is not a valid, positive number.");
 			return;
 		}
 		
