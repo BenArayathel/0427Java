@@ -47,27 +47,31 @@ public class employeeLogin extends employeeDAOImplementation
 					{
 						case 1:
 							System.out.println("Here is the list of pending account approvals");
-							employeeDAOImplementation.getAllPendingApps();
+							employeeDAOImplementation a = new employeeDAOImplementation();
+							a.getAllPendingApps();
 							break;
 						case 2:
-							Scanner a = new Scanner(System.in);
+							Scanner b = new Scanner(System.in);
 							System.out.println("Which account would you like to approve?");
 							System.out.println("Please enter their SSN to get them approved!");
-							String ssna = a.nextLine();
-							employeeDAOImplementation.approveApp(ssna);
+							String ssna = b.nextLine();
+							employeeDAOImplementation c = new employeeDAOImplementation();
+							c.approveApp(ssna);
 							break;
 						case 3:
-							Scanner b = new Scanner(System.in);
+							Scanner d = new Scanner(System.in);
 							System.out.println("Which account would you like to reject?");
 							System.out.println("Please enter their SSN to remove them!");
-							String ssnr = b.nextLine();
-							employeeDAOImplementation.rejectApp(ssnr);
+							String ssnr = d.nextLine();
+							employeeDAOImplementation e = new employeeDAOImplementation();
+							e.approveApp(ssnr);
 							break;
 						case 4:
-							Scanner c = new Scanner(System.in);
+							Scanner f = new Scanner(System.in);
 							System.out.println("Please type in the Account you're looking for by using the SSN");
-							String ssn = c.nextLine();
-							employeeDAOImplementation.getCustomerbySSN(ssn);
+							String ssnfindapp = f.nextLine();
+							employeeDAOImplementation g = new employeeDAOImplementation();
+							g.approveApp(ssnfindapp);
 							break;
 						case 5:
 							System.out.println("Here are the Transactions so far:");

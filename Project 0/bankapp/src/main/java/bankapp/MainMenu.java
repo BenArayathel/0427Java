@@ -32,13 +32,15 @@ public class MainMenu
 			switch (choice) 
 			{
 				case 1:
-					CustomerDAOImplementation.createCustomer();
+					CustomerDAOImplementation a = new CustomerDAOImplementation();
+					a.createCustomer();
 					break;
 				case 2:
 					customerLogin.customerLogin();
 					break;
 				case 3:
-					employeeDAOImplementation.createEmployee();
+					employeeDAOImplementation b = new employeeDAOImplementation();
+					b.createEmployee();
 					break;
 				case 4:
 					employeeLogin.employeeLogin();

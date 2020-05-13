@@ -14,8 +14,8 @@ public class OracleConnection
 	
 	public static Connection getConnection() throws ClassNotFoundException, SQLException
 	{
-		Class.forName("oracle.jdbc.OracleDriver");						//testing different url string
-		String url=/*"database-1.c7cy1w0cmkrg.us-east-2.rds.amazonaws.com"*/"jdbc:oracle:thin:@database-1.c7cy1w0cmkrg.us-east-2.rds.amazonaws.com:1521:ORCL";
+		Class.forName("oracle.jdbc.OracleDriver");
+		String url="jdbc:oracle:thin:@database-1.c7cy1w0cmkrg.us-east-2.rds.amazonaws.com:1521:ORCL";
 		String username="admin";//AWS username for database
 		String password="password";//AWS password for database
 		connection=DriverManager.getConnection(url, username, password);
