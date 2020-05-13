@@ -85,19 +85,21 @@ public class AccountMenu {
 				Main.loggy.info("- 1 - Deposit");
 				Main.loggy.info("- 2 - Withdraw");
 				Main.loggy.info("- 3 - Transfer Money To");
-				Main.loggy.info("- 4 - Accounts");
+				Main.loggy.info("- 4 - Customer's Menu");
 				opt = Integer.parseInt(sc.nextLine());
 				switch (opt) {
 				case 1:
 					Main.loggy.info("\nHow much do you want to deposit?");
 					balance = Double.parseDouble(sc.nextLine());
 					iAccount = Main.accountSrv.depositBalanceAccount(iAccount, balance);
+					Main.loggy.debug(Main.sUser.iUser.getEmail() + " - Deposit - "+iAccount.toString());
 					detailAccounts(iAccount);
 					break;
 				case 2:
 					Main.loggy.info("\nHow much do you want to withdraw?");
 					balance = Double.parseDouble(sc.nextLine());
 					iAccount = Main.accountSrv.withdrawBalanceAccount(iAccount, balance);
+					Main.loggy.debug(Main.sUser.iUser.getEmail() + " - Deposit - "+iAccount.toString());
 					detailAccounts(iAccount);
 					break;
 				case 3:

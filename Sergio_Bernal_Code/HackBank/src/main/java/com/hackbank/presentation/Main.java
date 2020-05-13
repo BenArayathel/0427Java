@@ -119,7 +119,7 @@ public class Main {
 		loggy.info("\n--- Welcome to the Custumer's Portal ---");
 		loggy.info("--- How can we help you today? ---\n");
 		do {
-			loggy.info("--- Customer Menu ---");
+			loggy.info("--- Customer's Menu ---");
 			loggy.info("--- Enter one of the following options:");
 			loggy.info("--- 1 - Show Accounts");
 			loggy.info("--- 2 - Open Account");
@@ -133,6 +133,8 @@ public class Main {
 			switch (opt) {
 			case 1:
 				try {
+					;
+					Main.loggy.debug(Main.sUser.iUser.getEmail() + " - Show Accounts");
 					List<Account> iList = accountSrv.getAllAccountsByCustomer(sUser.iUser.getPersonId());
 					AccountMenu.showAccounts(iList, sc);
 				} catch (BusinessException e) {
@@ -141,9 +143,11 @@ public class Main {
 				}
 				break;
 			case 2:
+				Main.loggy.debug(Main.sUser.iUser.getEmail() + " - Open Account");
 				OpeningAccount.customerForm(sc);
 				break;
 			case 3:
+				Main.loggy.debug(Main.sUser.iUser.getEmail() + " - Pending Transfers");
 				TransferMenu.search(sc);
 				break;
 			case 4:
@@ -159,8 +163,19 @@ public class Main {
 	}
 	
 	private static void header() {
-		loggy.info("Welcome to HACKBANK Management Console App V1.0!!!");
+		
+		loggy.info("\n$$\\   $$\\                     $$\\             $$$$$$$\\                      $$\\\n"
+				+ "$$ |  $$ |                    $$ |            $$  __$$\\                     $$ |      \n"
+				+ "$$ |  $$ | $$$$$$\\   $$$$$$$\\ $$ |  $$\\       $$ |  $$ | $$$$$$\\  $$$$$$$\\  $$ |  $$\\ \n"
+				+ "$$$$$$$$ | \\____$$\\ $$  _____|$$ | $$  |      $$$$$$$\\ | \\____$$\\ $$  __$$\\ $$ | $$  |\n"
+				+ "$$  __$$ | $$$$$$$ |$$ /      $$$$$$  /       $$  __$$\\  $$$$$$$ |$$ |  $$ |$$$$$$  / \n"
+				+ "$$ |  $$ |$$  __$$ |$$ |      $$  _$$<        $$ |  $$ |$$  __$$ |$$ |  $$ |$$  _$$<  \n"
+				+ "$$ |  $$ |\\$$$$$$$ |\\$$$$$$$\\ $$ | \\$$\\       $$$$$$$  |\\$$$$$$$ |$$ |  $$ |$$ | \\$$\\ \n"
+				+ "\\__|  \\__| \\_______| \\_______|\\__|  \\__|      \\_______/  \\_______|\\__|  \\__|\\__|  \\__|");
+		
+		loggy.info("\nWelcome to the Management Console App V1.0!!!");
 		loggy.info("Where create an Account is a pleasure :)\n");
+		
 	}
 	
 	private static boolean exitProgram(Scanner sc) {

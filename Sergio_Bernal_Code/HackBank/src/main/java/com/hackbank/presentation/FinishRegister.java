@@ -19,7 +19,7 @@ public class FinishRegister {
 		String rePwd = null;
 		String accountNumber = null;
 		Main.loggy.info("Welcome to Open an Account with us.");
-		Main.loggy.info("Enter the folling information to finish the register.\n");
+		Main.loggy.info("Enter the folling information to finish the registration.\n");
 		Main.loggy.info("--- Account Number:");
 		try {
 			accountNumber = sc.nextLine();

@@ -99,6 +99,7 @@ public class TransferMenu {
 					iTransfer.setStatus("Accept");
 					account = Main.accountSrv.getAccountById(iTransfer.getEndAccountNumber());
 					Main.transferSrv.acceptTransfer(iTransfer, account);
+					Main.loggy.debug(Main.sUser.iUser.getEmail() + " - Transfer - "+iTransfer.toString());
 					Main.loggy.info("Transfer success - Go to Accounts to see your new balance.\n");
 //					Main.loggy.info(account.toString()+"\n");
 					flag = true;
@@ -106,6 +107,7 @@ public class TransferMenu {
 					iTransfer.setStatus("Reject");
 					account = Main.accountSrv.getAccountById(iTransfer.getIniAcccountNumber());
 					Main.transferSrv.acceptTransfer(iTransfer, account);
+					Main.loggy.debug(Main.sUser.iUser.getEmail() + " - Transfer - "+iTransfer.toString());
 					Main.loggy.info("Transfer success - Go to Accounts to see your new balance.\n");
 //					Main.loggy.info(account.toString()+"\n");
 					flag = true;

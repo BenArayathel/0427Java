@@ -25,6 +25,7 @@ public class LoginForm {
 			user = auth.login(inpEmail, inpPwd);
 			if (user != null) {
 				Main.sUser.iUser = user;
+				Main.loggy.debug(user.getEmail() + " - Login");
 				if(user.getUserType().equals("Employee")) {
 	//			if(auth.login("employee@hackbank.com", "Pwd0123").equals("Employee")) {
 					Main.adminMenu(sc);

@@ -76,14 +76,14 @@ public class OpeningAccount {
 			if (choice.equals("1")) {
 				iAccount = penginApprovalSrv.createApproval(pApproval);
 				if(iAccount != null) {
-					Main.loggy.info("Congratulation to open a new bank account with us!\n");
+					Main.loggy.info("Your new Bank Account is ready to use!!!\n");
+					Main.loggy.info("\nTo use the services of our bank\nfinish your registration with the Account Number.!\n");
 					Main.loggy.info(iAccount.toString());
-					Main.loggy.info("\nTo use the service of our bank\nfinish your register with the Account Number.!\n");
 				}else {
 					if(pApproval.getStatus().equals("Pending"))
-						Main.loggy.info("You're account status is pending!. \nContact an employee to see how we can help you!");
+						Main.loggy.info("You're account status is pending!. \nContact an employee to finish it!");
 					else
-						Main.loggy.info("You're account was rejected!. \nContact an employee to see how we can help you!");
+						Main.loggy.info("You're account was rejected!. \nContact an employee for Help!");
 				}
 			}else if (choice.equals("2")){
 				menu(sc, person, accountType);
@@ -108,7 +108,7 @@ public class OpeningAccount {
 			Main.loggy.info("--- What type of Bank Account do you need?");
 			Main.loggy.info("--- 1 - Saving");
 			Main.loggy.info("--- 2 - Checking");
-			Main.loggy.info("--- 3 - Customer Menu");
+			Main.loggy.info("--- 3 - Customer's Menu");
 			try {
 				opt = Integer.parseInt(sc.nextLine());
 			} catch (NumberFormatException e) {
@@ -158,7 +158,7 @@ public class OpeningAccount {
 				iAccount = penginApprovalSrv.createApproval(pApproval);
 				if(iAccount == null) {
 					if(pApproval.getStatus().equals("Pending"))
-						Main.loggy.info("You're account status is pending!. \nNow contact an employee to see how we can help you!\n");
+						Main.loggy.info("You're account status is pending!. \nNow contact an employee to finish it!\n");
 				}else {
 					Main.loggy.info("You're account status is Approve!.");
 				}
