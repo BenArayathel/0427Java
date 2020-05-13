@@ -50,6 +50,6 @@ public class Account{
 	@Override
 	public String toString() {
 		return "Account [id=" + id + ", customerId=" + customerId + ", balance=" + balance + ", pending=" + pending
-				+ "]";
+				+ ", approved=" + approved + "]";
 	}
 }

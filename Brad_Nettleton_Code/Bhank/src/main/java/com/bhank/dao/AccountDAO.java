@@ -21,7 +21,7 @@ public interface AccountDAO {
 	
 
 	// read
-	List<Account> selectAllAccountsByCustomer(Customer customer) throws BusinessException;
+	List<Account> selectAllAccountsByCustomer(String customerId) throws BusinessException;
 
 	Account selectAccountByNameAndPassword(String name, String Password) throws BusinessException;
 

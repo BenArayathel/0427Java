@@ -1,5 +1,6 @@
 package com.bhank.menu;
 
+import java.util.List;
 import java.util.Scanner;
 
 import com.bhank.exception.BusinessException;
@@ -10,7 +11,6 @@ import com.bhank.model.Employee;
 import com.bhank.service.impl.AccountServiceImpl;
 import com.bhank.service.impl.CustomerServiceImpl;
 import com.bhank.service.impl.EmployeeServiceImpl;
-import org.apache.log4j.Logger;
 
 public class Menu {
 
@@ -20,7 +20,7 @@ public class Menu {
 	Scanner s = new Scanner(System.in);
 
 	public void mainMenu() {
-		Main.logger.info("Bhank main menu started");
+		Main.logger.info("Bhank main menu entered");
 		System.out.println("Welcome to Bhank!");
 		int ch = 0;
 		do {
@@ -41,16 +41,38 @@ public class Menu {
 				customerRegistrationMenu();
 				break;
 			case 4:
+				Main.logger.info("Bhank application exited");
 				System.out.println("Thank you for using Bhank....");
 				break;
+			case 5:
+				Employee employee = new Employee();
+				System.out.println("Employee Registration");
+				System.out.println("---------------------");
+				System.out.println("Enter name");
+				employee.setName(s.nextLine());
+				System.out.println("Enter password");
+				employee.setPassword(s.nextLine());
+				System.out.println("Enter date of birth in dd.MM.yyyy format only");
+				try {
+					employee.setDob(CustomerServiceImpl.isValidDob(s.nextLine()));
+					employee = employeeService.createEmployee(employee);
+					if (employee.getId() != null) {
+						System.out.println("employee registered");
+						System.out.println(employee);
+					}
+				} catch (BusinessException e) {
+					System.out.println(e.getMessage());
+				}
 			default:
-				System.out.println("Enter (1-3)");
+				Main.logger.error("Invalid option \"" + ch + "\" selected in main menu");
+				System.out.println("Enter (1-4)");
 				break;
 			}
 		} while (ch != 4);
 	}
 
 	private void employeeLoginMenu() {
+		Main.logger.info("Employee Login menu entered");
 		Employee employee = new Employee();
 		System.out.println("Employee login");
 		System.out.println("--------------");
@@ -61,15 +83,19 @@ public class Menu {
 		try {
 			employee = employeeService.selectEmployeeByNameAndPassword(employeeName, employeePassword);
 		} catch (BusinessException e) {
+			Main.logger.info("Employee service failed to select employee by name \"" + employeeName
+					+ "\" and password \"" + employeePassword + "\"");
 			System.out.println(e.getMessage());
 		}
-		if (employee != null) {
+		if (employee.getName() != null) {
 			employeeMenu(employee);
+		} else {
+			System.out.println("Login Error");
 		}
-		System.out.println("exiting customerLoginMenu");
 	}
 
 	private void employeeMenu(Employee employee) {
+		Main.logger.info("Emplpoyee menu entered");
 		int ch = 0;
 		do {
 			System.out.println("Employee Menu");
@@ -77,27 +103,95 @@ public class Menu {
 			System.out.println("-------------");
 			System.out.println("1)View pending accounts");
 			System.out.println("2)View a customer's accounts");
-			System.out.println("3)View log of transactions");
-			System.out.println("4)Return to main menu");
+			System.out.println("3)Approve a customer's account");
+			System.out.println("4)Decline a customer's account");
+			System.out.println("5)View log of transactions");
+			System.out.println("6)Return to main menu");
 			ch = Integer.parseInt(s.nextLine());
 			switch (ch) {
 			case 1:
+			{
+				List<Account> pendingAccountsList = null;
+				try {
+					pendingAccountsList = accountService.selectAllPendingAccounts();
+				} catch (BusinessException e) {
+					System.out.println(e.getMessage());
+					e.printStackTrace();
+				}
+				for(Account account: pendingAccountsList) {
+					System.out.println(account);
+				}
 				break;
+			}
 			case 2:
+			{
+				List<Account> customerAccounts = null;
+				System.out.println("Enter custommer id");
+				String customerId = s.nextLine();
+				try {
+					customerAccounts = accountService.selectAllAccountsByCustomer(customerId);
+				} catch (BusinessException e) {
+					System.out.println(e.getMessage());
+				}
+				if(customerAccounts != null) {
+					for(Account account:customerAccounts) {
+						System.out.println(account);
+					} 
+				} else {
+					System.out.println("Couldn't view accounts of customoer with id \""+customerId+"\"");
+				}
 				break;
+			}
 			case 3:
+			{
+				Account account = null;
+				System.out.println("Enter account id of account to approve");
+				String accountId = s.nextLine();
+				try {
+					account = accountService.selectAccountById(accountId);
+				} catch (BusinessException e) {
+					System.out.println(e.getMessage());
+				}
+				try {
+					account = accountService.approveAccount(account);
+				} catch (BusinessException e) {
+					System.out.println(e.getMessage());
+				}
 				break;
+			}
 			case 4:
+			{
+				Account account = null;
+				System.out.println("Enter account id of account to decline");
+				String accountId = s.nextLine();
+				try {
+					account = accountService.selectAccountById(accountId);
+				} catch (BusinessException e) {
+					System.out.println(e.getMessage());
+				}
+				try {
+					account = accountService.declineAccount(account);
+				} catch (BusinessException e) {
+					System.out.println(e.getMessage());
+				}
+				break;
+			}
+			case 5:
+				break;
+			case 6:
+				Main.logger.info("Exiting employee menu");
 				System.out.println("Exiting employee menu...");
 				System.out.println("Returning to main menu");
 				return;
 			default:
-				System.out.println("Enter 1-4");
+				Main.logger.error("Invalid option \"" + ch + "\" selected in employee menu");
+				System.out.println("Enter 1-6");
 			}
-		} while (ch != 4);
+		} while (ch != 6);
 	}
 
 	private void customerRegistrationMenu() {
+		Main.logger.info("Customer Registration menu entered");
 		Customer customer = new Customer();
 		System.out.println("Customer Registration");
 		System.out.println("---------------------");
@@ -120,6 +214,7 @@ public class Menu {
 	}
 
 	private void customerLoginMenu() {
+		Main.logger.info("Customer Login menu entered");
 		Customer customer = new Customer();
 		System.out.println("Customer login");
 		System.out.println("--------------");
@@ -132,12 +227,15 @@ public class Menu {
 		} catch (BusinessException e) {
 			System.out.println(e.getMessage());
 		}
-		if (customer != null) {
+		if (customer.getName() != null) {
 			customerMenu(customer);
+		} else {
+			System.out.println("Login Error");
 		}
 	}
 
 	private void customerMenu(Customer customer) {
+		Main.logger.info("Customer Menu entered");
 		int ch = 0;
 		do {
 			System.out.println("Customer Menu");
@@ -153,21 +251,25 @@ public class Menu {
 			ch = Integer.parseInt(s.nextLine());
 			switch (ch) {
 			case 1: {
+				Main.logger.info("Customer apply for accunt menu entered");
 				System.out.println("Apply for account");
 				System.out.println("-----------------");
 				System.out.println("Enter starting balance");
 				double startingBalance = Double.parseDouble(s.nextLine());
 				Account account = new Account(startingBalance);
-				account.setId(customer.getId());
+				account.setCustomerId(customer.getId());
 				try {
 					accountService.createAccount(account);
+					Main.logger.info("Successfully created customer account");
 				} catch (BusinessException e) {
-					e.printStackTrace();
+					Main.logger.error("Customer account creation was unsuccessful");
 					System.out.println(e.getMessage());
 				}
+				System.out.println(account);
 				break;
 			}
 			case 2: {
+				Main.logger.info("Customer view account balance menu entered");
 				Account account = null;
 				System.out.println("View account balance");
 				System.out.println("--------------------");
@@ -175,71 +277,81 @@ public class Menu {
 				String id = s.nextLine();
 				try {
 					account = accountService.selectAccountById(id);
+					Main.logger.info("Account service selected account by id: " + id);
 				} catch (BusinessException e) {
 					Main.logger.error("Couldn't select account with id: " + id);
 					e.printStackTrace();
 					System.out.println(e.getMessage());
 				}
-				System.out.println(account);
+				if (account.isApproved()) {
+					System.out.println(account);
+				} else if (account.isPending()) {
+					System.out.println("Account is pending review");
+				} else if (!account.isApproved()) {
+					System.out.println("Account has been declined");
+				}
 				break;
 			}
 			case 3: {
+				Main.logger.info("Customer withdrawal menu entered");
 				Account account = null;
 				System.out.println("Withdrawal");
 				System.out.println("----------");
 				System.out.println("Enter account id of account to withdraw from");
 				String id = s.nextLine();
-				try {
-					account = accountService.selectAccountById(id);
-				} catch (BusinessException e) {
-					e.printStackTrace();
-					System.out.println(e.getMessage());
-				}
 				System.out.println("Enter amount to withdraw");
 				double amount = Double.parseDouble(s.nextLine());
 				try {
-					account = accountService.withdraw(account, amount);
+					account = accountService.withdraw(id, amount);
+					System.out.println("Account updated");
+					System.out.println(accountService.selectAccountById(account.getId()));
+					Main.logger.info("Account service successfully withdrew " + amount + " from account with id " + id);
 				} catch (BusinessException e) {
-					e.printStackTrace();
+					Main.logger.error("Account service failed to withdraw " + amount + " from account with id: " + id);
 					System.out.println(e.getMessage());
 				}
-				System.out.println("Account updated");
-				System.out.println(account);
 				break;
 			}
 			case 4: {
+				Main.logger.info("Customer deposit menu entered");
 				Account account = null;
 				System.out.println("Deposit");
 				System.out.println("-------");
 				System.out.println("Enter account id of account to deposit into");
 				String id = s.nextLine();
-				try {
-					account = accountService.selectAccountById(id);
-				} catch (BusinessException e) {
-					e.printStackTrace();
-					System.out.println(e.getMessage());
-				}
 				System.out.println("Enter amount to deposit");
 				double amount = Double.parseDouble(s.nextLine());
 				try {
-					account = accountService.deposit(account, amount);
+					account = accountService.deposit(id, amount);
+					System.out.println("Account updated");
+					System.out.println(accountService.selectAccountById(account.getId()));
+					Main.logger.info("Account service successfully deposited " + amount + " into account with id " + id);
 				} catch (BusinessException e) {
-					e.printStackTrace();
+					Main.logger.error("Account service failed to deposit " + amount + "into account with id " + id);
 					System.out.println(e.getMessage());
 				}
-				System.out.println("Account updated");
-				System.out.println(account);
 				break;
 			}
-			case 5:
+			case 5: {
+				Main.logger.info("Customer post money transfer menu entered");
+				System.out.println("Post Money Transfer");
+				System.out.println("-------------------");
+				System.out.println("Enter account to transfer money to");
+				String toAccountId = s.nextLine();
+				System.out.println("Enter amount to transfer");
+				double transferAmount = Double.parseDouble(s.nextLine());
+
 				break;
+			}
 			case 6:
 				break;
 			case 7:
+				Main.logger.info("Exiting customer menu");
 				System.out.println("Exiting customer menu...");
 				System.out.println("Returning to main menu");
 				return;
 			default:
+				Main.logger.error("Invalid option: \"" + ch + "\" selected in customer menu");
 				System.out.println("Enter 1-7");
 			}
 		} while (ch != 7);

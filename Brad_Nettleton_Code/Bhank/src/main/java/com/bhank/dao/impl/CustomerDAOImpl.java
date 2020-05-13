@@ -11,6 +11,7 @@ import java.util.List;
 import com.bhank.dao.CustomerDAO;
 import com.bhank.dbutil.OracleConnection;
 import com.bhank.exception.BusinessException;
+import com.bhank.main.Main;
 import com.bhank.model.Customer;
 
 public class CustomerDAOImpl implements CustomerDAO {
@@ -20,29 +21,29 @@ public class CustomerDAOImpl implements CustomerDAO {
 	}
 
 	@Override
-	public Customer createCustomer(Customer c) throws BusinessException {
+	public Customer createCustomer(Customer customer) throws BusinessException {
 		try (Connection connection = OracleConnection.getConnection()) {
 			String sql = "{call CREATECUSTOMER(?,?,?,?)}";
-			System.out.println(c);
 			CallableStatement callableStatement = connection.prepareCall(sql);
-			callableStatement.setString(2, c.getName());
-			callableStatement.setString(3, c.getPassword());
-			callableStatement.setDate(4, new java.sql.Date(c.getDob().getTime()));
+			callableStatement.setString(2, customer.getName());
+			callableStatement.setString(3, customer.getPassword());
+			callableStatement.setDate(4, new java.sql.Date(customer.getDob().getTime()));
 
 			callableStatement.registerOutParameter(1, java.sql.Types.VARCHAR);
 
 			callableStatement.execute();
-			c.setId(callableStatement.getString(1));
+			customer.setId(callableStatement.getString(1));
 
 		} catch (ClassNotFoundException | SQLException e) {
-			e.printStackTrace();
+			Main.logger.error("Customer DAO failed to create customer in database");
 			throw new BusinessException("Internal error occured please contact SYSADMIN");
 		}
-		return c;
+		Main.logger.info("Customer DAO successfully created customer \""+customer+"\" in database");
+		return customer;
 	}
 
 	@Override
-	public Customer updateCustomer(Customer e) throws BusinessException {
+	public Customer updateCustomer(Customer customer) throws BusinessException {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -62,37 +63,42 @@ public class CustomerDAOImpl implements CustomerDAO {
 				customerList.add(c);
 			}
 		} catch (ClassNotFoundException | SQLException e) {
-			e.printStackTrace();
+			Main.logger.error("Customer DAO failed to select all customers from database");
 			throw new BusinessException("Internal Error contact SYSADMIN");
 		}
-		return null;
+		Main.logger.info("Customer DAO successfully selected all customers from database");
+		return customerList;
 	}
 
 	@Override
-	public Customer selectCustomerByNameAndPassword(String name, String password) throws BusinessException {
+	public Customer selectCustomerByNameAndPassword(String customerName, String customerPassword) throws BusinessException {
 		Customer customer = new Customer();
 		try (Connection connection = OracleConnection.getConnection()) {
-			String sql = "Select id,dob from customer where name= \'"+name+"\' and password=\'"+password+"\'";
+			String sql = "Select id,dob from customer where name= \'"+customerName+"\' and password=\'"+customerPassword+"\'";
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
 			ResultSet resultSet = preparedStatement.executeQuery();
 			if(resultSet.next()) {
 			customer.setId(resultSet.getString("id"));
-			customer.setName(name);
-			customer.setPassword(password);
+			customer.setName(customerName);
+			customer.setPassword(customerPassword);
 			customer.setDob(resultSet.getDate("dob"));
+			Main.logger.info("Customer DAO successfully selected customer by name \""+customerName+"\" and password \""+customerPassword+"\" from database");
+			} else {
+				Main.logger.error("Customer DAO failed to select customer by name \""+customerName+"\" and password \""+customerPassword+"\" from database");
+				throw new BusinessException("customer by name \""+customerName+"\" and password \""+customerPassword+"\" does not exist\"");
 			}
 		} catch (ClassNotFoundException | SQLException e) {
-			e.printStackTrace();
+			Main.logger.error("Customer DAO failed to select customer by name \""+customerName+"\" and password \""+customerPassword+"\" from database due to "+e.getMessage());
 			throw new BusinessException("Internal Error contact SYSADMIN");
 		}
 		return customer;
 	}
 
 	@Override
-	public Customer selectCustomerById(String id) throws BusinessException {
+	public Customer selectCustomerById(String customerId) throws BusinessException {
 		Customer customer = new Customer();
 		try (Connection connection = OracleConnection.getConnection()) {
-			String sql = "Select id,name,password,dob from customer where id= \'"+id+"\'";
+			String sql = "Select id,name,password,dob from customer where id= \'"+customerId+"\'";
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
 			ResultSet resultSet = preparedStatement.executeQuery();
 			if(resultSet.next()) {
@@ -100,9 +106,12 @@ public class CustomerDAOImpl implements CustomerDAO {
 			customer.setName("name");
 			customer.setPassword("password");
 			customer.setDob(resultSet.getDate("dob"));
+			Main.logger.error("Customer DAO successfully selected customer by id \""+customerId+"\" from database");
+			} else {
+				throw new BusinessException("customer by id \""+customerId+"\" does not exist\"");
 			}
 		} catch (ClassNotFoundException | SQLException e) {
-			e.printStackTrace();
+			Main.logger.error("Customer DAO failed to select customer by id \""+customerId+"\" from database due to "+e.getMessage());
 			throw new BusinessException("Internal Error contact SYSADMIN");
 		}
 		return customer;

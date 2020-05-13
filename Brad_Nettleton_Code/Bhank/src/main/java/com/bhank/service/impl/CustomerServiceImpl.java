@@ -7,6 +7,7 @@ import java.util.List;
 
 import com.bhank.dao.impl.CustomerDAOImpl;
 import com.bhank.exception.BusinessException;
+import com.bhank.main.Main;
 import com.bhank.model.Customer;
 import com.bhank.service.CustomerService;
 
@@ -15,17 +16,21 @@ public class CustomerServiceImpl implements CustomerService {
 	private CustomerDAOImpl dao = new CustomerDAOImpl();
 
 	@Override
-	public Customer createCustomer(Customer c) throws BusinessException {
-		if (c == null) {
+	public Customer createCustomer(Customer customer) throws BusinessException {
+		if (customer == null) {
+			Main.logger.error("Customer service failed to create customer becuase customer object was null");
 			throw new BusinessException("Customer object was not created");
-		} else if (!isValidName(c.getName())) {
+		} else if (!isValidName(customer.getName())) {
+			Main.logger.error("Customer service failed to created customer due to invalid name \""+customer.getName()+"\"");
 			throw new BusinessException("Customer name is invalid");
-		} else if (!isValidPassword(c.getPassword())) {
+		} else if (!isValidPassword(customer.getPassword())) {
+			Main.logger.error("Customer service failed to created customer due to invalid password \""+customer.getPassword()+"\"");
 			throw new BusinessException("Customer password is invalid");
 		} else {
-			dao.createCustomer(c);
+			Main.logger.info("Customer service successfully created customer: "+customer);
+			dao.createCustomer(customer);
 		}
-		return c;
+		return customer;
 	}
 
 	public static Date isValidDob(String dob) throws BusinessException {
@@ -36,17 +41,21 @@ public class CustomerServiceImpl implements CustomerService {
 			try {
 				d = sdf.parse(dob);
 			} catch (ParseException e) {
+				Main.logger.info("Customer service denied invalid date \""+dob+"\"");
 				throw new BusinessException("Entered date " + dob + " is invalid");
 			}
 		} else {
+			Main.logger.info("Customer service denied invalid date format \""+dob+"\"");
 			throw new BusinessException("Entered date " + dob + " should be in (dd.MM.yyyy) format only");
 		}
+		Main.logger.info("Customer service successfully validated dob \""+dob+"\"");
 		return d;
 	}
 
-	private boolean isValidPassword(String password) {
+	public boolean isValidPassword(String password) {
 		boolean b = false;
 		if (password.matches("[a-zA-Z0-9]{4,12}")) {
+			Main.logger.info("Customer service validated password \""+password+"\"");
 			b = true;
 		}
 		return b;
@@ -55,52 +64,72 @@ public class CustomerServiceImpl implements CustomerService {
 	private boolean isValidName(String name) {
 		boolean b = false;
 		if (name.matches("[a-zA-Z ]{1,20}")) {
+			Main.logger.info("Customer service validated name \""+name+"\"");
 			b = true;
 		}
 		return b;
 	}
 
 	@Override
-	public Customer updateCustomer(Customer c) throws BusinessException {
-		if (c == null) {
+	public Customer updateCustomer(Customer customer) throws BusinessException {
+		if (customer == null) {
 			throw new BusinessException("Customer object was not created");
-		} else if (!isValidName(c.getName())) {
+		} else if (!isValidName(customer.getName())) {
 			throw new BusinessException("Customer name is invalid");
-		} else if (!isValidPassword(c.getPassword())) {
+		} else if (!isValidPassword(customer.getPassword())) {
 			throw new BusinessException("Customer password is invalid");
 		}
-		return c;
+		return customer;
 	}
 
 	@Override
 	public List<Customer> selectAllCustomers() throws BusinessException {
+		Main.logger.info("Customer service successfully selected all customers");
 		return dao.selectAllCustomers();
 	}
 
 	@Override
-	public Customer selectCustomerByNameAndPassword(String name, String password) throws BusinessException {
-		Customer c = null;
-		if(name==null ||password==null) {
+	public Customer selectCustomerByNameAndPassword(String customerName, String customerPassword) throws BusinessException {
+		Customer customer = null;
+		if(customerName==null || customerPassword==null) {
+			Main.logger.error("Customer service failed to selected customer by name and password because name or password was null");
 			throw new BusinessException("Name or password is null");
-		} else if (!isValidName(name)) {
+		} else if (!isValidName(customerName)) {
+			Main.logger.error("Customer service failed to selected customer by name and password due to invalid name \""+customerName+"\"");
 			throw new BusinessException("Name is invalid");
-		} else if (!isValidPassword(password)) {
+		} else if (!isValidPassword(customerPassword)) {
+			Main.logger.error("Customer service failed to selected customer by name and password due to invalid password \""+customerPassword+"\"");
 			throw new BusinessException("password is invalid");
 		} else {
-			c=dao.selectCustomerByNameAndPassword(name, password);
+			Main.logger.info("Customer service successfully selected customer by name \""+customerName+"\" and password \""+customerPassword+"\"");
+			customer=dao.selectCustomerByNameAndPassword(customerName, customerPassword);
 		}
-		return c;
+		return customer;
 	}
 
 	@Override
 	public Customer selectCustomerById(String id) throws BusinessException {
-		Customer c=null;
+		Customer customer=null;
 		if(id==null) {
+			Main.logger.error("Customer service failed to selected customer by id because id was null");
 			throw new BusinessException("id is null");
+		} else if(!isValidId(id)) {
+			Main.logger.error("Customer service failed to select customer by id due to invalid id \""+id+"\"");
+			throw new BusinessException("Customer id is invalid");
 		} else {
-			c=dao.selectCustomerById(id);
+			Main.logger.info("Customer service successfully selected customer by id \""+id+"\"");
+			customer=dao.selectCustomerById(id);
 		}
-		return c;
+		return customer;
+	}
+	
+	private boolean isValidId(String id) {
+		boolean b = false;
+		if (id.matches("CU[a-zA-Z]{2}[0-9]{9}")) {
+			Main.logger.info("Customer service successfully validated customer id \""+id+"\"");
+			b = true;
+		}
+		return b;
 	}
 
 	@Override

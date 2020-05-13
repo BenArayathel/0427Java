@@ -11,6 +11,7 @@ import java.util.List;
 import com.bhank.dao.EmployeeDAO;
 import com.bhank.dbutil.OracleConnection;
 import com.bhank.exception.BusinessException;
+import com.bhank.main.Main;
 import com.bhank.model.Customer;
 import com.bhank.model.Employee;
 
@@ -67,22 +68,24 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 	}
 
 	@Override
-	public Employee selectEmployeeByNameAndPassword(String name, String password) throws BusinessException {
+	public Employee selectEmployeeByNameAndPassword(String employeeName, String employeePassword) throws BusinessException {
 		Employee employee = new Employee();
 		try (Connection connection = OracleConnection.getConnection()) {
-			String sql = "Select id,dob from employee where name= \'"+name+"\' and password=\'"+password+"\'";
+			String sql = "Select id,dob from employee where name= \'"+employeeName+"\' and password=\'"+employeePassword+"\'";
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
 			ResultSet resultSet = preparedStatement.executeQuery();
 			if(resultSet.next()) {
 			employee.setId(resultSet.getString("id"));
-			employee.setName(name);
-			employee.setPassword(password);
+			employee.setName(employeeName);
+			employee.setPassword(employeePassword);
 			employee.setDob(resultSet.getDate("dob"));
 			}
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
+			Main.logger.error("Employee DAO failed to select employee by name \""+employeeName+"\" and password \""+employeePassword+"\"");
 			throw new BusinessException("Internal Error contact SYSADMIN");
 		}
+		Main.logger.info("Employee DAO successfully selected employee by name \""+employeeName+"\" and password \""+employeePassword+"\" from database");
 		return employee;
 	}
 

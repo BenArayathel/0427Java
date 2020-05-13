@@ -452,3 +452,18 @@ let asray = [];
 
 
 // console.log(o);
+
+function animal() {
+    this.move = "moving";
+};
+
+let animal1 = new animal();
+
+console.log(`animal toString = ${animal.toString()} | animal valueOf = ${animal.valueOf()}`);
+console.log(`animal.__proto__ toString = ${animal.__proto__.toString()} | animal.__proto__ valueOf = ${animal.__proto__.valueOf()}`);
+console.log(`animal.__proto__.__proto__ toString = ${animal.__proto__.__proto__.toString()} | animal.__proto__.__proto__ valueOf = ${animal.__proto__.__proto__.valueOf()}`);
+console.log(`animal.__proto__.__proto__.__proto__ toString = ${animal.__proto__.__proto__.__proto__.toString()} | animal.__proto__.__proto__.__proto__ valueOf = ${animal.__proto__.__proto__.__proto__.valueOf()}`);
+console.log(animal.__proto__);
+console.log(animal.__proto__.__proto__);
+console.log(animal.__proto__.__proto__.__proto__);
+

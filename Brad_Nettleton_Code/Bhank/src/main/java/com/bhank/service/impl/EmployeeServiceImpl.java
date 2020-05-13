@@ -1,12 +1,11 @@
 package com.bhank.service.impl;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
 import com.bhank.dao.impl.EmployeeDAOImpl;
 import com.bhank.exception.BusinessException;
+import com.bhank.main.Main;
 import com.bhank.model.Employee;
 import com.bhank.service.EmployeeService;
 
@@ -22,30 +21,19 @@ public class EmployeeServiceImpl implements EmployeeService {
 		} else if (!isValidPassword(employee.getPassword())) {
 			throw new BusinessException("Employee password is invalid");
 		} else {
+			Main.logger.info("Employee service successfully created employee \""+employee+"\"");
 			employee = dao.createEmployee(employee);
 		}
 		return employee;
 	}
 	
 	public static Date isValidDob(String dob) throws BusinessException {
-		Date d = null;
-		if (dob.matches("[0-9]{2}.[0-9]{2}.[0-9]{4}")) {
-			SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
-			sdf.setLenient(false);
-			try {
-				d = sdf.parse(dob);
-			} catch (ParseException e) {
-				throw new BusinessException("Entered date " + dob + " is invalid");
-			}
-		} else {
-			throw new BusinessException("Entered date " + dob + " should be in (dd.MM.yyyy) format only");
-		}
-		return d;
+		return CustomerServiceImpl.isValidDob(dob);
 	}
 
 	private boolean isValidPassword(String password) {
 		boolean b = false;
-		if (password.matches("[a-zA-Z0-9]{4,12}")) {
+		if (password.matches("[a-zA-Z0-9]{8,20}")) {
 			b = true;
 		}
 		return b;
@@ -53,7 +41,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 	private boolean isValidName(String name) {
 		boolean b = false;
-		if (name.matches("[a-zA-Z]{1,20}")) {
+		if (name.matches("[a-zA-Z ]{1,20}")) {
 			b = true;
 		}
 		return b;
@@ -71,27 +59,34 @@ public class EmployeeServiceImpl implements EmployeeService {
 	}
 
 	@Override
-	public Employee selectEmployeeByNameAndPassword(String name, String password) throws BusinessException {
+	public Employee selectEmployeeByNameAndPassword(String employeeName, String employeePassword) throws BusinessException {
 		Employee employee = null;
-		if(name==null ||password==null) {
+		if(employeeName==null ||employeePassword==null) {
+			Main.logger.error("Employee service failed to selected employee by name and password because name or password was null");
 			throw new BusinessException("Name or password is null");
-		} else if (!isValidName(name)) {
+		} else if (!isValidName(employeeName)) {
+			Main.logger.error("Employee service failed to selected employee by name and password due to invalid name \""+employeeName+"\"");
 			throw new BusinessException("Name is invalid");
-		} else if (!isValidPassword(password)) {
+		} else if (!isValidPassword(employeePassword)) {
+			Main.logger.error("Employee service failed to selected employee by name and password due to invalid password \""+employeePassword+"\"");
 			throw new BusinessException("password is invalid");
 		} else {
-			employee=dao.selectEmployeeByNameAndPassword(name, password);
+			Main.logger.info("Employee service successfully selected employee by name \""+employeeName+"\" and password \""+employeePassword+"\"");
+			employee=dao.selectEmployeeByNameAndPassword(employeeName, employeePassword);
 		}
+		
 		return employee;
 	}
 
 	@Override
-	public Employee selectEmployeeById(String id) throws BusinessException {
+	public Employee selectEmployeeById(String employeeId) throws BusinessException {
 		Employee employee=null;
-		if(id==null) {
+		if(employeeId==null) {
+			Main.logger.error("Employee service failed to select employee by id because id was null");
 			throw new BusinessException("id is null");
 		} else {
-			employee=dao.selectEmployeeById(id);
+			Main.logger.info("Employee service successfully selected employee by id \""+employeeId+"\"");
+			employee=dao.selectEmployeeById(employeeId);
 		}
 		return employee;
 	}
