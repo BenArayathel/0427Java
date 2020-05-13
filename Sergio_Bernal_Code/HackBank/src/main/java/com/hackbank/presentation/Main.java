@@ -85,8 +85,8 @@ public class Main {
 			loggy.info("--- 1 - Register a New Client");
 			loggy.info("--- 2 - Search Client");
 			loggy.info("--- 3 - Pending to Approve");
-			loggy.info("--- 4 - View Transactions");
-			loggy.info("--- 5 - Logout");
+//			loggy.info("--- 4 - View Transactions");
+			loggy.info("--- 4 - Logout");
 			try {
 				opt = Integer.parseInt(sc.nextLine());
 			} catch (NumberFormatException e) {
@@ -103,10 +103,7 @@ public class Main {
 				PendingAccountMenu.showPendingApproval(sc);
 				break;
 			case 4:
-				loggy.info("Under Construction!\n");
-				break;
-			case 5:
-				// loggy.info("Under Construction!");
+//				loggy.info("Under Construction!\n");
 				break;
 			default:
 				loggy.info("\nThis is not a valid option -> "+opt);
@@ -114,7 +111,7 @@ public class Main {
 				opt = 0;
 				break;
 			}
-		}while(opt!=5);
+		}while(opt!=4);
 	}
 	
 	public static void customerMenu(Scanner sc){
@@ -147,7 +144,7 @@ public class Main {
 				OpeningAccount.customerForm(sc);
 				break;
 			case 3:
-				loggy.info("Under Construction!\n");
+				TransferMenu.search(sc);
 				break;
 			case 4:
 				//loggy.info("Under Construction!\n");
@@ -158,7 +155,7 @@ public class Main {
 				opt = 0;
 				break;
 			}
-		}while(opt!=3);
+		}while(opt!=4);
 	}
 	
 	private static void header() {

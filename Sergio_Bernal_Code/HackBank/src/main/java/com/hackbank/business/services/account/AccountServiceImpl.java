@@ -44,8 +44,7 @@ public class AccountServiceImpl implements AccountService{
 
 	@Override
 	public Account getAccountById(String id) throws BusinessException {
-		// TODO Auto-generated method stub
-		return null;
+		return accountDAO.getAccountById(id);
 	}
 	
 	@Override

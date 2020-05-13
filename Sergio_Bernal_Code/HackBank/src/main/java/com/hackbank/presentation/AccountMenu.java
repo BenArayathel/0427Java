@@ -1,13 +1,11 @@
 package com.hackbank.presentation;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
 import com.hackbank.business.exceptions.BusinessException;
 import com.hackbank.persistence.models.Account;
-import com.hackbank.persistence.models.Transfer;
 
 public class AccountMenu {
 	
@@ -103,7 +101,7 @@ public class AccountMenu {
 					detailAccounts(iAccount);
 					break;
 				case 3:
-					createTransferForm(sc, iAccount);
+					TransferMenu.create(sc, iAccount);
 					opt = 4;
 					break;
 				case 4:
@@ -125,47 +123,6 @@ public class AccountMenu {
 		
 	}
 	
-	public static void createTransferForm(Scanner sc, Account account) {
-		Transfer transfer = new Transfer();
-		transfer.setIniAcccountNumber(account.getId());
-		transfer.setIniRoutingNumber(account.getRoutingNumber());
-		transfer.setCreatedAt(new Date());
-		boolean flag = false;
-		try {
-			Main.loggy.info("\n--- Transfer Form ---");
-			Main.loggy.info("--- Enter the next information");
-			Main.loggy.info("-- Account Number:");
-			transfer.setEndAccountNumber(sc.nextLine());
-			Main.loggy.info("-- Routing Number:");
-			transfer.setEndRoutingNumber(sc.nextLine());
-			Main.loggy.info("-- Amount:");
-			transfer.setBalance(Main.vd.isValidBalance(Double.parseDouble(sc.nextLine())));
-			transfer.setStatus("Pending");
-			
-			if (transfer.getBalance() <= account.getBalance()) {
-				Main.loggy.info("--- Is the transfer correct?");
-				String choice = WindowAccept.openWindow(sc);
-				
-				if (choice.equals("1")) {
-					flag = Main.transferSrv.createTransfer(transfer, account);
-					if(flag) {
-						Main.loggy.info("Transfer success!\n");
-						// Main.loggy.info(iAccount.toString());
-					}
-				}
-			}else {
-				Main.loggy.info("Transfer amount is mayor than currently balance.");
-			}
-//			else if (choice.equals("2")){
-//				menu(sc, person, accountType);
-//			}else if (choice.equals("3")) {
-//				Main.adminMenu(sc);
-//			}
-		} catch (NumberFormatException e) {
-			Main.loggy.info("Amount "+transfer.getBalance()+" isn't valid.");
-		} catch (BusinessException e) {
-			Main.loggy.info(e.getMessage());
-		}
-	}
+	
 	
 }

@@ -6,6 +6,8 @@ import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 
 import com.hackbank.business.exceptions.BusinessException;
+import com.hackbank.business.services.account.AccountService;
+import com.hackbank.business.services.account.AccountServiceImpl;
 import com.hackbank.business.validations.Validation;
 import com.hackbank.persistence.dao.account.AccountDAO;
 import com.hackbank.persistence.dao.account.AccountDAOImpl;
@@ -20,6 +22,7 @@ public class TransferServiceImpl implements TransferService{
 	final static Validation valid = new Validation();
 	final static TransferDAO transferDAO = new TransferDAOImpl();
 	final static AccountDAO accountDAO = new AccountDAOImpl();
+	final static AccountService accountSrv = new AccountServiceImpl();
 	
 	public static void main(String[] args) {
 		loggy.setLevel(Level.INFO);
@@ -49,9 +52,16 @@ public class TransferServiceImpl implements TransferService{
 	}
 
 	@Override
-	public boolean acceptTransfer(Transfer transfer) throws BusinessException {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean acceptTransfer(Transfer transfer, Account account) throws BusinessException {
+		boolean flag = transferDAO.acceptTransfer(transfer);
+		if (flag) {
+			if(transfer.getStatus().equals("Accept")) {
+				account = accountSrv.depositBalanceAccount(account, transfer.getAmount());
+			}else {
+				account = accountSrv.depositBalanceAccount(account, transfer.getAmount());
+			}
+		}
+		return flag;
 	}
 
 	@Override

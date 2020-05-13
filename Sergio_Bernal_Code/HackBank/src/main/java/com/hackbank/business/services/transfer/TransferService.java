@@ -10,6 +10,6 @@ public interface TransferService {
 
 	public abstract boolean createTransfer(Transfer transfer, Account account) throws BusinessException;
 	public abstract List<Transfer> transferList(String id) throws BusinessException;
-	public abstract boolean acceptTransfer(Transfer transfer) throws BusinessException;
+	public abstract boolean acceptTransfer(Transfer transfer, Account account) throws BusinessException;
 	
 }

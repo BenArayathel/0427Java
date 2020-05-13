@@ -12,12 +12,15 @@ import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 
 import com.hackbank.business.exceptions.BusinessException;
+import com.hackbank.persistence.dao.account.AccountDAO;
+import com.hackbank.persistence.dao.account.AccountDAOImpl;
 import com.hackbank.persistence.dbutil.SingletonDBConnection;
 import com.hackbank.persistence.models.Transfer;
 
 public class TransferDAOImpl implements TransferDAO{
 
 	final static Logger loggy = Logger.getLogger(TransferDAOImpl.class);
+	final static AccountDAO accountDAO = new AccountDAOImpl();
 	
 	public static void main(String[] args) {
 		loggy.setLevel(Level.INFO);
@@ -35,7 +38,7 @@ public class TransferDAOImpl implements TransferDAO{
 			call.setString(4, transfer.getStatus());
 			call.setString(5, transfer.getIniRoutingNumber());
 			call.setString(6, transfer.getEndRoutingNumber());
-			call.setDouble(7, transfer.getBalance());
+			call.setDouble(7, transfer.getAmount());
 			
 			call.execute();
 			flag = true;
@@ -48,8 +51,22 @@ public class TransferDAOImpl implements TransferDAO{
 
 	@Override
 	public boolean acceptTransfer(Transfer transfer) throws BusinessException {
-		
-		return false;
+		boolean flag = false;
+		String sql = "UPDATE HB_TRANSFER SET STATUS = ? WHERE ID = ?";
+		try(Connection conn = SingletonDBConnection.getConnection()){
+			PreparedStatement prepared = conn.prepareStatement(sql);
+			prepared.setString(1, transfer.getStatus());
+			prepared.setInt(2, transfer.getId());
+			int result = prepared.executeUpdate();
+			if(result > 0) {
+				flag = true;
+			}
+		} catch (ClassNotFoundException | SQLException e) {
+			loggy.error("SQL Error, please contact SYSADMIN");
+			throw new BusinessException("SQL Error, please contact SYSADMIN");
+		}
+
+		return flag;
 	}
 
 	@Override
@@ -57,29 +74,30 @@ public class TransferDAOImpl implements TransferDAO{
 		List<Transfer> list = new ArrayList<>();
 		String sql = "SELECT ht.id, INIT_ACCOUNT_NUMBER , END_ACCOUNT_NUMBER, CREATED_AT, STATUS, INIT_ROUTING_NUMBER, END_ROUTING_NUMBER, AMOUNT " + 
 					"FROM HB_TRANSFER ht INNER JOIN HB_ACCOUNT ha ON ha.ID = ht.INIT_ACCOUNT_NUMBER AND ha.ROUTING_NUMBER = ht.INIT_ROUTING_NUMBER " + 
-					"WHERE ha.PERSON_ID = ?";
+					"WHERE ht.status = 'Pending' AND ha.PERSON_ID = ?";
 		try(Connection conn = SingletonDBConnection.getConnection()){
 			PreparedStatement prepared = conn.prepareStatement(sql);
 			prepared.setString(1, id);
 			
 			ResultSet result = prepared.executeQuery();
 			while(result.next()) {
+				System.out.println();
 				Transfer iTransfer = new Transfer();
 				iTransfer.setId(result.getInt(1));
 				iTransfer.setIniAcccountNumber(result.getString(2));
 				iTransfer.setEndAccountNumber(result.getString(3));
 				iTransfer.setCreatedAt(result.getDate(4));
 				iTransfer.setStatus(result.getString(5));
-				iTransfer.setIniAcccountNumber(result.getString(6));
-				iTransfer.setEndAccountNumber(result.getString(7));
-				iTransfer.setBalance(result.getDouble(8));
+				iTransfer.setIniRoutingNumber(result.getString(6));
+				iTransfer.setEndRoutingNumber(result.getString(7));
+				iTransfer.setAmount(result.getDouble(8));
 				list.add(iTransfer);
 			}
 		} catch (ClassNotFoundException | SQLException e) {
 			loggy.error("SQL Error, please contact SYSADMIN");
 			throw new BusinessException("SQL Error, please contact SYSADMIN");
 		}
-		return null;
+		return list;
 	}
 
 }

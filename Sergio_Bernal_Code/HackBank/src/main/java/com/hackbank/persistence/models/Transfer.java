@@ -11,14 +11,14 @@ public class Transfer {
 	private String status;
 	private String iniRoutingNumber;
 	private String endRoutingNumber;
-	private double balance;
+	private double amount;
 	
 	public Transfer() {
 		// TODO Auto-generated constructor stub
 	}
 
 	public Transfer(int id, String iniAcccountNumber, String endAccountNumber, Date createdAt, String status,
-			String iniRoutingNumber, String endRoutingNumber, double balance) {
+			String iniRoutingNumber, String endRoutingNumber, double amount) {
 		super();
 		Id = id;
 		this.iniAcccountNumber = iniAcccountNumber;
@@ -27,7 +27,7 @@ public class Transfer {
 		this.status = status;
 		this.iniRoutingNumber = iniRoutingNumber;
 		this.endRoutingNumber = endRoutingNumber;
-		this.balance = balance;
+		this.amount = amount;
 	}
 
 	public int getId() {
@@ -86,19 +86,19 @@ public class Transfer {
 		this.endRoutingNumber = endRoutingNumber;
 	}
 
-	public double getBalance() {
-		return balance;
+	public double getAmount() {
+		return amount;
 	}
 
-	public void setBalance(double balance) {
-		this.balance = balance;
+	public void setAmount(double amount) {
+		this.amount = amount;
 	}
 
 	@Override
 	public String toString() {
 		return "Transfer [Id=" + Id + ", iniAcccountNumber=" + iniAcccountNumber + ", endAccountNumber="
 				+ endAccountNumber + ", createdAt=" + createdAt + ", status=" + status + ", iniRoutingNumber="
-				+ iniRoutingNumber + ", endRoutingNumber=" + endRoutingNumber + ", balance=" + balance + "]";
+				+ iniRoutingNumber + ", endRoutingNumber=" + endRoutingNumber + ", balance=" + amount + "]";
 	}
 
 	
