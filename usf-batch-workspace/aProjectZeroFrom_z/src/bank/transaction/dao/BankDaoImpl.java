@@ -108,6 +108,7 @@ public class BankDaoImpl implements BankDAO {
 			 * Double balance,
 			 * int a_access)
 			 */
+
 			while (rs.next()) {
 				//System.out.println(rs.getString("userName"));
 				userList.add(
@@ -145,7 +146,11 @@ public class BankDaoImpl implements BankDAO {
 		try{
 
 			conn = DAOUtilites.getConnection();
-			ps = conn.prepareStatement("select * from b_user where a_access is null");
+			// old working
+			//ps = conn.prepareStatement("select * from b_user where a_access is null");
+			//new one below
+			ps = conn.prepareStatement("select * from b_user where a_access is null and dob is not null");
+			
 			rs = ps.executeQuery();
 			
 			/**
@@ -432,7 +437,7 @@ public class BankDaoImpl implements BankDAO {
 	}
 	
 	@Override
-	public boolean employeeRejectOrApprove_customerApplicationForAccount(User approvedUser){
+	public boolean employeeApprove_customerApplicationForAccount(User approvedUser){
 		
 		// UPDATE THE DATABASE
 		
@@ -461,6 +466,38 @@ public class BankDaoImpl implements BankDAO {
 		}
 		return false;
 	}
+	
+	
+	// employeeReject_customerApplicationForAccount
+	@Override
+	public boolean employeeReject_customerApplicationForAccount(User deniedUser){
+		
+		Log.logger("Yes running empReject... ...");
+		
+		try{
+			int myInt = 1;
+			conn = DAOUtilites.getConnection();
+
+			ps = conn.prepareStatement("DELETE from b_user WHERE user_id=?");
+			Log.logger("user_id at backend" + deniedUser.getUser_id());
+			ps.setString(1, deniedUser.getUser_id());
+			
+			if(ps.execute()) {
+				return true;
+			}
+			
+		}
+		catch(SQLException e) {
+			e.printStackTrace();
+		}
+		finally {
+			closeResources();
+			
+		}
+		return false;
+	}
+	
+	
 	
 	@Override
 	public void updateBalance(User user) {

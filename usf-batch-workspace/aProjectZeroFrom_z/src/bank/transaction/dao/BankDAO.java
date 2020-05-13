@@ -32,7 +32,9 @@ public interface BankDAO {
 
 	public boolean customerApplicationForAccount(User user, String dob, double balance);			// step 1 of 2: apply
 	
-	public boolean employeeRejectOrApprove_customerApplicationForAccount(User approvedUser);		// step 2 of 2: approve check
+	public boolean employeeApprove_customerApplicationForAccount(User approvedUser);		// step 2 of 2: approve check
+	
+	public boolean employeeReject_customerApplicationForAccount(User approvedUser);
 	
 	public void updateBalance(User user);
 	

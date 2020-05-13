@@ -11,7 +11,7 @@ public class Emp_Login {
 		Scanner scanner = new Scanner(System.in);
 		String credential = "987";
 
-		Log.logger("Enter Employee Password: ");
+		Log.logger("\nEnter Employee Password: ");
 
 		if (scanner.hasNext()) {
 

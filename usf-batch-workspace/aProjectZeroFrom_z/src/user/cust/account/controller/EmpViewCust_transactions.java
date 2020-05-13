@@ -27,8 +27,8 @@ public class EmpViewCust_transactions {
 		//allUsers = b.getAllUsers();
 		allUsers = b.getAllUsers_withAuth();
 
-		Log.logger(allUsers.size() + " Total Customer(s)");
-		Log.logger("Select -which- Customer to View:\n");
+		Log.logger("\n" + allUsers.size() + " Total Customer(s)");
+		Log.logger("Listing... Customers:\n");
 
 
 		for (User u : allUsers) {
@@ -37,8 +37,8 @@ public class EmpViewCust_transactions {
 		
 
 		
-		Log.logger("\n1 - view records");
-		Log.logger("0 - to Quit");
+		Log.logger("\n1 - Confirm View Records");
+		Log.logger("0 - Quit");
 		
 		
 		EmployeePortal e1 = new EmployeePortal();
@@ -51,8 +51,8 @@ public class EmpViewCust_transactions {
 
 				// approve acct
 				
-				Log.logger("Select Number from list:");
-				Log.logger("() <- approve: ie: 1");
+				//Log.logger("\nenter Number from list:");
+				Log.logger("\n() <- enter Number from list:");
 				Log.logger("0 - Quit - back to Employee Directory");
 
 				
@@ -62,8 +62,8 @@ public class EmpViewCust_transactions {
 					
 					
 					if (nav != 0) {
-						Log.logger("Records printing:");
-						Log.logger("this customers records: " + allUsers.get(nav-1).toString());
+						Log.logger("\nRecords printing:");
+						Log.logger("this customers records: " + allUsers.get(nav-1).toString() + "\n");
 						
 						tDao.viewCustTransactions(allUsers.get(nav-1));
 						//b.employeeRejectOrApprove_customerApplicationForAccount(allUsers.get(nav-1));
@@ -76,7 +76,7 @@ public class EmpViewCust_transactions {
 					}
 				}
 			}
-			if (input == 0) {
+			if (input == 0 || input != 1) {
 				//EmployeePortal e2 = new EmployeePortal();
 				e1.employeePortal();
 			}

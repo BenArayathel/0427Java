@@ -12,13 +12,13 @@ public class EmployeePortal {
 
 	public void employeePortal() {
 		
-		Log.logger("Employee Options");
+		Log.logger("\nEmployee Options");
 		
 
 
 		
-		Log.logger("1 - approve or reject an account");
-		Log.logger("2 - view all transactions");
+		Log.logger("\n1 - approve or reject an account");
+		Log.logger("2 - view All transactions");
 		Log.logger("3 - view Customer's transactions");
 		Log.logger("4 - Quit");
 		//System.out.println("Apply for Another Account");

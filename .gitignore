@@ -1,6 +1,6 @@
 /.metadata/
 /usf-batch-workspace/.metadata/*
-**/metadata/*
+**/.metadata/*
 
 
 usf-batch-workspace/.metadata/.plugins/org.eclipse.core.resources/.root/.indexes/properties.index

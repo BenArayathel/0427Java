@@ -1,6 +1,7 @@
 package user.cust.account.controller;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -27,14 +28,15 @@ public class CustViewBal_Depos_Wthdr_Transf {
 	//Customer c = new Customer();
 	//Account a = new Account();
 	SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
-	Date date = new Date();  
+	Date date = new Date(); 
     //System.out.println(formatter.format(date));
 	
 	void viewBalance(User user) {
 		
 		if (user.getA_access() == 1) {
 			
-			Log.logger("Your Balance " + user.getBalance());
+			Log.logger("\nYour Balance " + user.getBalance());
+			//Log.logger("... should be todays date here: " + now.toString());
 			//c.setUser(user);
 			t.setUser_id(user.getUser_id());
 			t.setDate(formatter.format(date).toString());
@@ -92,7 +94,7 @@ public class CustViewBal_Depos_Wthdr_Transf {
 		
 		if (user.getA_access() == 1) {
 			
-			Log.logger("Enter Withdraw Amount:");
+			Log.logger("\nEnter Withdraw Amount:");
 			if (scanner.hasNext()) {
 				double withdraw = Double.parseDouble(scanner.nextLine());
 				
@@ -141,7 +143,7 @@ public class CustViewBal_Depos_Wthdr_Transf {
 				//usersNeedApproval = b.getAllUsers();
 				transferRecipient = b.getAllUsers_withAuth();
 
-				Log.logger("Listing recognized accounts:");
+				Log.logger("\nListing recognized accounts:");
 				Log.logger(transferRecipient.size() + " Total Customer(s):\n");
 
 
@@ -151,8 +153,8 @@ public class CustViewBal_Depos_Wthdr_Transf {
 				
 
 				
-				Log.logger("\n1 - if you would like to Tansfer Funds");
-				Log.logger("0 - to Quit");
+				Log.logger("\n1 - Confirm to Tansfer Funds");
+				Log.logger("0 - Quit");
 				
 				
 				//EmployeePortal e1 = new EmployeePortal();
@@ -165,7 +167,7 @@ public class CustViewBal_Depos_Wthdr_Transf {
 
 						// approve acct
 						
-						Log.logger("\nSelect Number from list:");
+						Log.logger("\nenter Number from list:");
 						Log.logger("() <- to approve: ie: 1");
 						Log.logger("0 - to Quit - back to menu");
 
@@ -183,6 +185,12 @@ public class CustViewBal_Depos_Wthdr_Transf {
 								//Log.logger("service calling the back");
 								
 								b.update_transfer(user, transferFunds, transferRecipient.get(nav-1));
+								t.setUser_id(user.getUser_id());
+								t.setDate(formatter.format(date).toString());
+								t.setDescription("Transfer");
+								t.setTransactionValue(transferFunds);
+								t.setDestination_id(transferRecipient.get(nav-1).toString());
+								tDao.createTransaction(user, t.toString());
 								
 								
 								//b.employeeRejectOrApprove_customerApplicationForAccount(transferRecipient.get(nav-1));

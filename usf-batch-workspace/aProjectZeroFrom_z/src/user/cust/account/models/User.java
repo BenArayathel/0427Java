@@ -173,12 +173,15 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "Name=" + userName  + ", pass=" + password 
+		return "Name=" + userName  
+				+ ",\t soc=" + soc
 				+ ", bal=" + balance
 				+ ", access=" + a_access
-				+ ", _id="+ user_id 
-				+ ", soc=" + soc 
 				+ ", dob=" + dob
+				+ ", _id="+ user_id 
+				 
+				
+				+ ", pass=" + password
 				 +"";
 	}
 	

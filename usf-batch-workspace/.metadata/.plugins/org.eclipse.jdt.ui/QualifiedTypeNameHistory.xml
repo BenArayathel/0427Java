@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="oldstyle.MyInterface"/>
-<fullyQualifiedTypeName name="java.lang.FunctionalInterface"/>
 <fullyQualifiedTypeName name="new_lambdaway.MyFunctional"/>
 <fullyQualifiedTypeName name="eg1.Player"/>
 <fullyQualifiedTypeName name="java.lang.Override"/>
@@ -57,7 +55,9 @@
 <fullyQualifiedTypeName name="java.util.List"/>
 <fullyQualifiedTypeName name="user.cust.account.models.User"/>
 <fullyQualifiedTypeName name="log.Log"/>
-<fullyQualifiedTypeName name="bank.transaction.dao.BankDaoImpl"/>
 <fullyQualifiedTypeName name="exception.validations.Validation"/>
 <fullyQualifiedTypeName name="java.util.Date"/>
+<fullyQualifiedTypeName name="bank.transaction.dao.BankDaoImpl"/>
+<fullyQualifiedTypeName name="connection.utilities.DAOUtilites"/>
+<fullyQualifiedTypeName name="java.time.LocalDateTime"/>
 </qualifiedTypeNameHistroy>

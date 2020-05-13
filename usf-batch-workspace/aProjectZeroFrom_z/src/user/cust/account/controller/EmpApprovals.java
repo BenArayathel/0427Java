@@ -34,8 +34,9 @@ public class EmpApprovals {
 		
 
 		
-		Log.logger("\n1 - if you would like to approve");
-		Log.logger("0 - to Quit");
+		Log.logger("\n1 - to Approve");
+		Log.logger("2 - to Reject ( delete data )");
+		Log.logger("0 - to Employee menu");
 		
 		
 		EmployeePortal e1 = new EmployeePortal();
@@ -47,9 +48,9 @@ public class EmpApprovals {
 			if (input == 1) {
 
 				// approve acct
-				
-				Log.logger("Select customer from list:");
-				Log.logger("() <- approve: ie: 1");
+				Log.logger("\nyou are about to Approve");
+				//Log.logger("Select customer from list:");
+				Log.logger("() <- Select customer from list:");
 				Log.logger("0 - Quit - back to Employee Directory");
 
 				
@@ -61,7 +62,7 @@ public class EmpApprovals {
 					if (nav != 0) {
 						Log.logger("Congratulations ! you approved !");
 						Log.logger("this: " + usersNeedApproval.get(nav-1).toString());
-						b.employeeRejectOrApprove_customerApplicationForAccount(usersNeedApproval.get(nav-1));
+						b.employeeApprove_customerApplicationForAccount(usersNeedApproval.get(nav-1));
 						e1.employeePortal();
 					}
 					
@@ -71,7 +72,40 @@ public class EmpApprovals {
 					}
 				}
 			}
-			if (input == 0) {
+			
+			if (input == 2) {	// to delete
+
+				// approve acct
+				Log.logger("\nyou are about to Reject a cutomer");
+				Log.logger("This will delete All the Customers data from the database !");
+				//Log.logger("Select customer from list:");
+				Log.logger("() <- Select customer from list:");
+				Log.logger("0 - Quit - back to Employee Directory");
+
+				
+				if (scanner.hasNext()) {
+					
+					int nav = Integer.parseInt(scanner.nextLine());
+					
+					
+					if (nav != 0) {
+						Log.logger("\nRejecting ...");
+						Log.logger("this: " + usersNeedApproval.get(nav-1).toString());
+						//Log.logger("\nUnder Construction, just do not Approve Customer");
+						
+						b.employeeReject_customerApplicationForAccount(usersNeedApproval.get(nav-1));
+						//b.employeeRejectOrApprove_customerApplicationForAccount(usersNeedApproval.get(nav-1));
+						e1.employeePortal();
+					}
+					
+					if (nav == 0) {
+						
+						e1.employeePortal();
+					}
+				}
+			}
+			
+			if (input == 0 || input != 1 || input != 2) {
 				//EmployeePortal e2 = new EmployeePortal();
 				e1.employeePortal();
 			}

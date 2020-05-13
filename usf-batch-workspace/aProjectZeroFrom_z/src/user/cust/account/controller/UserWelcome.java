@@ -1,10 +1,11 @@
 package user.cust.account.controller;
 
-import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
 
+import bank.transaction.dao.BankDAO;
 import bank.transaction.dao.BankDaoImpl;
+import connection.utilities.DAOUtilites;
 import log.Log;
 import user.cust.account.models.User;
 
@@ -18,6 +19,8 @@ public class UserWelcome {
 		Log.logger("reference Users:\n");;
 		
 		BankDaoImpl b = new BankDaoImpl();
+		//BankDAO b = DAOUtilites.getBankDAO();
+		
 		List<User> u = b.getAllUsers();
 		for (User user : u) {
 			//System.out.println(user.toString());

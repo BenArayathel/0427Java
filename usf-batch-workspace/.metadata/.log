@@ -6850,3 +6850,53 @@ Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product org.eclipse.
 
 !ENTRY org.eclipse.core.net 1 0 2020-05-11 11:23:14.825
 !MESSAGE System property http.nonProxyHosts has been set to local|*.local|192.168.12|*.192.168.12 by an external source. This value will be overwritten using the values from the preferences
+!SESSION 2020-05-11 15:05:48.890 -----------------------------------------------
+eclipse.buildId=4.15.0.I20200305-0155
+java.version=1.8.0_60
+java.vendor=Oracle Corporation
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.java.product -keyring /Users/markwartman/.eclipse_keyring
+Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product org.eclipse.epp.package.java.product -keyring /Users/markwartman/.eclipse_keyring
+
+!ENTRY org.eclipse.core.net 1 0 2020-05-11 15:05:58.515
+!MESSAGE System property http.nonProxyHosts has been set to local|*.local|192.168.12|*.192.168.12 by an external source. This value will be overwritten using the values from the preferences
+!SESSION 2020-05-11 19:22:13.883 -----------------------------------------------
+eclipse.buildId=4.15.0.I20200305-0155
+java.version=1.8.0_60
+java.vendor=Oracle Corporation
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.java.product -keyring /Users/markwartman/.eclipse_keyring
+Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product org.eclipse.epp.package.java.product -keyring /Users/markwartman/.eclipse_keyring
+
+!ENTRY org.eclipse.core.net 1 0 2020-05-11 19:22:25.644
+!MESSAGE System property http.nonProxyHosts has been set to local|*.local|192.168.12|*.192.168.12 by an external source. This value will be overwritten using the values from the preferences
+!SESSION 2020-05-12 15:47:16.157 -----------------------------------------------
+eclipse.buildId=4.15.0.I20200305-0155
+java.version=1.8.0_60
+java.vendor=Oracle Corporation
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.java.product -keyring /Users/markwartman/.eclipse_keyring
+Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product org.eclipse.epp.package.java.product -keyring /Users/markwartman/.eclipse_keyring
+
+!ENTRY org.eclipse.core.net 1 0 2020-05-12 15:47:32.865
+!MESSAGE System property http.nonProxyHosts has been set to local|*.local|192.168.12|*.192.168.12 by an external source. This value will be overwritten using the values from the preferences
+!SESSION 2020-05-13 08:21:37.462 -----------------------------------------------
+eclipse.buildId=4.15.0.I20200305-0155
+java.version=1.8.0_60
+java.vendor=Oracle Corporation
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.java.product -keyring /Users/markwartman/.eclipse_keyring
+Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product org.eclipse.epp.package.java.product -keyring /Users/markwartman/.eclipse_keyring
+
+!ENTRY org.eclipse.core.net 1 0 2020-05-13 08:21:53.331
+!MESSAGE System property http.nonProxyHosts has been set to local|*.local|192.168.12|*.192.168.12 by an external source. This value will be overwritten using the values from the preferences
+!SESSION 2020-05-13 10:48:17.116 -----------------------------------------------
+eclipse.buildId=4.15.0.I20200305-0155
+java.version=1.8.0_60
+java.vendor=Oracle Corporation
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.java.product -keyring /Users/markwartman/.eclipse_keyring
+Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product org.eclipse.epp.package.java.product -keyring /Users/markwartman/.eclipse_keyring
+
+!ENTRY org.eclipse.core.net 1 0 2020-05-13 10:48:26.056
+!MESSAGE System property http.nonProxyHosts has been set to local|*.local|192.168.12|*.192.168.12 by an external source. This value will be overwritten using the values from the preferences
