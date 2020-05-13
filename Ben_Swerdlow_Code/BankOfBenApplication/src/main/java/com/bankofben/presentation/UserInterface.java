@@ -273,6 +273,7 @@ public class UserInterface {
 				destinationRoutingString = sc.nextLine();
 				try {
 					destinationRoutingNumber = bl.validateRoutingNumber(destinationRoutingString);
+					routingNumberValid = true;
 				} catch (BusinessException e){
 					loggy.info(e.getMessage()+"\nPlease try again.");
 				}

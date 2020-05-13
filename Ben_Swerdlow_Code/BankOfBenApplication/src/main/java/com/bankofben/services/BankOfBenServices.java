@@ -6,7 +6,6 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 
-import com.bankofben.business.BusinessLayer;
 import com.bankofben.dao.BankOfBenDAO;
 import com.bankofben.exceptions.BusinessException;
 import com.bankofben.models.Account;
@@ -143,10 +142,15 @@ public class BankOfBenServices {
 		List<Account> accounts = dao.getAllAccounts();
 		StringBuilder outputBuilder = new StringBuilder();
 		// We'll start by organizing the columns
-		outputBuilder.append("Account Number\t|\tBalance\t|\tCustomer ID\n");
+		outputBuilder.append("Account Number\t|\tBalance\t|\t\tCustomer ID\t|\tStatus\t|\n");
 		// Now we get the content
 		for (Account a : accounts) {
-			outputBuilder.append(a.getAccountNumber()+"\t|\t"+a.getBalance()+"\t|\t"+a.getCustomerId()+"\n");
+			outputBuilder.append(a.getAccountNumber()+"\t|\t"+a.getBalance()+"\t|\t"+a.getCustomerId()+"\t|\t");
+			if (a.isPending()) {
+				outputBuilder.append("Pending\t|\n");
+			} else {
+				outputBuilder.append("Active\t|\n");
+			}
 		}
 		// And... we return the content
 		return outputBuilder.toString();
@@ -156,10 +160,15 @@ public class BankOfBenServices {
 		List<Account> accounts = dao.getAccountsForCustomerId(customer.getId());
 		StringBuilder outputBuilder = new StringBuilder();
 		// We'll start by organizing the columns
-		outputBuilder.append("Account Number\t|\tBalance\n");
+		outputBuilder.append("Account Number\t|\tBalance\t|\tStatus\t|\n");
 		// Now we get the content
 		for (Account a : accounts) {
-			outputBuilder.append(a.getAccountNumber()+"\t|\t"+a.getBalance()+"\n");
+			outputBuilder.append(a.getAccountNumber()+"\t|\t"+a.getBalance()+"\t|\t"+a.isPending()+"\t|\t");
+			if (a.isPending()) {
+				outputBuilder.append("Pending\t|\n");
+			} else {
+				outputBuilder.append("Active\t|\n");
+			}
 		}
 		// And... we return the content
 		return outputBuilder.toString();
@@ -245,12 +254,11 @@ public class BankOfBenServices {
 		}
 	}
 
-	public void rejectTransfer(Transfer transfer, Customer customer) throws BusinessException {
+	public void haltTransfer(Transfer transfer, Customer customer) throws BusinessException {
 		if (transfer.isPending()) {
 			dao.deleteTransfer(transfer.getId());
-			// TODO log that customer rejected transfer!!!!! Also, all the other logging of transactions :)
 		} else {
-			b = new BusinessException("No need to reject transfer "+transfer.getId()+". Transfer is not pending.");
+			b = new BusinessException("No need to halt transfer "+transfer.getId()+". Transfer is not pending.");
 			loggy.error(b);
 			throw b;
 		}
@@ -261,10 +269,10 @@ public class BankOfBenServices {
 		Collections.sort(transactions);
 		StringBuilder outputBuilder = new StringBuilder();
 		// We'll start by organizing the columns
-		outputBuilder.append("Transaction ID\t|\tTimestamp\t|\tAccount Number\t|\tInitial Balance\t|\tAmount\t|\tFinal Balance\n");
+		outputBuilder.append("Transaction ID\t|\t\tTimestamp\t\t|\tAccount Number\t|\tInitial Balance\t|\tAmount\t|\tFinal Balance\t|\tOther Account Number\t|\n");
 		// Now we get the content
 		for (Transaction t : transactions) {
-			outputBuilder.append(t.getTransactionId()+"\t|\t"+t.getTimestamp()+"\t|\t"+t.getAccountNumber()+"\t|\t"+t.getInitialBalance()+"\t|\t"+t.getAmount()+"\t|\t"+t.getFinalBalance()+"\n");
+			outputBuilder.append(t.getTransactionId()+"\t|\t"+t.getTimestamp()+"\t|\t"+t.getAccountNumber()+"\t|\t"+t.getInitialBalance()+"\t|\t"+t.getAmount()+"\t|\t"+t.getFinalBalance()+"\t|\t"+t.getOtherAccountNumber()+"\t|\n");
 		}
 		// And... we return the content
 		return outputBuilder.toString();
@@ -275,25 +283,26 @@ public class BankOfBenServices {
 		Collections.sort(transactions);
 		StringBuilder outputBuilder = new StringBuilder();
 		// We'll start by organizing the columns
-		outputBuilder.append("Transaction ID\t|\tTimestamp\t|\tAccount Number\t|\tInitial Balance\t|\tAmount\t|\tFinal Balance\n");
+		outputBuilder.append("Transaction ID\t|\tTimestamp\t|\tAccount Number\t|\tInitial Balance\t|\tAmount\t|\tFinal Balance\t|\tOther Account Number\t|\n");
 		// Now we get the content
 		for (Transaction t : transactions) {
-			outputBuilder.append(t.getTransactionId()+"\t|\t"+t.getTimestamp()+"\t|\t"+t.getAccountNumber()+"\t|\t"+t.getInitialBalance()+"\t|\t"+t.getAmount()+"\t|\t"+t.getFinalBalance()+"\n");
+			outputBuilder.append(t.getTransactionId()+"\t|\t"+t.getTimestamp()+"\t|\t"+t.getAccountNumber()+"\t|\t"+t.getInitialBalance()+"\t|\t"+t.getAmount()+"\t|\t"+t.getFinalBalance()+"\t|\t"+t.getOtherAccountNumber()+"\t|\n");
 		}
 		// And... we return the content
 		return outputBuilder.toString();
 	}
 	
-	public String getTransactions(int numberOfTransactions) throws BusinessException {
-		List<Transaction> transactions = dao.getAllTransactions();
+	public String getTransactionsUpTo(int numberOfTransactions) throws BusinessException {
+		List<Transaction> transactions = dao.getAllTransactionsUpTo(numberOfTransactions);
 		Collections.sort(transactions);
 		StringBuilder outputBuilder = new StringBuilder();
 		// We'll start by organizing the columns
-		outputBuilder.append("Transaction ID\t|\tTimestamp\t|\tAccount Number\t|\tInitial Balance\t|\tAmount\t|\tFinal Balance\n");
+		outputBuilder.append("Transaction ID\t|\tTimestamp\t|\tAccount Number\t|\tInitial Balance\t|\tAmount\t|\tFinal Balance\t|\tOther Account Number\t|\n");
 		// Now we get the content
-		for (int i=0; i<numberOfTransactions; i++) {
-			Transaction t = transactions.get(i);
-			outputBuilder.append(t.getTransactionId()+"\t|\t"+t.getTimestamp()+"\t|\t"+t.getAccountNumber()+"\t|\t"+t.getInitialBalance()+"\t|\t"+t.getAmount()+"\t|\t"+t.getFinalBalance()+"\n");
+		Transaction t = null;
+		for (int i=0; i<Math.min(numberOfTransactions, transactions.size()); i++) {
+			t = transactions.get(i);
+			outputBuilder.append(t.getTransactionId()+"\t|\t"+t.getTimestamp()+"\t|\t"+t.getAccountNumber()+"\t|\t"+t.getInitialBalance()+"\t|\t"+t.getAmount()+"\t|\t"+t.getFinalBalance()+"\t|\t"+t.getOtherAccountNumber()+"\t|\n");
 		}
 		// And... we return the content
 		return outputBuilder.toString();
@@ -325,11 +334,25 @@ public class BankOfBenServices {
 	public void rejectExistingCustomerAccountApplication(Account a) throws BusinessException {
 		// TODO Auto-generated method stub
 		// This delete account will not cascade and keep the customer data
-		dao.deleteRejectedAccount(a.getAccountNumber());
+		dao.deleteExistingCustomerRejectedAccount(a.getAccountNumber());
 	}
 
-	public void updateAccountBalance(Account account) throws BusinessException {
-		dao.updateAccountBalance(account.getBalance(), account.getAccountNumber());
+	public Account updateAccountBalance(Account account, double amount, Account otherAccount) throws BusinessException {
+		Account a = dao.updateAccountBalance(account.getBalance()+amount, account.getAccountNumber());
+		if (a.getBalance()!=account.getBalance()+amount) {
+			b = new BusinessException("Internal database error. Account not updated correctly. Please contact a Bank of Ben employee "
+					+ "soon as possible to remedy the issue.");
+			loggy.error(b);
+			throw b;
+		} else {
+			Transaction transaction = new Transaction(account.getAccountNumber(), account.getBalance(), amount, otherAccount.getAccountNumber());
+			dao.createTransaction(transaction);
+		}
+		return a;
+	}
+	
+	public boolean doesCustomerOwnAccountNumber(String customerId, long AccountNumber) throws BusinessException {
+		return dao.doesCustomerOwnAccountNumber(customerId, AccountNumber);
 	}
 
 }

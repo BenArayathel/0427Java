@@ -201,13 +201,16 @@ BEGIN
 END;
 
 BEGIN
-    removeaccountnotcustomer(9180651690);
+    removeaccountnotcustomer(7883516090);
 END;
 
 ALTER TABLE bankofben_accounts DROP CONSTRAINT "FK Customer ID";
-DELETE FROM bankofben_accounts WHERE "Account Number"=9180651690;
+DELETE FROM bankofben_accounts WHERE "Account Number"=7883516090;
 ALTER TABLE bankofben_accounts ADD CONSTRAINT "FK Customer ID" FOREIGN KEY ("Customer ID") 
     REFERENCES bankofben_customers("Customer ID");
+
+EXECUTE IMMEDIATE 'ALTER TABLE bankofben_accounts ADD CONSTRAINT "FK Customer ID" FOREIGN KEY ("Customer ID") 
+    REFERENCES bankofben_customers("Customer ID")';
 
 --This is to test a psuedo-cascade delete
 ALTER TABLE bankofben_accounts DROP CONSTRAINT "FK Customer ID";

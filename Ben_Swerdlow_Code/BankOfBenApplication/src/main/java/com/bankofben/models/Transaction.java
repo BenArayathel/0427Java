@@ -10,21 +10,23 @@ public class Transaction implements Comparable<Transaction> {
 	private final double initialBalance;
 	private final double amount;
 	private final double finalBalance;
+	private final long otherAccountNumber;
 	
 	
 	public Transaction(String transactionId, Timestamp timestamp, Long accountNumber, double initialBalance,
-			double amount, double finalBalance) {
+			double amount, long otherAccountNumber) {
 		super();
 		this.transactionId = transactionId;
 		this.timestamp = timestamp;
 		this.accountNumber = accountNumber;
 		this.initialBalance = initialBalance;
 		this.amount = amount;
-		this.finalBalance = finalBalance;
+		this.finalBalance = initialBalance + amount;
+		this.otherAccountNumber = otherAccountNumber;
 	}
 	
 	
-	public Transaction(Long accountNumber, double initialBalance, double amount) {
+	public Transaction(Long accountNumber, double initialBalance, double amount, long otherAccountNumber) {
 		super();
 		this.transactionId = null;
 		this.timestamp = null;
@@ -32,6 +34,7 @@ public class Transaction implements Comparable<Transaction> {
 		this.initialBalance = initialBalance;
 		this.amount = amount;
 		this.finalBalance = initialBalance+amount;
+		this.otherAccountNumber = otherAccountNumber;
 	}
 
 
@@ -62,6 +65,11 @@ public class Transaction implements Comparable<Transaction> {
 
 	public double getFinalBalance() {
 		return finalBalance;
+	}
+
+
+	public long getOtherAccountNumber() {
+		return otherAccountNumber;
 	}
 
 
@@ -96,7 +104,7 @@ public class Transaction implements Comparable<Transaction> {
 	public String toString() {
 		return "Transaction [transactionId=" + transactionId + ", timestamp=" + timestamp + ", accountNumber="
 				+ accountNumber + ", initialBalance=" + initialBalance + ", amount=" + amount + ", finalBalance="
-				+ finalBalance + "]";
+				+ finalBalance + ", otherAccountNumber=" + otherAccountNumber + "]";
 	}
 
 

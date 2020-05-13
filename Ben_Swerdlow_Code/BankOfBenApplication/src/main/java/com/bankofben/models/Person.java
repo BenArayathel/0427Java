@@ -58,9 +58,11 @@ public class Person {
 	}
 	
 	public void setMiddleName(String middleName) {
-		char[] middleNameArray = middleName.toCharArray();
-		middleNameArray[0] = Character.toUpperCase(middleNameArray[0]);
-		this.middleName = String.valueOf(middleNameArray);
+		if (middleName!=null && !middleName.isEmpty()) {
+			char[] middleNameArray = middleName.toCharArray();
+			middleNameArray[0] = Character.toUpperCase(middleNameArray[0]);
+			this.middleName = String.valueOf(middleNameArray);
+		}
 	}
 	
 	public String getLastName() {

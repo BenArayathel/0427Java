@@ -1,7 +1,5 @@
 package com.bankofben.presentation;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -109,7 +107,7 @@ public class PresentationLayer {
 						double startingBalance = UserInterface.requestStartingBalance(sc);
 						user = bl.applyForAccount_newUser(user, startingBalance);
 						loggy.info("Thank you for applying for your account. Your application will be reviewed by a "
-								+ "Bank of Ben employee in a timely manner.");
+								+ "Bank of Ben employee in a timely manner.\nGoodbye!");
 					}
 				} catch (BusinessException e) {
 					loggy.info(e.getMessage()+"\nPlease try again.");
@@ -129,207 +127,215 @@ public class PresentationLayer {
 		userResponseValidated = false;
 		if (user instanceof Customer) {
 			Customer customer = (Customer) user;
-			pl.printCustomerGreeting(customer);
-			do {
-				pl.printCustomerOptions();
-				response = sc.nextLine();
-				if (response.equalsIgnoreCase("view")) {
-
-					String accountView = null;
-					try {
-						accountView = bl.viewBalances(customer);
-					} catch (BusinessException e) {
-						loggy.info(e.getMessage()+"\nPlease try again.");
-					}
-					loggy.info(accountView);
-					
-				} else if (response.equalsIgnoreCase("deposit")) {
-
-					Account account = null;
-					try {
-						account = pl.requestCustomerSelectAccountForDeposit(customer, sc);
-						double deposit = pl.requestDepositAmount(account.getBalance(), sc);
-						bl.makeDeposit(deposit, account, customer);
-						loggy.info("Deposit successful!\nNew Balance in account "+account.getAccountNumber()+": "+account.getBalance());
-					} catch (BusinessException e) {
-						loggy.info(e.getMessage()+"\nPlease try again.");
-					}
-					
-				} else if (response.equalsIgnoreCase("withdraw")) {
-					
-					Account account = null;
-					try {
-						account = pl.requestCustomerSelectAccountForWithdrawal(customer, sc);
-						double withdrawal = pl.requestWithdrawalAmount(account.getBalance(), sc);
-						bl.makeWithdrawal(withdrawal, account, customer);
-						loggy.info("Withdrawal successful!\nNew Balance in account "+account.getAccountNumber()+": "+account.getBalance());
-					} catch (BusinessException e) {
-						loggy.info(e.getMessage()+"\nPlease try again.");
-					}
-					
-				} else if (response.equalsIgnoreCase("transfers")) {
-					boolean exitTransfers = false;
-					boolean selectingOptions = false;
-					List<Transfer> transfers = null;
-					while (!exitTransfers) {
-						selectingOptions = true;
-						String transferResponse = null;
+			if (!customer.isApplicationPending()) {
+				pl.printCustomerGreeting(customer);
+				do {
+					pl.printCustomerOptions();
+					response = sc.nextLine();
+					if (response.equalsIgnoreCase("view")) {
+	
+						String accountView = null;
 						try {
-							transfers = bl.getTransfers(customer);
+							accountView = bl.viewBalances(customer);
 						} catch (BusinessException e) {
 							loggy.info(e.getMessage()+"\nPlease try again.");
-							break;
 						}
-						if (transfers.size()==0) {
-							loggy.info("You have no pending transfers at this time.");
-							while (selectingOptions) {
-								pl.printTransferOptions_nonePending();
-								transferResponse = sc.nextLine();
-								if (transferResponse.equalsIgnoreCase("pay")) {
-									Account otherAccount = UserInterface.requestOtherAccount(sc);
-									Account myChosenAccount = UserInterface.requestMyChosenAccount(customer, sc);
-									double amount = UserInterface.requestPaymentAmount(myChosenAccount, otherAccount, sc);
-									if (Double.isNaN(amount)) {
-										loggy.info("Payment canceled.");
-									} else {
-										try {
-											bl.postPayment(customer, myChosenAccount, otherAccount, amount);
-										} catch (BusinessException e) {
-											loggy.info(e.getMessage()+"\nPlease try again.");
-										}
-										selectingOptions = false;
-									}
-								} else if (transferResponse.equals("request")) {
-									Account otherAccount = UserInterface.requestOtherAccount(sc);
-									Account myChosenAccount = UserInterface.requestMyChosenAccount(customer, sc);
-									double amount = UserInterface.requestRequestAmount(myChosenAccount, otherAccount, sc);
-									if (Double.isNaN(amount)) {
-										loggy.info("Request canceled.");
-									} else {
-										try {
-											bl.postRequest(customer, myChosenAccount, otherAccount, amount);
-										} catch (BusinessException e) {
-											loggy.info(e.getMessage()+"\nPlease try again.");
-										}
-										selectingOptions = false;
-									}
-								} else if (transferResponse.equals("back")) {
-									selectingOptions = false;
-									exitTransfers = true;
-								} else {
-									pl.printInvalidResponseMessage(transferResponse);
-								}
-							}
-						} else {
-							loggy.info("Your pending transfers are:");
+						loggy.info(accountView);
+						
+					} else if (response.equalsIgnoreCase("deposit")) {
+	
+						Account account = null;
+						try {
+							account = pl.requestCustomerSelectAccountForDeposit(customer, sc);
+							double deposit = pl.requestDepositAmount(account.getBalance(), sc);
+							account = bl.makeDeposit(deposit, account, customer);
+							loggy.info("Deposit successful!\nNew Balance in account "+account.getAccountNumber()+": "+account.getBalance());
+						} catch (BusinessException e) {
+							loggy.info(e.getMessage()+"\nPlease try again.");
+						}
+						
+					} else if (response.equalsIgnoreCase("withdraw")) {
+						
+						Account account = null;
+						try {
+							account = pl.requestCustomerSelectAccountForWithdrawal(customer, sc);
+							double withdrawal = pl.requestWithdrawalAmount(account.getBalance(), sc);
+							account = bl.makeWithdrawal(withdrawal, account, customer);
+							loggy.info("Withdrawal successful!\nNew Balance in account "+account.getAccountNumber()+": "+account.getBalance());
+						} catch (BusinessException e) {
+							loggy.info(e.getMessage()+"\nPlease try again.");
+						}
+						
+					} else if (response.equalsIgnoreCase("transfers")) {
+						boolean exitTransfers = false;
+						boolean selectingOptions = false;
+						List<Transfer> transfers = null;
+						while (!exitTransfers) {
+							selectingOptions = true;
+							String transferResponse = null;
 							try {
-								pl.printPendingTransfers(transfers);
+								transfers = bl.getTransfers(customer);
 							} catch (BusinessException e) {
 								loggy.info(e.getMessage()+"\nPlease try again.");
-								selectingOptions = false;
+								break;
 							}
-							while (selectingOptions) {
-								pl.printTransferOptions();
-								transferResponse = sc.nextLine();
-								if (transferResponse.equalsIgnoreCase("pay")) {
-									Account otherAccount = UserInterface.requestOtherAccount(sc);
-									Account myChosenAccount = UserInterface.requestMyChosenAccount(customer, sc);
-									double amount = UserInterface.requestPaymentAmount(myChosenAccount, otherAccount, sc);
-									if (Double.isNaN(amount)) {
-										loggy.info("Payment canceled.");
-									} else {
-										try {
-											bl.postPayment(customer, myChosenAccount, otherAccount, amount);
-										} catch (BusinessException e) {
-											loggy.info(e.getMessage()+"\nPlease try again.");
+							if (transfers.size()==0) {
+								loggy.info("You have no pending transfers at this time.");
+								while (selectingOptions) {
+									pl.printTransferOptions_nonePending();
+									transferResponse = sc.nextLine();
+									if (transferResponse.equalsIgnoreCase("pay")) {
+										Account otherAccount = UserInterface.requestOtherAccount(sc);
+										Account myChosenAccount = UserInterface.requestMyChosenAccount(customer, sc);
+										double amount = UserInterface.requestPaymentAmount(myChosenAccount, otherAccount, sc);
+										if (Double.isNaN(amount)) {
+											loggy.info("Payment canceled.");
+										} else if (amount > myChosenAccount.getBalance()) {
+											loggy.info("You cannot pay more than your current balance in this account. "
+													+ "Please enter your information again.");
+										} else {
+											try {
+												bl.postPayment(customer, myChosenAccount, otherAccount, amount);
+											} catch (BusinessException e) {
+												loggy.info(e.getMessage()+"\nPlease try again.");
+											}
+											selectingOptions = false;
 										}
-										selectingOptions = false;
-									}
-								} else if (transferResponse.equals("request")) {
-									Account otherAccount = UserInterface.requestOtherAccount(sc);
-									Account myChosenAccount = UserInterface.requestMyChosenAccount(customer, sc);
-									double amount = UserInterface.requestRequestAmount(myChosenAccount, otherAccount, sc);
-									if (Double.isNaN(amount)) {
-										loggy.info("Request canceled.");
-									} else {
-										try {
-											bl.postRequest(customer, myChosenAccount, otherAccount, amount);
-										} catch (BusinessException e) {
-											loggy.info(e.getMessage()+"\nPlease try again.");
+									} else if (transferResponse.equals("request")) {
+										Account otherAccount = UserInterface.requestOtherAccount(sc);
+										Account myChosenAccount = UserInterface.requestMyChosenAccount(customer, sc);
+										double amount = UserInterface.requestRequestAmount(myChosenAccount, otherAccount, sc);
+										if (Double.isNaN(amount)) {
+											loggy.info("Request canceled.");
+										} else {
+											try {
+												bl.postRequest(customer, myChosenAccount, otherAccount, amount);
+											} catch (BusinessException e) {
+												loggy.info(e.getMessage()+"\nPlease try again.");
+											}
+											selectingOptions = false;
 										}
-										selectingOptions = false;
-									}
-								} else if (transferResponse.equalsIgnoreCase("accept")) {
-									Transfer transfer=null;
-									try {
-										transfer = pl.chooseATransferToAccept(transfers, sc);
-									} catch (BusinessException e) {
-										loggy.info(e.getMessage()+"\nPlease try again.");
+									} else if (transferResponse.equals("back")) {
 										selectingOptions = false;
 										exitTransfers = true;
+									} else {
+										pl.printInvalidResponseMessage(transferResponse);
 									}
-									if (transfer!=null) {
-										try{
-											bl.acceptTransfer(transfer, customer);
-											loggy.info("Tranfer accepted.");
+								}
+							} else {
+								loggy.info("Your pending transfers are:");
+								try {
+									pl.printPendingTransfers(transfers);
+								} catch (BusinessException e) {
+									loggy.info(e.getMessage()+"\nPlease try again.");
+									selectingOptions = false;
+								}
+								while (selectingOptions) {
+									pl.printTransferOptions();
+									transferResponse = sc.nextLine();
+									if (transferResponse.equalsIgnoreCase("pay")) {
+										Account otherAccount = UserInterface.requestOtherAccount(sc);
+										Account myChosenAccount = UserInterface.requestMyChosenAccount(customer, sc);
+										double amount = UserInterface.requestPaymentAmount(myChosenAccount, otherAccount, sc);
+										if (Double.isNaN(amount)) {
+											loggy.info("Payment canceled.");
+										} else if (amount > myChosenAccount.getBalance()) {
+											loggy.info("You cannot pay more than your current balance in this account. "
+													+ "Please enter your information again.");
+										} else {
+											try {
+												bl.postPayment(customer, myChosenAccount, otherAccount, amount);
+											} catch (BusinessException e) {
+												loggy.info(e.getMessage()+"\nPlease try again.");
+											}
+											selectingOptions = false;
+										}
+									} else if (transferResponse.equals("request")) {
+										Account otherAccount = UserInterface.requestOtherAccount(sc);
+										Account myChosenAccount = UserInterface.requestMyChosenAccount(customer, sc);
+										double amount = UserInterface.requestRequestAmount(myChosenAccount, otherAccount, sc);
+										if (Double.isNaN(amount)) {
+											loggy.info("Request canceled.");
+										} else {
+											try {
+												bl.postRequest(customer, myChosenAccount, otherAccount, amount);
+											} catch (BusinessException e) {
+												loggy.info(e.getMessage()+"\nPlease try again.");
+											}
+											selectingOptions = false;
+										}
+									} else if (transferResponse.equalsIgnoreCase("accept")) {
+										Transfer transfer=null;
+										try {
+											transfer = pl.chooseATransferToAccept(transfers, sc);
 										} catch (BusinessException e) {
 											loggy.info(e.getMessage()+"\nPlease try again.");
 											selectingOptions = false;
+											exitTransfers = true;
 										}
-									}
-								} else if (transferResponse.equalsIgnoreCase("reject")) {
-									// TODO Reject transfer
-									Transfer transfer = null;
-									try {
-										transfer = pl.chooseATransferToReject(transfers, sc);
-									} catch (BusinessException e) {
-										loggy.info(e.getMessage()+"\nPlease try again.");
-										selectingOptions = false;
-										exitTransfers = true;
-									}
-									if (transfer!=null) {
-										try{
-											bl.rejectTransfer(transfer, customer);
-											loggy.info("Tranfer rejected.");
+										if (transfer!=null) {
+											try{
+												Account postTransferAccount = bl.acceptTransfer(transfer, customer);
+												loggy.info("Tranfer accepted.\n"
+														+ "Balance in account "+postTransferAccount.getAccountNumber()+": "+postTransferAccount.getBalance());
+											} catch (BusinessException e) {
+												loggy.info(e.getMessage()+"\nPlease try again.");
+												selectingOptions = false;
+											}
+										}
+									} else if (transferResponse.equalsIgnoreCase("halt")) {
+										Transfer transfer = null;
+										try {
+											transfer = pl.chooseATransferToHalt(transfers, sc);
 										} catch (BusinessException e) {
 											loggy.info(e.getMessage()+"\nPlease try again.");
 											selectingOptions = false;
+											exitTransfers = true;
 										}
+										if (transfer!=null) {
+											try{
+												bl.haltTransfer(transfer, customer);
+												loggy.info("Tranfer halted.\n");
+											} catch (BusinessException e) {
+												loggy.info(e.getMessage()+"\nPlease try again.");
+												selectingOptions = false;
+											}
+										}
+										
+									} else if (transferResponse.equals("view")) {
+										selectingOptions = false;
+									} else if (transferResponse.equals("back")) {
+										selectingOptions = false;
+										exitTransfers = true;
+									} else {
+										pl.printInvalidResponseMessage(transferResponse);
 									}
-									
-								} else if (transferResponse.equals("view")) {
-									selectingOptions = false;
-								} else if (transferResponse.equals("back")) {
-									selectingOptions = false;
-									exitTransfers = true;
-								} else {
-									pl.printInvalidResponseMessage(transferResponse);
 								}
 							}
 						}
+					} else if (response.equalsIgnoreCase("apply")) {
+						double startingBalance=0;
+						try {
+							startingBalance = UserInterface.requestStartingBalance(sc);
+						} catch (BusinessException e) {
+							loggy.info(e.getMessage()+"\nPlease try again.");
+						}
+						try {
+							customer = bl.applyForAccount(customer, startingBalance);
+							loggy.info("Thank you for applying for your account. Your application will be reviewed by a "
+									+ "Bank of Ben employee in a timely manner.");
+						} catch (BusinessException e) {
+							loggy.info(e.getMessage()+"\nPlease try again.");
+						}
+						
+					} else if (response.equalsIgnoreCase("quit")) {
+						pl.quit(sc);
+						//userResponseValidated=true;
+					} else {
+						pl.printInvalidResponseMessage(response);
 					}
-				} else if (response.equalsIgnoreCase("apply")) {
-					double startingBalance=0;
-					try {
-						startingBalance = UserInterface.requestStartingBalance(sc);
-					} catch (BusinessException e) {
-						loggy.info(e.getMessage()+"\nPlease try again.");
-					}
-					try {
-						customer = bl.applyForAccount(customer, startingBalance);
-						loggy.info("Thank you for applying for your account. Your application will be reviewed by a "
-								+ "Bank of Ben employee in a timely manner.");
-					} catch (BusinessException e) {
-						loggy.info(e.getMessage()+"\nPlease try again.");
-					}
-					
-				} else if (response.equalsIgnoreCase("quit")) {
-					pl.quit(sc);
-					//userResponseValidated=true;
-				} else {
-					pl.printInvalidResponseMessage(response);
-				}
-			} while (!(userResponseValidated));
+				} while (!(userResponseValidated));
+			}
 		} else if (user instanceof Employee) {
 			Employee employee = (Employee) user;
 			pl.printEmployeeGreeting(employee);
@@ -374,7 +380,7 @@ public class PresentationLayer {
 							try {
 								HashMap<Customer, List<Account>> newCustomerAccountsMap = bl.makeNewCustomerPendingAccountsMap();
 								loggy.info(pl.viewCustomerAccountMap(newCustomerAccountsMap));
-								Account a = pl.requestAccountByAccountNumber(sc);
+								Account a = pl.requestApplicationAccountByAccountNumber(sc);
 								if (a==null) break;
 								boolean selectedAcceptOrReject = false;
 								String responseApproveOrReject = null;
@@ -385,14 +391,17 @@ public class PresentationLayer {
 										bl.approveNewCustomerAccountApplication(a);
 										loggy.info("You have approved the application for account number "+a.getAccountNumber()
 										+" for new customer "+a.getCustomerId()+".");
+										selectedAcceptOrReject = true;
 									} else if(responseApproveOrReject.equalsIgnoreCase("reject")) {
 										bl.rejectNewCustomerAccountApplication(a);
 										loggy.info("You have rejected the application for account number "+a.getAccountNumber()
 											+" for customer "+a.getCustomerId()+". This customer has been removed from our records.");
+										selectedAcceptOrReject = true;
 									} else {
 										pl.printInvalidResponseMessage(responseApproveOrReject);
 									}
 								}
+								workingOnApplications=false;
 							} catch (BusinessException e) {
 								loggy.info(e.getMessage()+"\nPlease try again later.");
 								workingOnApplications=false;
@@ -401,7 +410,7 @@ public class PresentationLayer {
 							try {
 								HashMap<Customer, List<Account>> customerPendingAccountsMap = bl.makePendingAccountsMap();
 								loggy.info(pl.viewCustomerAccountMap(customerPendingAccountsMap));
-								Account a = pl.requestAccountByAccountNumber(sc);
+								Account a = pl.requestApplicationAccountByAccountNumber(sc);
 								if (a==null) break;
 								boolean selectedAcceptOrReject = false;
 								String responseApproveOrReject = null;
@@ -412,15 +421,18 @@ public class PresentationLayer {
 										bl.approveExistingCustomerAccountApplication(a);
 										loggy.info("You have approved the application for account number "+a.getAccountNumber()
 										+" for customer "+a.getCustomerId()+".");
+										selectedAcceptOrReject = true;
 									} else if(responseApproveOrReject.equalsIgnoreCase("reject")) {
 										bl.rejectExistingCustomerAccountApplication(a);
 										loggy.info("You have rejected the application for account number "+a.getAccountNumber()
 											+" for customer "+a.getCustomerId()+". If this customer was not an already existing customer,"
 											+ " their information has been removed from our records.");
+										selectedAcceptOrReject = true;
 									} else {
 										pl.printInvalidResponseMessage(responseApproveOrReject);
 									}
 								}
+								workingOnApplications=false;
 							} catch (BusinessException e) {
 								loggy.info(e.getMessage()+"\nPlease try again later.");
 								workingOnApplications=false;
@@ -451,7 +463,7 @@ public class PresentationLayer {
 						} else if (viewLogResponse.matches("^[0-9]+$")) {
 							try {
 								int latestNumber = Integer.parseInt(viewLogResponse);
-								bl.viewTransactions(latestNumber);
+								loggy.info(bl.viewTransactionsUpTo(latestNumber));
 							} catch (NumberFormatException e) {
 								loggy.info("The number you entered is invalid.\nPlease try again.");
 							} catch (BusinessException e) {
@@ -475,7 +487,7 @@ public class PresentationLayer {
 		
 	}
 
-	private Account requestAccountByAccountNumber(Scanner sc) {
+	private Account requestApplicationAccountByAccountNumber(Scanner sc) {
 		String accountString = null;
 		boolean selectedAccount = false;
 		Account account = null;
@@ -556,8 +568,8 @@ public class PresentationLayer {
 				+ "into an account you do or do not own");
 		loggy.info("Type \"request\" to request a money transfer from an account you do not own "
 				+ "into an account you do own.");
-		loggy.info("Type \"accept\" to accept a money transfer payment from another user's account.");
-		loggy.info("Type \"reject\" to reject a money transfer payment from another user's account.");
+		loggy.info("Type \"accept\" to accept a money transfer from another user's account.");
+		loggy.info("Type \"halt\" to reject a money transfer from or resciend a money transfer to another user's account.");
 		loggy.info("Type \"view\" to view your pending transfers.");
 		loggy.info("Type \"back\" to go back to the customer options menu.");
 	}
@@ -637,10 +649,10 @@ public class PresentationLayer {
 			}
 		}
 		String username=null;
-		if (!loginRequested) {
+		if (!loginRequested && !goBack) {
 			username = UserInterface.requestUsername(sc);
 		}
-		while (bl.userExists(username) && !(loginRequested)) {
+		while (bl.userExists(username) && !(loginRequested) && !goBack) {
 			loggy.info("The username "+username+" already exists. Would you like to login?\n"
 					+ "(yes or y to confirm, back or b to go back)");
 			String response = sc.nextLine();
@@ -660,11 +672,11 @@ public class PresentationLayer {
 			}
 		}
 		long ssn=0;
-		if (!loginRequested) {
+		if (!loginRequested && !goBack) {
 			ssn = UserInterface.requestSsn(sc);
 		}
 //		long ssn = UserInterface.requestSsn(sc);
-		while (bl.userExists(ssn) && !(loginRequested)){
+		while (bl.userExists(ssn) && !(loginRequested) && !goBack){
 			loggy.info("The ssn "+ssn+" already exists. Would you like to login?\n" 
 					+ "(yes or y to confirm, back or b to go back)");
 			String response = sc.nextLine();
@@ -793,7 +805,7 @@ public class PresentationLayer {
 			loggy.info("How much would you like to deposit?");
 			String depositString = sc.nextLine();
 			try {
-				deposit = Long.parseLong(depositString);
+				deposit = Double.parseDouble(depositString);
 				if (!ValidationTools.isValidMonetaryAmount(deposit)) {
 					loggy.info("Invalid deposit amount. Deposit amount must be a positive number that has only"
 							+"two digits after the decimal point. Please try again.");
@@ -839,7 +851,7 @@ public class PresentationLayer {
 			loggy.info("How much would you like to withdraw?");
 			String withdrawalString = sc.nextLine();
 			try {
-				withdrawal = Long.parseLong(withdrawalString);
+				withdrawal = Double.parseDouble(withdrawalString);
 				if (!ValidationTools.isValidMonetaryAmount(withdrawal)) {
 					loggy.info("Invalid withdrawal amount. Withdrawal amount must be a positive number that has only"
 							+"two digits after the decimal point. Please try again.");
@@ -884,7 +896,13 @@ public class PresentationLayer {
 							+ "different transfer to accept.");
 					transferEntryString = sc.nextLine();
 					if (transferEntryString.equalsIgnoreCase("accept")) {
-						transfer = transfers.get(transferIndex);
+						List<Transfer> pendingTransfers = new ArrayList<>();
+						for (Transfer t : transfers) {
+							if (t.isPending()) {
+								pendingTransfers.add(t);
+							}
+						}
+						transfer = pendingTransfers.get(transferIndex);
 						break;
 					} else if (transferEntryString.equalsIgnoreCase("back")) {
 						acceptingTransfers=false;
@@ -895,15 +913,15 @@ public class PresentationLayer {
 		return transfer;
 	}
 
-	private Transfer chooseATransferToReject(List<Transfer> transfers, Scanner sc) throws BusinessException {
+	private Transfer chooseATransferToHalt(List<Transfer> transfers, Scanner sc) throws BusinessException {
 		Transfer transfer = null;
-		boolean rejectingTransfers = true;
+		boolean haltingTransfers = true;
 		String transferEntryString = null;
 		int transferIndex = -1;
-		while (rejectingTransfers) {
+		while (haltingTransfers) {
 			pl.printPendingTransfersEnumerated(transfers);
 			loggy.info("Please enter the number that corresponds to the transfer you would like "
-					+ "to reject. Enter \"back\" to go back and see other transfer options.");
+					+ "to halt. Enter \"back\" to go back and see other transfer options.");
 			transferEntryString = sc.nextLine();
 			
 			if (transferEntryString.matches("^[0-9]*$")) {
@@ -914,7 +932,7 @@ public class PresentationLayer {
 					pl.printInvalidResponseMessage(transferEntryString);
 				}
 			} else if (transferEntryString.equalsIgnoreCase("back")) {
-				rejectingTransfers=false;
+				haltingTransfers=false;
 			} else {
 				pl.printInvalidResponseMessage(transferEntryString);
 			}
@@ -922,15 +940,21 @@ public class PresentationLayer {
 			if (transferIndex > -1) {
 				if (transferIndex < transfers.size()) {
 					loggy.info("You have chosen transfer number:"+transferEntryString);
-					loggy.info("Type \"reject\" to reject this transfer. Type \"back\" to go "
+					loggy.info("Type \"halt\" to reject or rescind this transfer. Type \"back\" to go "
 							+ "back to the main transfer menu. Enter anything else to select a "
-							+ "different transfer to reject.");
+							+ "different transfer to halt.");
 					transferEntryString = sc.nextLine();
-					if (transferEntryString.equalsIgnoreCase("reject")) {
-						transfer = transfers.get(transferIndex);
+					if (transferEntryString.equalsIgnoreCase("halt")) {
+						List<Transfer> pendingTransfers = new ArrayList<>();
+						for (Transfer t : transfers) {
+							if (t.isPending()) {
+								pendingTransfers.add(t);
+							}
+						}
+						transfer = pendingTransfers.get(transferIndex);
 						break;
 					} else if (transferEntryString.equalsIgnoreCase("back")) {
-						rejectingTransfers=false;
+						haltingTransfers=false;
 					}
 				}
 			}
@@ -944,11 +968,19 @@ public class PresentationLayer {
 		List<Payment> payments = new ArrayList<>();
 		List<Request> requests = new ArrayList<>();
 		
+		Payment pa = null;
+		Request re = null;
 		for (Transfer t : transfers) {
 			if (t instanceof Payment) {
-				payments.add((Payment) t);
+				pa = (Payment) t;
+				if (pa.isPending()) {
+					payments.add(pa);
+				}
 			} else if (t instanceof Request) {
-				requests.add((Request) t);
+				re = (Request) t;
+				if (re.isPending()) {
+					requests.add(re);
+				}
 			} else {
 				BusinessException b = new BusinessException("Unrecognized transfer type "+transfers.getClass()+". Please contact a Bank of Ben"
 						+ "employee to remedy this issue.");
@@ -1019,11 +1051,19 @@ public class PresentationLayer {
 		List<Payment> payments = new ArrayList<>();
 		List<Request> requests = new ArrayList<>();
 		
+		Payment pa = null;
+		Request re = null;
 		for (Transfer t : transfers) {
 			if (t instanceof Payment) {
-				payments.add((Payment) t);
+				pa = (Payment) t;
+				if (pa.isPending()) {
+					payments.add(pa);
+				}
 			} else if (t instanceof Request) {
-				requests.add((Request) t);
+				re = (Request) t;
+				if (re.isPending()) {
+					requests.add(re);
+				}
 			} else {
 				BusinessException b = new BusinessException("Unrecognized transfer type "+transfers.getClass()+". Please contact a Bank of Ben"
 						+ "employee to remedy this issue.");
@@ -1086,23 +1126,23 @@ public class PresentationLayer {
 	public String viewCustomerAccountMap(HashMap<Customer, List<Account>> accountsMap) throws BusinessException {
 		StringBuilder outputBuilder = new StringBuilder();
 //		// We'll start by organizing the columns
-//		outputBuilder.append("Last Name\t|\tFirst Name\t|\tDate of Birth\t|\t"
-//				+ "SSN\t|\tEmail\t|\tPhone #\t|\tUsername\t|\tApplication Pending");
-		// Now we get the content
 		Customer c = null;
+		
+		
+		
+		
 		for (Entry<Customer, List<Account>> entry : accountsMap.entrySet()) {
 			c = entry.getKey();
-			outputBuilder.append("Name: "+c.getLastName()+", "+c.getFirstName()+", "
-					+ "Username: "+c.getUsername()+", DOB: "+c.getDob()+", SSN: "+c.getSsn()
-					+", Email: "+c.getEmail()+", Phone #: "+c.getPhoneNumber());
 			if (c.isApplicationPending()) {
-				outputBuilder.append(", New Customer Application Pending\n");
+				outputBuilder.append("New Customer Application Pending\n");
 			} else {
-				outputBuilder.append(", Existing Customer\n");
+				outputBuilder.append("Existing Customer\n");
 			}
+			outputBuilder.append(c.getLastName()+", "+c.getFirstName()+"; "+c.getUsername()+"; "+c.getEmail()+"\n");
 			for (Account a : entry.getValue()) {
-				outputBuilder.append("Pending Act. #: "+a.getAccountNumber()+", Starting Balance: "+a.getBalance());
+				outputBuilder.append("Pending Act. #: "+a.getAccountNumber()+"\nStarting Balance: "+a.getBalance()+"\n");
 			}
+			outputBuilder.append("\n");
 		}
 		// And... we return the content
 		return outputBuilder.toString();

@@ -94,15 +94,15 @@ public class ValidationTools {
 		return isValidPhoneNumber(Long.toString(phoneNumber));
 	}
 	
-	public static boolean isValidMonetaryAmount(double ammount) {
+	public static boolean isValidMonetaryAmount(double amount) {
 		boolean valid;
-		if (ammount <= 0) {
+		if (amount < 0) {
 			valid = false;
 		}
-		String stringAmmount = Double.valueOf(ammount).toString();
-		String[] ammountIntegerMantissa = stringAmmount.split(".");
-		if (ammountIntegerMantissa.length == 2) {
-			if (ammountIntegerMantissa[1].length() > 2) {
+		String stringAmount = Double.valueOf(amount).toString();
+		String[] amountIntegerMantissa = stringAmount.split("\\.");
+		if (amountIntegerMantissa.length == 2) {
+			if (amountIntegerMantissa[1].length() > 2) {
 				valid = false;
 			} else {
 				valid = true;
@@ -116,7 +116,7 @@ public class ValidationTools {
 	public static boolean isValidMonetaryAmount(String ammountString) {
 		boolean valid;
 		try {
-			valid = isValidMonetaryAmount(Long.parseLong(ammountString));
+			valid = isValidMonetaryAmount(Double.parseDouble(ammountString));
 		} catch (NumberFormatException e) {
 			valid = false;
 		}

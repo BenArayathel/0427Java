@@ -6,12 +6,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 //import java.sql.ResultSetMetaData;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
-import java.util.GregorianCalendar;
 import java.sql.SQLException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -494,6 +490,41 @@ public class BankOfBenDAO implements BankOfBenDAOInterface {
 		
 		return accounts;
 	}
+
+	public boolean doesCustomerOwnAccountNumber(String customerId, Long accountNumber) throws BusinessException {
+		
+		boolean ownershipConfirmed = false;
+		
+		try(Connection connection = OracleDbConnection.getConnection()){
+			
+			String sqlCall = "SELECT * FROM bankofben_accounts WHERE \"Customer ID\"=? AND \"Account Number\"=?";
+			PreparedStatement ps = connection.prepareStatement(sqlCall);
+			ps.setString(1, customerId);
+			ps.setLong(2, accountNumber);
+			
+			ResultSet rset = ps.executeQuery();
+			
+			if (rset.next()) {
+				if (rset.next()) {
+					b = new BusinessException("Internal database error in data storage conditions. Please contact your SYSADMIN");
+					loggy.error(b);
+					throw b;
+				} else {
+					ownershipConfirmed = true;
+				}
+			}
+			
+			ps.close();
+			
+		} catch (ClassNotFoundException | SQLException e) {
+			loggy.error(e);
+			b = new BusinessException("Internal database error. Please contact your SYSADMIN.");
+			loggy.error(b);
+			throw b;
+		}
+		
+		return ownershipConfirmed;
+	}
 	
 	@Override
 	public List<Account> getAccountsWithPendingStatus(boolean isPending) throws BusinessException {
@@ -834,28 +865,28 @@ public class BankOfBenDAO implements BankOfBenDAOInterface {
 		}
 	}
 
-	public void deleteRejectedAccount(Long accountNumber) throws BusinessException {
+	public void deleteExistingCustomerRejectedAccount(Long accountNumber) throws BusinessException {
 		// A rejected account has only 1 constraint: to match the customer table with a foreign key.
 		// This procedure will remove the constraint, delete the entry, and reinstate the constraint.
 		// This procedure will work with any account that has only this one relationship (not just 
 		// rejected ones; however, that's it's most common use)
 		try(Connection connection = OracleDbConnection.getConnection()){
 			
-			String sqlCall = "{call removecustomerandaccounts(?)}";
+			String sqlCall = "{call removeaccountnotcustomer(?)}";
 			CallableStatement cs = connection.prepareCall(sqlCall);
 			
 			cs.setLong(1, accountNumber);
 			
 			boolean executed = cs.execute();
 			if (!executed) {
-				b = new BusinessException("Could not delete both customer ID and account.");
+				b = new BusinessException("Problem encountered when trying to reject existing user's account. Please contact your SYSADMIN.");
 				loggy.error(b);
 				throw b;
 			}
 			
 		} catch (ClassNotFoundException | SQLException e) {
 			loggy.error(e);
-			b = new BusinessException("Internal database error. Could not delete both customer ID and account. Please contact your SYSADMIN.");
+			b = new BusinessException("Internal database error. Problem encountered when trying to reject existing user's account. Please contact your SYSADMIN.");
 			loggy.error(b);
 			throw b;
 		}
@@ -2260,7 +2291,7 @@ public class BankOfBenDAO implements BankOfBenDAOInterface {
 		
 		try(Connection connection = OracleDbConnection.getConnection()){
 			
-			String sqlCall = "{call createtransaction(?,?,?,?,?)}";
+			String sqlCall = "{call createtransaction(?,?,?,?,?,?)}";
 			CallableStatement cs = connection.prepareCall(sqlCall);
 			
 			cs.registerOutParameter(1, java.sql.Types.VARCHAR);
@@ -2270,12 +2301,13 @@ public class BankOfBenDAO implements BankOfBenDAOInterface {
 			cs.setLong(3, transaction.getAccountNumber());
 			cs.setDouble(4, transaction.getInitialBalance());
 			cs.setDouble(5, transaction.getAmount());
+			cs.setLong(6, transaction.getOtherAccountNumber());
 			
 			int transactionCreated = cs.executeUpdate();
 			if (transactionCreated>0) {
-				transaction = new Transaction(cs.getString("Transaction ID"), cs.getTimestamp("Timestamp"),
-						cs.getLong("Account Number"), cs.getDouble("Initial Balance"), cs.getDouble("Amount"),
-						cs.getDouble("Final Balance"));
+				transaction = new Transaction(cs.getString(1), cs.getTimestamp(2),
+						transaction.getAccountNumber(), transaction.getInitialBalance(), transaction.getAmount(),
+						transaction.getOtherAccountNumber());
 			} else {
 				throw new BusinessException("Internal database error. Transaction could not be created. "
 						+ "Please contact your SYSADMIN");
@@ -2308,7 +2340,35 @@ public class BankOfBenDAO implements BankOfBenDAOInterface {
 			while (rset.next()) {
 				transactions.add(new Transaction(rset.getString("Transaction ID"), rset.getTimestamp("Timestamp"),
 						rset.getLong("Account Number"), rset.getDouble("Initial Balance"), rset.getDouble("Amount"),
-						rset.getDouble("Final Balance")));
+						rset.getLong("Other Account Number")));
+			}
+			
+		} catch (ClassNotFoundException | SQLException e) {
+			loggy.error(e);
+			b = new BusinessException("Internal database error. Please contact your SYSADMIN.");
+			throw b;
+		}
+		
+		return transactions;
+	}
+
+	public List<Transaction> getAllTransactionsUpTo(int numberOfTransactions) throws BusinessException {
+		
+		List<Transaction> transactions = new ArrayList<>();
+//		int counter = 0;
+		
+		try(Connection connection = OracleDbConnection.getConnection()){
+			
+			String sqlCall = "SELECT * FROM bankofben_transactions";
+			PreparedStatement ps = connection.prepareStatement(sqlCall);
+			
+			ResultSet rset = ps.executeQuery();
+
+			while (rset.next()) {
+				transactions.add(new Transaction(rset.getString("Transaction ID"), rset.getTimestamp("Timestamp"),
+						rset.getLong("Account Number"), rset.getDouble("Initial Balance"), rset.getDouble("Amount"),
+						rset.getLong("Other Account Number")));
+//				counter++;
 			}
 			
 		} catch (ClassNotFoundException | SQLException e) {
@@ -2336,7 +2396,7 @@ public class BankOfBenDAO implements BankOfBenDAOInterface {
 			while (rset.next()) {
 				transactions.add(new Transaction(rset.getString("Transaction ID"), rset.getTimestamp("Timestamp"),
 						rset.getLong("Account Number"), rset.getDouble("Initial Balance"), rset.getDouble("Amount"),
-						rset.getDouble("Final Balance")));
+						rset.getLong("Other Account Number")));
 			}
 			
 			ps.close();

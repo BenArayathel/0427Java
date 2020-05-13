@@ -3,8 +3,6 @@ package com.bankofben.business;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.concurrent.ThreadLocalRandom;
-
 import org.apache.log4j.Logger;
 
 import com.bankofben.exceptions.BusinessException;
@@ -105,10 +103,16 @@ public class BusinessLayer {
 
 	public long validateCustomerAccountNumber(String sourceAccountString, String sourceRoutingString, Customer customer)
 			throws BusinessException {
+		System.out.println("I'm in validateCustomerAccountNumber in the BL");
 		long sourceAccountNumber = validateAccountNumber(sourceAccountString);
 		long sourceRoutingNumber = validateRoutingNumber(sourceRoutingString);
 		List<Account> customerAccounts = dbs.getAccountsForCustomer(customer);
+		for (Account a : customerAccounts) {
+			System.out.println(a);
+		}
+		System.out.println();
 		Account sourceAccount = dbs.getAccount(sourceAccountNumber, sourceRoutingNumber);
+		System.out.println(sourceAccount);
 		if (customerAccounts.contains(sourceAccount)) {
 			return sourceAccount.getAccountNumber();
 		} else {
@@ -153,10 +157,10 @@ public class BusinessLayer {
 	}
 	
 	public double validateMonetaryAmount(String amount) throws BusinessException {
-		long amt;
+		double amt;
 		if (ValidationTools.isValidMonetaryAmount(amount)) {
 			try {
-				amt = Long.parseLong(amount);
+				amt = Double.parseDouble(amount);
 			} catch (NumberFormatException e) {
 				BusinessException b = new BusinessException("The amount "+amount+" is not a valid monetary amount.");
 				loggy.error(b);
@@ -314,6 +318,11 @@ public class BusinessLayer {
 	}
 
 	public Account makeDeposit(double deposit, Account account, User customerOrEmployee) throws BusinessException {
+		if (account.isPending()) {
+			BusinessException b = new BusinessException("Cannot operate on an account that is pending.");
+			loggy.error(b);
+			throw b;
+		}
 		if (ValidationTools.isValidMonetaryAmount(deposit)) {
 			if (Double.valueOf(account.getBalance() + deposit)==Double.POSITIVE_INFINITY) {
 				// Check that the maximum balance is not exceeded
@@ -323,11 +332,11 @@ public class BusinessLayer {
 				throw b;
 			} else {
 				if (customerOrEmployee instanceof Customer) {
-					account.setBalance(account.getBalance() + deposit, (Customer) customerOrEmployee);
-					dbs.updateAccountBalance(account);
+//					account.setBalance(account.getBalance() + deposit, (Customer) customerOrEmployee);
+					account = dbs.updateAccountBalance(account, deposit, account);
 				} else if (customerOrEmployee instanceof Employee) {
-					account.setBalance(account.getBalance() + deposit, (Employee) customerOrEmployee);
-					dbs.updateAccountBalance(account);
+//					account.setBalance(account.getBalance() + deposit, (Employee) customerOrEmployee);
+					account = dbs.updateAccountBalance(account, deposit, account);
 				} else {
 					BusinessException b = new BusinessException("Invalid credentials to make deposit into account "+account.getAccountNumber()+". "
 							+ "Please ensure your information is correct.");
@@ -345,6 +354,11 @@ public class BusinessLayer {
 	}
 
 	public Account makeWithdrawal(double withdrawal, Account account, User customerOrEmployee) throws BusinessException {
+		if (account.isPending()) {
+			BusinessException b = new BusinessException("Cannot operate on an account that is pending.");
+			loggy.error(b);
+			throw b;
+		}
 		if (ValidationTools.isValidMonetaryAmount(withdrawal)) {
 			if (Double.valueOf(account.getBalance() - withdrawal) < 0) {
 				// Check that the balance would not become negative
@@ -355,11 +369,11 @@ public class BusinessLayer {
 				throw b;
 			} else {
 				if (customerOrEmployee instanceof Customer) {
-					account.setBalance(account.getBalance() - withdrawal, (Customer) customerOrEmployee);
-					dbs.updateAccountBalance(account);
+//					account.setBalance(account.getBalance() - withdrawal, (Customer) customerOrEmployee);
+					account = dbs.updateAccountBalance(account, -withdrawal, account);
 				} else if (customerOrEmployee instanceof Employee) {
-					account.setBalance(account.getBalance() - withdrawal, (Employee) customerOrEmployee);
-					dbs.updateAccountBalance(account);
+//					account.setBalance(account.getBalance() - withdrawal, (Employee) customerOrEmployee);
+					account = dbs.updateAccountBalance(account, -withdrawal, account);
 				} else {
 					BusinessException b =  new BusinessException("Invalid credentials to make withdrawal from account "+account.getAccountNumber()+". "
 							+ "Please ensure your information is correct.");
@@ -378,21 +392,41 @@ public class BusinessLayer {
 	
 	public void makePayment(Payment payment) throws BusinessException {
 		Account payingAccount = dbs.getAccount(payment.getPayingAccountNumber(), Account.getRoutingNumber());
+		if (payingAccount.isPending()) {
+			BusinessException b = new BusinessException("Cannot operate on an account that is pending.");
+			loggy.error(b);
+			throw b;
+		}
 		Account receivingAccount = dbs.getAccount(payment.getReceivingAccountNumber(), Account.getRoutingNumber());
+		if (receivingAccount.isPending()) {
+			BusinessException b = new BusinessException("Cannot operate on an account that is pending.");
+			loggy.error(b);
+			throw b;
+		}
 		payingAccount.setBalance(payingAccount.getBalance()-payment.getAmount(), payment);
 		receivingAccount.setBalance(receivingAccount.getBalance()+payment.getAmount(), payment);
-		dbs.updateAccountBalance(payingAccount);
-		dbs.updateAccountBalance(receivingAccount);
+		payingAccount = dbs.updateAccountBalance(payingAccount, -payment.getAmount(), receivingAccount);
+		receivingAccount = dbs.updateAccountBalance(receivingAccount, payment.getAmount(), payingAccount);
 		dbs.resolvePendingPayment(payment);
 	}
 	
 	public void makeRequest(Request request) throws BusinessException {
 		Account requestorAccount = dbs.getAccount(request.getRequestorAccountNumber(), Account.getRoutingNumber());
+		if (requestorAccount.isPending()) {
+			BusinessException b = new BusinessException("Cannot operate on an account that is pending.");
+			loggy.error(b);
+			throw b;
+		}
 		Account soughtAccount = dbs.getAccount(request.getSoughtAccountNumber(), Account.getRoutingNumber());
+		if (soughtAccount.isPending()) {
+			BusinessException b = new BusinessException("Cannot operate on an account that is pending.");
+			loggy.error(b);
+			throw b;
+		}
 		requestorAccount.setBalance(requestorAccount.getBalance()+request.getAmount(), request);
 		soughtAccount.setBalance(soughtAccount.getBalance()-request.getAmount(), request);
-		dbs.updateAccountBalance(requestorAccount);
-		dbs.updateAccountBalance(soughtAccount);
+		requestorAccount = dbs.updateAccountBalance(requestorAccount, request.getAmount(), soughtAccount);
+		soughtAccount = dbs.updateAccountBalance(soughtAccount, -request.getAmount(), requestorAccount);
 		dbs.resolvePendingRequest(request);
 	}
 
@@ -421,23 +455,54 @@ public class BusinessLayer {
 	}
 
 	public void postPayment(Customer customer, Account paySourceAccount, Account payDestinationAccount, double amount) throws BusinessException {
+		if (paySourceAccount.isPending() || payDestinationAccount.isPending()) {
+			BusinessException b = new BusinessException("Cannot operate on an account that is pending.");
+			loggy.error(b);
+			throw b;
+		}
 		dbs.postPayement(customer, paySourceAccount, payDestinationAccount, amount);
 	}
 	
 	public void postRequest(Customer customer, Account reqSourceAccount, Account reqDestinationAccount, double amount) throws BusinessException {
+		if (reqSourceAccount.isPending() || reqDestinationAccount.isPending()) {
+			BusinessException b = new BusinessException("Cannot operate on an account that is pending.");
+			loggy.error(b);
+			throw b;
+		}
 		dbs.postRequest(customer, reqSourceAccount, reqDestinationAccount, amount);
 	}
 
-	public void acceptTransfer(Transfer transfer, Customer customer) throws BusinessException {
+	public Account acceptTransfer(Transfer transfer, Customer customer) throws BusinessException {
+		
+		Account a = null;
 		
 		BusinessLayer bl = new BusinessLayer();
 		if (transfer.isPending()) {
 			if (transfer instanceof Payment) {
 				Payment p = (Payment) transfer;
+				if (dbs.doesCustomerOwnAccountNumber(customer.getId(), p.getPayingAccountNumber()) && !dbs.doesCustomerOwnAccountNumber(customer.getId(), p.getReceivingAccountNumber())) {
+					BusinessException b = new BusinessException("Only the party who would receive money can choose to accept payment. "
+							+ "Until that party accepts the payment you are allowed to halt it, however.");
+					loggy.error(b);
+					throw b;
+				}
 				bl.makePayment(p);
+				a = dbs.getAccount(p.getReceivingAccountNumber(), Account.getRoutingNumber());
 			} else if (transfer instanceof Request) {
 				Request r = (Request) transfer;
+				if (dbs.doesCustomerOwnAccountNumber(customer.getId(), r.getRequestorAccountNumber()) && !dbs.doesCustomerOwnAccountNumber(customer.getId(), r.getSoughtAccountNumber())) {
+					BusinessException b = new BusinessException("Only the party who would have to pay money can choose to accept the request.");
+					loggy.error(b);
+					throw b;
+				}
+				if (r.getAmount() > dbs.getAccount(r.getSoughtAccountNumber(), Account.getRoutingNumber()).getBalance()) {
+					BusinessException b = new BusinessException("You have insufficient funds in account "+r.getSoughtAccountNumber()
+						+" to accept this request. Please add more money and try again.");
+					loggy.error(b);
+					throw b;
+				}
 				bl.makeRequest(r);
+				a = dbs.getAccount(r.getSoughtAccountNumber(), Account.getRoutingNumber());
 			} else {
 				BusinessException b = new BusinessException("Could not accept transfer "+transfer.getId()+" due to too little information given. "
 						+ "Need to specify if the transfer is a payment or a request.");
@@ -449,13 +514,15 @@ public class BusinessLayer {
 			loggy.error(b);
 			throw b;
 		}
+		
+		return a;
 	}
 
-	public void rejectTransfer(Transfer transfer, Customer customer) throws BusinessException {
+	public void haltTransfer(Transfer transfer, Customer customer) throws BusinessException {
 		if (transfer.isPending()) {
-			dbs.rejectTransfer(transfer, customer);
+			dbs.haltTransfer(transfer, customer);
 		} else {
-			BusinessException b = new BusinessException("No need to reject transfer "+transfer.getId()+". Transfer is not pending.");
+			BusinessException b = new BusinessException("No need to halt transfer "+transfer.getId()+". Transfer is not pending.");
 			loggy.error(b);
 			throw b;
 		}
@@ -469,8 +536,8 @@ public class BusinessLayer {
 		return dbs.getTransactions(accountNumber);
 	}
 	
-	public String viewTransactions(int numberOfTransactions) throws BusinessException {
-		return dbs.getTransactions(numberOfTransactions);
+	public String viewTransactionsUpTo(int numberOfTransactions) throws BusinessException {
+		return dbs.getTransactionsUpTo(numberOfTransactions);
 	}
 
 	public void approveNewCustomerAccountApplication(Account a) throws BusinessException {

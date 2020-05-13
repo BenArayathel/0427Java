@@ -93,3 +93,24 @@ SELECT * FROM bankofben_payments WHERE "Paying Account Number" IN (8636764367,11
 7169902380, 8625849980) OR "Receiving Account Number" IN (8636764367,1124348100,2903441653,9180651690,6249235260,
 7883516090, 6417611898, 2701610162, 3371920762,2399796675,2172701410,3606912123,8880351552,6840187510,3538978757,3217445300,
 7169902380, 8625849980);
+
+SET SERVEROUTPUT ON;
+
+ALTER TABLE bankofben_transactions ADD "Source Customer ID" VARCHAR(20);
+
+UPDATE bankofben_transactions SET "Source Customer ID" = 'CUGAEA1980100020';
+
+ALTER TABLE bankofben_transactions MODIFY "Source Customer ID" NOT NULL;
+
+ALTER TABLE bankofben_transactions ADD CONSTRAINT "FK Source Customer ID" FOREIGN KEY("Source Customer ID")
+	  REFERENCES bankofben_customers("Customer ID");
+      
+ALTER TABLE bankofben_transactions DROP CONSTRAINT "FK Source Customer ID";
+
+ALTER TABLE bankofben_transactions DROP COLUMN "Source Customer ID";
+
+ALTER TABLE bankofben_transactions ADD "Other Account Number" NUMBER(10);
+UPDATE bankofben_transactions SET "Other Account Number" = 3969255661;
+ALTER TABLE bankofben_transactions MODIFY "Other Account Number" NOT NULL;
+ALTER TABLE bankofben_transactions ADD CONSTRAINT "FK Other Account Number" FOREIGN KEY("Other Account Number")
+    REFERENCES bankofben_accounts("Account Number");
