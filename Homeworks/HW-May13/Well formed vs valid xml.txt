@@ -1,0 +1,14 @@
+Well formed vs valid xml
+
+An XML document may be well-formed and not be valid. This article explains the difference between these two concepts.
+
+XML is a standard set by the World Wide Web Consortium (W3C http://www.w3.org/), the main international standards organization for the World Wide Web. The XML standard states that an XML document that conforms to the standard is said to be "Well-formed." The XML standard has many syntax, grammar and structure rules. An XML document must have a single root element, the elements must be properly nested, tag names cannot begin with a number or contain certain characters, and so on.
+
+XML validation is distinct from well-formed. An XML document is said to be valid if it is associated with a document type definition(DTD), or an XML schema, and complies with the constraints specified in the DTD or schema. However, the XML standard does not require either a DTD or a schema in order to be well-formed.
+Determining if a document is well-formed or valid is quite simple. There are a number of XML software, including free, open source and commercial, that check the syntax and validate XML documents. For programmers, many popular programming languages and frameworks have easy to use objects that require only a few lines of code to determine either well-formedness or validity.
+
+Fixing well-formed and validation violations is not always straightforward. XML software vary significantly in their handling of these errors. Some of the problems related to well-formed errors are discussed in the Xponent article "XML Parsers." Fixing XML errors is further complicated with extremely large XML documents.
+
+REFERENCE
+-----------------------------------------------------------------------------------------
+https://www.xponentsoftware.com/articles/Validate_wellformed.aspx

@@ -1,0 +1,12 @@
+XML namespace
+
+Namespaces are a simple and straightforward way to distinguish names used in XML documents, no matter where they come from. However, the concepts are a bit abstract, and this specification has been causing some mental indigestion among those who read it. The best way to understand namespaces, as with many other things on the Web, is by example.
+
+Why Namespaces?
+But first, an obvious question: why do we need these things? They are there to help computer software do its job. For example, suppose you're a programmer working for XML.com and you want to write a program to look up the books at Amazon.com and make sure the prices are correct. Such lookups are quite easy, once you know the author and the title.
+Quite a few people, after reading earlier drafts of the Namespace Recommendation, decided that namespaces were actually a facility for modular DTDs, or were trying to duplicate the function of SGML's "Architectural Forms". None of these theories are true. The only reason namespaces exist, once again, is to give elements and attributes programmer-friendly names that will be unique across the whole Internet.
+Namespaces are a simple, straightforward, unglamorous piece of syntax. But they are crucial for the future of XML programming.
+
+REFERENCE
+------------------------------------------------------------------------------------------
+https://www.xml.com/pub/a/1999/01/namespaces.html

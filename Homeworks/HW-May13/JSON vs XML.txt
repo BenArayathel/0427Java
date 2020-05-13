@@ -1,0 +1,143 @@
+JSON vs XML
+
+What is JSON?
+JSON is used to store information in an organized, and easy-to-access manner. Its full form is JavaScript Object Notation. It offers a human-readable collection of data which can be accessed logically.
+
+What is XML?
+XML is a markup language which is designed to store data. It's popularly used or transfer of data. It is case sensitive. XML offers you to define markup elements and generate customized markup language. The basic unit in the XML is known as an element. Extension of XML file is .xml
+
+History of JSON
+Here are important landmarks that form the history of JSON:
+
+Douglas Crockford specified the JSON format in the early 2000s.
+The official website was launched in 2002.
+In December 2005, Yahoo! starts offering some of its web services in JSON.
+JSON became an ECMA international standard in 2013.
+The most updated JSON format standard was published in 2017.
+
+History of XML
+Here, are the important landmark from the history of XML:
+
+XML was also derived from SGML.
+Version 1.0 of XML was released in February 1998.
+Jan 2001:IETF Proposed Standard: XML Media Types
+XML is the Extensible Markup Language.
+1970: Charles Goldfarb, Ed Mosher, and Ray Lorie invented GML
+The development of XML started in the year 1996 at Sun Microsystem
+
+Features of JSON
+Easy to use - JSON API offers high-level facade, which helps you to simplify commonly used use-cases. 
+Performance - JSON is quite fast as it consumes very less memory space, which is especially suitable for large object graphs or systems.
+Free tool - JSON library is open source and free to use.
+Doesn't require to create mapping - Jackson API provides default mapping for many objects to be serialized.
+Clean JSON - Creates clean, and compatible JSON result that is easy to read.
+Dependency - JSON library does not require any other library for processing.
+
+Features of XML
+XML tags are not predefined. You need to define your customized tags.
+XML was designed to carry data, not allows you to display that data.
+Mark-up code of XML is easy to understand for a human.
+Well, the structured format is easy to read and write from programs.
+XML is an extensible markup language like HTML.
+
+Difference between JSON and XML
+
+             JSON	                                                                    XML
+JSON object has a type	XML data is typeless
+JSON types: string, number, array, Boolean	                               All XML data should be string
+Data is readily accessible as JSON objects.    	                               XML data needs to be parsed.
+JSON is supported by most browsers.	                                       Cross-browser XML parsing can be tricky
+JSON has no display capabilities.	                                       XML offers the capability to display data because it is a markup language.
+JSON supports only text and number data type.  	                               XML support various data types such as number, text, images, charts, graphs, etc. It also provides options for transferring the structure or format of the data       									       with actual data.
+Retrieving value is easy	                                               Retrieving value is difficult
+Supported by many Ajax toolkit	Not fully supported by Ajax toolkit
+A fully automated way of deserializing/serializing JavaScript.	               Developers have to write JavaScript code to serialize/de-serialize from XML
+Native support for object.	                                               The object has to be express by conventions - mostly missed use of attributes and elements.
+It supports only UTF-8 encoding.	                                       It supports various encoding.
+It doesn't support comments.	                                               It supports comments.
+JSON files are easy to read as compared to XML.	                               XML documents are relatively more difficult to read and interpret.
+It does not provide any support for namespaces.	                               It supports namespaces.
+It is less secured.	                                                       It is more secure than JSON.
+
+
+Let's see a sample JSON Code
+
+{
+  "student": [ 
+	
+     { 
+        "id":"01", 
+        "name": "Tom", 
+        "lastname": "Price" 
+     }, 
+	
+     { 
+        "id":"02", 
+        "name": "Nick", 
+        "lastname": "Thameson" 
+     } 
+  ]   
+}
+Let's study the same code in XML
+
+<?xml version="1.0" encoding="UTF-8" ?>
+<root>
+	<student>
+		<id>01</id>
+		<name>Tom</name>
+		<lastname>Price</lastname>
+	</student>
+	<student>
+		<id>02</id>
+		<name>Nick</name>
+		<lastname>Thameson</lastname>
+	</student>
+</root>
+
+
+Advantages of using JSON
+Here are the important benefits/ pros of using JSON:
+Provide support for all browsers
+Easy to read and write
+Straightforward syntax
+You can natively parse in JavaScript using eval() function
+Easy to create and manipulate
+Supported by all major JavaScript frameworks
+Supported by most backend technologies
+JSON is recognized natively by JavaScript
+It allows you to transmit and serialize structured data using a network connection.
+You can use it with modern programming languages.
+JSON is text which can be converted to any object of JavaScript into JSON and send this JSON to the server.
+
+Advantages of using XML
+Here are significant benefits/cons of using XML:
+Makes documents transportable across systems and applications. With the help of XML, you can exchange data quickly between different platforms.
+XML separates the data from HTML
+XML simplifies platform change process
+
+Disadvantages of using JSON
+Here are cons/ drawback of using JSON:
+No namespace support, hence poor extensibility
+Limited development tools support
+It offers support for formal grammar definition
+
+Disadvantages of using XML
+Here, are cons/ drawbacks of using XML:
+XML requires a processing application
+The XML syntax is very similar to other alternatives 'text-based' data transmission formats which is sometimes confusing
+No intrinsic data type support
+The XML syntax is redundant
+Does n't allow the user to create his tags.
+
+KEY DIFFERENCE
+JSON object has a type whereas XML data is typeless.
+JSON does not provide namespace support while XML provides namespaces support.
+JSON has no display capabilities whereas XML offers the capability to display data.
+JSON is less secured whereas XML is more secure compared to JSON.
+JSON supports only UTF-8 encoding whereas XML supports various encoding formats.
+
+----------------------------------------------------------------------------------------------------------------------------------------------
+REFERENCE
+https://www.guru99.com/json-vs-xml-difference.html
+
+

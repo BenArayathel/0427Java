@@ -1,0 +1,23 @@
+DOM XML Parser in Java
+DOM Stands for Document Object Model and it represent an XML Document into tree format which each element representing tree branches. DOM Parser creates an In Memory tree representation of XML file and then parses it, so it requires more memory and it's advisable to have increased the heap size for DOM parser in order to avoid Java.lang.OutOfMemoryError:java heap space . 
+Parsing XML file using DOM parser is quite fast if XML file is small but if you try to read a large XML file using DOM parser there is more chances that it will take a long time or even may not be able to load it completely simply because it requires a lot of memory to create XML Dom Tree. 
+Java provides support DOM Parsing and you can parse XML files in Java using DOM parser. DOM classes are in w3c.dom package while DOM Parser for Java is in JAXP (Java API for XML Parsing) package.
+
+SAX XML Parser in Java
+SAX Stands for Simple API for XML Parsing. This is an event based XML Parsing and it parse XML file step by step so much suitable for large XML Files. SAX XML Parser fires an event when it encountered opening tag, element or attribute, and the parsing works accordingly. It’s recommended to use SAX XML parser for parsing large XML files in Java because it doesn't require to load whole XML file in Java and it can read a big XML file in small parts. Java provides support for SAX parser and you can parse any XML file in Java using SAX Parser, I have covered an example of reading XML file using SAX Parser here. One disadvantage of using SAX Parser in java is that reading XML file in Java using SAX Parser requires more code in comparison of DOM Parser.
+
+
+Difference between DOM and SAX XML Parser
+Here are a few high-level differences between DOM parser and SAX Parser in Java:
+
+1) DOM parser loads whole XML documents in memory while SAX only loads a small part of the XML file in memory.
+
+2) DOM parser is faster than SAX because it accesses the whole XML document in memory.
+
+3) SAX parser in Java is better suitable for a large XML file than DOM Parser because it doesn't require much memory.
+
+4) DOM parser works on Document Object Model while SAX is an event based XML parser.
+
+REFERENCE
+-----------------------------------------------------------------------------------------
+https://javarevisited.blogspot.com/2011/12/difference-between-dom-and-sax-parsers.html

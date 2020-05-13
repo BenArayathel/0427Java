@@ -1,0 +1,85 @@
+
+What is Waterfall methodology?
+Waterfall Model methodology which is also known as Liner Sequential Life Cycle Model. Waterfall Model followed in the sequential order, and so project development team only moves to next phase of development or testing if the previous step completed successfully.
+
+What is the Agile methodology?
+Agile methodology is a practice that helps continuous iteration of development and testing in the software development process. In this model, development and testing activities are concurrent, unlike the Waterfall model. This process allows more communication between customers, developers, managers, and testers.
+
+Advantages of Waterfall Model:
+It is one the easiest model to manage. Because of its nature, each phase has specific deliverables and a review process.
+It works well for smaller size projects where requirements are easily understandable.
+Faster delivery of the project
+Process and results are well documented.
+Easily adaptable method for shifting teams
+This project management methodology is beneficial to manage dependencies.
+
+Advantages of the Agile Model:
+It is focused client process. So, it makes sure that the client is continuously involved during every stage.
+Agile teams are extremely motivated and self-organized so it likely to provide a better result from the development projects.
+Agile software development method assures that quality of the development is maintained
+The process is completely based on the incremental progress. Therefore, the client and team know exactly what is complete and what is not. This reduces risk in the development process.
+
+Limitations of Waterfall Model:
+It is not an ideal model for a large size project
+If the requirement is not clear at the beginning, it is a less effective method.
+Very difficult to move back to makes changes in the previous phases.
+The testing process starts once development is over. Hence, it has high chances of bugs to be found later in development where they are expensive to fix.
+
+Limitations of Agile Model
+It is not useful method for small development projects.
+It requires an expert to take important decisions in the meeting.
+Cost of implementing an agile method is little more compared to other development methodologies.
+The project can easily go off track if the project manager is not clear what outcome he/she wants.
+
+Difference between Agile and Waterfall Model:
+
+Agile:
+
+It separates the project development lifecycle into sprints. 
+It follows an incremental approach 
+Agile methodology is known for its flexibility. 
+Agile can be considered as a collection of many different projects. 
+Agile is quite a flexible method which allows changes to be made in the project development requirements even if the initial planning has been completed. 
+Agile methodology, follow an iterative development approach because of this planning, development, prototyping and other software development phases may appear more than once. 
+Test plan is reviewed after each sprint 
+Agile development is a process in which the requirements are expected to change and evolve. 
+In Agile methodology, testing is performed concurrently with software development. 
+Agile introduces a product mindset where the software product satisfies needs of its end customers and changes itself as per the customer's demands. 
+Agile methdology works exceptionally well with Time & Materials or non-fixed funding. It may increase stress in fixed-price scenarios. 
+Prefers small but dedicated teams with a high degree of coordination and synchronization. 
+Products owner with team prepares requirements just about every day during a project. 
+Test team can take part in the requirements change without problems. 
+Description of project details can be altered anytime during the SDLC process. 
+The Agile Team members are interchangeable, as a result, they work faster. There is also no need for project managers because the projects are managed by the entire team 
+
+Waterfall
+	
+Software development process is divided into distinct phases. 
+Waterfall methodology is a sequential design process. 
+Waterfall is a structured software development methodology so most times it can be quite rigid. 
+Software development will be completed as one single project. 
+There is no scope of changing the requirements once the project development starts. 
+All the project development phases like designing, development, testing, etc. are completed once in the Waterfall model. 
+The test plan is rarely discussed during the test phase. 
+The method is ideal for projects which have definite requirements and changes not at all expected. 
+In this methodology, the "Testing" phase comes after the "Build" phase 
+This model shows a project mindset and places its focus completely on accomplishing the project. 
+Reduces risk in the firm fixed price contracts by getting risk agreement at the beginning of the process. 
+Team coordination/synchronization is very limited. 
+Business analysis prepares requirements before the beginning of the project. 
+It is difficult for the test to initiate any change in requirements. 
+Detail description needs to implement waterfall software development approach. 
+In the waterfall method, the process is always straightforward so, project manager plays an essential role during every stage of SDLC.
+
+KEY DIFFERENCE
+Waterfall is a Liner Sequential Life Cycle Model whereas Agile is a continuous iteration of development and testing in the software development process.
+Agile methodology is known for its flexibility whereas Waterfall is a structured software development methodology.
+Agile follows an incremental approach whereas the Waterfall methodology is a sequential design process.
+Agile performs testing concurrently with software development whereas in Waterfall methodology testing comes after the “Build” phase.
+Agile allows changes in project development requirement whereas Waterfall has no scope of changing the requirements once the project development starts.
+
+REFERENCE
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+https://www.guru99.com/waterfall-vs-agile.html
+
+
