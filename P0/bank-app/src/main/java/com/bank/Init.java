@@ -8,6 +8,7 @@ import java.util.Scanner;
 
 import com.data.DBConnector;
 import com.data.JDBC;
+import com.exception.BankException;
 
 public class Init {
 
@@ -17,6 +18,10 @@ public class Init {
 	private int pin;
 	private int employeeID;
 	
+	/**
+	 * Entry point from main method to log in dependent on whether 
+	 * user is a customer or an employee
+	 */
 	public void logIn() {
 		Scanner input = new Scanner(System.in);
 	
@@ -24,7 +29,11 @@ public class Init {
 		this.accNo = input.nextInt();							//Retrieve account number
 										//Retrieve pin number
 		if(accNo == 0000) {
-			employeeLogin();
+			try {
+				employeeLogin();
+			} catch (SQLException e) {
+				System.out.println("There was an error, contact system administrator");
+			}
 		}else {
 			customerLogin();
 		}
@@ -32,21 +41,44 @@ public class Init {
 	}
 
 
-	private void employeeLogin() {
+	/**
+	 * Login method for Employee
+	 * @throws SQLException
+	 */
+	private void employeeLogin() throws SQLException {
 		Scanner empInput = new Scanner(System.in);
 		
 		//Gets the employee ID an pin number for login verification
 		System.out.println("This is where the business logic for the employee login and controller will kick off!");
-		System.out.println("Please enter your 6 digit employee ID: ");
-		int idNum = Integer.parseInt(empInput.next());
-		System.out.println("Enter your 4 digit employee passcode");
-		int empPin = Integer.parseInt(empInput.next());
+		
 		//Instantiate a new EmployeeController object and set table to query
-		EmployeeController ec = new EmployeeController("employeetable");
-		
-		
+		try {
+			boolean correctCredentials = false;
+			do {
+				Statement stmt = DBConnector.getConnection().createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
+				ResultSet et = stmt.executeQuery("SELECT * FROM employeetable");
+				System.out.println("Please enter your 6 digit employee ID: ");
+				int idNum = Integer.parseInt(empInput.next());
+				System.out.println("Enter your 4 digit employee passcode");
+				int empPin = Integer.parseInt(empInput.next());
+				while(et.next()) {
+					if(et.getInt(1) == idNum && et.getInt(2) == empPin) {
+						System.out.println("I am logged in!!!");
+						EmployeeController ec = new EmployeeController("employeetable");
+						correctCredentials = true;
+					}else {
+						System.out.println("You have entered invalid credentials, try again.");
+					}
+				}
+			}while(!correctCredentials);
+		} catch (BankException e) {
+			System.out.println("There was an error, contact system administrator");
+		}
 	}
 	
+	/**
+	 * Method for Customer login
+	 */
 	private void customerLogin() {
 		Scanner custInput = new Scanner(System.in);
 		System.out.println("Now enter your 4 digit pin: ");
@@ -56,10 +88,9 @@ public class Init {
 			//Creates a new BankController for this users session
 			BankController bc = new BankController(JDBC.getResultSet("accountstable"));
 			try {
-				System.out.println("I AM CREATING A NEW BANKCONTROLLER INSTANCE HERE!");
 				bc.logIn(this.accNo, this.pin);
 			} catch (InvalidAccountException e) {
-				e.printStackTrace();
+				System.out.println("There was an error, contact system administrator");
 			}
 		} catch (SQLException e) {
 			
@@ -79,6 +110,10 @@ public class Init {
 		}
 	}
 	
+	/**
+	 * Allows a customer to apply for a new account
+	 * @throws SQLException
+	 */
 	public void createCustomerAccount() throws SQLException {
 		boolean isInGoodStanding = true;
 		boolean isEmployee = false;
@@ -106,8 +141,6 @@ public class Init {
 		//String occupation = createAcctScanner.next();
 		boolean correctSelection = false;
 
-		
-		
 		System.out.println("Occupation " + occupation);
 		//Married Y/N
 		do {
@@ -125,7 +158,7 @@ public class Init {
 		}while(!correctSelection);
 		
 		correctSelection = false;
-		//Homeowner Y/N
+		//Home owner Y/N
 		do {
 			System.out.println("Are you a homeowner? (Y/N)");
 			String isHomeowner = createAcctScanner.next();
@@ -195,11 +228,72 @@ public class Init {
 		JDBC.insert("accountstable", "accountNumber, pinNumber, savingsAmt, checkingAmt", "(SELECT accountNumber FROM customerstable WHERE accountNumber = "+ nextAccountNumber + "), " + pinOne +
 				", " + inputAmount + ", " + 0);
 	
-		System.out.println("\nYou have succussfully created an account! Your account number is " + nextAccountNumber + " and your"
-				+ " pin number is " + pinOne + ". Please retain for your records.");
+		System.out.println("\nYour application has been received! Your account number is " + nextAccountNumber + " and your"
+				+ " pin number is " + pinOne + " pending on approval.\nPlease retain for your records.");
 		
-		//After account creation log the user back in
-		//logIn();
-		System.out.println("Thank you for applying for an account with th First National Bank of Dave.\nWe will contact you shortly to let you know whether you are approved or not.\n");
+	
+		System.out.println("Thank you for applying for an account with The First National Bank of Dave.\nWe will contact you shortly to let you know whether you are approved or not.\n");
+	}
+	
+	
+	public Customer getCustomer(int inAccountNumber) throws SQLException {
+		
+		ResultSet cSet = JDBC.getResultSet("customerstable");
+		ResultSet uSet = JDBC.getResultSet("userstable");
+		Customer cust = new Customer();
+		
+		while(cSet.next()) {
+			if(cSet.getInt(1) == inAccountNumber) {
+				cust.setAccountNumber(cSet.getInt(1));
+				cust.setInGoodStanding(cSet.getBoolean(2));
+				cust.setOccupation(cSet.getString(3));
+				cust.setAnnualIncome(cSet.getDouble(4));
+				cust.setMarried(cSet.getBoolean(5));
+				cust.setOwnsHome(cSet.getBoolean(6));
+				cust.setSsn(cSet.getInt(8));
+			}
+		}
+		
+		while(uSet.next()) {
+			if(uSet.getInt(1) == cust.getSsn()) {
+				cust.setFirstNme(uSet.getString(2));
+				cust.setLastName(uSet.getString(3));
+			}
+		}
+		
+		return cust;
+	}
+	
+	public Employee getEmployee(int inIdNum) throws SQLException {
+		ResultSet set = JDBC.getResultSet("employeetable");
+		Employee emp = new Employee();
+		
+		while(set.next()) {
+			if(set.getInt(1) == inIdNum) {
+				emp.setIdNum(set.getInt(1));
+				emp.setEmpPin(set.getInt(2));
+				emp.setPosition(set.getString(3));
+			}
+		}
+		
+		return emp;
+		
+	}
+	
+	public Account getAccount(int inAccountNumber) throws SQLException {
+		ResultSet set = JDBC.getResultSet("accountstable");
+		Account acct = new Account();
+		
+		while(set.next()) {
+			if(set.getInt(1) == inAccountNumber) {
+				acct.setAccountNumber(set.getInt(1));
+				acct.setPinNumber(set.getInt(2));
+				acct.setSavingsAmount(set.getDouble(3));
+				acct.setCheckingAmount(set.getDouble(4));
+			}
+		}
+		
+		return acct;
+		
 	}
 }

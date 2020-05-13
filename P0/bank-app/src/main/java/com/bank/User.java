@@ -3,37 +3,44 @@ package com.bank;
 
 public class User {
 
-	private long ssn;
-	private String nfirstNme;
+	private transient int ssn;
+	private String firstName;
 	private String lastName;
 	private boolean isEmployee;
 	
-	public User() {
+	public User(){
 		
 	}
 	
-	public User(long ssn, String nfirstNme, String lastName, boolean isEmployee) {
+	/**
+	 * 
+	 * @param ssn 
+	 * @param nfirstNme
+	 * @param lastName
+	 * @param isEmployee
+	 */
+	public User(int ssn, String nfirstNme, String lastName, boolean isEmployee) {
 		super();
 		this.ssn = ssn;
-		this.nfirstNme = nfirstNme;
+		this.firstName = nfirstNme;
 		this.lastName = lastName;
 		this.isEmployee = isEmployee;
 	}
 
-	public long getSsn() {
+	public int getSsn() {
 		return ssn;
 	}
 
-	public void setSsn(long ssn) {
+	public void setSsn(int ssn) {
 		this.ssn = ssn;
 	}
 
-	public String getNfirstNme() {
-		return nfirstNme;
+	public String getFirstNme() {
+		return firstName;
 	}
 
-	public void setNfirstNme(String nfirstNme) {
-		this.nfirstNme = nfirstNme;
+	public void setFirstNme(String firstName) {
+		this.firstName = firstName;
 	}
 
 	public String getLastName() {
@@ -54,7 +61,7 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [ssn=" + ssn + ", nfirstNme=" + nfirstNme + ", lastName=" + lastName + ", isEmployee=" + isEmployee
+		return "User [ssn=" + ssn + ", nfirstNme=" + firstName + ", lastName=" + lastName + ", isEmployee=" + isEmployee
 				+ "]";
 	}
 	

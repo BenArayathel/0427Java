@@ -12,6 +12,11 @@ public class DBConnector {
 		
 	}
 	
+	/**
+	 * Singleton class to for database connection
+	 * @return the connection to the database
+	 * @throws SQLException
+	 */
 	public static Connection getConnection() throws SQLException {
 		conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/bankdatabse?user=root&password=bs95162z");
 		//conn.setAutoCommit(false);	//Turns on autocommit

@@ -11,6 +11,12 @@ public class Employee {
 		
 	}
 	
+	/**
+	 * 
+	 * @param position The employees position within the company
+	 * @param idNum The employees ID number
+	 * @param empPin The employees pin number
+	 */
 	public Employee(String position, int idNum, int empPin) {
 		super();
 		this.position = position;

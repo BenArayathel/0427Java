@@ -11,6 +11,13 @@ public class Account {
 		
 	}
 
+	/**
+	 * 
+	 * @param accountNumber The number of the account currently being accessed
+	 * @param pinNumber The corresponding pin associated with current account
+	 * @param savingsAmount The amount in the savings account
+	 * @param checkingAmount The amount in the checking account
+	 */
 	public Account(int accountNumber, int pinNumber, double savingsAmount, double checkingAmount) {
 		super();
 		this.accountNumber = accountNumber;

@@ -16,7 +16,7 @@ public class Main {
 	public static void main(String[] args) {
 		//Main.log();
 		Scanner input = new Scanner(System.in);
-		JDBC databaseConnection = new JDBC("root", "bs95162z");		
+		JDBC databaseConnection = new JDBC();		
 		JDBC.databaseConnection("accountstable");					
 		boolean correctSelection = false;
 		
@@ -34,8 +34,7 @@ public class Main {
 				try {
 					init.createCustomerAccount();
 				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+					System.out.println("There was an error, contact system administrator");
 				}
 			}else {
 				System.out.println("Please enter a valid entry either 1 or 2.");
