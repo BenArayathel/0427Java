@@ -491,7 +491,7 @@ public class BankOfBenDAO implements BankOfBenDAOInterface {
 		return accounts;
 	}
 
-	public boolean doesCustomerOwnAccountNumber(String customerId, Long accountNumber) throws BusinessException {
+	public boolean doesCustomerOwnAccountNumber(String customerId, long accountNumber) throws BusinessException {
 		
 		boolean ownershipConfirmed = false;
 		
@@ -845,27 +845,31 @@ public class BankOfBenDAO implements BankOfBenDAOInterface {
 
 	@Override
 	public void deleteAccount(long accountNumber) throws BusinessException {
-		try(Connection connection = OracleDbConnection.getConnection()){
-			String sqlCall = "DELETE FROME bankofben_accounts WHERE \"Account Number\"=?";
-			PreparedStatement ps = connection.prepareStatement(sqlCall);
-			ps.setLong(1, accountNumber);
-			int rowsUpdated = ps.executeUpdate();
-			if (rowsUpdated<1) {
-				b = new BusinessException("Internal database error. Could not remove customer information for "
-						+accountNumber+". Contact your SYSADMIN.");
+		if (accountExists(accountNumber)) {
+			deleteExistingCustomerAccount(accountNumber);
+		} else {
+			try(Connection connection = OracleDbConnection.getConnection()){
+				String sqlCall = "DELETE FROME bankofben_accounts WHERE \"Account Number\"=?";
+				PreparedStatement ps = connection.prepareStatement(sqlCall);
+				ps.setLong(1, accountNumber);
+				int rowsUpdated = ps.executeUpdate();
+				if (rowsUpdated<1) {
+					b = new BusinessException("Internal database error. Could not remove customer information for "
+							+accountNumber+". Contact your SYSADMIN.");
+					loggy.error(b);
+					throw b;
+				}
+				ps.close();
+			} catch (ClassNotFoundException | SQLException e) {
+				loggy.error(e);
+				b = new BusinessException("Internal database error. Please contact your SYSADMIN.");
 				loggy.error(b);
 				throw b;
 			}
-			ps.close();
-		} catch (ClassNotFoundException | SQLException e) {
-			loggy.error(e);
-			b = new BusinessException("Internal database error. Please contact your SYSADMIN.");
-			loggy.error(b);
-			throw b;
 		}
 	}
 
-	public void deleteExistingCustomerRejectedAccount(Long accountNumber) throws BusinessException {
+	public void deleteExistingCustomerAccount(long accountNumber) throws BusinessException {
 		// A rejected account has only 1 constraint: to match the customer table with a foreign key.
 		// This procedure will remove the constraint, delete the entry, and reinstate the constraint.
 		// This procedure will work with any account that has only this one relationship (not just 
