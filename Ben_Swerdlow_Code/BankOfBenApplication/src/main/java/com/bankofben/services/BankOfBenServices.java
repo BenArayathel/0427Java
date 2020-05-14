@@ -336,7 +336,7 @@ public class BankOfBenServices {
 	public void rejectExistingCustomerAccountApplication(Account a) throws BusinessException {
 		// TODO Auto-generated method stub
 		// This delete account will not cascade and keep the customer data
-		dao.deleteExistingCustomerRejectedAccount(a.getAccountNumber());
+		dao.deleteExistingCustomerAccount(a.getAccountNumber());
 	}
 
 	public Account updateAccountBalance(Account account, double amount, Account otherAccount) throws BusinessException {
