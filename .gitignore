@@ -174,7 +174,7 @@ buildNumber.properties
 .mvn/wrapper/aven-wrapper.jar
 .flattened-pom.xml
 # I added the following to avoid tracking the METAINF folder
-META-INF/
+# META-INF/
 
 ### Text ###
 *.doc
