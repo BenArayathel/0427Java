@@ -2,10 +2,12 @@ package com.application.bank.services;
 
 import com.application.bank.dao.UserDao;
 import com.application.bank.exception.BusinessException;
+import com.application.bank.models.Account;
 import com.application.bank.models.User;
 
 public interface UserService {
 	public User setCurrentUser(String email) throws BusinessException;
+	public Account setCurrentAccount(String email) throws BusinessException;
 	
 	public void registerNewUser() throws BusinessException;
 	public boolean userLogin(String email, String password) throws BusinessException;

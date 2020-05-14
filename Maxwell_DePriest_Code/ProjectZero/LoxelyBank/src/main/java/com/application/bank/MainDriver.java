@@ -24,6 +24,7 @@ public class MainDriver {
 		AccountServiceImpl aSI = new AccountServiceImpl();
 		UserServiceImpl uSI = new UserServiceImpl();
 		User currentUser = null;
+		Account currentAccount = null;
 		int intChoice = 0;
 		Scanner sc = new Scanner(System.in);
 	
@@ -54,6 +55,7 @@ public class MainDriver {
 							try {
 								if(uSI.userLogin(em, pw)) {
 									currentUser = uSI.setCurrentUser(em);
+									currentAccount = uSI.setCurrentAccount(em);
 									loggy.debug("Current User = " + currentUser.getEmail());
 								}
 							} catch (BusinessException e1) {

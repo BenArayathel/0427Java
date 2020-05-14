@@ -32,13 +32,13 @@ public class UserServiceImpl implements UserService {
 		User newUser = new User();
 		Scanner sc = new Scanner(System.in);
 		loggy.info("Please enter your first and last names");
-		newUser.setName(sc.nextLine());
+		newUser.setName(sc.nextLine().trim());
 		loggy.info("Please enter your email");
 		newUser.setEmail(sc.nextLine());
 		loggy.info("Please enter your phone number. Ex 3048675309");
-		newUser.setPhoneNumber(sc.nextLine());
+		newUser.setPhoneNumber(sc.nextLine().trim());
 		loggy.info("Create a password. Alpha-numerical characters only.");
-		String pw = sc.nextLine();
+		String pw = sc.nextLine().trim();
 		String ePassword = passwordEncryption(pw);
 		newUser.setStatus("customer");
 		if (!isValidName(newUser.getName())) {
@@ -98,6 +98,11 @@ public class UserServiceImpl implements UserService {
 		return uDI.selectUserByEmail(email);
 	}
 	
+	@Override 
+	public Account setCurrentAccount(String email) throws BusinessException {
+		return aDI.selectAccountByEmail(email);
+	}
+	
 	@Override
 	public void signUpForAccount(String email) throws BusinessException {
 		Scanner sc = new Scanner(System.in);
@@ -133,6 +138,10 @@ public class UserServiceImpl implements UserService {
 		else {
 			loggy.info("You must be an employee to continue");
 		}
+	}
+	
+	public void viewSingleAccount(User u) {
+		
 	}
 
 	
