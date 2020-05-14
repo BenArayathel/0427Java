@@ -451,6 +451,7 @@ let asray = [];
 
 
 
+<<<<<<< HEAD
 // console.log(o);
 
 function animal() {
@@ -467,3 +468,6 @@ console.log(animal.__proto__);
 console.log(animal.__proto__.__proto__);
 console.log(animal.__proto__.__proto__.__proto__);
 
+=======
+// console.log(o);
+>>>>>>> ae219a6741e2eefa628b52d71a86bd09461d71cb

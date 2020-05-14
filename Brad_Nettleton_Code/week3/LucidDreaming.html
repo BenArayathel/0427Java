@@ -28,7 +28,7 @@
     <table class="table">
         <thead>
           <tr>
-            <th scope="col">#</th>
+            <th onmouseover="func4()" scope="col">#</th>
             <th scope="col">Technique</th>
             <th scope="col">Awake</th>
             <th scope="col">Dreaming</th>
@@ -48,13 +48,19 @@
             <td>symbols will be different the second time from the first time, or they won't make sense at all either time</td>
           </tr>
           <tr>
-            <th scope="row">3</th>
+            <th onclick="func3()" scope="row">3</th>
             <td>Look at hands</td>
             <td>Hands look as expected</td>
             <td>Hands look out of proportion, different color, or possibly more or less fingers</td>
           </tr>
         </tbody>
       </table>
+
+      <button id="TheButton">
+        Listify Table
+      </button>
+      <div id="List"></div>
     </div>
 </body>
+<script src = "js.js"></script>
 </html>
