@@ -6,8 +6,6 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.Date;
 import java.util.GregorianCalendar;
-import java.util.List;
-//import java.time.format.DateTimeParseException;
 import java.util.Scanner;
 
 import org.apache.log4j.Logger;
