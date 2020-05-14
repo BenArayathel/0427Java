@@ -162,7 +162,7 @@ local.properties
 hs_err_pid*
 
 ### Maven ###
-# target/
+target/
 pom.xml.tag
 pom.xml.releaseBackup
 pom.xml.versionsBackup
@@ -173,8 +173,6 @@ buildNumber.properties
 .mvn/timing.properties
 .mvn/wrapper/aven-wrapper.jar
 .flattened-pom.xml
-# I added the following to avoid tracking the METAINF folder
-# META-INF/
 
 ### Text ###
 *.doc
