@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 /*
 	Application (Presentation) Layer
- */
+*/
 public class Main {
 
 	final static Logger log = Logger.getLogger(Main.class);
@@ -114,7 +114,7 @@ public class Main {
 										Account dummyAcc3 = dao.getAccount(inputUsername);
 										double dummyBal3 = dummyAcc3.getBalance();
 										if ((dummyBal3 - withdrawAmount) < 0) {
-											log.error("Cannot withdraw more than $" + dummyBal3 + ".");
+											log.warn("Cannot withdraw more than $" + dummyBal3 + ".");
 										} else {
 											dummyBal3 -= withdrawAmount;
 										}
@@ -136,7 +136,7 @@ public class Main {
 										}
 										double transferWithdrawAmount = Double.parseDouble(inputTransferAmount);
 										if ((payerBalance - transferWithdrawAmount) < 0) {
-											log.error("Cannot withdraw more than $" + payerBalance + ".");
+											log.warn("Cannot withdraw more than $" + payerBalance + ".");
 										} else {
 											payerBalance -= transferWithdrawAmount;
 										}
@@ -162,7 +162,7 @@ public class Main {
 												log.info(a);
 											}
 										} else {
-											log.info("YOU ARE NOT AN EMPLOYEE!");
+											log.warn("YOU ARE NOT AN EMPLOYEE!");
 										}
 										break;
 									case ("6"): // EMPLOYEE: VIEW ALL TRANSACTIONS
@@ -173,21 +173,21 @@ public class Main {
 												log.info(s);
 											}
 										} else {
-											log.info("YOU ARE NOT AN EMPLOYEE!");
+											log.warn("YOU ARE NOT AN EMPLOYEE!");
 										}
 										break;
 									case ("7"): // LOG OUT
 										service.displayLogOut();
 										continue outerLoop;
 									default:
-										log.info("Select a valid option between 1-7.\n");
+										log.warn("Select a valid option between 1-7.\n");
 								}
 							}
 						} else {
-							log.info("Incorrect username or password.\n");
+							log.warn("Incorrect username or password.\n");
 						}
 					} else {
-						log.info("Incorrect username or password.\n");
+						log.warn("Incorrect username or password.\n");
 					}
 					break;
 				case ("3"): // EXIT
@@ -195,7 +195,7 @@ public class Main {
 					System.exit(0);
 					break;
 				default:
-					log.info("Select a valid option between 1-3.\n");
+					log.warn("Select a valid option between 1-3.\n");
 			}
 		}
 	}

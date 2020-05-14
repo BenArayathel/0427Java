@@ -17,7 +17,7 @@
 	5. All input is received using the java.util.Scanner class.
 	6. Log4j is implemented to log events to a file.
 	7. A minimum of 10 JUnit test is written to test some functionality.
-​
+
 ## User Stories
 Total Points: 23 points
 	// General

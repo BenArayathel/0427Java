@@ -1,0 +1,1 @@
+This project contains JDBC example following the DAO Design Pattern.

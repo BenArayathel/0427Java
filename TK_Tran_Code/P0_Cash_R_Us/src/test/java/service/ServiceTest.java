@@ -20,23 +20,23 @@ public class ServiceTest {
 		System.out.println("--[ Test Completed ]--\n");
 	}
 
-	@Test
-	public void testDisplayWelcome() {
-		String actual = "Hello!";
-		assertNotEquals("Welcome to Cash R' Us, where your money is ours!", actual);
-	}
-
-	@Test
-	public void testDisplayGoodbye() {
-		String actual = "Goodbye!";
-		assertNotEquals("Thanks for being a loyal Cash R' Us customer!", actual);
-	}
-
-	@Test
-	public void testDisplayLogOut() {
-		String actual = "Signing out!!";
-		assertNotEquals("Logging out, routing back to main portal.", actual);
-	}
+//	@Test
+//	public void testDisplayWelcome() {
+//		String actual = "Hello!";
+//		assertNotEquals("Welcome to Cash R' Us, where your money is ours!", actual);
+//	}
+//
+//	@Test
+//	public void testDisplayGoodbye() {
+//		String actual = "Goodbye!";
+//		assertNotEquals("Thanks for being a loyal Cash R' Us customer!", actual);
+//	}
+//
+//	@Test
+//	public void testDisplayLogOut() {
+//		String actual = "Signing out!!";
+//		assertNotEquals("Logging out, routing back to main portal.", actual);
+//	}
 
 	@Test // should validate usernames against RegEx "[a-zA-Z0-9]{3,15}"
 	public void isValidUsername() {

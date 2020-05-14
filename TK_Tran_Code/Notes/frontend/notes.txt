@@ -72,7 +72,7 @@
         console.log(baseClass.prototype === base.__proto__);//true
         let anotherBase = new baseClass();
         console.log(anotherBase.__proto__===anotherBase.__proto__)
-        // thimg.prototype will always point to the constructor, but we can add our own properties to it as well!
+        // thing.prototype will always point to the constructor, but we can add our own properties to it as well!
         prototype.name = "Prototype";
         prototype.greeting = "Hello. I am the prototype for the baseClass. It's nice to meet you";
         prototype.sit = function sit(chair) {console.log("I am sigging on "+chair);};
