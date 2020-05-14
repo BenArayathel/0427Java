@@ -74,32 +74,32 @@ public class AccountDAOImplementationTest {
 		adi.deleteAccount("TESTtestUNIT");
 	}
 	
-	@Test
-	public void depositTest() throws BankException {
-//		User user, String accountName, String depositAmount
-		
-		//first create a new user in the db
-		User user = new User();
-		user.setUsername("UNITtest");
-		user.setPassword("test");
-		udi.createUser(user);
-		
-		//then create a new account for that user
-		Account account = new Account();
-		String accountName = "UNITtest";
-		String depositAmount = "10";
-		adi.createAccount(user, accountName, depositAmount);
-
-		// this is the key element of test
-		adi.deposit(user, accountName, depositAmount);
-		System.out.println(account.getBalance());
-		assert(account.getBalance() == 20);
-		
-		//clean up
-		adi.deleteAccount(accountName);
-		udi.deleteUser("UNITtest");
-		
-	}
+//	@Test
+//	public void depositTest() throws BankException {
+////		User user, String accountName, String depositAmount
+//		
+//		//first create a new user in the db
+//		User user = new User();
+//		user.setUsername("UNITtest");
+//		user.setPassword("test");
+//		udi.createUser(user);
+//		
+//		//then create a new account for that user
+//		Account account = new Account();
+//		String accountName = "UNITtest";
+//		String depositAmount = "10";
+//		adi.createAccount(user, accountName, depositAmount);
+//
+//		// this is the key element of test
+//		adi.deposit(user, accountName, depositAmount);
+//		System.out.println(account.getBalance());
+//		assert(account.getBalance() == 20);
+//		
+//		//clean up
+//		adi.deleteAccount(accountName);
+//		udi.deleteUser("UNITtest");
+//		
+//	}
 	
 //	@Test
 //	public void withdrawalTest() {

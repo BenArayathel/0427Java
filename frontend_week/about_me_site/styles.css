@@ -48,7 +48,7 @@ header > div {
 body {
     background-image: url(https://images.unsplash.com/photo-1555099962-4199c345e5dd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80);
       /* Set a specific height */
-    height: 1000px;
+    height: 1500px;
 
     /* Create the parallax scrolling effect */
     background-attachment: fixed;
@@ -67,6 +67,10 @@ body {
     opacity: .8;
     padding: 5vw;
     margin: 5vw;
+}
+
+.alertGenerator:hover {
+    cursor: pointer;
 }
 
 table {
@@ -90,4 +94,20 @@ img {
 
 #transformguy {
     padding: 10vh;
+    /* margin-top: 100vh; */
+}
+
+#updatePage2 {
+    margin: 5vh;
+    color: white;
+    text-emphasis: bold;
+}
+
+#index-hobby {
+    text-align: center;
+}
+
+.hoverthese:hover {
+    box-shadow: 1px 1px 5px black;
+    transform: scale(1.02);
 }

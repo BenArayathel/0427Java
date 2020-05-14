@@ -2,7 +2,7 @@ select * from bank_user;
 select * from bank_account;
 select * from bank_transaction;
 
-delete from bank_user where username = 'UNITtest2';
+delete from bank_user where username = 'UNITtest';
 delete from bank_account where account_name = 'UNITtest';
 
 
