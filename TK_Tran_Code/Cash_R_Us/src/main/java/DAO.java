@@ -9,13 +9,13 @@ import java.util.List;
  */
 public interface DAO {
 
-	public abstract void createAccount(Account account) throws BusinessException;
+	void createAccount(Account account) throws BusinessException;
 
-	public abstract void updateAccount(Account account) throws BusinessException;
+	void updateAccount(Account account) throws BusinessException;
 
-	public List<Account> getAllAccounts() throws BusinessException;
+	List<Account> getAllAccounts() throws BusinessException;
 
-	public abstract Account getAccount(String name) throws BusinessException;
+	Account getAccount(String name) throws BusinessException;
 
 //	public abstract void deposit(String account, double amount) throws BusinessException;
 

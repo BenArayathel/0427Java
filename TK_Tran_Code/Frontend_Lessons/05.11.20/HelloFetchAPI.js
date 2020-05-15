@@ -12,20 +12,20 @@
 //     // Verbose
 //     fetch(`https://swapi.dev/api/people/${swID}`) // fetch() takes one argument; the resource path
 //         .then(function (response) { // .then() attaches callback(s) for the resolution and/or rejection of Promises
-//             return response.json(); // .json() extracts JSON content from response
+//             return response.json(); // .json() parses JSON response and promises an object (returns an object)
 //         })
-//         .then(function (response) {
-//             DOMManip(response);
+//         .then(function (object) { // insert object into callback function that manipulates the DOM
+//             DOMManip(object);
 //         })
-//         .catch(function (response) { // .catch() attaches a callback for only the rejection of Promises
-//             console.log(`Error..Status Code: ${response.status}`);
+//         .catch(function (errorResponse) { // .catch() attaches a callback for only the rejection of Promises
+//             console.log(`Error..Status Code: ${errorResponse.status}`);
 //         })
 
 //     // Succinct: uses arrow functions (=>)
 //     fetch(`https://swapi.dev/api/people/ ${swID}`)
 //         .then(response => response.json())
-//         .then(response => DOMManip(response))
-//         .catch(response => console.log(`Error..Status Code: ${response.status}`));
+//         .then(object => DOMManip(object))
+//         .catch(error => console.log(`Error..Status Code: ${error.status}`));
 // }
 
 // function DOMManip(JSON) {

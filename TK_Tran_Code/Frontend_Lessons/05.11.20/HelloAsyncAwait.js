@@ -1,6 +1,25 @@
 console.log("Testing Console");
 
-// Async/Await Method [INCOMPLETE] --------------------------------------------------------------------------------
+/*
+    Arrow Functions:
+    These two are the same:
+        let func = (arg1, arg2, ...argN) => expression
+
+        let func = function (arg1, arg2, ...argN) {
+            return expression;
+        };
+*/
+
+// let func = (a, b) => a + b;
+// console.log(func(3, 2)); // 5
+
+// let func2 = (x, y) => x * y - 10;
+// console.log(func2(4, 20)); // 70
+
+// let func3 = () => alert("Hello, Arrow Functions!");
+// func3();
+
+// Fetch w/ Async/Await Method --------------------------------------------------------------------------------
 
 window.onload = function () {
     this.document.getElementById("swSubmit").addEventListener("click", getSW);
@@ -9,11 +28,11 @@ window.onload = function () {
 async function getSW() {
     let swID = document.getElementById("swID").value;
 
-    // Succinct: uses arrow functions (=>)
-    await fetch(`https://swapi.dev/api/people/${swID}`)
-        .then(response => response.json())
-        .then(response => DOMManip(response))
-        .catch(response => console.log(`Error..Status Code: ${response.status}`));
+    // Even MORE Succinct: uses async/await
+    let response = await fetch(`https://swapi.dev/api/people/${swID}`);
+    let object = await response.json(); // .json() parses JSON response and promises an object (returns an object)
+    DOMManip(object); // insert object into callback function that manipulates the DOM
+    console.log(object); // prints object to console so we can see content
 }
 
 function DOMManip(JSON) {
