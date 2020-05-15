@@ -8,11 +8,9 @@ import com.application.bank.dao.impl.AccountDaoImpl;
 import com.application.bank.services.impl.UserServiceImpl;
 import com.application.bank.services.impl.AccountServiceImpl;
 
-import java.util.List;
+import java.text.DecimalFormat;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
-
-import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 
 public class MainDriver {
@@ -24,9 +22,10 @@ public class MainDriver {
 		AccountServiceImpl aSI = new AccountServiceImpl();
 		UserServiceImpl uSI = new UserServiceImpl();
 		User currentUser = null;
-		Account currentAccount = null;
 		int intChoice = 0;
 		Scanner sc = new Scanner(System.in);
+		DecimalFormat df = new DecimalFormat("#,##0.00");
+		
 	
 		while(currentUser == null) {
 			//Scanner sc = new Scanner(System.in);
@@ -55,8 +54,9 @@ public class MainDriver {
 							try {
 								if(uSI.userLogin(em, pw)) {
 									currentUser = uSI.setCurrentUser(em);
-									currentAccount = uSI.setCurrentAccount(em);
+									Account currentAccount = uSI.setCurrentAccount(em);
 									loggy.debug("Current User = " + currentUser.getEmail());
+									
 								}
 							} catch (BusinessException e1) {
 								loggy.info(e1.getMessage());
@@ -98,17 +98,18 @@ public class MainDriver {
 			}
 			if(currentUser.getStatus().equals("employee")) {
 				loggy.info("7. View all accounts");
-				loggy.info("8. Activate pending accounts");
+				loggy.info("8. View a single account");
+				loggy.info("9. Activate all pending accounts");
 				}
-			loggy.info("9. Quit");
+			loggy.info("10. Quit");
 			String choice = sc.nextLine();
 			
-			if (choice.matches("[1-9]{1}")) {
+			if (choice.matches("[1-9]{1}") || Integer.parseInt(choice) == 10) {
 				intChoice = Integer.parseInt(choice);
 				
-				if(intChoice == 9) {
+				if(intChoice == 10) {
 					loggy.info("Have a nice day!");
-					loggy.debug("Choice 9 entered. Exiting program");
+					loggy.debug("Choice 10 entered. Exiting program");
 					System.exit(0);
 				}
 				else {
@@ -132,7 +133,8 @@ public class MainDriver {
 						if(accountCheck) {
 							try {
 								String chkAmt= uSI.checkCheckingBalance(currentUser.getEmail());
-								loggy.info("Your current balance is $" + chkAmt);
+								String formatChkAmt = df.format(Double.parseDouble(chkAmt));
+								loggy.info("Your current balance is $" + formatChkAmt);
 							} catch (BusinessException e1) {
 								loggy.info("Error. Please try again or contact the SYSADMIN");
 							}
@@ -145,7 +147,8 @@ public class MainDriver {
 						if(accountCheck) {
 							try {
 								String svgAmt = uSI.checkSavingsBalance(currentUser.getEmail());
-								loggy.info("Your current balance is $" + svgAmt);
+								String formatSvgAmt = df.format(Double.parseDouble(svgAmt));
+								loggy.info("Your current balance is $" + formatSvgAmt);
 							} catch (BusinessException e1) {
 								loggy.info("Error. Please try again or contact the SYSADMIN");
 								e1.printStackTrace();
@@ -247,6 +250,9 @@ public class MainDriver {
 						uSI.viewAllAccounts(currentUser);
 						break;
 					case 8:
+						uSI.viewSingleAccount();
+						break;
+					case 9: 
 						uSI.activatePendingAccounts(currentUser);
 						break;
 						
@@ -257,11 +263,11 @@ public class MainDriver {
 			} // end of 1-6 if check
 			
 			else {
-				loggy.error("Input != 1-6 in main menu");
+				loggy.error("Input != 1-7 in main menu");
 				loggy.info("Error. Please choose the number from the list provided");
 			}
 		
-		}while (intChoice != 9); // end while loop
+		}while (intChoice != 10); // end while loop
 		
 
 	}// End of main

@@ -1,5 +1,7 @@
 package com.application.bank.models;
 
+import java.text.DecimalFormat;
+
 public class Account {
 	private String id;
 	private String savingsAccountNumber;
@@ -8,6 +10,8 @@ public class Account {
 	private String savingsBalance;
 	private String active;
 	private String email;
+	
+	DecimalFormat df = new DecimalFormat("####.##");
 
 	public Account() {
 		
@@ -86,9 +90,9 @@ public class Account {
 
 	@Override
 	public String toString() {
-		return "Account [id=" + id + ", savingsAccountNumber=" + savingsAccountNumber + ", checkingAccountNumber="
-				+ checkingAccountNumber + ", checkingBalance=" + checkingBalance + ", savingsBalance=" + savingsBalance
-				+ ", active=" + active + ", userEmail=" + email + "]";
+		return "Account id = " + id + ", Savings account number = " + savingsAccountNumber + ", Checking account number = "
+				+ checkingAccountNumber + ", Checking account balance = $" + df.format(checkingBalance) + ", Savings account balance = $" + df.format(savingsBalance)
+				+ ", Account active = " + active + ", User email = " + email + "]";
 	}
 	
 	

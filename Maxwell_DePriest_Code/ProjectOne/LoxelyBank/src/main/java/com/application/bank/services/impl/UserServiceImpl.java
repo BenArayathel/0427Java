@@ -1,5 +1,6 @@
 package com.application.bank.services.impl;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -21,6 +22,7 @@ public class UserServiceImpl implements UserService {
 	final static Logger loggy = Logger.getLogger(User.class);
 	AccountDaoImpl aDI = new AccountDaoImpl();
 	UserDaoImpl uDI = new UserDaoImpl();
+	DecimalFormat df = new DecimalFormat("####.##");
 
 	public UserServiceImpl() {
 		
@@ -117,6 +119,7 @@ public class UserServiceImpl implements UserService {
 			String newCheckingNum = Integer.toString(generateAccountNumber());
 			aDI.insertAccount(new Account("", newSavingsNum, newCheckingNum, checkingMoney, "0.00", "false", email));
 		}	
+		sc.close();
 	} // End of signUpForAccount
 	
 	public void viewAllAccounts(User u) {
@@ -140,8 +143,27 @@ public class UserServiceImpl implements UserService {
 		}
 	}
 	
-	public void viewSingleAccount(User u) {
-		
+	public void viewSingleAccount() {
+		Scanner sc = new Scanner(System.in);
+		loggy.info("Please enter the email address associated with the account");
+		String email = sc.nextLine();
+		try {
+			Account a = aDI.selectAccountByEmail(email);
+			loggy.info(a.toString());
+			if (a.getActive() == "false") {
+				loggy.info("Would you like to activate this account? Y or N");
+				String response = sc.nextLine();
+				if (response.equalsIgnoreCase("y") || response.equalsIgnoreCase("n")) {
+					aDI.updateAccount(email, "active", "true");
+				}
+				else {
+					loggy.info("Incorrect entry. Please try again");
+				}
+			}
+		} catch (BusinessException e) {
+			loggy.info("Internal Error. You may have entered the email incorrectly. Please try again");
+			loggy.error("Exception thrown during viewSingleAccount()");
+		}
 	}
 
 	
@@ -183,6 +205,7 @@ public class UserServiceImpl implements UserService {
 		else {
 			loggy.info("You must be an employee to continue");
 		}
+		sc.close();
 	}// End of activatePendingAccounts
 
 	@Override
@@ -258,7 +281,9 @@ public class UserServiceImpl implements UserService {
 					}
 					if(amount.matches("[0-9.]{1,7}"))  {
 						currentBalance += Double.parseDouble(amount);
-						aDI.updateAccount(email, whichAccount, (currentBalance + ""));
+						String formattedBalance = df.format(currentBalance);
+						
+						aDI.updateAccount(email, whichAccount, formattedBalance);
 						
 					}
 				}catch(NullPointerException e) {
@@ -290,7 +315,8 @@ public class UserServiceImpl implements UserService {
 					if(currentBalance - Double.parseDouble(amount) > 0)  {
 						currentBalance -= Double.parseDouble(amount);
 						loggy.debug(amount + " was taken from account with email" +  email);
-						aDI.updateAccount(email, whichAccount, (currentBalance + ""));
+						String formattedBalance = df.format(currentBalance);
+						aDI.updateAccount(email, whichAccount, formattedBalance);
 						
 					}
 					else {
