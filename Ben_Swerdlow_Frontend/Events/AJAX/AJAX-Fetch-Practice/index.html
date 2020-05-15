@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link rel="stylesheet"
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- Optional theme -->
+    <link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+    <title>AJAX and Fetch Practice</title>
+</head>
+<body>
+	<div class="container">
+		<div class="jumbotron text-center">
+			<h3>AJAX and Fetch</h3>
+			<h5>
+				<span class="label label-success">Using the RESTful API</span>
+			</h5>
+		</div>
+	</div>
+	<div class="container">
+		<div class="well">
+			<input type="text" id="jphId" placeholder="Enter JSONPlaceHolder Id" class="form-control" /> 
+			<input type="submit" value="Get JPH Info" id="jphSubmit" class="form-control btn btn-primary" />
+		</div>
+		<div class="well">
+			<div class="text-center">
+				<h3 id="jphTitle"></h3>
+				<h4 id="jphBody"></h4>
+			</div>
+		</div>
+	</div>
+     <!-- <script type="text/javascript" src="AJAXDemo.js"></script> -->
+     <script type="text/javascript" src="fetch.js"></script>
+</body>
+</html>

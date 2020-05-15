@@ -1,0 +1,18 @@
+#introParagraph{
+    background-color: lightcoral;
+}
+
+.intro{
+    background-color: lightblue;
+}
+
+.inListImg{
+    width: 15%;
+}
+.inListImgLarge{
+    width: 25%;
+}
+
+#myInterstingTopicButton{
+    visibility: visible;
+}

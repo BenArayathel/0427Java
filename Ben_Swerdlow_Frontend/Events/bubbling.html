@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buuuubling</title>
+</head>
+<body>
+    <div>
+        <h2>Welcome to Bubbling</h2>
+    </div>
+
+    <div onmouseover="alert('div again')">
+        can click this
+        <form onmouseover="alert('form')" onclick="alert('thing2')">
+            also this
+            <div onclick="event.stopPropagation();">
+                div
+                <p onmouseover="alert('para')" onclick="alert('thing1');">
+                    Look at this paragraph.
+                </p>
+            </div>
+        </form>
+    </div>
+    <!--
+        What is capturing?
+        Capturing stops bubbling from happening
+        event.stopPropagation
+    -->
+</body>
+</html>
