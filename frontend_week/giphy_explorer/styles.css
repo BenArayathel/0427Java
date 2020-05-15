@@ -1,0 +1,31 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #91e39e;
+}
+
+#centerContent {
+    border: 2px solid #333;
+    /* padding: 2vh; */
+
+}
+
+.sideColumns {
+    background-color: white;
+    height: 100vh;
+}
+
+#inputGroup {
+    height: 20vh;
+    border: 1px solid #333;
+    padding: 2vh;
+}
+
+#embed {
+    background-color: white;
+    width: 300px;
+    height: 300px;
+    border: 2px solid #333;"
+}

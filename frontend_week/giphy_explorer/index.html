@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <title>Giphy Explorer</title>
+</head>
+<body>
+    
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col sideColumns"></div>
+
+            <div class="col">
+                <div id="centerContent" class="card text-center" style="margin: 5vh;">
+                    <div class="card">
+                        <h1 class="card-header">Giphy Explorer</h1>
+                        <div class="card-body"">
+                            <div id="gif-holder">
+                                <embed id="embed" src="">
+                            </div>
+                            <form>
+                                <div class="form-group d-inline-flex" id="inputGroup">
+                                    <input type="text" id="value1" class="" placeholder="enter a word"/>
+                                    <input class="btn btn-primary" type="submit" id="submit1"/>
+                                    <h4><b>OR</b> See What's Trending: </h4>
+                                    <input class="btn btn-success" type="submit" id="submit2" />
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col sideColumns"></div>
+            
+        </div>
+    </div>
+
+
+
+    <!-- <script src="xhttp.js"></script> -->
+    <script src="fetch.js"></script>
+    <!-- <script src="post.js"></script> -->
+</body>
+</html>
