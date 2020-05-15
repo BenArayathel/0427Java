@@ -1,0 +1,19 @@
+README.txt
+
+CREATE TABLE bankuser(id string, name string, email string, phone string, password string, status string);
+CREATE TABLE bankaccount(id string, savingsnumber string, checking number, checkingamount, savingsamount, active string, email string); 
+
+UPDATE bankuser SET password = 'shikehi' WHERE email = 'ben@email.com';
+UPDATE bankaccount SET savingsnumber = '1748573' WHERE email = 'ben@email';
+UPDATE bankuser SET name - 'Leia Organa-Solo' WHERE email = 'leia@email.com';
+
+SELECT * FROM bankuser;
+SELECT * FROM bankaccount;
+
+SELECT * FROM bankuser WHERE email = 'han@email.com';
+SELECT * FROM bankaccount WHERE email = 'han@email.com';
+
+DELETE FROM bankuser WHERE email = 'ben@email.com';
+
+
+
