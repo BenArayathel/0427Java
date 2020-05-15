@@ -1,4 +1,4 @@
-SQL Stuff- 
+README.txt
 
 CREATE TABLE bankuser(id string, name string, email string, phone string, password string, status string);
 CREATE TABLE bankaccount(id string, savingsnumber string, checking number, checkingamount, savingsamount, active string, email string); 

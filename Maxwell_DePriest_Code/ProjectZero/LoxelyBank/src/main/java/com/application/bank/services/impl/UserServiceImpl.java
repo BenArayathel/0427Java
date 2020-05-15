@@ -356,8 +356,8 @@ public class UserServiceImpl implements UserService {
 	loggy.debug("Encrypting password");
 	try {
 		StringBuilder newPassword = new StringBuilder();
-		String original = SecretStuff.getOriginalString();  
-		String alternate = SecretStuff.getAltString(); 
+		String original = "ZYXWVUTSRQPONMLKJIHGFEDCBAabcdefghijklmnopqrstuvwxyz0987654321";  
+		String alternate = "1234567890zyxwvutsrqponmlkjihgfedcbaABCDEFGHIJKLMNOPQRSTUVWXYZ"; 
 		String[] arr = alternate.split("");
 		String[] wordArray = pw.toLowerCase().split("");
 		int tempIndex;
