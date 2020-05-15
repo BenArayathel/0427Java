@@ -1,0 +1,55 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f79336;
+}
+
+.btn {
+    height: 6vh;
+}
+
+.short {
+    height: 6vh;
+}
+
+.btn-outline-primary {
+    color: #f79336;
+    border-color: #f79336;
+}
+
+.btn-outline-primary:hover {
+    background-color: #f79336;
+    border-color: #f79336;
+}
+
+#centerContent {
+    border: 2px solid #333;
+    box-shadow: 1px 1px 5px black;
+
+}
+
+.sideColumns {
+    background-color: #fcf5ed;
+    height: auto;
+    box-shadow: 1px 1px 5px black;
+}
+
+#inputGroup {
+    height: auto;
+    width: 100%;
+    border: 1px solid #333;
+    padding: 2vh;
+    justify-content: space-evenly;
+}
+#inputGroup > h6 {
+    margin: 2vh;
+}
+
+#embed {
+    background-color: white;
+    width: 300px;
+    height: 300px;
+    border: 2px solid #333;
+}
