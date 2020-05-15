@@ -1,0 +1,196 @@
+2020-05-10 11:28:09 INFO  Main:33 - this also works
+2020-05-10 11:28:26 INFO  Main:33 - this also works
+2020-05-10 11:30:13 INFO  Main:30 - Hey, it workith!
+2020-05-10 11:30:13 INFO  Main:33 - this also works
+2020-05-10 11:30:13 ERROR Main:35 - HEY!
+2020-05-10 11:40:12 INFO  Main:31 - Hey, it workith!
+2020-05-10 11:40:12 INFO  Main:34 - this also works
+2020-05-10 11:40:12 ERROR Main:36 - HEY!
+2020-05-10 11:40:23 INFO  Main:31 - Hey, it workith!
+2020-05-10 11:40:23 INFO  Main:34 - this also works
+2020-05-10 11:40:23 ERROR Main:36 - HEY!
+2020-05-10 11:40:50 INFO  Main:31 - Hey, it workith!
+2020-05-10 11:40:50 INFO  Main:34 - this also works
+2020-05-10 11:40:50 ERROR Main:36 - HEY!
+2020-05-10 11:44:53 INFO  Main:31 - Hey, it workith!
+2020-05-10 11:44:53 INFO  Main:34 - this also works
+2020-05-10 11:44:53 ERROR Main:36 - HEY!
+2020-05-10 11:45:02 INFO  Main:31 - Hey, it workith!
+2020-05-10 11:45:02 INFO  Main:34 - this also works
+2020-05-10 11:45:02 ERROR Main:36 - HEY!
+2020-05-10 11:46:17 INFO  Main:31 - Hey, it workith!
+2020-05-10 11:46:17 INFO  Main:34 - this also works
+2020-05-10 11:46:17 ERROR Main:36 - HEY!
+2020-05-10 11:48:08 INFO  Main:31 - Hey, it workith!
+2020-05-10 11:48:08 INFO  Main:34 - this also works
+2020-05-10 11:48:08 ERROR Main:36 - HEY!
+2020-05-10 11:48:17 INFO  Main:31 - Hey, it workith!
+2020-05-10 11:48:17 INFO  Main:34 - this also works
+2020-05-10 11:48:17 ERROR Main:36 - HEY!
+2020-05-10 11:48:55 INFO  Main:31 - trying with filters
+2020-05-10 11:48:55 INFO  Main:34 - filters info
+2020-05-10 11:48:55 ERROR Main:36 - filters error
+2020-05-10 11:50:27 ERROR Main:36 - filters error
+2020-05-10 12:11:06 ERROR Main:38 - filters error ONLY
+2020-05-10 12:12:19 ERROR Main:38 - filters error ONLY
+2020-05-10 13:29:51 ERROR Main:38 - filters error ONLY
+2020-05-10 13:29:51 WARN  Main:40 - this is a warning
+2020-05-10 17:42:13 ERROR Main:34 - java.lang.NumberFormatException: multiple points
+2020-05-10 17:53:53 ERROR Main:34 - java.lang.NumberFormatException: multiple points
+2020-05-10 17:57:16 ERROR Main:34 - java.lang.NumberFormatException: multiple points
+2020-05-10 18:49:36 ERROR Main:37 - java.lang.NumberFormatException: For input string: "lkjsdf"
+2020-05-10 18:51:41 ERROR Main:37 - java.lang.NumberFormatException: For input string: "asdfasd"
+2020-05-10 19:07:25 ERROR Main:27 - Existing User
+2020-05-11 16:23:24 ERROR Main:27 - Existing User
+2020-05-11 18:59:49 ERROR Main:157 - [Ljava.lang.StackTraceElement;@256f8274
+2020-05-11 19:01:45 ERROR Main:157 - [Ljava.lang.StackTraceElement;@5c10f1c3
+2020-05-11 19:03:15 ERROR Main:155 - [Ljava.lang.StackTraceElement;@aafcffa
+2020-05-11 19:23:29 ERROR Main:155 - Invalid column index
+2020-05-11 19:23:29 ERROR Main:54 - Could not make withdrawal, insufficient funds.
+2020-05-11 19:23:29 ERROR Main:29 - [Ljava.lang.StackTraceElement;@52d239ba
+2020-05-11 19:23:29 ERROR Main:29 - [Ljava.lang.StackTraceElement;@315f43d5
+2020-05-11 19:23:29 ERROR Main:46 - [Ljava.lang.StackTraceElement;@68fa0ba8
+2020-05-11 19:24:54 ERROR Main:155 - Invalid column index
+2020-05-11 19:24:54 ERROR Main:54 - Could not make withdrawal, insufficient funds.
+2020-05-11 19:24:54 ERROR Main:29 - [Ljava.lang.StackTraceElement;@235a0c16
+2020-05-11 19:24:54 ERROR Main:46 - [Ljava.lang.StackTraceElement;@2b5f4d54
+2020-05-11 19:36:58 ERROR Main:155 - Invalid column index
+2020-05-11 19:36:58 ERROR Main:54 - Could not make withdrawal, insufficient funds.
+2020-05-11 19:36:58 ERROR Main:29 - [Ljava.lang.StackTraceElement;@2f05be7f
+2020-05-11 19:36:58 ERROR Main:38 - [Ljava.lang.StackTraceElement;@640f11a1
+2020-05-11 19:36:58 ERROR Main:46 - [Ljava.lang.StackTraceElement;@5c10f1c3
+2020-05-11 19:54:27 ERROR Main:155 - Invalid column index
+2020-05-11 19:54:27 ERROR Main:54 - Could not make withdrawal, insufficient funds.
+2020-05-11 19:54:27 ERROR Main:45 - Problem with withdrawal
+2020-05-11 19:54:27 ERROR Main:46 - [Ljava.lang.StackTraceElement;@315f43d5
+2020-05-11 19:57:00 ERROR Main:155 - Invalid column index
+2020-05-11 19:57:00 ERROR Main:54 - Could not make withdrawal, insufficient funds.
+2020-05-11 19:57:00 ERROR Main:44 - Problem with withdrawal
+2020-05-11 19:57:00 ERROR Main:46 - [Ljava.lang.StackTraceElement;@2b5f4d54
+2020-05-11 19:58:17 ERROR Main:155 - Invalid column index
+2020-05-11 19:58:17 ERROR Main:54 - Could not make withdrawal, insufficient funds.
+2020-05-11 19:58:17 ERROR Main:44 - Problem with withdrawal
+2020-05-11 19:58:17 ERROR Main:46 - [Ljava.lang.StackTraceElement;@5f7b97da
+2020-05-11 20:02:14 ERROR Main:155 - Invalid column index
+2020-05-11 20:02:14 ERROR Main:54 - Could not make withdrawal, insufficient funds.
+2020-05-11 20:02:14 ERROR Main:45 - Problem with withdrawal
+2020-05-11 20:02:14 ERROR Main:46 - [Ljava.lang.StackTraceElement;@333dd51e
+2020-05-11 20:38:12 ERROR Main:155 - Invalid column index
+2020-05-11 20:38:12 ERROR Main:54 - Could not make withdrawal, insufficient funds.
+2020-05-11 20:38:12 ERROR Main:29 - Problem with withdrawal
+2020-05-11 20:38:12 ERROR Main:46 - [Ljava.lang.StackTraceElement;@6955cb39
+2020-05-12 13:35:18 ERROR Main:27 - Existing User
+2020-05-12 13:38:44 ERROR Main:172 - ORA-01722: invalid number
+
+2020-05-12 13:38:44 ERROR Main:46 - [Ljava.lang.StackTraceElement;@1755e85b
+2020-05-12 13:38:44 ERROR Main:46 - [Ljava.lang.StackTraceElement;@736d6a5c
+2020-05-12 13:38:44 ERROR Main:38 - Something went wrong, please try again later.
+2020-05-12 13:38:44 ERROR Main:46 - [Ljava.lang.StackTraceElement;@2371aaca
+2020-05-12 13:44:27 ERROR Main:172 - ORA-01722: invalid number
+
+2020-05-12 13:44:27 ERROR Main:46 - [Ljava.lang.StackTraceElement;@4b9df8a
+2020-05-12 13:44:48 ERROR Main:172 - ORA-01722: invalid number
+
+2020-05-12 13:44:48 ERROR Main:91 - Unable to approve account.
+2020-05-12 13:44:48 ERROR Main:46 - [Ljava.lang.StackTraceElement;@4b9df8a
+2020-05-12 13:52:57 ERROR Main:172 - ORA-01722: invalid number
+
+2020-05-12 13:52:57 ERROR Main:91 - Unable to approve account.
+2020-05-12 13:52:57 ERROR Main:46 - [Ljava.lang.StackTraceElement;@4b9df8a
+2020-05-12 13:58:00 ERROR Main:172 - ORA-01722: invalid number
+
+2020-05-12 13:58:00 ERROR Main:91 - Unable to approve account.
+2020-05-12 14:18:06 ERROR Main:27 - Existing User
+2020-05-12 18:42:05 ERROR Main:29 - empty String[Ljava.lang.StackTraceElement;@85e6769
+2020-05-12 20:05:29 ERROR Main:42 - ORA-00001: unique constraint (ADMIN.BANK_USER_UNIQUE) violated
+ORA-06512: at "ADMIN.CREATE_NEW_USER", line 6
+ORA-06512: at line 1
+[Ljava.lang.StackTraceElement;@22b53226
+2020-05-12 20:05:37 ERROR Main:42 - ORA-00001: unique constraint (ADMIN.BANK_USER_UNIQUE) violated
+ORA-06512: at "ADMIN.CREATE_NEW_USER", line 6
+ORA-06512: at line 1
+[Ljava.lang.StackTraceElement;@60d1a32f
+2020-05-12 20:08:10 ERROR Main:42 - ORA-00001: unique constraint (ADMIN.BANK_USER_UNIQUE) violated
+ORA-06512: at "ADMIN.CREATE_NEW_USER", line 6
+ORA-06512: at line 1
+[Ljava.lang.StackTraceElement;@22b53226
+2020-05-12 20:08:29 ERROR Main:42 - ORA-00001: unique constraint (ADMIN.BANK_USER_UNIQUE) violated
+ORA-06512: at "ADMIN.CREATE_NEW_USER", line 6
+ORA-06512: at line 1
+[Ljava.lang.StackTraceElement;@6f8f9349
+2020-05-12 20:26:51 ERROR Main:42 - ORA-00001: unique constraint (ADMIN.BANK_USER_UNIQUE) violated
+ORA-06512: at "ADMIN.CREATE_NEW_USER", line 6
+ORA-06512: at line 1
+[Ljava.lang.StackTraceElement;@183e8023
+2020-05-12 20:32:01 ERROR Main:42 - ORA-00001: unique constraint (ADMIN.BANK_USER_UNIQUE) violated
+ORA-06512: at "ADMIN.CREATE_NEW_USER", line 6
+ORA-06512: at line 1
+[Ljava.lang.StackTraceElement;@75d0911a
+2020-05-12 20:32:51 ERROR Main:42 - ORA-00001: unique constraint (ADMIN.BANK_USER_UNIQUE) violated
+ORA-06512: at "ADMIN.CREATE_NEW_USER", line 6
+ORA-06512: at line 1
+[Ljava.lang.StackTraceElement;@60d1a32f
+2020-05-12 20:36:58 ERROR Main:42 - ORA-00001: unique constraint (ADMIN.BANK_USER_UNIQUE) violated
+ORA-06512: at "ADMIN.CREATE_NEW_USER", line 6
+ORA-06512: at line 1
+[Ljava.lang.StackTraceElement;@5f031ebd
+2020-05-12 20:44:56 ERROR Main:42 - ORA-00001: unique constraint (ADMIN.BANK_USER_UNIQUE) violated
+ORA-06512: at "ADMIN.CREATE_NEW_USER", line 6
+ORA-06512: at line 1
+[Ljava.lang.StackTraceElement;@22b53226
+2020-05-12 20:44:56 ERROR Main:42 - ORA-00001: unique constraint (ADMIN.BANK_USER_UNIQUE) violated
+ORA-06512: at "ADMIN.CREATE_NEW_USER", line 6
+ORA-06512: at line 1
+[Ljava.lang.StackTraceElement;@22b53226
+2020-05-12 20:59:09 ERROR Main:42 - ORA-00001: unique constraint (ADMIN.BANK_USER_UNIQUE) violated
+ORA-06512: at "ADMIN.CREATE_NEW_USER", line 6
+ORA-06512: at line 1
+[Ljava.lang.StackTraceElement;@75390459
+2020-05-12 21:01:01 ERROR Main:42 - ORA-00001: unique constraint (ADMIN.BANK_USER_UNIQUE) violated
+ORA-06512: at "ADMIN.CREATE_NEW_USER", line 6
+ORA-06512: at line 1
+[Ljava.lang.StackTraceElement;@58359ebd
+2020-05-12 21:19:30 ERROR Main:42 - ORA-00001: unique constraint (ADMIN.BANK_USER_UNIQUE) violated
+ORA-06512: at "ADMIN.CREATE_NEW_USER", line 6
+ORA-06512: at line 1
+[Ljava.lang.StackTraceElement;@2e11485
+2020-05-12 21:49:38 ERROR Main:42 - ORA-00001: unique constraint (ADMIN.BANK_USER_UNIQUE) violated
+ORA-06512: at "ADMIN.CREATE_NEW_USER", line 6
+ORA-06512: at line 1
+[Ljava.lang.StackTraceElement;@4fbda97b
+2020-05-12 21:49:38 ERROR Main:42 - ORA-00001: unique constraint (ADMIN.BANK_USER_UNIQUE) violated
+ORA-06512: at "ADMIN.CREATE_NEW_USER", line 6
+ORA-06512: at line 1
+[Ljava.lang.StackTraceElement;@6b9ce1bf
+2020-05-12 21:49:53 ERROR Main:42 - ORA-00001: unique constraint (ADMIN.BANK_USER_UNIQUE) violated
+ORA-06512: at "ADMIN.CREATE_NEW_USER", line 6
+ORA-06512: at line 1
+[Ljava.lang.StackTraceElement;@2e11485
+2020-05-12 21:49:58 ERROR Main:42 - ORA-00001: unique constraint (ADMIN.BANK_USER_UNIQUE) violated
+ORA-06512: at "ADMIN.CREATE_NEW_USER", line 6
+ORA-06512: at line 1
+[Ljava.lang.StackTraceElement;@4b672daa
+2020-05-12 21:49:59 ERROR Main:42 - ORA-00001: unique constraint (ADMIN.BANK_USER_UNIQUE) violated
+ORA-06512: at "ADMIN.CREATE_NEW_USER", line 6
+ORA-06512: at line 1
+[Ljava.lang.StackTraceElement;@41813449
+2020-05-12 21:53:34 ERROR Main:42 - ORA-00001: unique constraint (ADMIN.BANK_USER_UNIQUE) violated
+ORA-06512: at "ADMIN.CREATE_NEW_USER", line 6
+ORA-06512: at line 1
+[Ljava.lang.StackTraceElement;@7b324585
+2020-05-12 21:54:22 ERROR Main:42 - ORA-00001: unique constraint (ADMIN.BANK_USER_UNIQUE) violated
+ORA-06512: at "ADMIN.CREATE_NEW_USER", line 6
+ORA-06512: at line 1
+[Ljava.lang.StackTraceElement;@1c7fd41f
+2020-05-12 22:01:46 ERROR Main:27 - Existing User
+2020-05-12 22:03:01 ERROR Main:29 - For input string: "asdfasf"[Ljava.lang.StackTraceElement;@42f33b5d
+2020-05-12 22:03:16 ERROR Main:29 - For input string: "asdf"[Ljava.lang.StackTraceElement;@6475472c
+2020-05-13 07:28:46 ERROR Main:42 - ORA-00001: unique constraint (ADMIN.BANK_USER_UNIQUE) violated
+ORA-06512: at "ADMIN.CREATE_NEW_USER", line 6
+ORA-06512: at line 1
+[Ljava.lang.StackTraceElement;@505a9d7c
+2020-05-13 07:29:26 ERROR Main:42 - ORA-00001: unique constraint (ADMIN.BANK_USER_UNIQUE) violated
+ORA-06512: at "ADMIN.CREATE_NEW_USER", line 6
+ORA-06512: at line 1
+[Ljava.lang.StackTraceElement;@7c2b6087
+2020-05-13 08:07:58 ERROR Main:27 - Existing User
