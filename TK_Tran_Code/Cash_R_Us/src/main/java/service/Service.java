@@ -8,7 +8,7 @@ import org.apache.log4j.Logger;
  */
 public class Service {
 
-	final static Logger log = Logger.getLogger(Service.class);
+	static final Logger log = Logger.getLogger(Service.class);
 
 	// GENERIC METHODS
 	public void displayWelcome() {
@@ -31,7 +31,7 @@ public class Service {
 		log.info("3. Exit");
 	}
 
-	public void displayCustEmpPortal() {
+	public void displayLoginPortal() {
 		log.info("\n---[ User Portal ]---");
 		log.info("Select an Option");
 		log.info("1 = View Account");
@@ -47,7 +47,7 @@ public class Service {
 	// FIRST-LEVEL VALIDATION
 	public boolean isValidUsername(String username) {
 		boolean b = false;
-		if (username.matches("[a-zA-Z0-9]{3,15}")) { // {3,20} means {min,max}
+		if (username.matches("[a-zA-Z0-9]{3,15}")) {
 			b = true;
 		} else {
 			log.warn("Invalid, username must be between [3-15] alphanumeric characters.");
@@ -57,7 +57,7 @@ public class Service {
 
 	public boolean isValidPassword(String password) {
 		boolean b = false;
-		if (password.matches("(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*_]).{8,}")) { // {8,} means at least eight
+		if (password.matches("(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*_]).{8,}")) {
 			b = true;
 		} else {
 			log.warn("Invalid, password must be a minimum of 8 characters including 1 uppercase, 1 lowercase, 1 digit, and 1 special character [!@#$%^&*_].");

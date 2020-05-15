@@ -13,13 +13,13 @@ import java.util.Scanner;
 */
 public class Main {
 
-	final static Logger log = Logger.getLogger(Main.class);
+	static final Logger log = Logger.getLogger(Main.class);
 
 	public static void main(String[] args) throws BusinessException {
 
 		Scanner sc = new Scanner(System.in);
-		DAOImp dao = new DAOImp(); // Data Access Object
-		Service service = new Service(); // Service Object
+		DAOImp dao = new DAOImp(); // Data Access Object; used to communicate with DB
+		Service service = new Service(); // Service Object, used for first-level validation
 		List<String> transactionList = new ArrayList<>();
 
 		service.displayWelcome();
@@ -27,41 +27,44 @@ public class Main {
 		outerLoop:
 		while (true) {
 			service.displayMainPortal();
+
 			String selection = sc.nextLine();
 			switch (selection) {
 				case ("1"): // REGISTER
-					Account dummyAcc1 = new Account(); // dummy account to construct and send to DB
+					Account dummyRegisterAccount = new Account();
 
 					log.info("Create a username (case-sensitive): ");
 					String username = sc.nextLine();
 					while (!service.isValidUsername(username)) {
 						username = sc.nextLine();
 					}
-					dummyAcc1.setUsername(username);
+					dummyRegisterAccount.setUsername(username);
 
 					log.info("Create a password (case-sensitive): ");
 					String password = sc.nextLine();
 					while (!service.isValidPassword(password)) {
 						password = sc.nextLine();
 					}
-					dummyAcc1.setPassword(password);
+					dummyRegisterAccount.setPassword(password);
 
 					log.info("Enter first and last name: ");
 					String name = sc.nextLine();
-					dummyAcc1.setName(name);
+					dummyRegisterAccount.setName(name);
 
 					log.info("Enter an initial deposit amount: ");
-					String initInpAmt = sc.nextLine(); // accept number as string to validate w/ RegEx
-					while (!service.isValidAmount(initInpAmt)) {
-						initInpAmt = sc.nextLine();
+					String initInputAmount = sc.nextLine(); // accept number as string to validate w/ RegEx
+					while (!service.isValidAmount(initInputAmount)) {
+						initInputAmount = sc.nextLine();
 					}
-					double initDepAmt = Double.parseDouble(initInpAmt); // if valid format, parses to double
+					double initDepositAmount = Double.parseDouble(initInputAmount); // if deposit input in valid format, parses to double for manipulation
+					dummyRegisterAccount.setBalance(initDepositAmount);
 
-					dummyAcc1.setBalance(initDepAmt);
-					transactionList.add(String.format("$" + initInpAmt + " was deposited into " + dummyAcc1.getUsername() + " on %1$tD %1$tT", new Date()));
+					// Constructs dummy account and adds to DB.
+					dummyRegisterAccount = new Account(username, password, name, initDepositAmount, "customer"); // only allows creation of customer accounts!
+					dao.createAccount(dummyRegisterAccount);
 
-					dummyAcc1 = new Account(username, password, name, initDepAmt, "customer"); // Creation of customer accounts only!
-					dao.createAccount(dummyAcc1);
+					// Adds transaction to transaction list.
+					transactionList.add(String.format("$" + initInputAmount + " was deposited into " + dummyRegisterAccount.getUsername() + " on %1$tD %1$tT", new Date()));
 					continue outerLoop;
 				case ("2"): // LOGIN
 					log.info("Enter username (case-sensitive): ");
@@ -69,13 +72,14 @@ public class Main {
 					log.info("Enter password: ");
 					String inputPassword = sc.nextLine();
 
-					Account dummyLoginAcc = dao.getAccount(inputUsername);
-					String dbUsername = dummyLoginAcc.getUsername();
+					Account dummyLoginAccount = dao.getAccount(inputUsername);
+					String dbUsername = dummyLoginAccount.getUsername();
 					if (inputUsername.equals(dbUsername)) {
-						String dbPassword = dummyLoginAcc.getPassword();
+						String dbPassword = dummyLoginAccount.getPassword();
 						if (inputPassword.equals(dbPassword)) {
 							while (true) {
-								service.displayCustEmpPortal();
+								service.displayLoginPortal();
+
 								selection = sc.nextLine();
 								switch (selection) {
 									case ("1"): // VIEW ACCOUNT
@@ -83,22 +87,23 @@ public class Main {
 										break;
 									case ("2"): // DEPOSIT
 										log.info("Enter a deposit amount: ");
-										String inputAmount = sc.nextLine();
+										String inputDepositAmount = sc.nextLine();
 
 //										dao.deposit(inputUsername, inputAmount); // Throws StackOverflowError
 
-										while (!service.isValidAmount(inputAmount)) {
-											inputAmount = sc.nextLine();
+										while (!service.isValidAmount(inputDepositAmount)) {
+											inputDepositAmount = sc.nextLine();
 										}
-										double depositAmount = Double.parseDouble(inputAmount);
+										double depositAmount = Double.parseDouble(inputDepositAmount);
 
-										Account dummyAcc2 = dao.getAccount(inputUsername);
-										double dummyBal2 = dummyAcc2.getBalance();
-										dummyBal2 += depositAmount;
-										dummyAcc2.setBalance(dummyBal2);
-										dao.updateAccount(dummyAcc2);
-										transactionList.add(String.format("$" + depositAmount + " was deposited into " + dummyAcc2.getUsername() + " on %1$tD %1$tT", new Date()));
-										log.info("Balance: $" + dummyAcc2.getBalance());
+										Account dummyDepositAccount = dao.getAccount(inputUsername);
+										double dummyDepositBalance = dummyDepositAccount.getBalance();
+										dummyDepositBalance += depositAmount;
+										dummyDepositAccount.setBalance(dummyDepositBalance);
+										dao.updateAccount(dummyDepositAccount);
+
+										transactionList.add(String.format("$" + depositAmount + " was deposited into " + dummyDepositAccount.getUsername() + " on %1$tD %1$tT", new Date()));
+										log.info("Balance: $" + dummyDepositAccount.getBalance());
 										break;
 									case ("3"): // WITHDRAW
 										log.info("Enter a withdrawal amount: ");
@@ -111,17 +116,18 @@ public class Main {
 										}
 										double withdrawAmount = Double.parseDouble(inputAmount2);
 
-										Account dummyAcc3 = dao.getAccount(inputUsername);
-										double dummyBal3 = dummyAcc3.getBalance();
+										Account dummyWithdrawAccount = dao.getAccount(inputUsername);
+										double dummyBal3 = dummyWithdrawAccount.getBalance();
 										if ((dummyBal3 - withdrawAmount) < 0) {
 											log.warn("Cannot withdraw more than $" + dummyBal3 + ".");
 										} else {
 											dummyBal3 -= withdrawAmount;
 										}
-										dummyAcc3.setBalance(dummyBal3);
-										dao.updateAccount(dummyAcc3);
-										transactionList.add(String.format("$" + withdrawAmount + " was withdrawn from " + dummyAcc3.getUsername() + " on %1$tD %1$tT", new Date()));
-										log.info("Balance: $" + dummyAcc3.getBalance());
+										dummyWithdrawAccount.setBalance(dummyBal3);
+										dao.updateAccount(dummyWithdrawAccount);
+
+										transactionList.add(String.format("$" + withdrawAmount + " was withdrawn from " + dummyWithdrawAccount.getUsername() + " on %1$tD %1$tT", new Date()));
+										log.info("Balance: $" + dummyWithdrawAccount.getBalance());
 										break;
 									case ("4"): // TRANSFER
 										log.info("Enter username of payee: ");

@@ -1,0 +1,15 @@
+
+X
+java:S3457"AFormat specifiers should be used instead of string concatenation.(ÄšÍò
+k
+java:S1192C"PDefine a constant instead of duplicating this literal " on %1$tD %1$tT" 3 times.(ë£ìãøÿÿÿÿ
+0
+java:S1220""Move this file to a named package.
+W
+java:S3457i"AFormat specifiers should be used instead of string concatenation.(Åâñ›
+i
+java:S3776"SRefactor this method to reduce its Cognitive Complexity from 110 to the 15 allowed.(¢ÇÌ
+V
+java:S1119";Refactor the code to remove this label and the need for it.(ö˜‡¢ıÿÿÿÿ
+\
+java:S3457C"AFormat specifiers should be used instead of string concatenation.(ë£ìãøÿÿÿÿ

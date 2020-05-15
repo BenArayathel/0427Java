@@ -1,0 +1,18 @@
+
+V	java:S125v"<This block of commented-out lines of code should be removed.(›àæşÿÿÿÿ
+Q	java:S125f"<This block of commented-out lines of code should be removed.(àªº
+e
+java:S2095-"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(ÀÖĞ½
+e
+java:S2095"OUse try-with-resources or close this "CallableStatement" in a "finally" clause.(¬¹Å
+e
+java:S2095?"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(ÀÖĞ½
+]
+java:S2095W"GUse try-with-resources or close this "ResultSet" in a "finally" clause.(·¦Ã…
+Q	java:S125p"<This block of commented-out lines of code should be removed.(ÃŸñÂ
+e
+java:S2095V"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(ÀÖĞ½
+]
+java:S2095@"GUse try-with-resources or close this "ResultSet" in a "finally" clause.(·¦Ã…
+0
+java:S1220""Move this file to a named package.

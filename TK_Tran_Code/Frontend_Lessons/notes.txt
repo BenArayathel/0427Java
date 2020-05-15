@@ -110,3 +110,53 @@
     DOM - Document Object Model
         Virtual representation of the HTML page.
     How do we access the DOM?
+
+05.15.20
+    Linting
+        Process of running a program that will analyse code for potential errors.
+
+    Programming Mistake Detector (PMD)
+        Tool used to detect common mistakes made in the code by defining the rule sets.
+        Subproperty: 
+            Copy Paste Detector (CPD)
+                Helps minimize repeated code.
+
+    Java Editions
+        Java SE (JSE) - standard edition
+            Fundamental building blocks.
+        Java EE (JEE) - enterprise edition
+            Built on top of JSE.
+            Designed for large-scale, multi-tier, scalable, reliable, and secure network apps.
+            Latest version is JEE 8.
+            Portable, allows app hosted at one place to be accessed by users over the Internet.
+            Provides API to develop distributed applications that follow Client-Server Model.
+            Facilitates development of web apps.
+            Additional libraries:
+                JDBC
+                JPA (Java Persistence API)
+                Remote Method Invocation (RMI)
+                Messageing (JMS, Java Message Service)
+                Web Services
+                XML Processing
+            Also defines standard APIs for Enterprise JavaBean, Servlets, Portlets, and Java Server Pages (JSP).
+        Java ME (JME) - micro edition
+
+    JAXP = Java API for XML Processing
+    JAX-RS = Java API for XML with RESTful Services
+    
+    Diff b/t application server vs web server?
+        App server - where you write logic.
+        Web server - hosts and processes for client.
+    
+    HTTP Methods:
+        GET, POST, PUT, DELETE, and more..
+
+    Apache Tomcat to host application
+        
+    Angular hosted by S3
+        Simply Storage Service, provides object storage through a web service.
+        store any type of object which allows for uses like storage for 
+            Internet applications, backup and recovery, disaster recovery, 
+            data archives, data lakes for analytics, and hybrid cloud storage.
+    Server hosted by AWS EC2
+        Elastic Compute Cloud, allows users to rent virtual computers.

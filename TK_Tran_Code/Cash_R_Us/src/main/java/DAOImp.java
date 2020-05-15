@@ -14,9 +14,11 @@ import java.util.List;
  */
 public class DAOImp implements DAO {
 
-	final static Logger log = Logger.getLogger(DAOImp.class);
+	static final Logger log = Logger.getLogger(DAOImp.class);
 
 	Service service = new Service();
+
+	protected String error = "Internal error, please contact SYSADMIN.";
 
 	// Creates a new account in DB
 	@Override
@@ -48,7 +50,7 @@ public class DAOImp implements DAO {
 			ps.setString(5, account.getType());
 			ps.executeUpdate();
 		} catch (ClassNotFoundException | SQLException e) {
-			log.error("Internal error, please contact SYSADMIN.");
+			log.error(error);
 		}
 	}
 
@@ -70,7 +72,7 @@ public class DAOImp implements DAO {
 				accountList.add(account); // ..continually add objects into ArrayList
 			}
 		} catch (ClassNotFoundException | SQLException e) {
-			log.error("Internal error, please contact SYSADMIN.");
+			log.error(error);
 		}
 		return accountList; // Spits out the now-populated ArrayList
 	}
@@ -91,7 +93,7 @@ public class DAOImp implements DAO {
 				account.setType(rs.getString("type"));
 			}
 		} catch (ClassNotFoundException | SQLException e) {
-			log.error("Internal error, please contact SYSADMIN.");
+			log.error(error);
 		}
 		return account;
 	}
