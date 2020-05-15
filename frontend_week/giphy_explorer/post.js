@@ -1,15 +1,31 @@
-// let newName = 'John Smith'
-// let xhttp = new XMLHttpRequest();
+let submit3 = document.getElementById("submit3")
 
-// // xhttp.open('POST', 'myservice/username?id=some-unique-id');
-// xhttp.open('POST', 'http://127.0.0.1:5500/api_eater/index.html');
-// xhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-// xhttp.onload = function() {
-//     if (xhttp.status === 200 && xhttp.responseText !== newName) {
-//         alert('Something went wrong.  Name is now ' + xhttp.responseText);
+submit3.addEventListener("click", test)
+
+function test() {
+    let feedback = document.getElementById("feedbackValue").value
+    console.log(feedback)
+}
+
+// fetch('https://jsonplaceholder.typicode.com/posts/1', {
+//     method: 'PUT',
+//     body: JSON.stringify({
+//         id: 1,
+//         title: 'foo',
+//         body: 'bar',
+//         userId: 1
+//     }),
+//     headers: {
+//         "Content-type": "application/json; charset=UTF-8"
 //     }
-//     else if (xhttp.status !== 200) {
-//         alert('Request failed.  Returned status of ' + xhttp.status);
-//     }
-// };
-// xhttp.send(encodeURI('name=' + newName));
+//     })
+//     .then(response => response.json())
+//     .then(json => console.log(json))
+
+// // Output
+// {
+//     id: 1,
+//     title: 'foo',
+//     body: 'bar',
+//     userId: 1
+// }
