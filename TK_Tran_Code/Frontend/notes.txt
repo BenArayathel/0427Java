@@ -105,3 +105,8 @@
         baby.greeting = "\'Sup losers! That\'s my new greeting now! *baby is going through a phase*";
         console.log(baby.greeting);
         console.log(baby.a, baby.b);
+
+05.13.20
+    DOM - Document Object Model
+        Virtual representation of the HTML page.
+    How do we access the DOM?

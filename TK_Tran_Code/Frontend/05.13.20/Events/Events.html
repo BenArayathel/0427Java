@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Event Listeners</title>
+    </head>
+
+    <body>
+        <h1>Event Listeners in JavaScript</h1>
+
+        <!-- Old way, directly manipulating in HTML -->
+        <button onclick="alert('I ain\'t lying')")>Event Button</button>
+
+        <br>
+
+        <!-- Upgraded way, calls a function instead -->
+        <button onclick="myFunc('An argyment')">Another Event Button</button>
+
+        <br>
+
+        <!-- BEST way, defining an ID to completely separate JS code from HTML -->
+        <button id="mainBtn">Main Button</button>
+
+        <br>
+
+        <!-- Examples -->
+        <button id="dateBtn">Click to Display Date</button>
+
+        <h3 id="mseOver">Mouse Over Me!</h3>
+
+        <script type="text/javascript" src="events.js"></script>
+    </body>
+</html>

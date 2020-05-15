@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJAX</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="jumbotron text-center">
+            <h3>AJAX EXAMPLE</h3>
+            <h5>
+                <span class="label label-success"> Using the RESTful API</span>
+            </h5>
+        </div>
+    </div>
+    <div class="container">
+        <div class="well">
+            <input type="text" id="swID" placeholder="Enter SW Id" class="form-control" />
+            <input type="submit" value="Get SW Info" id="swSubmit" class="form-control btn btn-primary" />
+        </div>
+        <div class="well">
+            <div class="text-center">
+                <h3 id="swName"></h3>
+                <h4 id="swBirthYear"></h4>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="AJAX.js"></script>
+    <script type="text/javascript" src="fetch.js"></script>
+</body>
+
+</html>
+
+<!--
+    AJAX: Asynchronous JavaScript and XML
+
+        Synchronous:
+            Means "not blocked".
+            Things happen independently from each other.
+            Can make multiple requests at once w/o needing to wait for other resuts to complete.
+            Makes websites more responsive.
+
+        Synchronous:
+            Means "blocked".
+            Stops all other "threads".
+
+        What actually is AJAX?
+            Technique for accessing web servers from a webpage asynchronously.
+
+        Consists of:
+            Browser built-in XMLHttpRequest Object (requests data from web server).
+            JavaScript
+            HTML DOM (to manipulate page)
+
+        Steps:
+            1. An event occurs in a webpage; prepare that event to send
+            2. An XMLHttpRequest obj is then created by JS.
+            3. The XMLHttpRequest obj sends a request to a web server.
+            4. Server processes the request.
+            5. Server sends a response back to the web page.
+            6. Response is read by JS.
+            7. We do stuff with it (a proper action is performed by JS, e.g. info displayed).
+
+    HTTP
+        http methods: attached to http REQUESTS, similar to CRUD operations
+            GET - retrieve a resource
+            POST - create a resource (and other stuff)
+            PUT - update a resource
+            DELETE - delete a resource
+            PATCH, OPTIONS, TRACE, CONNECT, and even more..
+        http statuses: attached to http RESPONSES
+            100s - informational
+            200s - success
+            300s - redirect
+            400s - client side errors
+            500s - server side errors
+ -->

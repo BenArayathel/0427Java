@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Bubbling</title>
+    </head>
+    <body>
+        <!-- Bubbling is event-propagation from child to parent -->
+        <!-- Events happening in child will cascade upwards and activate all events in parents -->
+        <div>
+            <h2>Welcome to Bubbling</h2>
+        </div>
+
+        <div onclick="alert('div tag')">
+            <form onclick="alert('form tag')">
+                <!-- event.stopPropagation() stops propogation; remove onclick event to test -->
+                <!-- Only stops events that're the same type; e.i. onclick events. -->
+                <!-- This only stops onclick events in parents -->
+                <div onclick="event.stopPropagation()"> 
+                    Div Block
+                    <!-- Clicking p also activates form's and div's onclick events -->
+                    <p onclick="alert('paragraph tag')">Paragraph</p>
+                </div>
+            </form>
+        </div>
+
+        <!-- Capturing: stops bubbling from happening from child to parent -->
+
+    </body>
+</html>

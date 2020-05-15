@@ -1,0 +1,67 @@
+/* 
+    Changing HTML Tags
+*/
+
+a {
+    /* all links */
+    color: white;
+    font-weight: bold;
+}
+
+body {
+    margin: auto;
+    font-family: 'Quicksand', sans-serif;
+    background-color: azure;
+}
+
+h1 {
+    font-size: 64px;
+    text-align: center;
+    margin: 2%;
+}
+
+h2 {
+    font-size: 36px;
+    text-align: center;
+    margin: 2%;
+}
+
+h3 {
+    font-size: 36px;
+    text-align: center;
+    margin: 2%;
+}
+
+/* 
+    CSS Selectors:
+        . for Classes
+        # for IDs
+*/
+
+#headerwallpaper {
+    padding: 4px;
+    border: 6px solid gray;
+    border-radius: 25%;
+    width: 100%;
+}
+
+#bubbleBtn {
+    display: block;
+    margin: auto;
+}
+
+#dateBtn {
+    display: block;
+    margin: auto;
+}
+
+#nextBtn {
+    display: block;
+    margin: auto;
+}
+
+#swImage {
+    margin: 2%;
+    width: 100%;
+    display: none;
+}
