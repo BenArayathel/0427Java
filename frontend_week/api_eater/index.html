@@ -9,16 +9,19 @@
 </head>
 <body>
     
-    <div class="container justify-content-center flex-sm-column" style="margin: 5vh;"> 
+    <div class="container justify-content-center flex-sm-column" style="margin: 5vh;">
+        <h1>Giphy Explorer</h1>
         <div class="form-group">
             <div id="gif-holder">
-                <embed id="embed" src="" style="width: 500px; height: 500px; border: 2px solid black;">
+                <embed id="embed" src="" style=" background-color: white; width: 500px; height: 500px; border: 2px solid #333;">
             </div>
-            <input type="text" id="value1"/>
-            <input type="submit" id="submit1"/>
+            <input type="text" id="value1" placeholder="enter a word"/>
+            <input class="btn btn-primary" type="submit" id="submit1"/> <b>OR</b> See What's Trending: 
+            <input class="btn btn-success" type="submit" id="submit2" >
         </div>
     </div>
 
     <script src="xhttp.js"></script>
+    <script src="fetch.js"></script>
 </body>
 </html>

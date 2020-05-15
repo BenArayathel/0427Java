@@ -6,7 +6,7 @@ document.getElementById("submit1").addEventListener("click", apiCall1);
 
 function apiCall1() {
     let value1 = document.getElementById("value1").value
-    // console.log(value1)
+    console.log(value1)
     let xhttp = new XMLHttpRequest()
     xhttp.onreadystatechange = function() {
         // console.log(xhttp.readyState)
