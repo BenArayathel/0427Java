@@ -19,15 +19,11 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="AboutMe.html">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="lorem.html">Lorem</a>
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="lorem.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Lorem 
-                    </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="#">Action</a>
                         <a class="dropdown-item" href="#">Another action</a>
@@ -50,42 +46,93 @@
         <h1>Max DePriest in a nutshell</h1>
 
         <p>
-            <h1>About Me:</h1><br />
-            <h3>
+            <h1 onclick="changeFontColor()">About Me:</h1><br />
+            <h3 id="summaryText">
                 I live in Columbia, SC. I recently moved here from Austin, TX. I enjoy playing videogames, bar trivia, and disc golf. I'm a big cinephile so that's my
                 expertise when we play trivia. My favorite game of all time is the Witcher 3. I have a cat. He was only born with one eye so I named him Willie after the pirate from the Goonies.
                 I like to read as well. I'm currently re-reading the Lord of the Rings trilogy.  I grew up in Pittsburgh so my sports teams all wear black and gold. I'm primarily just a Penguins fan, but I'll
                 root for the Steelers or Pirates if the game is on.  I've got a bit of a twisted sense of humor. My favorite web comic is <a href="http://explosm.net/comics/5554/">Cyanide and Happiness</a>
             </h3>
+        </p>
+        <div id="zombieText" hidden>
+            <p class="red_text" >
+                Zombie ipsum reversus ab viral inferno, nam rick grimes malum cerebro. De carne lumbering animata corpora quaeritis. Summus brains sit​​, morbo vel maleficia? De apocalypsi gorger omero undead survivor dictum mauris. Hi mindless mortuis soulless creaturas, imo evil stalking monstra adventus resi dentevil vultus comedat cerebella viventium. Qui animated corpse, cricket bat max brucks terribilem incessu zomby. The voodoo sacerdos flesh eater, suscitat mortuos comedere carnem virus. Zonbi tattered for solum oculi eorum defunctis go lum cerebro. Nescio brains an Undead zombies. Sicut malus putrid voodoo horror. Nigh tofth eliv ingdead.
+
+            </p>
+
+            <p class="blue_text" >
+                Zombie ipsum reversus ab viral inferno, nam rick grimes malum cerebro. De carne lumbering animata corpora quaeritis. Summus brains sit​​, morbo vel maleficia? De apocalypsi gorger omero undead survivor dictum mauris. Hi mindless mortuis soulless creaturas, imo evil stalking monstra adventus resi dentevil vultus comedat cerebella viventium. Qui animated corpse, cricket bat max brucks terribilem incessu zomby. The voodoo sacerdos flesh eater, suscitat mortuos comedere carnem virus. Zonbi tattered for solum oculi eorum defunctis go lum cerebro. Nescio brains an Undead zombies. Sicut malus putrid voodoo horror. Nigh tofth eliv ingdead.
 
         </p>
-        <!--<div><img src="images/pens_logo.jpg" width="300" height="350" alt="Alternate Text" /></div>
-        -->
-        <div class="container" max-width="60%" max-height="60%">
+        </div>
 
-            <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <img src="images/pens_logo.jpg" width="350" height="274" class="d-block w-100" alt="pensLogo">
+        <p>
+            <h2><b>That stuff is boring. Bring on the cool stuff!!</b></h2><br />
+            <div class="lineOfButtons">
+                <button type="button" class="btn btn-success" id="kittenButton" style="margin: 5px">Kittens</button>
+                <button type="button" class="btn btn-success" id="originalButton" style="margin: 5px">Original Stuff</button>
+                <button type="button" class="btn btn-warning" id="zombieButton" style="margin: 5px">Zombie Button</button>
+
+            </div>
+
+        </p>
+    </header>
+
+ 
+        <div id="mainCarousel" class="container carouselContainer" max-width="40%" max-height="60%">
+            <div class="row">
+                <div class="col-3">
+                </div>
+                <div class="col-6">
+                    <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img src="images/pens_logo.jpg" width="350" height="274" class="d-block w-100" alt="pensLogo">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="images/witcher3_background.jpg" width="350" height="274" class="d-block w-100" alt="witcher3">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="images/disc_golf_background.jpg" width="350" height="274" class="d-block w-100" alt="disc_golf">
+                            </div>
+
+                        </div>
                     </div>
-                    <div class="carousel-item">
-                        <img src="images/witcher3_background.jpg" width="350" height="274" class="d-block w-100" alt="witcher3">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="images/disc_golf_background.jpg" width="350" height="274" class="d-block w-100" alt="disc_golf">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="lotr2.jpg" width="350" height="274" class="d-block w-100" alt="lotr">
+                    <div class="col-3">
                     </div>
                 </div>
             </div>
         </div>
 
-    </header>
+        <div id="kittensCarousel" class="container carouselContainer" max-width="40%" max-height="60%" hidden>
+            <div class="row">
+                <div class="col-3">
+                </div>
+                <div class="col-6">
+                    <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+                        <div class="carousel-inner cImage">
+                            <div class="carousel-item active">
+                                <img src="images/calicoKitten.jpeg" width="250" height="274" class="d-block w-100" alt="pensLogo">
+                            </div>
+                            <div class="carousel-item cImage">
+                                <img src="images/tinyKitten.jpg" width="200" height="274" class="d-block w-100" alt="witcher3">
+                            </div>
+                            <div class="carousel-item cImage">
+                                <img src="images/kittenBall.jpg" width="225" height="274" class="d-block w-100" alt="disc_golf">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-3">
+                </div>
+            </div>
 
+   
+    <script type="text/javascript" src="JS_Demo.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
 </body>
 
 

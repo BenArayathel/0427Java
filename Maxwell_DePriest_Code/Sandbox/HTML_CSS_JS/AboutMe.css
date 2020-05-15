@@ -18,3 +18,13 @@ header {
     color: blue;
 }
 
+.cImage {
+    text-align: center;
+
+}
+
+.container {
+    
+    justify-content: center;
+}
+

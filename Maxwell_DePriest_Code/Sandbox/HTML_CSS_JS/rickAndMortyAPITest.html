@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+    <title>AJAX Demo</title>
+</head>
+<body>
+    <div class="container">
+        <div class="jumbotron text-center">
+            <h3>The Rick and Morty Universes</h3>
+            <h5>
+                <span class="label label-warning"> Using the RESTful API</span>
+            </h5>
+        </div>
+    </div>
+    <div class="container">
+        <div class="well">
+            <input type="text" id="characterName" placeholder="Character Name" class="form-control" />
+            <input type="text" id="status" placeholder="alive or dead" class="form-control" />
+            <input type="submit" value="Get Character Information" id="rickMortySubmit" class="form-control btn btn-primary" />
+        </div>
+        <div class="well well-lg container">
+            <div class="row"></div>
+            <div class="text-center">
+                <h3 id="charName">Name Should Go Here</h3>
+                <img id="charImage" src="images/kittenBall.jpg" alt="rickAndMortyPic" />
+            </div>
+        </div>
+        <div class="well well-lg">
+            <div class="text-center">
+                <h3 id="charName2">Name Should Go Here</h3>
+                <img id="charImage2" src="images/kittenBall.jpg" alt="rickAndMortyPic" />
+            </div>
+        </div>
+        <div class="well">
+            <div class="text-center">
+                <h3 id="charName3">Name Should Go Here</h3>
+                <img id="charImage3" src="images/kittenBall.jpg" alt="rickAndMortyPic" />
+            </div>
+        </div>
+
+    </div>
+    <script type="text/javascript" src="rickAndMortyAJAX.js"></script>
+</body>
+</html>
