@@ -7,15 +7,16 @@ submit2.addEventListener('click', apiCall2);
 
 function apiCall2(){
     fetch("https://api.giphy.com/v1/gifs/trending?api_key=GGR8ONXTcf3yjY4GJiQtNO0RyLKlAIY2&limit=25&rating=G")
-    .then((getResp) => {
-        return getResp.json();
+    .then((response) => {
+        return response.json();
     }).then(function(response){
         updateDOM2(response);
-        console.log(response)
-        return getResp.mass;
+        // console.log(response)
+        // what did this line do?
+        // return response.mass;
     }).catch(
-        function(getResp){
-            console.log("Check the console");
+        error => {
+            alert(error)
         }
     )
 }
