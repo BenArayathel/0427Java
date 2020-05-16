@@ -7,9 +7,10 @@ window.onload = function() {
         .addEventListener("click", this.getPlaceHolderAsync);
     this.document.getElementById("jphSubPost")
         .addEventListener("click", this.postToPlaceHolder);
-    // this.document.getElementById("jphSubmit").onkeypress = alert("onkeypress detected");
-    // this.document.getElementById("jphSubmit").addEventListener("keypress", alert("keypress detected"));
-    //this.fetchOnEnter);
+    this.document.getElementById("jphSubPostF")
+        .addEventListener("click", this.postToPlaceHolderFetch);
+    this.document.getElementById("jphSubPostAW")
+        .addEventListener("click", this.postToPlaceHolderAW);
 }
 
 // AJAX Syntax
@@ -30,19 +31,9 @@ function getPlaceHolder() {
         }
     }
     xhttp.open("GET", "https://jsonplaceholder.typicode.com/posts/"+jphId);
-    //"https://pokeapi.co/api/v2/pokemon/"+jphId);
+
     xhttp.send();
 }
-
-// // Use this function to use fetch when submission is entered (keyboard), not clicked
-// function fetchOnEnter(event) {
-//     console.log("Event registered"+event);
-//     if (event.keyCode==13) {
-//         console.log("Enter pressed");
-//         event.preventDefault();
-//         fetchPlaceHolder();
-//     }
-// }
 
 // Fetch Syntax
 function fetchPlaceHolder(){
@@ -96,56 +87,88 @@ async function awaitPlaceHolder(jphId) {
     return jphResponse.json();
 }
 
+function DOMManipulation(contentJSON) {
+    let jphTitle = document.getElementById("jphTitle")
+    jphTitle.innerText = contentJSON.title;
+    let jphBody = document.getElementById("jphBody");
+    jphBody.innerText = contentJSON.body;
+}
+
 // POST
+// AJAX Syntax
 function postToPlaceHolder() {
     // Get the entry
-    let jphPost = document.getElementById("jphPost").value;
+    let jphPT = document.getElementById("jphPT").value;
+    let jphPB = document.getElementById("jphPB").value;
     // Make the XMLHttpRequest object
     let xhttp = new XMLHttpRequest();
     // Tell xhttp what to do when it's state changes (i.e.)
     xhttp.onreadystatechange = function () {
         console.log(`ready state has changed to ${xhttp.readyState}`);
-        console.log(xhttp.responseText);
+        console.log(xhttp.status);
+        // console.log(xhttp.responseText);
         // If a valid response is received
-        if (xhttp.readyState==4 && xhttp.status==200){
+        // The confirmation that a request has been created
+        // is xhttp code 201!!!!
+        if (xhttp.readyState==4 && xhttp.status==201){
             // Parse the response
-            console.log(xhttp.responseText);
-            // let jphContent = JSON.parse(xhttp.responseText);
+            let jphContent = JSON.parse(xhttp.responseText);
+            // console.log(jphContent);
             // // Update the DOM based on it
-            // DOMManipulation(jphContent);
+            DOMManipulationPost(jphContent);
         }
     }
-    xhttp.open("POST", "https://jsonplaceholder.typicode.com/posts/", true);
-    //"https://pokeapi.co/api/v2/pokemon/"+jphId);
-    xhttp.setRequestHeader({
-        "Content-type": "application/json; charset=UTF-8"
-    });
-    xhttp.send();
+    xhttp.open("POST", "https://jsonplaceholder.typicode.com/posts/",
+        true);
+        // The last argument tells xhttp to do this asynchronously
+        // (default, so it doesn't have to be givien)
+    xhttp.setRequestHeader(
+        "Content-type", "application/json; charset=UTF-8"
+    );
+    xhttp.send(JSON.stringify(
+        {title: jphPT,
+        body: jphPB,
+        userId: 1}
+        )
+    );
 }
 
+// Fetch Syntax
 function postToPlaceHolderFetch() {
-    let jphPost = document.getElementById("jphPost").value;
-    console.log(jphPost);
+    let jphPTFetch = document.getElementById("jphPTFetch").value;
+    let jphPBFetch = document.getElementById("jphPBFetch").value;
     fetch('https://jsonplaceholder.typicode.com/posts', {
             method: 'POST',
-            body: JSON.stringify(jphPost),
-            headers: {"Content-type": "application/json; charset=UFT-8"}})
+            body: JSON.stringify({
+                "title": jphPTFetch,
+                "body": jphPBFetch
+            }),
+            headers: {"Content-type": "application/json; charset=UTF-8"}
+        })
         .then(response => response.json())
-        .then(json => DOMManipulation(json));
+        .then(json => DOMManipulationPost(json));
 }
 
-function DOMManipulation(contentJSON) {
-    let jphTitle = document.getElementById("jphTitle")
-    jphTitle.innerText = contentJSON.title;
-    // jphTitle.innerText = JSONcontent.species.name;
-    let jphBody = document.getElementById("jphBody");
-    jphBody.innerText = contentJSON.body;
-    // jphBody.innerText = JSONcontent.species.url;
+function postToPlaceHolderAW() {
+    let jphPTAW = document.getElementById("jphPTAW").value;
+    let jphPBAW = document.getElementById("jphPBAW").value;
+    let contentJSON = {title: jphPTAW, body: jphPBAW};
+    awaitPostToPlaceHolder(contentJSON)
+        .then(json => DOMManipulationPost(json));
+}
+
+async function awaitPostToPlaceHolder(contentJSON) {
+    const response = await fetch('https://jsonplaceholder.typicode.com/posts', {
+        method: 'POST',
+        body: JSON.stringify(contentJSON),
+        headers: {"Content-type": "application/json; charset=UTF-8"}
+    });
+    return response.json();
 }
 
 function DOMManipulationPost(contentJSON) {
-    let jphTitlePost = document.getElementById("jphTitlePost");
-    jphTitlePost.innerText = contentJSON.title;
-    let jphBodyPost = document.getElementById("jphBodyPost");
-    jphBodyPost.innerText = contentJSON.body;
+    let jphPostTitle = document.getElementById("jphPostTitle");
+    jphPostTitle.innerText = contentJSON.title;
+    let jphPostBody = document.getElementById("jphPostBody");
+    jphPostBody.innerText = contentJSON.body;
 }

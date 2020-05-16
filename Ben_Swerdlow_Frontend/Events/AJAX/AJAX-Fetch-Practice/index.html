@@ -50,21 +50,50 @@
 		<h2>Post to JSON Placeholder</h2>
 		<div class="well">
 			<h3>AJAX Syntax</h3>
-			<textarea type="text" id="jphPost" placeholder="Enter Body of JSONPlaceHolder Post"
+			<label for="Title" class="title">Title</label>
+			<input type="text" id="jphPT" placeholder="Enter Title of JSONPlaceHolder Post" class="form-control" /> 
+			<br>
+			<label for="Body" class="body">Body</label>
+			<textarea type="text" id="jphPB" placeholder="Enter Body of JSONPlaceHolder Post"
 			 class="form-control" rows=10></textarea> 
 		</div>
 		<div class="well">
 			<input type="submit" value="Post JPH Info" id="jphSubPost" class="form-control btn btn-primary" />
 		</div>
 		<div class="well">
+			<h3>Fetch Syntax</h3>
+			<label for="Title" class="title">Title</label>
+			<input type="text" id="jphPTFetch" placeholder="Enter Title of JSONPlaceHolder Post" class="form-control" /> 
+			<br>
+			<label for="Body" class="body">Body</label>
+			<textarea type="text" id="jphPBFetch" placeholder="Enter Body of JSONPlaceHolder Post"
+			 class="form-control" rows=10></textarea> 
+		</div>
+		<div class="well">
+			<input type="submit" value="Post JPH Info" id="jphSubPostF" class="form-control btn btn-primary" />
+		</div>
+		<div class="well">
+			<h3>Async/Wait Syntax</h3>
+			<label for="Title" class="title">Title</label>
+			<input type="text" id="jphPTAW" placeholder="Enter Title of JSONPlaceHolder Post" class="form-control" /> 
+			<br>
+			<label for="Body" class="body">Body</label>
+			<textarea type="text" id="jphPBAW" placeholder="Enter Body of JSONPlaceHolder Post"
+			 class="form-control" rows=10></textarea> 
+		</div>
+		<div class="well">
+			<input type="submit" value="Post JPH Info" id="jphSubPostAW" class="form-control btn btn-primary" />
+		</div>
+		<div class="well">
 			<h4 class="Label">JSON Placeholder Output:</h4>
 			<div class="text-center">
-				<h3 id="jphTitlePost"></h3>
-				<h4 id="jphBodyPost"></h4>
+				<h3 id="jphPostTitle"></h3>
+				<h4 id="jphPostBody"></h4>
 			</div>
 		</div>
 	</div>
-     <!-- <script type="text/javascript" src="AJAXDemo.js"></script> -->
+	
+
      <script type="text/javascript" src="AJAX-Fetch-Asynch.js"></script>
 </body>
 </html>
