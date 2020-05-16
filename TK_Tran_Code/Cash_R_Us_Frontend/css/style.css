@@ -1,15 +1,20 @@
 a {
-    /* all links */
-    color: white;
+	/* all links */
+	color: white;
 }
 
 body {
-    background-color: white;
-    font-family: Quicksand, sans-serif;
+	background-color: white;
+	font-family: Quicksand, sans-serif;
 }
 
-/* 
-    CSS Selectors:
-        . for Classes
-        # for IDs
-*/
+.form-group {
+	margin: 2%;
+}
+
+.btn {
+	margin: 3%;
+}
+.btn-block {
+	margin: 3%;
+}

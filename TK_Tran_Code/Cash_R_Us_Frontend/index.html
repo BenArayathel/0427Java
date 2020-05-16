@@ -2,45 +2,49 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Home</title>
 
-    <!-- Boostrap -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
-        crossorigin="anonymous">
+	<!-- Boostrap -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+		crossorigin="anonymous">
 
-    <!-- jQuery, PopperJS, BoostrapJS -->
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-        crossorigin="anonymous"></script>
+	<!-- jQuery, PopperJS, BoostrapJS -->
+	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+		crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+		crossorigin="anonymous"></script>
 
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
+	<!-- Google Fonts -->
+	<link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
 
-    <!-- CSS -->
-    <link rel="stylesheet" type="text/css" href="css/style.css">
+	<!-- CSS -->
+	<link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 
 <body>
-    <div class="jumbotron text-center">
-        <h1 class="display-2">Cash R' Us!</h1>
-        <h4 class="lead">Welcome to Cash R' Us, where your money is ours!</h4>
-    </div>
+	<!-- Header -->
+	<div class="jumbotron text-center">
+		<h1 class="display-4">Cash R' Us!</h1>
+		<h4>Welcome to Cash R' Us, where your money is ours!</h4>
+	</div>
 
-    <div class="container">
-        <h4>Select an option below to get started:</h4>
-        <button type="button" class="btn btn-info" id="registerBtn">
-            <a href="registerPortal.html">Register</a>
-        </button>
-        <button type="button" class="btn btn-success" id="loginBtn">
-            <a href="loginPortal.html">Login</a>
-        </button>
-    </div>
+	<!-- Main Body -->
+	<div class="container">
+		<div class="row">
+			<p>Select an option below to get started:</p>
+		</div>
 
-    <script type="text/javascript" src="js/script.js"></script>
+		<!-- Buttons -->
+		<div class="row">
+			<a href="registerPortal.html" class="btn btn-info col-4" id="registerBtn" role="button">Register</a>
+			<a href="loginPortal.html" class="btn btn-success col-4" id="loginBtn" role="button">Login</a>
+		</div>
+	</div>
+
+	<script type="text/javascript" src="js/script.js"></script>
 </body>
 
 </html>
