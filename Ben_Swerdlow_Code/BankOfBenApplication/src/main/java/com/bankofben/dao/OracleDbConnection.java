@@ -12,10 +12,11 @@ import java.util.List;
 import java.util.logging.Logger;
 
 import com.bankofben.exceptions.BusinessException;
+import com.bankofben.presentation.UserInterface;
 
 public class OracleDbConnection {
 	
-//	final static Logger loggy = Logger.getLogger(OracleDbConnection.class);
+	final static Logger loggy = Logger.getLogger("oracle.jdbc.OracleDriver");
 	
 	private static Connection connection = null;
 	
@@ -36,9 +37,9 @@ public class OracleDbConnection {
 					login.add(line);
 				}
 			} catch (IOException e) {
-				e.printStackTrace();
-				System.out.println(e);
-				throw new BusinessException("Could not read login information. Please check your login information and try again.");
+				BusinessException b = new BusinessException("Could not read login information. Please check your login information and try again.");
+				loggy.error(b);
+				throw b;
 			}
 			connection = DriverManager.getConnection(login.get(0), login.get(1), login.get(2));
 			

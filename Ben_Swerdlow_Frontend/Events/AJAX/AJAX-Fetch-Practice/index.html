@@ -9,30 +9,62 @@
     <!-- Optional theme -->
     <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+	<link rel="stylesheet" type="text/css" href="Formatting.css">
     <title>AJAX and Fetch Practice</title>
 </head>
 <body>
 	<div class="container">
 		<div class="jumbotron text-center">
-			<h3>AJAX and Fetch</h3>
+			<h2>AJAX and Fetch</h2>
 			<h5>
 				<span class="label label-success">Using the RESTful API</span>
 			</h5>
 		</div>
 	</div>
 	<div class="container">
+		<h2>Getting Information From JSON Placeholder</h2>
 		<div class="well">
+			<h3 class="Label">Using AJAX Syntax</h3>
 			<input type="text" id="jphId" placeholder="Enter JSONPlaceHolder Id" class="form-control" /> 
 			<input type="submit" value="Get JPH Info" id="jphSubmit" class="form-control btn btn-primary" />
 		</div>
 		<div class="well">
+			<h3 class="Label">Using Fetch Syntax</h3>
+			<input type="text" id="jphIdFetch" placeholder="Enter JSONPlaceHolder Id" class="form-control" /> 
+			<input type="submit" value="Get JPH Info" id="jphSubFetch" class="form-control btn btn-primary" />
+		</div>
+		<div class="well">
+			<h3 class="Label">Using Async/Await Syntax</h3>
+			<input type="text" id="jphIdAsync" placeholder="Enter JSONPlaceHolder Id" class="form-control" /> 
+			<input type="submit" value="Get JPH Info" id="jphSubAsync" class="form-control btn btn-primary" />
+		</div>
+		<div class="well">
+			<h4 class="Label">JSON Placeholder Output:</h4>
 			<div class="text-center">
 				<h3 id="jphTitle"></h3>
 				<h4 id="jphBody"></h4>
 			</div>
 		</div>
 	</div>
+	<div class="container">
+		<h2>Post to JSON Placeholder</h2>
+		<div class="well">
+			<h3>AJAX Syntax</h3>
+			<textarea type="text" id="jphPost" placeholder="Enter Body of JSONPlaceHolder Post"
+			 class="form-control" rows=10></textarea> 
+		</div>
+		<div class="well">
+			<input type="submit" value="Post JPH Info" id="jphSubPost" class="form-control btn btn-primary" />
+		</div>
+		<div class="well">
+			<h4 class="Label">JSON Placeholder Output:</h4>
+			<div class="text-center">
+				<h3 id="jphTitlePost"></h3>
+				<h4 id="jphBodyPost"></h4>
+			</div>
+		</div>
+	</div>
      <!-- <script type="text/javascript" src="AJAXDemo.js"></script> -->
-     <script type="text/javascript" src="fetch.js"></script>
+     <script type="text/javascript" src="AJAX-Fetch-Asynch.js"></script>
 </body>
 </html>
