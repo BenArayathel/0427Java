@@ -1,0 +1,192 @@
+Javascript Questions
+
+What is the DOM?
+The Document Object Model (DOM) is a programming interface for HTML and XML documents. It represents the page so that programs can change the document structure, style, and content. The Document Object Model (DOM) represents that same document so it can be manipulated.
+
+What is ECMAScript and how does it relate to JavaScript?
+ECMAScript is a Standard for scripting languages such as JavaScript, JScript, etc. It is a trademark scripting language specification. JavaScript is a language based on ECMAScript. JavaScript is considered as one of the most popular implementations of ECMAScript.
+
+What is JavaScript?
+JavaScript is the Programming Language for the Web.
+JavaScript can update and change both HTML and CSS.
+JavaScript can calculate, manipulate and validate data.
+
+What are some advantages that can be gained through using JavaScript
+Speed. Client-side JavaScript is very fast because it can be run immediately within the client-side browser.
+Simplicity. JavaScript is relatively simple to learn and implement.
+Popularity. JavaScript is used everywhere in the web.
+Interoperability.
+Server Load.
+Extended Functionality.
+Versatility.
+
+What does it mean that JavaScript is loosely typed?
+JavaScript is a loosely typed language, meaning you don't have to specify what type of information will be stored in a variable in advance. 
+
+What does it mean that JavaScript is an interpreted language?
+JavaScript is an interpreted language because every time a program runs, an interpreted language is translated (or interpreted) line by line.
+
+What tag would you use to wrap around a block of JavaScript on an HTML document and where would you need to place it?
+<script></script>
+
+Is JavaScript case sensitive?
+JavaScript is a case-sensitive language. This means that language keywords, variables, function names, and any other identifiers must always be typed with a consistent capitalization of letters.
+
+How do you insert a comment in JavaScript?
+//
+/* */
+
+Does JavaScript has data types? If it does, what are they?
+String, Number, and Boolean are primitive data types. Object, Array, and Function (which are all types of objects) are composite data types. Whereas Undefined and Null are special data types.
+
+What are three different ways you can create variables in JavaScript and when would you use each?
+var, let and const
+Var: JavaScript variables were solely declared using the var keyword.
+Let:shares a lot of similarities with var but unlike var has scope constraints. let is constrained to whichever scope it is declared in. 
+const: is a variable type assigned to data whose value cannot and will not be changed throughout the script.
+
+
+What are global variables? How are these variable declared and what are the problems associated with using them?
+Global Variable: Since global variables are defined outside there function so variables with the same name can not be used in different functions. All the scripts and functions on a web page can access it.
+But for larger applications, using global variables are bad. It will make your application hard to maintain and read.
+
+What JavaScript values are considered falsey? What are considered truthy?
+A falsy value is something which evaluates to FALSE, for instance when checking a variable. There are only six falsey values in JavaScript: undefined, null, NaN, 0, "" (empty string), and false of course. All values are truthy unless they are defined as falsy
+
+What are undeclared and undefined variables?
+undefined variables are those that are not assigned any value but declared in the program. if we try to read the value, an error message "undefined" is displayed. undeclared variables are those that are not declared in the program .
+
+What is === operator?
+=== is used for comparision between two variables but this will check strict type, which means it will check datatype and compare two values.
+
+What is the typeof operator?
+The typeof operator is used to get the data type (returns a string) of its operand. 
+
+What is hoisting in JavaScript?
+Hoisting is a JavaScript mechanism where variables and function declarations are moved to the top of their scope before code execution.
+
+What are anonymous functions?
+An anonymous function is a function that was declared without any named identifier to refer to it.
+
+What is an IIFE?
+An IIFE (Immediately Invoked Function Expression) is a JavaScript function that runs as soon as it is defined.
+
+How can you add new elements dynamically?
+The addElement() function is simple if you understand its arguments. The way it works is by appending a new child element to a parent element. The parent element is specified using the parentId argument. The type of element to be created is specified using the elementTag argument. The new element's ID is specified using the elementId argument. Lastly, the innerHTML of the new element is specified using the html argument.
+
+Explain how can you submit a form using JavaScript?
+In javascript onclick event , you can use form. submit() method to submit form. You can perform submit action by, submit button, by clicking on hyperlink, button and image tag etc. You can also perform javascript form submission by form attributes like id, name, class, tag name as well.
+
+What is an event?
+JavaScript's interaction with HTML is handled through events that occur when the user or the browser manipulates a page. When the page loads, it is called an event. When the user clicks a button, that click too is an event.
+
+What are some common JavaScript events?
+onmouseover
+onmouseout
+onkeydown
+onload
+onclick
+onchange
+
+What are event listeners? Name three ways that you can implement event listeners.
+An event listener is a procedure in JavaScript that waits for an event to occur. The simple example of an event is a user clicking the mouse or pressing a key on the keyboard.
+The addEventListener() method attaches an event handler to the specified element.
+This method attaches an event handler to an element without overwriting existing event handlers.
+You can add many event handlers to one element.
+You can add many event handlers of the same type to one element, i.e two “click” events.
+
+What is JSON in Ajax?
+JSON is data that could be sent via AJAX but can be used for other purposes besides AJAX. ... “The JavaScript Object Notation (JSON) is a data-interchange format.
+
+What is Ajax?
+AJAX refers to sending and receiving data between a web browser's objects and another source usually a web server commonly over HTTP.
+
+What are the advantages of Ajax?
+Reduce the traffic travels between the client and the server. Response time is faster so increases performance and speed. You can use JSON which is alternative to XML. JSON is key value pair and works like an array.
+
+What are the disadvantages of Ajax?
+It can increase design and development time.
+More complex than building classic web application.
+Security is less in AJAX application as all files are downloaded at client side.
+Search Engine like Google cannot index AJAX pages.
+JavaScript disabled browsers cannot use the application.
+
+Can we add more than one ‘document.ready’ function in a page?
+Yes, you can write multiple document. ready() in js file. They all will get executed once dom is ready.
+
+What is the for-in loop in JavaScript?
+The for/in statement loops through the properties of an object. The block of code inside the loop will be executed once for each property.
+
+What is the for-of loop in JavaScript?
+The For/Of Loop
+for/of lets you loop over data structures that are iterable such as Arrays, Strings, Maps, NodeLists, and more. variable - For every iteration the value of the next property is assigned to the variable. Variable can be declared with const , let , or var .
+
+What are all the technologies used by Ajax?
+HTML/XHTML, DOM, and JavaScript.
+
+XHR Vs Fetch API
+You can use the Cache API with the request and response objects;
+You can perform no-cors requests, getting a response from a server that doesn't implement CORS. You can't access the response body directly from JavaScript, but you can use it with other APIs (e.g. the Cache API);
+Streaming responses (with XHR the entire response is buffered in memory, with fetch you will be able to access the low-level stream). This isn't available yet in all browsers, but will be soon.
+
+What are Promises?
+A promise is an object that may produce a single value some time in the future : either a resolved value, or a reason that it's not resolved (e.g., a network error occurred).
+
+What is Type Coercion
+Type coercion is the process of converting value from one type to another (such as string to number, object to boolean, and so on). Any type, be it primitive or an object, is a valid subject for type coercion.
+
+Explain call back functions
+A callback function is a function that is passed as an argument to another function, to be “called back” at a later time. A function that accepts other functions as arguments is called a higher-order function, which contains the logic for when the callback function gets executed.
+
+Java Vs javascript
+In the early days of the Internet, around 1990, Internet Explorer and Netscape Navigator were the two most popular web browsers in use by the general public. In just 10 days, a developer named Brendan Eich at Netscape, Inc. was able to create a programming language that could instruct the computer on how to interact with the user upon receiving user input. They called this language “Livescript” and integrated it directly into Navigator.
+Java is a programming language invented by James Gosling and developed by Sun Microsystems. It took a bit longer than 10 days to develop — it took closer to four years. In 1991, a group of Sun Microsystem engineers called the “Green Team” worked day and night to create Java. It was first released in 1995, and several new versions have been launched since then. Today’s Internet is absolutely saturated with Java-run programming, and we have Java to thank for many of the applications that make day-to-day living easier. Java is currently owned by Oracle.
+
+ECMAscript Vs javascript
+ECMAScript is a Standard for scripting languages such as JavaScript, JScript, etc. A standard for scripting languages like JavaScript, JScript is ECMAScript. JavaScript is considered as one of the most popular 
+
+JS Objects Vs Arrays
+Both objects and arrays are considered “special” in JavaScript. Objects represent a special data type that is mutable and can be used to store a collection of data (rather than just a single value). Arrays are a special type of variable that is also mutable and can also be used to store a list of values.
+
+Explain rest operator in Js
+The rest parameter syntax allows us to represent an indefinite number of arguments as an array. With the help of a rest parameter a function can be called with any number of arguments, no matter how it was defined. Rest parameter is added in ES2015 or ES6 which improved the ability to handle parameter.
+
+explain dom tree
+The DOM represents HTML as a tree structure of tags.
+HTML
+HEAD
+TITLE
+BODY
+
+what are closures in JS
+A closure is a feature in JavaScript where an inner function has access to the outer (enclosing) function's variables — a scope chain. it has access to its own scope — variables defined between its curly brackets. it has access to the outer function's variables. it has access to the global variables.
+
+explain arrow functions
+Arrow functions – also called “fat arrow” functions, from CoffeeScript (a transcompiled language) — are a more concise syntax for writing function expressions. They utilize a new token, => , that looks like a fat arrow. Arrow functions are anonymous and change the way this binds in functions.
+
+explain truthy and falsy 
+Truthy and falsy in JavaScript. In JavaScript, truthy are expressions which evaluates to boolean true value and falsy evaluates to boolean false value. Unlike other languages, true and false values are not limited to boolean data types and comparisons. It can have many other forms.
+
+get vs put vs post vs patch
+Use PUT when you want to modify a singular resource which is already a part of resources collection. PUT replaces the resource in its entirety. Use PATCH if request updates part of the resource. Use POST when you want to add a child resource under resources collection. GET is used to request data from a specified resource. GET is one of the most common HTTP methods.
+
+put vs patch
+The main difference between the PUT and PATCH method is that the PUT method uses the request URI to supply a modified version of the requested resource which replaces the original version of the resource whereas the PATCH method supplies a set of instructions to modify the resource.
+
+post vs put
+PUT is meant as a a method for "uploading" stuff to a particular URI, or overwriting what is already in that URI. POST, on the other hand, is a way of submitting data RELATED to a given URI. As far as i know, PUT is mostly used for update the records. PUT - To update the created document or any other resourc
+
+http status codes
+200 OK
+300 Multiple Choices
+400 Bad Request
+500 Internal Server Error
+
+http vs https
+HTTPS is HTTP with encryption. The only difference between the two protocols is that HTTPS uses TLS (SSL) to encrypt normal HTTP requests and responses. As a result, HTTPS is far more secure than HTTP. A website that uses HTTP has http:// in its URL, while a website that uses HTTPS has https://.
+
+callbacks vs promises
+The main difference between callbacks and promises is that with callbacks you tell the executing function what to do when the asynchronous task completes, whereas with promises the executing function returns a special object to you (the promise) and then you tell the promise what to do when the asynchronous task.
+
+promises vs observables
+a Promise is always asynchronous, while an Observable can be either synchronous or asynchronous, a Promise can provide a single value, whereas an Observable is a stream of values (from 0 to multiple values), you can apply RxJS operators to an Observable to get a new tailored stream.

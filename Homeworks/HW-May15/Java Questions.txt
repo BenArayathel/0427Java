@@ -1,0 +1,115 @@
+Java Questions
+
+What is java?
+Java is a widely used programming language expressly designed for use in the distributed environment of the internet. It is the most popular programming language for Android smartphone applications and is also among the most favored for the development of edge devices and the internet of things.
+
+Why java?
+Java can be used to create complete applications that can run on a single computer or be distributed across servers and clients in a network. As a result, you can use it to easily build mobile applications or run on desktop applications that use different operating systems and servers, such as Linux or Windows.
+
+What is the JVM? JRE? JDK?
+JDK is a software development kit whereas JRE is a software bundle that allows Java program to run, whereas JVM is an environment for executing bytecode. The full form of JDK is Java Development Kit, while the full form of JRE is Java Runtime Environment, while the full form of JVM is Java Virtual Machine.
+
+What is a bit? What is a byte? What is a nibble?
+Nibble. Half a byte (four bits) is called a nibble. Byte. In most computer systems, a byte is a unit of data that is eight binary digits long. A byte is a unit most computers use to represent a character such as a letter, number or typographic symbol (for example, “g”, “5”, or “?”).
+
+What are the naming conventions in java?
+A naming convention is a convention (generally agreed scheme) for naming things. Conventions differ in their intents, which may include to: Allow useful information to be deduced from the names based on regularities.
+
+What are the primitive datatypes in java?
+Primitive types are the most basic data types available within the Java language. There are 8: boolean , byte , char , short , int , long , float and double . These types serve as the building blocks of data manipulation in Java. Such types serve only one purpose — containing pure, simple values of a kind.
+
+What is flow control?
+Flow control is the management of data flow between computers or devices or between nodes in a network so that the data can be handled at an efficient pace. Too much data arriving before a device can handle it causes data overflow, meaning the data is either lost or must be retransmitted.
+
+What does the keyword "break" do? What does the keyword "continue" do?
+The break keyword is used to breaks(stopping) a loop execution, which may be a for loop, while loop, do while or for each loop. The continue keyword is used to skip the particular recursion only in a loop execution, which may be a for loop, while loop, do while or for each loop.
+
+What is short circuiting?
+(Remember, the && operator wants both conditions, on its left and right sides, to be true.) So when Java finds the value on the left side of an && operator to be false, then Java gives up and declares the entire expression to be false. That's called short circuit expression evaluation.
+
+What datatypes does a switch case allow?
+A switch works with the byte , short , char , and int primitive data types. It also works with enumerated types (discussed in Enum Types), the String class, and a few special classes that wrap certain primitive types: Character , Byte , Short , and Integer (discussed in Numbers and Strings).
+
+What is an array?
+An array is used to store a collection of data, but it is often more useful to think of an array as a collection of variables of the same type.
+
+What method do you call to find the size of an array?
+length
+
+What is a method?
+A method is a set of code which is referred to by name and can be called (invoked) at any point in a program simply by utilizing the method's name. Think of a method as a subprogram that acts on data and often returns a value. Each method has its own name.
+
+
+What is a function vs a method?
+A function is a piece of code that is called by name. It can be passed data to operate on (i.e. the parameters) and can optionally return data (the return value). All data that is passed to a function is explicitly passed. A method is a piece of code that is called by a name that is associated with an object.
+
+What is method overloading?
+Method or function overloading allows a method with the same name to be declared more than once given that they have different input parameters.
+
+What is var args in java?
+Variable Arguments (Varargs) in Java. In JDK 5, Java has included a feature that simplifies the creation of methods that need to take a variable number of arguments. This feature is called varargs and it is short-form for variable-length arguments. A method that takes a variable number of arguments is a varargs method.
+
+What is a class?
+Class. A class is a user defined blueprint or prototype from which objects are created.
+
+What is an object?
+A Java object is a combination of data and procedures working on the available data. An object has a state and behavior.Objects are created from templates known as classes. 
+
+What are the four pillars of object oriented programming?
+encapsulation, abstraction, inheritance, and polymorphism
+
+What is a constructor?
+Constructors have the same name as the class or struct, and they usually initialize the data members of the new object. 
+
+What does the keyword "new" do in java?
+In Java, an object is created using the keyword "new".
+
+Can you name 3 types of constructors?
+Default constructor
+no-arg constructor
+Parameterized constructor
+
+Is the default constructor and the no args constructor the same thing?
+The default constructor is a no-args constructor that the Java compiler inserts on your behalf; it contains a default call to super(); (not supper() ) which is the default behavior. If you implement any constructor then you no longer receive a default constructor.
+
+What is the first implicit line of any constructor?
+Constructor chaining - implicit or explicit constructor call as first statement. Before you can initialize an object in a constructor, the object's parent constructor must be called first. If you don't write an explicit call to the super() constructor, Java automatically inserts one in your constructor.
+
+What is the difference between "super" and "this"?
+this and super are two special keywords in Java, which is used to represent current instance of a class and it's super class. ... As I said in the first line, the main difference between this and super in Java is that this represents current instance of a class, while super represent current instance of the parent class.
+
+What is the difference between initializing and instantiating?
+To initialize something is to set it to its initial value. To instantiate something is to create an instance of it.
+
+What are the scopes of a variable in java?
+The scope of a variable is the region of a program in which the variable is visible, i.e., in which it is accessible by its name and can be used. In Java, the scope of a local variable is the body of the method in which it is declared.
+
+What are the access modifiers in java?
+The access modifiers in Java specifies the accessibility or scope of a field, method, constructor, or class. We can change the access level of fields, constructors, methods, and class by applying the access modifier on it.
+
+What is shadowing?
+Shadowing refers to the practice in Java programming of using two variables with the same name within scopes that overlap. When you do that, the variable with the higher-level scope is hidden because the variable with lower-level scope overrides it. The higher-level variable is then “shadowed.”
+
+What is the difference between overloading and overriding?
+Overloading occurs when two or more methods in one class have the same method name but different parameters. Overriding allows a child class to provide a specific implementation of a method that is already provided its parent class.
+
+What is runtime polymorphism? What is compile time polymorphism?
+Runtime polymorphism is also known as dynamic polymorphism or late binding. In runtime polymorphism, the function call is resolved at run time. In contrast, to compile time or static polymorphism, the compiler deduces the object at run time and then decides which function call to bind to the object.
+
+What is type casting?
+Type Casting in Java. Casting is a process of changing one type value to another type. In Java, we can cast one type of value to another type. It is known as type casting.
+
+What is the difference between up and down casting?
+Upcasting is casting to a supertype, while downcasting is casting to a subtype. Upcasting is always allowed, but downcasting involves a type check and can throw a ClassCastException . In your case, a cast from a Dog to an Animal is an upcast, because a Dog is-a Animal.
+
+What is a wrapper class?
+A Wrapper class is a class whose object wraps or contains a primitive data types. In other words, we can wrap a primitive value into a wrapper class object.
+
+What is autoboxing? What is unboxing?
+Autoboxing is the automatic conversion that the Java compiler makes between the primitive types and their corresponding object wrapper classes. For example, converting an int to an Integer, a double to a Double, and so on. If the conversion goes the other way, this is called unboxing.
+
+What is a String?
+String is a sequence of characters, for e.g. “Hello” is a string of 5 characters. In java, string is an immutable object which means it is constant and can cannot be changed once it has been created.
+
+What is the difference betwen String, StringBuilder, and StringBuffer?
+String is immutable whereas StringBuffer and StringBuider are mutable classes. StringBuffer is thread safe and synchronized whereas StringBuilder is not, thats why StringBuilder is more faster than StringBuffer. String concat + operator internally uses StringBuffer or StringBuilder class.

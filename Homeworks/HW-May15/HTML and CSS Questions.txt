@@ -1,0 +1,145 @@
+What is HTML?
+HTML stands for Hyper Text Markup Language
+HTML describes the structure of a Web page
+HTML consists of a series of elements
+HTML elements tell the browser how to display the content
+HTML elements are represented by tags
+HTML tags label pieces of content such as "heading", "paragraph", "table", and so on
+Browsers do not display the HTML tags, but use them to render the content of the page	
+	
+What is required to create an HTML document
+Text editor is required to create HTML document but to test/run it Browser is also required.
+		
+What is a HTML tag?
+The <html> tag represents the root of an HTML document.
+The <html> tag is the container for all other HTML elements (except for the <!DOCTYPE> tag).	
+	
+What is an attribute?
+All HTML elements can have attributes
+Attributes provide additional information about an element
+Attributes are always specified in the start tag
+Attributes usually come in name/value pairs like: name="value"
+		
+What are the two parts of an attribute?	
+All attributes are made up of two parts − a name and a value
+The name is the property you want to set.
+The value is what you want the value of the property to be set and always put within quotations.
+	
+What are the four core attributes of HTML attributes
+ID, CLASS, STYLE, TITLE
+		
+What is the ID attribute?
+The ID attribute uniquely identifies an element within a document.	
+	
+What is the title attribute?	
+The TITLE attribute provides a title for an element and is commonly implemented as a “tooltip” on visual browsers. 
+	
+What is the class attribute?
+The CLASS attribute specifies the element to be a member of one or more classes.	
+	
+Heading Tags
+HTML headings are defined with the <h1> to <h6> tags.
+<h1> defines the most important heading. <h6> defines the least important heading.	
+	
+Paragraph Tag
+The HTML <p> element represents a paragraph. Paragraphs are block-level elements, and notably will automatically close if another block-level element is parsed before the closing </p> tag.	
+	
+Break Tag
+The <br> tag inserts a single line break. The <br> tag is useful for writing addresses or poems. The <br> tag is an empty tag which means that it has no end tag.
+		
+How to make text Italic? Bold? Underline?
+To italicize text, use the <em> or <i> tags
+To bold text, use the <strong> or <b> tags
+To underline a text in HTML, use the <u> tag. The <u> tag deprecated in HTML, but then re-introduced in HTML5. Now it represents a text different from another text stylistically, such as a misspelled word. To underline a text, you can also use the style attribute.
+		
+What is the difference between the <div> and <span> elements
+The difference between span and div is that a span element is in-line and usually used for a small chunk of HTML inside a line (such as inside a paragraph) whereas a div (division) element is block-line (which is basically equivalent to having a line-break before and after it) and used to group larger chunks of code.	
+	
+How do you write a comment in HTML?
+An HTML comment begins with <!-- and the comment closes with -->	
+	
+How would you insert an image into an HTML page?
+In HTML, images are defined with the <img> tag.
+The <img> tag is empty, it contains attributes only, and does not have a closing tag.
+The src attribute specifies the URL (web address) of the image
+		
+How would you make a table in an HTML page?
+An HTML table is defined with the <table> tag.
+Each table row is defined with the <tr> tag. A table header is defined with the <th> tag. By default, table headings are bold and centered. A table data/cell is defined with the <td> tag.	
+	
+What are three types of list tags you can use on an HTML document?
+unordered list
+ordered list 
+description list 
+		
+How would I add a link to another HTML document in the current HTML document?
+To insert a link, use the <a> tag with the href attribute to indicate the address of the target page. Example: <a href="http://www.google.com">
+		
+How would you set a background for an element?	
+The background-color property specifies the background color of an element	
+
+What is an HTML form?
+HTML Form is a document which stores information of a user on a web server using interactive controls. An HTML form contains different kind of information such as username, password, contact number, email id etc. The elements used in an HTML form are check box, input box, radio buttons, submit buttons etc.
+		
+
+What are some of the <form> attributes that you can set for the form?
+<button><fieldset><input><label><meter>	<object><output><select><textarea>	
+
+What is the input tag used for?	
+When writing in HTML, the <input> tag is an inline element used to create both input fields and interactive controls for web-based forms. 
+	
+What are some different values that you can assign to the <input>'s type attribute and 
+what data can you collect?	
+radio submit checkbox hidden email password range
+
+What are three different ways that you can add styles to an HTML document
+Inline styles
+Using the <style> element in the head section of the document
+Using the <link> element, pointing to an external CSS files
+	
+What is CSS?
+CSS stands for Cascading Style Sheets
+CSS describes how HTML elements are to be displayed
+		
+What CSS selectors you can use to access all HTML elements of a certain type, id, or class?
+element p
+element.class p.intro	
+element,element	div, p
+element element	div p
+
+What are three ways to specify color properties?
+Color Keywords
+RGB Color Values
+RGBA Color Values
+		
+What is specificity in CSS?
+CSS Specificity is the set of the rules applied to CSS selectors in order to determine which style is applied to an element.	
+	
+What is the box model in CSS?
+In CSS, the term "box model" is used when talking about design and layout. The CSS box model is essentially a box that wraps around every HTML element. 	
+
+What is a child selector?
+This selector matches all elements that are the immediate children of a specified element.
+		
+What is a descendant selector?
+The descendant selector matches all elements that are descendants of a specified element. 		
+How could you use a selector to choose a specific element with a specific class?	
+To select elements with a specific class, write a period (.) character, followed by the name of the class.
+
+What is bootstrap?
+The most popular HTML, CSS, and JS library in the world.	
+	
+BONUS POINTS	
+	
+What are the two most common values used with the target Attribute?	
+_blank
+_self
+_parent
+_top
+framename
+	
+If i want to submit a form with a particular element that I do not want the user to see is being submitted, what type should I assign to it?
+Password
+
+
+		
