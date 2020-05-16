@@ -72,6 +72,12 @@ public class AccountServiceImplementation implements AccountServiceInterface {
 		return (transaction.matches("^(([1-9]\\d{0,2}(d{3})*)|(([1-9]\\d*)?\\d))(\\.\\d\\d)?$"));
 //		^[0-9]+(\.[0-9]{1,2})?$
 	}
+
+	@Override
+	public Account listAccountByNameAndUserID(String account_name, String user_id) throws BankException {
+		Account account = adi.listAccountByNameAndUserID(account_name, user_id);
+		return account;
+	}
 	
 	
 

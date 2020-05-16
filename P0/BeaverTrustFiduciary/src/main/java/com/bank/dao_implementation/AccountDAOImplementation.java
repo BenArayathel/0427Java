@@ -117,6 +117,31 @@ public class AccountDAOImplementation implements AccountDAOInterface {
 		return account;
 	}
 	
+	@Override
+	public Account listAccountByNameAndUserID(String account_name, String user_id) throws BankException {
+		Account account = new Account();
+		
+		try (Connection conn = DataConnection.getConnection()) {
+			String sql = "select * from bank_account where account_name = ? and user_id = ?";
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setString(1, account_name);
+			ps.setString(2, user_id);
+			ResultSet rs = ps.executeQuery();
+			
+			while (rs.next()) {
+				account.setAccount_id(rs.getString(1));
+				account.setUser_id(rs.getString(2));
+				account.setAccount_name(rs.getString(3));
+				account.setBalance(rs.getDouble(4));
+			}
+			
+		} catch (SQLException e) {
+			Main.myLog.error(e.getMessage() + e.getStackTrace());
+			throw new BankException("Unable to return account by account name and user_id");
+		}
+		return account;
+	}
+	
 	// LOG ALL TRANSACTIONS WHEN MAKING DEPOSIT or WITHDRAWAL
 	public void logTransaction(String amount, String accountName, String user_id, String type) throws BankException {
 		String sql = "{call create_new_transaction(?,?,?,?,?)}";

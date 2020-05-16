@@ -206,3 +206,15 @@ ORA-06512: at line 1
 ORA-06512: at "ADMIN.CREATE_NEW_USER", line 6
 ORA-06512: at line 1
 [Ljava.lang.StackTraceElement;@3e5499cc
+2020-05-16 13:14:03 ERROR Main:139 - ORA-01722: invalid number
+[Ljava.lang.StackTraceElement;@5c10f1c3
+2020-05-16 13:14:03 ERROR Main:46 - Unable to return account by account name and user_id[Ljava.lang.StackTraceElement;@68ad99fe
+2020-05-16 13:15:45 ERROR Main:139 - ORA-01722: invalid number
+[Ljava.lang.StackTraceElement;@235a0c16
+2020-05-16 13:15:45 ERROR Main:46 - Unable to return account by account name and user_id[Ljava.lang.StackTraceElement;@68044f4
+2020-05-16 13:17:35 ERROR Main:139 - ORA-01722: invalid number
+[Ljava.lang.StackTraceElement;@78365cfa
+2020-05-16 13:17:35 ERROR Main:46 - Unable to return account by account name and user_id[Ljava.lang.StackTraceElement;@52de51b6
+2020-05-16 13:25:03 ERROR Main:139 - ORA-01722: invalid number
+[Ljava.lang.StackTraceElement;@aafcffa
+2020-05-16 13:25:03 ERROR Main:46 - Unable to return account by account name and user_id[Ljava.lang.StackTraceElement;@395b56bb

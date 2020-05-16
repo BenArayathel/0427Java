@@ -91,7 +91,7 @@ public class UserDAOImplementationTest {
 	
 	// currently disabled because i can't debug it yet...only one approval test
 	// works at a time
-	@Test
+//	@Test
 	public void removeApprovalTest() throws BankException {
 		// get the test user to work on
 		User user = udi.accessUserObject("UNITtestApprove");

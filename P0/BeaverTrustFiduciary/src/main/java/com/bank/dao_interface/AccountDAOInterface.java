@@ -21,6 +21,7 @@ public interface AccountDAOInterface {
 	//for cleaning up tests
 	public void deleteTransaction(String account_name) throws BankException;
 	public Account listAccountByID(String account_id) throws BankException;
+	public Account listAccountByNameAndUserID(String account_name, String user_id) throws BankException;
 
 	
 
