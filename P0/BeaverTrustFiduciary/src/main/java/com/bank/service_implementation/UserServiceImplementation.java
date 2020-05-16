@@ -40,4 +40,16 @@ public class UserServiceImplementation implements UserServiceInterface {
 		udi.accessUserObject(username);
 		return null;
 	}
+	
+	// EMPLOYEE approves pending account application
+	@Override
+	public void approve(String user_id) throws BankException {
+		udi.approve(user_id);
+	}
+
+	@Override
+	public void removeApproval(String user_id) throws BankException {
+		udi.removeApproval(user_id);
+		
+	}
 }

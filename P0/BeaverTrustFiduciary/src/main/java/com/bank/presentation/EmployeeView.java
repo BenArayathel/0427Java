@@ -88,7 +88,7 @@ public class EmployeeView {
 			Main.myLog.info("Approve customer's account by entering their User_ID: ");
 			user_id = Main.scan.nextLine().toString();
 			try {
-				adi.approve(user_id);		
+				usi.approve(user_id);		
 			} catch (BankException e) {
 				Main.myLog.error(e.getMessage() + e.getStackTrace());
 				Main.myLog.info("Unable to approve that account.");

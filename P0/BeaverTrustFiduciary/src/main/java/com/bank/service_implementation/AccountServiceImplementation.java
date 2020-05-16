@@ -42,6 +42,9 @@ public class AccountServiceImplementation implements AccountServiceInterface {
 		} catch (BankException e) {
 			Main.myLog.error(e.getMessage() + e.getStackTrace());
 			throw new BankException("Problem with Deposit");
+		} catch (NumberFormatException e) {
+			Main.myLog.error(e.getMessage() + e.getStackTrace());
+			throw new BankException("That number isn't formatted correctly");
 		}
 	}
 	
@@ -56,18 +59,18 @@ public class AccountServiceImplementation implements AccountServiceInterface {
 		}
 	}
 
-	// EMPLOYEE approves pending account application
-	@Override
-	public void approve(String user_id) throws BankException {
-		adi.approve(user_id);
-	}
-
 	
 	//LIST ALL TRANSACTIONS for EMPLOYEE
 	@Override
 	public List<Transaction> listAllTransactions() throws BankException {
 		List<Transaction> transactionList = adi.listAllTransactions();
 		return transactionList;
+	}
+	
+	//CHECK THAT TRANSACTIONS ARE IN CORRECT FORMAT
+	public boolean validTransactionFormat(String transaction) throws BankException {
+		return (transaction.matches("^(([1-9]\\d{0,2}(d{3})*)|(([1-9]\\d*)?\\d))(\\.\\d\\d)?$"));
+//		^[0-9]+(\.[0-9]{1,2})?$
 	}
 	
 	

@@ -19,22 +19,26 @@ public class AccountWithdrawal {
 		Main.myLog.info("Enter the amount you are withdrawing: ");
 		withdrawalAmount = Main.scan.nextLine().toString();
 		
-		if (Double.parseDouble(withdrawalAmount) >= 0) {
-			try {
-				asi.withdraw(user, accountName, withdrawalAmount);
-				Main.myLog.info("\nWithdrawal of $" + withdrawalAmount + " complete!");
-				Main.myLog.info("-----------------------------------------------------");
-				AccountsView.view(user);			
-			} catch (BankException e) {
-				Main.myLog.error(e.getMessage() + e.getStackTrace());
-				Main.myLog.info("Could not complete that withdrawal, please check amount");
+		
+		if (asi.validTransactionFormat(withdrawalAmount)) {
+			if (Double.parseDouble(withdrawalAmount) >= 0) {
+				try {
+					asi.withdraw(user, accountName, withdrawalAmount);
+					Main.myLog.info("\nWithdrawal of $" + withdrawalAmount + " complete!");
+					Main.myLog.info("-----------------------------------------------------");
+					AccountsView.view(user);			
+				} catch (BankException e) {
+					Main.myLog.error(e.getMessage() + e.getStackTrace());
+					Main.myLog.info("Could not complete that withdrawal, please check amount");
+					AccountWithdrawal.withdraw(user);
+				}
+			} else {
+				Main.myLog.info("Enter an amount greater than $0.");
 				AccountWithdrawal.withdraw(user);
-			}
+			}			
 		} else {
-			Main.myLog.info("Enter an amount greater than $0.");
+			Main.myLog.info("Please format your input as either dollars or dollars and cents");
 			AccountWithdrawal.withdraw(user);
 		}
-		
 	}
-
 }

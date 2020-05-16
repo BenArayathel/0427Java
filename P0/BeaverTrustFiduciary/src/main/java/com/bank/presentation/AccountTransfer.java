@@ -16,7 +16,7 @@ public class AccountTransfer {
 		String accountFromName;
 		String accountToName;
 		String transferAmount;
-		
+				
 		try {
 			List<Account> userAccountsList = asi.listUserAccounts(username);
 			for(Account i: userAccountsList) {
@@ -30,15 +30,20 @@ public class AccountTransfer {
 				Main.myLog.info("Enter the amount you are transfering: ");
 				transferAmount = Main.scan.nextLine();
 				
-				if (Double.parseDouble(transferAmount) >= 0) {
-					asi.withdraw(user, accountFromName, transferAmount);
-					asi.deposit(user, accountToName, transferAmount);
-					Main.myLog.info("\nTransfer of $" + transferAmount + " complete!");
-					Main.myLog.info("-----------------------------------------------------");
-					AccountsView.view(user);			
+				if (asi.validTransactionFormat(transferAmount)) {
+					if (Double.parseDouble(transferAmount) >= 0) {
+						asi.withdraw(user, accountFromName, transferAmount);
+						asi.deposit(user, accountToName, transferAmount);
+						Main.myLog.info("\nTransfer of $" + transferAmount + " complete!");
+						Main.myLog.info("-----------------------------------------------------");
+						AccountsView.view(user);			
+					} else {
+						Main.myLog.info("Enter an amount greater than $0.");
+						AccountTransfer.transfer(user);
+					}					
 				} else {
-					Main.myLog.info("Enter an amount greater than $0.");
-					AccountDeposit.deposit(user);
+					Main.myLog.info("Please format your input as either dollars or dollars and cents");
+					AccountTransfer.transfer(user);
 				}
 			
 		} catch (BankException e) {

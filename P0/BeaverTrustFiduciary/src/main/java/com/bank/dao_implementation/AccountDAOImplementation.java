@@ -20,6 +20,7 @@ import com.bank.tools.DataConnection;
 
 public class AccountDAOImplementation implements AccountDAOInterface {
 
+	// CREATE new BANK account
 	@Override
 	public Account createAccount(User user, String accountName, String depositAmount) throws BankException {
 		Account account = new Account();
@@ -92,6 +93,30 @@ public class AccountDAOImplementation implements AccountDAOInterface {
 		return accountList;
 	}
 	
+	@Override
+	public Account listAccountByID(String account_id) throws BankException {
+		Account account = new Account();
+		
+		try (Connection conn = DataConnection.getConnection()) {
+			String sql = "select * from bank_account where account_id = ?";
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setString(1, account_id);
+			ResultSet rs = ps.executeQuery();
+			
+			while (rs.next()) {
+				account.setAccount_id(rs.getString(1));
+				account.setUser_id(rs.getString(2));
+				account.setAccount_name(rs.getString(3));
+				account.setBalance(rs.getDouble(4));
+			}
+			
+		} catch (SQLException e) {
+			Main.myLog.error(e.getMessage() + e.getStackTrace());
+			throw new BankException("Unable to return account by id");
+		}
+		return account;
+	}
+	
 	// LOG ALL TRANSACTIONS WHEN MAKING DEPOSIT or WITHDRAWAL
 	public void logTransaction(String amount, String accountName, String user_id, String type) throws BankException {
 		String sql = "{call create_new_transaction(?,?,?,?,?)}";
@@ -156,24 +181,6 @@ public class AccountDAOImplementation implements AccountDAOInterface {
 					throw new BankException("Could not make withdrawal, insufficient funds.");
 				}
 			}
-
-	
-	// EMPLOYEE APPROVING ACCOUNT
-	@Override
-	public void approve(String user_id) throws BankException {
-		String sql = "update bank_user set approved = 1 where user_id = ?";
-		
-		try (Connection conn = DataConnection.getConnection()) {
-			PreparedStatement ps = conn.prepareStatement(sql);
-			ps.setString(1, user_id);
-			ps.executeUpdate();
-		
-		} catch (SQLException e) {
-			Main.myLog.error(e.getMessage() + e.getStackTrace());
-			throw new BankException("Unable to approve account.");
-		}
-	}
-
 	
 	// LIST ALL OF THE TRANSACTION by the EMPLOYEE
 	@Override

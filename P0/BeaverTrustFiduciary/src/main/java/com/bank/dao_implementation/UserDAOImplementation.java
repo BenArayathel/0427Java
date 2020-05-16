@@ -128,6 +128,38 @@ public class UserDAOImplementation implements UserDAOInterface {
 		return user;
 	}
 	
+	// EMPLOYEE APPROVING ACCOUNT
+	@Override
+	public void approve(String user_id) throws BankException {
+		String sql = "update bank_user set approved = 1 where user_id = ?";
+		
+		try (Connection conn = DataConnection.getConnection()) {
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setString(1, user_id);
+			ps.executeUpdate();
+		
+		} catch (SQLException e) {
+			Main.myLog.error(e.getMessage() + e.getStackTrace());
+			throw new BankException("Unable to approve account.");
+		}
+	}
+	
+	// EMPLOYEE REMOVING USER ACCOUNT APPROVAL
+	@Override
+	public void removeApproval(String user_id) throws BankException {
+		String sql = "update bank_user set approved = 0 where user_id = ?";
+		
+		try (Connection conn = DataConnection.getConnection()) {
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setString(1, user_id);
+			ps.executeUpdate();
+		
+		} catch (SQLException e) {
+			Main.myLog.error(e.getMessage() + e.getStackTrace());
+			throw new BankException("Unable to removal account approval.");
+		}
+	}
+	
 	// FOR TESTING and CLEANING UP AFTER TESTS
 	public void deleteUser(String username) throws BankException {
 		String sql = "delete from bank_user where username = ?";

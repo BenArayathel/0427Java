@@ -74,37 +74,60 @@ public class AccountDAOImplementationTest {
 		adi.deleteAccount("TESTtestUNIT");
 	}
 	
-//	@Test
-//	public void depositTest() throws BankException {
-////		User user, String accountName, String depositAmount
-//		
-//		//first create a new user in the db
-//		User user = new User();
-//		user.setUsername("UNITtest");
-//		user.setPassword("test");
-//		udi.createUser(user);
-//		
-//		//then create a new account for that user
-//		Account account = new Account();
-//		String accountName = "UNITtest";
-//		String depositAmount = "10";
-//		adi.createAccount(user, accountName, depositAmount);
-//
-//		// this is the key element of test
-//		adi.deposit(user, accountName, depositAmount);
-//		System.out.println(account.getBalance());
-//		assert(account.getBalance() == 20);
-//		
-//		//clean up
-//		adi.deleteAccount(accountName);
-//		udi.deleteUser("UNITtest");
-//		
-//	}
+	@Test
+	public void depositTest() throws BankException {		
+		// perm test user, test account, no creation no deletion
+		// getBalance, make deposit, getBalance = bal + dep
+		
+		// access the user...
+		User user = udi.accessUserObject("UNITtest");
+		// ...and access the account
+		Account accountBefore = adi.listAccountByID("572");
+		
+		// set up the deposit and the balance before
+		String accountName = "UNITtest";
+		String depositAmount = "10";
+		Double balanceBefore = accountBefore.getBalance();
+//		System.out.println(balanceBefore);
+		
+		// run the function to make a deposit
+		adi.deposit(user, accountName, depositAmount);
+		
+		// find the balance after, access account again, and finally...
+		Account accountAfter = adi.listAccountByID("572");
+		Double balanceAfter = accountAfter.getBalance();
+//		System.out.println(balanceAfter);
+		
+		// test that 10 was added
+		assert(balanceAfter == (balanceBefore + 10.00));
+		
+	}
 	
-//	@Test
-//	public void withdrawalTest() {
-//		
-//	}
+	@Test
+	public void withdrawalTest() throws BankException {
+		// follow pattern of deposit test
+		
+		// access the user...
+		User user = udi.accessUserObject("UNITtest");
+		// ...and access the account
+		Account accountBefore = adi.listAccountByID("572");
+		
+		// set up the deposit and the balance before
+		String accountName = "UNITtest";
+		String withdrawalAmount = "10";
+		Double balanceBefore = accountBefore.getBalance();
+		
+		// run the function to make a deposit
+		adi.withdraw(user, accountName, withdrawalAmount);
+		
+		// find the balance after, access account again, and finally...
+		Account accountAfter = adi.listAccountByID("572");
+		Double balanceAfter = accountAfter.getBalance();
+		
+		// test that 10 was added
+		assert(balanceAfter == (balanceBefore - 10.00));
+		
+	}
 	
 
 }

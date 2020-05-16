@@ -16,11 +16,11 @@ public interface AccountDAOInterface {
 	public List<Account> listUserAccounts(String username) throws BankException;
 	public void deposit(User user, String accountName, String depositAmount) throws BankException;
 	public void withdraw(User user, String accountName, String depositAmount) throws BankException;
-	public void approve(String user_id) throws BankException;
 	public List<Transaction> listAllTransactions() throws BankException;
 	
 	//for cleaning up tests
 	public void deleteTransaction(String account_name) throws BankException;
+	public Account listAccountByID(String account_id) throws BankException;
 
 	
 

@@ -13,6 +13,8 @@ public interface UserDAOInterface {
 	public List<User> listUsers() throws BankException;
 	public boolean loginUser(String username, String password) throws BankException;
 	public User accessUserObject(String username) throws BankException;
+	void approve(String user_id) throws BankException;
+	void removeApproval(String user_id) throws BankException;
 	
 
 }

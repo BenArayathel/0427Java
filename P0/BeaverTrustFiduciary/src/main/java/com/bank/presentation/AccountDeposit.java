@@ -18,13 +18,19 @@ public class AccountDeposit {
 		Main.myLog.info("Enter the amount you are depositing: ");
 		depositAmount = Main.scan.nextLine();
 		
-		if (Double.parseDouble(depositAmount) >= 0) {
-			asi.deposit(user, accountName, depositAmount);
-			Main.myLog.info("\nDeposit of $" + depositAmount + " complete!");
-			Main.myLog.info("-----------------------------------------------------");
-			AccountsView.view(user);			
+		// check that the amount is in money format, and then that it is not negative
+		if (asi.validTransactionFormat(depositAmount)) {
+			if (Double.parseDouble(depositAmount) >= 0) {
+				asi.deposit(user, accountName, depositAmount);
+				Main.myLog.info("\nDeposit of $" + depositAmount + " complete!");
+				Main.myLog.info("-----------------------------------------------------");
+				AccountsView.view(user);			
+			} else {
+				Main.myLog.info("Enter an amount greater than $0.");
+				AccountDeposit.deposit(user);
+			}			
 		} else {
-			Main.myLog.info("Enter an amount greater than $0.");
+			Main.myLog.info("Please format your input as either dollars or dollars and cents");
 			AccountDeposit.deposit(user);
 		}
 		
