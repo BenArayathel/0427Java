@@ -26,7 +26,16 @@ body {
     color: #E1C158;
 }
 
-.submitButton {
+#submitButton {
     margin-top: 10px;
     margin-bottom: 10px;
+}
+
+.loginField {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.underline {
+    text-decoration: underline;
 }
