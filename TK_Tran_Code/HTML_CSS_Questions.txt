@@ -1,0 +1,59 @@
+--[ HTML & CSS Questions ]--
+
+What is HTML?
+	Hypertext Markup Language; displays content on a webpage.
+What is required to create an HTML document
+	Text editor, and a browser.
+What is a HTML tag?
+	<html> represents the root of an HTML document; a container for all other HTML elements (except <!DOCTYPE> tag).
+What is an attribute?
+	Provides additional information about an HTML element; specified in the start tag; usually name/value pairs like name="value".
+What are the two parts of an attribute?
+	Name and value like name="value".
+What are the four core attributes of HTML attributes
+	class, id, title, ?
+What is the ID attribute?
+	Specifies a unique ID for an HTML element; used to point to a style in a stylesheet or by JavaScript to manipulate the element.
+What is the title attribute?
+	Specifies extra information about an element; shows as tooltip text when mouse hovers over element.
+	Can be used on ANY HTML element, but it's not that useful.
+What is the class attribute?
+	Specifies one (or more) classnames for an element; MOSTLY used to point to a class in a stylesheet (but can be used by JS).
+Heading Tags
+	Titles or subtitles that you wish to display on a webpage.
+	Ranges from h1 to h6.
+Paragraph Tag
+	Always starts on a new line and is usually a block of text.
+	Browser automatically adds whitespace (a margin) before and after the paragraph.
+Break Tag
+	Inserts a single line break.
+	Considered an "empty tag" which means it has no end tag.
+How to make text Italic? Bold? Underline?
+	Italic = <em></em>
+	Bold = <b></b>
+	Underline = <u></u>
+What is the difference between the <div> and <span> elements
+	
+How do you write a comment in HTML?
+How would you insert an image into an HTML page?
+How would you make a table in an HTML page?
+What are three types of list tags you can use on an HTML document?
+How would I add a link to another HTML document in the current HTML document?
+How would you set a background for an element?
+What is an HTML form?
+What are some of the <form> attributes that you can set for the form?
+What is the input tag used for?
+What are some different values that you can assign to the <input>'s type attribute and what data can you collect?
+What are three different ways that you can add styles to an HTML document
+What is CSS?
+What CSS selectors you can use to access all HTML elements of a certain type, id, or class?
+What are three ways to specify color properties?
+What is specificity in CSS?
+What is the box model in CSS?
+What is a child selector?
+What is a descendant selector?
+How could you use a selector to choose a specific element with a specific class?
+What is bootstrap?
+BONUS POINTS
+What are the two most common values used with the target Attribute?
+If i want to submit a form with a particular element that I do not want the user to see is being submitted, what type should I assign to it?

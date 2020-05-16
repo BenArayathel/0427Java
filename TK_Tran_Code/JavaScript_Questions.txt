@@ -1,0 +1,53 @@
+--[ JavaScript Questions ]--
+
+What is the DOM?
+What is ECMAScript and how does it relate to JavaScript?
+What is JavaScript?
+What are some advantages that can be gained through using JavaScript
+What does it mean that JavaScript is loosely typed?
+What does it mean that JavaScript is an interpreted language?
+What tag would you use to wrap around a block of JavaScript on an HTML document and where would you need to place it?
+Is JavaScript case sensitive?
+How do you insert a comment in JavaScript?
+Does JavaScript has data types? If it does, what are they?
+What are three different ways you can create variables in JavaScript and when would you use each?
+What are global variables? How are these variable declared and what are the problems associated with using them?
+What JavaScript values are considered falsey? What are considered truthy?
+What are undeclared and undefined variables?
+What is === operator?
+What is the typeof operator?
+What is hoisting in JavaScript?
+What are anonymous functions?
+What is an IIFE?
+How can you add new elements dynamically?
+Explain how can you submit a form using JavaScript?
+What is an event?
+What are some common JavaScript events?
+What are event listeners? Name three ways that you can implement event listeners.
+What is JSON in Ajax?
+What is Ajax?
+What are the advantages of Ajax?
+What are the disadvantages of Ajax?
+Can we add more than one ‘document.ready’ function in a page?
+What is the for-in loop in JavaScript?
+What is the for-of loop in JavaScript?
+What are all the technologies used by Ajax?
+XHR Vs Fetch API
+What are Promises?
+What is Type Coercion
+Explain call back functions
+Java Vs javascript
+ECMAscript Vs javascript
+JS Objects Vs Arrays
+Explain rest operator in Js
+explain dom tree
+what are closures in JS
+explain arrow functions
+explain truthy and falsy 
+get vs put vs post vs patch
+put vs patch
+post vs put
+http status codes
+http vs https
+callbacks vs promises
+promises vs observables

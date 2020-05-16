@@ -3,46 +3,46 @@ console.log("Testing Console");
 // AJAX Normal Method --------------------------------------------------------------------------------
 
 window.onload = function () {
-    // 1. Prepares event listener for submit button when window loads
-    this.document.getElementById("swSubmit").addEventListener("click", getSW);
+	// 1. Prepares event listener for submit button when window loads
+	this.document.getElementById("swSubmit").addEventListener("click", getSW);
 }
 
 function getSW() {
-    // Extracts value of user input
-    let swID = document.getElementById("swID").value;
+	// Extracts value of user input
+	let swID = document.getElementById("swID").value;
 
-    // 2. Creates XMLHttpRequest object
-    let xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function () {
-        console.log(`Ready state has changed: ${xhttp.readyState}`);
+	// 2. Creates XMLHttpRequest object
+	let xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function () {
+		console.log(`Ready state has changed: ${xhttp.readyState}`);
 
-        // Only executes if response if readyState is ready (4), and HTTP status is successful (200)
-        if (xhttp.readyState == 4 && xhttp.status == 200) {
-            console.log("HTTP Completed!");
+		// Only executes if response if readyState is ready (4), and HTTP status is successful (200)
+		if (xhttp.readyState == 4 && xhttp.status == 200) {
+			console.log("HTTP Completed!");
 
-            // 4 & 5 done server-side; response send back and gets parsed into an object
-            let responseObject = JSON.parse(xhttp.responseText);
+			// 4 & 5 done server-side; response send back and gets parsed into an object
+			let responseObject = JSON.parse(xhttp.responseText);
 
-            // Invoking callback function, passing in response object as argument
-            DOMManip(responseObject);
-        }
-    }
+			// Invoking callback function, passing in response object as argument
+			DOMManip(responseObject);
+		}
+	}
 
-    // 3. Sends a request, passing in value of user input to server
-    xhttp.open("GET", `https://swapi.dev/api/people/${swID}`, true); // true = async, false = sync
-    xhttp.send();
+	// 3. Sends a request, passing in value of user input to server
+	xhttp.open("GET", `https://swapi.dev/api/people/${swID}`, true); // true = async, false = sync
+	xhttp.send();
 }
 
 // 7. Pick apart the response object and assigns it to an HTML element
 // DOMManip considered a "callback function"; one passed as a param to another func, and called back after some task is completed
 function DOMManip(JSON) {
-    document.getElementById("swName").innerText = `Name: ${JSON.name}`;
-    document.getElementById("swHeight").innerText = `Height: ${JSON.height}`;
-    document.getElementById("swMass").innerText = `Mass: ${JSON.mass}`;
-    document.getElementById("swHairColor").innerText = `Hair Color: ${JSON.hair_color}`;
-    document.getElementById("swSkinColor").innerText = `Skin Color: ${JSON.skin_color}`;
-    document.getElementById("swEyeColor").innerText = `Eye Color: ${JSON.eye_color}`;
-    document.getElementById("swBirthYear").innerText = `Birth Year: ${JSON.birth_year}`;
+	document.getElementById("swName").innerText = `Name: ${JSON.name}`;
+	document.getElementById("swHeight").innerText = `Height: ${JSON.height}`;
+	document.getElementById("swMass").innerText = `Mass: ${JSON.mass}`;
+	document.getElementById("swHairColor").innerText = `Hair Color: ${JSON.hair_color}`;
+	document.getElementById("swSkinColor").innerText = `Skin Color: ${JSON.skin_color}`;
+	document.getElementById("swEyeColor").innerText = `Eye Color: ${JSON.eye_color}`;
+	document.getElementById("swBirthYear").innerText = `Birth Year: ${JSON.birth_year}`;
 }
 
 /*
