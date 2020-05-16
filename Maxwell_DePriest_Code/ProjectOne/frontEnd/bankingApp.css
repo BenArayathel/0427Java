@@ -1,0 +1,32 @@
+.logoHeader {
+    background-color: darkgreen;
+    color: #E1C158;
+}
+
+.mainBody {
+    background-color: darkgreen;
+    color: #E1C158;
+}
+
+body {
+    background-image: url("images/forest1.jpg");
+}
+
+.navBar {
+    background-color: "#d4af37";
+}
+
+.nav-link {
+    background-color: rgb(238, 220, 121);
+    color: black;
+    font-weight : bold;
+}
+
+.yellow-font {
+    color: #E1C158;
+}
+
+.submitButton {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
