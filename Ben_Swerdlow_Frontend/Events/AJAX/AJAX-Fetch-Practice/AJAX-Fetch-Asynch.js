@@ -10,7 +10,9 @@ window.onload = function() {
     this.document.getElementById("jphSubPostF")
         .addEventListener("click", this.postToPlaceHolderFetch);
     this.document.getElementById("jphSubPostAW")
-        .addEventListener("click", this.postToPlaceHolderAW);
+        .addEventListener("click", this.getPokeInfo);
+    this.document.getElementById("getPokeSprite")
+        .addEventListener("click", this.getPokeInfo);
 }
 
 // AJAX Syntax
@@ -171,4 +173,50 @@ function DOMManipulationPost(contentJSON) {
     jphPostTitle.innerText = contentJSON.title;
     let jphPostBody = document.getElementById("jphPostBody");
     jphPostBody.innerText = contentJSON.body;
+}
+
+function getPokeInfo() {
+    let pokeNum = document.getElementById("pokeNum").value;
+    console.log(pokeNum);
+    fetch("https://pokeapi.co/api/v2/pokemon/"+pokeNum)
+        .then(pokeResponse => {
+            return pokeResponse.json()
+        }).then(pokeInfoJSON => {
+            showPokeSprites(pokeInfoJSON)
+        }).catch(pokeError => {
+            console.error(pokeError);
+        });
+}
+
+function showPokeSprites(pokeInfoJSON) {
+    let pokeId = pokeInfoJSON.id;
+    let spriteArea = document.getElementById("spriteArea");
+    let name = document.getElementById("name");
+    let types = document.getElementById("types");
+    const pokeX = Math.round(1024/25);
+    const pokeY = Math.round(811/20);
+
+    if (pokeId <= 493) {
+        spriteArea.style.width = pokeX+"px";
+        spriteArea.style.height = pokeY+"px";
+        let pokeImageX = ((pokeId-1) % 25)*pokeX;
+        let pokeImageY = Math.trunc((pokeId-1)/25)*pokeY;
+        spriteArea.style.backgroundPositionX = -pokeImageX+"px "
+        spriteArea.style.backgroundPositionY = -pokeImageY+"px";
+    } else {
+        spriteArea.style.width = 0;
+        spriteArea.style.height = 0;
+    }
+
+    // x y
+    let pokeName = pokeInfoJSON.name[0].toUpperCase()+pokeInfoJSON.name.slice(1);
+    name.innerText = `#${pokeInfoJSON.id}: ${pokeName}`;
+
+    let pokeTypes = pokeInfoJSON.types[0].type.name[0].toUpperCase()
+        +pokeInfoJSON.types[0].type.name.slice(1);
+    if (pokeInfoJSON.types.length > 1){
+        pokeTypes += ", "+pokeInfoJSON.types[1].type.name[0].toUpperCase()
+        +pokeInfoJSON.types[1].type.name.slice(1);
+    }
+    types.innerText = pokeTypes;
 }
