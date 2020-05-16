@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <style>
+        body {
+          background-color: lightblue;
+        }
+    
+        h1 {
+          font-family: sans-serif;
+          text-align: center;
+          padding-top: 120px;
+          font-size: 50px;
+          margin: -20px;
+        }
+    
+        p {
+          font-family: sans-serif;
+          color: black;
+          text-align: center;
+        }
+      </style>
+<head>
+ <script type="text/javascript">
+ var Url = "https://httpbin.org/post";
+ var xhr = new XMLHttpRequest();
+ xhr.open('POST', Url, true);
+ xhr.send();
+ xhr.onreadystatechange = processRequest;
+ function processRequest(e) {
+ if (xhr.readyState == 4 && xhr.status == 200) {
+ var response1 = JSON.parse(xhr.responseText);
+ document.getElementById("origin").innerHTML = response1.origin;
+ document.getElementById("url").innerHTML = response1.url;
+ }
+ }
+ </script>
+</head>
+<body>
+<center>
+ Javascript Post Request Test
+<br><br> 
+ <table border="1">
+ <tr><td>origin :</td><td id="origin"></td></tr>
+ <tr><td>url :</td><td id="url"> </td></tr>
+ </table>
+ </center>
+</body>
+</html>

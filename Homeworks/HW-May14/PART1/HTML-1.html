@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="Mystyle.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <style type="text/css">
+        body { background: black !important; } /* Adding !important forces the browser to overwrite the default style applied by Bootstrap */
+     </style>
+    
+</head>
+
+<body>  
+    <audio id="chatAudio" > 
+        <source src= "https://media.geeksforgeeks.org/wp-content/uploads/20190531135120/beep.mp3" type="audio/mpeg"> 
+    </audio>
+    
+<!--
+    <script> 
+        var audio = document.getElementById('chatAudio'); 
+        function play(){ 
+            audio.play() 
+        } 
+    </script> 
+  -->
+    <section>
+        <img src="/Users/amir/Desktop/Amir's Documents/AmirSeifpour.jpg" alt="Girl in a jacket" style="width:250px;height:220px;">
+        <h1>ABOUT ME</h1>
+        <p>MY hobbies are sport, study , and movies.</p>
+      </section>
+
+      <section>
+        <h1>Utilities</h1>
+        <a href="https://www.w3schools.com/html/">Visit our HTML tutorial</a>
+        <a href="HTML-2.html">Under construction</a>
+        <table style="width:10%">
+            <tr>
+              <th>Firstname</th>
+              <th>Lastname</th> 
+            </tr>
+            <tr>
+              <td>Amir</td>
+              <td>Seifpour</td> 
+            </tr>
+          </table>
+          <ul>
+            <h3>Favorite Drinks</h3>
+            <li>Coffee</li>
+            <li>Tea</li>
+            <li>Milk</li>
+          </ul>
+          <ol>
+            <h3>Favorite Fruits</h3>
+    <div onclick="alert('duv again')">
+            <li>Apple</li>
+        <div onclick="event.stopPropagation(); alert('div')">
+            <li>Orange</li>
+            <li>Banana</li>
+        </div>
+    </div>
+          </ol>
+      </section>
+
+
+      
+      <h2>Alert Messages</h2>
+<div>
+      <p>Click on the "x" symbol to close the alert message.</p>
+      <div class="alert">
+        <span class="closebtn" onclick="this.parentElement.style.display='none'; alert('div1')">&times;</span> 
+        <strong>Danger!</strong> Indicates a dangerous or potentially negative action.
+      </div>
+      <p>Click on the "x" symbol to close the alert message.</p>
+      <div class="safe">
+        <span class="closebtn" onclick="this.parentElement.style.display='none'; alert('div2')">&times;</span> 
+        <strong>Safe!</strong> Indicates a dangerous or potentially negative action.
+      </div>
+      <p>Click on the "x" symbol to close the alert message.</p>
+      <div class="happy">
+        <span class="closebtn" onclick="this.parentElement.style.display='none'; alert('div3')">&times;</span> 
+        <strong>Happy!</strong> Indicates a dangerous or potentially negative action.
+      </div>
+  
+
+</div>
+      <footer>
+          @Design by Internet
+      </footer>
+      <div class="container">
+        <h2>Button Styles</h2>
+        <button onclick="alert(`I ain't lying`)" type="button" class="btn btn-danger">Basic</button>
+        <button onclick="myFunc('This is an argument')" type="button" class="btn btn-success">Default</button>
+        <button onclick="play()" type="button" class="btn btn-primary" >Revature</button>
+         
+    
+        <button type="button" class="btn btn-success">Success</button>
+        <button type="button" class="btn btn-info">Info</button>
+        <button type="button" class="btn btn-warning">Warning</button>
+        <button type="button" class="btn btn-danger">Danger</button>
+        <button type="button" class="btn btn-link">Link</button>      
+      </div>
+<tr>
+  <td class="bg-primary">...</td>
+  <td class="bg-success">...</td>
+  <td class="bg-warning">...</td>
+  <td class="bg-danger">...</td>
+  <td class="bg-info">...</td>
+</tr>
+      <style>
+        #snowflakeContainer {
+          position: absolute;
+          left: 0px;
+          top: 0px;
+          display: none;
+        }
+      
+        .snowflake {
+          position: fixed;
+          background-color: yellow;
+          user-select: none;
+          z-index: 1000;
+          pointer-events: none;
+          border-radius: 50%;
+          width: 10px;
+          height: 10px;
+        }
+      </style>
+      
+      <div id="snowflakeContainer">
+        <span class="snowflake"></span>
+      </div>
+      
+      <script>
+        // Array to store our Snowflake objects
+        var snowflakes = [];
+      
+        // Global variables to store our browser's window size
+        var browserWidth;
+        var browserHeight;
+      
+        // Specify the number of snowflakes you want visible
+        var numberOfSnowflakes = 50;
+      
+        // Flag to reset the position of the snowflakes
+        var resetPosition = false;
+      
+        // Handle accessibility
+        var enableAnimations = false;
+        var reduceMotionQuery = matchMedia("(prefers-reduced-motion)");
+      
+        // Handle animation accessibility preferences 
+        function setAccessibilityState() {
+          if (reduceMotionQuery.matches) {
+            enableAnimations = false;
+          } else { 
+            enableAnimations = true;
+          }
+        }
+        setAccessibilityState();
+      
+        reduceMotionQuery.addListener(setAccessibilityState);
+      
+        //
+        // It all starts here...
+        //
+        function setup() {
+          if (enableAnimations) {
+            window.addEventListener("DOMContentLoaded", generateSnowflakes, false);
+            window.addEventListener("resize", setResetFlag, false);
+          }
+        }
+        setup();
+      
+        //
+        // Constructor for our Snowflake object
+        //
+        function Snowflake(element, speed, xPos, yPos) {
+          // set initial snowflake properties
+          this.element = element;
+          this.speed = speed;
+          this.xPos = xPos;
+          this.yPos = yPos;
+          this.scale = 1;
+      
+          // declare variables used for snowflake's motion
+          this.counter = 0;
+          this.sign = Math.random() < 0.5 ? 1 : -1;
+      
+          // setting an initial opacity and size for our snowflake
+          this.element.style.opacity = (.1 + Math.random()) / 3;
+        }
+      
+        //
+        // The function responsible for actually moving our snowflake
+        //
+        Snowflake.prototype.update = function () {
+          // using some trigonometry to determine our x and y position
+          this.counter += this.speed / 5000;
+          this.xPos += this.sign * this.speed * Math.cos(this.counter) / 40;
+          this.yPos += Math.sin(this.counter) / 40 + this.speed / 30;
+          this.scale = .5 + Math.abs(10 * Math.cos(this.counter) / 20);
+      
+          // setting our snowflake's position
+          setTransform(Math.round(this.xPos), Math.round(this.yPos), this.scale, this.element);
+      
+          // if snowflake goes below the browser window, move it back to the top
+          if (this.yPos > browserHeight) {
+            this.yPos = -50;
+          }
+        }
+      
+        //
+        // A performant way to set your snowflake's position and size
+        //
+        function setTransform(xPos, yPos, scale, el) {
+          el.style.transform = `translate3d(${xPos}px, ${yPos}px, 0) scale(${scale}, ${scale})`;
+        }
+      
+        //
+        // The function responsible for creating the snowflake
+        //
+        function generateSnowflakes() {
+      
+          // get our snowflake element from the DOM and store it
+          var originalSnowflake = document.querySelector(".snowflake");
+      
+          // access our snowflake element's parent container
+          var snowflakeContainer = originalSnowflake.parentNode;
+          snowflakeContainer.style.display = "block";
+      
+          // get our browser's size
+          browserWidth = document.documentElement.clientWidth;
+          browserHeight = document.documentElement.clientHeight;
+      
+          // create each individual snowflake
+          for (var i = 0; i < numberOfSnowflakes; i++) {
+      
+            // clone our original snowflake and add it to snowflakeContainer
+            var snowflakeClone = originalSnowflake.cloneNode(true);
+            snowflakeContainer.appendChild(snowflakeClone);
+      
+            // set our snowflake's initial position and related properties
+            var initialXPos = getPosition(50, browserWidth);
+            var initialYPos = getPosition(50, browserHeight);
+            var speed = 5 + Math.random() * 40;
+      
+            // create our Snowflake object
+            var snowflakeObject = new Snowflake(snowflakeClone,
+              speed,
+              initialXPos,
+              initialYPos);
+            snowflakes.push(snowflakeObject);
+          }
+      
+          // remove the original snowflake because we no longer need it visible
+          snowflakeContainer.removeChild(originalSnowflake);
+      
+          moveSnowflakes();
+        }
+      
+        //
+        // Responsible for moving each snowflake by calling its update function
+        //
+        function moveSnowflakes() {
+      
+          if (enableAnimations) {
+            for (var i = 0; i < snowflakes.length; i++) {
+              var snowflake = snowflakes[i];
+              snowflake.update();
+            }      
+          }
+      
+          // Reset the position of all the snowflakes to a new value
+          if (resetPosition) {
+            browserWidth = document.documentElement.clientWidth;
+            browserHeight = document.documentElement.clientHeight;
+      
+            for (var i = 0; i < snowflakes.length; i++) {
+              var snowflake = snowflakes[i];
+      
+              snowflake.xPos = getPosition(50, browserWidth);
+              snowflake.yPos = getPosition(50, browserHeight);
+            }
+      
+            resetPosition = false;
+          }
+      
+          requestAnimationFrame(moveSnowflakes);
+        }
+      
+        //
+        // This function returns a number between (maximum - offset) and (maximum + offset)
+        //
+        function getPosition(offset, size) {
+          return Math.round(-1 * offset + Math.random() * (size + 2 * offset));
+        }
+      
+        //
+        // Trigger a reset of all the snowflakes' positions
+        //
+        function setResetFlag(e) {
+          resetPosition = true;
+        }
+      </script>
+
+
+
+<script src= 'https://cdn.rawgit.com/admsev/jquery-play-sound/master/jquery.playSound.js'> </script> 
+<script type = "text/javascript" src = "jsevents.js"></script> 
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+</body>

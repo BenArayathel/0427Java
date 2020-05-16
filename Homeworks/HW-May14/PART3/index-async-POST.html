@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Display IP Address</title>
+  <style>
+    body {
+      background-color: lightblue;
+    }
+
+    h1 {
+      font-family: sans-serif;
+      text-align: center;
+      padding-top: 120px;
+      font-size: 50px;
+      margin: -20px;
+    }
+
+    p {
+      font-family: sans-serif;
+      color: black;
+      text-align: center;
+    }
+  </style>
+</head>
+<style>
+  body {
+    background-color: lightblue;
+  }
+
+  h1 {
+    font-family: sans-serif;
+    text-align: center;
+    padding-top: 120px;
+    font-size: 50px;
+    margin: -20px;
+  }
+
+  p {
+    font-family: sans-serif;
+    color: black;
+    text-align: center;
+  }
+</style>
+
+<body>
+<h3>Please ispect the browser and check the network</h3>
+<script type="text/javascript">
+var Url = "https://httpbin.org/post";
+ var xhr = new XMLHttpRequest();
+ xhr.open('POST', Url, true);
+ xhr.send();
+ xhr.onreadystatechange = processRequest;
+
+ const processRequest = async(e) => { 
+ if (xhr.readyState == 4 && xhr.status == 200) {
+ var response1 = JSON.parse(xhr.responseText);
+ document.getElementById("origin").innerHTML = response1.origin;
+ document.getElementById("url").innerHTML = response1.url;
+ }
+ }
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <style>
+    body {
+      background-color: lightblue;
+    }
+
+    h1 {
+      font-family: sans-serif;
+      text-align: center;
+      padding-top: 120px;
+      font-size: 50px;
+      margin: -20px;
+    }
+
+    p {
+      font-family: sans-serif;
+      color: black;
+      text-align: center;
+    }
+  </style>
+<body>
+    <script>
+        const loadDoc = async() => {
+          var xhttp = new XMLHttpRequest();
+          xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+              document.getElementById("demo").innerHTML =
+              this.responseText;
+            }
+          };
+          xhttp.open("GET", "Ajax-GET-info.txt", false);
+          xhttp.send();
+        }
+      </script>
+<div id="demo">
+<h1>The XMLHttpRequest Object</h1>
+<button type="button" onclick="loadDoc()">Change Content</button>
+</div>

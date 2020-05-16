@@ -1,0 +1,65 @@
+What is JAXP?
+What is JAXP? JAXP stands for Java API for XML Processing. JAXP enables Java applications to parse, transform, validate and query XML documents using an API that is independent of a particular XML processor implementation. JAXP provides a pluggability layer to enable vendors to provide their own implementations without introducing dependencies in application code. Using this software, application and tool developers can build fully-functional XML-enabled Java applications for e-commerce, application integration, and web publishing
+
+REFERENCE
+-----------------------------------------------------------------------------------------
+http://www.herongyang.com/XSD/JAXP-What-Is-It.html
+
+Consumption of a REST API 
+A web service is a client as well as a server application that is used to communicate over the World Wide Web's (WWW) Hypertext Transfer Protocol (HTTP). According to the World Wide Web Consortium (W3C), the web services offer a regular way for interoperation between software applications that are running on various types of platforms as well as frameworks.
+
+The REST Architecture
+REST is abbreviated as Representational State Transfer is a phrase coined by Mr. Roy Fielding in the year 2000. It is a structural design approach for crafting loosely attached applications using HTTP, which is often implemented in the growth of web services. REST web services do not impose any rule concerning how it needs to be put into practice at a subordinate level; it just places high-level design guiding principles and absconds you to think of our implementation.
+In this architecture, a REST server offers contacts to resources, which also helps in client accesses as well as helps in updating the resources. In this, the resources are recognized by URIs / global IDs. This API employs a variety of representations for signifying a resource like JSON - which is very popular among them all, text, XML formats. REST architecture-oriented web services are termed as RESTful web services.
+
+
+RESTful Methods
+The REST architecture makes use of four commonly used HTTP methods. These are:
+Method	Description
+GET	This method helps in offering read-only access for the resources.
+POST	This method is implemented for creating a new resource.
+DELETE	This method is implemented for removing a resource.
+PUT	This method is implemented for updating an existing resource or creating a fresh one.
+
+REFERENCE
+-----------------------------------------------------------------------------------------
+https://www.w3schools.in/restful-web-services/intro/
+
+Callback : Simply put: A callback is a function that is to be executed after another function has finished executing — hence the name ‘call back’.
+More complexly put: In JavaScript, functions are objects. Because of this, functions can take functions as arguments, and can be returned by other functions. Functions that do this are called higher-order functions. Any function that is passed as an argument is called a callback function.
+That’s a lot of words. Lets look at some examples to break this down a little more.
+Why do we need Callbacks?
+For one very important reason — JavaScript is an event driven language. This means that instead of waiting for a response before moving on, JavaScript will keep executing while listening for other events.
+
+Observable : An Observable is like a Stream (in many languages) and allows to pass zero or more events where the callback is called for each event.
+Often Observable is preferred over Promise because it provides the features of Promise and more. With Observable it doesn't matter if you want to handle 0, 1, or multiple events. You can utilize the same API in each case.
+Observable also has the advantage over Promise to be cancelable. If the result of an HTTP request to a server or some other expensive async operation isn't needed anymore, the Subscription of an Observable allows to cancel the subscription, while a Promise will eventually call the success or failed callback even when you don't need the notification or the result it provides anymore.
+Observable provides operators like map, forEach, reduce, ... similar to an array
+There are also powerful operators like retry(), or replay(), ... that are often quite handy.
+
+Promise : A Promise handles a single event when an async operation completes or fails.
+Note: There are Promise libraries out there that support cancellation, but ES6 Promise doesn't so far.
+
+REFERENCE
+-----------------------------------------------------------------------------------------
+https://stackoverflow.com/questions/37364973/what-is-the-difference-between-promises-and-observables
+https://codeburst.io/javascript-what-the-heck-is-a-callback-aba4da2deced
+
+DOM manipulation
+The Document Object Model (DOM) is a programming interface for HTML and XML documents. It represents the page so that programs can change the document structure, style, and content. The DOM represents the document as nodes and objects. That way, programming languages can connect to the page.
+A Web page is a document. This document can be either displayed in the browser window or as the HTML source. But it is the same document in both cases. The Document Object Model (DOM) represents that same document so it can be manipulated. The DOM is an object-oriented representation of the web page, which can be modified with a scripting language such as JavaScript.
+The W3C DOM and WHATWG DOM standards are implemented in most modern browsers. Many browsers extend the standard, so care must be exercised when using them on the web where documents may be accessed by various browsers with different DOMs.
+
+REFERENCE
+------------------------------------------------------------------------------------------
+https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Introduction
+
+Utilize an image/sprite
+An image sprite is a collection of images put into a single image.
+A web page with many images can take a long time to load and generates multiple server requests.
+Using image sprites will reduce the number of server requests and save bandwidth.
+
+REFERENCE
+------------------------------------------------------------------------------------------
+https://www.w3schools.com/css/css_image_sprites.asp
+

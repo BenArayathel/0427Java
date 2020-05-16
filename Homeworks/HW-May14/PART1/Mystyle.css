@@ -1,0 +1,71 @@
+body {
+    background-color: lightblue;
+  }
+  
+  h1 {
+    color: navy;
+    margin-left: 20px;
+    background-color: greenyellow;
+  }
+
+  h2 {
+    color: yellow;
+    margin-left: 20px;
+  }
+
+  h3 {
+    color:springgreen;
+    margin-left: 20px;
+  }
+
+  a{
+    color: magenta;
+    margin-left: 20px;
+  }
+
+  table{
+    color: magenta;
+    margin-left: 20px;
+  }
+
+  ol, ul, footer{
+    color: magenta;
+    margin-left: 20px;
+  }
+  P{
+    color: magenta;
+  }
+
+
+  .alert {
+    padding: 20px;
+    background-color: #f44336;
+    color: white;
+  }
+
+  .safe {
+    padding: 20px;
+    background-color: greenyellow;
+    color: white;
+  }
+
+  .happy {
+    padding: 20px;
+    background-color:lightskyblue;
+    color: white;
+  }
+  
+  .closebtn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  .closebtn:hover {
+    color: black;
+  }

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Display IP Address</title>
+  <style>
+    body {
+      background-color: lightblue;
+    }
+
+    h1 {
+      font-family: sans-serif;
+      text-align: center;
+      padding-top: 120px;
+      font-size: 50px;
+      margin: -20px;
+    }
+
+    p {
+      font-family: sans-serif;
+      color: black;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <h1 id=ipText></h1>
+  <p>(Your IP address)</p>
+  <script>
+    fetch("https://api.ipify.org?format=json")
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (myJson) {
+        document.querySelector("#ipText").innerHTML = myJson.ip;
+      })
+      .catch(function (error) {
+        console.log("Error: " + error);
+      });
+  </script>
+</body>
+
+</html>
