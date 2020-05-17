@@ -1,7 +1,7 @@
 --[ Java Questions ]--
 
-What is java?
-Why java?
+What is Java?
+Why Java?
 What is the JVM? JRE? JDK?
 What is a bit? What is a byte? What is a nibble?
 What are the naming conventions in java?

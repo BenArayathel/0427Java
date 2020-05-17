@@ -1,6 +1,7 @@
 --[ JavaScript Questions ]--
 
 What is the DOM?
+	Document Object Model; created by browser when a webpage is loaded.
 What is ECMAScript and how does it relate to JavaScript?
 What is JavaScript?
 What are some advantages that can be gained through using JavaScript

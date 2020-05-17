@@ -33,27 +33,91 @@ How to make text Italic? Bold? Underline?
 	Bold = <b></b>
 	Underline = <u></u>
 What is the difference between the <div> and <span> elements
-	
+	Span is in-line and used for small chunks of HTML inside a line.
+	Div is block-line and used for larger chunks of code.
 How do you write a comment in HTML?
+	// or /* */
 How would you insert an image into an HTML page?
+	<img src="#" alt="#">
 How would you make a table in an HTML page?
+	<table>
+		<tr>
+			<th>First Name</th>
+			<th>Last Name</th>
+		</tr>
+		<tr>
+			<td>John</td>
+			<td>Doe</td>
+		</tr>
+		<tr>
+			<td>Jane</td>
+			<td>Doe</td>
+		</tr>
+	</table>
 What are three types of list tags you can use on an HTML document?
+	<ul>
+		<li></li>
+		<li></li>
+	</ul>
+	<ol>
+		<li></li>
+		<li></li>
+	</ol>
 How would I add a link to another HTML document in the current HTML document?
+	<a href="">Click for Next Page</a>
 How would you set a background for an element?
+	In CSS, select the element and add a background-image attribute with the url of an image.
 What is an HTML form?
+	A group of elements collectively used to collect user input.
+	User input can then be sent to server for processing.
 What are some of the <form> attributes that you can set for the form?
+	input, textarea, button, select, option, optgroup, fieldset, label, output, etc.
 What is the input tag used for?
+	Specifies an input field where users can enter data.
+	Used within <form> to declare input controls that allow users to enter data.
+	Can vary many ways depending on the type attribute.
 What are some different values that you can assign to the <input>'s type attribute and what data can you collect?
+	type="button/checkbox/color/date/datatime-local/email/file/hidden/image/month/number/password/radio/range/reset/search/submit/tel/text/time/url/week"
 What are three different ways that you can add styles to an HTML document
 What is CSS?
+	Cascading Style Sheets; decorates webpages.
 What CSS selectors you can use to access all HTML elements of a certain type, id, or class?
+	* selects all HTML elements.
 What are three ways to specify color properties?
+	Hexadecimal (#92a8d1), RGB (255, 255, 255), and RGBA (255, 255, 255, 0.6)
 What is specificity in CSS?
+	Set of rules applied to CSS selectors in order to determine which style is applied to an element.
+	The more specific a CSS style, the higher point value/weight it accrues, the likelier it is to be present on the element's style.
 What is the box model in CSS?
+	A paradigm used to describe CSS design and layout.
+	Every element covered by an invisible box.
+	Consists of margins, borders, padding, and actual content.
 What is a child selector?
+	(>) Selects all elements that're the children of a specified element.
+	Example: selects all <p> elements that're children of a <div> element.
+		div > p {
+			background-color: yellow;
+		}
 What is a descendant selector?
+	(space) Matches all elements that're descendants of a specified element.
+	Example: selects all <p> elements inside <div> elementS.
+		div p {
+			background-color: yellow;
+		}
 How could you use a selector to choose a specific element with a specific class?
-What is bootstrap?
+	Using element.class {}
+	Example: selects all <p> elements with class="intro".
+	p.intro {
+		background-color: red;
+	}
+What is Bootstrap?
+	CSS framework for developing responsive and mobile-first websites.
 BONUS POINTS
-What are the two most common values used with the target Attribute?
-If i want to submit a form with a particular element that I do not want the user to see is being submitted, what type should I assign to it?
+What are the two most common values used with the target attribute?
+	target="_blank/_self/_parent/_top"
+	_blank - opens link in a new window or tab.
+	_self - opens link in same frame as it was clicked (default).
+	_parent - opens link in the parent frame.
+	_top - opens link in the full body of the window.
+If I want to submit a form with a particular element that I do not want the user to see is being submitted, what type should I assign to it?
+	type="password"
