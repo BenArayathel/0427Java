@@ -1,10 +1,10 @@
-select * from bank_user where username = 'UNITtest';
+select * from bank_user where username = 'UNITtestApprove';
 select * from bank_account where account_name = 'UNITtest';
 select * from bank_account where account_id = '572';
 select * from bank_transaction;
 
 delete from bank_user where username = 'UNITtest';
-delete from bank_account where account_id = '572';
+delete from bank_account where account_name = 'test3';
 
 
 
@@ -33,7 +33,7 @@ select account_name, account_balance from bank_account inner join bank_user on b
 --anonymous block for creating a new user
 declare user_id varchar2(20);
 begin 
-create_new_user(user_id, 'UNITtest', 'test', 0);
+create_new_user(user_id, 'UNITtestApprove', 'test', 0);
 end;
 
 --creating a new account

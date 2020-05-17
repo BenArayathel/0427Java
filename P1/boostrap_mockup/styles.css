@@ -1,0 +1,36 @@
+* {
+    box-size: border-box;
+}
+
+.main-container {
+    border: 1px solid red;
+    height: 100vh;
+    width: 100vw;
+}
+
+.header-row {
+    height: 7%;
+}
+
+.home-row {
+    border: 1px solid green;
+    height: 85%;
+}
+
+.footer-row {
+    height: 3%;
+}
+
+.header-column {
+    border: 2px dotted purple;
+}
+
+.home-column {
+    border: 1px solid blue;
+}
+
+.footer-column {
+    border: 2px double yellow;
+}
+
+/* -------------------------------------------------------- */

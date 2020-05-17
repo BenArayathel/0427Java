@@ -6,7 +6,8 @@ submit2.addEventListener('click', apiCall2);
 submit2.addEventListener('keyup', apiCall2);
 
 
-
+// these are promises, using a series of callbacks with .then and catch
+// to request the next promise, or deal with any rejected promises
 function apiCall2(){
     fetch("https://api.giphy.com/v1/gifs/trending?api_key=GGR8ONXTcf3yjY4GJiQtNO0RyLKlAIY2&limit=25&rating=G")
     .then((response) => {

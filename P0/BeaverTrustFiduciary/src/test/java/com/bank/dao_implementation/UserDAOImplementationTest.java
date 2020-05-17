@@ -73,37 +73,27 @@ public class UserDAOImplementationTest {
 	}
 	
 	
-	@Test
-	public void approveTest() throws BankException {
-		// get the test user to work on
-		User user = udi.accessUserObject("UNITtestApprove");
-//		System.out.println(user);
-		
-		// find his user id (it is 590)
-		String user_id = user.getUser_id();
-		
-		//approve the account, test that the boolean/number set to 1
-		udi.approve(user_id);
-		System.out.println(user.getApproved());
-		assert(user.getApproved() == 1);
-		
-	}
+	@Test	
+	  public void approveTest() throws BankException {
+        // get the test user to work on
+        final String user_name = "UNITtestApprove";
+        final User user = getUserByName(user_name);
+
+        // find their user id (it is 590)
+        String user_id = user.getUser_id();
+
+        // approve the account, test that the boolean/number set to 1
+        udi.approve(user_id);
+        assertEquals(1, getUserByName(user_name).getApproved());
+
+        // remove approval, test that the boolean/number reset to 0
+        udi.removeApproval(user_id);
+        assertEquals(0, getUserByName(user_name).getApproved());
+
+    }
 	
-	// currently disabled because i can't debug it yet...only one approval test
-	// works at a time
-//	@Test
-	public void removeApprovalTest() throws BankException {
-		// get the test user to work on
-		User user = udi.accessUserObject("UNITtestApprove");
-//		System.out.println(user);
-		
-		// find his user id (it is 590)
-		String user_id = user.getUser_id();
-		
-		//remove approval, test that the boolean/number reset to 0
-		udi.removeApproval(user_id);
-		System.out.println(user.getApproved());
-		assert(user.getApproved() == 0);
-	}
-	
+	// distance accessing the object to a new function so they don't overlap
+    public User getUserByName(final String user_name) throws BankException {
+        return udi.accessUserObject(user_name);
+    }
 }
