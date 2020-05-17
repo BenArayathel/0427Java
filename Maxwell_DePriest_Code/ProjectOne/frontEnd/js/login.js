@@ -8,7 +8,12 @@ function checkCredentials() {
     var checkEmail = "max@email.com";
 
     if (checkEmail == email.value) {
-        alert("Email confirmed");
+        console.log("Emails match");
+        window.location.href="/index.html";
+        localStorage.setItem("email", email.value);
+    }
+    else {
+        console.log("Emails don't match");
     }
     // select user by email
     // if email is in db, check entered password against stored password
