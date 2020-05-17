@@ -1,29 +1,116 @@
 --[ JavaScript Questions ]--
 
 What is the DOM?
-	Document Object Model; created by browser when a webpage is loaded.
+	Document Object Model; created by browser when a webpage is loaded; constructed as a tree of objects.
+	DOM defines a standard for accessing documents:
+		"The W3C DOM is a platform and language-neutral interface that allows programs and scripts to 
+		dynamically access and update the content, structure, and style of a document."
+	With the object model, JS can create dynamic HTML:
+		JS can change all HTML elements and attributes in the page.
+		JS can change all CSS styles in the page.
+		JS can remove existing HTML elements and attributes.
+		JS can add new HTML elements and attributes.
+		JS can react to all existing HTML events in the page.
+		JS can create new HTML events in the page.
 What is ECMAScript and how does it relate to JavaScript?
+	JavaScript is a programming language; ECMAScript is a standard/specification for JavaScript.
+	JavaScript is a languaged based on ECMAScript.
+	JavaScript is the most popular implementation of ECMAScript.
 What is JavaScript?
-What are some advantages that can be gained through using JavaScript
+	Programming language that conforms to the ECMAScript specification.
+	High-level, just-in-time compiled, and multi-paradigmed.
+	Has curly-bracket syntax and dynamic typing.
+What are some advantages that can be gained through using JavaScript?
+	Client-side language, easy to learn, comparatively fast for end-users.
+	Versatility, popularity, simplicity.
 What does it mean that JavaScript is loosely typed?
+	Doesn't require a variable type to be defined on creation.
 What does it mean that JavaScript is an interpreted language?
+	Where implementations execute instructions directly and freely, without previously compiling into machine language.
 What tag would you use to wrap around a block of JavaScript on an HTML document and where would you need to place it?
+	<script></script> can be placed in head or the last block in the HTML <body> tags.
 Is JavaScript case sensitive?
+	Yes.
 How do you insert a comment in JavaScript?
+	// /* */
 Does JavaScript has data types? If it does, what are they?
+	Primitives:
+		String
+		Number
+		Boolean
+		undefined (empty values)
+		BigInt
+		Symbol
+	null - "nothing", considered an object in JS.
+	Object
+	Function
 What are three different ways you can create variables in JavaScript and when would you use each?
+	var - can be globally OR function/locally scoped.
+		Can be updated AND redeclared.
+	let - only block-scoped (anything within {} is a block).
+		Can be updated but NOT redeclared.
+	const - maintains constant values.
+		Cannot be updated or redeclared.
 What are global variables? How are these variable declared and what are the problems associated with using them?
+	Variables that can be accessed globally; issues with unintentional overwriting of global variables.
 What JavaScript values are considered falsey? What are considered truthy?
+	Seemingly different values equate to TRUE when compared with == (loosely equals).
+	But FALSE occurs when compared with === (strictly equals) because type is considered.
 What are undeclared and undefined variables?
+	Undeclared - variable declared WITHOUT "var" keyword.
+	Undefined - variable declared but NO VALUES EXIST.
 What is === operator?
+	Compares data type and value.
 What is the typeof operator?
+	Returns the data type of the given thing.
 What is hoisting in JavaScript?
+	A mechanism where variables and function declarations are moved to the top of their scope before execution.
+	Example: this
+		console.log(greeter);
+		var greeter = "say hello";
+	Example: is interpreted as this
+		var greeter;
+		console.log(greeter); // greeter is undefined
+		greeter = "say hello";
+	So variables are hoisted to the top of its scope and initialized with a value of undefined.
 What are anonymous functions?
+	One declared without a name, often not accessible after its initial creation.
+	Example:
+		let show = function () {
+			console.log("Anonymous function);
+		}
+
+		show();
+	Because we need to call the function later, we assign it to the show variable.
+	Example: using arrow functions
+		let add = (a, b)  => a + b;
+		Equivalent to:
+		let function add(a, b) {
+			return a + b;
+		}
 What is an IIFE?
+	Immediately Invoked Function Expressions; a func that runs as soon as its defined.
+	Example:
+		(function () {
+			// statements
+		})();
 How can you add new elements dynamically?
+	With the HTML DOM createElement() method.
+	Example:
+		var btn = document.createElement("BUTTON"); 	// creates a <button> element
+		btn.innerHTML = "CLICK ME"; 					// inserts text
+		document.body.appendChild(btn);					// append <button> to <body>
 Explain how can you submit a form using JavaScript?
+	document.getElementById("myForm").submit();
+	Tip: use .reset() to reset a form.
 What is an event?
+	"Things" that happen to HTML elements.
+	JS can "react" on these events.
 What are some common JavaScript events?
+	An HTML webpage has finished loading.
+	An HTML input field was changed.
+	An HTML button was clicked.
+	onchange, onclick, onmouseover, onmouseout, onkeydown, onload, etc..
 What are event listeners? Name three ways that you can implement event listeners.
 What is JSON in Ajax?
 What is Ajax?
