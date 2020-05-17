@@ -112,30 +112,174 @@ What are some common JavaScript events?
 	An HTML button was clicked.
 	onchange, onclick, onmouseover, onmouseout, onkeydown, onload, etc..
 What are event listeners? Name three ways that you can implement event listeners.
+	addEventListener() attaches an event handler to a specific element.
+	Attaches handler to an element without overwriting existing event handlers.
+	Can add many event handlers to one element:
+		element.addEventListener("click", myFunction);
+		element.addEventListener("mouseover", mySecondFunction);
+	Can add event listeners to any DOM object, not just HTML elements. i.e. the window object.
+	addEventListener() makes it easier to control how the event reacts to bubbling.
+	Remove an event listener via removeEventListener().
+	Syntax:
+		element.addEventListener(event, function, useCapture);
+			First param is type of event ("click", "mousedown", https://www.w3schools.com/jsref/dom_obj_event.asp, etc..)
+			Second param is function we want to call when the event occurs.
+			Third param (optional) is a boolean specifying whether to use event bubbling or event capturing.
+	When passing params, use ANONYMOUS FUNCTIONS that CALLS THE SPECIFIED FUNCTION with params:
+		element.addEventListener("click", function(){ myFunc(p1, p2) });
+			function() is the anonymous func.
+			it calls a named function, myFunc which accepts two params.
+Event Bubbling vs Event capturing
+	Event propogation is the way of defining the element order when an event occurs.
+	In "bubbling", the innermost element's event is handled first, THEN the outer.
+	In "capturing", the outermost element's event is handled first, THEN the inner.
 What is JSON in Ajax?
-What is Ajax?
+	JSON is data that could be send via AJAX.
+What is AJAX?
+	Asynchronouse JavaScript and XML
+	AJAX refers to sending/receiving data b/t browser's objects and another source, usually a web server commonly over HTTP.
 What are the advantages of Ajax?
+	Develoeprs can:
+	Update a webpage without reloading the page (asynchronous).
+	Request data from a server - after the page has loaded.
+	Receive data from a server - after the page has loaded.
+	Send data to a server - in the background.
 What are the disadvantages of Ajax?
+	Increased development time.
+	Complex.
+	Less secure.
+	Search engines cannot index AJAX pages.
+	Browsers with JS disabled cannot use the application.
 Can we add more than one ‘document.ready’ function in a page?
+	.ready() accepts an anon func as its param and triggers when the DOM has completed loaded the browser window.
+	Yes, you can use the function multiple times and thus can set multiple anon funcs that'll execute after the DOM is ready.
 What is the for-in loop in JavaScript?
+	Iterates over lists but returns a list of KEYS.
+		let list = [4, 5, 6];
+		for (let i in list) {
+			console.log(i); // "0", "1", "2",
+		}
 What is the for-of loop in JavaScript?
+	Iterates over lists but returns a list of VALUES.
+		let list = [4, 5, 6];
+		for (let i of list) {
+			console.log(i); // "4", "5", "6"
+		}
 What are all the technologies used by Ajax?
+	HTML/CSS - displays content and style; for presentation.
+	DOM - dynamic display and interaction with data.
+	XML or JSON - carrying data to and from server.
+	ASP or JSP - server-side.
+	XMLHttpRequest - for asynchronous comms between client and server.
+	JavaScript - used to being above technologies together; used for client-side validation before sending data to server.
 XHR Vs Fetch API
+	XMLHttpRequest was used to retrieve data from a server asynchronously.
+	Fetch makes it easier to make asynchronous requests and handle responses better than XMLHttpRequest.
+		Main improvement is that Fetch API uses "Promises", hence avoiding callback hell.
 What are Promises?
+	Object returned from fetch() that represents a value that may not be avaiable yet, but will be resolved at some point in the future.
 What is Type Coercion
-Explain call back functions
-Java Vs javascript
-ECMAscript Vs javascript
+	Process of converting value from one type to another.
+	Any type, be it primitive or an object, is a valid subject for type coercion.
+	Explicit: manual conversion by developer.
+		Number(value)
+	Implicit: automatic, when you apply operators to values of different types.
+		1 == null, 2/’5', null + new Date()
+		or it can be triggered by surrounding context, like with if(value) {}, where value is coerced to boolean.
+Explain callback functions
+	A func that's passed into another func as an argument, which is then invoked inside the other func to complete some action.
+	Example:
+		function greeting(name) {
+			alert("Hello " + name);
+		}
+
+		function processUserInput(callback) {
+			var name = prompt("Please enter your name: ");
+			callback(name);
+		}
+
+		processUserInput(greeting);
+	greeting() is passed into processUserInput().
+	It then gets called inside processUserInput.
+	greeting() is considered a callback function, because it got passed into processUserInput() as a param.
+	Ensures that the prompt() is run first, THEN print out Hello + name.
+Java vs JavaScript
+	Java is compiled, JavaScript is interpreted.
+	Java is statically-typed, JS is dynamically typed.
+ECMAScript vs JavaScript
+	JavaScript is the most popular implementation of ECMAScript.
 JS Objects Vs Arrays
-Explain rest operator in Js
+	Objects store properties (key-value pairs), arrays store lists of multiple items in a single variable.
+	Arrays useful when order matters.
+Explain rest operator in JS
+	A func's LAST PARAM can be prefixed with "..." which causes all remaining (user-supplied) args to be placed within a "standard" JS array.
+	Example:
+		function myFun(a, b, ...manyMoreArgs) {
+			console.log("a", a)
+			console.log("b", b)
+			console.log("manyMoreArgs", manyMoreArgs)
+		}
+
+		myFun("one", "two", "three", "four", "five", "six")
+
+		// a, one
+		// b, two
+		// manyMoreArgs, [three, four, five, six]
 explain dom tree
+	Document
+		> Root Element: <html>
+			> Element: <head>
+				> Element: <title>
+					> Text: "My Title"
+			> Element: <body>
+				> Element: <a>
+					> Attribute: "href"
+					> Text: "My Link"
+				> Element: <h1>
+					> Text: "My Header"
 what are closures in JS
+	A feature in JS where an inner func has access to the outer func's variables, a global chain.
+	The closure has three scope chains:
+		It has access to its own scope variables.
+		It has access to the outer func's variables.
+		It has access to global variables.
+	Example:
+		function outer() {
+			var b = 10;
+			function inner() {
+					
+					var a = 20; 
+					console.log(a + b);
+				}
+			return inner;
+		}
+		Notice how inner has access to b, the outer func's variable.
+		Scope of var a is limited to inner(), and scope of var b is limited to outer().
+		Reference: https://medium.com/@prashantramnyc/javascript-closures-simplified-d0d23fa06ba4
 explain arrow functions
-explain truthy and falsy 
+	Syntactically compact alternative to a regular function expression.
 get vs put vs post vs patch
+	get - read-only, retrieves data from the server.
+	post - sends data to the server and creates a new resource (a new data entry).
+	put - updates an existing resource on the server.
+	patch - similary to put but also modifies an existing resource.
 put vs patch
+	The request body of put contains a complete new version, whereas the request body of patch only contains the specific changes to the resource.
 post vs put
+	post creates a new resource, whereas patch modifies an existing resource.
 http status codes
+	1xx - informational
+	2xx - success
+	3xx - redirection
+	4xx - client-side error
+	5xx - server-side error
 http vs https
-callbacks vs promises
-promises vs observables
+	HTTPS is HTTP with encryption.
+	HTTPS uses TLS (SSL) to encrypt normal HTTP requests and responses.
+	HTTPS is faster and more secure than HTTP.
+Callbacks vs Promises
+	Callbacks tell the executing func what to do when the asynchronous task completes.
+	with promises, the executing func returns a special object to you (the promise) and THEN you tell the promise what to do when the asynchronous task completes.
+Promises vs Observables
+	A promise is always asynchronous whereas an observable can be either async or synch.
+	A promise provides a single value, whereas an observable is a stream of values.
