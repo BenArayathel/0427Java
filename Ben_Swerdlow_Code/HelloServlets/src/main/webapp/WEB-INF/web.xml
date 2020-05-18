@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
+  <display-name>HelloServlets</display-name>
+  
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+  </welcome-file-list>
+  
+  <!-- The web.xml will act like a sort of "table of contents" for your servlets -->
+  
+  <servlet>
+  	<servlet-name>MyFirstServlet</servlet-name>
+  	<servlet-class>com.example.servlets.HelloServlet</servlet-class>
+  </servlet>
+  <!-- When our server gets a response with HelloThere at the end, it'll direct it to HelloServlet -->
+  <servlet-mapping>
+  	<servlet-name>MyFirstServlet</servlet-name>
+  	<url-pattern>/HelloThere</url-pattern>
+  </servlet-mapping>
+  
+</web-app>
