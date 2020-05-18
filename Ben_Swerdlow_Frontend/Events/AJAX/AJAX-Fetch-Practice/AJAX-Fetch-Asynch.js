@@ -148,7 +148,8 @@ function postToPlaceHolderFetch() {
             headers: {"Content-type": "application/json; charset=UTF-8"}
         })
         .then(response => response.json())
-        .then(json => DOMManipulationPost(json));
+        .then(json => DOMManipulationPost(json))
+        .catch(error => console.error(error));
 }
 
 function postToPlaceHolderAW() {
