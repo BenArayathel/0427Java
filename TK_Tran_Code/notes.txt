@@ -546,3 +546,16 @@ DAO Design Pattern - https://www.tutorialspoint.com/design_pattern/data_access_o
             data archives, data lakes for analytics, and hybrid cloud storage.
     Server hosted by AWS EC2
         Elastic Compute Cloud, allows users to rent virtual computers.
+
+HTML
+	<form> action attribute: defines URL where form's collected data should be sent when submitted.
+	<form> method attribute: defines which HTTP method to send the data (usually GET or POST).
+		GET - form data sent as the request body; users will see their data in URL.
+		POST - form data appended to the action URL with a ? separator.
+			Use this when form has no side-effects.
+	<form> name attribute: important on client- and server-side.
+		On client-side, it tells browser which name to give each piece of data.
+		On server-side, it lets server handle each piece of data by name.
+		Form data is sent to the server as name/value pairs.
+	<input> value attribute: defines a default value of an <input> element.
+	<button> type attribute: submit, reset, or button (which does nothing).

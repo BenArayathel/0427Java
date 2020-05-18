@@ -7,15 +7,12 @@
 	<title>Register Portal</title>
 
 	<!-- Boostrap -->
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
-		crossorigin="anonymous">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
 	<!-- jQuery, PopperJS, BoostrapJS -->
 	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-		crossorigin="anonymous"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-		crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
 	<!-- Google Fonts -->
 	<link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
@@ -30,38 +27,36 @@
 	</div>
 
 	<div class="container">
-		<form action="#" .was-validated>
-			<!-- Register Form -->
+		<form id="registerForm" onsubmit="" action="https://enxvqi45d72b.x.pipedream.net" method="post">
+			<!-- Input Fields -->
 			<div class="form-group row justify-content-center">
-				<label for="usernameInput" class="col-form-label col-2">Username</label>
-				<input type="text" class="form-control col-10" id="usernameInput" placeholder="Your username must be 3-15 alphanumeric characters long.">
+				<label class="col-form-label col-2" for="usernameInput"><strong>Username</strong></label>
+				<input type="text" class="form-control col-10" id="usernameInput" name="username" pattern="[a-zA-Z0-9]{3,15}" title="Username must be 3-15 alphanumeric characters long." placeholder="Username must be 3-15 alphanumeric characters long." autofocus required>
 			</div>
-
 			<div class="form-group row justify-content-center">
-				<label for="passwordInput" class="col-2 col-form-label">Password</label>
-				<input type="password" class="form-control col-10" id="passwordInput"
-					placeholder="Password must be 8-20 characters long with 1 uppercase, 1 lowercase, 1 number and 1 special character (!@#$%^&*_)." aria-describedby="passwordHelp">
+				<label class="col-form-label col-2" for="passwordInput"><strong>Password</strong></label>
+				<input type="password" class="form-control col-10" id="passwordInput" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*_]).{8,}" title="Password must be 8-20 characters long with 1 uppercase, 1 lowercase, 1 number and 1 special character (!@#$%^&*_)."
+					placeholder="Password must be 8-20 characters long with 1 uppercase, 1 lowercase, 1 number and 1 special character (!@#$%^&*_)." required>
 			</div>
-
 			<div class="form-group row justify-content-center">
-				<label for="nameInput" class="col-form-label col-2">Name</label>
-				<input type="text" class="form-control col-10" id="nameInput" placeholder="Enter your name.">
+				<label class="col-form-label col-2" for="nameInput"><strong>Name</strong></label>
+				<input type="text" class="form-control col-10" id="nameInput" name="name" placeholder="Enter your name." required>
 			</div>
-
 			<div class="form-group row justify-content-center">
-				<label for="depositInput" class="col-form-label col-2">Initial Deposit</label>
-				<input type="number" class="form-control col-10" id="depositInput" placeholder="Deposit must be at most 5 digits.">
+				<label class="col-form-label col-2" for="depositInput"><strong>Initial Deposit</strong></label>
+				<input type="number" class="form-control col-10" id="depositInput" name="deposit" pattern="^\\d{1,5}" title="Deposit must be at most 5 digits." placeholder="Deposit must be at most 5 digits." required>
 			</div>
 
 			<!-- Buttons -->
 			<div class="form-group row justify-content-center">
-				<a href="#" class="btn btn-info col-4" id="registerBtn" role="button">Register</a>
-				<a href="index.html" class="btn btn-warning col-4" id="backBtn" role="button">Back</a>
+				<button class="btn btn-info col-2" id="registerBtn" type="submit">Register</button>
+				<button class="btn btn-warning col-2" id="resetBtn" type="reset">Reset</button>
+				<button class="btn btn-danger col-2" id="backBtn" type="button" onclick="document.location='index.html'">Back</button>
 			</div>
 		</form>
 	</div>
 
-	<script type="text/javascript" src="js/script.js"></script>
+	<script type=" text/javascript" src="js/script.js"></script>
 </body>
 
 </html>
