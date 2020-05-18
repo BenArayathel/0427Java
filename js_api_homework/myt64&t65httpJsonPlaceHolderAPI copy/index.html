@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="shortcut icon" href="">
+    <title>JSON Placeholder API</title>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center my-5">JSON Placeholder API</h1>
+
+        <div class="card my-1">
+            <div class="card-header bg-light">
+                <div class="row">
+                    <div class="col-6">
+                        <h6 id="theID" class="text-center">id</h6>
+                    </div>
+                    <div class="col-6">
+                        <h6 class="text-center">userId</h6>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <p class="text-center">title</p>
+            </div>
+            <div class="card-footer">
+                <button class="btn btn-danger">Delete</button><span><--this will not delete anything</span>
+            </div>
+        </div>
+        <div class="myPosts" style="width: 150px;"></div>
+    </div>
+    <script src="easyhttp.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

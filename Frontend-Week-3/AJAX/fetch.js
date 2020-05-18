@@ -35,6 +35,7 @@ function getSW(){
 
 function DOMManipulation(ourJSON){
 	document.getElementById('swName').innerText=ourJSON.name;
-	document.getElementById('swBirthYear').innerText=ourJSON.birth_year;
+    document.getElementById('swBirthYear').innerText=ourJSON.birth_year;
+    document.getElementById('swHomeworld').innerText=ourJSON.homeworld;
 	//to find films, for instance
 }

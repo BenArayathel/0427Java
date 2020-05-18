@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>Fetch API sandbox</title>
+</head>
+<body>
+    <div class="container">
+
+        <h3 class="py-5">Fetch API sandbox</h3>
+        <button id="button1" class="btn btn-outline-warning">GET TEXT</button>
+        <button id="button2" class="btn btn-outline-warning">GET JSON</button>
+        <button id="button3" class="btn btn-outline-warning">GET API DATA</button>
+
+        <br><br>
+        <hr>
+        <!-- <ul id="output"></ul> -->
+        <div class="row">
+            <div class="col-3"><p id="output"></p></div>
+            <div class="col-3"><ul id="output2"></ul></div>
+        </div>
+            <div class="col-8">
+                <!-- <table style="margin-top: 60px; " class="table table-striped table-bordered">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>#</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Email</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>John</td>
+                            <td>Doe</td>
+                            <td>jdoe@gmail.com</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">2</th>
+                            <td>Will</td>
+                            <td>Johnson</td>
+                            <td>will@yahoo.com</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">3</th>
+                            <td>Shannon</td>
+                            <td>Williams</td>
+                            <td><img width="50px;" src="https://avatars0.githubusercontent.com/u/1?v=4" alt=""></td>
+                        </tr>
+                    </tbody>
+                </table> -->
+
+                <table style="margin-top: 60px; margin-bottom: 160px;" class="table table-striped table-bordered">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>user_id</th>
+                            <th>User Name</th>
+                            <th>node_id</th>
+                            <th>Pic</th>
+                        </tr>
+                    </thead>
+                    <tbody id="output3">
+                    </tbody>
+                </table>
+
+                <!-- <ul id="output3"></ul> -->
+            </div>
+        
+    </div>
+
+    
+
+        
+    
+    <script src="app.js"></script>
+</body>
+</html>
