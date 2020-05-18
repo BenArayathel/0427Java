@@ -1,0 +1,8 @@
+class Registration {
+  conststructor(customerId, loginName, loginPassword) {
+    this.customerId = customerId;
+    this.loginName = loginName;
+    this.loginPassword = loginPassword;
+  }
+}
+
