@@ -18,19 +18,18 @@ What is ECMAScript and how does it relate to JavaScript?
 	JavaScript is the most popular implementation of ECMAScript.
 What is JavaScript?
 	Programming language that conforms to the ECMAScript specification.
-	High-level, just-in-time compiled, and multi-paradigmed.
-	Has curly-bracket syntax and dynamic typing.
+	High-level, just-in-time compiled, dynamically-typed, and multi-paradigmed.
 What are some advantages that can be gained through using JavaScript?
 	Client-side language, easy to learn, comparatively fast for end-users.
-	Versatility, popularity, simplicity.
+	Versatile and popular (many resources).
 What does it mean that JavaScript is loosely typed?
 	Doesn't require a variable type to be defined on creation.
 What does it mean that JavaScript is an interpreted language?
-	Where implementations execute instructions directly and freely, without previously compiling into machine language.
+	Implementations execute instructions directly and freely, without previously compiling into machine language beforehand.
 What tag would you use to wrap around a block of JavaScript on an HTML document and where would you need to place it?
 	<script></script> can be placed in head or the last block in the HTML <body> tags.
 Is JavaScript case sensitive?
-	Yes.
+	Tags and attribute names are case-insensitive; attribute VALUES are case-sensitive.
 How do you insert a comment in JavaScript?
 	// /* */
 Does JavaScript has data types? If it does, what are they?
@@ -49,8 +48,10 @@ What are three different ways you can create variables in JavaScript and when wo
 		Can be updated AND redeclared.
 	let - only block-scoped (anything within {} is a block).
 		Can be updated but NOT redeclared.
+		New to ES6.
 	const - maintains constant values.
 		Cannot be updated or redeclared.
+		New to ES6.
 What are global variables? How are these variable declared and what are the problems associated with using them?
 	Variables that can be accessed globally; issues with unintentional overwriting of global variables.
 What JavaScript values are considered falsey? What are considered truthy?
@@ -62,9 +63,10 @@ What are undeclared and undefined variables?
 What is === operator?
 	Compares data type and value.
 What is the typeof operator?
-	Returns the data type of the given thing.
+	Returns the data type of the given value.
 What is hoisting in JavaScript?
 	A mechanism where variables and function declarations are moved to the top of their scope before execution.
+	A process on JavaScript that moves all declarations to the top of the current scope.
 	Example: this
 		console.log(greeter);
 		var greeter = "say hello";
@@ -102,7 +104,8 @@ How can you add new elements dynamically?
 		document.body.appendChild(btn);					// append <button> to <body>
 Explain how can you submit a form using JavaScript?
 	document.getElementById("myForm").submit();
-	Tip: use .reset() to reset a form.
+	Can also use a <button> with a type="submit".
+	Tip: use .reset() or <button> type="reset" to reset a form.
 What is an event?
 	"Things" that happen to HTML elements.
 	JS can "react" on these events.
@@ -119,7 +122,7 @@ What are event listeners? Name three ways that you can implement event listeners
 		element.addEventListener("mouseover", mySecondFunction);
 	Can add event listeners to any DOM object, not just HTML elements. i.e. the window object.
 	addEventListener() makes it easier to control how the event reacts to bubbling.
-	Remove an event listener via removeEventListener().
+	Remove an event listener via .removeEventListener().
 	Syntax:
 		element.addEventListener(event, function, useCapture);
 			First param is type of event ("click", "mousedown", https://www.w3schools.com/jsref/dom_obj_event.asp, etc..)
@@ -135,16 +138,17 @@ Event Bubbling vs Event capturing
 	In "capturing", the outermost element's event is handled first, THEN the inner.
 What is JSON in Ajax?
 	JSON is data that could be send via AJAX.
+	Data interchange format in JavaScript.
 What is AJAX?
 	Asynchronouse JavaScript and XML
 	AJAX refers to sending/receiving data b/t browser's objects and another source, usually a web server commonly over HTTP.
-What are the advantages of Ajax?
-	Develoeprs can:
-	Update a webpage without reloading the page (asynchronous).
-	Request data from a server - after the page has loaded.
-	Receive data from a server - after the page has loaded.
-	Send data to a server - in the background.
-What are the disadvantages of Ajax?
+What are the advantages of AJAX?
+	Developers can:
+		Update a webpage without reloading the page (asynchronous).
+		Request data from a server - after the page has loaded.
+		Receive data from a server - after the page has loaded.
+		Send data to a server - in the background.
+What are the disadvantages of AJAX?
 	Increased development time.
 	Complex.
 	Less secure.
@@ -165,7 +169,7 @@ What is the for-of loop in JavaScript?
 		for (let i of list) {
 			console.log(i); // "4", "5", "6"
 		}
-What are all the technologies used by Ajax?
+What are all the technologies used by AJAX?
 	HTML/CSS - displays content and style; for presentation.
 	DOM - dynamic display and interaction with data.
 	XML or JSON - carrying data to and from server.
@@ -239,6 +243,8 @@ explain dom tree
 					> Text: "My Header"
 what are closures in JS
 	A feature in JS where an inner func has access to the outer func's variables, a global chain.
+	A closure is a function that has access to its outer function scope even after the outer function has returned. 
+		This means a closure can remember and access variables and arguments of its outer function even after the function has finished!
 	The closure has three scope chains:
 		It has access to its own scope variables.
 		It has access to the outer func's variables.

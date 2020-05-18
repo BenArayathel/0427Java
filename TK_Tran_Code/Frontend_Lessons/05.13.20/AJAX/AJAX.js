@@ -20,7 +20,7 @@ function getSW() {
 
     // Step 2, create XMLHttpRequest object; this object allows us to make requests to get data
     let xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function () {
+    xhttp.onreadystatechange = function () { // property onreadystatechange will contain the event handler to be called when readystate event is fired.
         console.log(`Ready state has changed: ${xhttp.readyState}`);
         /*
             The readystate property holds status of XMLHttpRequest.
@@ -32,7 +32,7 @@ function getSW() {
         */
 
         // Steps 4 and 5 done on server
-        if (xhttp.readyState == 4 && xhttp.status == 200) { // wait for ready response (4), and wait for a valid response (200)
+        if (xhttp.readyState == 4 && xhttp.status == 200) { // wait for readyState response (4), and wait for a status response (200)
             console.log("Http DONE");
 
             // Step 6, receive and parse the response

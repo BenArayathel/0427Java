@@ -14,7 +14,7 @@ console.log("Testing Console");
 // console.log(func(3, 2)); // 5
 
 // let func2 = (x, y) => x * y - 10;
-// console.log(func2(4, 20)); // 70
+// console.log(func2(4, 20)); // 70s
 
 // let func3 = () => alert("Hello, Arrow Functions!");
 // func3();
@@ -22,27 +22,19 @@ console.log("Testing Console");
 // Fetch w/ Async/Await Method --------------------------------------------------------------------------------
 
 window.onload = function () {
-	this.document.getElementById("swSubmit").addEventListener("click", getSW);
+	this.document.getElementById("swSubmit").addEventListener("click", getImg);
 }
 
-async function getSW() {
-	let swID = document.getElementById("swID").value;
-
+async function getImg() {
 	// Even MORE Succinct: uses async/await
-	let response = await fetch(`https://swapi.dev/api/people/${swID}`);
+	let response = await fetch(`https://dog.ceo/api/breeds/image/random`);
 	let object = await response.json(); // .json() parses JSON response and promises an object (returns an object)
 	DOMManip(object); // insert object into callback function that manipulates the DOM
 	console.log(object); // prints object to console so we can see content
 }
 
 function DOMManip(JSON) {
-	document.getElementById("swName").innerText = `Name: ${JSON.name}`;
-	document.getElementById("swHeight").innerText = `Height: ${JSON.height}`;
-	document.getElementById("swMass").innerText = `Mass: ${JSON.mass}`;
-	document.getElementById("swHairColor").innerText = `Hair Color: ${JSON.hair_color}`;
-	document.getElementById("swSkinColor").innerText = `Skin Color: ${JSON.skin_color}`;
-	document.getElementById("swEyeColor").innerText = `Eye Color: ${JSON.eye_color}`;
-	document.getElementById("swBirthYear").innerText = `Birth Year: ${JSON.birth_year}`;
+	document.getElementById("img").src = `${JSON.message}`;
 }
 
 /*

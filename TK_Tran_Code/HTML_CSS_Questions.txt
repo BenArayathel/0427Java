@@ -29,8 +29,8 @@ Break Tag
 	Inserts a single line break.
 	Considered an "empty tag" which means it has no end tag.
 How to make text Italic? Bold? Underline?
-	Italic = <em></em>
-	Bold = <b></b>
+	Italic = <i></i> or <em></em>
+	Bold = <b></b> or <string>
 	Underline = <u></u>
 What is the difference between the <div> and <span> elements
 	Span is in-line and used for small chunks of HTML inside a line.
@@ -72,7 +72,7 @@ What is an HTML form?
 	User input can then be sent to server for processing.
 What are some of the <form> attributes that you can set for the form?
 	input, textarea, button, select, option, optgroup, fieldset, label, output, etc.
-What is the input tag used for?
+What is the <input> tag used for?
 	Specifies an input field where users can enter data.
 	Used within <form> to declare input controls that allow users to enter data.
 	Can vary many ways depending on the type attribute.
@@ -114,10 +114,10 @@ What is Bootstrap?
 	CSS framework for developing responsive and mobile-first websites.
 BONUS POINTS
 What are the two most common values used with the target attribute?
-	target="_blank/_self/_parent/_top"
-	_blank - opens link in a new window or tab.
-	_self - opens link in same frame as it was clicked (default).
-	_parent - opens link in the parent frame.
-	_top - opens link in the full body of the window.
+	Syntax: target="_blank/_self/_parent/_top"
+		_blank - opens link in a new window or tab.
+		_self - opens link in same frame as it was clicked (default).
+		_parent - opens link in the parent frame.
+		_top - opens link in the full body of the window.
 If I want to submit a form with a particular element that I do not want the user to see is being submitted, what type should I assign to it?
 	type="password"
