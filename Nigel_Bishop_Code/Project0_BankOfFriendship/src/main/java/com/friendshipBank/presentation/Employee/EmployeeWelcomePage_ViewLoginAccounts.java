@@ -3,19 +3,15 @@ package com.friendshipBank.presentation.Employee;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.friendshipBank.Main.mainDriver;
-import com.friendshipBank.dao.customerDAO;
+import com.friendshipBank.Main.MainDriver;
 import com.friendshipBank.dao.userAccessDAO;
-import com.friendshipBank.dao.impl.customerDAOImpl;
 import com.friendshipBank.dao.impl.userAccessDAOImpl;
 import com.friendshipBank.exception.BusinessException;
-import com.friendshipBank.model.customer;
 import com.friendshipBank.model.userAccess;
-import com.friendshipBank.presentation.welcomePage;
 import com.friendshipBank.service.userAccessService;
-import com.friendshipBank.service.impl.customerServiceImpl;
 import com.friendshipBank.service.impl.myScanner;
 import com.friendshipBank.service.impl.userAccessServiceImpl;
+import com.friendshipBank.presentation.WelcomePage;
 
 public class EmployeeWelcomePage_ViewLoginAccounts 
 {
@@ -28,29 +24,22 @@ public class EmployeeWelcomePage_ViewLoginAccounts
 		userAccessDAO userDAO = new userAccessDAOImpl();
 		userAccessService userService = new userAccessServiceImpl();
 		List<userAccess> userAccessList = new ArrayList<>();
-		List<customer> customerList = new ArrayList<>();
-		customerDAO  custDAO = new customerDAOImpl();
-		customerServiceImpl custService = new customerServiceImpl();
 		
 		int userChoice = 0;
     	
     	do 
     	{
-        	System.out.println();
-        	mainDriver.SystemLog.info("  -  EMPLOYEE CUSOMTER LOGIN DASHBOARD  -    ");
-        	mainDriver.SystemLog.info("******************************************");
-        	System.out.println();
-        	mainDriver.SystemLog.info("SELECT: (1) VIEW ALL LOGIN ACCOUNTS");
-        	mainDriver.SystemLog.info("SELECT: (2) VIEW ALL LOGIN ACCOUNTS WITH PENDING STATUS ");
-        	mainDriver.SystemLog.info("SELECT: (3) APPROVE PENDING LOGIN ACCOUNTS ");
-        	mainDriver.SystemLog.info("SELECT: (4) REJECT PENDING LOGIN ACCOUNTS");
-        	mainDriver.SystemLog.info("SELECT: (5) VIEW ALL CUSTOMER");
-        	mainDriver.SystemLog.info("SELECT: (6) DELETE A CUSTOMER");
-        	mainDriver.SystemLog.info("SELECT: (7) EXIT THE APPLICATION");
-        	mainDriver.SystemLog.info("SELECT: (8) BACK TO EMPLOYEE DASHBOARD");
-        	mainDriver.SystemLog.info("SELECT: (9) BACK TO HOMEPAGE");
+        	MainDriver.SystemLog.info("\n  -  EMPLOYEE: CUSOMTER LOGIN DASHBOARD  -    ");
+        	MainDriver.SystemLog.info("******************************************");
+        	MainDriver.SystemLog.info("SELECT: (1) VIEW ALL LOGIN ACCOUNTS");
+        	MainDriver.SystemLog.info("SELECT: (2) VIEW ALL LOGIN ACCOUNTS WITH PENDING STATUS ");
+        	MainDriver.SystemLog.info("SELECT: (3) APPROVE PENDING LOGIN ACCOUNTS ");
+        	MainDriver.SystemLog.info("SELECT: (4) REJECT PENDING LOGIN ACCOUNTS");
+        	MainDriver.SystemLog.info("SELECT: (5) BACK TO EMPLOYEE DASHBOARD");
+        	MainDriver.SystemLog.info("SELECT: (6) LOG OUT");
+        	MainDriver.SystemLog.info("SELECT: (7) EXIT THE APPLICATION");
 
-			userChoice = myScanner.UserInput_Int();
+			userChoice = myScanner.UserInput_menuChoice();
  
 		        switch (userChoice)
 		        {
@@ -58,13 +47,13 @@ public class EmployeeWelcomePage_ViewLoginAccounts
 		            	try 
 		            	{
 		            		userAccessList = userDAO.getAllUserLoginAccounts();
-		            		userAccessList.forEach(user -> mainDriver.SystemLog.info(user));
+		            		userAccessList.forEach(user -> MainDriver.SystemLog.info(user));
 		            		
 		            	}
 			            catch (BusinessException e)
 			            {
-			            	mainDriver.SystemLog.info(e.getMessage());
-			            	mainDriver.SystemLog.error(e.getMessage());
+			            	MainDriver.SystemLog.info(e.getMessage());
+			            	MainDriver.SystemLog.error(e.getMessage());
 			            }
 
 		                break;
@@ -72,96 +61,69 @@ public class EmployeeWelcomePage_ViewLoginAccounts
 		            	try 
 		            	{
 		            		userAccessList = userDAO.getAllUserLoginAccountsStatus(accStatus);
-		            		userAccessList.forEach(user -> mainDriver.SystemLog.info(user));
+		            		if(userAccessList.isEmpty()) 
+		            		{
+		            			MainDriver.SystemLog.info("SYSTEM:  NO PENDING LOGIN ACCOUNT");	
+		            		}
+		            		else 
+		            		{
+			            		userAccessList.forEach(user -> MainDriver.SystemLog.info(user));
+		            		}
 		            	}
 			            catch (BusinessException e)
 			            {
-			            	mainDriver.SystemLog.info(e.getMessage());
-			            	mainDriver.SystemLog.error(e.getMessage());
+			            	MainDriver.SystemLog.info(e.getMessage());
+			            	MainDriver.SystemLog.error(e.getMessage());
 			            }
 		                break;
 		            case 3:
 		            	try 
 		            	{
-		                   	mainDriver.SystemLog.info("SYSTEM:  APPROVE PENDING LOGIN ACCOUNTS ");
-			            	mainDriver.SystemLog.info("SYSTEM:  ENTER THE CUSTOMER ID NUMBER");
+		                   	MainDriver.SystemLog.info("SYSTEM:  APPROVE PENDING LOGIN ACCOUNTS ");
+			            	MainDriver.SystemLog.info("SYSTEM:  ENTER THE CUSTOMER ID NUMBER");
 		            		String customerID = myScanner.UserInput_String().toUpperCase();
 		            		userService.updateUserAccessStatus(customerID, customeraccStatus);
-		                   	mainDriver.SystemLog.info("SYSTEM:  " + customerID + " PENDING ACCOUNT HAS BEEN APPROVED.. ");
+		                   	MainDriver.SystemLog.info("SYSTEM:  " + customerID + " PENDING ACCOUNT HAS BEEN APPROVED.. ");
 		            	}
 			            catch (BusinessException e)
 			            {
-			            	mainDriver.SystemLog.info(e.getMessage());
-			            	mainDriver.SystemLog.error(e.getMessage());
+			            	MainDriver.SystemLog.info(e.getMessage());
+			            	MainDriver.SystemLog.error(e.getMessage());
 			            }
 		                break;
 		            case 4:
 		            	try 
 		            	{
-		                   	mainDriver.SystemLog.info("SYSTEM:  REJECT PENDING LOGIN ACCOUNTS ");
-			            	mainDriver.SystemLog.info("SYSTEM:  ENTER THE CUSTOMER ID NUMBER");
+		                   	MainDriver.SystemLog.info("SYSTEM:  REJECT PENDING LOGIN ACCOUNTS ");
+			            	MainDriver.SystemLog.info("SYSTEM:  ENTER THE CUSTOMER ID NUMBER");
 		            		String customerID = myScanner.UserInput_String().toUpperCase();
 		            		userService.updateUserAccessStatus(customerID, rejctedStatus);
-		                   	mainDriver.SystemLog.info("SYSTEM:  " + customerID + " PENDING ACCOUNT HAS BEEN REJECTED FOR LOGIN STATUS.. ");
+		                   	MainDriver.SystemLog.info("SYSTEM:  " + customerID + " PENDING ACCOUNT HAS BEEN REJECTED FOR LOGIN STATUS.. ");
 
 		            	}
 			            catch (BusinessException e)
 			            {
-			            	mainDriver.SystemLog.info(e.getMessage());
-			            	mainDriver.SystemLog.error(e.getMessage());
+			            	MainDriver.SystemLog.info(e.getMessage());
+			            	MainDriver.SystemLog.error(e.getMessage());
 			            }
 		                break;
 		            case 5:
-		            	try 
-		            	{
-		            		customerList = custDAO.getAllCustomers();
-		            		customerList.forEach(user -> mainDriver.SystemLog.info(user));
-
-		            	}
-			            catch (BusinessException e)
-			            {
-			            	mainDriver.SystemLog.info(e.getMessage());
-			            	mainDriver.SystemLog.error(e.getMessage());
-			            }
+		            	EmployeeWelcomePage_Home.EmployeeWelcomePage();
 		                break;
 		            case 6:
-		            	try 
-		            	{
-		                   	mainDriver.SystemLog.info("SYSTEM:  DELETE A CUSTOMER ACCOUNT ");
-			            	mainDriver.SystemLog.info("SYSTEM:  ENTER THE CUSTOMER ID NUMBER");
-		            		String customerID = myScanner.UserInput_String().toUpperCase();
-		            		custService.deleteCustomer(customerID);
-
-		                   	mainDriver.SystemLog.info("SYSTEM:  THE REQUESTED CUSTOMER HAS BEEN DELETED");
-
-		            	}
-			            catch (BusinessException e)
-			            {
-			            	mainDriver.SystemLog.info(e.getMessage());
-			            	mainDriver.SystemLog.error(e.getMessage());
-			            }
-		                break;
-		            case 7:
-		            	System.out.println();
-		            	mainDriver.SystemLog.info("THANK YOU FOR USING MY BANKING APPLICATION");
-		            	System.out.println();
-						System.exit(0);
-		                break;
-		            case 8:
-		            	System.out.println();
-		            	BankAppLoginWelcome_EmployeeAccount.EmployeeWelcomePage();
+		        		WelcomePage.BankWelcomePage();
 		         		break;
-		            case 9:
-		            	System.out.println();
-		        		welcomePage.BankWelcomePage();
+		            case 7:
+		            	MainDriver.SystemLog.info("\nTHANK YOU FOR USING MY BANKING APPLICATION");
+						System.exit(0);
 		         		break;
 		             default:
-		            	 mainDriver.SystemLog.info("SYSTEM: INVALID OPTION");
+		            	 MainDriver.SystemLog.info("\nSYSTEM: INVALID OPTION");
 		            	 break;
 	    		
 		        }
     	}
-	    while(userChoice != 9);
+	    while(userChoice != 7);
 		
 		
 		

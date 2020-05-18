@@ -1,5 +1,8 @@
 package com.friendshipBank.service.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.friendshipBank.dao.transactionLogDAO;
 import com.friendshipBank.dao.impl.transactionLogDAOImpl;
 import com.friendshipBank.exception.BusinessException;
@@ -29,5 +32,36 @@ public class transactionServiceImpl implements transactionService{
 		}
 		return transaction;
 	}
+
+	@Override
+	public List<transaction> getTransactionByAccountID(String aID) throws BusinessException
+	{
+		List<transaction> transList = new ArrayList<>();
+		if(isValidAccountId(aID)) {
+			transList = transDAO.getTransactionByAccountID(aID);
+		}else {
+			throw new BusinessException("The entered ACCOUNTID is invalid");
+		}
+		return transList;
+	}
+
+//	@Override
+//	public transaction getTransactionByAccountID(String aID) throws BusinessException {
+//		transaction transaction = null;
+//		if(isValidAccountId(aID)) {
+//			transaction = transDAO.getTransactionByAccountID(aID);
+//		}else {
+//			throw new BusinessException("The entered ACCOUNTID is invalid");
+//		}
+//		return transaction;
+//		
+//		List<customer> customerList = new ArrayList<>();
+//		if(isValidCity(state)) {
+//			customerList = (List<customer>) cusDAO.getCustomerByCity(state) ;
+//		}else {
+//			throw new BusinessException("The entered STATE " + state + " is invalid");
+//		}
+//		return customerList;
+//	}
 
 }

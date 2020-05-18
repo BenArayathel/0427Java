@@ -1,75 +1,129 @@
 package com.friendshipBank.model;
 
+import java.sql.Date;
+
 public class transaction 
 {
 	private String transactionID;
 	private String accountID;
+	private String customerID;
 	private String accountType;
 	private Double balance;
-	private Double withdrawl;
-	private Double deposit;
-	private Double transfer;
+	private Double transAmount;
+	private String transType;
+	private Date transDate;
+	
+
 	
 	public transaction() {
-		// TODO Auto-generated constructor stub
 	}
+
+
 
 	public String getTransactionID() {
 		return transactionID;
 	}
 
+
+
 	public void setTransactionID(String transactionID) {
 		this.transactionID = transactionID;
 	}
+
+
 
 	public String getAccountID() {
 		return accountID;
 	}
 
+
+
 	public void setAccountID(String accountID) {
 		this.accountID = accountID;
 	}
+
+
+
+	public String getCustomerID() {
+		return customerID;
+	}
+
+
+
+	public void setCustomerID(String customerID) {
+		this.customerID = customerID;
+	}
+
+
 
 	public String getAccountType() {
 		return accountType;
 	}
 
+
+
 	public void setAccountType(String accountType) {
 		this.accountType = accountType;
 	}
+
+
 
 	public Double getBalance() {
 		return balance;
 	}
 
+
+
 	public void setBalance(Double balance) {
 		this.balance = balance;
 	}
 
-	public Double getWithdrawl() {
-		return withdrawl;
+
+
+	public Double getTransAmount() {
+		return transAmount;
 	}
 
-	public void setWithdrawl(Double withdrawl) {
-		this.withdrawl = withdrawl;
+
+
+	public void setTransAmount(Double transAmount) {
+		this.transAmount = transAmount;
 	}
 
-	public Double getDeposit() {
-		return deposit;
+
+
+	public String getTransType() {
+		return transType;
 	}
 
-	public void setDeposit(Double deposit) {
-		this.deposit = deposit;
+
+
+	public void setTransType(String transType) {
+		this.transType = transType;
 	}
 
-	public Double getTransfer() {
-		return transfer;
+
+
+	public Date getTransDate() {
+		return transDate;
 	}
 
-	public void setTransfer(Double transfer) {
-		this.transfer = transfer;
+
+
+	public void setTransDate(Date transDate) {
+		this.transDate = transDate;
 	}
-	
+
+
+
+	@Override
+	public String toString() {
+		return "transaction [transactionID=" + transactionID + ", accountID=" + accountID + ", customerID=" + customerID
+				+ ", accountType=" + accountType + ", balance=" + balance + ", transAmount=" + transAmount
+				+ ", transType=" + transType + ", transDate=" + transDate + "]";
+	}
+
+
 	
 	
 	

@@ -2,7 +2,7 @@ package com.friendshipBank.presentation;
 
 
 
-import com.friendshipBank.Main.mainDriver;
+import com.friendshipBank.Main.MainDriver;
 import com.friendshipBank.exception.BusinessException;
 import com.friendshipBank.model.bankAccount;
 import com.friendshipBank.service.bankAccountService;
@@ -32,19 +32,16 @@ public class BankAppLoginWelcome_PendingAccount
  	
     	do {
     		
-        	System.out.println();
-        	mainDriver.SystemLog.info("  WELCOME TO BANK OF FRIENDSHIP ACCOUNT SUMMARY   ");
-        	mainDriver.SystemLog.info("**************************************************");
-        	System.out.println();
-        	mainDriver.SystemLog.info("SYSTEM:  ACCOUNT IS IN PENDING STATUS");
-        	mainDriver.SystemLog.info("         FUNCTIONALITY WILL BE LIMITED");
-        	System.out.println();
-        	mainDriver.SystemLog.info("SELECT: (1) REQUEST CHECKING ACCOUNT");
-        	mainDriver.SystemLog.info("SELECT: (2) REQUEST SAVING ACCOUNT");
-        	mainDriver.SystemLog.info("SELECT: (3) EXIT THE APPLICATION");
-        	mainDriver.SystemLog.info("SELECT: (4) BACK TO HOMEPAGE");
+        	MainDriver.SystemLog.info("\n  WELCOME TO BANK OF FRIENDSHIP ACCOUNT SUMMARY   ");
+        	MainDriver.SystemLog.info("**************************************************");
+        	MainDriver.SystemLog.info("SYSTEM:  ACCOUNT IS IN PENDING STATUS");
+        	MainDriver.SystemLog.info("         FUNCTIONALITY WILL BE LIMITED");
+        	MainDriver.SystemLog.info("\nSELECT: (1) REQUEST CHECKING ACCOUNT");
+        	MainDriver.SystemLog.info("SELECT: (2) REQUEST SAVING ACCOUNT");
+        	MainDriver.SystemLog.info("SELECT: (3) LOG OUT");
+        	MainDriver.SystemLog.info("SELECT: (4) EXIT THE APPLICATION");
 
-			userChoice = myScanner.UserInput_Int();
+			userChoice = myScanner.UserInput_menuChoice();
 
         	switch(userChoice) {
 			case 1:
@@ -71,11 +68,11 @@ public class BankAppLoginWelcome_PendingAccount
 
 			       		if(bankAccount.getAccountID() != null) {
 			       			System.out.println();
-			       			mainDriver.SystemLog.info("SYSTEM: YOUR REQUEST FOR A CHECKING ACCOUNT HAS BEEN COMPLETED");
-			       			mainDriver.SystemLog.info("        A DEFAULT BALANCE OF $300 HAS BEEN ADDED TO THE ACCOUNT");
-			       			mainDriver.SystemLog.info("        PER REQUIREMENT TO OPEN A CHECKING ACCOUNT");
+			       			MainDriver.SystemLog.info("SYSTEM: YOUR REQUEST FOR A CHECKING ACCOUNT HAS BEEN COMPLETED");
+			       			MainDriver.SystemLog.info("        A DEFAULT BALANCE OF $300 HAS BEEN ADDED TO THE ACCOUNT");
+			       			MainDriver.SystemLog.info("        PER REQUIREMENT TO OPEN A CHECKING ACCOUNT");
 			       			System.out.println();
-			       			mainDriver.SystemLog.info("SYSTEM: PLEASE MAKE A NOTE OF YOUR ACCOUNT NUMBER: " + bankAccount.getAccountID());
+			       			MainDriver.SystemLog.info("SYSTEM: PLEASE MAKE A NOTE OF YOUR ACCOUNT NUMBER: " + bankAccount.getAccountID());
 			       			System.out.println();
 			       			System.out.println(bankAccount);
 			       			BankAppLoginWelcomePage_PendingAccount();
@@ -84,8 +81,8 @@ public class BankAppLoginWelcome_PendingAccount
 				}
 	        	catch (BusinessException e)
 	        	{
-	        		mainDriver.SystemLog.error(e.getMessage());
-	        		mainDriver.SystemLog.info(e.getMessage());
+	        		MainDriver.SystemLog.error(e.getMessage());
+	        		MainDriver.SystemLog.info(e.getMessage());
 	        	}
 	        	break;
 			case 2:
@@ -111,11 +108,11 @@ public class BankAppLoginWelcome_PendingAccount
 	
 			       		if(bankAccount.getAccountID() != null) {
 			       			System.out.println();
-			       			mainDriver.SystemLog.info("SYSTEM: YOUR REQUEST FOR A SAVING ACCOUNT HAS BEEN COMPLETED");
-			       			mainDriver.SystemLog.info("        A DEFAULT BALANCE OF $100 HAS BEEN ADDED TO THE ACCOUNT");
-			       			mainDriver.SystemLog.info("        PER REQUIREMENT TO OPEN A SAVING ACCOUNT");
+			       			MainDriver.SystemLog.info("SYSTEM: YOUR REQUEST FOR A SAVING ACCOUNT HAS BEEN COMPLETED");
+			       			MainDriver.SystemLog.info("        A DEFAULT BALANCE OF $100 HAS BEEN ADDED TO THE ACCOUNT");
+			       			MainDriver.SystemLog.info("        PER REQUIREMENT TO OPEN A SAVING ACCOUNT");
 			       			System.out.println();
-			       			mainDriver.SystemLog.info("SYSTEM: PLEASE MAKE A NOTE OF YOUR ACCOUNT NUMBER: " + bankAccount.getAccountID());
+			       			MainDriver.SystemLog.info("SYSTEM: PLEASE MAKE A NOTE OF YOUR ACCOUNT NUMBER: " + bankAccount.getAccountID());
 			       			System.out.println();
 			       			System.out.println(bankAccount);
 			       			BankAppLoginWelcomePage_PendingAccount();
@@ -124,22 +121,20 @@ public class BankAppLoginWelcome_PendingAccount
 				}
 	        	catch (BusinessException e)
 	        	{
-	        		mainDriver.SystemLog.error(e.getMessage());
-	        		mainDriver.SystemLog.info(e.getMessage());
+	        		MainDriver.SystemLog.error(e.getMessage());
+	        		MainDriver.SystemLog.info(e.getMessage());
 	        	}
 	        	break;
 			case 3:
-            	System.out.println();
-            	mainDriver.SystemLog.info("THANK YOU FOR USING MY BANKING APPLICATION");
-            	System.out.println();
+        		WelcomePage.BankWelcomePage();
+         		break;
+			case 4:
+            	MainDriver.SystemLog.info("\nTHANK YOU FOR USING MY BANKING APPLICATION");
 				System.exit(0);
          		break;
-        	
-			case 4:
-            	System.out.println();
-        		welcomePage.BankWelcomePage();
-         		break;
-        	
+            default:
+            	 MainDriver.SystemLog.info("\nSYSTEM:  INVALID OPTION");
+            	break;
         	}
     	}
     	while(userChoice != 4);

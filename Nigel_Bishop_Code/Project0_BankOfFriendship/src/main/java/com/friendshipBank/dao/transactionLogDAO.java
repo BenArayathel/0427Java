@@ -9,6 +9,8 @@ public interface transactionLogDAO
 {
 	public transaction createNewBankTransaction(transaction transaction)throws BusinessException;
 	public List<transaction> getAllBankTransaction() throws BusinessException;
+	public List<transaction> getTransactionByAccountID(String aID) throws BusinessException;
+
 
 
 }
