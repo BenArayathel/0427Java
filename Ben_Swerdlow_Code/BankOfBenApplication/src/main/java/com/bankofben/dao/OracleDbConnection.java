@@ -38,7 +38,7 @@ public class OracleDbConnection {
 				}
 			} catch (IOException e) {
 				BusinessException b = new BusinessException("Could not read login information. Please check your login information and try again.");
-				loggy.error(b);
+//				loggy.error(b);
 				throw b;
 			}
 			connection = DriverManager.getConnection(login.get(0), login.get(1), login.get(2));
