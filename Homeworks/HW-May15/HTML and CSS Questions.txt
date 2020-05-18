@@ -88,8 +88,7 @@ What are some of the <form> attributes that you can set for the form?
 What is the input tag used for?	
 When writing in HTML, the <input> tag is an inline element used to create both input fields and interactive controls for web-based forms. 
 	
-What are some different values that you can assign to the <input>'s type attribute and 
-what data can you collect?	
+What are some different values that you can assign to the <input>'s type attribute and what data can you collect?	
 radio submit checkbox hidden email password range
 
 What are three different ways that you can add styles to an HTML document

@@ -28,9 +28,9 @@ What are the properties of transactions?
 ACID properties of transactions. In the context of transaction processing, the acronym ACID refers to the four key properties of a transaction: atomicity, consistency, isolation, and durability. All changes to data are performed as if they are a single operation.
 
 What is a key?
-A key is a single or combination of multiple fields in a table. It is used to fetch or retrieve records/data-rows from data table according to the condition/requirement. Keys are also used to create a relationship among different database tables or views.What is a 
+A key is a single or combination of multiple fields in a table. It is used to fetch or retrieve records/data-rows from data table according to the condition/requirement. Keys are also used to create a relationship among different database tables or views.
 
-candidate key?
+What is a candidate key?
 A Candidate Key can be any column or a combination of columns that can qualify as unique key in database. There can be multiple Candidate Keys in one table.
 
 What is a primary key?
@@ -85,7 +85,7 @@ What are joins?
 The SQL Joins clause is used to combine records from two or more tables in a database. A JOIN is a means for combining fields from two tables by using values common to each.
 
 How are joins different to set operations?
- Set Operations and Joins Introduction Set operations like union , intersect and except are used on 2 tables with same fields. Where as join is performed for denormalizing 2 tables into one on a common column.
+Set Operations and Joins Introduction Set operations like union , intersect and except are used on 2 tables with same fields. Where as join is performed for denormalizing 2 tables into one on a common column.
 
 What is normalisation?
 Normalization is a systematic approach of decomposing tables to eliminate data redundancy(repetition) and undesirable characteristics like Insertion, Update and Deletion Anomalies. It is a multi-step process that puts data into tabular form, removing duplicated data from the relation tables.
