@@ -5045,3 +5045,29 @@ Caused by: org.eclipse.lsp4j.jsonrpc.ResponseErrorException: Internal error.
 
 !ENTRY org.eclipse.m2e.logback.appender 2 0 2020-05-07 22:16:36.647
 !MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-05-19 10:59:11.857
+!MESSAGE The POM for com.oracle:ojdbc6:jar:11.2.0.3 is missing, no dependency information available
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-05-19 10:59:12.177
+!MESSAGE Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-05-19 10:59:12.184
+!MESSAGE Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.core.jobs 4 2 2020-05-19 11:04:10.276
+!MESSAGE An internal error occurred during: "Periodic workspace save.".
+!STACK 0
+java.lang.NumberFormatException: null
+	at java.lang.Integer.parseInt(Integer.java:542)
+	at java.lang.Integer.parseInt(Integer.java:615)
+	at org.eclipse.core.internal.resources.SaveManager.validateMasterTableBeforeSave(SaveManager.java:1586)
+	at org.eclipse.core.internal.resources.SaveManager.saveMasterTable(SaveManager.java:1263)
+	at org.eclipse.core.internal.resources.SaveManager.saveMasterTable(SaveManager.java:1255)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1232)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1143)
+	at org.eclipse.core.internal.resources.DelayedSnapshotJob.run(DelayedSnapshotJob.java:55)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.eclipse.ui 2 2 2020-05-19 11:04:26.458
+!MESSAGE Invalid property category path: org.springframework.ide.eclipse.beans.ui.properties.ProjectPropertyPage (bundle: org.springframework.ide.eclipse.xml.namespaces, propertyPage: org.springframework.ide.eclipse.beans.ui.namespaces.projectPropertyPage)
