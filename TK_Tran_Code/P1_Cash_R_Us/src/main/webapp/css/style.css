@@ -1,0 +1,21 @@
+a {
+    /* all links */
+    color: white;
+}
+
+body {
+    background-color: white;
+    font-family: Quicksand, sans-serif;
+}
+
+.form-group {
+    margin: 2%;
+}
+
+.btn {
+    margin: 2%;
+}
+
+.btn-block {
+    margin: 2%;
+}

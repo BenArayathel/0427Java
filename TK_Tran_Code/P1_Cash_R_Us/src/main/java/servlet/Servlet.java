@@ -11,7 +11,7 @@ public class Servlet extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-		System.out.println("Inside doGet() of Servlet!");
+		System.out.println("doGet() invoked.");
 
 		PrintWriter pw = res.getWriter();
 		pw.write("<h1> We're sending something back now inside doGet()</h1>");
@@ -21,7 +21,7 @@ public class Servlet extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-		System.out.println("Inside doPost() of Servlet!");
+		System.out.println("doPost() invoked.");
 
 		PrintWriter pw = res.getWriter();
 		pw.write("<h1> We're sending something back now inside doPost()</h1>");
