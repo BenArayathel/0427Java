@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE web-app PUBLIC
+		"-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+		"http://java.sun.com/dtd/web-app_2_3.dtd" >
+
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee"
+		 xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+		 version="2.5">
+	<display-name>Archetype Created Web Application</display-name>
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+	</welcome-file-list>
+
+	<!--  The web.xml will act like a sort of "table of content" for your servlets  -->
+
+	<!-- DEFINING  HELLOSERVLET CONFIGURATION-->
+	<servlet>
+		<servlet-name>Cash_R_Us_Servlet</servlet-name>
+		<servlet-class>servlet.Servlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>Cash_R_Us_Servlet</servlet-name>
+		<url-pattern>/</url-pattern>
+	</servlet-mapping>
+</web-app>
