@@ -7,4 +7,15 @@
   </welcome-file-list>
   
   <!-- Enter servelet stuff here -->
+  
+  <servlet>
+  	<servlet-name>MyFirstServlet</servlet-name>
+  	<servlet-class>com.hello.servlets.HelloServelet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>MyFirstServlet</servlet-name>
+  	<url-pattern>/HelloThere</url-pattern>
+  </servlet-mapping>
+  
 </web-app>

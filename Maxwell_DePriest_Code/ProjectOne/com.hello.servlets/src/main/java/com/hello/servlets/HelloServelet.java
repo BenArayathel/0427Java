@@ -1,6 +1,7 @@
 package com.hello.servlets;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -12,6 +13,24 @@ public class HelloServelet extends HttpServlet {
 	
 	@Override 
 	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-		System.out.println("Inside doGet request");
+		System.out.println("Inside doGet request of HelloServlet");
+	}
+	
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+		System.out.println("Inside doPost of HelloServlet");
+		
+		PrintWriter pw = res.getWriter();
+		pw.write("<h1>We're sending something back now</h1>");
+	}
+	
+	@Override
+	protected void doPut(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+		System.out.println("Inside doPut of HelloServlet");
+	}
+	
+	@Override
+	protected void doDelete(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+		System.out.println("Inside doDelete of HelloServlet");
 	}
 }
