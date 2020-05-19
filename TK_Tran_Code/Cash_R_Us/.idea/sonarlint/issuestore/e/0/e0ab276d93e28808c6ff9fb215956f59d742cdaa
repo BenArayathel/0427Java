@@ -1,18 +1,16 @@
 
-]
-java:S2095W"GUse try-with-resources or close this "ResultSet" in a "finally" clause.(·¦Ã…
-V	java:S125v"<This block of commented-out lines of code should be removed.(›àæþÿÿÿÿ
-e
-java:S2095?"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(ÀÖÐ½
-]
-java:S2095@"GUse try-with-resources or close this "ResultSet" in a "finally" clause.(·¦Ã…
-Q	java:S125p"<This block of commented-out lines of code should be removed.(ÃŸñÂ
 e
 java:S2095-"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(ÀÖÐ½
-e
-java:S2095"OUse try-with-resources or close this "CallableStatement" in a "finally" clause.(¬¹Å
 Q	java:S125f"<This block of commented-out lines of code should be removed.(àªº
-0
-java:S1220""Move this file to a named package.
 e
 java:S2095V"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(ÀÖÐ½
+]
+java:S2095W"GUse try-with-resources or close this "ResultSet" in a "finally" clause.(·¦Ã…
+e
+java:S2095?"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(ÀÖÐ½
+V	java:S125v"<This block of commented-out lines of code should be removed.(›àæþÿÿÿÿ
+Q	java:S125p"<This block of commented-out lines of code should be removed.(ÃŸñÂ
+e
+java:S2095"OUse try-with-resources or close this "CallableStatement" in a "finally" clause.(¬¹Å
+]
+java:S2095@"GUse try-with-resources or close this "ResultSet" in a "finally" clause.(·¦Ã…

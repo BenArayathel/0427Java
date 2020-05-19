@@ -6,9 +6,12 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="Cash_R_Us" />
         <module name="P0_Cash_R_Us" />
+        <module name="Cash_R_Us" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="Servlet" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>

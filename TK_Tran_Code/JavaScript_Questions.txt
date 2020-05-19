@@ -44,7 +44,7 @@ Does JavaScript has data types? If it does, what are they?
 	Object
 	Function
 What are three different ways you can create variables in JavaScript and when would you use each?
-	var - can be globally OR function/locally scoped.
+	var - can be globally OR locally scoped.
 		Can be updated AND redeclared.
 	let - only block-scoped (anything within {} is a block).
 		Can be updated but NOT redeclared.
@@ -153,7 +153,7 @@ What are the disadvantages of AJAX?
 	Complex.
 	Less secure.
 	Search engines cannot index AJAX pages.
-	Browsers with JS disabled cannot use the application.
+	Browsers with JS disabled cannot use the appcation.
 Can we add more than one ‘document.ready’ function in a page?
 	.ready() accepts an anon func as its param and triggers when the DOM has completed loaded the browser window.
 	Yes, you can use the function multiple times and thus can set multiple anon funcs that'll execute after the DOM is ready.
@@ -289,3 +289,7 @@ Callbacks vs Promises
 Promises vs Observables
 	A promise is always asynchronous whereas an observable can be either async or synch.
 	A promise provides a single value, whereas an observable is a stream of values.
+What are template literals?
+	New to ES6.
+	Template literals are enclosed by backticks (` `) (grave accent) character instead of double or single quotes.
+	Can contain placeholders (${expression}).

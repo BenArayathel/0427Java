@@ -439,7 +439,7 @@ DAO Design Pattern - https://www.tutorialspoint.com/design_pattern/data_access_o
         slice(start, end)
         substring(start, end)
         substr(start, length)
-    
+
     // Assignment: Make a Prototype Chain
         function baseClass(){
             this.a = 1;
@@ -503,7 +503,7 @@ DAO Design Pattern - https://www.tutorialspoint.com/design_pattern/data_access_o
 
     Programming Mistake Detector (PMD)
         Tool used to detect common mistakes made in the code by defining the rule sets.
-        Subproperty: 
+        Subproperty:
             Copy Paste Detector (CPD)
                 Helps minimize repeated code.
 
@@ -529,20 +529,20 @@ DAO Design Pattern - https://www.tutorialspoint.com/design_pattern/data_access_o
 
     JAXP = Java API for XML Processing
     JAX-RS = Java API for XML with RESTful Services
-    
+
     Diff b/t application server vs web server?
         App server - where you write logic.
         Web server - hosts and processes for client.
-    
+
     HTTP Methods:
         GET, POST, PUT, DELETE, and more..
 
     Apache Tomcat to host application
-        
+
     Angular hosted by S3
         Simply Storage Service, provides object storage through a web service.
-        store any type of object which allows for uses like storage for 
-            Internet applications, backup and recovery, disaster recovery, 
+        store any type of object which allows for uses like storage for
+            Internet applications, backup and recovery, disaster recovery,
             data archives, data lakes for analytics, and hybrid cloud storage.
     Server hosted by AWS EC2
         Elastic Compute Cloud, allows users to rent virtual computers.
@@ -559,3 +559,120 @@ HTML
 		Form data is sent to the server as name/value pairs.
 	<input> value attribute: defines a default value of an <input> element.
 	<button> type attribute: submit, reset, or button (which does nothing).
+
+Servlets (https://www.geeksforgeeks.org/introduction-java-servlets/)
+	Java class that services HTTP requests and implement the javax.servlet.Servlet interface.
+	Devs typically write servlets that extend javax.servlet.http.HttpServlet.
+		Abstract class that implements the Servlet interface and specifially designed to handle HTTP requests.
+	Servlet APIs:
+		javax.servlet(Basic)
+		javax.servlet.http(Advance)
+	Servlet Classes (C) and Interfaces (I):
+		Servlet(I)
+		ServletRequest(I)
+		ServletResponse(I)
+		GenericServlet(C)
+		HttpServlet(C)
+		HttpServletRequest(I)
+		HttpServletResponse(I)
+		Filter(I)
+		ServletConfig(I)
+	Differences b/t Servlets and CGI (Common Gateway Interface)
+		Servlets are portable and efficient (faster than CGI).
+		In Servlets, sharing is possible.
+		Servlets can directly comms w/ the web server.
+		Servlets are less expensive.
+		Servlets can handle cookies.
+	Advantages of a Java Servlet:
+		Servlet is faster than CGI bc it doesn't involve creation and destruction of processes for every request.
+		Servlets written in Java are platform independent.
+		Removes overhead of creating new process for each request.
+		It's a server-side component; inherits security provided by the web server.
+	Servlet Container
+		AKA servlet engine", is an integrated set of objects that provide runtime environment for Java Servlet components.
+		A system that manages Java Servlet components on top of the web server to handle web client requests.
+	Execution of Servlets:
+		1. Client sends request to server.
+		2. Server receives request.
+		3. Server passes request to corresponding servlet.
+		4. Servlet processes request and generates response in the form of output.
+		5. Servlet sends response back to server.
+		6. Server sends response back to client and the client browser displays it on the screen.
+	Servlet Lifecycle:
+		init()
+			Called ONCE, when the servlet is created.
+			Usually created when user invokes a URL corresponding to the servlet.
+			init() simply creates or loads some data that'll be used through the servlet lifecycle.
+			Once invoked, a single instance of each servlet gets created, with each user request resulting in a new thread.
+			The threads are handed off to doGet() or doPost() as appropriate.
+			Signature:
+				public void init() throws ServletException {
+ 					// Initialization code...
+				}
+		service()
+			Main method to perform the actual task.
+			Servlet container (i.e. web server) calls service() to handle requests from client and to write the formatted response back to client.
+			Each time server receives a request for a servlet, the server spawns a new thread and calls service().
+			service() checks HTTP request type (GET, POST, DELETE, etc..) and calls doGet(), doPost(), doDelete(), etc.. as appropriate.
+			Signature:
+				public void service(ServletRequest request, ServletResponse response)
+					throws ServletException, IOException {
+				}
+			doGet() and doPost() are most common requests.
+		doGet()
+		doPost()
+
+Tomcat
+	creation in eclipse
+		window, show view, other, server
+		new server, tomcat 9
+	server.xml - line 63
+		you can change the port here if you have any issues
+	double click the tomcat v9.0 server localhost in the servers tab
+		this will show you all sorts of important and cool information regarding your server, you can also change the port here
+	create maven project
+		packaging - war
+	fix your POM.xml, maven.compiler.source and target to 1.8 in properties
+	right click, Java EE, Generate Deployment Descriptor Stub
+	right click, Maven, update project
+	src > main > webapp > WEB-INF > web.xml
+		This file is sorta like a table of contents for your servlets.
+	in webapp folder - new file, index.html
+	run - run as - run on server
+	your index.html should open up in your IDE. if not, I guess try changing ports.
+	in src, the main customer servlet must extend HttpServlet
+
+	Postman
+		with your server running, at the top you'll see a + sign next to launchpad, click it to create a new request
+		just do a get request with the URL of what opened in your IDE.
+
+	STEPS:
+		Adding Apache Tomcat:
+			1) Go to https://tomcat.apache.org/download-90.cgi:
+				Install the appropriate version (core: zip)
+			2) Extract the file
+			3) Go to IDE
+				Windows ->  Show View -> Servers
+			4) Select (No servers are avaliable. Click this link to create a new server...)
+			5) Select the server type (the version you downloaded) and follow the Server wizard installation.
+
+		Install Postman
+		
+		Setting up Maven project.
+			1) New -> Maven Project
+			2) Create a simple project
+			3) SELECT "war" packaging
+			4) (An error will occur on your project), Right click on project -> Java EE tools -> Generate Deployment Descriptor Stub
+			5) Update pom.xml file.
+				EXTRA:
+
+				<!-- THIS is JSON parser -->
+				<dependency>
+					<groupId>com.fasterxml.jackson.core</groupId>
+					<artifactId>jackson-databind</artifactId>
+					<version>2.10.2</version>
+				</dependency>
+			6) Done.
+		EXTRA: If servlet-api has not been added:
+			Right-click the project -> properties
+			Java Build Path -> ADD JARs -> Find servlet-api.jar (inside lib folder of tomcat) -> click OK to update build path
