@@ -24,13 +24,4 @@ public class HelloServelet extends HttpServlet {
 		pw.write("<h1>We're sending something back now</h1>");
 	}
 	
-	@Override
-	protected void doPut(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-		System.out.println("Inside doPut of HelloServlet");
-	}
-	
-	@Override
-	protected void doDelete(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-		System.out.println("Inside doDelete of HelloServlet");
-	}
 }

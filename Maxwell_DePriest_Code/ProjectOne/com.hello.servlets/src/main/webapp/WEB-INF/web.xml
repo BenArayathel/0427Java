@@ -3,19 +3,67 @@
   <display-name>com.hello.servlets</display-name>
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
-
   </welcome-file-list>
-  
-  <!-- Enter servelet stuff here -->
-  
   <servlet>
-  	<servlet-name>MyFirstServlet</servlet-name>
-  	<servlet-class>com.hello.servlets.HelloServelet</servlet-class>
+    <servlet-name>MyFirstServlet</servlet-name>
+    <servlet-class>com.hello.servlets.HelloServelet</servlet-class>
   </servlet>
-  
   <servlet-mapping>
-  	<servlet-name>MyFirstServlet</servlet-name>
-  	<url-pattern>/HelloThere</url-pattern>
+    <servlet-name>MyFirstServlet</servlet-name>
+    <url-pattern>/HelloThere</url-pattern>
   </servlet-mapping>
-  
+  <servlet>
+    <servlet-name>DirectServlet</servlet-name>
+    <servlet-class>com.example.servlets.DirectServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DirectServlet</servlet-name>
+    <url-pattern>/dServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>IndirectServlet</servlet-name>
+    <servlet-class>com.example.servlets.IndirectServlet</servlet-class>
+    <init-param>
+      <param-name>Favorite Food</param-name>
+      <param-value>Mac and Cheese</param-value>
+    </init-param>
+    <init-param>
+      <param-name>Favorite Drink</param-name>
+      <param-value>Beer</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>IndirectServlet</servlet-name>
+    <url-pattern>/iServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>LifeCycleServlet</servlet-name>
+    <servlet-class>com.example.servlets.LifeCycleServlets</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LifeCycleServlet</servlet-name>
+    <url-pattern>/lifeCycleServlet</url-pattern>
+  </servlet-mapping>
+  <context-param>
+    <param-name>databaseURL</param-name>
+    <param-value>https://google.com/</param-value>
+  </context-param>
+  <servlet>
+    <servlet-name>LoginServlet</servlet-name>
+    <servlet-class>com.example.servlets.LoginServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LoginServlet</servlet-name>
+    <url-pattern>/login</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Example</display-name>
+    <servlet-name>Example</servlet-name>
+    <servlet-class>com.example.servlets.Example</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Example</servlet-name>
+    <url-pattern>/Example</url-pattern>
+  </servlet-mapping>
 </web-app>
