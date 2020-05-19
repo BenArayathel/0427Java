@@ -20,12 +20,15 @@
 
     <br>
     
-    <form id="regForm" novalidate>
+    <form id="regForm">
         <h2>New User Registration</h2>
         <label for="username">Username</label>
         <br>
         <input type=text id="username" minlength="4" maxlength="20"
-            pattern="^[A-Za-z]{1}[A-Za-z0-9]{3,19}$" required>
+            pattern="^[A-Za-z]{1}[A-Za-z0-9]{3,19}$" required
+            oninvalid="this.setCustomValidity('Username is required and must be between '
+                +'4 and 20 alphanumeric characters and must start with a letter')"
+            oninput="this.setCustomValidity('')">
         <span class="error" aria-live="polite"></span>
         <br>
         <label for="email">Email</label>

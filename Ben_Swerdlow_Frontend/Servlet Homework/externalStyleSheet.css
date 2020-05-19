@@ -1,8 +1,12 @@
-#logo {
+#bankImage {
     height: 360px;
     display: block;
     margin-left: auto;
     margin-right: auto;
+}
+
+#regForm {
+    text-align: center;
 }
 
 #loginForm {

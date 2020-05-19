@@ -1,0 +1,27 @@
+#bankImage {
+    height: 360px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#regForm {
+    text-align: center;
+}
+
+#loginForm {
+    text-align: center;
+}
+
+.warning {
+    padding: 20px;
+    color: white;
+    opacity: 1;
+    transition: opacity 0.6s;
+    margin-bottom: 15px;
+    background-color: #ff9800;
+}
+
+label {
+    text-align: left;
+}

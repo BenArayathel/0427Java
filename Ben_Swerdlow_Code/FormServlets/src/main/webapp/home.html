@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link rel="stylesheet"
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- My Styling -->
+    <link rel="stylesheet" type="text/css" href="css/externalStyleSheet.css">
+    <title>Home</title>
+</head>
+<body>
+
+    <div class="pageHeader" id="welcome">
+        <h1>Welcome to the Login Page!</h1>
+    </div>
+
+    <br>
+    
+    <form id="loginForm">
+        <h2>New User Registration</h2>
+        <label for="username">Username</label>
+        <br>
+        <input type=text id="username" required
+            pattern="^[A-Za-z]{1}[A-Za-z0-9]{3,19}$">
+        <br>
+        <label for="password">Password</label>
+        <br>
+        <input type=password id="password" required
+            pattern="^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[.;,#?!@$%^&*-]).{8,}$">
+        <br>
+        <br>
+        <input type=submit value="Login" id="subLogin" class="btn btn-primary">
+        <div id="badLogin" class="warning" hidden=false><strong>Warning!</strong>: Invalid login. Please try again.</div>
+    </form>
+    
+    <script type="text/javascript" src="scripts/home.js"></script>
+</body>
+</html>

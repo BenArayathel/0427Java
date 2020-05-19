@@ -1,14 +1,17 @@
 window.onload = function() {
     const regForm = document.getElementById("regForm");
     const username = document.getElementById("username");
-    username.addEventListener("input", function (event) {
-        if (username.validity.typeMismatch) {
-            username.setCustomValidity("Username must be between 4 and 20 "
-                +"alphanumeric characters and must start with a letter")
-        } else {
-            username.setCustomValidity("");
+    username.oninvalid = function(event) {
+        console.log("Username invalid registered")
+        event.target.setCustomValidity("");
+        if (!e.target.validity.valid) {
+            e.target.setCustomValidity("Username is required and must be between 4 and 20 "
+            +"alphanumeric characters and must start with a letter")
         }
-    })
+        username.oninput = function (event) {
+            event.target.setCustomValidity("");
+        }
+    }
     const email = document.getElementById("email");
     const emailError = document.querySelector('#email + span.error');
     email.addEventListener("input", function (event) {
