@@ -657,22 +657,16 @@ Tomcat
 			5) Select the server type (the version you downloaded) and follow the Server wizard installation.
 
 		Install Postman
-		
-		Setting up Maven project.
-			1) New -> Maven Project
-			2) Create a simple project
-			3) SELECT "war" packaging
-			4) (An error will occur on your project), Right click on project -> Java EE tools -> Generate Deployment Descriptor Stub
-			5) Update pom.xml file.
-				EXTRA:
 
+		Setting up Maven project.
+			1) New -> Maven Project (select web-app archetype)
+			2) Update pom.xml file.
 				<!-- THIS is JSON parser -->
 				<dependency>
 					<groupId>com.fasterxml.jackson.core</groupId>
 					<artifactId>jackson-databind</artifactId>
 					<version>2.10.2</version>
 				</dependency>
-			6) Done.
 		EXTRA: If servlet-api has not been added:
 			Right-click the project -> properties
 			Java Build Path -> ADD JARs -> Find servlet-api.jar (inside lib folder of tomcat) -> click OK to update build path
