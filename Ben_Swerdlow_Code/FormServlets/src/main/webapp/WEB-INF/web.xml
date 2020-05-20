@@ -14,4 +14,14 @@
     <servlet-name>Login</servlet-name>
     <url-pattern>/Login</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>MasterServlet</display-name>
+    <servlet-name>MasterServlet</servlet-name>
+    <servlet-class>com.example.servlet.MasterServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MasterServlet</servlet-name>
+    <url-pattern>/MasterServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

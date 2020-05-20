@@ -8,12 +8,8 @@ window.onload = function() {
 
 function loginUser(event) {
     event.preventDefault();
-    // console.log("Hey");
     let username = document.getElementById("username").value;
     let password = document.getElementById("password").value;
-    // let loginAttemptP = document.createElement("p");
-    // loginAttemptP.innerText = `attempting to login user ${username} ${password}`
-    // document.body.appendChild(loginAttemptP);
     fetch('http://localhost:9999/FormServlets/Login', {
             method: 'POST',
             body: JSON.stringify({
@@ -23,7 +19,6 @@ function loginUser(event) {
             headers: {"Content-type": "application/json; charset=UTF-8"}
         })
         .then(responseJSON => redirectLogin(responseJSON))
-        // .then(json => DOMManipulation(json))
         .catch(error => console.error(error));
 }
 

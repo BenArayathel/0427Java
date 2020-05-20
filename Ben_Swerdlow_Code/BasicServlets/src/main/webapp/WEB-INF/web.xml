@@ -12,55 +12,53 @@
     <servlet-name>Dresponse</servlet-name>
     <url-pattern>/gibberish</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <servlet-name>IndirectR</servlet-name>
     <servlet-class>com.example.servlets.IndirectServlet</servlet-class>
-    
     <init-param>
-    	<param-name>Favorite Food</param-name>
-    	<param-value>Pasta</param-value>
+      <param-name>Favorite Food</param-name>
+      <param-value>Pasta</param-value>
     </init-param>
     <init-param>
-    	<param-name>Best Food</param-name>
-    	<param-value>Mac and Cheese</param-value>
+      <param-name>Best Food</param-name>
+      <param-value>Mac and Cheese</param-value>
     </init-param>
-    
   </servlet>
   <servlet-mapping>
     <servlet-name>IndirectR</servlet-name>
     <url-pattern>/indirect</url-pattern>
   </servlet-mapping>
   <servlet>
-  
     <description></description>
     <display-name>LifeCycleServlet</display-name>
     <servlet-name>LifeCycleServlet</servlet-name>
     <servlet-class>com.example.servlets.LifeCycleServlet</servlet-class>
-    
     <load-on-startup>-1</load-on-startup>
-    <!-- less than 0 means lazy loading (wait until it is needed to initiate the servlet) -->
-    <!-- greater than 0 means eager loading (load immediately when the server starts). 
-    	Eager loading will happen lowest value to highest value (0 before 1, 1 before 2, etc.) -->
   </servlet>
   <servlet-mapping>
     <servlet-name>LifeCycleServlet</servlet-name>
     <url-pattern>/LifeCycleServlet</url-pattern>
   </servlet-mapping>
-  
-  <!-- Session Servlet -->
   <servlet>
-  	<servlet-name>Session</servlet-name>
-  	<servlet-class>com.example.servlets.SessionServlet</servlet-class>
+    <servlet-name>Session</servlet-name>
+    <servlet-class>com.example.servlets.SessionServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-  	<servlet-name>Session</servlet-name>
-  	<url-pattern>sesh</url-pattern>
+    <servlet-name>Session</servlet-name>
+    <url-pattern>sesh</url-pattern>
   </servlet-mapping>
-  <!-- Servlet Context (Global) -->
-  <!-- It's a parameter that are specified for an entire application, available to all servlets -->
   <context-param>
-  	<param-name>databaseUrl</param-name>
-  	<param-value>https://google.com</param-value>
+    <param-name>databaseUrl</param-name>
+    <param-value>https://google.com</param-value>
   </context-param>
+  <servlet>
+    <description></description>
+    <display-name>RequesHelper</display-name>
+    <servlet-name>RequesHelper</servlet-name>
+    <servlet-class>com.example.controller.RequesHelper</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RequesHelper</servlet-name>
+    <url-pattern>/RequesHelper</url-pattern>
+  </servlet-mapping>
 </web-app>

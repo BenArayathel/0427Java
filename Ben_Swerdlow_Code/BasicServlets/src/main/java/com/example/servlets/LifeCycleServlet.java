@@ -14,7 +14,7 @@ public class LifeCycleServlet extends HttpServlet {
 	
 	/*
 	 * Servlet Hierarchy
-	 * 		Servlet (i) -> GenericServlet (ac) -> HttpServlet (c) -> CustomNameServlet (c)
+	 * 		Servlet (i) -> GenericServlet (ac) -> HttpServlet (ac) -> CustomNameServlet (c)
 	 */
 	
 	/*

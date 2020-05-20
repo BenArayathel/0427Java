@@ -11,12 +11,21 @@
   </properties>
   
   <dependencies>
+  
     <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
 	<dependency>
 	    <groupId>com.fasterxml.jackson.core</groupId>
 	    <artifactId>jackson-databind</artifactId>
 	    <version>2.10.2</version>
-	</dependency>  
+	</dependency>
+	
+	<!-- https://mvnrepository.com/artifact/com.oracle.jdbc/ojdbc8 -->
+	<dependency>
+	    <groupId>com.oracle.jdbc</groupId>
+	    <artifactId>ojdbc8</artifactId>
+	    <version>12.2.0.1</version>
+	</dependency>
+	
   </dependencies>
   
 </project>
