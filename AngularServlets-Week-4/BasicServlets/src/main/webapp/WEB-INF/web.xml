@@ -53,6 +53,17 @@
     <url-pattern>/LifeCycleServlet</url-pattern>
   </servlet-mapping>
   
+  <!-- SESSION SERVLET -->
+  <servlet>
+  	<servlet-name>Session</servlet-name>
+  	<servlet-class>com.example.servlets.SessionServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>Session</servlet-name>
+  	<url-pattern>/sesh</url-pattern>
+  	<url-pattern>/othersesh/*</url-pattern>
+  </servlet-mapping>
+  
   <!-- Servlet Context (Global) -->
   <!-- It's a parameter that are specified for an entire application, available to all servlets -->
   <context-param>
