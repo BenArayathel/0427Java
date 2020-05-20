@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buuublles</title>
+</head>
+
+<body>
+    <div>
+        <h2>Welcome to Bubbling</h2>
+        <!-- bubbling is event propagation from child to parent -->
+    </div>
+    <div onclick="alert('duv again')">
+        first div blcok
+        <form onmouseover = "alert('form')">
+            <div onclick="event.stopPropagation(); alert('div')">
+                div portionasdfasdfasdfasdf
+                <!-- Only stops events that are specified. -->
+                <!-- Events that are stopped have to be of the same type.-->
+                <p onmouseover="alert('para')"> 
+                    Look at this paragraph
+                </p>
+            </div>
+        </form>
+    </div>
+
+    <!-- What is capturing?
+        capturing stops bubbling happening
+        Stops child to parent.   -->
+    
+</body>
+</html>
