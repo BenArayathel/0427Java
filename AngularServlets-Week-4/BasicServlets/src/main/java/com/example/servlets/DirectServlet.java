@@ -18,7 +18,7 @@ public class DirectServlet extends HttpServlet{
 			
 		System.out.println("Inside doGet");
 		
-//		res.setContentType("text/html"); This is redundant, by daefault this is the type
+//		res.setContentType("text/html"); This is redundant, by default this is the type
 		
 		//PrintWriter Object? Is an object used to DIRECTLY respond to the client 
 		PrintWriter pw = res.getWriter();
@@ -29,6 +29,7 @@ public class DirectServlet extends HttpServlet{
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+		
 		System.out.println("Inside doPost");
 		
 		res.setContentType("application/json");
@@ -38,12 +39,18 @@ public class DirectServlet extends HttpServlet{
 		String db = req.getServletContext().getInitParameter("databaseUrl");
 		
 		System.out.println(db);
+		//
 		
-		String name = req.getParameter("name");
+//		String name = req.getParameter("name");
+//		Planet p = new Planet(name);
 		
-		Planet p = new Planet(name);
 		
-		res.getWriter().write(new ObjectMapper().writeValueAsString(p));
+		ObjectMapper om = new ObjectMapper();
+		Planet p1 = om.readValue(req.getReader(), com.example.models.Planet.class);
+		
+		System.out.println(p1);
+		
+		res.getWriter().write(new ObjectMapper().writeValueAsString(p1));
 	}
 
 }
