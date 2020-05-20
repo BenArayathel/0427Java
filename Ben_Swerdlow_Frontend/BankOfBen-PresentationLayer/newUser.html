@@ -6,9 +6,83 @@
     <!-- Bootstrap -->
     <link rel="stylesheet"
     href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- My Styling -->
+    <link rel="stylesheet" type="text/css" href="css/externalStyleSheet.css">
     <title>New User Registration</title>
 </head>
 <body>
+
+    <form data-toggle="validator" role="form" id="regInfoForm">
+        <div class="form-group">
+            <label for="firstName" class="control-label">First Name</label>
+            <input type="text" class="form-control" placeholder="First" id="firstName"
+              pattern="[A-Z]{1}[a-z]+" required
+              oninvalid="setCustomValidity('Can only contain alphabetical characters and must start with a capital letter')"
+              onchange="try{setCustomValidity('')}catch(e){}">
+        </div>
+        <div class="form-group">
+            <label for="middleName" class="control-label">Middle Name</label>
+            <input type="text" class="form-control" placeholder="Middle" id="middleName"
+              pattern="[A-Z]{1}[a-z]+"
+              oninvalid="setCustomValidity('Can only contain alphabetical characters and must start with a capital letter')"
+              onchange="try{setCustomValidity('')}catch(e){}">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="lastName" class="control-label">Last Name</label>
+            <input type="text" class="form-control" placeholder="Last" id="lastName"
+                pattern="[A-Z]{1}[a-z]+" required
+                oninvalid="setCustomValidity('Can only contain alphabetical characters and must start with a capital letter')"
+                onchange="try{setCustomValidity('')}catch(e){}">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="momsMaidName" class="control-label">Mother's Maiden Name</label>
+            <input type="text" class="form-control" placeholder="Maiden" id="momsMaidName"
+              pattern="[A-Z]{1}[a-z]+" required
+              oninvalid="setCustomValidity('Can only contain alphabetical characters and must start with a capital letter')"
+              onchange="try{setCustomValidity('')}catch(e){}">
+            </div>
+        </div>
+        <div class="form-group">
+          <label for="dob" class="control-label">Date of Birth</label>
+          <input type="text" class="form-control" placeholder="MM-DD-YYYY" id="dob"
+              pattern="([0-9]{1,2})-{1}([0-9]{1,2})-{1}([0-9]{4})" required
+              oninvalid="setCustomValidity('Invalid date of birth. Must follow MM-DD-YYYY format.')"
+              onchange="try{setCustomValidity('')}catch(e){}">
+        </div>
+        <div class="form-group">
+          <label for="ssn" class="control-label">Social Security Number</label>
+          <input type="text" class="form-control" placeholder="XXX-XX-XXXX" id="ssn"
+              pattern="[0-9]{9}|[0-9]{3}-[0-9]{2}-[0-9]{4}|[0-9]{3} [0-9]{2} [0-9]{4}" required
+              oninvalid="setCustomValidity('Invalid social security number. May be split into the area, group, and serial numbers by - or spaces')"
+              onchange="try{setCustomValidity('')}catch(e){}">
+        </div>
+        <div class="form-group">
+          <label for="phoneNum" class="control-label">Phone Number</label>
+          <input type="text" class="form-control" placeholder="(XXX)-XXX-XXXX or +1(XXX)-XXX-XXXX" id="phoneNum"
+              pattern="^(\+1)*([0-9]{3}|\([0-9]{3}\)){1}( |-){0,1}([0-9]{3}){1}( |-){0,1}([0-9]{4}){1}$" required
+              oninvalid="setCustomValidity('Invalid phone number. May start with +1 and may use (,), ,- in the standard phone number format.')"
+              onchange="try{setCustomValidity('')}catch(e){}">
+        </div>
+        <div class="form-group">
+          <label for="inputPassword" class="control-label">Password</label>
+          <div class="form-inline row">
+            <div class="form-group col-sm-6">
+              <input type="password" data-minlength="6" class="form-control" id="inputPassword" placeholder="Password" required>
+              <div class="help-block">Minimum of 6 characters</div>
+            </div>
+            <div class="form-group col-sm-6">
+              <input type="password" class="form-control" id="inputPasswordConfirm" data-match="#inputPassword" data-match-error="Whoops, these don't match" placeholder="Confirm" required>
+              <div class="help-block with-errors"></div>
+            </div>
+          </div>
+        </div>
+    </form>
+
+
     
+    <script src="/vendors/formvalidation/dist/js/FormValidation.min.js"></script>
+    <script src="/vendors/formvalidation/dist/js/plugins/Bootstrap.min.js"></script>
 </body>
 </html>

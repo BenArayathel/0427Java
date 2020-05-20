@@ -7,7 +7,7 @@
     <link rel="stylesheet"
     href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <!-- My Styling -->
-    <link rel="stylesheet" type="text/css" href="externalStyleSheet.css">
+    <link rel="stylesheet" type="text/css" href="css/externalStyleSheet.css">
     <title>Bank of Ben Homepage</title>
 </head>
 <body>
@@ -15,12 +15,12 @@
     <div class="pageHeader" id="welcome">
         <h1>Welcome to the Bank of Ben!</h1>
         <img src="https://m.economictimes.com/thumb/msid-71487585,width-1200,height-900,resizemode-4,imgsize-169788/bank-getty.jpg",
-            alt="Bank image", id="bankImage">
+            alt="Bank image", id="logo">
     </div>
 
     <br>
     
-    <form id="regForm">
+    <form id="regForm" action="newUser.html">
         <h2>New User Registration</h2>
         <label for="username">Username</label>
         <br>
@@ -39,15 +39,16 @@
         <span class="error" aria-live="polite"></span>
         <br>
         <br>
-        <input type=submit value="Submit Registration Information" id="submitInfo" class="btn btn-primary">
+        <input type=submit value="Continue Registration" id="submitInfo" class="btn btn-primary">
     </form>
 
     <br>
 
-    <form id="loginForm">
+    <form id="loginForm" action="login.html">
         <h2>User Login</h2>
         <input type=submit value="Login", id="selectLogin" class="btn btn-primary">
     </form>
     
+    <script type="text/javascript" src="scripts/home.js"></script>
 </body>
 </html>

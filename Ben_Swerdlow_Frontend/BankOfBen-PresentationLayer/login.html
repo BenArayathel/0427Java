@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link rel="stylesheet"
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- My Styling -->
+    <link rel="stylesheet" type="text/css" href="css/externalStyleSheet.css">
+    <title>Login</title>
+</head>
+<body>
+
+    <div class="pageHeader" id="welcome">
+        <h1>User Login</h1>
+        <img src="https://m.economictimes.com/thumb/msid-71487585,width-1200,height-900,resizemode-4,imgsize-169788/bank-getty.jpg",
+            alt="Bank image", id="logo">
+    </div>
+
+    <br>
+    
+    <form id="loginForm">
+        <label for="username">Username</label>
+        <br>
+        <input type=text id="username" required
+            pattern="^[A-Za-z]{1}[A-Za-z0-9]{3,19}$">
+        <br>
+        <label for="password">Password</label>
+        <br>
+        <input type=password id="password" required
+            pattern="^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[.;,#?!@$%^&*-]).{8,}$">
+        <br>
+        <br>
+        <input type=submit value="Login" id="subLogin" class="btn btn-primary">
+    </form>
+
+    <p id="badLoginDiv" class="warning" style="background-color: #ff9800" hidden>
+        <strong>Warning!</strong>: Invalid login. Please try again.
+    </p>
+    
+</body>
+</html>

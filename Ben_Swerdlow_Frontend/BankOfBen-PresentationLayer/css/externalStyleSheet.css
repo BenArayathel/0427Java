@@ -1,8 +1,16 @@
+#welcome {
+    text-align: center;
+}
+
 #logo {
     height: 360px;
     display: block;
     margin-left: auto;
     margin-right: auto;
+}
+
+#regForm {
+    text-align: center;
 }
 
 #loginForm {
@@ -11,4 +19,8 @@
 
 label {
     text-align: left;
+}
+
+#regInfoForm {
+    margin: 50px 100px;
 }
