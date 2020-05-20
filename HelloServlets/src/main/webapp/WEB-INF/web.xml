@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- this is where we use web-app, instead of inside the servlet as they do in tutorials -->
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
+  <display-name>HelloServlets</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+  </welcome-file-list>
+  
+  
+<servlet>
+  	<servlet-name>MyFirstServlet</servlet-name>
+  	<!-- line below must be MY exact path to class/file -->
+  	<servlet-class>com.example.servlet.servlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>MyFirstServlet</servlet-name>
+  	<!--  this name goes in the url -->
+  	<!-- just write the first four characters and it will comment -->
+  	<url-pattern>/myfirsttest</url-pattern>
+  </servlet-mapping>
+  
+</web-app>

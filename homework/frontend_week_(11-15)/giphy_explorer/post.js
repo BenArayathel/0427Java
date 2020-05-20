@@ -7,11 +7,10 @@ submit3.addEventListener("keyup", test)
 
 function test() {
     let feedback = document.getElementById("feedbackValue").value
-    // console.log(feedback)
-    fetch('https://jsonplaceholder.typicode.com/posts/1', {
-        method: 'PUT',
+    console.log(feedback)
+    fetch('https://jsonplaceholder.typicode.com/posts', {
+        method: 'POST',
         body: JSON.stringify({
-            id: 101,
             title: "Feedback",
             body: feedback,
             userId: 1
@@ -25,7 +24,7 @@ function test() {
         .then(json => repeatFeedback(json))
 
         function repeatFeedback(json) {
-            // console.log(json.body)
+            console.log(json.body)
             rtfeed.innerHTML = json.body
         }
 }
