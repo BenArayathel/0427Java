@@ -39,8 +39,9 @@ function redirectLogin(json) {
 }
 
 function invalidCredentials() {
-    console.log("Invalid Credentials")
-    document.getElementById(badLogin).setAttribute("hidden", false);
+    console.log("Invalid Credentials");
+    document.getElementById("badLoginDiv").hidden = false;
+    console.log("Warning should be shown");
 }
 
 function DOMManipulation(json) {

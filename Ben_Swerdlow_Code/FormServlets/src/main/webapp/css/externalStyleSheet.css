@@ -14,10 +14,9 @@
 }
 
 .warning {
+    text-align: center;
     padding: 20px;
     color: white;
-    opacity: 1;
-    transition: opacity 0.6s;
     margin-bottom: 15px;
     background-color: #ff9800;
 }
