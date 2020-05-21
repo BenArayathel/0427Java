@@ -95,7 +95,7 @@ public class UserDAOImplementation implements UserDAOInterface {
 			
 		} catch (SQLException e) {
 			Main.myLog.error(e.getMessage() + e.getStackTrace());
-			throw new BankException("login failed at dao");
+			throw new BankException("login failed at dao " + e.getMessage() + e.getStackTrace());
 		}
 	}
 

@@ -27,16 +27,17 @@ function login() {
         // url in it to redirect through javascript
 
         // THIS working approach does a redirect
-        // .then(response => response.text())
-        // .then(response => {
-        //     console.log(response)
-        //     window.location.assign(response);
-        // })
+        .then(response => response.text())
+        .then(response => {
+            console.log(response)
+            window.location.assign(response);
+        })
 
         // THIS works at dealing with an object
-        .then(response => response.json())
-        .then(responseObj => {
-            console.log(responseObj)
+        // .then(response => console.log(response.text()))
+//        .then(response => console.log(response))
+        // .then(responseObj => {
+        //     console.log(responseObj)
         //     for (let i in responseObj) {
         //         console.log(responseObj[i]);
 
@@ -45,8 +46,8 @@ function login() {
                 // let text = document.createTextNode(responseObj[i]);
                 // item.appendChild(text);
                 // space.appendChild(item);
-            }
-        })
+//           }
+        // })
 
 
 
