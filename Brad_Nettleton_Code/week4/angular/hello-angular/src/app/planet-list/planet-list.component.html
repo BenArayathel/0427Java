@@ -1,0 +1,56 @@
+<div class='panel panel-primary'>
+    <div class='panel-heading'>
+        
+        Welcome, {{5+8 + " " + currentLoggedInUser}}!!!
+
+    </div>
+    <div class='panel-body'>
+        <div class='row'>
+
+            <div class='row'>
+
+                <div class='col-md-2'>Filter by:</div>
+                <div class='col-md-4'>
+
+                    <input type='text' [(ngModel)] = 'inputField' placeholder="filter"/>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- our HTML table-->
+<div class='table-responsive'>
+
+    <table class='table' *ngIf='planets && planets.length'>
+        <!-- structural directive. has potential to alter the entire structure of the DOM -->
+
+        <!--commonly used structural directives are:
+        *ngIf, *ngFor, *ngSwitch, *ngDefualt-->
+
+        <thead>
+            <tr>
+                <th>
+                    <button class='btn btn-primary' (click)='toggleImage()'>
+                        {{showImage ? 'Hide': 'Show'}} Image
+                    </button>
+                </th>
+                <th>Planets</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- It's an Enchanced loop
+            specifically, *ngFor will copy an entire element for every element in an array you provide it-->
+            <tr *ngFor='let temp of filteredPlanets'>
+                <td>
+                    <img *ngIf='showImage' [src]='temp.image' [title]='temp.name'
+                [style.width.px]='imageWidth' [sytle.margin.px] = 'imageMargin'>
+                </td>
+                <td>
+                    <!-- {{temp.name | magicpipe: uppercase }} -->
+                    {{temp.name | magicpipe: 'Magic: '}}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
