@@ -1,19 +1,17 @@
 let submit = document.getElementById("submit_login");
-let space = document.getElementById("space");
+// let space = document.getElementById("space");
 
 submit.addEventListener("click", login)
 // submit.addEventListener("keyup", login)
 
-function login(e) {
-	// try this to use form
-	e.preventDefault();
+function login() {
     let username = document.getElementById("username").value;
     let password = document.getElementById("password").value;
     
     console.log(username);
     console.log(password);    
 
-    fetch('http://localhost:9999/HelloServlets/login', {
+    fetch('http://localhost:9999/Beaver_Trust_Fiduciary_App/login', {
         method: 'POST',
         body: JSON.stringify({
             username: username,
@@ -39,15 +37,14 @@ function login(e) {
         .then(response => response.json())
         .then(responseObj => {
             console.log(responseObj)
-            for (let i in responseObj) {
-                console.log(responseObj[i]);
-                // let 
-                // space.appendChild(info);
+        //     for (let i in responseObj) {
+        //         console.log(responseObj[i]);
 
-                let item = document.createElement("LI");
-                let text = document.createTextNode(responseObj[i]);
-                item.appendChild(text);
-                space.appendChild(item);
+                // this was for using the obj i got back
+                // let item = document.createElement("LI");
+                // let text = document.createTextNode(responseObj[i]);
+                // item.appendChild(text);
+                // space.appendChild(item);
             }
         })
 
