@@ -26,3 +26,6 @@
 2020-05-20 21:58:19 ERROR Main:97 - No suitable driver found for jdbc:oracle:thin:@database-1.cb5vpvii5jvy.us-west-2.rds.amazonaws.com:1521:orcl[Ljava.lang.StackTraceElement;@447599c2
 2020-05-20 21:59:35 ERROR Main:97 - No suitable driver found for jdbc:oracle:thin:@database-1.cb5vpvii5jvy.us-west-2.rds.amazonaws.com:1521:orcl[Ljava.lang.StackTraceElement;@65d3efd5
 2020-05-20 22:02:02 ERROR Main:97 - No suitable driver found for jdbc:oracle:thin:@database-1.cb5vpvii5jvy.us-west-2.rds.amazonaws.com:1521:orcl[Ljava.lang.StackTraceElement;@504b6fab
+2020-05-20 22:07:32 ERROR Main:97 - No suitable driver found for jdbc:oracle:thin:@database-1.cb5vpvii5jvy.us-west-2.rds.amazonaws.com:1521:orcl[Ljava.lang.StackTraceElement;@7833bfb5
+2020-05-21 07:04:59 ERROR Main:97 - No suitable driver found for jdbc:oracle:thin:@database-1.cb5vpvii5jvy.us-west-2.rds.amazonaws.com:1521:orcl[Ljava.lang.StackTraceElement;@37311505
+2020-05-21 07:08:40 ERROR Main:97 - No suitable driver found for jdbc:oracle:thin:@database-1.cb5vpvii5jvy.us-west-2.rds.amazonaws.com:1521:orcl[Ljava.lang.StackTraceElement;@6daf5cf9

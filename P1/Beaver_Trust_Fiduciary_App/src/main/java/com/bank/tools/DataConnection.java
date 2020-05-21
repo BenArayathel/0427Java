@@ -30,6 +30,16 @@ public class DataConnection {
 //		String username = "admin";
 //		String password = "gunderodd";
 		
+		// this fix allows me to use my connection in P1
+		try {
+			Class.forName("oracle.jdbc.OracleDriver");
+			System.out.println("Driver Loaded ... ...");
+		} catch (ClassNotFoundException e) {
+			System.out.println("Could not register driver!");
+			e.printStackTrace();
+		}
+
+		
 		conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);
 		return conn;
 	}

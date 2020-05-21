@@ -1,5 +1,5 @@
 select * from bank_user;
-select * from bank_account;
+select * from bank_account where user_id = 92;
 select * from bank_account where account_id = '572';
 select * from bank_transaction;
 
