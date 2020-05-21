@@ -1,5 +1,7 @@
 package com.models;
 
+import org.apache.log4j.Logger;
+
 public class User {
 	private String id;
 	private String name;

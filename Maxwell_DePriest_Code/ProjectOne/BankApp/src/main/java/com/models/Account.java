@@ -1,6 +1,7 @@
 package com.models;
 
 import java.text.DecimalFormat;
+import org.apache.log4j.Logger;
 
 public class Account {
 	private String id;
