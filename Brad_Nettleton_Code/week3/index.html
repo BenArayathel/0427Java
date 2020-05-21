@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- CSS only -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        <div class="jumbotron text-center">
+            <h1 class="display-4">Crypto Info</h1>
+            <p class="lead">Enter coin id e.g. 90 (BTC)</p>
+            <hr class="my-4">
+            <input type="text" id=ccId placeholder="Enter Cryprocurrency Id" class="form-control">
+            <input type="submit" value="Get Crypto Info" class="btn btn-primary btn-sm" id="ccSubmit" class="form-control btn btn-primary"/>
+            <div id="ccInfo" class="container text-left">
+                <h3 id=ccName></h3>
+                <h4 id="ccSymbol"></h4>
+                <h4 id="ccPriceUsd"></h4>
+            </div>
+        
+        </div>
+    </div>
+    
+</body>
+
+<!-- <script type="text/javascript" src="AJAXPractice.js"></script> -->
+<script type="text/javascript" src="FetchPractice.js"></script>
+</html>
