@@ -29,9 +29,9 @@ let h1List = h1.innerText.split(" ");
 console.log(h1List);
 
 function func3() {
-    tableHeads = document.querySelectorAll("thead th");
+    let tableHeads = document.querySelectorAll("thead th");
     tableHeads = Array.from(tableHeads);
-    tableHeadsCopy = [];
+    let tableHeadsCopy = [];
     for(let i=0; i<tableHeads.length; i++) {
         tableHeadsCopy[i] = tableHeads[i]; 
     };
