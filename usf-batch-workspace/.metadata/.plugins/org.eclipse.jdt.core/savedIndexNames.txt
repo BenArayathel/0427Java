@@ -1,0 +1,21 @@
+INDEX VERSION 1.131+E:\revature_java_training\0427Java\usf-batch-workspace\.metadata\.plugins\org.eclipse.jdt.core
+4062227291.index
+1417245407.index
+3020153976.index
+4154642925.index
+1762536989.index
+731798193.index
+2539378903.index
+480125519.index
+110369166.index
+4283746372.index
+2709495009.index
+1303807264.index
+1362632138.index
+3159844803.index
+583269377.index
+3996396614.index
+3948116814.index
+2421353481.index
+128110284.index
+1142928229.index
