@@ -1,8 +1,9 @@
+package dao;
+
 import dbutil.OracleConnection;
 import exception.BusinessException;
 import model.Account;
 import org.apache.log4j.Logger;
-import service.Service;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -16,7 +17,8 @@ public class DAOImp implements DAO {
 
 	static final Logger log = Logger.getLogger(DAOImp.class);
 
-	Service service = new Service();
+//	Service service = new Service();
+//	DAOImp dao = new DAOImp();
 
 	protected String error = "Internal error, please contact SYSADMIN.";
 
@@ -102,7 +104,7 @@ public class DAOImp implements DAO {
 //	public void deposit(String account, double amount) throws BusinessException {
 //		Account dummyAccount = dao.getAccount(account);
 //		double dummyBalance = dummyAccount.getBalance();
-//		dummyBalance += depositAmount;
+//		dummyBalance += amount;
 //		dummyAccount.setBalance(dummyBalance);
 //		dao.updateAccount(dummyAccount);
 //		log.info("Balance: $" + dummyAccount.getBalance());
@@ -110,9 +112,6 @@ public class DAOImp implements DAO {
 //
 //	@Override
 //	public void withdraw(String account, String amount) throws BusinessException {
-//		while (!service.isValidAmount(amount)) {
-//			amount = sc.nextLine();
-//		}
 //		double withdrawAmount = Double.parseDouble(amount);
 //
 //		Account dummyAccount = dao.getAccount(account);

@@ -619,8 +619,8 @@ Servlets (https://www.geeksforgeeks.org/introduction-java-servlets/)
 					throws ServletException, IOException {
 				}
 			doGet() and doPost() are most common requests.
-		doGet()
-		doPost()
+
+	Server-side scripting tool.
 
 Tomcat
 	creation in eclipse
@@ -670,3 +670,55 @@ Tomcat
 		EXTRA: If servlet-api has not been added:
 			Right-click the project -> properties
 			Java Build Path -> ADD JARs -> Find servlet-api.jar (inside lib folder of tomcat) -> click OK to update build path
+
+FrontController Design Pattern
+	HTML/ALL requests sent to MASTER SERVLET, which will route to a RequestHelper helper class, which contains a switch to route to appropriate controllers.
+	Each controller:
+		handles business logic (service layer validation, DAO, etc).
+		can contain route guards (ensures POST or GET methods are actually received).
+		can also check if a user is an admin.
+		inside controller, can call service layer methods for validation.
+		Controllers can send back to RequestHelper which can route to a different controller.
+	MasterServlet is like a gateway.
+
+	Client > MasterServlet > RequestHelper lass > controllers > service or DAO
+
+HTTP
+	HTTP is "stateless"; it doesn't hold anything in memory.
+		E.g., as user traverses HTML pages, HTTP won't remember their credentials.
+	How to make it "stateful"? Statement Management Techniques
+	Session Management Techniques
+		1. Using Hidden Form Fields
+			Old way..
+			Users can fill in form data but it won't be visible to user.
+			Disadvantages: lots of boilerplate writing for every field in every page, etc..
+		2. URL Rewriting Technique
+			Only works with HTTP GET method.
+			When GET methods are submitted, the URL is rewritten every time a user traverses a page (rewritten for every page).
+			Disadvantages: security concerns, limitations on only GET methods, etc..
+		3. Cookies
+			A piece of info that stores data (on client browser) as key/value pairs of Strings.
+			When user submits fields and traverses pages, the fields are saved in the browser as cookies.
+			When you need to summarize, pull all fields from browser cookies and talk to DB.
+			Disadvantages: client can inadvertently delete cookies from browser, client PC can be public, unable to store objects, etc..
+		4. HTTP Sessions
+
+	3 Scopes in Servlets
+		1. ServletRequest - local/request scope (https://www.javatpoint.com/servletrequest).
+		2. ServletContext - global/application scope (https://www.javatpoint.com/servletcontext).
+		3. HttpSession - SESSION scope (https://www.javatpoint.com/http-session-in-session-tracking).
+
+Filter (Interceptors)
+	Intercepting Filter Pattern Design Pattern (optional).
+		Client makes a request to particular servlet.
+		Intermediately, we can have a filter (Client <---> Filter <---> Servlet).
+		Filter does pre- and post-processing of servlets.
+		Only if filter validation is successful (pre-processing), only then can servlet receive and handle the request.
+	Filter (I)
+		void init (FilterConfig) - called once.
+		void doFilter (req, res, FilterChain) - filter chain connects filter to a particular servlet; called as many times as needed.
+		void destroy() - called once.
+	Filters go into a package called "interceptors".
+		Inside this package, create filters.
+		Inside a filter class, have init(), destroy(), and doFilter(req, res, FilterChain).
+			Inside doFilter(), can have pre-validation before sending to servlet.

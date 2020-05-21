@@ -1,23 +1,20 @@
 console.log("Testing Console");
 
 /*
-    Arrow Functions:
-    These two are the same:
+	Arrow Functions: assigning functions to a variable.
+    This is the same:
         let func = (arg1, arg2, ...argN) => expression
-
+	As this:
         let func = function (arg1, arg2, ...argN) {
             return expression;
-        };
+		};
+	Examples:
+		let func = (a, b) => a + b;
+		console.log(func(3, 2)); // 5
+
+		let func3 = () => alert("Hello, Arrow Functions!");
+		func3();
 */
-
-// let func = (a, b) => a + b;
-// console.log(func(3, 2)); // 5
-
-// let func2 = (x, y) => x * y - 10;
-// console.log(func2(4, 20)); // 70s
-
-// let func3 = () => alert("Hello, Arrow Functions!");
-// func3();
 
 // Fetch w/ Async/Await Method --------------------------------------------------------------------------------
 
@@ -38,8 +35,8 @@ function DOMManip(JSON) {
 }
 
 /*
-    Async and Await enable asynchronouse, promise-based behavior to be written cleanly.
-        Eliminates the need to explicitly configure promise chains.
+    Async and Await enable asynchronouse, promise-based behavior thats written cleanly.
+        Eliminates the need to explicitly configure promise chains (.then().then().then()..).
 
     Async:
         async keyword placed before a function definition.
@@ -58,10 +55,7 @@ function DOMManip(JSON) {
             f().then(alert); // 1
 
     Await:
-        await keyword can only be placed inside async funcs; cannot be used in regular funcs.
+        await keyword can only be placed INSIDE async funcs; cannot be used in regular funcs.
         Example: works only inside async funcs
-            let value = await promise;
-        Makes JS wait until that promise settles and returns its results.
-
-
+            let response = await fetch();;
 */

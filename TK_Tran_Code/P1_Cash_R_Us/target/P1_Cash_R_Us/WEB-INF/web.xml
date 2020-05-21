@@ -12,36 +12,38 @@
 		<welcome-file>index.html</welcome-file>
 	</welcome-file-list>
 
-	<!-- INDEX SERVLET -->
-	<servlet>
-		<servlet-name>IndexServlet</servlet-name>
-		<servlet-class>servlet.IndexServlet</servlet-class>
-		<load-on-startup>0</load-on-startup>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>IndexServlet</servlet-name>
-		<url-pattern>/indexServlet</url-pattern> <!-- Routes to <form>'s action attribute, which invokes the servlet -->
-	</servlet-mapping>
+	<!--	We're using Servlet API 3.0's javax.servlet.annotation to declare a servlet class instead of web.xml!!! -->
 
-	<!-- REGISTER SERVLET -->
-	<servlet>
-		<servlet-name>RegisterServlet</servlet-name>
-		<servlet-class>servlet.RegisterServlet</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>RegisterServlet</servlet-name>
-		<url-pattern>/registerServlet</url-pattern>
-	</servlet-mapping>
+<!--	&lt;!&ndash; INDEX SERVLET &ndash;&gt;-->
+	<!--	<servlet>-->
+	<!--		<servlet-name>MasterServlet</servlet-name>-->
+	<!--		<servlet-class>servlet.MasterServlet</servlet-class>-->
+	<!--		<load-on-startup>0</load-on-startup>-->
+	<!--	</servlet>-->
+	<!--	<servlet-mapping>-->
+	<!--		<servlet-name>MasterServlet</servlet-name>-->
+	<!--		<url-pattern>/masterServlet/*</url-pattern> &lt;!&ndash; Routes <form>'s action attribute to appropriate servlet for handling &ndash;&gt;-->
+	<!--	</servlet-mapping>-->
 
-	<!-- LOGIN SERVLET -->
-	<servlet>
-		<servlet-name>LoginServlet</servlet-name>
-		<servlet-class>servlet.LoginServlet</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>LoginServlet</servlet-name>
-		<url-pattern>/loginServlet</url-pattern>
-	</servlet-mapping>
+	<!--	&lt;!&ndash; LOGIN SERVLET &ndash;&gt;-->
+	<!--	<servlet>-->
+	<!--		<servlet-name>LoginServlet</servlet-name>-->
+	<!--		<servlet-class>servlet.LoginServlet</servlet-class>-->
+	<!--	</servlet>-->
+	<!--	<servlet-mapping>-->
+	<!--		<servlet-name>LoginServlet</servlet-name>-->
+	<!--		<url-pattern>/loginServlet</url-pattern>-->
+	<!--	</servlet-mapping>-->
+
+	<!--	&lt;!&ndash; REGISTER SERVLET &ndash;&gt;-->
+	<!--	<servlet>-->
+	<!--		<servlet-name>RegisterServlet</servlet-name>-->
+	<!--		<servlet-class>servlet.RegisterServlet</servlet-class>-->
+	<!--	</servlet>-->
+	<!--	<servlet-mapping>-->
+	<!--		<servlet-name>RegisterServlet</servlet-name>-->
+	<!--		<url-pattern>/registerServlet</url-pattern>-->
+	<!--	</servlet-mapping>-->
 
 	<!-- Servlet Context (Global) -->
 	<!-- context-param = params that're specified for an entire application, available to ALL servlets -->
