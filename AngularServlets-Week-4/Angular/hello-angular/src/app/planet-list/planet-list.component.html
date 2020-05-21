@@ -1,0 +1,89 @@
+<div class = 'panel panel-primary'>
+    <div class = 'panel-heading'>
+
+        <!--
+            The {{}} syntax is used for interpolation. Interpolation evaluates an expression. 
+            You cna do simple operations like addition, or reference a variable from the TS file. 
+
+            We're using interpolation to achieve one-way data binding. But it is not the same
+            thig. There are many way one binding. 
+
+            One-way binding (w/interpolation) projects values in TS to the HTML page to be displayed
+            So any changes to the TS file will immediately affect the HTML, but not the other way 
+            around.
+        -->
+            Welcome, {{5+8 + " " + currentLoggedInUser}}!!!
+    </div>
+    <div class = 'panel-body'>
+        <div class ='row'>
+
+            <div class = 'row'>
+
+                <div class = 'col-md-2'>Filter by:</div>
+                <div class = 'col-md-4'>
+                    <!-- 
+                        The [()] syntax is used for 2-way binding. Also reffered to as 
+                        "apple in a box". In two-way data binding HTML values and the TS values
+                        are tied to each other. If one changes, the other immediately relfets 
+                        those changes. 
+
+                        To set up the two-way data binding you need ngModel that is a part of the 
+                        "FormsModule" module.
+
+                        A combination of one-way binding and event binding. 
+                     -->
+
+                    <input type = 'text' [(ngModel)] = 'inputField' placeholder = 'filter'/>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- OUR HTML TABLE-->
+<div class = 'table-responsive'>
+
+    <table class = 'table' *ngIf = 'planets && planets.length'>
+        <!-- This is a "structural directive". We call it that becuase it has thte potential 
+        to alter the ETNRIE structure of the DOM 
+            
+        commonly used structureal directive are:
+        *ngFor, *ngIf, *ngSwitch, *ngDefault
+
+        *ngIf will show or hide an entire element (and all sub elements), depending on a boolean 
+        value
+    -->
+
+    <thead>
+        <tr>
+            <th>
+                <button class='btn btn-primary' (click) = 'toggleImage()'>
+                    {{showImage ? 'Hide': 'Show'}} Image
+                </button>
+
+            </th>
+            <th>Planets</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- It's an Enhanced loop
+        specifically, *ngFor will copy an entire elemnt for every element
+            in an array you provide it. -->
+        <tr *ngFor = 'let temp of filteredPlanets'>
+            <td>
+                <img *ngIf = 'showImage' [src] = 'temp.image' [title] = 'temp.name'
+            [style.width.px] = 'imageWidth' [style.margin.px] = 'imageMargin'>
+            </td>
+            <td>
+                <!-- {{temp.name | magicpipe: uppercase }} -->
+                {{temp.name | magicpipe: 'Magic: '}}
+            </td>
+            
+        </tr>
+    </tbody>
+
+        
+
+    </table>
+
+</div>
