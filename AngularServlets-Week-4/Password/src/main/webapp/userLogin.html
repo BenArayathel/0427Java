@@ -101,14 +101,14 @@
 
   // POST  :  create user
   function login(){
-  console.log("Function ran");
+    
+    console.log("Function ran");
+    //these params did work in postman
+    //"http://localhost:9999/Password/pass?username=lunch&pass=pass"
 
-  //these params did work in postman
-  //"http://localhost:9999/Password/pass?username=lunch&pass=pass"
-
-  http.post('http://localhost:9999/Password/login', data)
-  .then(data => console.log(data))
-  .catch(err => console.log(err));
+    http.post('http://localhost:9999/Password/login', data)
+    .then(data => console.log(data))
+    .catch(err => console.log(err));
   }
 
   

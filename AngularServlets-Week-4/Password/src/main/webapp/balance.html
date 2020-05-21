@@ -43,16 +43,19 @@
               <h4>View Balance</h4>
             </div>
             <div class="card-body">
-              <form action="custOptDirectory.html">
+              <!-- action="custbalance" method="GET" -->
+              <form action="custbalance" method="GET">
                 <div class="form-group">
                   <label for="text">Balance</label>
-                  <input type="text" class="form-control">
+                  <input id="balance" type="text" class="form-control">
                 </div>
                 <!-- <div class="form-group">
                   <label for="password">Password</label>
                   <input type="text" class="form-control">
                 </div> -->
-                <input type="submit" class="btn btn-success btn-block" value="View Balance">
+                <input type="submit" onclick="getBalance()" class="btn btn-success btn-block" value="View Balance">
+                <!-- type="button" -->
+                <!--  -->
               </form>
             </div>
           </div>
@@ -75,32 +78,45 @@
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 
-  <script src=""></script>
+  <script src="easyHttp.js"></script>
   <script>
 
     console.log("Script ran");
 
     // User Data
-    const data = {
+    // const data = {
 
-      username: '',
-      pass: '',
-      balance: ''
-    }
-    data.username = document.getElementById("username").value;
-    data.pass = document.getElementById("pass").value;
+    //   username: '',
+    //   pass: '',
+    //   balance: ''
+    // }
+
+    //data.username = document.getElementById("username").value;
+    //data.pass = document.getElementById("pass").value;
 
     const http = new EasyHttp;
 
 
     // GET  :  read or get user's
     function getBalance() {
+      console.log("hi mark");
 
-      http.get('http://localhost:9999/Password/someEndpointHERE...')
-        .then(data => console.log(data))
+      let output ='';
+
+      http.get('http://localhost:9999/Password/custbalance')
+        .then(data => {
+          console.log(data)
+
+          output = data.balance;
+          console.log("data.balance = " + data.balance);
+          
+          // document.getElementById("balance").innerHTML = output;
+          document.getElementById("balance").value = output;
+
+        })
         .catch(err => console.log(err));
 
-        // document.querySelector('.myUsers').innerHTML = output;
+
     }
   </script>
 

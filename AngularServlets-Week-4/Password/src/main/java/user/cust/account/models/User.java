@@ -16,12 +16,18 @@ public class User {
 	private int a_access;
 
 	// username, password, email, contact
+	
+	
 
 	// for log in
 	public User(String userName, String password) {
 		// super();
 		this.userName = userName;
 		this.password = password;
+	}
+
+	public User() {
+		super();
 	}
 
 	// CONSTRUCTOR DEFAULT
