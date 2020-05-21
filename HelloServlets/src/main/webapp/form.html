@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="styles.css">
-    <title>Beaver Trust Fiduciary</title>
+    <title>Beaver Trust Fiduciary Web App</title>
 </head>
 <body>
     
@@ -29,7 +29,7 @@
     <div class="container main-container">
         <!-- instead of speaking directly to the servlet with
         action="Login", i am now using js in the middle -->
-        <!-- <form name="loginForm"> -->
+        <form name="loginForm">
             <div class="form-group">
                 <label for="username">Username: </label>
                 <input type="text" name="username" id="username" class="form-control">
@@ -39,10 +39,17 @@
                 <input type="text" name="password" id="password" class="form-control">
             </div>
             <div class="form-group">
-                <input id="submit_login" class="form-control" type="submit">
+                <input id="submit_login" class="form-control" type="button" value="Submit">
             </div>
-        <!-- </form> -->
+        </form>
     </div>
+
+    <ul id="space">
+        <!-- <h2>Username: </h2>
+        <li></li>
+        <h2>Password: </h2>
+        <li></li> -->
+    </ul>
 
     <script src="login.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
