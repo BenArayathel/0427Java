@@ -14,7 +14,7 @@ import javax.servlet.annotation.WebFilter;
 /**
  * Servlet Filter implementation class ValidationFilter
  */
-@WebFilter(servletNames = { "master" })
+@WebFilter(servletNames = { "MasterServlet" })
 public class ValidationFilter implements Filter {
 
     /**
