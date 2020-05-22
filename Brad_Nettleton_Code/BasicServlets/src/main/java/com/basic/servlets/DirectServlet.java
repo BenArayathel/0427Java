@@ -44,7 +44,7 @@ public class DirectServlet extends HttpServlet {
 		ObjectMapper om = new ObjectMapper();
 		Planet p1 = om.readValue(req.getReader(), com.basic.models.Planet.class);
 		
-		res.getWriter().write(new ObjectMapper().writeValueAsString(p));
+		res.getWriter().write(new ObjectMapper().writeValueAsString(p1));
 		
 		PrintWriter pw = res.getWriter();
 //		pw.write("<h1>We're sending something back now doGet</h1>");

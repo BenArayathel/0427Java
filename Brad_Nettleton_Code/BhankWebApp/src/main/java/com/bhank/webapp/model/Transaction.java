@@ -1,11 +1,12 @@
-package com.bhank.model;
+package com.bhank.webapp.model;
 
-public class MoneyTransfer {
+public class Transaction {
 
 	private String id;
 	private String fromAccountId;
 	private String toAccountId;
 	private double transferAmount;
+	private boolean isDeposit;
 	private boolean pending;
 	private boolean accepted;
 	public String getId() {
@@ -32,6 +33,12 @@ public class MoneyTransfer {
 	public void setTransferAmount(double transferAmount) {
 		this.transferAmount = transferAmount;
 	}
+	public boolean isDeposit() {
+		return isDeposit;
+	}
+	public void setDeposit(boolean isDeposit) {
+		this.isDeposit = isDeposit;
+	}
 	public boolean isPending() {
 		return pending;
 	}
@@ -46,8 +53,10 @@ public class MoneyTransfer {
 	}
 	@Override
 	public String toString() {
-		return "MoneyTransfer [id=" + id + ", fromAccountId=" + fromAccountId + ", toAccountId=" + toAccountId
-				+ ", transferAmount=" + transferAmount + ", pending=" + pending + ", accepted=" + accepted + "]";
+		return "Transaction [id=" + id + ", fromAccountId=" + fromAccountId + ", toAccountId=" + toAccountId
+				+ ", transferAmount=" + transferAmount + ", isDeposit=" + isDeposit + ", pending=" + pending
+				+ ", accepted=" + accepted + "]";
 	}
+	
 	
 }

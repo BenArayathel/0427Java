@@ -9,6 +9,7 @@ import { TestComponent } from './test/test.component';
 import { PrependPipe } from './prepend.pipe';
 import { MagicpipePipe } from './shared/magicpipe.pipe';
 
+//decorators same as annotations
 @NgModule({
   declarations: [ //used to declare components and pipes
     AppComponent,

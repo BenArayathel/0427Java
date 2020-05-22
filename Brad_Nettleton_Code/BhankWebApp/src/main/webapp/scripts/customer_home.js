@@ -1,0 +1,1 @@
+console.log("customer_home.js connected");

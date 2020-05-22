@@ -1,4 +1,4 @@
-console.log("connected");
+//console.log("connected");
 
 window.onload = function() {
     this.document.getElementById('ccSubmit').addEventListener('click', getCC);
