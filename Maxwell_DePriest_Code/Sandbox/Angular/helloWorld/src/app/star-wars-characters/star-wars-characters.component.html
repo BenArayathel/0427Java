@@ -72,7 +72,7 @@
             <td>
                 {{temp.name}}
             </td>
-            <td>{{temp.planet}}</td>
+            <td>{{temp.planet | deadPlanet: '- intact'}}</td>
             <td>{{temp.species}}</td>
             <td>
                 {{temp.forceSensitive}}

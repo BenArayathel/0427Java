@@ -7,13 +7,17 @@ import { AppComponent } from './app.component';
 import { HelloWorldMainComponent } from './hello-world-main/hello-world-main.component';
 import { TestComponent } from './test/test.component';
 import { StarWarsCharactersComponent } from './star-wars-characters/star-wars-characters.component';
+import { DeadPlanetPipe } from './dead-planet.pipe';
+import { ForceAffiliationPipe } from './force-affiliation.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     HelloWorldMainComponent,
     TestComponent,
-    StarWarsCharactersComponent
+    StarWarsCharactersComponent,
+    DeadPlanetPipe,
+    ForceAffiliationPipe
   ],
   imports: [
     BrowserModule, FormsModule
