@@ -8071,3 +8071,15 @@ java.util.concurrent.TimeoutException
 
 !ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-05-21 01:36:16.765
 !MESSAGE executing callback sts4.classpath.BuTRYErV SUCCESS [done]
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-05-21 03:26:19.258
+!MESSAGE ClasspathListenerHandler removeClasspathListener sts4.classpath.BuTRYErV
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-05-21 03:26:19.281
+!MESSAGE unsubscribing from classpath changes: sts4.classpath.BuTRYErV
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-05-21 03:26:19.299
+!MESSAGE subsribers = {}
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-05-21 03:26:19.318
+!MESSAGE ClasspathListenerHandler removeClasspathListener sts4.classpath.BuTRYErV => OK
