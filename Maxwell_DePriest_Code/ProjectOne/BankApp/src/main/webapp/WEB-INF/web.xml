@@ -19,4 +19,14 @@
     <servlet-name>MasterServlet</servlet-name>
     <url-pattern>/api/*</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>CrudServlet</display-name>
+    <servlet-name>CrudServlet</servlet-name>
+    <servlet-class>com.servlets.CrudServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CrudServlet</servlet-name>
+    <url-pattern>/crud/*</url-pattern>
+  </servlet-mapping>
 </web-app>

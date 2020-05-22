@@ -20,11 +20,6 @@ public class LoginController {
 		
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
-		
-		
-		
-		
-		
 		try {
 			if(uSI.userLogin(email, password)) {
 				System.out.println("login worked!");
@@ -37,7 +32,7 @@ public class LoginController {
 				return "/login.html";
 			}
 		} catch (BusinessException e) {
-			return "/login.html";
+			return "/404.html";
 		}
 		
 	}
