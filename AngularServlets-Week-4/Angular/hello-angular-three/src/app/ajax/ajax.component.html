@@ -1,0 +1,14 @@
+<p>ajax works!</p>
+
+<div>
+    <h3> AJAX COMPONENT EXAMPLE</h3>
+    <h4> {{"Pokemon's name is: " + pokeName}}</h4>
+
+    <span> Image </span>
+    <img [src] = 'pokeImageUrl'>
+
+    <input type="number" [(ngModel)] = 'pokeId'/>
+    <button (click) = 'pokeButtonClicked()'>Capture Pokemon</button>
+    <button (click) = 'pokeButtonClickedAgain()'>Capture Pokemon Again!</button>
+  
+</div>
