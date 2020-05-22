@@ -8,6 +8,7 @@ import { PlanetListComponent } from './planet-list/planet-list.component';
 import { TestComponent } from './test/test.component';
 import { PrependPipe } from './prepend.pipe';
 import { MagicpipePipe } from './shared/magicpipe.pipe';
+import { MyownComponent } from './myown/myown.component';
 
 //decorators same as annotations 
 @NgModule({
@@ -16,7 +17,8 @@ import { MagicpipePipe } from './shared/magicpipe.pipe';
     PlanetListComponent,
     TestComponent,
     PrependPipe,
-    MagicpipePipe
+    MagicpipePipe,
+    MyownComponent
   ],
   imports: [ //used to import external modules 
     //we're using formsmodule for two way binding 

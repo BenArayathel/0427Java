@@ -33,7 +33,7 @@
     </div>
   </nav>
     
-      <!-- LOGIN -->
+      <!-- View Balance -->
   <section id="login" style="margin-top: 220px; margin-bottom: 200px;">
     <div class="container">
       <div class="row">
@@ -44,7 +44,7 @@
             </div>
             <div class="card-body">
               <!-- action="custbalance" method="GET" -->
-              <form action="custbalance" method="GET">
+              <form action="balance" method="GET" >
                 <div class="form-group">
                   <label for="text">Balance</label>
                   <input id="balance" type="text" class="form-control">
@@ -85,39 +85,59 @@
 
     // User Data
     // const data = {
-
-    //   username: '',
-    //   pass: '',
+      
     //   balance: ''
     // }
 
     //data.username = document.getElementById("username").value;
     //data.pass = document.getElementById("pass").value;
 
-    const http = new EasyHttp;
+    // const http = new EasyHttp;
 
 
     // GET  :  read or get user's
+    // function getBalance() {
+    //   console.log("get balance ran... ...");
+
+    //   let output ='';
+
+    //   http.get('http://localhost:9999/Password/balance')
+    //     .then(data => {
+    //       console.log(data)
+
+    //       output = data.balance;
+    //       console.log("data.balance = " + data.balance);
+          
+    //       // document.getElementById("balance").innerHTML = output;
+    //       document.getElementById("balance").value = output;
+
+    //     })
+    //     .catch(err => console.log(err));
+
+
+    // }
+
     function getBalance() {
-      console.log("hi mark");
 
-      let output ='';
+      console.log("new get balance ran... ...");
 
-      http.get('http://localhost:9999/Password/custbalance')
-        .then(data => {
-          console.log(data)
+      fetch('http://localhost:9999/Password/balance').then(function(res) {
+          return res.json();
+          
+      })
+      .then(function (data) {
+          console.log(data);
+          let output = '';
 
           output = data.balance;
-          console.log("data.balance = " + data.balance);
-          
-          // document.getElementById("balance").innerHTML = output;
+          //document.getElementById('output3').innerHTML = output;
           document.getElementById("balance").value = output;
-
-        })
-        .catch(err => console.log(err));
-
-
-    }
+      })
+      .catch(function (err) {
+          console.log(err);
+          
+      });
+}
   </script>
 
 </body>

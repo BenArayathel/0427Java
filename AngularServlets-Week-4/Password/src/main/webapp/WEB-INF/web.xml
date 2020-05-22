@@ -27,4 +27,13 @@
   	<servlet-name>userLogin</servlet-name>
     <url-pattern>/login</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>balance</servlet-name>
+    <servlet-class>com.lunch.servlet.CustBalanceServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>balance</servlet-name>
+    <url-pattern>/balance</url-pattern>
+  </servlet-mapping>
 </web-app>

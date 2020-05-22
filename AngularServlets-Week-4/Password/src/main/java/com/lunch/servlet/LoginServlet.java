@@ -38,6 +38,12 @@ public class LoginServlet extends HttpServlet {
 		// call the db
 		BankDaoImpl b = new BankDaoImpl();
 		//BankDAO b = DAOUtilites.getBankDAO();
+		
+		/**
+		 * user: 			regular POJO
+		 * mUser: 			stringified Jackson OM
+		 * balance: 		regular key:value pair
+		 */
 		User user = new User(req.getParameter("username"), req.getParameter("pass"));
 		//user.setUserName(username);
 		//user.setPassword(password);
@@ -45,15 +51,14 @@ public class LoginServlet extends HttpServlet {
 		System.out.println("username: " + username);
 		System.out.println("pass is: " + pass);
 		
-		int access = b.login(user);
+		int access = -1; 
+		access = b.login(user);
 		HttpSession session = req.getSession();
 
-		System.out.println("\nthis is toString User: " + user.toString());
+		System.out.println("\nLoginServlet:\nthis is toString User: " + user.toString());
 		
 		// JACKSON OBJECT MAPPER ?? ??
 		// http://tutorials.jenkov.com/java-json/jackson-objectmapper.html#jackson-objectmapper-example
-		
-		
 		/**
 		 * 	private String userName;
 			private long contactPhone;
@@ -70,7 +75,7 @@ public class LoginServlet extends HttpServlet {
 		
 		ObjectMapper mapper = new ObjectMapper();
 		// "{ \"brand\" : \"Mercedes\", \"doors\" : 5 }";
-		String carJson =
+		String user_in_Json =
 			    "{ \"userName\" : \"" + user.getUserName() + "\","
 			    + " \"contactPhone\" : \"" + user.getContactPhone() + "\","
 			    + " \"password\" : \"" + user.getPassword() + "\","
@@ -86,18 +91,20 @@ public class LoginServlet extends HttpServlet {
 			    //User mUser = mapper.readValue(req.getReader(), User.class);
 				
 				// tut's
-				User mUser = mapper.readValue(carJson, User.class);
+				User mUser = mapper.readValue(user_in_Json, User.class);
 
-			    System.out.println("\nmUser.getUser_id() = " + mUser.getUser_id());
-			    System.out.println("mUser.getBalance() = " + mUser.getBalance());
-			    session.setAttribute("mappedStringUser", mUser);  // this seemingly does not work ... ... ...
+			    System.out.println("\nObjectMapper: mUser.getUser_id() = " + mUser.getUser_id());
+			    System.out.println("ObjectMapper: mUser.getBalance() = " + mUser.getBalance());
+			    session.setAttribute("mappedStringUser", mUser);  // sort of works ... ... ...
 			} catch (IOException e) {
 			    e.printStackTrace();
 			}
+			
+			session.setAttribute("myCleanString", user_in_Json);
 		
-		//session.setAttribute("user", user);  // this seemingly does not work ... ... ...
 		
-		Log.logger("balance before setting with SESSION: " + user.getBalance());
+		
+		Log.logger("regular POJO: balance before setting with SESSION: " + user.getBalance());
 //		Log.logger("This USER has: store in session obj... ... ...");
 //		Log.logger(user.getSoc());
 //		Log.logger("phoneContact: " + user.getContactPhone());
@@ -105,6 +112,8 @@ public class LoginServlet extends HttpServlet {
 //		Log.logger(user.getUser_id());
 //		Log.logger("access is: " + user.getA_access());
 //		Log.logger("dob: " + user.getDob());
+		
+		session.setAttribute("user", user);  // this seemingly does not work ... ... ...................................................................................................
 		
 		session.setAttribute("access", user.getA_access());
 		session.setAttribute("balance", user.getBalance());
@@ -137,10 +146,20 @@ public class LoginServlet extends HttpServlet {
 			Log.logger("Redirecting back to Login...\n\n");
 			
 			// REDIRECT back to login
-			res.sendRedirect("userLogin.html");
+			res.sendRedirect("http://localhost:9999/Password/userLogin.html");
 			
+		} else if (access == 0) {
+			// IN THE CASE THAT ACCESS IS NULL
+			Log.logger("ACCESS WAS LIKELY NULL:");
+			res.sendRedirect("http://localhost:9999/Password/userLogin.html");
+		}
+		else if (access == -1) {
+			// IN THE CASE THAT ACCESS IS NULL
+			Log.logger("SERVLET NOT GETTING PROPER RESPONSE FROM DAO");
+			res.sendRedirect("http://localhost:9999/Password/userLogin.html");
 		} else {
-			// I AM NOT SURE 0 IS POSSIBLE
+			Log.logger("SERVLET NOT GETTING PROPER RESPONSE FROM DAO: the else case");
+			res.sendRedirect("http://localhost:9999/Password/userLogin.html");
 		}
 		
 //		if (username.equals("lunch") && pass.equals("pass")) {

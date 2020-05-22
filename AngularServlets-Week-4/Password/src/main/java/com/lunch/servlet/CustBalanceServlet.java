@@ -20,7 +20,7 @@ import log.Log;
 import user.cust.account.models.Transaction;
 import user.cust.account.models.User;
 
-@WebServlet("/custbalance")
+//@WebServlet("/custbalance")
 public class CustBalanceServlet extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
@@ -42,10 +42,19 @@ public class CustBalanceServlet extends HttpServlet {
 		 System.out.println("balance servlet doGET was called ... ...");
 		 HttpSession session = req.getSession(false);
 		 
-		 // the way this line looks, it is as if you can just go an use the POJO but it's NULL
-		 //User user1 = (User) session.getAttribute("user");
-		 String user2 =  session.getAttribute("mappedStringUser").toString();
+		 /**
+		  * mappedStringUser	:user2
+		  * user				:  ...........not working
+		  * balance				:user3
+		  * myCleanString
+		  */
 		 
+		 // the way this line looks, it is as if you can just go an use the POJO but it's NULL
+		 //User user = (User) session.getAttribute("user");
+// upper or lower		 
+		 //String user2 =  session.getAttribute("mappedStringUser").toString();
+// upper or lower
+		 String myCleanString = (String) session.getAttribute("myCleanString").toString();
 		 
 		 //String bal = session.getAttribute("balance").toString();
 		 //System.out.println("user balance via SESSION: " + bal);
@@ -59,14 +68,37 @@ public class CustBalanceServlet extends HttpServlet {
 //			"id"
 //			"soc"
 		 
+//		 String bal = session.getAttribute("balance").toString();
+//		 User user3 = new User("fake", "fake");
+//		 user3.setContactPhone(1231231234);
+//		 user3.setDob(date);
+//		 user3.setEmail("fake@gmail.com");
+//		 user3.setSoc(session.getAttribute("soc").toString());
+//		 user3.setUser_id(session.getAttribute("id").toString());
+//		 user3.setA_access(Integer.parseInt(session.getAttribute("access").toString()));
+//		 //user.setBalance(120.00);
+//		 user3.setBalance(Double.parseDouble(bal));
 		 
-		 //User user = new User("fake", "fake");
-		 //user.setBalance(120.00);
-		 //user.setBalance(Double.parseDouble(bal));
-		 
+		 /**
+		  * as far as mappedStringUser:
+		  * it is already a json mapped string: yes ?? ?? ?? ...............................................................................
+		  * so why use another ObjectMapper ...
+		  */
+		 // https://stackoverflow.com/questions/2010990/how-do-you-return-a-json-object-from-a-java-servlet
 		 res.setContentType("application/json");
-		 res.getWriter().write(new ObjectMapper().writeValueAsString(user1));
+		 res.setCharacterEncoding("UTF-8");
+		 
+		 
+		 res.getWriter().write(myCleanString);
+
+// below is just balance
+// which is a one liner
+		 //res.getWriter().write("{\"balance\": \"" + session.getAttribute("balance").toString() +"\"}");
+		 //res.getWriter().write(new ObjectMapper().writeValueAsString(user2));
 		 //doPost(req, res);
+		 
+		 // FIX OFF OF JSON SCREEN
+		 //res.sendRedirect("http://localhost:9999/Password/balance.html");
 	}
 	
 	@Override

@@ -1,3 +1,5 @@
+<p>myown works!</p>
+<p>myOwn below</p>
 <div class = 'panel panel-primary'>
     <div class = 'panel-heading'>
 
@@ -48,7 +50,7 @@
 
     <div class = 'table-responsive'>
 
-        <table class = 'table' *ngIf = 'planets && planets.length'>
+        <table class = 'table table-striped table-bordered' *ngIf = 'planets && planets.length'>
             <!-- This is a "structural directive". We call it that becuase it has thte potential 
             to alter the ETNRIE structure of the DOM 
                 
@@ -59,7 +61,8 @@
             value
         -->
     
-        <thead>
+        <thead class="thead-primary">
+
             <tr>
                 <th>
                     <button class='btn btn-primary' (click) = 'toggleImage()'>
@@ -67,7 +70,9 @@
                     </button>
     
                 </th>
-                <th>Planets</th>
+                <th>Own</th>
+                <th>Seen</th>
+                <th>Value</th>
             </tr>
         </thead>
         <tbody>
@@ -81,9 +86,10 @@
                 </td>
                 <td>
                     <!-- {{temp.name | magicpipe: uppercase }} -->
-                    {{temp.name | magicpipe: 'Magic: '}}
+                    {{temp.name | magicpipe: 'Owl: '}}
                 </td>
-                
+                <td>{{temp.seen | date }}</td>
+                <td>{{temp.value | currency}}</td>
             </tr>
         </tbody>
     
@@ -93,10 +99,6 @@
     
     </div>
 
+
+
 </div>
-
-<div class="container">
-
-    <app-myown></app-myown>
-</div>
-
