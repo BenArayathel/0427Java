@@ -9,6 +9,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.bank.dao_implementation.UserDAOImplementation;
 import com.bank.main.Main;
@@ -20,6 +21,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 @WebServlet("/login")
 public class Login extends HttpServlet {
 	
+	// suggested by eclipse for Httpsession
+	private static final long serialVersionUID = 1L;
+
 	// Won't be using this, don't want password in URL
 	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		
@@ -59,9 +63,20 @@ public class Login extends HttpServlet {
 				writer.write("employee_portal.html");
 			} else if (usi.loginUser(username, password)) {
 				System.out.println("login successful");
+				
+				// access entire user object
+				// this is a little clumsy, but it works, just make
+				// sure no duplicate usernames can exist
+				user = udi.accessUserObject(username);
+				
 				// add a cookie of the username
 				Cookie cookie = new Cookie("username", username);
 				res.addCookie(cookie);
+				
+				// start session
+				HttpSession session=req.getSession();
+				session.setAttribute("user", user);
+				
 				// return the redirect URL
 				writer.write("user_home.html");
 				
