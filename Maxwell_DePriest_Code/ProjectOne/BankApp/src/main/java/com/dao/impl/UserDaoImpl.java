@@ -2,7 +2,7 @@ package com.dao.impl;
 
 import java.sql.CallableStatement;
 import java.sql.Connection;
-import java.sql.DriverManager;
+//import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -15,23 +15,21 @@ import org.apache.log4j.Logger;
 import com.dao.UserDao;
 import com.exceptions.BusinessException;
 import com.models.User;
-import com.secrets.SecretStuff;
+import com.utilities.DatabaseConnection;
+
+
 
 public class UserDaoImpl implements UserDao {
-	private static final String AWSURL = SecretStuff.getAwsURL();
-			;
-	public static final String USERNAME = SecretStuff.getAwsUserName();
-	public static final String PASSWORD = SecretStuff.getAwsPassword();
+
 	final static Logger loggy = Logger.getLogger(User.class);
-	
-	
 	public UserDaoImpl() {
 		
 	}
 
 	@Override
 	public User insertUser(User u) throws BusinessException {
-		try (Connection conn = DriverManager.getConnection(AWSURL, USERNAME, PASSWORD)) {
+		
+		try (Connection conn = DatabaseConnection.getConn()) {
 
 			PreparedStatement ps = conn.prepareStatement("call CREATEBANKUSER(?,?,?,?,?,?)");
 			ps.setString(1,  "");
@@ -49,6 +47,7 @@ public class UserDaoImpl implements UserDao {
 			
 			loggy.debug("Created and stored new user with email " + u.getEmail());
 			u = this.selectUserByEmail(u.getEmail());
+			conn.close();
 			
 		} catch (SQLException e) {
 			loggy.error("SQLException caught- " + e);
@@ -61,7 +60,7 @@ public class UserDaoImpl implements UserDao {
 	@Override
 	public User updateUser(String userEmail, String columnName, String newAttribute) throws BusinessException{
 		User uTwo = new User();
-		try (Connection conn = DriverManager.getConnection(AWSURL, USERNAME, PASSWORD)) {
+		try (Connection conn = DatabaseConnection.getConn()) {
 			PreparedStatement ps = conn.prepareStatement("UPDATE bankuser SET " + columnName + " = '" + newAttribute + "' WHERE email = '"+ userEmail + "'");
 			ps.executeUpdate();
 			uTwo = this.selectUserByEmail(userEmail);
@@ -79,7 +78,7 @@ public class UserDaoImpl implements UserDao {
 	@Override
 	public User selectUserByEmail(String uEmail) throws BusinessException{
 		User u = new User();
-		try (Connection conn = DriverManager.getConnection(AWSURL, USERNAME, PASSWORD)) {
+		try (Connection conn = DatabaseConnection.getConn()) {
 			PreparedStatement ps = conn.prepareStatement("SELECT * FROM bankuser WHERE email = ?");
 			ps.setString(1, uEmail);
 			ResultSet rs = ps.executeQuery();
@@ -105,7 +104,7 @@ public class UserDaoImpl implements UserDao {
 	@Override
 	public User selectUserByColumnName(String cName, String cValue) throws BusinessException {
 		User u = new User();
-		try (Connection conn = DriverManager.getConnection(AWSURL, USERNAME, PASSWORD)) {
+		try (Connection conn = DatabaseConnection.getConn()) {
 		
 			PreparedStatement ps = conn.prepareStatement("SELECT * FROM bankuser WHERE " + cName + " = '" + cValue + "'");
 			ResultSet rs = ps.executeQuery();
@@ -129,7 +128,7 @@ public class UserDaoImpl implements UserDao {
 	@Override
 	public List<User> selectAllUsers() throws BusinessException {
 		List<User> uList = new ArrayList<>();
-		try (Connection conn = DriverManager.getConnection(AWSURL, USERNAME, PASSWORD)) {
+		try (Connection conn = DatabaseConnection.getConn()) {
 			PreparedStatement ps = conn.prepareStatement("SELECT * FROM bankuser");
 			ResultSet rs = ps.executeQuery();
 			loggy.debug("Selecting all users");
@@ -147,7 +146,7 @@ public class UserDaoImpl implements UserDao {
 	
 	public List<User> selectAllUsersByColumnName(String cName, String cValue) throws BusinessException{
 		List<User> filteredUserList = new ArrayList<>();
-		try (Connection conn = DriverManager.getConnection(AWSURL, USERNAME, PASSWORD)) {
+		try (Connection conn = DatabaseConnection.getConn()) {
 			PreparedStatement ps = conn.prepareStatement("SELECT * FROM bankuser WHERE " + cName + " = '" + cValue + "'");
 			ResultSet rs = ps.executeQuery();
 			loggy.debug("Selecting all users based on " + cName + " = " + cValue);
@@ -165,7 +164,7 @@ public class UserDaoImpl implements UserDao {
 
 	@Override
 	public int deleteUser(String uEmail) throws BusinessException{
-		try (Connection conn = DriverManager.getConnection(AWSURL, USERNAME, PASSWORD)) {
+		try (Connection conn = DatabaseConnection.getConn()) {
 			PreparedStatement ps = conn.prepareStatement("DELETE FROM bankuser WHERE email = '" + uEmail + "'");
 			
 			ps.execute();
@@ -180,7 +179,7 @@ public class UserDaoImpl implements UserDao {
 	}
 	@Override
 	public void deleteAllUsers() throws BusinessException {
-		try (Connection conn = DriverManager.getConnection(AWSURL, USERNAME, PASSWORD)) {
+		try (Connection conn = DatabaseConnection.getConn()) {
 			PreparedStatement ps = conn.prepareStatement("DELETE FROM bankuser");
 			
 			ps.execute();

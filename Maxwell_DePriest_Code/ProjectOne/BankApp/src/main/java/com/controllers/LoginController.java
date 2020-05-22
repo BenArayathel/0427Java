@@ -9,32 +9,52 @@ import com.services.impl.UserServiceImpl;
 
 public class LoginController {
 
-	public static String login(HttpServletRequest request, HttpServletResponse response) {
+	public static boolean login(String email, String password) {
 		UserServiceImpl uSI = new UserServiceImpl();
 		AccountServiceImpl aSI = new AccountServiceImpl();
-
-		if(!request.getMethod().equals("POST")) {
-			return "/login.html";
-		}
-		
-		
-		String email = request.getParameter("email");
-		String password = request.getParameter("password");
 		try {
 			if(uSI.userLogin(email, password)) {
 				System.out.println("login worked!");
+				System.out.println("Email- " + email + " Password- " + password);
 				
-				request.getSession().setAttribute("currentUserEmail", email);
 				
-				return "/api/Home";
 				
+				//return "/api/Home";
+				return true;				
 			} else {
-				return "/login.html";
+				System.out.println("Login failed");
+				System.out.println("Email- " + email + " Password- " + password);
+				return false;
 			}
 		} catch (BusinessException e) {
-			return "/404.html";
+			return false;
 		}
 		
 	}
 
 }
+
+/*
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.stream.Collectors;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+	protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+		
+		System.out.println(req);
+		String test = req.getReader().lines().collect(Collectors.joining(System.lineSeparator()));
+		System.out.println(test);
+		String email = req.getParameter("email");
+		String password = req.getParameter("password");
+		
+		System.out.println("Email2- " + email + " Password- " + password);
+		doGet(req, res);
+	}
+
+}
+*/

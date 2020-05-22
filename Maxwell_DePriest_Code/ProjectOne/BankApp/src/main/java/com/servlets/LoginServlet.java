@@ -1,7 +1,6 @@
 package com.servlets;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.stream.Collectors;
 
 import javax.servlet.ServletException;
@@ -10,47 +9,34 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.controllers.LoginController;
-import com.controllers.RequestHelper;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.models.ValidLogin;
 
-public class MasterServlet extends HttpServlet {
+
+public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public MasterServlet() {
+    public LoginServlet() {
         super();
     }
 
 	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-		PrintWriter pw = res.getWriter();
+		res.getWriter().append("doGet-ing in LoginServlet").append(req.getContextPath());
 		
-		pw.append("Served at: MasterServlet. ");
-		//pw.append("email- " + email);
+		
 	}
-
+	
 	protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-		System.out.println("Posting inside MasterServlet");
+		System.out.println("Posting in loginServlet");
 		if ("POST".equalsIgnoreCase(req.getMethod())) 
 		{
-			
-		    String test = req.getReader().lines().collect(Collectors.joining(System.lineSeparator()));
+			String test = req.getReader().lines().collect(Collectors.joining(System.lineSeparator()));
 		    ObjectMapper mapper = new ObjectMapper();
 			ValidLogin validLogin = mapper.readValue(test, ValidLogin.class);
 		    LoginController.login(validLogin.getEmail(), validLogin.getPassword());
 		}
 		
-		
 		doGet(req, res);
 	}
-	
-	protected void doPut(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-		
-	}
-	
-	protected void doDelete(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-		
-	}
-	
-	
 
 }

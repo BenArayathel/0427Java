@@ -13,10 +13,10 @@ public class RequestHelper {
 			
 			return HomeController.home(request,response);
 		
-		case "BankApp/api/Login":
-
-			return LoginController.login(request,response);
-			
+//		case "BankApp/api/Login":
+//
+//			return LoginController.login(request,response);
+//			
 		}
 		
 		return "login.html";
