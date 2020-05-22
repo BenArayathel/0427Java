@@ -8,8 +8,12 @@
     color: #E1C158;
 }
 
-body {
+.forestBackground {
     background-image: url("images/forest1.jpg");
+}
+
+.lionel404 {
+	 background: url("images/lionelRitchie404_800w.jpg") no-repeat center center fixed;
 }
 
 .navBar {
