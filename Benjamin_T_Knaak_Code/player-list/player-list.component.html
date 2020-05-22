@@ -12,7 +12,7 @@
             So any changes to the TS file will immediately affect the HTML, but not the other way 
             around.
         -->
-            Welcome, {{5+8 + " " + currentLoggedInUser}}!!!
+            Welcome to the only place baseball is happening!!!
     </div>
     <div class = 'panel-body'>
         <div class ='row'>
@@ -40,19 +40,10 @@
     </div>
 </div>
 
-<!-- OUR HTML TABLE-->
+
 <div class = 'table-responsive'>
 
-    <table class = 'table' *ngIf = 'planets && planets.length'>
-        <!-- This is a "structural directive". We call it that becuase it has thte potential 
-        to alter the ETNRIE structure of the DOM 
-            
-        commonly used structureal directive are:
-        *ngFor, *ngIf, *ngSwitch, *ngDefault
-
-        *ngIf will show or hide an entire element (and all sub elements), depending on a boolean 
-        value
-    -->
+    <table class = 'table' *ngIf = 'players && players.length'>
 
     <thead>
         <tr>
@@ -62,23 +53,38 @@
                 </button>
 
             </th>
-            <th>Planets</th>
+            <th>Player</th>
+            <th>Position</th>
+            <th>BA</th>
+            <th>SLG</th>
+            <th>OPS</th>
+            <th>HR</th>
         </tr>
     </thead>
     <tbody>
-        <!-- It's an Enhanced loop
-        specifically, *ngFor will copy an entire elemnt for every element
-            in an array you provide it. -->
-        <tr *ngFor = 'let temp of filteredPlanets'>
+        <tr *ngFor = 'let temp of filteredPlayers'>
             <td>
                 <img *ngIf = 'showImage' [src] = 'temp.image' [title] = 'temp.name'
-            [style.width.px] = 'imageWidth' [style.margin.px] = 'imageMargin'>
+            [style.width.px] = 'imageWidth' [style.height.px] = 'imageHeight' [style.margin.px] = 'imageMargin'>
             </td>
             <td>
-                <!-- {{temp.name | magicpipe: uppercase }} -->
-                {{temp.name | magicpipe: 'Magic: '}}
+                {{temp.name | uppercase }}
             </td>
-            
+            <td>
+            	{{ temp.position }}
+            </td>
+            <td>
+            	{{ temp.ba | cappipe }}
+            </td>
+            <td>
+            	{{ temp.slg }}
+            </td>
+            <td>
+            	{{ temp.ops }}
+            </td>
+            <td>
+            	{{ temp.hr | magicpipe: " dingers" }}
+            </td>
         </tr>
     </tbody>
 

@@ -1,0 +1,13 @@
+body {
+	background-color: black;
+	text-color: white;
+}
+
+h2.headline (
+	text-color: yellow;
+)
+
+footer > h3 (
+	background-color: redorange;
+	text-color: grey;
+)

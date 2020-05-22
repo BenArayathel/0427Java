@@ -1,0 +1,13 @@
+2020-05-11 01:33:05,266 -0500 [main] ERROR (Main.java:286) - Invalid account
+2020-05-11 01:47:15,297 -0500 [main] ERROR (Main.java:254) - Invalid account
+2020-05-11 01:48:42,703 -0500 [main] ERROR (Main.java:293) - Invalid account
+2020-05-11 01:49:08,666 -0500 [main] ERROR (Main.java:315) - Account does not exist
+2020-05-11 01:50:25,220 -0500 [main] ERROR (Main.java:254) - Invalid account
+2020-05-11 01:50:40,238 -0500 [main] ERROR (Main.java:293) - Invalid account
+2020-05-11 01:54:15,617 -0500 [main] ERROR (Main.java:351) - Invalid account - cannot initiate transfer
+2020-05-11 01:55:44,213 -0500 [main] ERROR (Main.java:107) - For input string: ""
+2020-05-11 01:57:05,539 -0500 [main] ERROR (Main.java:293) - Cannot withdraw negative amount
+2020-05-11 02:00:19,904 -0500 [main] ERROR (Main.java:254) - Cannot deposit negative amount
+2020-05-11 02:00:40,778 -0500 [main] ERROR (Main.java:293) - Cannot withdraw negative amount
+2020-05-11 03:08:21,416 -0500 [main] ERROR (Main.java:184) - C:\Users\bbqpl\eclipse-workspace\Project0\logs\info-hack-bank.log (The system cannot find the file specified)
+2020-05-11 03:09:47,899 -0500 [main] ERROR (Main.java:184) - C:\Users\bbqpl\eclipse-workspace\Project0\logs\info-hack-bank.log (The system cannot find the file specified)

@@ -4,19 +4,21 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
-import { PlanetListComponent } from './planet-list/planet-list.component';
 import { TestComponent } from './test/test.component';
 import { PrependPipe } from './prepend.pipe';
 import { MagicpipePipe } from './shared/magicpipe.pipe';
+import { PlayerListComponent } from './player-list/player-list.component';
+import { CappipePipe } from './shared/cappipe.pipe';
 
 //decorators same as annotations 
 @NgModule({
   declarations: [ //used to declare components and pipes
     AppComponent,
-    PlanetListComponent,
     TestComponent,
     PrependPipe,
-    MagicpipePipe
+    MagicpipePipe,
+	CappipePipe,
+    PlayerListComponent
   ],
   imports: [ //used to import external modules 
     //we're using formsmodule for two way binding 
