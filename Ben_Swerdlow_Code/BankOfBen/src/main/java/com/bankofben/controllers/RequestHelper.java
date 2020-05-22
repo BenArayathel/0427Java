@@ -14,19 +14,13 @@ public class RequestHelper {
 		System.out.println(request.getRequestURI());
 		
 		switch(request.getRequestURI()) {
-		case "BankOfBen/api/Home":
-			return HomeController.home(request, response);
-//			break;
-		case "BankOfBen/api/InitialRegistration":
+		case "/BankOfBen/api/InitialRegistration":
 			return InitialRegistration.register(request, response);
-//		case "BankOfBen/api/CompleteRegistration":
+//		case "/BankOfBen/api/CompleteRegistration":
 //			return CompleteRegistration.register(request, response);
-		case "BankOfBen/api/Login":
-			return LoginController.login(request, response);
-//			break;
 		}
 		System.out.println("Didn't recognize option");
-		return "login.html";
+		return "/BankOfBen/home.html";
 	}
 
 }

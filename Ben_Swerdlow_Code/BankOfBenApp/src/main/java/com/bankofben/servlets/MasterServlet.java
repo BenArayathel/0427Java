@@ -7,12 +7,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
+
 import com.bankofben.controllers.RequestHelper;
+import com.bankofben.exceptions.BusinessException;
 
 /**
  * Servlet implementation class MasterServlet
  */
-
 
 //<servlet>
 //  <description></description>
@@ -28,6 +30,8 @@ import com.bankofben.controllers.RequestHelper;
 @WebServlet(name="MasterServlet", urlPatterns = {"api/*"})
 public class MasterServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
+	final static Logger loggy = Logger.getLogger(MasterServlet.class);
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -42,7 +46,12 @@ public class MasterServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		request.getRequestDispatcher(RequestHelper.process(request,response)).forward(request,response);
+		try {
+			request.getRequestDispatcher(RequestHelper.process(request,response)).forward(request,response);
+		} catch (ServletException | IOException | BusinessException e) {
+			loggy.error(e);
+			response.sendRedirect("error.html");
+		}
 		
 //		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
