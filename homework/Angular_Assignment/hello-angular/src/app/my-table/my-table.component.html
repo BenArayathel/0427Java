@@ -1,0 +1,64 @@
+<div class = 'panel panel-primary'>
+    <div class = 'panel-heading'>
+
+        <!-- Welcome, {{5+8 + " " + currentLoggedInUser}}!!! -->
+
+    </div>
+    <div class = 'panel-body'>
+        <div class ='row'>
+
+            <div class = 'row'>
+
+                <div class = 'col-md-2'>Filter by:</div>
+                <div class = 'col-md-4'>
+
+                    <input type = 'text' [(ngModel)] = 'inputField' placeholder = 'filter'/>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- OUR HTML TABLE-->
+<div class = 'table-responsive'>
+
+    <table class = 'table' *ngIf = 'foods && foods.length'>
+    <thead>
+        <tr>
+            <th>
+                <button class='btn btn-primary' (click) = 'toggleImage()'>
+                    {{showImage ? 'Hide': 'Show'}} Image
+                </button>
+                <!-- why is this button not styled like secondary? -->
+                <button class='btn btn-default' style='margin: 5px;' (click) = 'toggleEat()'>Click to EAT</button>
+            </th>
+            <th>Foods</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- It's an Enhanced loop
+        specifically, *ngFor will copy an entire elemnt for every element
+            in an array you provide it. -->
+        <tr *ngFor = 'let temp of filteredFoods'>
+            <td>
+                <!-- [target] = '_blank' -->
+                <a [href] = 'temp.info' target='_blank'>
+                <img *ngIf = 'showImage' [src] = 'temp.image' [title] = 'temp.name'
+                [style.width.px] = 'imageWidth' [style.height.px] = 'imageHeight' [style.margin.px] = 'imageMargin'>
+                </a>
+            </td>
+            <td>
+                {{ temp.name | uppercase }}
+            </td>            
+            <td>
+                {{ temp.calories + ' calories per serving' }}
+            </td>
+            <td>
+                {{ showEat ? temp.description : temp.description | altertext }}
+            </td>
+        </tr>
+    </tbody>
+
+    </table>
+
+</div>

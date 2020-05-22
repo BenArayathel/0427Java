@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -58,7 +59,12 @@ public class Login extends HttpServlet {
 				writer.write("employee_portal.html");
 			} else if (usi.loginUser(username, password)) {
 				System.out.println("login successful");
+				// add a cookie of the username
+				Cookie cookie = new Cookie("username", username);
+				res.addCookie(cookie);
+				// return the redirect URL
 				writer.write("user_home.html");
+				
 			} else {
 				System.out.println("login failed");
 				writer.write("failed_login.html");	

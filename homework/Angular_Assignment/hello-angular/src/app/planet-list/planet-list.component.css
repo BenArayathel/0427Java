@@ -1,0 +1,4 @@
+/* why doesn't this work? */
+img:hover {
+    box-shadow: 1px 1px 4px black;
+}
