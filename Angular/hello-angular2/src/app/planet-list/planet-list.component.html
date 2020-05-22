@@ -1,0 +1,95 @@
+<div class='panel panel-primary'>
+    <div class='panel-heading'>
+        <!--
+            The {{}} syntax is used for interpolation. Interpolation evaluaties an express.
+            You can do simple oeprations like addition, or reference a variable fromt he TS file.
+
+            We're using interpolation to achieve one-way data binding. But, it is not the same
+            thing as one-way data binding. There are many ways to do one-binding
+
+            One-way binding (w/interpolkation> projects values in TS to the HTML page to be displayed)
+
+            So any changes to the TS file will immediately affect the HTML (but not the other way around)
+        -->
+      Welcome, {{5+8+" "+currentLoggedInUser+" current user: "+currentUser}}!!!
+    </div>
+
+    <div class='panel-body'>
+        <div class='row'>
+
+            <div class='row'>
+
+                <div class='col-md-2'>
+                    Filter by:
+                </div>
+                <div class='col-md-4'>
+                    <!--
+                        The [()] syntax is used for 2-way binding (also referred to as "apple in a box").
+                        In two-way binding, HTML values and the TS values are tied to each other. If one
+                        changes, the other immediately reflects those changes (hence the two-way binding).
+
+                        To set up the two-way binding you need ngModel, which is a part of the 
+                        "FormsModule" module.
+                        
+                        two-way binding is like a combination of one-way binding and event binding.
+                    -->
+                    <input type='text' [(ngModel)] = 'inputField' placeholder='filter'/>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+  </div>
+<!--OUR HTML TABLE-->
+<div class='table-reponsive'>
+    
+    <table class='table' *ngIf='planets && planets.length'>
+        <!--
+            this is a "structural directive" We call it taht because it has the potential to alter
+            the entire structure of the DOM
+            (If condition is met, it will show the table. If not, it won't show the table)
+
+            commonly used structural directives are
+                *ngFor
+
+                *ngIf
+                    Will show or hide an entire element and/or subelements based on boolean condition
+                *ngSwitch
+                
+                *ngDefault
+
+        -->
+
+        <thead>
+            <tr>
+                <th>
+                    <!--mapping html event to function in our typescript (toggleImage())-->
+                    <button class='btn btn-primary' (click)='toggleImage()'>
+                        {{showImage ? 'Hide': 'Show'}} Image
+                    </button>
+                </th>
+                <th>
+                    Planets
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <!--It's an enhanced loop, specifically
+            *ngFor will copy an entire HTML element for every array element in an array you provide it-->
+            <!-- This allows the html element to be extensible if we change the length of filteredPlanets! -->
+            <tr *ngFor = 'let temp of filteredPlanets'>
+                <td>
+                    <img *ngIf='showImage' [src]='temp.image' [title]='temp.name'
+                        [style.width.px]='imageWidth' [style.margin.px]='imageMargin' alt="should show image">
+                </td>
+                <td>
+                    {{temp.name}}
+                    <!-- {{temp.name | magicpipe: 'Magic: '}} -->
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+
+</div>

@@ -1,0 +1,39 @@
+.taxonomyHeader {
+    font-weight: normal;
+    text-align: right;
+    padding-right: 2px;
+    text-decoration: underline;
+}
+
+.taxonomyEntry {
+    font-style: italic;
+    text-decoration: underline;
+}
+
+.tableList {
+    padding-left: 18px; 
+}
+
+#kingdom {
+    padding-right: 30px;
+}
+ 
+#phylum {
+    padding-right: 25px;
+}
+
+#class {
+    padding-right: 20px;
+}
+
+#order {
+    padding-right: 15px;
+}
+
+#family {
+    padding-right: 10px;
+}
+
+#genus {
+    padding-right: 5px;
+}

@@ -1,0 +1,115 @@
+<div class='panel panel-primary'>
+    <div class='panel-heading'>
+      Welcome, {{currentLoggedInUser}}, to the Animal Viewer!
+    </div>
+
+    <div class='panel-body'>
+        <div class='row'>
+
+            <div class='row'>
+
+                <div class='col-md-2'>
+                    Filter by:
+                </div>
+                <div class='col-md-4'>
+                    <input type='text' [(ngModel)] = 'inputField' placeholder='filter'/>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+  </div>
+
+<div class='table-reponsive'>
+    
+    <table class='table' *ngIf='animals && animals.length'>
+
+        <thead>
+            <tr>
+                <th>
+                    <button class='btn btn-primary' (click)='toggleImage()'>
+                        {{showImage ? 'Hide': 'Show'}} Image
+                    </button>
+                </th>
+                <th>
+                    Common Name
+                </th>
+                <th>
+                    Scientific Name
+                </th>
+                <th>
+                    Other Names
+                </th>
+                <th>
+                    Taxonomy
+                </th>
+                <th>
+                    Features
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor = 'let animal of filteredAnimals'>
+                <td>
+                    <img *ngIf='showImage' [src]='animal.image' [title]='animal.commonName'
+                        [style.width.px]='imageWidth' [style.margin.px]='imageMargin' alt="should show image">
+                </td>
+                <td>
+                    {{animal.commonName}}
+                </td>
+                <td>
+                    {{animal.taxonomy.get("genus")+" "+animal.taxonomy.get("speciesEpithet")}}
+                </td>
+                <td>
+                    <p *ngFor = 'let oName of animal.otherNames'>
+                        {{oName}}
+                    </p>
+                </td>
+                <td>
+                    <table>
+                        <tr>
+                            <th id="kingdom" class="taxonomyHeader">Kingdom:</th>
+                            <td style="padding-left:5px" class="taxonomyEntry">{{animal.taxonomy.get("kingdom")}}</td>
+                        </tr>
+                        <tr>
+                            <th id="phylum" class="taxonomyHeader">Phylum:</th>
+                            <td style="padding-left:5px" class="taxonomyEntry">{{animal.taxonomy.get("phylum")}}</td>
+                        </tr>
+                        <tr>
+                            <th id="class" class="taxonomyHeader">Class:</th>
+                            <td style="padding-left:5px" class="taxonomyEntry">{{animal.taxonomy.get("class")}}</td>
+                        </tr>
+                        <tr>
+                            <th id="order" class="taxonomyHeader">Order:</th>
+                            <td style="padding-left:5px" class="taxonomyEntry">{{animal.taxonomy.get("order")}}</td>
+                        </tr>
+                        <tr>
+                            <th id="family" class="taxonomyHeader">Family:</th>
+                            <td style="padding-left:5px" class="taxonomyEntry">{{animal.taxonomy.get("family")}}</td>
+                        </tr>
+                        <tr>
+                            <th id="genus" class="taxonomyHeader">Genus:</th>
+                            <td style="padding-left:5px" class="taxonomyEntry">{{animal.taxonomy.get("genus")}}</td>
+                        </tr>
+                        <tr>
+                            <th id="species" class="taxonomyHeader">Species:</th>
+                            <td style="padding-left:5px" class="taxonomyEntry">{{animal.taxonomy.get("genus").charAt(0).toUpperCase()+". "+animal.taxonomy.get("speciesEpithet")}}</td>
+                        </tr>
+                    </table>
+                </td>
+                <td>
+                    <ul id="featureList" class="tableList">
+                        <li *ngIf='animal.hasFur'>Has fur</li>
+                        <li *ngIf='animal.hasScales'>Has scales</li>
+                        <li *ngIf='animal.hasFeathers'>Has feathers</li>
+                        <li *ngIf='animal.hasLungs'>Breathes air</li>
+                        <li *ngIf='animal.hasGills'>Breathes water</li>
+                    </ul>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+
+</div>

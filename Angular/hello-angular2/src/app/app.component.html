@@ -1,0 +1,31 @@
+<div>
+
+  <nav class='navbar navbar-default'>
+    <div class='container fluid'>
+      <a class="navbar-brand">{{title}}</a>
+      <ul class='nav navbar-nav'>
+        <li class='nav-item'>
+          <!-- Using href will refresh the page -->
+          <!-- <a href='/welcome'>Welcome</a> -->
+          <a routerLink='/welcome'>Welcome</a>
+        </li>
+        <li class='nav-item'>
+          <!-- Using routerLink will not refresh the page,
+                so it'll be faster and more responsive -->
+          <a routerLink='/planets'>Planet List</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <div>
+    <router-outlet></router-outlet>
+  </div>
+  
+</div>
+
+
+<!-- <app-planet-list></app-planet-list> -->
+<!-- To show the elements in one go -->
+<!-- <app-welcome></app-welcome> -->
+<!-- To stage the elements to be shown at different times, use routing -->

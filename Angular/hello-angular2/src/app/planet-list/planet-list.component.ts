@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
-import { Planet } from './planet'
+import { Planet } from '../shared/planet';
+import { PlanetService } from '../shared/planet.service';
+
+import { ActivatedRoute } from '@angular/router';
 
 /**
  * What is a directive?
@@ -35,6 +38,7 @@ export class PlanetListComponent {
   imageMargin=2;
   showImage=false;
 
+
   // used to demo 2-way binding in the HTML page
   acutalInputField = '';
 
@@ -53,23 +57,23 @@ export class PlanetListComponent {
   planets:Planet[];
   filteredPlanets:Planet[];
 
-  constructor() {
-    this.planets = [
-      {
-        name: 'Mercury',
-        image: 'https://cdn.mos.cms.futurecdn.net/GA4grWEsUYUqH58cDbRBw8-1200-80.jpg'
-      },
-      {
-        name: 'Venus',
-        image: 'https://www.jpl.nasa.gov/spaceimages/images/largesize/PIA00270_hires.jpg'
-      },
-      {
-        name: 'Neptune',
-        image: 'https://solarsystem.nasa.gov/system/stellar_items/image_files/90_feature_1600x900_4.jpg'
-      }
-    ];
+  // Demoing URL parameters
+  currentUser = '';
 
+  constructor(private myPlanetService:PlanetService, private route:ActivatedRoute) {
+    /**
+     * There is an entity inside of Angular called the injector...
+     * This injector entity will create objects of all of the services you provide it and
+     *  WHENEVER it sees a constructor with a parameter of the SAME type as an object the
+     *  injector contains. Then the injector will INJECT that object into the constructor
+     *  (The myPlanetService parameter got injected with stuff from PlanetService)
+     */
+    this.planets = myPlanetService.getPlanet();
     this.filteredPlanets = this.planets;
+  }
+
+  ngOnInit():void {
+    this.currentUser = this.route.snapshot.paramMap.get('myVariable');
   }
 
   toggleImage() {
