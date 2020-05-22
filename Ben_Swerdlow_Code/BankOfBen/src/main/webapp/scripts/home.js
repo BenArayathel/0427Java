@@ -28,7 +28,7 @@ function submitUserInfo(event) {
 function processResponse(responseJSON) {
   console.log(responseJSON);
   // if (responseJSON.url.includes("newUser")) {
-  if (responseJSON.redirected) {
+  if ("url" in responseJSON) {
     console.log("redirect");
     window.location.href = responseJSON.url;
   } else if ("username" in responseJSON.body) {
