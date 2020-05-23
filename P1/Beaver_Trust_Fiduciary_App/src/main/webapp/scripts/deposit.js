@@ -28,5 +28,17 @@ function deposit() {
     })
     // try getting back whatever it is sending...
     .then(response => response.text())
-    .then(response => console.log(response));
+    .then(responseText => handleResponse(responseText))
 }
+
+function handleResponse(responseText) {
+    // clear forms
+    document.getElementById("depositAccount").value = '';
+    document.getElementById("depositAmount").value = '';
+    // create popup to notify them of the result
+    alert(responseText);
+    location.reload();
+}
+
+// then 1. reset forms, take response and save it to a variable
+// put that in the alert box, then 

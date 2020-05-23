@@ -32,7 +32,6 @@
         <ul id="accountList">
             
         </ul>
-        <h2>Select account, enter deposit amount, and click "Deposit"</h2>
         <div class="container">
             <label for="depositAccount">Select account, enter deposit amount, and click "Deposit"</label>
             <input type="text" id="depositAccount"><br>
@@ -40,10 +39,32 @@
             <input type="text" id="depositAmount"><br>
             <button class="btn btn-primary" id="depositSubmit">Deposit</button>
         </div>
+        <br>
+        <div class="container">
+            <label for="withdrawAccount">Select account, enter withdrawal amount, and click "Withdraw"</label>
+            <input type="text" id="withdrawAccount"><br>
+            <label for="withdrawAmount">How much will you be withdrawing?</label>
+            <input type="text" id="withdrawAmount"><br>
+            <button class="btn btn-primary" id="withdrawSubmit">Withdraw</button>
+        </div>
+        <br>
+        <div class="container">
+            <label for="transferFromAccount">Select account to transfer from.</label>
+            <input type="text" id="transferFromAccount"><br>
+            <label for="transferToAccount">Select account to transfer to.</label>
+            <input type="text" id="transferToAccount"><br>
+            <label for="transferAmount">How much will you be transfering?</label>
+            <input type="text" id="transferAmount"><br>
+            <button class="btn btn-primary" id="transferSubmit">Transfer</button>
+        </div>
     </div>
+
+    
     
     <script src="scripts/listAccounts.js"></script>
     <script src="scripts/deposit.js"></script>
+    <script src="scripts/withdraw.js"></script>
+    <script src="scripts/transfer.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>

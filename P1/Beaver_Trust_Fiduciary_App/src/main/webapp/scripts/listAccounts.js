@@ -3,7 +3,7 @@
 let accountList = document.getElementById("accountList");
 // let seeList = document.getElementById("accountListButton");
 
-console.log(accountList);
+// console.log(accountList);
 
 // seeList.addEventListener("click", listAccounts)
 // submit.addEventListener("keyup", login)
@@ -19,7 +19,7 @@ function listAccounts() {
             return response.json();
         })
         .then(json => {
-            console.log(json)
+            // console.log(json)
             for (let i in json) {
                 let li = document.createElement("LI");
                 let accountInfo = document.createTextNode

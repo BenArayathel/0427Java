@@ -1,6 +1,7 @@
 package com.bank.servlets;
 
 import java.io.IOException;
+
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,18 +17,20 @@ import javax.servlet.http.HttpSession;
 import com.bank.main.Main;
 import com.bank.models.Account;
 import com.bank.models.User;
+import com.bank.presentation.AccountTransfer;
+import com.bank.presentation.AccountsView;
+import com.bank.presentation.UserHomeView;
 import com.bank.service_implementation.AccountServiceImplementation;
 import com.bank.service_implementation.UserServiceImplementation;
 import com.bank.tools.BankException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-@WebServlet("/deposit")
-public class DepositServlet extends HttpServlet {
+@WebServlet("/transfer")
+public class AccountTransferServlet extends HttpServlet {
 	
-
 	private static final long serialVersionUID = 1L;
-
+	
 	// POST for now, but updating account should probably be PUT
 	
 	protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
@@ -38,7 +41,7 @@ public class DepositServlet extends HttpServlet {
 		PrintWriter writer = res.getWriter();
 		// return this string to JS to notify user of results of attempted deposit
 		String returnMessage;
-
+		
 		// take the request body, turn it into object so i can access the variables in it
 		ObjectMapper mapper = new ObjectMapper();
 		String body = req.getReader().lines().collect(Collectors.joining(System.lineSeparator()));
@@ -51,64 +54,45 @@ public class DepositServlet extends HttpServlet {
 		} else {
 			// access user
 			User user = (User) session.getAttribute("user");
-
+			
 			// get values sent from JS request
-			String depositAccount = bodyObj.get("account").textValue();
-			String depositAmount = bodyObj.get("amount").textValue();
-						
-			// main logic to try deposit
+			String transferFromAccount = bodyObj.get("accountFrom").textValue();
+			String transferToAccount = bodyObj.get("accountTo").textValue();
+			String transferAmount = bodyObj.get("amount").textValue();
+			
 			try {
-				// check that the amount is in money format...
-				if (asi.validTransactionFormat(depositAmount)) {
-					// ...then that it isn't negative
-					if (Double.parseDouble(depositAmount) > 0) {
-						// instantiate the account
-//						Account account = asi.listAccountByNameAndUserID(account_name, user_id);
-//						// create list of all the user's accounts...
-						List<Account> account_list = asi.listUserAccounts(user.getUsername());
-						// ...then a list of all the names from those accounts
-						List<String> accountNames = new ArrayList<String>();
-						for (Account i : account_list) {
-							accountNames.add(i.getAccount_name());
-						}
-						// check if the name the user entered is in their accounts list
-						if (accountNames.contains(depositAccount)) {
-							asi.deposit(user, depositAccount, depositAmount);
-							
-							returnMessage = "Deposit Successful";
-							// send json response
-							writer.write(returnMessage);
-						} else {
-							returnMessage = "You don't have an account with that name.";
-							// send json response
-							writer.write(returnMessage);
-						}
+				//make a list of the user accounts
+				List<Account> userAccountsList = asi.listUserAccounts(user.getUsername());
+				// if the amount is valid...
+				if (asi.validTransactionFormat(transferAmount)) {
+					// ...and if it isn't negative
+					if (Double.parseDouble(transferAmount) > 0) {
+						asi.withdraw(user, transferFromAccount, transferAmount);
+						asi.deposit(user, transferToAccount, transferAmount);
+						returnMessage = "Transfer complete!";
+						// send json response
+						writer.write(returnMessage);	
 					} else {
 						returnMessage = "Enter an amount greater than $0.";
 						// send json response
 						writer.write(returnMessage);
-					}			
+					}					
 				} else {
 					returnMessage = "Please format your input as either dollars or dollars and cents";
 					// send json response
 					writer.write(returnMessage);
 				}
+				
 			} catch (BankException e) {
 				Main.myLog.error(e.getMessage() + e.getStackTrace());
-				returnMessage = "Something went wrong, unable to process deposit. Please try again later.";
+				returnMessage = "Something went wrong, unable to process transfer. Please try again later.";
 				// send json response
 				writer.write(returnMessage);
 			}
-			
-			// list transactions from employee, temporary, to see if it worked
-			// from inside eclipse
-//			try {
-//				System.out.println(asi.listAllTransactions());
-//			} catch (BankException e1) {
-//				
-//			}
-			
-		}		
-	}		
+		}
+	}
 }
+
+
+
 
