@@ -45,22 +45,51 @@
               <h4>User Login</h4>
             </div>
             <div class="card-body">
-              <!-- action="pass" method="post" -->
-              <form action="login" method="post">
-                <!-- method="post" action="http://localhost:9999/Password/pass?username=lunch&pass=pass" -->
+
+              <!-- FORM -->
+              <!--  role="form" -->
+              <!-- <form action="login" method="POST">
                 <div class="form-group">
-                  <label for="text">username</label>
-                  <input id="username" name="username" type="text" class="form-control">
+                  <label for="username">Username</label>
+                  <input id="username" type="text" class="form-control">
                 </div>
                 <div class="form-group">
-                  <label for="password">pass</label>
+                  <label for="password">Password</label>
                   <input id="pass" name="pass" type="text" class="form-control">
                 </div>
-                <input type="submit" onclick="login()" class="btn btn-primary btn-block" value="Login">
-                <!-- <button onclick="login()" class="btn btn-dark btn-block">Login</button> -->
+                <input type="submit" onclick="login()" class="btn btn-primary btn-block" value="Register">
+              </form>  -->
+
+              <!-- <form >
+                <div class="form-group">
+                  <label for="username">Username</label>
+                  <input id="username" type="text" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label for="password">Password</label>
+                  <input id="pass" name="pass" type="text" class="form-control">
+                </div>
+                <input type="submit" onclick="login()" class="btn btn-primary btn-block" placeholder="submit" value="Register">
+              </form> -->
+              <!-- Ethan's suggestion: button -->
+
+              <!-- NO-FORM -->
+               <div >
+
+                <div class="">
+                  <label for="text">username</label>
+                  <input id="username" name="username" type="text" class="">
+                </div>
+                <div class="">
+                  <label for="password">pass</label>
+                  <input id="pass" name="pass" type="text" class="">
+                </div>
+                <button onclick="login()" class="btn btn-primary btn-block">Login</button>
+              </div>
+              <!-- <input type="button" onclick="login()" class="btn btn-primary btn-block" value="Login"> -->
+              <!-- <button onclick="login()" class="btn btn-dark btn-block">Login</button> -->
               <!-- onclick="login()" -->
               <!-- type="submit" -->  
-              </form>
             </div>
           </div>
         </div>
@@ -86,29 +115,104 @@
   <script>
     
 
-   console.log("Script ran");
+   console.log("Basic Script ran ...");
 
-  // User Data
-  const data = {
 
-    username: '',
-    pass: ''
-  }
-  data.username = document.getElementById("username").value;
-  data.pass = document.getElementById("pass").value;
 
-  const http = new EasyHttp;
+  //const http = new EasyHttp;
 
   // POST  :  create user
   function login(){
     
-    console.log("Function ran");
-    //these params did work in postman
-    //"http://localhost:9999/Password/pass?username=lunch&pass=pass"
+    console.log("login() Function ran... ");
 
-    http.post('http://localhost:9999/Password/login', data)
-    .then(data => console.log(data))
-    .catch(err => console.log(err));
+      // User Data
+    const data = {
+
+      userName: '',
+      password: ''
+    }
+    data.userName = document.getElementById("username").value;
+    data.password = document.getElementById("pass").value;
+    console.log("here after grabbing elementID's ...");
+
+    console.log(data.userName);
+    console.log(data.password);
+
+    // http.post('http://localhost:9999/Password/login', data, 
+    // function (err, post) {
+    
+    //   if (err) {
+    //       console.log(err);
+
+    //   } else {
+    //       console.log(post);
+    //   }
+    // });
+
+    // http.post('http://localhost:9999/Password/login', data)
+    // .then(data => {
+      
+    //   console.log("inside .then block ...");
+      
+    //   console.log(data)
+    // })
+    // .then(response => {
+    //   response.text()
+    //   window.location.assign(response)
+    // })
+    // .catch(err => console.log(err));
+
+    const url = new Promise((resolve, reject) => {
+
+      fetch('http://localhost:9999/Password/login', {
+          method: 'POST',
+          headers: {
+              'Content-type': 'application/json'
+          },
+          body: JSON.stringify(data)
+      })
+          .then(res => res.text())
+          .then(data => {
+              resolve(data)
+              console.log(data);
+              window.location.assign(data)
+          })
+          .catch(err => reject(err));
+      });
+
+
+    // MOZILLA DEVELOPER NETWORK
+    // fetch('http://localhost:9999/Password/login', {
+    //   method: 'POST', // or 'PUT'
+    //   headers: {
+    //     'Content-Type': 'application/json',
+    //   },
+    //   body: JSON.stringify(data),
+    // })
+    // .then(response => response.json())
+    // .then(data => {
+    //   console.log('Success:', data);
+    // })
+    // .catch((error) => {
+    //   console.error('Error:', error);
+    // });
+
+
+    // let response = await fetch('http://localhost:9999/Password/login', {
+    //   method: 'POST',
+    //   headers: {
+    //     'Content-Type': 'application/json;charset=utf-8'
+    //   },
+    //   body: JSON.stringify(data)
+    // });
+
+    // let result = await response.json();
+    // result.text();
+    // window.location.assign(result);
+
+
+
   }
 
   

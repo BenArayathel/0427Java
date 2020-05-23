@@ -21,6 +21,7 @@ public class LunchServlet extends HttpServlet {
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+		System.out.println("\n\nTHIS IS LUNCH SERVLET !!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		System.out.println("POST");
 		PrintWriter pw = res.getWriter();
 		//res.getContentType("text/html");

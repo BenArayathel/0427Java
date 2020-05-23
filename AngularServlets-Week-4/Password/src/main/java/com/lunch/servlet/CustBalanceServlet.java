@@ -43,10 +43,21 @@ public class CustBalanceServlet extends HttpServlet {
 		 HttpSession session = req.getSession(false);
 		 
 		 /**
+		  * IN THE SESSION OBJECT I HAVE:
+		  * 
+		  * access
+		  * balance
+		  * id
+		  * soc
+		  * myCleanString						........not working is null
+		  * user			: regular POJO	:  ...........not working
+		  * user : user11
+		  * 
 		  * mappedStringUser	:user2
-		  * user				:  ...........not working
+		  * 
 		  * balance				:user3
-		  * myCleanString
+		  * 
+		  *
 		  */
 		 
 		 // the way this line looks, it is as if you can just go an use the POJO but it's NULL
@@ -54,13 +65,16 @@ public class CustBalanceServlet extends HttpServlet {
 // upper or lower		 
 		 //String user2 =  session.getAttribute("mappedStringUser").toString();
 // upper or lower
-		 String myCleanString = (String) session.getAttribute("myCleanString").toString();
+		 //String myCleanString = (String) session.getAttribute("myCleanString");
 		 
 		 //String bal = session.getAttribute("balance").toString();
 		 //System.out.println("user balance via SESSION: " + bal);
 		 
 		 //System.out.println("user balance via SESSION: " + (User) session.getAttribute("balance").toString());
 		 //System.out.println("user balance via SESSION: " + ((ServletRequest) session).getAttribute("balance").toString());
+		 
+//		 User user = (User) session.getAttribute("user11");
+//		 System.out.println("\nuser11 via SESSION: " + user.toString() );
 		 
 //			"access"
 //			"balance"
@@ -85,15 +99,13 @@ public class CustBalanceServlet extends HttpServlet {
 		  * so why use another ObjectMapper ...
 		  */
 		 // https://stackoverflow.com/questions/2010990/how-do-you-return-a-json-object-from-a-java-servlet
-		 res.setContentType("application/json");
-		 res.setCharacterEncoding("UTF-8");
-		 
-		 
-		 res.getWriter().write(myCleanString);
+//		 res.setContentType("application/json");
+//		 res.setCharacterEncoding("UTF-8");
+//		 res.getWriter().write(myCleanString);
 
 // below is just balance
 // which is a one liner
-		 //res.getWriter().write("{\"balance\": \"" + session.getAttribute("balance").toString() +"\"}");
+		 res.getWriter().write("{\"balance\": \"" + session.getAttribute("balance").toString() +"\"}");
 		 //res.getWriter().write(new ObjectMapper().writeValueAsString(user2));
 		 //doPost(req, res);
 		 
