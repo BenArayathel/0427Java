@@ -19,7 +19,7 @@ import com.bank.tools.BankException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @WebServlet("/login")
-public class Login extends HttpServlet {
+public class LoginServlet extends HttpServlet {
 	
 	// suggested by eclipse for Httpsession
 	private static final long serialVersionUID = 1L;
@@ -37,12 +37,12 @@ public class Login extends HttpServlet {
 	}
 	
 	protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-		
+		// setup tools
 		UserServiceImplementation usi = new UserServiceImplementation();
 		UserDAOImplementation udi = new UserDAOImplementation();
-		
 		ObjectMapper mapper = new ObjectMapper();
 		
+		// map username and password onto a new User object
 		User user = mapper.readValue(req.getReader(), com.bank.models.User.class);
 		
 		System.out.println(user);

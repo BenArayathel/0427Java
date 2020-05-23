@@ -1,0 +1,14 @@
+<h1>account created, try to log in later</h1>
+<h3>Page will automatically return to home screen</h3>
+
+<script>
+
+    function redirectFunction() {
+        setTimeout(function() {
+            window.location.assign("index.html");
+        }, 5000);
+    }
+
+    window.onload(redirectFunction());
+
+</script>

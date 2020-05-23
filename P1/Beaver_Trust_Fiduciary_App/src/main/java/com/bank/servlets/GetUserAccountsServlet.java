@@ -20,7 +20,7 @@ import com.bank.tools.BankException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @WebServlet("/getaccounts")
-public class GetUserAccounts extends HttpServlet {
+public class GetUserAccountsServlet extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
 
