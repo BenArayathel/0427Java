@@ -29,3 +29,14 @@
 2020-05-20 22:07:32 ERROR Main:97 - No suitable driver found for jdbc:oracle:thin:@database-1.cb5vpvii5jvy.us-west-2.rds.amazonaws.com:1521:orcl[Ljava.lang.StackTraceElement;@7833bfb5
 2020-05-21 07:04:59 ERROR Main:97 - No suitable driver found for jdbc:oracle:thin:@database-1.cb5vpvii5jvy.us-west-2.rds.amazonaws.com:1521:orcl[Ljava.lang.StackTraceElement;@37311505
 2020-05-21 07:08:40 ERROR Main:97 - No suitable driver found for jdbc:oracle:thin:@database-1.cb5vpvii5jvy.us-west-2.rds.amazonaws.com:1521:orcl[Ljava.lang.StackTraceElement;@6daf5cf9
+2020-05-23 09:52:05 ERROR Main:42 - ORA-00001: unique constraint (ADMIN.BANK_USER_UNIQUE) violated
+ORA-06512: at "ADMIN.CREATE_NEW_USER", line 6
+ORA-06512: at line 1
+[Ljava.lang.StackTraceElement;@10125b96
+2020-05-23 09:52:05 ERROR Main:21 - Something went wrong here[Ljava.lang.StackTraceElement;@64429797
+2020-05-23 09:52:05 ERROR Main:55 - Something went wrong with account creation[Ljava.lang.StackTraceElement;@2167c1f5
+2020-05-23 10:26:17 ERROR Main:157 - ORA-01400: cannot insert NULL into ("ADMIN"."BANK_TRANSACTION"."ACCOUNT_NAME")
+ORA-06512: at "ADMIN.CREATE_NEW_TRANSACTION", line 6
+ORA-06512: at line 1
+[Ljava.lang.StackTraceElement;@6cbb155b
+2020-05-23 10:26:17 ERROR Main:43 - Unable to log transaction.[Ljava.lang.StackTraceElement;@65343c48
