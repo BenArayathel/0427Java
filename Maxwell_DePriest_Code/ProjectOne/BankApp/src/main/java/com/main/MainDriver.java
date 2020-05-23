@@ -38,7 +38,7 @@ import org.apache.log4j.Logger;public class MainDriver {
 				if(c.matches("[1-3]{1}")) {
 					if(c.equals("1")) {
 						try {
-						uSI.registerNewUser();
+						uSI.createNewUser(currentUser);
 							
 						} catch (BusinessException | IndexOutOfBoundsException e) {
 							loggy.error("Error thrown during new user registry");

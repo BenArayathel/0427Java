@@ -8,9 +8,9 @@ public interface UserService {
 	public User setCurrentUser(String email) throws BusinessException;
 	public Account setCurrentAccount(String email) throws BusinessException;
 	
-	public void registerNewUser() throws BusinessException;
+	public boolean createNewUser(User u) throws BusinessException;
 	public boolean userLogin(String email, String password) throws BusinessException;
-	public void signUpForAccount(String email) throws BusinessException;
+	public boolean createNewAccount(String email, String startingCheckingAmount) throws BusinessException;
 
 	public String checkCheckingBalance(String email) throws BusinessException;
 	public String checkSavingsBalance(String email) throws BusinessException;

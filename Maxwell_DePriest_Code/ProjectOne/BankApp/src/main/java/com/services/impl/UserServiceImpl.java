@@ -27,19 +27,9 @@ public class UserServiceImpl implements UserService {
 	}
 	
 	@Override
-	public void registerNewUser() throws BusinessException {
+	public boolean createNewUser(User u) throws BusinessException {
 		boolean accountValidated = true;
-		User newUser = new User();
-		Scanner sc = new Scanner(System.in);
-		loggy.info("Please enter your first and last names");
-		newUser.setName(sc.nextLine().trim());
-		loggy.info("Please enter your email");
-		newUser.setEmail(sc.nextLine());
-		loggy.info("Please enter your phone number. Ex 3048675309");
-		newUser.setPhoneNumber(sc.nextLine().trim());
-		loggy.info("Create a password. Alpha-numerical characters only.");
-		String pw = sc.nextLine().trim();
-		String ePassword = passwordEncryption(pw);
+		User newUser = u;
 		newUser.setStatus("customer");
 		if (!isValidName(newUser.getName())) {
 			loggy.info("Error. Please use only letters in the name field. Please try again.");
@@ -49,27 +39,24 @@ public class UserServiceImpl implements UserService {
 			loggy.info("Error. Please input your phone number with 10 digits. Ex. 1234567890");
 			accountValidated = false;
 		}
-		else if (ePassword.equals("fail")) {
-			loggy.info("Password cannot contain any special characters. Letters and numbers only");
-			accountValidated = false;
-		}
 		if(accountValidated) {
-			newUser.setPassword(ePassword);
 			try {
 				uDI.insertUser(newUser);
 				loggy.debug("new customer account created with email " + newUser.getEmail());
 				loggy.info("We'll review your application and get back to you shortly");
+				return true;
 			} catch (BusinessException e) {
 				loggy.info(e.getMessage());
 				loggy.info("Please try again");
+				return false;
 			}
-			System.exit(0);
+			
 		}
-		registerNewUser();
-		sc.close();
-		//System.exit(0);
+		loggy.info("Account not validated");
+		return false;
 		
-	}// end of registerNewUser
+		
+	}// end of createNewUser
 	
 	@Override
 	public boolean userLogin(String email, String password) throws BusinessException {
@@ -104,19 +91,20 @@ public class UserServiceImpl implements UserService {
 	}
 	
 	@Override
-	public void signUpForAccount(String email) throws BusinessException {
-		Scanner sc = new Scanner(System.in);
+	public boolean createNewAccount(String email, String startingCheckingAmount) throws BusinessException {
 		boolean verified = true;
-		loggy.info("How much would you like to put into your checking account?");
-		String checkingMoney = sc.nextLine();
-		if (!isValidDeposit(checkingMoney)) {
+		if (!isValidDeposit(startingCheckingAmount)) {
 			verified = false;
+			return false;
 		}
-		else {
+		if (verified) {
 			String newSavingsNum = Integer.toString(generateAccountNumber());
 			String newCheckingNum = Integer.toString(generateAccountNumber());
-			aDI.insertAccount(new Account("", newSavingsNum, newCheckingNum, checkingMoney, "0.00", "false", email));
-		}	
+			aDI.insertAccount(new Account("", newSavingsNum, newCheckingNum, startingCheckingAmount, "0.00", "false", email));
+			return true;
+		}
+		loggy.info("Failed to create new account");
+		return false;
 	} // End of signUpForAccount
 	
 	public void viewAllAccounts(User u) {

@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.controllers.LoginController;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.models.User;
 import com.models.ValidLogin;
 
 
@@ -21,7 +22,7 @@ public class LoginServlet extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-		res.getWriter().append("doGet-ing in LoginServlet").append(req.getContextPath());
+		//res.getWriter().append("doGet-ing in LoginServlet").append(req.getContextPath());
 		
 		
 	}
@@ -32,11 +33,17 @@ public class LoginServlet extends HttpServlet {
 		{
 			String test = req.getReader().lines().collect(Collectors.joining(System.lineSeparator()));
 		    ObjectMapper mapper = new ObjectMapper();
-			ValidLogin validLogin = mapper.readValue(test, ValidLogin.class);
-		    LoginController.login(validLogin.getEmail(), validLogin.getPassword());
+			User userCheck = mapper.readValue(test, User.class);
+		    if(LoginController.login(userCheck.getEmail(), userCheck.getPassword())) {
+		    	res.getWriter().append("Login successful");
+		    	doGet(req, res);
+		    }
+		    else {
+		    	res.getWriter().append("Login Failed. Please try again.");
+		    	doGet(req,res);
+		    }
 		}
 		
-		doGet(req, res);
 	}
 
 }
