@@ -3,17 +3,12 @@ window.onload = function() {
   if (regForm) {
     regForm.addEventListener("submit", this.submitUserInfo);
   }
-  // this.document.getElementById("selectLogin")
-  //   .addEventListener("click", loginUser);
 }
 
 function submitUserInfo(event) {
   event.preventDefault();
   let username = document.getElementById("username").value;
   let email = document.getElementById("email").value;
-  console.log(username);
-  console.log(email);
-  console.log("About to fetch")
   fetch('http://localhost:9999/BankOfBen/api/InitialRegistration', {
             method: 'POST',
             body: JSON.stringify({
@@ -27,42 +22,37 @@ function submitUserInfo(event) {
 }
 
 async function processResponse(response) {
-  // console.log(response);
   let responseJSON;
-  // console.log(responseJSON);
-  // if (responseJSON.url.includes("newUser")) {
   if (response.url.endsWith(".html") && response.url !== window.location.href) {
-    // console.log(response.url);
-    // console.log(window.location.href);
-    // await new Promise(r => setTimeout(r, 8000));
-    // console.log("redirect");
+    console.log(response.url);
     window.location.href = response.url;
   } else {
     responseJSON = await response.json();
-    // console.log(responseJSON);
-    // await new Promise(r => setTimeout(r, 8000));
     if ("username" in responseJSON) {
-      // console.log("bad username");
       if (document.getElementById("usernameExists")){
         document.getElementById("usernameExists").innerText = `Username \"${responseJSON.username}\" is an existing Bank of Ben username.`;
       } else {
+        if (document.getElementById("emailExists")) {
+          document.getElementById("emailExists").remove();
+        }
         customCreateElement(
           "usernameExists",
           document.getElementById("regForm"),
           {text: `Username \"${responseJSON.username}\" is an existing Bank of Ben username.`});
       }
     } else if ("email" in responseJSON) {
-      // console.log("bad email");
       if (document.getElementById("emailExists")) {
         document.getElementById("emailExists").innerText = `Email \"${responseJSON.email}\" is an existing Bank of Ben user email.`;
       } else {
+        if (document.getElementById("usernameExists")) {
+          document.getElementById("usernameExists").remove();
+        }
         customCreateElement(
           "emailExists",
           document.getElementById("regForm"),
           {text: `Email \"${responseJSON.email}\" is an existing Bank of Ben user email.`});
       }
     } else {
-      // console.log(responseJSON);
       console.error("Couldn't figure out what to do");
     }
   }

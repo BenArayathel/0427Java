@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.bankofben.exceptions.BusinessException;
 import com.bankofben.models.TempUser;
@@ -12,7 +13,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class InitialRegistration {
 
-	public static String register(HttpServletRequest request, HttpServletResponse response) throws IOException, BusinessException{
+	public static String register(HttpServletRequest request, HttpServletResponse response) throws BusinessException,  IOException{
+		System.out.println("Initial Registration");
 		ObjectMapper objMapper = new ObjectMapper();
 //		BankOfBenServices dbs = new BankOfBenServices();
 		
@@ -21,7 +23,7 @@ public class InitialRegistration {
 		String respString;
 		
 //		if (dbs.usernameExists(tempUser.getUsername())) {
-//			respString = "{\"user\": "+tempUser.getUsername()+"}";
+//			respString = "{\"username\": "+tempUser.getUsername()+"}";
 //		} else if (dbs.emailExists(tempUser.getEmail())) {
 //			respString = "{\"email\": "+tempUser.getEmail()+"}";
 		if (tempUser.getUsername().equals("username")) {
@@ -31,7 +33,22 @@ public class InitialRegistration {
 			respString = "{\"email\": \""+tempUser.getEmail()+"\"}";
 //			respString = objMapper.writeValueAsString(tempUser);
 		} else {
-			respString = "/BankOfBen/newUser.html";
+			String userString = objMapper.writeValueAsString(tempUser);
+			System.out.println(userString);
+//			// Set username cookie
+//			Cookie usernameCookie = new Cookie("username", tempUser.getUsername());
+//			usernameCookie.setMaxAge(900);
+//			response.addCookie(usernameCookie);
+//			// Set email cookie
+//			Cookie emailCookie = new Cookie("email", tempUser.getEmail());
+//			emailCookie.setMaxAge(900);
+//			response.addCookie(emailCookie);
+			
+			// Use sessions instead
+			HttpSession session = request.getSession();//Session ID generated on server-side
+			session.setAttribute("tempUser", tempUser);
+			
+			respString = "/newUser.html";
 		}
 		
 		System.out.println("Returning "+respString);

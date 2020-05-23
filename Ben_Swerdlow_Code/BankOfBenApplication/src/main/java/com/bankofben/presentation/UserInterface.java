@@ -222,7 +222,7 @@ public class UserInterface {
 				+ "\n* At least one uppercase English letter"
 				+ "\n* At least one lowercase English letter"
 				+ "\n* At least one digit"
-				+ "\n* At least one special character (.*?[#?!@$%^&*-)";
+				+ "\n* At least one special character: .;,#?!@$%^&*-";
 	}
 
 	public static String ssnCriteria() {
