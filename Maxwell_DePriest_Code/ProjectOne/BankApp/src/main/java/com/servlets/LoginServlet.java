@@ -14,6 +14,7 @@ import com.models.User;
 import com.models.Account;
 import com.models.CurrentUser;
 import com.dao.impl.UserDaoImpl;
+import com.dao.impl.AccountDaoImpl;
 import com.exceptions.BusinessException;
 
 
@@ -21,6 +22,7 @@ import com.exceptions.BusinessException;
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static UserDaoImpl uDI = new UserDaoImpl();
+	private static AccountDaoImpl aDI = new AccountDaoImpl();
        
     public LoginServlet() {
         super();
@@ -42,7 +44,9 @@ public class LoginServlet extends HttpServlet {
 		    if(LoginController.login(userCheck.getEmail(), userCheck.getPassword())) {
 		    	try {
 					User approvedUser = uDI.selectUserByEmail(userCheck.getEmail());
-					CurrentUser currentUser = new CurrentUser(approvedUser.getEmail(), approvedUser.getName());
+					Account userAccount = aDI.selectAccountByEmail(approvedUser.getEmail());
+					CurrentUser currentUser = new CurrentUser(approvedUser.getEmail(), approvedUser.getName(), userAccount.getCheckingBalance(), userAccount.getSavingsBalance());
+
 					mapper.writeValue(res.getWriter(), currentUser);
 					
 					

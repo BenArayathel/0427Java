@@ -20,12 +20,18 @@ function checkCredentials() {
     	}).then(
     		response => response.json()).then(
     				data => {
+    					console.log(data);
     					console.log("Name- " + data["name"]);
-    					//window.location.href = "./index.html";
-    				    //localStorage.setItem("userName", data["name"]);
+    					localStorage.clear();
+    					
+    					//var testJSON = JSON.stringify(data);
+//    					console.log(testJSON)
+    					localStorage.setItem("userData", JSON.stringify(data));
+    					window.location.href = "index.html";
+    				    
     				}).catch(error =>{
     					console.log(error)
-    					//window.location.href = "./404.html";
+    					window.location.href = "./404.html";
     				});
     console.log("Fetch should have returned something");
     
