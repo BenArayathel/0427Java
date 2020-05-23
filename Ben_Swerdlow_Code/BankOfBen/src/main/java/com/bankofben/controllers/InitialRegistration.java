@@ -25,11 +25,11 @@ public class InitialRegistration {
 //		} else if (dbs.emailExists(tempUser.getEmail())) {
 //			respString = "{\"email\": "+tempUser.getEmail()+"}";
 		if (tempUser.getUsername().equals("username")) {
-//			respString = "{\"user\": \""+tempUser.getUsername()+"\"}";
-			respString = objMapper.writeValueAsString(tempUser);
+			respString = "{\"username\": \""+tempUser.getUsername()+"\"}";
+//			respString = objMapper.writeValueAsString(tempUser);
 		} else if (tempUser.getEmail().equals("ben@gmail.com")) {
-//			respString = "{\"email\": \""+tempUser.getEmail()+"\"}";
-			respString = objMapper.writeValueAsString(tempUser);
+			respString = "{\"email\": \""+tempUser.getEmail()+"\"}";
+//			respString = objMapper.writeValueAsString(tempUser);
 		} else {
 			respString = "/BankOfBen/newUser.html";
 		}

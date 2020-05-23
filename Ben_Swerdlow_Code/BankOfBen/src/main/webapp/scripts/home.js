@@ -1,6 +1,8 @@
 window.onload = function() {
-  this.document.getElementById("regForm")
-    .addEventListener("submit", this.submitUserInfo);
+  let regForm = this.document.getElementById("regForm");
+  if (regForm) {
+    regForm.addEventListener("submit", this.submitUserInfo);
+  }
   // this.document.getElementById("selectLogin")
   //   .addEventListener("click", loginUser);
 }
@@ -20,49 +22,62 @@ function submitUserInfo(event) {
             }),
             headers: {"Content-type": "application/json; charset=UTF-8"}
         })
-        .then(response => response.json())
-        .then(responseJSON => processResponse(responseJSON))
+        .then(response => processResponse(response))
         .catch(error => console.error(error));
 }
 
-function processResponse(responseJSON) {
-  console.log(responseJSON);
+async function processResponse(response) {
+  // console.log(response);
+  let responseJSON;
+  // console.log(responseJSON);
   // if (responseJSON.url.includes("newUser")) {
-  if ("url" in responseJSON) {
-    console.log("redirect");
-    window.location.href = responseJSON.url;
-  } else if ("username" in responseJSON.body) {
-    console.log("bad username");
-    if (document.getElementById("usernameExists")){
-      document.getElementById("usernameExists").innerText = `Username ${username} already exists. Please login below.`;
-    } else {
-      let div = document.createElement("div");
-      div.id = "usernameExists";
-      let regForm = document.getElementById("regForm");
-      div.innerText = `Username ${username} already exists. Please login below.`;
-      regForm.appendChild(div);
-    }
-  } else if ("email" in responseJSON.body) {
-    console.log("bad email");
-    if (document.getElementById("emailExists")) {
-      document.getElementById("emailExists").innerText = `Email ${email} already exists. Please login below.`;
-    } else {
-      let div = document.createElement("div");
-      div.id = "emailExists";
-      let regForm = document.getElementById("regForm");
-      div.innerText = `Email ${email} already exists. Please login below.`;
-      regForm.appendChild(div);
-    }
+  if (response.url.endsWith(".html") && response.url !== window.location.href) {
+    // console.log(response.url);
+    // console.log(window.location.href);
+    // await new Promise(r => setTimeout(r, 8000));
+    // console.log("redirect");
+    window.location.href = response.url;
   } else {
-    console.log("Couldn't figure out what to do");
-    console.log(responseJSON.json());
-    // const reader = responseJSON.body.getReader();
-
-    // reader.read().then(({done, value}) => {
-    //   if (done) {
-    //     AbortController.close()
-    //   }
-    // })
-    console.log(responseJSON.body);
+    responseJSON = await response.json();
+    // console.log(responseJSON);
+    // await new Promise(r => setTimeout(r, 8000));
+    if ("username" in responseJSON) {
+      // console.log("bad username");
+      if (document.getElementById("usernameExists")){
+        document.getElementById("usernameExists").innerText = `Username \"${responseJSON.username}\" is an existing Bank of Ben username.`;
+      } else {
+        customCreateElement(
+          "usernameExists",
+          document.getElementById("regForm"),
+          {text: `Username \"${responseJSON.username}\" is an existing Bank of Ben username.`});
+      }
+    } else if ("email" in responseJSON) {
+      // console.log("bad email");
+      if (document.getElementById("emailExists")) {
+        document.getElementById("emailExists").innerText = `Email \"${responseJSON.email}\" is an existing Bank of Ben user email.`;
+      } else {
+        customCreateElement(
+          "emailExists",
+          document.getElementById("regForm"),
+          {text: `Email \"${responseJSON.email}\" is an existing Bank of Ben user email.`});
+      }
+    } else {
+      // console.log(responseJSON);
+      console.error("Couldn't figure out what to do");
+    }
   }
+}
+
+function customCreateElement(id, attachToElement, inner){
+  let div = document.createElement("div");
+  div.id = id;
+  if (inner && "text" in inner) {
+    div.innerText = inner.text;
+  } else if (inner && "html" in inner) {
+    div.innerHTML = inner.html;
+  } else if (inner) {
+    throw "Couldn't figure out how to populate element. Inner object"
+          +" must contain either \"text\" or \"html\" property"
+  }
+  attachToElement.appendChild(div);
 }
