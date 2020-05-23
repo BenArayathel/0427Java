@@ -5,8 +5,7 @@ loginButton.addEventListener("click", checkCredentials);
 function checkCredentials() {
     let email = document.getElementById("loginEmail");
     let password = document.getElementById("loginPassword");
-    
-    
+
         
     fetch('http://localhost:8088/BankApp/login', {
     	method: 'POST',
@@ -19,20 +18,14 @@ function checkCredentials() {
     			password: password.value
     	})
     	}).then(
-    		response => {
-    			console.log(response.text());
-    			//response.json();
-    			//console.log(response);
-    			//window.location.href="index.html";
-    			//localStorage.setItem("email", email.value);
-    			}).then(
+    		response => response.json()).then(
     				data => {
-    					console.log(data);
+    					console.log("Name- " + data["name"]);
     					//window.location.href = "./index.html";
-    				    localStorage.setItem("email", email.value);
+    				    //localStorage.setItem("userName", data["name"]);
     				}).catch(error =>{
     					console.log(error)
-    					window.location.href = "./404.html";
+    					//window.location.href = "./404.html";
     				});
     console.log("Fetch should have returned something");
     

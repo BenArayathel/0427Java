@@ -20,9 +20,8 @@ public class DatabaseConnection {
 
 		try {
 			Class.forName("oracle.jdbc.OracleDriver");
-			System.out.println("Driver Loaded in theory");
+			//loggy.debug("Driver started");
 		} catch (ClassNotFoundException e) {
-			System.out.println("Could not register driver!");
 			e.printStackTrace();
 		}
 

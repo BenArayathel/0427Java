@@ -11,11 +11,16 @@ import javax.servlet.http.HttpServletResponse;
 import com.controllers.LoginController;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.models.User;
-import com.models.ValidLogin;
+import com.models.Account;
+import com.models.CurrentUser;
+import com.dao.impl.UserDaoImpl;
+import com.exceptions.BusinessException;
+
 
 
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private static UserDaoImpl uDI = new UserDaoImpl();
        
     public LoginServlet() {
         super();
@@ -35,8 +40,18 @@ public class LoginServlet extends HttpServlet {
 		    ObjectMapper mapper = new ObjectMapper();
 			User userCheck = mapper.readValue(test, User.class);
 		    if(LoginController.login(userCheck.getEmail(), userCheck.getPassword())) {
-		    	res.getWriter().append("Login successful");
-		    	doGet(req, res);
+		    	try {
+					User approvedUser = uDI.selectUserByEmail(userCheck.getEmail());
+					CurrentUser currentUser = new CurrentUser(approvedUser.getEmail(), approvedUser.getName());
+					mapper.writeValue(res.getWriter(), currentUser);
+					
+					
+			    	doGet(req, res);
+				} catch (BusinessException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+		    	
 		    }
 		    else {
 		    	res.getWriter().append("Login Failed. Please try again.");
