@@ -66,10 +66,7 @@ public class AccountsView {
 			Main.myLog.info("Please try again.");
 			view(user);
 		}
-		
-
 	}
-
 }
 
 

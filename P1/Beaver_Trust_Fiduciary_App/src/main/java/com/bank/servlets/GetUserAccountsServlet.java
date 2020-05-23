@@ -24,7 +24,6 @@ public class GetUserAccountsServlet extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
 
-	// Won't be using this, don't want password in URL
 	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		// setup
 		ObjectMapper mapper = new ObjectMapper();

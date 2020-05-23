@@ -5,32 +5,32 @@ submit.addEventListener("click", login)
 // submit.addEventListener("keyup", login)
 
 function login() {
-    let username = document.getElementById("username").value;
-    let password = document.getElementById("password").value;
-    
-    console.log(username);
-    console.log(password);    
+let username = document.getElementById("username").value;
+let password = document.getElementById("password").value;
 
-    fetch('http://localhost:9999/Beaver_Trust_Fiduciary_App/login', {
+console.log(username);
+console.log(password);    
+
+fetch('http://localhost:9999/Beaver_Trust_Fiduciary_App/login', {
         method: 'POST',
         body: JSON.stringify({
-            username: username,
-            password: password
+        username: username,
+        password: password
         }),
         headers: {
-            "Content-Type": "application/json; charset=UTF-8",
-            'Accept': 'application/json'
+        "Content-Type": "application/json; charset=UTF-8",
+        'Accept': 'application/json'
         }
         })
-//         getting response.text instead of response.json,
+        //         getting response.text instead of response.json,
         // response is from java file, i want to access the
         // url in it to redirect through javascript
 
         // THIS working approach does a redirect
         .then(response => response.text())
         .then(response => {
-            console.log(response)
-            window.location.assign(response);
+        console.log(response)
+        window.location.assign(response);
         })
 
         // THIS works at dealing with an object
