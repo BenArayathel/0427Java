@@ -52,6 +52,8 @@ function depositMoney(whichAccount, amt) {
         				data => {
         					localStorage.clear();
         					localStorage.setItem("userData", JSON.stringify(data));
+        					alert("Money successfully deposited");
+        					window.location.href = "./index.html"
         					
         				    
         				}).catch(error =>{
