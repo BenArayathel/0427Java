@@ -29,7 +29,7 @@
     <!-- 
         Main.myLog.info("Enter '1' to see all customers."); - get
         Main.myLog.info("Enter '4' to see all transactions."); - get
-		Main.myLog.info("Enter '2' to see specific user's account details."); - get with header?
+		Main.myLog.info("Enter '2' to see specific user's account details."); - post
         
 		Main.myLog.info("Enter '3' to approve a new account application."); - post
     -->
@@ -39,6 +39,7 @@
         <div class="card">
             <h1 id="title" class="card-title"></h1>
             <div class="card-body">
+                <!-- button to list all customers info -->
                 <div class="row">
                     <label for="seeAllCustomers">See all customers: </label>
                     <input class="btn btn-primary" type="button" id="seeAllCustomers" value="Submit">
@@ -48,6 +49,7 @@
 
                     </ul>
                 </div>
+                <!-- button to list all transactions in bank history -->
                 <div class="row">
                     <label for="seeAllTransactions">See all transactions: </label>
                     <input class="btn btn-primary" type="button" id="seeAllTransactions" value="Submit">
@@ -57,12 +59,25 @@
 
                     </ul>
                 </div>
+                <!-- list all of a specific user's accounts -->
+                <div class="row">
+                    <label for="seeAllUserAccounts">See all Accounts by Username: </label>
+                    <input type="text" id="whichUser">
+                    <input class="btn btn-primary" type="button" id="seeAllUserAcounts" value="Submit">
+                </div>
+                <div class="row">
+                    <ul id="userAccountsList" style="display: none">
+
+                    </ul>
+                </div>
+                <!-- finally, approve user for account -->
             </div>
         </div>
     </div>
     
     <script src="scripts/employ_allcustomers.js"></script>
     <script src="scripts/employ_alltransactions.js"></script>
+    <script src="scripts/employ_getusersaccounts.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
