@@ -1,7 +1,6 @@
 package com.bank.servlets;
 
 import java.io.IOException;
-
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,17 +16,15 @@ import javax.servlet.http.HttpSession;
 import com.bank.main.Main;
 import com.bank.models.Account;
 import com.bank.models.User;
-import com.bank.presentation.AccountTransfer;
 import com.bank.presentation.AccountsView;
-import com.bank.presentation.UserHomeView;
 import com.bank.service_implementation.AccountServiceImplementation;
 import com.bank.service_implementation.UserServiceImplementation;
 import com.bank.tools.BankException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-@WebServlet("/transfer")
-public class AccountTransferServlet extends HttpServlet {
+@WebServlet("/withdraw")
+public class WithdrawalServlet extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
 	
@@ -56,36 +53,41 @@ public class AccountTransferServlet extends HttpServlet {
 			User user = (User) session.getAttribute("user");
 			
 			// get values sent from JS request
-			String transferFromAccount = bodyObj.get("accountFrom").textValue();
-			String transferToAccount = bodyObj.get("accountTo").textValue();
-			String transferAmount = bodyObj.get("amount").textValue();
+			String withdrawalAccount = bodyObj.get("account").textValue();
+			String withdrawalAmount = bodyObj.get("amount").textValue();
 			
+			// main logic to try withdraw
 			try {
-				//make a list of the user accounts
-				List<Account> userAccountsList = asi.listUserAccounts(user.getUsername());
-				// if the amount is valid...
-				if (asi.validTransactionFormat(transferAmount)) {
-					// ...and if it isn't negative
-					if (Double.parseDouble(transferAmount) > 0) {
-						asi.withdraw(user, transferFromAccount, transferAmount);
-						asi.deposit(user, transferToAccount, transferAmount);
-						returnMessage = "Transfer complete!";
-						// send json response
-						writer.write(returnMessage);	
+				// first check that the amount entered is in a valid format
+				if (asi.validTransactionFormat(withdrawalAmount)) {
+					// then that they aren't withdrawing negative money
+					if (Double.parseDouble(withdrawalAmount) > 0) {
+						// use this account object for overdraft check...
+						Account account = asi.listAccountByNameAndUserID(withdrawalAccount, user.getUser_id());
+						// then that they aren't overdrafting
+						if (account.getBalance() >= Double.parseDouble(withdrawalAmount)) {
+							asi.withdraw(user, withdrawalAccount, withdrawalAmount);
+							returnMessage = "Withdrawal Successful";
+							// send json response
+							writer.write(returnMessage);	
+						} else {
+							returnMessage = "Invalid transaction (account name incorrect or insufficient funds).";
+							// send json response
+							writer.write(returnMessage);
+						}
 					} else {
 						returnMessage = "Enter an amount greater than $0.";
 						// send json response
 						writer.write(returnMessage);
-					}					
+					}			
 				} else {
 					returnMessage = "Please format your input as either dollars or dollars and cents";
 					// send json response
 					writer.write(returnMessage);
 				}
-				
-			} catch (BankException e) {
+			}  catch (BankException e) {
 				Main.myLog.error(e.getMessage() + e.getStackTrace());
-				returnMessage = "Something went wrong, unable to process transfer. Please try again later.";
+				returnMessage = "Something went wrong, unable to process withdrawal. Please try again later.";
 				// send json response
 				writer.write(returnMessage);
 			}

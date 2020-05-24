@@ -19,7 +19,7 @@ import com.bank.tools.BankException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @WebServlet("/createuseraccount")
-public class CreateAccountServlet extends HttpServlet {
+public class CreateUserAccountServlet extends HttpServlet {
 
 	
 	protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {

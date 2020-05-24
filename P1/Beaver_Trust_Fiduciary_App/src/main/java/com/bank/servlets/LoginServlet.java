@@ -74,7 +74,7 @@ public class LoginServlet extends HttpServlet {
 				res.addCookie(cookie);
 				
 				// start session
-				HttpSession session=req.getSession();
+				HttpSession session = req.getSession();
 				session.setAttribute("user", user);
 				
 				// return the redirect URL

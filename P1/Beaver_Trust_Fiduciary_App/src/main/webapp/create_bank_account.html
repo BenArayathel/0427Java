@@ -30,53 +30,23 @@
     <div class="container main-container">
         <!-- i won't be appending just a name, i'll append the whole h1 from js -->
         <div class="card">
-            <h1 id="title" class="card-title"></h1>
+            <h1 id="title" class="card-title">Open new Checking/Savings Account: </h1>
             <div class="card-body">
+                <div class="container">
+                    <label for="newName">What would you like to name your new account?</label>
+                    <input type="text" id="newName"><br>
+                    <label for="newAmount">How much will you be depositing to open your acccount?</label>
+                    <input type="text" id="newAmount"><br>
+                    <button class="btn btn-primary" id="createSubmit">Create</button>
+                </div>
                 <div class="row">
                     <a href="accounts_view.html" class="btn button-primary" id="seeAccounts">Access your existing accounts</a>
-                    <a href="create_bank_account.html" class="btn button-primary" id="applyAccount">Apply for a new account</a>
                 </div>
             </div>
-        </div>
-        
-    	
-    	<!-- next put in options to see accounts or create account -->
-    	
-        <!-- instead of speaking directly to the servlet with
-        action="Login", i am now using js in the middle -->
-<!--         <form name="loginForm">
-            <div class="form-group">
-                <label for="username">Username: </label>
-                <input type="text" name="username" id="username" class="form-control">
-            </div>
-            <div class="form-group">
-                <label for="password">Password: </label>
-                <input type="text" name="password" id="password" class="form-control">
-            </div>
-            <div class="form-group">
-                <input id="submit_login" class="form-control" type="button" value="Submit">
-            </div>
-        </form> -->
-        
+        </div>       
     </div>
     
-    <script>
-
-        // the function to get cookie by name
-        function getCookieValue(a) {
-            var b = document.cookie.match('(^|[^;]+)\\s*' + a + '\\s*=\\s*([^;]+)');
-            return b ? b.pop() : '';
-        }
-
-        // setup, get cookie and place to put it
-        let title = document.getElementById("title");
-        let userCookie = getCookieValue("username").toUpperCase();
-
-        // place cookie in html (see username)
-        title.innerHTML = `Welcome to your homepage, ${userCookie}!`;
-                
-    </script>
-
+    <script src="scripts/create_bank_account.js">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
