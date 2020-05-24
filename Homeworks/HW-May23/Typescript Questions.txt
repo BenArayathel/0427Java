@@ -1,0 +1,42 @@
+What is Node.js?
+Node. js is a platform built on Chrome's JavaScript runtime for easily building fast and scalable network applications. Node. js uses an event-driven, non-blocking I/O model that makes it lightweight and efficient, perfect for data-intensive real-time applications that run across distributed devices.
+
+What is NPM?
+pm is the package manager for the Node JavaScript platform. It puts modules in place so that node can find them, and manages dependency conflicts intelligently. It is extremely configurable to support a wide variety of use cases. Most commonly, it is used to publish, discover, install, and develop node programs.
+
+What is Typescript?
+TypeScript is a superset of JavaScript which primarily provides optional static typing, classes and interfaces. One of the big benefits is to enable IDEs to provide a richer environment for spotting common errors as you type the code. To get an idea of what I mean, watch Microsoft's introductory video on the language.
+
+How do we install typescript from npm?
+npm install typescript --save-dev 
+
+How do we transpile ts into js using the terminal?
+Create node runtime configuration (for IDE) or use node in command line to run below file js file (The path is for windows, but you can do it for linux as well) ~\AppData\Roaming\npm\node_modules\ts-node\dist\bin.js.
+Give your ts file path as a command line argument.
+
+What are the datatypes in typescript?
+Like JavaScript and any other language, TypeScript also provides basic data types to handle numbers, strings, etc. Some common data types in TypeScript are: number , string , boolean , enum , void , null , undefined , any , never , Array and tuple .
+
+Acess modifiers in typescript?
+TypeScript supports three access modifiers - public, private, and protected.
+Public - By default, members (properties and methods) of TypeScript class are public - so you don’t need to prefix members with the public keyword. Public members are accessible everywhere without restrictions
+Private - A private member cannot be accessed outside of its containing class. Private members can be accessed only within the class.
+Protected - A protected member cannot be accessed outside of its containing class. Protected members can be accessed only within the class and by the instance of its sub/child class.
+
+What is a decorator?
+A Decorator is a special kind of declaration that can be attached to a class declaration, method, accessor, property, or parameter. Decorators use the form @expression , where expression must evaluate to a function that will be called at run-time with information about the decorated declaration.
+
+What is a module?
+In TypeScript, a module is a file containing values, functions or classes. You can make some of them public, i.e. visible from other modules, by exporting them. Non exported objects are private.
+
+What does putting a question mark after a parameter name do?
+It is to mark the parameter as optional. This is to make the variable of Optional type. Otherwise declared variables shows "undefined" if this variable is not used.
+
+What happens when you put an access modifier on a constructor parameter?
+With an access modifier, you can define it as a class member, hence changing the scope to the class. Because, when you define a constructor with the input parameter which is marked with private access modifier it tell's to your class to create that property.
+
+What does "get" and "set" keywords in front of a function do?
+The get keyword will bind an object property to a function. When this property is looked up now the getter function is called. The return value of the getter function then determines which property is returned.
+
+Does typescript have inheritance?
+Just like any other OOP supported language, TypeScript also allows you to inherit a base class. ... In TypeScript, you can inherit a class from another class. Just use the extends keyword to perform inheritance.
