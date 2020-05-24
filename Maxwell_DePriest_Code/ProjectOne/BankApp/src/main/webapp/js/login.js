@@ -1,41 +1,44 @@
 
 let loginButton = document.getElementById("loginButton");
-loginButton.addEventListener("click", checkCredentials);
+
+if(loginButton) {
+	loginButton.addEventListener("click", checkCredentials);
+}
+
 
 function checkCredentials() {
     let email = document.getElementById("loginEmail");
     let password = document.getElementById("loginPassword");
+    if (!password || !email) {
+    	window.location.href("./404.html");
+    }
+    else if(password && email) {
+    	fetch('http://localhost:8088/BankApp/login', {
+        	method: 'POST',
+        	headers: {
+        		"Content-Type": "application/json; charset=UTF-8",
+        		"Accept" : "application/json"
+        	},
+        	body: JSON.stringify({
+        			email: email.value,
+        			password: password.value
+        	})
+        	}).then(
+        		response => response.json()).then(
+        				data => {
+        					console.log(data);
+        					console.log("Name- " + data["name"]);
+        					localStorage.clear();
+        					localStorage.setItem("userData", JSON.stringify(data));
+        					window.location.href = "./index.html";
+        				    
+        				}).catch(error =>{
+        					console.log(error)
+        					window.location.href = "./404.html";
+        				});
+    	
+    }
 
-        
-    fetch('http://localhost:8088/BankApp/login', {
-    	method: 'POST',
-    	headers: {
-    		"Content-Type": "application/json; charset=UTF-8",
-    		"Accept" : "application/json"
-    	},
-    	body: JSON.stringify({
-    			email: email.value,
-    			password: password.value
-    	})
-    	}).then(
-    		response => response.json()).then(
-    				data => {
-    					console.log(data);
-    					console.log("Name- " + data["name"]);
-    					localStorage.clear();
-    					
-    					//var testJSON = JSON.stringify(data);
-//    					console.log(testJSON)
-    					localStorage.setItem("userData", JSON.stringify(data));
-    					window.location.href = "index.html";
-    				    
-    				}).catch(error =>{
-    					console.log(error)
-    					window.location.href = "./404.html";
-    				});
-    console.log("Fetch should have returned something");
-    
-    
 }
 
     // select user by email

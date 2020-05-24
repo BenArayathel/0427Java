@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
+
 import com.controllers.LoginController;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.models.User;
@@ -23,6 +25,7 @@ public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static UserDaoImpl uDI = new UserDaoImpl();
 	private static AccountDaoImpl aDI = new AccountDaoImpl();
+	final static Logger loggy = Logger.getLogger(User.class);
        
     public LoginServlet() {
         super();
@@ -35,8 +38,8 @@ public class LoginServlet extends HttpServlet {
 	}
 	
 	protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-		System.out.println("Posting in loginServlet");
 		if ("POST".equalsIgnoreCase(req.getMethod())) 
+			loggy.debug("Posting to loginServlet");
 		{
 			String test = req.getReader().lines().collect(Collectors.joining(System.lineSeparator()));
 		    ObjectMapper mapper = new ObjectMapper();
@@ -46,7 +49,7 @@ public class LoginServlet extends HttpServlet {
 					User approvedUser = uDI.selectUserByEmail(userCheck.getEmail());
 					Account userAccount = aDI.selectAccountByEmail(approvedUser.getEmail());
 					CurrentUser currentUser = new CurrentUser(approvedUser.getEmail(), approvedUser.getName(), userAccount.getCheckingBalance(), userAccount.getSavingsBalance());
-
+					loggy.debug("New current user created. Email- " + currentUser.getEmail());
 					mapper.writeValue(res.getWriter(), currentUser);
 					
 					

@@ -5,11 +5,11 @@
     <meta charset="utf-8" />
     <title>Loxely Bank Main Page</title>
 
-    <link rel="stylesheet" type="text/css" href="bankingApp.css" />
+    <link rel="stylesheet" type="text/css" href="css/bankingApp.css" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     
 </head>
-<body>
+<body class="forestBackground">
 
     <div class="container">
         <div class="row">
@@ -20,17 +20,24 @@
                     
                     <form>
                         <div class="form-group text-center">
-                          <label for="emailRegistration"><h4>Email address</h4></label>
-                          <input type="email" class="form-control text-center" id="emailRegistration" aria-describedby="emailHelp">
-                          
+                          <label for="nameRegistration"><h4>Name</h4></label>
+                          <input type="text" class="form-control text-center" id="nameRegistration" placeholder="First and Last Names" required>
+                        </div>
+                        <div class="form-group text-center">
+                          <label for="emailRegistration"><h4>Email Address</h4></label>
+                          <input type="email" class="form-control text-center" id="emailRegistration" aria-describedby="emailHelp" required>
+                        </div>
+                       <div class="form-group text-center">
+                          <label for="phoneRegistration"><h4>Phone Number</h4></label>
+                          <input type="text" class="form-control text-center" id="phoneRegistration" placeholder="10 digits, no symbols Ex. 2343234567" required>
                         </div>
                         <div class="form-group text-center">
                           <label for="newPassword"><h4>Password</h4></label>
-                          <input type="password" class="form-control text-center" id="newPassword">
+                          <input type="password" class="form-control text-center" id="newPassword" required>
                         </div>
                         <div class="form-group text-center">
                             <label for="confirmPassword"><h4>Confirm Password</h4></label>
-                            <input type="password" class="form-control text-center" id="confirmPassword">
+                            <input type="password" class="form-control text-center" id="confirmPassword" required>
                         </div>
                         <div class="text-center">
                             <button type="submit" id="registerButton" class="btn btn-primary text-center">Register Account</button>

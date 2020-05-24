@@ -8,17 +8,17 @@ public class CurrentUser {
 	private String name;
 	private String checkingBalance;
 	private String savingsBalance;
-	DecimalFormat df = new DecimalFormat("####.##");
+	DecimalFormat df = new DecimalFormat("###0.00");
 
 	public CurrentUser() {
 		
 	}
 	
-	public CurrentUser(String email, String name, String checkingBalance, String savingsBalance) {
+	public CurrentUser(String email, String name, String checkBalance, String saveBalance) {
 		this.email = email;
 		this.name = name;
-		double cB = Double.parseDouble(checkingBalance);
-		double sB = Double.parseDouble(savingsBalance);
+		double cB = Double.parseDouble(checkBalance);
+		double sB = Double.parseDouble(saveBalance);
 		this.checkingBalance = df.format(cB);
 		this.savingsBalance = df.format(sB);
 	}

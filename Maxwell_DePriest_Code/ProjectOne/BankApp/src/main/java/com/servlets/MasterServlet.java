@@ -11,30 +11,31 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
 
-import com.controllers.LoginController;
-import com.controllers.PostController;
 import com.controllers.RequestHelper;
 import com.exceptions.BusinessException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.models.Account;
+import com.models.CurrentUser;
 import com.models.User;
-import com.models.ValidLogin;
+import com.dao.impl.UserDaoImpl;
+import com.dao.impl.AccountDaoImpl;
 import com.services.impl.UserServiceImpl;
 
 public class MasterServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	final static Logger loggy = Logger.getLogger(User.class);
 	private static UserServiceImpl uSI = new UserServiceImpl();
+	private static UserDaoImpl uDI = new UserDaoImpl();
+	private static AccountDaoImpl aDI = new AccountDaoImpl();
        
     public MasterServlet() {
         super();
     }
 
 	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-		PrintWriter pw = res.getWriter();
-	
-		
-		pw.append("get at: MasterServlet. ");
+		if("GET".equalsIgnoreCase(req.getMethod())) {
+			res.getWriter().append("Getting stuff. Hold on");
+		}
 	}
 
 	protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
@@ -50,11 +51,19 @@ public class MasterServlet extends HttpServlet {
 			    ObjectMapper mapper = new ObjectMapper();
 				User newUser = mapper.readValue(userRequest, User.class);
 				try {
-					uSI.createNewUser(newUser);
-					res.getWriter().append("Successfully created user with email " + newUser.getEmail());
-					doGet(req, res);
+					String encPass = uSI.passwordEncryption(newUser.getPassword());
+					newUser.setPassword(encPass);
+					if(uSI.createNewUser(newUser)) {
+						CurrentUser currentUser = new CurrentUser(newUser.getEmail(), newUser.getName(), "0.00", "0.00");
+						loggy.debug("New current user created. Email- " + currentUser.getEmail());
+						mapper.writeValue(res.getWriter(), currentUser);
+
+				    	doGet(req, res);
+					};
 				} catch (BusinessException e) {
+					res.getWriter().append("Failed to create a new user with email " + newUser.getEmail());
 					loggy.info("Failed to create a new user with email " + newUser.getEmail());
+					doGet(req, res);
 					e.printStackTrace();
 				}
 			}
