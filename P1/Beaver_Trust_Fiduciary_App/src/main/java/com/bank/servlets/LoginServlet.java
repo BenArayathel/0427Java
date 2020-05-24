@@ -56,10 +56,7 @@ public class LoginServlet extends HttpServlet {
 		PrintWriter writer = res.getWriter();
 				
 		try {
-			if (username.equalsIgnoreCase("employee") && (password.equalsIgnoreCase("employee")))  {
-//			res.sendRedirect("http://localhost:9999/HelloServlets/login_successful.html");
-				// this version is based on ben's code
-//			writer.write(mapper.writeValueAsString(user));
+			if (username.equalsIgnoreCase("employee") && (password.equalsIgnoreCase("employee")))  {				
 				writer.write("employee_portal.html");
 			} else if (usi.loginUser(username, password)) {
 				System.out.println("login successful");
