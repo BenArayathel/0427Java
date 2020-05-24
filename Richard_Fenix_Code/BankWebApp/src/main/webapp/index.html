@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+
+    <title>WellsAmerica</title>
+
+<title>Insert title here</title>
+</head>
+<body>
+	<div class="container-fluid">
+	    <div class="jumbotron">
+	      <h1 class="display-4">Wells of America</h1>
+	      <p class="lead">We find ways.</p>
+	    </div>
+	
+	    <nav class="navbar navbar-default">
+	      <div class="container-fluid">
+	        <div class=nav-bar-header>
+	          <a class="navbar-brand" href="#">WellsAm</a>
+	        </div>
+	        <ul class="nav navbar-nav">
+	          <li class="active"><a href="#">Home</a></li>
+	          <li><a href="#" onclick="loadLogin()">Login</a></li>
+	          <li><a href="#" onclick="loadSignUp()">Sign Up</a></li>
+	          <li><a href="#" onclick="loadApplyNewAccount()">Apply for New Account</a></li>
+	        </ul>
+	      </div>
+	    </nav>
+	
+	    <div id="content"> </div> 
+	
+	    <div id="myLogin">
+	      <form id="login-form">
+	        <div class="form-group">
+	          <label for="usr">Login Name:</label><br>
+	          <input name="loginName" type="text" class="form-control" id="usr" required>
+	        </div>
+	        <div class="form-group">
+	          <label for="pwd">Password:</label><br>
+	          <input name="loginPassword" type="password" class="form-control" id="pwd">
+	        </div>       
+	        <input class="btn btn-primary" id="submit-button" type="button" onclick="validateLogin()" value="Log In">
+	      
+	      </form>
+	    </div>
+    </div>
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="./main/bankApp.js"></script>
+    <script src="./login/login.js"></script> 
+
+</body>
+</html>
