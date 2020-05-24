@@ -29,9 +29,17 @@
     <div class="container main-container">
         <h1>User Accounts View</h1>
         <h2>Accounts: </h2>
-        <ul id="accountList">
-            
-        </ul>
+        <table class="table table-striped table-dark">
+            <thead>
+                <tr>
+                    <th scope="col">Account Name</th>
+                    <th scope="col">Balance</th>
+                </tr>
+            </thead>
+            <tbody id="accountList">
+                <!-- dynamically filled with JSON content -->
+            </tbody>
+        </table>
         <div class="container">
             <label for="depositAccount">Select account, enter deposit amount, and click "Deposit"</label>
             <input type="text" id="depositAccount"><br>
