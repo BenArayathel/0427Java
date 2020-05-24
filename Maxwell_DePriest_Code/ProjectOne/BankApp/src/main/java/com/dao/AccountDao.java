@@ -11,7 +11,7 @@ public interface AccountDao {
 	public Account selectAccountByEmail(String email) throws BusinessException;
 	public List<Account> selectAllAccounts() throws BusinessException;
 	
-	public void updateAccount(String email, String columnName, String newAtt) throws BusinessException;
+	public boolean updateAccount(String email, String columnName, String newAtt) throws BusinessException;
 	
 	public void deleteAccount(String email) throws BusinessException;
 	

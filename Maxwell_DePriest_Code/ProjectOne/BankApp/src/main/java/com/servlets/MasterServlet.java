@@ -27,9 +27,12 @@ public class MasterServlet extends HttpServlet {
 	private static UserServiceImpl uSI = new UserServiceImpl();
 	private static UserDaoImpl uDI = new UserDaoImpl();
 	private static AccountDaoImpl aDI = new AccountDaoImpl();
-       
+    private ObjectMapper mapper = new ObjectMapper();
+	
+	
     public MasterServlet() {
         super();
+       
     }
 
 	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
@@ -39,7 +42,6 @@ public class MasterServlet extends HttpServlet {
 			
 			if(direction.equalsIgnoreCase("user")) {
 				String userRequest = req.getReader().lines().collect(Collectors.joining(System.lineSeparator()));
-			    ObjectMapper mapper = new ObjectMapper();
 				User user = mapper.readValue(userRequest, User.class);
 				
 				User foundUser = uSI.findUser(user.getEmail());
@@ -59,7 +61,7 @@ public class MasterServlet extends HttpServlet {
 			
 			if(direction.equalsIgnoreCase("user")) {
 				String userRequest = req.getReader().lines().collect(Collectors.joining(System.lineSeparator()));
-			    ObjectMapper mapper = new ObjectMapper();
+			    //ObjectMapper mapper = new ObjectMapper();
 				User newUser = mapper.readValue(userRequest, User.class);
 				try {
 					String encPass = uSI.passwordEncryption(newUser.getPassword());
@@ -79,7 +81,7 @@ public class MasterServlet extends HttpServlet {
 			
 			else if (direction.equalsIgnoreCase("account")) {
 				String accountRequest = req.getReader().lines().collect(Collectors.joining(System.lineSeparator()));
-			    ObjectMapper mapper = new ObjectMapper();
+			    //ObjectMapper mapper = new ObjectMapper();
 				Account newAccount = mapper.readValue(accountRequest, Account.class);
 				
 				try {
@@ -104,7 +106,44 @@ public class MasterServlet extends HttpServlet {
 	}
 	
 	protected void doPut(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-		
+		if("PUT".equalsIgnoreCase(req.getMethod())) {
+			req.getQueryString();
+			String direction = req.getParameter("direction");
+			String whichAccount = req.getParameter("whichAccount");
+			
+			if(direction.equalsIgnoreCase("account")) {
+				String accountRequest = req.getReader().lines().collect(Collectors.joining(System.lineSeparator()));
+				CurrentUser currentUser = mapper.readValue(accountRequest,  CurrentUser.class);
+				
+				if(whichAccount.equalsIgnoreCase("savings")) {
+					try {
+						if(aDI.updateAccount(currentUser.getEmail(), "savingsBalance", currentUser.getSavingsBalance())) {
+							loggy.debug("Updated savings balance for email " + currentUser.getEmail());
+						}
+					} catch (BusinessException e) {
+						loggy.error("Error trying to update savings account with email " + currentUser.getEmail());
+						e.printStackTrace();
+					}
+				}
+				
+				else if(whichAccount.equalsIgnoreCase("checking")) {					
+					try {
+						if(aDI.updateAccount(currentUser.getEmail(), "checkingBalance", currentUser.getCheckingBalance())) {
+							loggy.debug("Updated checking balance for email " + currentUser.getEmail());
+						}
+					} catch (BusinessException e) {
+						loggy.error("Error trying to update checking account for email " + currentUser.getEmail());
+						e.printStackTrace();
+					}
+					
+				}
+				
+				CurrentUser sendingBackUser = new CurrentUser(currentUser.getEmail(), currentUser.getName(), currentUser.getCheckingBalance(), currentUser.getSavingsBalance());
+				loggy.debug("Sending user back to client-side. Email- " + currentUser.getEmail());
+				mapper.writeValue(res.getWriter(), sendingBackUser);
+				
+			}
+		}
 	}
 	
 	protected void doDelete(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
@@ -114,7 +153,7 @@ public class MasterServlet extends HttpServlet {
 			
 			if(direction.equalsIgnoreCase("user")) {
 				String userRequest = req.getReader().lines().collect(Collectors.joining(System.lineSeparator()));
-			    ObjectMapper mapper = new ObjectMapper();
+			   // ObjectMapper mapper = new ObjectMapper();
 				User user = mapper.readValue(userRequest, User.class);
 				
 				try {

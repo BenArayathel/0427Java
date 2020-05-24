@@ -13,6 +13,7 @@ function checkCredentials() {
     	window.location.href("./404.html");
     }
     else if(password && email) {
+    	console.log("Checking credentials...");
     	fetch('http://localhost:8088/BankApp/login', {
         	method: 'POST',
         	headers: {

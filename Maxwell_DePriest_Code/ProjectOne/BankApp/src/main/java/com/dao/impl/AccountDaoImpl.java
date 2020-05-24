@@ -12,19 +12,15 @@ import org.apache.log4j.Logger;
 import com.dao.AccountDao;
 import com.exceptions.BusinessException;
 import com.models.Account;
-import com.secrets.SecretStuff;
+import com.utilities.DatabaseConnection;
 
 public class AccountDaoImpl implements AccountDao {
 	final static Logger loggy = Logger.getLogger(Account.class);
-	
-	private static final String AWSURL = SecretStuff.getAwsURL();
-	public static final String USERNAME = SecretStuff.getAwsUserName();
-	public static final String PASSWORD = SecretStuff.getAwsPassword();
 	DecimalFormat df = new DecimalFormat("####.##");
 
 	@Override
 	public Account insertAccount(Account a) throws BusinessException{
-		try (Connection conn = DriverManager.getConnection(AWSURL, USERNAME, PASSWORD)) {
+		try (Connection conn = DatabaseConnection.getConn()) {
 			PreparedStatement ps = conn.prepareStatement("call CREATEBANKACCOUNT(?,?,?,?,?,?,?)");
 			
 			ps.setString(1, "");
@@ -50,7 +46,7 @@ public class AccountDaoImpl implements AccountDao {
 	@Override
 	public Account selectAccountByEmail(String email) throws BusinessException{
 		Account a = new Account();
-		try (Connection conn = DriverManager.getConnection(AWSURL, USERNAME, PASSWORD)) {
+		try (Connection conn = DatabaseConnection.getConn()) {
 			PreparedStatement ps = conn.prepareStatement("SELECT * FROM bankaccount WHERE email = ?");
 			ps.setString(1, email);
 			ResultSet rs = ps.executeQuery();
@@ -77,7 +73,7 @@ public class AccountDaoImpl implements AccountDao {
 	
 	public Account selectAccountByColumnName(String cName, String cValue) throws BusinessException{
 		Account a = new Account();
-		try (Connection conn = DriverManager.getConnection(AWSURL, USERNAME, PASSWORD)) {
+		try (Connection conn = DatabaseConnection.getConn()) {
 			PreparedStatement ps = conn.prepareStatement("SELECT * FROM bankaccount WHERE " + cName + " = '" + cValue + "'");
 			ResultSet rs = ps.executeQuery();
 			while(rs.next()) {
@@ -103,7 +99,7 @@ public class AccountDaoImpl implements AccountDao {
 	@Override
 	public List<Account> selectAllAccounts() throws BusinessException{
 		List<Account> aList = new ArrayList<>();
-		try (Connection conn = DriverManager.getConnection(AWSURL, USERNAME, PASSWORD)) {
+		try (Connection conn = DatabaseConnection.getConn()) {
 			PreparedStatement ps = conn.prepareStatement("SELECT * FROM bankaccount");
 			ResultSet rs = ps.executeQuery();
 			while(rs.next()) {
@@ -124,7 +120,7 @@ public class AccountDaoImpl implements AccountDao {
 	
 	public List<Account> selectAllAccountsByColumnName(String cName, String cValue) throws BusinessException{
 		List<Account> filteredAccountList = new ArrayList<>();
-		try (Connection conn = DriverManager.getConnection(AWSURL, USERNAME, PASSWORD)) {
+		try (Connection conn = DatabaseConnection.getConn()) {
 			PreparedStatement ps = conn.prepareStatement("SELECT * FROM bankaccount WHERE " + cName + " = '" + cValue + "'");
 			ResultSet rs = ps.executeQuery();
 			while(rs.next()) {
@@ -143,9 +139,9 @@ public class AccountDaoImpl implements AccountDao {
 	}// End of selectAllByColumn
 
 	@Override
-	public void updateAccount(String userEmail, String columnName, String newAtt) throws BusinessException{
+	public boolean updateAccount(String userEmail, String columnName, String newAtt) throws BusinessException{
 		Account a = new Account();
-		try (Connection conn = DriverManager.getConnection(AWSURL, USERNAME, PASSWORD)) {
+		try (Connection conn = DatabaseConnection.getConn()) {
 			//PreparedStatement ps = conn.prepareStatement("UPDATE bankaccount SET ? = ? WHERE email = ?");
 			PreparedStatement ps = conn.prepareStatement("UPDATE bankaccount SET " + columnName + "  = '" + newAtt + "' WHERE email = '"+ userEmail +"'");
 //			ps.setString(1, columnName);
@@ -154,6 +150,7 @@ public class AccountDaoImpl implements AccountDao {
 			
 			ps.executeUpdate();
 			loggy.debug("Account with email " + userEmail + " updated.");
+			return true;
 			
 		} catch (SQLException e) {
 			loggy.error("Caught SQLException- " + e);
@@ -161,11 +158,12 @@ public class AccountDaoImpl implements AccountDao {
 			throw new BusinessException("Internal Error. Contact SYSADMIN");
 		}
 		
+		
 	}
 	
 	@Override
 	public void deleteAccount(String email) throws BusinessException{
-		try (Connection conn = DriverManager.getConnection(AWSURL, USERNAME, PASSWORD)) {
+		try (Connection conn = DatabaseConnection.getConn()) {
 			PreparedStatement ps = conn.prepareStatement("DELETE FROM bankaccount WHERE email = ?");
 			ps.setString(1, email);
 			ps.execute();
@@ -178,7 +176,7 @@ public class AccountDaoImpl implements AccountDao {
 	}
 	
 	public void deleteAllAccounts() throws BusinessException {
-		try (Connection conn = DriverManager.getConnection(AWSURL, USERNAME, PASSWORD)) {
+		try (Connection conn = DatabaseConnection.getConn()) {
 			PreparedStatement ps = conn.prepareStatement("DELETE FROM bankaccount");
 			
 			ps.execute();
