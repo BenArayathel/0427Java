@@ -34,7 +34,18 @@ public class MasterServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		if("GET".equalsIgnoreCase(req.getMethod())) {
-			res.getWriter().append("Getting stuff. Hold on");
+			req.getQueryString();
+			String direction = req.getParameter("direction");
+			
+			if(direction.equalsIgnoreCase("user")) {
+				String userRequest = req.getReader().lines().collect(Collectors.joining(System.lineSeparator()));
+			    ObjectMapper mapper = new ObjectMapper();
+				User user = mapper.readValue(userRequest, User.class);
+				
+				User foundUser = uSI.findUser(user.getEmail());
+				mapper.writeValue(res.getWriter(), foundUser);
+				
+			}
 		}
 	}
 
@@ -57,8 +68,6 @@ public class MasterServlet extends HttpServlet {
 						CurrentUser currentUser = new CurrentUser(newUser.getEmail(), newUser.getName(), "0.00", "0.00");
 						loggy.debug("New current user created. Email- " + currentUser.getEmail());
 						mapper.writeValue(res.getWriter(), currentUser);
-
-				    	doGet(req, res);
 					};
 				} catch (BusinessException e) {
 					res.getWriter().append("Failed to create a new user with email " + newUser.getEmail());
@@ -99,21 +108,26 @@ public class MasterServlet extends HttpServlet {
 	}
 	
 	protected void doDelete(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-		
+		if("DELETE".equalsIgnoreCase(req.getMethod())) {
+			req.getQueryString();
+			String direction = req.getParameter("direction");
+			
+			if(direction.equalsIgnoreCase("user")) {
+				String userRequest = req.getReader().lines().collect(Collectors.joining(System.lineSeparator()));
+			    ObjectMapper mapper = new ObjectMapper();
+				User user = mapper.readValue(userRequest, User.class);
+				
+				try {
+					uSI.removeUserProfile(user);
+					loggy.info("User with email: " + user.getEmail() + " deleted");
+				} catch (BusinessException e) {
+					e.printStackTrace();
+				}
+			}
+		}
 	}
 	
-//	private void determineDirection(HttpServletRequest req, HttpServletResponse res, String action) {
-//		req.getQueryString();
-//		String direction = req.getParameter("direction");
-//
-//		if (direction.equalsIgnoreCase("user")) {
-//			System.out.println("Modding user");
-//		}
-//		else if (direction.equalsIgnoreCase("account")) {
-//			System.out.println("Modding account");
-//		}
-//		
-//	}
+
 	
 	
 

@@ -128,7 +128,14 @@ public class UserServiceImpl implements UserService {
 		}
 	}
 	
-	public void viewSingleAccount(User u) {
+	public User findUser(String email) {
+		try {
+			return uDI.selectUserByEmail(email);
+		} catch (BusinessException e) {
+			loggy.error("Error looking for user with email "+ email);
+			e.printStackTrace();
+			return null;
+		}
 		
 	}
 
