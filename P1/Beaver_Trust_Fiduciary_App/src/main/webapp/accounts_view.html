@@ -18,55 +18,81 @@
                 </button>
             <div class="collapse navbar-collapse" id="somethingCustom">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item"><a href="" class="nav-link">Home</a></li>
-                    <li class="nav-item"><a href="" class="nav-link">About</a></li>
-                    <li class="nav-item"><a href="form.html" class="nav-link">Login</a></li>
-                    <li class="nav-item"><a href="" class="nav-link">Get Started</a></li>
+                    <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+                    <li class="nav-item"><a href="login.html" class="nav-link">Login</a></li>
+                    <li class="nav-item"><a href="create_user_account.html" class="nav-link">Get Started</a></li>
                 </ul>
             </div>
     </nav>
     
-    <div class="container main-container">
-        <h1>User Accounts View</h1>
-        <h2>Accounts: </h2>
-        <table class="table table-striped table-dark">
-            <thead>
-                <tr>
-                    <th scope="col">Account Name</th>
-                    <th scope="col">Balance</th>
-                </tr>
-            </thead>
-            <tbody id="accountList">
-                <!-- dynamically filled with JSON content -->
-            </tbody>
-        </table>
-        <div class="container">
-            <label for="depositAccount">Select account, enter deposit amount, and click "Deposit"</label>
-            <input type="text" id="depositAccount"><br>
-            <label for="depositAmount">How much will you be depositing?</label>
-            <input type="text" id="depositAmount"><br>
-            <button class="btn btn-primary" id="depositSubmit">Deposit</button>
-        </div>
-        <br>
-        <div class="container">
-            <label for="withdrawAccount">Select account, enter withdrawal amount, and click "Withdraw"</label>
-            <input type="text" id="withdrawAccount"><br>
-            <label for="withdrawAmount">How much will you be withdrawing?</label>
-            <input type="text" id="withdrawAmount"><br>
-            <button class="btn btn-primary" id="withdrawSubmit">Withdraw</button>
-        </div>
-        <br>
-        <div class="container">
-            <label for="transferFromAccount">Select account to transfer from.</label>
-            <input type="text" id="transferFromAccount"><br>
-            <label for="transferToAccount">Select account to transfer to.</label>
-            <input type="text" id="transferToAccount"><br>
-            <label for="transferAmount">How much will you be transfering?</label>
-            <input type="text" id="transferAmount"><br>
-            <button class="btn btn-primary" id="transferSubmit">Transfer</button>
+    <div class="container main-container d-flex justify-content-center" style="height: 500px;">
+        <div class="card text-start">
+            <div class="card-body">
+                <h1 class="card-title" id="accountsTitle" style="text-align: center;">User Accounts View</h1>
+                <table class="table table-striped table-dark">
+                    <thead>
+                        <tr>
+                            <th scope="col">Account Name</th>
+                            <th scope="col">Balance</th>
+                        </tr>
+                    </thead>
+                    <tbody id="accountList">
+                        <!-- dynamically filled with JSON content -->
+                    </tbody>
+                </table>
+                <h3>Deposit: Select account, enter deposit amount, and click "Deposit"</h3>
+                <div class="container input-group d-flex flex-column">
+                    <div class="input-group-prepend">
+                        <!-- <label for="depositAccount">Account Name: </label> -->
+                        <input type="text" id="depositAccount" placeholder="Account Name">
+                        <!-- <label for="depositAmount">How much will you be depositing?</label> -->
+                        <input type="text" id="depositAmount" placeholder="Deposit Amount">
+                        <button class="btn btn-primary" id="depositSubmit">Deposit</button>
+                    </div>
+                </div>
+                <h3>Withdraw: Select account, enter withdrawal amount, and click "Withdraw"</h3>
+                <div class="container input-group">
+                    <div class="input-group-append">
+                        <!-- <label for="withdrawAccount">Account Name: </label> -->
+                        <input type="text" id="withdrawAccount" placeholder="Account Name">
+                        <!-- <label for="withdrawAmount">How much will you be withdrawing?</label> -->
+                        <input type="text" id="withdrawAmount" placeholder="Withdrawal Amount">
+                        <button class="btn btn-primary" id="withdrawSubmit">Withdraw</button>
+                    </div>
+                </div>
+                <h3>Transfer: Select account to transfer from, to transfer to, enter withdrawal amount, and click "Transfer"</h3>
+                <div class="container input-group">
+                    <div class="input-group-prepend">
+                        <!-- <label for="transferFromAccount">Select account to transfer from.</label> -->
+                        <input type="text" id="transferFromAccount" placeholder="Transfer FROM Account Name">
+                        <!-- <label for="transferToAccount">Select account to transfer to.</label> -->
+                        <input type="text" id="transferToAccount" placeholder="Transfer TO Account Name">
+                        <!-- <label for="transferAmount">How much will you be transfering?</label> -->
+                        <input type="text" id="transferAmount" placeholder="Transfer Amount">
+                        <button class="btn btn-primary" id="transferSubmit">Transfer</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
+    <script>
+
+        // the function to get cookie by name
+        function getCookieValue(a) {
+            var b = document.cookie.match('(^|[^;]+)\\s*' + a + '\\s*=\\s*([^;]+)');
+            return b ? b.pop() : '';
+        }
+
+        // setup, get cookie and place to put it
+        let title = document.getElementById("accountsTitle");
+        let userCookie = getCookieValue("username").toUpperCase();
+
+        // place cookie in html (see username)
+        title.innerHTML = `${userCookie}'s Accounts:`;
+                
+    </script>
     
     
     <script src="scripts/listAccounts.js"></script>
