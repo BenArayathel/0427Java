@@ -48,7 +48,7 @@ public class LoginServlet extends HttpServlet {
 		    	try {
 					User approvedUser = uDI.selectUserByEmail(userCheck.getEmail());
 					Account userAccount = aDI.selectAccountByEmail(approvedUser.getEmail());
-					CurrentUser currentUser = new CurrentUser(approvedUser.getEmail(), approvedUser.getName(), userAccount.getCheckingBalance(), userAccount.getSavingsBalance());
+					CurrentUser currentUser = new CurrentUser(approvedUser.getEmail(), approvedUser.getName(), userAccount.getCheckingBalance(), userAccount.getSavingsBalance(), approvedUser.getStatus());
 					loggy.debug("New current user created. Email- " + currentUser.getEmail());
 					mapper.writeValue(res.getWriter(), currentUser);
 					

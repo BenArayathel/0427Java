@@ -67,7 +67,7 @@ public class MasterServlet extends HttpServlet {
 					String encPass = uSI.passwordEncryption(newUser.getPassword());
 					newUser.setPassword(encPass);
 					if(uSI.createNewUser(newUser)) {
-						CurrentUser currentUser = new CurrentUser(newUser.getEmail(), newUser.getName(), "0.00", "0.00");
+						CurrentUser currentUser = new CurrentUser(newUser.getEmail(), newUser.getName(), "0.00", "0.00", "customer");
 						loggy.debug("New current user created. Email- " + currentUser.getEmail());
 						mapper.writeValue(res.getWriter(), currentUser);
 					};
@@ -138,10 +138,31 @@ public class MasterServlet extends HttpServlet {
 					
 				}
 				
-				CurrentUser sendingBackUser = new CurrentUser(currentUser.getEmail(), currentUser.getName(), currentUser.getCheckingBalance(), currentUser.getSavingsBalance());
+				CurrentUser sendingBackUser = new CurrentUser(currentUser.getEmail(), currentUser.getName(), currentUser.getCheckingBalance(), currentUser.getSavingsBalance(), "customer");
 				loggy.debug("Sending user back to client-side. Email- " + currentUser.getEmail());
 				mapper.writeValue(res.getWriter(), sendingBackUser);
 				
+			}// end of if "account"
+			
+			else if (direction.equalsIgnoreCase("transfer")) {
+				String transferRequest = req.getReader().lines().collect(Collectors.joining(System.lineSeparator()));
+				Account transferInfo = mapper.readValue(transferRequest,  Account.class);
+				
+				String senderEmail = transferInfo.getEmail();
+				String receiverAccountNumber = transferInfo.getCheckingAccountNumber();
+				String transferAmount = transferInfo.getCheckingBalance();
+				
+				try {
+					if(uSI.transferFunds(senderEmail, "checkingBalance", receiverAccountNumber, transferAmount)) {
+						
+					}
+				} catch (BusinessException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+				loggy.debug("Transferring money from account with Email- " + senderEmail + " to account with number- " + receiverAccountNumber);
+				res.getWriter().append("Transfer complete.");
 			}
 		}
 	}

@@ -322,16 +322,20 @@ public class UserServiceImpl implements UserService {
 	}
 	
 	@Override
-	public void transferFunds(String uEmail, String fromWhichAccount, String receivingAccountNumber, String amt) throws BusinessException {
+	public boolean transferFunds(String uEmail, String fromWhichAccount, String receivingAccountNumber, String amt) throws BusinessException {
 		try {
 			//Account sendingAccount = aDI.selectAccountByEmail(uEmail);
 			Account receivingAccount = aDI.selectAccountByColumnName("checkingNumber", receivingAccountNumber);
 			withdrawMoney(fromWhichAccount, amt, uEmail);
 			depositMoney("checkingBalance", amt, receivingAccount.getEmail());
+			return true;
 		} catch (BusinessException e) {
 			loggy.error("Exception thrown during transfer funds");
 			e.printStackTrace();
+			return false;
+			
 		}
+		
 		
 	}
 	

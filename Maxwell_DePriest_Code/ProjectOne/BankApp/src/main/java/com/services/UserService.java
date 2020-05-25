@@ -17,7 +17,7 @@ public interface UserService {
 	
 	public void depositMoney(String whichAccount, String amount, String email) throws BusinessException;
 	public void withdrawMoney(String whichAccount, String amount, String email) throws BusinessException;
-	public void transferFunds(String uEmail, String fromWhichAccount, String receivingAccountNum, String amt) throws BusinessException;
+	public boolean transferFunds(String uEmail, String fromWhichAccount, String receivingAccountNum, String amt) throws BusinessException;
 	
 	public void removeUserProfile(User u) throws BusinessException;
 	

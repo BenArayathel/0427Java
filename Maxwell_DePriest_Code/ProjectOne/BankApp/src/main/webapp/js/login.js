@@ -2,17 +2,20 @@
 let loginButton = document.getElementById("loginButton");
 
 if(loginButton) {
-	loginButton.addEventListener("click", checkCredentials);
+	loginButton.addEventListener("click", function(event) {
+		event.preventDefault();
+		checkCredentials();
+	})
 }
 
 
 function checkCredentials() {
     let email = document.getElementById("loginEmail");
     let password = document.getElementById("loginPassword");
-    if (!password || !email) {
-    	window.location.href("./404.html");
-    }
-    else if(password && email) {
+//    if (!password || !email) {
+//    	window.location.href("./404.html");
+//    }
+    if(password && email) {
     	console.log("Checking credentials...");
     	fetch('http://localhost:8088/BankApp/login', {
         	method: 'POST',
@@ -27,8 +30,6 @@ function checkCredentials() {
         	}).then(
         		response => response.json()).then(
         				data => {
-        					console.log(data);
-        					console.log("Name- " + data["name"]);
         					localStorage.clear();
         					localStorage.setItem("userData", JSON.stringify(data));
         					window.location.href = "./index.html";

@@ -1,5 +1,4 @@
 let storedData = JSON.parse(localStorage.getItem("userData"));
-console.log(storedData);
 var uName = storedData["name"];
 var chBalance = storedData["checkingBalance"];
 var svBalance = storedData["savingsBalance"];

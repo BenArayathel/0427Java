@@ -32,7 +32,7 @@ public class PostController {
 	}
 	
 	public static void postAccount(Account newAccount) {
-		uSI.createNewAccount(email, startingCheckingAmount)
+		//uSI.createNewAccount(email, startingCheckingAmount)
 	}
 
 }
