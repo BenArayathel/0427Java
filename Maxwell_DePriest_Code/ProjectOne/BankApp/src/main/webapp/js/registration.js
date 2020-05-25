@@ -20,6 +20,7 @@ function comparePasswords() {
 }
 
 function registerNewCustomer(name, email, phoneNum, password) {
+	console.log("Submitting new information...");
 	fetch('http://localhost:8088/BankApp/api/post?direction=user', {
     	method: 'POST',
     	headers: {
@@ -47,6 +48,10 @@ function registerNewCustomer(name, email, phoneNum, password) {
     					console.log(error)
     					//window.location.href = "./404.html";
     				});
-    console.log("Fetching login details...");
+	
+	
+	
+	
+    
 
 }

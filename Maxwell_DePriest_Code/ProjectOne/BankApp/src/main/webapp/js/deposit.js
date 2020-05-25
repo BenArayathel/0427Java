@@ -1,6 +1,11 @@
 window.onload = function (){
-	let depositButton = document.getElementById("depositButton");
+
 	
+	let currentUser = JSON.parse(localStorage.getItem("userData"));
+	if(!currentUser) {
+		window.location.href = "./login.html";
+	}
+	let depositButton = document.getElementById("depositButton");
 	let depAmt = document.getElementById("depositAmount");
 	
 	
@@ -9,20 +14,28 @@ window.onload = function (){
 		depositButton.addEventListener("click", function(event) {
 	        event.preventDefault();
 	        let accountRadio = document.querySelector('input[name="accountRadios"]:checked').value;
-	        console.log("Account- " + accountRadio);
-	        console.log("Deposit- " + depAmt.value);
 	        depositMoney(accountRadio, depAmt);
 	    })
 	}
+	
+	let logOutButton = document.getElementById("logOutButton");
+	if(logOutButton) {
+		logOutButton.addEventListener("click", function(event) {
+			event.preventDefault();
+			logOut();
+		});
+	}
 }
 
+
+
 function depositMoney(whichAccount, amt) {
-    let userData = JSON.parse(localStorage.getItem("userData"));
+    
     console.log(userData);
     console.log(`Checking balance- ${userData["checkingBalance"]}  Savings balance- ${userData["savingsBalance"]}`);
     if (!isNaN(amt.value) && (amt.value < 1000.00)) {
-    	let userSv = parseFloat(userData["savingsBalance"]);
-    	let userCh = parseFloat(userData["checkingBalance"]);
+    	let userSv = parseFloat(currentUser["savingsBalance"]);
+    	let userCh = parseFloat(currentUser["checkingBalance"]);
         if (whichAccount == "checking") {
         	userCh += parseFloat(amt.value);
         	userCh = userCh.toFixed(2);
@@ -57,7 +70,8 @@ function depositMoney(whichAccount, amt) {
         					
         				    
         				}).catch(error =>{
-        					console.log(error)
+        					alert("Account may not have been activated yet. Please be patient with us. Thank you.");
+        					//console.log(error)
         					//window.location.href = "./404.html";
         				});
         
@@ -65,4 +79,9 @@ function depositMoney(whichAccount, amt) {
     else {
     	alert("Please only enter numerical values that are less than $1000.00");
     }
+}
+
+function logOut() {
+	localStorage.clear();
+	window.location.href = "./login.html";
 }

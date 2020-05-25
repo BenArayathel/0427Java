@@ -1,12 +1,13 @@
-
-let loginButton = document.getElementById("loginButton");
-
-if(loginButton) {
-	loginButton.addEventListener("click", function(event) {
-		event.preventDefault();
-		checkCredentials();
-	})
+window.onload = function() {
+	let loginButton = document.getElementById("loginButton");
+	if(loginButton) {
+		loginButton.addEventListener("click", function(event) {
+			event.preventDefault();
+			checkCredentials();
+		})
+	}
 }
+
 
 
 function checkCredentials() {
@@ -30,13 +31,14 @@ function checkCredentials() {
         	}).then(
         		response => response.json()).then(
         				data => {
+        					
         					localStorage.clear();
         					localStorage.setItem("userData", JSON.stringify(data));
         					window.location.href = "./index.html";
         				    
         				}).catch(error =>{
         					console.log(error)
-        					window.location.href = "./404.html";
+        					//window.location.href = "./404.html";
         				});
     	
     }

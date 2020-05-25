@@ -1,16 +1,29 @@
 //uSI.transferFunds(currentUser.getEmail(), "checkingBalance", accNum, amt)
 
 window.onload = function (){
+	
+	let currentUser = JSON.parse(localStorage.getItem("userData"));
+	if(!currentUser) {
+		window.location.href = "./login.html";
+		
+	}
 	let transferButton = document.getElementById("transferButton");
 	let receiverAccountNum = document.getElementById("receiverAccountNum");
 	let transferAmt = document.getElementById("transferAmount");
-	let currentUser = JSON.parse(localStorage.getItem("userData"));
 	
 	if(transferButton) {
 		transferButton.addEventListener("click", function(event) {
 	        event.preventDefault();
 	        transferMoney(currentUser["email"], receiverAccountNum.value , transferAmt.value);
 	    })
+	}
+	
+	let logOutButton = document.getElementById("logOutButton");
+	if(logOutButton) {
+		logOutButton.addEventListener("click", function(event) {
+			event.preventDefault();
+			logOut();
+		});
 	}
 }
 
@@ -35,9 +48,10 @@ function transferMoney(senderAccount, receiverAccountNum, amt) {
         	}).then(
         		response => response.json()).then(
         				data => {
-        					console.log(data);
-        					receiverCh = data["checkingBalance"];
-        					//receiverSv = data["savingsBalance"];
+        					localStorage.clear();
+        					localStorage.setItem("userData", JSON.stringify(data));
+        					alert("Money successfully transferred");
+        					window.location.href = "./index.html"
         					
         				}).catch(error =>{
         					console.log(error)

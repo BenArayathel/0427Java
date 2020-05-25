@@ -68,6 +68,7 @@ public class MasterServlet extends HttpServlet {
 					newUser.setPassword(encPass);
 					if(uSI.createNewUser(newUser)) {
 						CurrentUser currentUser = new CurrentUser(newUser.getEmail(), newUser.getName(), "0.00", "0.00", "customer");
+						uSI.createNewAccount(newUser.getEmail(), "0.00");
 						loggy.debug("New current user created. Email- " + currentUser.getEmail());
 						mapper.writeValue(res.getWriter(), currentUser);
 					};
@@ -79,22 +80,22 @@ public class MasterServlet extends HttpServlet {
 				}
 			}
 			
-			else if (direction.equalsIgnoreCase("account")) {
-				String accountRequest = req.getReader().lines().collect(Collectors.joining(System.lineSeparator()));
-			    //ObjectMapper mapper = new ObjectMapper();
-				Account newAccount = mapper.readValue(accountRequest, Account.class);
-				
-				try {
-					uSI.createNewAccount(newAccount.getEmail(), newAccount.getCheckingBalance());
-					res.getWriter().append("Successfully created account associated with email " + newAccount.getEmail() + " and starting balance of " + newAccount.getCheckingBalance());
-					doGet(req, res);
-				} catch (BusinessException e) {
-					loggy.info("Failed to create a new account with email " + newAccount.getEmail());
-					res.getWriter().append("Failed to create account for email " + newAccount.getEmail());
-					doGet(req, res);
-					e.printStackTrace();
-				}
-			}
+//			else if (direction.equalsIgnoreCase("account")) {
+//				String accountRequest = req.getReader().lines().collect(Collectors.joining(System.lineSeparator()));
+//			    //ObjectMapper mapper = new ObjectMapper();
+//				Account newAccount = mapper.readValue(accountRequest, Account.class);
+//				
+//				try {
+//					uSI.createNewAccount(newAccount.getEmail(), newAccount.getCheckingBalance());
+//					res.getWriter().append("Successfully created account associated with email " + newAccount.getEmail() + " and starting balance of " + newAccount.getCheckingBalance());
+//					doGet(req, res);
+//				} catch (BusinessException e) {
+//					loggy.info("Failed to create a new account with email " + newAccount.getEmail());
+//					res.getWriter().append("Failed to create account for email " + newAccount.getEmail());
+//					doGet(req, res);
+//					e.printStackTrace();
+//				}
+//			}
 			
 			pw.append("Successfully sent post action. And now we wait");
 		}
@@ -110,37 +111,47 @@ public class MasterServlet extends HttpServlet {
 			req.getQueryString();
 			String direction = req.getParameter("direction");
 			String whichAccount = req.getParameter("whichAccount");
+			Account acc = new Account();
 			
 			if(direction.equalsIgnoreCase("account")) {
 				String accountRequest = req.getReader().lines().collect(Collectors.joining(System.lineSeparator()));
 				CurrentUser currentUser = mapper.readValue(accountRequest,  CurrentUser.class);
-				
-				if(whichAccount.equalsIgnoreCase("savings")) {
-					try {
-						if(aDI.updateAccount(currentUser.getEmail(), "savingsBalance", currentUser.getSavingsBalance())) {
-							loggy.debug("Updated savings balance for email " + currentUser.getEmail());
-						}
-					} catch (BusinessException e) {
-						loggy.error("Error trying to update savings account with email " + currentUser.getEmail());
-						e.printStackTrace();
-					}
+				try {
+					acc = aDI.selectAccountByEmail(currentUser.getEmail());
+				} catch (BusinessException e1) {
+					e1.printStackTrace();
 				}
-				
-				else if(whichAccount.equalsIgnoreCase("checking")) {					
-					try {
-						if(aDI.updateAccount(currentUser.getEmail(), "checkingBalance", currentUser.getCheckingBalance())) {
-							loggy.debug("Updated checking balance for email " + currentUser.getEmail());
+				if(acc.getActive().equals("true")) {
+					if(whichAccount.equalsIgnoreCase("savings")) {
+						try {
+							if(aDI.updateAccount(currentUser.getEmail(), "savingsBalance", currentUser.getSavingsBalance())) {
+								loggy.debug("Updated savings balance for email " + currentUser.getEmail());
+							}
+						} catch (BusinessException e) {
+							loggy.error("Error trying to update savings account with email " + currentUser.getEmail());
+							e.printStackTrace();
 						}
-					} catch (BusinessException e) {
-						loggy.error("Error trying to update checking account for email " + currentUser.getEmail());
-						e.printStackTrace();
 					}
+					
+					else if(whichAccount.equalsIgnoreCase("checking")) {					
+						try {
+							if(aDI.updateAccount(currentUser.getEmail(), "checkingBalance", currentUser.getCheckingBalance())) {
+								loggy.debug("Updated checking balance for email " + currentUser.getEmail());
+							}
+						} catch (BusinessException e) {
+							loggy.error("Error trying to update checking account for email " + currentUser.getEmail());
+							e.printStackTrace();
+						}
+					}// end of checking/saving if block
+					CurrentUser sendingBackUser = new CurrentUser(currentUser.getEmail(), currentUser.getName(), currentUser.getCheckingBalance(), currentUser.getSavingsBalance(), "customer");
+					loggy.debug("Sending user back to client-side. Email- " + currentUser.getEmail());
+					mapper.writeValue(res.getWriter(), sendingBackUser);
 					
 				}
 				
-				CurrentUser sendingBackUser = new CurrentUser(currentUser.getEmail(), currentUser.getName(), currentUser.getCheckingBalance(), currentUser.getSavingsBalance(), "customer");
-				loggy.debug("Sending user back to client-side. Email- " + currentUser.getEmail());
-				mapper.writeValue(res.getWriter(), sendingBackUser);
+				else {
+					res.sendError(404, "Account must be activated first. Please be patient with us. Thank you.");
+				}// end of active == 'true' if block
 				
 			}// end of if "account"
 			
@@ -154,15 +165,19 @@ public class MasterServlet extends HttpServlet {
 				
 				try {
 					if(uSI.transferFunds(senderEmail, "checkingBalance", receiverAccountNumber, transferAmount)) {
-						
+						loggy.debug("Transferring money from account with Email- " + senderEmail + " to account with number- " + receiverAccountNumber);
+						User u = uDI.selectUserByEmail(senderEmail);
+						Account a = aDI.selectAccountByEmail(senderEmail);
+						CurrentUser cU = new CurrentUser(u.getEmail(), u.getName(), a.getCheckingBalance(), a.getSavingsBalance(), "customer");
+						loggy.debug("Sending user back to client-side. Email- " + u.getEmail());
+						mapper.writeValue(res.getWriter(), cU);
 					}
 				} catch (BusinessException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 				
-				loggy.debug("Transferring money from account with Email- " + senderEmail + " to account with number- " + receiverAccountNumber);
-				res.getWriter().append("Transfer complete.");
+				
 			}
 		}
 	}

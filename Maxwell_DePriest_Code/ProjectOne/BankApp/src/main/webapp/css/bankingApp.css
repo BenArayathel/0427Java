@@ -1,3 +1,7 @@
+.hidden {
+	display: none;
+}
+
 .logoHeader {
     background-color: darkgreen;
     color: #E1C158;

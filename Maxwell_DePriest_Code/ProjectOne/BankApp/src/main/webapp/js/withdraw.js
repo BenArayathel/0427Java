@@ -1,10 +1,11 @@
 window.onload = function (){
+	let currentUser = JSON.parse(localStorage.getItem("userData"));
+	if(!currentUser) {
+		window.location.href = "./login.html";
+	}
 	let withdrawButton = document.getElementById("withdrawButton");
-	
 	let withdrawAmt = document.getElementById("withdrawAmount");
-	
-	
-	//document.querySelector('input[name="genderS"]:checked').value;
+
 	if(withdrawButton) {
 		withdrawButton.addEventListener("click", function(event) {
 	        event.preventDefault();
@@ -13,10 +14,18 @@ window.onload = function (){
 	        withdrawMoney(accountRadio, withdrawAmt);
 	    })
 	}
+	
+	let logOutButton = document.getElementById("logOutButton");
+	if(logOutButton) {
+		logOutButton.addEventListener("click", function(event) {
+			event.preventDefault();
+			logOut();
+		});
+	}
 }
 
 function withdrawMoney(whichAccount, amt) {
-    let userData = JSON.parse(localStorage.getItem("userData"));
+    
     console.log(userData);
     console.log(`Checking balance- ${userData["checkingBalance"]}  Savings balance- ${userData["savingsBalance"]}`);
     if (!isNaN(amt.value) && (amt.value < 1000.00)) {
@@ -65,7 +74,8 @@ function withdrawMoney(whichAccount, amt) {
         					
         				    
         				}).catch(error =>{
-        					console.log(error)
+        					alert("Account may not have been activated yet. Please be patient with us. Thank you.");
+        					//console.log(error)
         					//window.location.href = "./404.html";
         				});
         
@@ -73,4 +83,9 @@ function withdrawMoney(whichAccount, amt) {
     else {
     	alert("Please only enter numerical values that are less than $1000.00");
     }
+}
+
+function logOut() {
+	localStorage.clear();
+	window.location.href = "./login.html";
 }
