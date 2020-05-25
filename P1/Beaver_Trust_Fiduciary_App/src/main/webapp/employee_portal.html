@@ -18,34 +18,54 @@
                 </button>
             <div class="collapse navbar-collapse" id="somethingCustom">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item"><a href="" class="nav-link">Home</a></li>
-                    <li class="nav-item"><a href="" class="nav-link">About</a></li>
-                    <li class="nav-item"><a href="form.html" class="nav-link">Login</a></li>
-                    <li class="nav-item"><a href="" class="nav-link">Get Started</a></li>
+                    <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+                    <li class="nav-item"><a href="login.html" class="nav-link">Login</a></li>
+                    <li class="nav-item"><a href="create_user_account.html" class="nav-link">Get Started</a></li>
                 </ul>
             </div>
     </nav>
 
-    <!-- 
-        Main.myLog.info("Enter '1' to see all customers."); - get
-        Main.myLog.info("Enter '4' to see all transactions."); - get
-		Main.myLog.info("Enter '2' to see specific user's account details."); - post
-        
-		Main.myLog.info("Enter '3' to approve a new account application."); - post
-    -->
     
     <div class="container main-container">
-        <!-- i won't be appending just a name, i'll append the whole h1 from js -->
         <div class="card">
-            <h1 id="title" class="card-title"></h1>
+
+            <h1 id="title" class="card-title text-center">Employee Portal</h1>
             <div class="card-body">
-                <!-- button to list all customers info -->
+
+                <form>
+                    <!-- button to list all customers info -->
+                    <label for="seeAllCustomers">List all customers: </label>
+                    <div class="form-group" style="border-bottom: 2px solid black; padding-bottom: 5px;">
+                        <input class="btn btn-primary" type="button" id="seeAllCustomers" value="Submit">
+                    </div>
+    
+                    <!-- button to list all transactions in bank history -->
+                    <label for="seeAllTransactions">List all transactions: </label>
+                    <div class="form-group" style="border-bottom: 2px solid black; padding-bottom: 5px;">
+                        <input class="btn btn-primary" type="button" id="seeAllTransactions" value="Submit">
+                    </div>
+    
+                    <!-- list all of a specific user's accounts -->
+                    <label for="seeAllUserAccounts">See all Accounts by Username: </label>
+                    <div class="form-group" style="border-bottom: 2px solid black; padding-bottom: 5px;">
+                        <input type="text" id="whichUser">
+                        <input class="btn btn-primary" type="button" id="seeAllUserAcounts" value="Submit">
+                    </div>
+    
+                    <!-- finally, approve user for account -->
+                    <label for="approveUser">Approve account by entering User_Id: </label>
+                    <div class="form-group" style="border-bottom: 2px solid black; padding-bottom: 5px;">
+                        <input type="text" id="approveUser">
+                        <input class="btn btn-primary" type="button" id="approveButton" value="Submit">
+                    </div>
+                </form>
+
+                <!-- all the tables, hidden at first, toggled open and closed with JS -->
+
+                <!-- see all the customers table -->
                 <div class="row">
-                    <label for="seeAllCustomers">See all customers: </label>
-                    <input class="btn btn-primary" type="button" id="seeAllCustomers" value="Submit">
-                </div>
-                <div class="row">
-                    <table class="table table-striped table-dark">
+                    <table class="table table-striped table-dark" id="allCustomersTable" style="display: none;">
                         <thead>
                             <tr>
                                 <th scope="col">User ID</th>
@@ -58,13 +78,10 @@
                         </tbody>
                     </table>
                 </div>
-                <!-- button to list all transactions in bank history -->
+
+                <!-- see all the transactions table -->
                 <div class="row">
-                    <label for="seeAllTransactions">See all transactions: </label>
-                    <input class="btn btn-primary" type="button" id="seeAllTransactions" value="Submit">
-                </div>
-                <div class="row">
-                    <table class="table table-striped table-dark">
+                    <table class="table table-striped table-dark" id="transactionsTable" style="display: none;">
                         <thead>
                             <tr>
                                 <th scope="col">Transaction ID</th>
@@ -79,17 +96,10 @@
                         </tbody>
                     </table>
                 </div>
-                <!-- list all of a specific user's accounts -->
-                <div class="row">
-                    <label for="seeAllUserAccounts">See all Accounts by Username: </label>
-                    <input type="text" id="whichUser">
-                    <input class="btn btn-primary" type="button" id="seeAllUserAcounts" value="Submit">
-                </div>
-                <div class="row">
-                    <!-- <ul id="userAccountsList" style="display: none">
 
-                    </ul> -->
-                    <table class="table table-striped table-dark">
+                <!-- see all the accounts of a specific user -->
+                <div class="row">
+                    <table class="table table-striped table-dark" id="userAccountsTable" style="display: none;">
                         <thead>
                             <tr>
                                 <th scope="col">Account ID</th>
@@ -103,12 +113,7 @@
                         </tbody>
                     </table>
                 </div>
-                <!-- finally, approve user for account -->
-                <div class="row">
-                    <label for="approveUser">Approve account by entering User_Id: </label>
-                    <input type="text" id="approveUser">
-                    <input class="btn btn-primary" type="button" id="approveButton" value="Submit">
-                </div>
+
             </div>
         </div>
     </div>

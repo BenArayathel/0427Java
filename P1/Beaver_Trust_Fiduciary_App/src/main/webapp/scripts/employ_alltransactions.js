@@ -1,5 +1,6 @@
 let transactionList = document.getElementById("transactionBody");
 let transactionButton = document.getElementById("seeAllTransactions");
+let table2 = document.getElementById("transactionsTable");
 
 // console.log(transactionList);
 // console.log(customerButton);
@@ -8,7 +9,10 @@ transactionButton.addEventListener("click", listAllTransactions)
 
 // get is default, doesn't need to be stated
 function listAllTransactions() {
-    // transactionList.style.display = "block";
+    table1.style.display = "none";
+    table2.style.display = "table";
+    table3.style.display = "none";
+
     fetch('http://localhost:9999/Beaver_Trust_Fiduciary_App/getalltransactions')
         .then(response => {
             // console.log(response)

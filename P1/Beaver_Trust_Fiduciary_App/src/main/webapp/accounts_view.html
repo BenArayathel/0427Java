@@ -26,7 +26,7 @@
             </div>
     </nav>
     
-    <div class="container main-container d-flex justify-content-center" style="height: 500px;">
+    <div class="container main-container" style="height: 500px;">
         <div class="card text-start">
             <div class="card-body">
                 <h1 class="card-title" id="accountsTitle" style="text-align: center;">User Accounts View</h1>
@@ -41,38 +41,49 @@
                         <!-- dynamically filled with JSON content -->
                     </tbody>
                 </table>
-                <h3>Deposit: Select account, enter deposit amount, and click "Deposit"</h3>
-                <div class="container input-group d-flex flex-column">
-                    <div class="input-group-prepend">
-                        <!-- <label for="depositAccount">Account Name: </label> -->
-                        <input type="text" id="depositAccount" placeholder="Account Name">
-                        <!-- <label for="depositAmount">How much will you be depositing?</label> -->
-                        <input type="text" id="depositAmount" placeholder="Deposit Amount">
+
+                <form id="userForm">
+                    <div class="my-form">
+                        <h3>Deposit: Select account, enter deposit amount, and click "Deposit"</h3>
+                        <label for="depositAccount">Account Name: </label>
+                        <div class="form-group">
+                            <input type="text" id="depositAccount" placeholder="Account Name">
+                        </div>
+                        <label for="depositAmount">How much will you be depositing?</label>
+                        <div class="form-group">
+                            <input type="text" id="depositAmount" placeholder="Deposit Amount">
+                        </div>
                         <button class="btn btn-primary" id="depositSubmit">Deposit</button>
                     </div>
-                </div>
-                <h3>Withdraw: Select account, enter withdrawal amount, and click "Withdraw"</h3>
-                <div class="container input-group">
-                    <div class="input-group-append">
-                        <!-- <label for="withdrawAccount">Account Name: </label> -->
-                        <input type="text" id="withdrawAccount" placeholder="Account Name">
-                        <!-- <label for="withdrawAmount">How much will you be withdrawing?</label> -->
-                        <input type="text" id="withdrawAmount" placeholder="Withdrawal Amount">
+                    <div class="my-form">
+                        <h3>Withdraw: Select account, enter withdrawal amount, and click "Withdraw"</h3>
+                        <label for="withdrawAccount">Account Name: </label>
+                        <div class="form-group">
+                            <input type="text" id="withdrawAccount" placeholder="Account Name">
+                        </div>
+                        <label for="withdrawAmount">How much will you be withdrawing?</label>
+                        <div class="form-group">
+                            <input type="text" id="withdrawAmount" placeholder="Withdrawal Amount">
+                        </div>
                         <button class="btn btn-primary" id="withdrawSubmit">Withdraw</button>
                     </div>
-                </div>
-                <h3>Transfer: Select account to transfer from, to transfer to, enter withdrawal amount, and click "Transfer"</h3>
-                <div class="container input-group">
-                    <div class="input-group-prepend">
-                        <!-- <label for="transferFromAccount">Select account to transfer from.</label> -->
-                        <input type="text" id="transferFromAccount" placeholder="Transfer FROM Account Name">
-                        <!-- <label for="transferToAccount">Select account to transfer to.</label> -->
-                        <input type="text" id="transferToAccount" placeholder="Transfer TO Account Name">
-                        <!-- <label for="transferAmount">How much will you be transfering?</label> -->
-                        <input type="text" id="transferAmount" placeholder="Transfer Amount">
+                    <div class="my-form">
+                        <h3>Transfer: Select account to transfer from, to transfer to, enter withdrawal amount, and click "Transfer"</h3>
+                        <label for="transferFromAccount">Select account to transfer from.</label>
+                        <div class="form-group">
+                            <input type="text" id="transferFromAccount" placeholder="Transfer FROM">
+                        </div>
+                        <label for="transferToAccount">Select account to transfer to.</label>
+                        <div class="form-group">
+                            <input type="text" id="transferToAccount" placeholder="Transfer TO">
+                        </div>
+                        <label for="transferAmount">How much will you be transfering?</label>
+                        <div class="form-group">
+                            <input type="text" id="transferAmount" placeholder="Transfer Amount">
+                        </div>
                         <button class="btn btn-primary" id="transferSubmit">Transfer</button>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
     </div>

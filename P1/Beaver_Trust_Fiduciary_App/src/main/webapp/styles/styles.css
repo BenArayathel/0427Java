@@ -48,3 +48,16 @@ form {
 .main-container {
     height: 500px;
 } */
+
+.card {
+    box-shadow: 2px 2px 10px black;
+    margin: 20px;
+    padding: 10px;
+}
+
+.my-form {
+    /* border: 1px solid red; */
+    margin: 10px;
+    padding: 5px;
+    border-bottom: 2px solid black;
+}

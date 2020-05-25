@@ -1,10 +1,14 @@
 let userAccountsList = document.getElementById("userAccountsList");
 let submit5 = document.getElementById("seeAllUserAcounts");
+let table3 = document.getElementById("userAccountsTable");
 
 submit5.addEventListener("click", getAccounts);
 
 function getAccounts() {
-    // userAccountsList.style.display = "block";
+    table1.style.display = "none";
+    table2.style.display = "none";
+    table3.style.display = "table";
+
     let username = document.getElementById("whichUser").value;
 
     // make call to api/servlet
@@ -58,6 +62,9 @@ function getAccounts() {
 
             // finally, append the completed row to the table body
             userAccountsList.appendChild(tr);
+
+            // clean up input
+            document.getElementById("whichUser").value = "";
         }
     })
 }

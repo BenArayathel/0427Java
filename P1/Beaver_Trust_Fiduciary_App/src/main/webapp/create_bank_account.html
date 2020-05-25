@@ -30,9 +30,9 @@
     <div class="container main-container">
         <!-- i won't be appending just a name, i'll append the whole h1 from js -->
         <div class="card">
-            <h1 id="title" class="card-title">Open new Checking/Savings Account: </h1>
+            <h1 id="title" class="card-title" style="text-align: center;">Open new Checking/Savings Account: </h1>
             <div class="card-body">
-                <div class="container">
+                <div class="form-group" style="border-bottom: 2px solid black; padding-bottom: 5px;">
                     <label for="newName">What would you like to name your new account?</label>
                     <input type="text" id="newName"><br>
                     <label for="newAmount">How much will you be depositing to open your acccount?</label>
@@ -40,7 +40,7 @@
                     <button class="btn btn-primary" id="createSubmit">Create</button>
                 </div>
                 <div class="row">
-                    <a href="accounts_view.html" class="btn button-primary" id="seeAccounts">Access your existing accounts</a>
+                    <a href="accounts_view.html" class="badge badge-secondary" id="seeAccounts" style="margin: 10px; font-size: 1.5em;">Access your existing accounts</a>
                 </div>
             </div>
         </div>       

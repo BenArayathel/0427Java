@@ -1,15 +1,22 @@
 let customerList = document.getElementById("allCustomers");
 let customerButton = document.getElementById("seeAllCustomers");
+let table1 = document.getElementById("allCustomersTable");
 
-console.log(customerList);
-console.log(customerButton);
+
+// console.log(customerList);
+// console.log(customerButton);
+console.log(table1);
+
 
 
 customerButton.addEventListener("click", listAllAccounts)
 
 // get is default, doesn't need to be stated
 function listAllAccounts() {
-    // customerList.style.display = "block";
+    table1.style.display = "table";
+    table2.style.display = "none";
+    table3.style.display = "none";
+
     fetch('http://localhost:9999/Beaver_Trust_Fiduciary_App/getallaccounts')
         .then(response => {
             // console.log(response)
@@ -30,8 +37,16 @@ function listAllAccounts() {
                 (`${json[i].user_id}`)
                 let userName = document.createTextNode
                 (`${json[i].username}`)
-                let userApproved = document.createTextNode
-                ( `${json[i].approved}`)
+
+                // convert boolean to string for readability
+                let userApproved = "";
+                if (json[i].approved) {
+                    userApproved = document.createTextNode
+                    ( `Approved`);
+                } else {
+                    userApproved = document.createTextNode
+                    ( `Not Approved`);
+                }                
 
                 // append text to each cell
                 td1.appendChild(userId);
