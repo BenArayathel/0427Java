@@ -1,0 +1,15 @@
+<div *ngIf="messageService.messages.length">
+
+	<!-- 
+		This template binds directly to the component's messageService
+		*ngIf only displays the messages area if there are messages to show
+		*ngFor presents the list of messages in repeated <div> elements
+		Angular EVENT BINDING binds the button's click event to messageService.clear()
+	 -->
+
+	<h2>Messages</h2>
+
+	<button class="clear" (click)="messageService.clear()">Clear</button>
+
+	<div *ngFor='let message of messageService.messages'> {{message}} </div>
+</div>

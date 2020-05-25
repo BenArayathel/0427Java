@@ -1,0 +1,26 @@
+<div>
+	<div class="jumbotron">
+		<h2>Pokemon API: AJAX</h2>
+	</div>
+
+	<div class="row justify-content-center">
+		<h4>{{"Name: " + pokeName | uppercase}}</h4>
+	</div>
+
+	<div class="row justify-content-center">
+		<img [src]="pokeImageUrl" width="10%">
+	</div>
+
+
+	<div class="form-group">
+		<!-- Input -->
+		<div class="form-group row justify-content-center">
+			<input class="form-control col-2" type="number" [(ngModel)]="pokeID" />
+		</div>
+		<!-- Buttons -->
+		<div class="form-group row justify-content-center">
+			<button class="btn btn-warning" (click)='pokeButtonClickedMessy()'>Capture Pokemon w/ Messy Method!</button>
+			<button class="btn btn-success" (click)='pokeButtonClickedClean()'>Capture Pokemon w/ Clean Method!</button>
+		</div>
+	</div>
+</div>

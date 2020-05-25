@@ -1,0 +1,16 @@
+<!-- *ngIf hides empty details. -->
+<!-- Required bc when app starts, there are initially no selectedHeroes. -->
+<!-- When selectedHero is undefined (which it is initially), ngIf removes this div from the DOM. -->
+<!-- This div only displays IF user selects a hero from the list. -->
+<div *ngIf="hero">
+	<h2>{{hero.name | uppercase}} Details</h2>
+	<div><span>ID: </span>{{hero.id}}</div>
+	<div>
+		<label>Name:
+			<!-- [(ngModel)] is Angular's two-way binding syntax. -->
+			<!-- Here, it binds hero.name property to the HTML textbox so data can flow in both directions. -->
+			<!-- Data can flow from the hero.name property to the textbox, and from the textbox back to the hero.name. -->
+			<input [(ngModel)]="hero.name" placeholder="Hero Name" />
+		</label>
+	</div>
+</div>

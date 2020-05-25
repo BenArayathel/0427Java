@@ -1,0 +1,19 @@
+<h2>The Avengers</h2>
+
+<ul class="heroes">
+	<!-- *ngFor is Angular's "repeater" directive; it repeats the host element for each element in a list. -->
+	<!-- <li> is the host element; heroes holds the mock heroes list; hero holds the current hero object for each iteration. -->
+
+	<!-- Class binding [class.css-class] lets you add/remove a CSS class conditionally. -->
+	<!-- When the current hero is the SAME as the selectedHero, Angular adds the selected CSS class; when different, Angular removes the class. -->
+
+	<!-- (click) adds a click event binding to <li>; when clicked, Angular executes our onSelect(hero) -->
+	<li *ngFor="let hero of heroes" [class.selected]="hero === selectedHero" (click)="onSelect(hero)">
+		<span class="badge">{{hero.id}}</span> {{hero.name}}
+	</li>
+</ul>
+
+<!-- [] is Angular's "property binding" syntax -->
+<!-- ONE-WAY BIND: from selectedHero property of HeroesComponent (parent) to hero property HeroDetailComponent (child) -->
+<!-- Flow: when user clicks a hero in <li> the selectedHero changes; when selectedHero changes, the bind updates hero and the HeroDetailComponent displays the new hero -->
+<app-hero-detail [hero]="selectedHero"></app-hero-detail>

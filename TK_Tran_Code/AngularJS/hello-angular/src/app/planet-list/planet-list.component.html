@@ -1,0 +1,67 @@
+<h1>Planet-List</h1>
+
+<!-- HEADING PANEL -->
+<div class="panel panel-primary">
+	<div class="panel heading">
+		<!-- 
+			The {{}} syntax is used for interpolation; which evaluates an expression.
+			We can do simple operations like addition, OR reference a variable from a TS file.
+			
+			We're using interpolation to "achieve" one-way data binding, but it is not the same thing.
+
+			One-way binding (w/ interpolation) projects values in TS to the HTML page to be displayed.
+				Any changes in TS file will immediately affect HTML; BUT NOT VICE VERSA.
+		 -->
+		Welcome, {{10 + 20 " " + currentLoggedInUser}}!
+	</div>
+
+	<div class="panel-body">
+		<div class="row">
+			<div class="row">
+				<div class="col-md-2">Filter by:</div>
+				<div class="col-md-4">
+					<!-- 
+						The [()] syntax is use for two-way binding; aka "apple in a box".
+						In two-way binding, the HTML values and TS values are tied to each other.
+							If one changes, the other also changes; hence "two-way".
+
+						To setup two-way binding, you need ngModel that's a part of the "FormsModule" module.
+						It's a combination of one-way binding and event binding.
+					 -->
+					<input type="text" [(ngModel)]="inputField" placeholder="filter" />
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- HTML Table -->
+<div class="table-responsive">
+	<table class="table" * ngIf="planets && planets.length" aria-describedby="description">
+		<!-- 
+			This is a "structural directive"; called this bc it can alter the ENTIRE structure of the DOM. 
+			Commonly used structural directives are:
+				*ngFor, *ngIf, *ngSwitch, *ngDefault
+			*ngIf will show or hide an entire element (and/or sub elements), depending on a boolean value.
+		-->
+		<thead>
+			<tr>
+				<th>
+					<button class="btn btn-primary" (click)="toggleImage()">{{showImage ? "Hide" : "Show"}} Image</button>
+				</th>
+				<th>Planets</th>
+			</tr>
+		</thead>
+		<tbody>
+			<!-- *ngFor is an enhanced for loop; specifically, it'll copy an entire element for every element in an array we provide it. -->
+			<tr *ngFor="Let temp of filteredPlanets">
+				<td>
+					<img *ngIf="showImage()" [src]="temp.image" [title]="temp.name" [style.width.px]="imageWidth" [style.margin.px]="imageMargin" alt="image">
+				</td>
+				<td>
+					{{temp.name}}
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>

@@ -5,6 +5,7 @@ import exception.BusinessException;
 import model.Account;
 import org.apache.log4j.Logger;
 
+import javax.swing.*;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -36,6 +37,7 @@ public class DAOImp implements DAO {
 			cs.execute();
 		} catch (ClassNotFoundException | SQLException e) {
 			log.warn("Account " + account.getUsername() + " already exists!");
+			JOptionPane.showMessageDialog(null, "Account already exists!");
 		}
 	}
 

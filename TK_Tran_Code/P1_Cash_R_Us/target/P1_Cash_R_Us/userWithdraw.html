@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Withdraw</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+    <!-- jQuery, PopperJS, BootstrapJS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<!-- HEADER -->
+<div class="container">
+    <div class="jumbotron text-center">
+        <h1 class="display-4">Withdraw</h1>
+    </div>
+</div>
+
+<br>
+
+<!-- BODY -->
+<div class="container">
+    <div id="withdrawForm">
+        <!-- INPUT FIELDS -->
+        <div class="form-group row justify-content-start">
+            <label for="withdrawInput"><strong>Withdraw Amount</strong></label>
+            <input class="form-control" id="withdrawInput" name="withdraw" type="number" placeholder="Enter withdrawal amount..">
+        </div>
+
+        <br>
+
+        <!-- BUTTONS -->
+        <div class="form-group row justify-content-center">
+            <input class="btn btn-success col-2" id="withdrawBtn" type="button" value="Withdraw">
+            <input class="btn btn-warning col-2" id="resetBtn" type="reset" value="Reset">
+            <input class="btn btn-danger col-2" id="backBtn" type="button" onclick="window.location.assign('/customerPortal.html')" value="Go Back">
+        </div>
+    </div>
+</div>
+
+<script src="/js/userWithdraw.js"></script>
+</body>
+
+</html>
