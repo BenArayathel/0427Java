@@ -67,11 +67,33 @@ public class TransferServlet extends HttpServlet {
 				if (asi.validTransactionFormat(transferAmount)) {
 					// ...and if it isn't negative
 					if (Double.parseDouble(transferAmount) > 0) {
-						asi.withdraw(user, transferFromAccount, transferAmount);
-						asi.deposit(user, transferToAccount, transferAmount);
-						returnMessage = "Transfer complete!";
-						// send json response
-						writer.write(returnMessage);	
+						
+						// new addition
+						
+						// create list of all the user's accounts...
+						List<Account> account_list = asi.listUserAccounts(user.getUsername());
+						// ...then a list of all the names from those accounts
+						List<String> accountNames = new ArrayList<String>();
+						for (Account i : account_list) {
+							accountNames.add(i.getAccount_name());
+						}
+						// check if the name the user entered is in their accounts list
+						if (accountNames.contains(transferFromAccount)
+								&& accountNames.contains(transferToAccount)) {
+							
+							asi.withdraw(user, transferFromAccount, transferAmount);
+							asi.deposit(user, transferToAccount, transferAmount);
+							returnMessage = "Transfer complete!";
+							// send json response
+							writer.write(returnMessage);
+						} else {
+							returnMessage = "You don't have an account with that name.";
+							// send json response
+							writer.write(returnMessage);
+						}
+						
+						// end new addition
+						
 					} else {
 						returnMessage = "Enter an amount greater than $0.";
 						// send json response
