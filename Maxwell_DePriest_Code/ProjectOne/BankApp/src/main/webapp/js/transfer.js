@@ -2,22 +2,22 @@
 
 window.onload = function (){
 	let transferButton = document.getElementById("transferButton");
-	let receiverAccNum = document.getElementById("receiverAccountNumber");
+	let receiverAccountNum = document.getElementById("receiverAccountNum");
 	let transferAmt = document.getElementById("transferAmount");
 	let currentUser = JSON.parse(localStorage.getItem("userData"));
 	
 	if(transferButton) {
-		withdrawButton.addEventListener("click", function(event) {
+		transferButton.addEventListener("click", function(event) {
 	        event.preventDefault();
-	        transferMoney(currentUser["email"], receiverAccNum , transferAmt);
+	        transferMoney(currentUser["email"], receiverAccountNum.value , transferAmt.value);
 	    })
 	}
 }
 
-function transferMoney(senderAccount, receiverAccount, amt) {
+function transferMoney(senderAccount, receiverAccountNum, amt) {
     let userData = JSON.parse(localStorage.getItem("userData"));
 
-    if (!isNaN(amt.value) && (amt.value < 1000.00) && !isNaN(receiverAccount)) {
+    if (!isNaN(amt) && (amt < 1000.00)) {
     	let senderSv = parseFloat(userData["savingsBalance"]);
     	let senderCh = parseFloat(userData["checkingBalance"]);
     	console.log("Sending transfer fetch...");
@@ -29,8 +29,8 @@ function transferMoney(senderAccount, receiverAccount, amt) {
         	},
         	body: JSON.stringify({
         			email: senderAccount,
-        			checkingAccountNumber: receiverAccNum.value,
-        			checkingBalance: transferAmt.value
+        			checkingAccountNumber: receiverAccountNum,
+        			checkingBalance: amt
         	})
         	}).then(
         		response => response.json()).then(
@@ -46,6 +46,6 @@ function transferMoney(senderAccount, receiverAccount, amt) {
         
     }
     else {
-    	alert("Please only enter numerical values that are less than $1000.00. Receiving account number can only contain numerical digits.");
+    	alert("Please only enter numerical values that are less than $1000.00.");
     }
 }
