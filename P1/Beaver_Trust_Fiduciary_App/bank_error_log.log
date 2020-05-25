@@ -40,3 +40,9 @@ ORA-06512: at "ADMIN.CREATE_NEW_TRANSACTION", line 6
 ORA-06512: at line 1
 [Ljava.lang.StackTraceElement;@6cbb155b
 2020-05-23 10:26:17 ERROR Main:43 - Unable to log transaction.[Ljava.lang.StackTraceElement;@65343c48
+2020-05-24 22:44:54 ERROR Main:142 - ORA-01722: invalid number
+[Ljava.lang.StackTraceElement;@2d70c293
+2020-05-24 22:44:54 ERROR Main:45 - Unable to approve account.[Ljava.lang.StackTraceElement;@337dd34d
+2020-05-24 22:45:36 ERROR Main:142 - ORA-01722: invalid number
+[Ljava.lang.StackTraceElement;@23ed9909
+2020-05-24 22:45:36 ERROR Main:45 - Unable to approve account.[Ljava.lang.StackTraceElement;@4a5c38fd

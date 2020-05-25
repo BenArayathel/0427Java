@@ -1,20 +1,65 @@
 import { Component, OnInit } from '@angular/core';
 import { Hero } from '../hero';
+// import { HEROES } from '../mock-heroes'; // don't need this now
+// that we have an injector and provider service
+import { HeroService } from '../hero.service';
+import { MessageService } from '../messages.service';
 
 @Component({
+  // the selector is how you can reference it in CSS
   selector: 'app-heroes',
+  // name of HTML file for this component
   templateUrl: './heroes.component.html',
+  // name of CSS for this component
   styleUrls: ['./heroes.component.css']
 })
 export class HeroesComponent implements OnInit {
-  hero: Hero = {
-    id: 1,
-    name: 'First PersonShooter'
-  };
+  
+  selectedHero: Hero; // this typescript syntax means <variable> ofType <object>
+  
+  // first hardcoded hero
+  // hero: Hero = {
+  //   id: 1,
+  //   name: 'First PersonShooter'
+  // };
 
-  constructor() { }
+  // progressed on to mock-heroes, also hardcoded
+  // heroes = HEROES;
+  
+  // third step, now it is equal to our service instead of
+  // directly to mock data
+  heroes: Hero[];
+
+  // part of the onclick logic
+  // click on an item, it assigns it to be
+  // the (class? variable?) of selectedHero of type Hero
+  onSelect(hero: Hero): void {
+    this.selectedHero = hero;
+    this.messageService.add(`HeroService: Selected hero id = ${hero.id}`);
+  }
+
+  // a method to get the heroes from the service layer
+  // method of the same name, which gets the 'db' data
+  // getHeroes(): void {
+  //   this.heroes = this.heroService.getHeroes();
+  // }
+
+  // new way using observables, closer to actual HTTP request approach
+  getHeroes(): void {
+    this.heroService.getHeroes()
+      .subscribe(heroes => this.heroes = heroes);
+  }
+
+  // this is injecting a SINGLETON instance, btw
+  constructor(private heroService: HeroService,
+    private messageService: MessageService) { }
 
   ngOnInit(): void {
+    this.getHeroes();
   }
+  
+  // ngOnInit(): {
+  //   this.getHeroes();
+  // }
 
 }

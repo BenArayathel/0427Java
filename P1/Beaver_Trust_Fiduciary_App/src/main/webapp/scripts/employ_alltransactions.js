@@ -7,6 +7,11 @@ transactionButton.addEventListener("click", listAllTransactions)
 
 // get is default, doesn't need to be stated
 function listAllTransactions() {
+    // delete any old rows from table body
+    // while(allCustomers.hasChildNodes()) {
+    //     allCustomers.removeChild(allCustomers.firstChild);
+    // }
+
     table1.style.display = "none";
     table2.style.display = "table";
     table3.style.display = "none";

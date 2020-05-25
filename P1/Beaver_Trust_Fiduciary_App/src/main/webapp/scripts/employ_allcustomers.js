@@ -7,6 +7,11 @@ customerButton.addEventListener("click", listAllAccounts)
 
 // get is default, doesn't need to be stated
 function listAllAccounts() {
+    // delete any old rows from table body
+    // while(allCustomers.hasChildNodes()) {
+    //     allCustomers.removeChild(allCustomers.firstChild);
+    // }
+
     table1.style.display = "table";
     table2.style.display = "none";
     table3.style.display = "none";
