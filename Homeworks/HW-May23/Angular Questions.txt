@@ -1,0 +1,136 @@
+What is Angular?
+Angular is an application design framework and development platform for creating efficient and sophisticated single-page apps.
+
+Difference between Angular JS and Angular?
+Angular is based on TypeScript while AngularJS is based on JavaScript. TypeScript is a superset of ES6 and it's backward compatible with ES5. ... AngularJS uses terms of scope and controller.
+
+Technologies that you should include for your environment to create an Angular application?
+JavaScript
+HTML
+CSS
+Node.js
+npm package manager
+
+What is Angular CLI?
+Angular CLI is used to create projects, generate application and library code, and perform a variety of ongoing development tasks such as testing, bundling, and deployment.
+
+How to create a new Angular project using Angular CLI?
+npm install -g @angular/cli
+ng new my-app
+cd my-app
+ng serve --open
+
+(Folder structure) What is e2e?
+An e2e/ folder at the top level contains source files for a set of end-to-end tests that correspond to the root-level application, along with test-specific configuration files.
+
+(Folder structure) What is node_modules?
+The node_modules folder contains libraries downloaded from npm. You shouldn't push it to github (you should even add it to your . ... Therefore anyone cloning your project we'll need to recompile them using the npm build command.
+
+(Folder structure) What is src?
+src folder: This is the folder which contains the main code files related to your angular application.
+
+Where is the app folder located? What files does it contain (if created by Angular CLI)
+app folder: The app folder contains the files, you have created for app components.
+
+What is a decorator?
+Decorators are a design pattern that is used to separate modification or decoration of a class without modifying the original source code.
+
+What is a module?
+In Angular, a module is a mechanism to group components, directives, pipes and services that are related, in such a way that can be combined with other modules to create an application.
+
+What is @NgModule? What are some of the attributes inside of the @NgModule decorator?
+The @NgModule() decorator is a function that takes a single metadata object, whose properties describe the module. The most important properties are as follows. declarations: The components, directives, and pipes that belong to this NgModule. ... An NgModule is a class marked by the @NgModule decorator.
+
+What is a component?
+a Component is a special kind of directive that uses a simpler configuration which is suitable for a component-based application structure. 
+
+What is @Componnent? Attributes inside of the @Component decorator?
+Components are a logical piece of code for Angular JS application. A Component consists of the following − Template − This is used to render the view for the application. This contains the HTML that needs to be rendered in the application. This part also includes the binding and directives.
+
+How to add new component inside of Angular, using Angular CLI?
+Right click on the folder to open context menu
+Select Open in Command Prompt option
+In new terminal (you'll see your selected path), type ng g c my-new-component
+
+How to create a component, without Angular CLI?
+
+How to inculde a component on another component's HTML template page?
+@NgModule({
+  imports: [ BrowserModule ],
+  declarations: [ App , MyChildComponent ],
+  bootstrap: [ App ]
+})
+
+What is a directive?
+At the core, a directive is a function that executes whenever the Angular compiler finds it in the DOM. Angular directives are used to extend the power of the HTML by giving it new syntax. Each directive has a name — either one from the Angular predefined like ng-repeat , or a custom one which can be called anything.
+
+What are the different kind of directives provided by Angular?
+Components—directives with a template.
+Structural directives—change the DOM layout by adding and removing DOM elements.
+Attribute directives—change the appearance or behavior of an element, component, or another directive.
+
+What is *ngIf and how does it work?
+The ngIf directive removes or recreates a portion of the DOM tree based on an {expression}. ... ngIf differs from ngShow and ngHide in that ngIf completely removes and recreates the element in the DOM rather than changing its visibility via the display css property.
+
+What is *ngFor and how does it work?
+NgFor is a directive that iterates over collection of data. It is used to customize data display. ... NgFor provides local variables that will help to get index of current iteration, detect if element in iteration is first or last and odd or even. NgFor is used with HTML element as well as component element.
+
+What is data binding? What are the different data binding options?
+There are four different types of ways through which we can do data bindings in Angular 2 namely event binding, unidirectional binding (i.e. one-way binding), bi-directional binding (i.e. two-way binding), and the interpolation.
+
+What is a pipe? What are some pipes that come with Angular?
+Pipes are a useful feature in Angular. They are a simple way to transform values in an Angular template. There are some built in pipes, but you can also build your own pipes. A pipe takes in a value or values and then returns a value.
+Angular comes with a stock of pipes such as DatePipe , UpperCasePipe , LowerCasePipe , CurrencyPipe , and PercentPipe . They are all available for use in any template.
+
+Can we create custom pipes in Angular?
+Steps Involved In Creating a Custom Pipe In Angular are:
+1) Create a Pipe Class and decorate it with the decorator @Pipe. 2) Supply a name property to be used as template code name. 3) Register your Pipe in the module under declarations. 4) Finally, implement PipeTransform and write transformation logic.
+
+What are filters in Angular
+It is basically used to filter an item from a group of items, which are there in an array or an object array. It selects a subset of the items from an array and returns it as a new array and this item is displayed on UI.
+
+What is a SPA?
+Angularjs is a Single Page Applications Framework. Single page application (SPA) is a web application that fits on a single page. All your code (JavaScript, HTML, CSS) is retrieved with a single page load. And navigation between pages performed without refreshing the whole page.
+
+What is routing? Why does Angular implement its own routingmodule?
+First of all, Angular Router takes care of the duties of a JavaScript router: it activates all required Angular components to compose a page when a user navigates to a certain URL. it lets users navigate from one page to another without page reload.
+forRoot(routes) to the AppRoutingModule imports array. This lets Angular know that the AppRoutingModule is a routing module and forRoot() specifies that this is the root routing module. It configures all the routes you pass to it, gives you access to the router directives, and registers the Router service.
+
+What are Angular services? What is an advantage of using sevices?
+An Angular service is a stateless object and provides some very useful functions. These functions can be invoked from any component of Angular, like Controllers, Directives, etc. This helps in dividing the web application into small, different logical units which can be reused.
+
+What is a Dependency injection?
+In software engineering, dependency injection is a technique in which an object receives other objects that it depends on. These other objects are called dependencies. In the typical "using" relationship the receiving object is called a client and the passed object is called a service.
+
+How would you add a new service to your project using Angular CLI?
+ng generate service hero
+How would you add a new service to your project, without using Angular CLI?
+
+How do you perform HTTP requests in Angular?
+This sends an HTTP GET request to the npm api for a list of packages that belong to the @angular scope, then assigns the total returned in the response to the local property totalAngularPackages . The response type is set to <any> so it handle any properties returned in the response. this.
+Does the HttpClient object create synchronized requests?
+
+What is a Promise?
+A promise is a placeholder for a future value. It serves the same function as callbacks but has a nicer syntax and makes it easier to handle errors.
+
+What is an Observable? What do you need to do , to use it inside of an Angular project?
+Observable are just that — things you wish to observe and take action on. Angular uses the Observer pattern which simply means — Observable objects are registered, and other objects observe (in Angular using the subscribe method) them and take action when the observable object is acted on in some way.
+
+Difference between Promises and Observable
+a Promise is eager, whereas an Observable is lazy, ... a Promise can provide a single value, whereas an Observable is a stream of values 
+
+What is the lifecycle of a component?
+In Angular, every component has a life-cycle, a number of different stages it goes through.
+
+What are the lifecycle hooks for a component?
+ngOnChanges()
+ngOnInit()
+ngDoCheck()
+ngAfterContentInit()
+ngAfterContentChecked()
+ngAfterViewInit()
+ngAfterViewChecked()
+ngonDestroy()
+
+What is the ngOninit() function?
+Life cycle methods (or hooks) in Angular components allow you to run a piece of code at different stages of the life of a component. Unlike the constructor method, ngOnInit method comes from an Angular interface ( OnInit ) that the component needs to implement in order to use this method.
