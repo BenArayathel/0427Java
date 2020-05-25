@@ -100,6 +100,7 @@ public class DepositServlet extends HttpServlet {
 				writer.write(returnMessage);
 			}
 			
+			System.out.println(returnMessage + "HERE ILT IS");
 			// list transactions from employee, temporary, to see if it worked
 			// from inside eclipse
 //			try {
@@ -108,7 +109,7 @@ public class DepositServlet extends HttpServlet {
 //				
 //			}
 			
-		}		
+		}
 	}		
 }
 

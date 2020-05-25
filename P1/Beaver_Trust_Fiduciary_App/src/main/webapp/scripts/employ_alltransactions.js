@@ -2,8 +2,6 @@ let transactionList = document.getElementById("transactionBody");
 let transactionButton = document.getElementById("seeAllTransactions");
 let table2 = document.getElementById("transactionsTable");
 
-// console.log(transactionList);
-// console.log(customerButton);
 
 transactionButton.addEventListener("click", listAllTransactions)
 

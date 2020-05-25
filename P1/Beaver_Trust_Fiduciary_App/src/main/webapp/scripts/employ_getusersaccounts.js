@@ -2,9 +2,15 @@ let userAccountsList = document.getElementById("userAccountsList");
 let submit5 = document.getElementById("seeAllUserAcounts");
 let table3 = document.getElementById("userAccountsTable");
 
+
 submit5.addEventListener("click", getAccounts);
 
 function getAccounts() {
+    // delete any old rows from table body
+    while(userAccountsList.hasChildNodes()) {
+        userAccountsList.removeChild(userAccountsList.firstChild);
+    }
+
     table1.style.display = "none";
     table2.style.display = "none";
     table3.style.display = "table";
@@ -23,7 +29,7 @@ function getAccounts() {
         })
     })
     .then(response => {
-        console.log(response)
+        // console.log(response)
         return response.json();
     })
     .then(json => {

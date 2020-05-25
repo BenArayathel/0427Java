@@ -9,8 +9,8 @@ function deposit() {
     let account = document.getElementById("depositAccount").value;
     let amount = document.getElementById("depositAmount").value;
 
-    console.log(account);
-    console.log(amount);
+    // console.log(account);
+    // console.log(amount);
     
     
 
@@ -28,17 +28,16 @@ function deposit() {
     })
     // try getting back whatever it is sending...
     .then(response => response.text())
-    .then(responseText => handleResponse(responseText))
+    .then(responseText => {
+//        console.log(responseText);
+        // clear forms
+        document.getElementById("depositAccount").value = '';
+        document.getElementById("depositAmount").value = '';
+        // create popup to notify them of the result
+        alert(responseText);
+            location.reload();
+    })
 }
 
-function handleResponse(responseText) {
-    // clear forms
-    document.getElementById("depositAccount").value = '';
-    document.getElementById("depositAmount").value = '';
-    // create popup to notify them of the result
-    alert(responseText);
-    location.reload();
-}
-
-// then 1. reset forms, take response and save it to a variable
-// put that in the alert box, then 
+// function handleResponse(responseText) {
+// }

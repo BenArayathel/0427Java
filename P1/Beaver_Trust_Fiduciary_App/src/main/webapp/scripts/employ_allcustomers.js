@@ -3,12 +3,6 @@ let customerButton = document.getElementById("seeAllCustomers");
 let table1 = document.getElementById("allCustomersTable");
 
 
-// console.log(customerList);
-// console.log(customerButton);
-console.log(table1);
-
-
-
 customerButton.addEventListener("click", listAllAccounts)
 
 // get is default, doesn't need to be stated
