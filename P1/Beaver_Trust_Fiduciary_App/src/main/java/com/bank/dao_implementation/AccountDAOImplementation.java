@@ -190,7 +190,7 @@ public class AccountDAOImplementation implements AccountDAOInterface {
 			
 		String user_id = user.getUser_id();
 		String sql2 = 
-				"update bank_account set account_balance = (account_balance - ?) where account_name = ? and user_id = ? and account_balance > ?";
+				"update bank_account set account_balance = (account_balance - ?) where account_name = ? and user_id = ? and account_balance >= ?";
 
 				try (Connection conn2 = DataConnection.getConnection()) {
 					PreparedStatement ps2 = conn2.prepareStatement(sql2);

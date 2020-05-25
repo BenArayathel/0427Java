@@ -64,6 +64,10 @@ public class WithdrawalServlet extends HttpServlet {
 					if (Double.parseDouble(withdrawalAmount) > 0) {
 						// use this account object for overdraft check...
 						Account account = asi.listAccountByNameAndUserID(withdrawalAccount, user.getUser_id());
+						
+						// balance is greater than or equal to...yet it doesn't do it
+						// if they withdraw the entire amount...
+						
 						// then that they aren't overdrafting
 						if (account.getBalance() >= Double.parseDouble(withdrawalAmount)) {
 							asi.withdraw(user, withdrawalAccount, withdrawalAmount);
