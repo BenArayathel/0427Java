@@ -14,7 +14,7 @@
 
 	<!--	We're using Servlet API 3.0's javax.servlet.annotation to declare a servlet class instead of web.xml!!! -->
 
-<!--	&lt;!&ndash; INDEX SERVLET &ndash;&gt;-->
+	<!--	&lt;!&ndash; INDEX SERVLET &ndash;&gt;-->
 	<!--	<servlet>-->
 	<!--		<servlet-name>MasterServlet</servlet-name>-->
 	<!--		<servlet-class>servlet.MasterServlet</servlet-class>-->
@@ -22,7 +22,7 @@
 	<!--	</servlet>-->
 	<!--	<servlet-mapping>-->
 	<!--		<servlet-name>MasterServlet</servlet-name>-->
-	<!--		<url-pattern>/masterServlet/*</url-pattern> &lt;!&ndash; Routes <form>'s action attribute to appropriate servlet for handling &ndash;&gt;-->
+	<!--		<url-pattern>/MasterServlet/*</url-pattern> &lt;!&ndash; Routes <form>'s action attribute to appropriate servlet for handling &ndash;&gt;-->
 	<!--	</servlet-mapping>-->
 
 	<!--	&lt;!&ndash; LOGIN SERVLET &ndash;&gt;-->
@@ -32,7 +32,7 @@
 	<!--	</servlet>-->
 	<!--	<servlet-mapping>-->
 	<!--		<servlet-name>LoginServlet</servlet-name>-->
-	<!--		<url-pattern>/loginServlet</url-pattern>-->
+	<!--		<url-pattern>/LoginServlet</url-pattern>-->
 	<!--	</servlet-mapping>-->
 
 	<!--	&lt;!&ndash; REGISTER SERVLET &ndash;&gt;-->
@@ -42,11 +42,12 @@
 	<!--	</servlet>-->
 	<!--	<servlet-mapping>-->
 	<!--		<servlet-name>RegisterServlet</servlet-name>-->
-	<!--		<url-pattern>/registerServlet</url-pattern>-->
+	<!--		<url-pattern>/RegisterServlet</url-pattern>-->
 	<!--	</servlet-mapping>-->
 
-	<!-- Servlet Context (Global) -->
-	<!-- context-param = params that're specified for an entire application, available to ALL servlets -->
+
+	<!-- Servlet Context (Global)-->
+	<!-- context-param = params that're specified for an entire application, available to ALL servlets-->
 	<!--	<context-param>-->
 	<!--		<param-name>databaseurl</param-name>-->
 	<!--		<param-value>https://google.com</param-value>-->

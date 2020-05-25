@@ -722,3 +722,80 @@ Filter (Interceptors)
 		Inside this package, create filters.
 		Inside a filter class, have init(), destroy(), and doFilter(req, res, FilterChain).
 			Inside doFilter(), can have pre-validation before sending to servlet.
+
+AngularJS
+	npm install -g @angular/cli
+	ng new <project name>
+		app.component.html will contain boilerplate
+	ng serve -o --port 4201
+		Builds and serves your app, rebuilding on file changes.
+
+	To create a new component: ng generate component <name of component>
+
+	Angular built around "components"
+		Each component has its own HTML, CSS, and TypeScript files.
+
+	Templates, Directives, and Data Binding
+		A template combines HTML with Angular markup that can modify HTML elements before they're displayed.
+		Template "directives" provide program logic.
+		Binding markup connects your app data and the DOM.
+
+	Two types of Data Binding:
+		Event binding: lets your app respond to user input in the target environment by updating your application data.
+		Property binding: lets you interpolate (insert) values that're computed from your app data into the HTML.
+
+	Two-way binding: changes in the DOM, such as user choices, are also reflected in your program data.
+
+	Our templates can use "pipes" to improve UX by transforming values for display.
+		Pipes a good way to format strings, currency amounts, dates, and other display data.
+		Angular ships with predefined pipes but we can create our own.
+
+	Routing
+		The Router NgModule provides a service that lets you define a navigation path among the different application states and view hierarchies in our app.
+		Modeled after familiar browser navigation conventions:
+			Enter a URL in address bar and browser navigates to corresponding page.
+			Click links on a page and browser navigates to a new page.
+			Click browser's back or forward buttons and browser navigates accordingly through the history of pages you've seen.
+		The router maps URL-like patterns to views instead of pages.
+			When a user clicks a link, that loads a new page in the browser, the router intercepts the browser's behavior, and shows/hides view hierarchies.
+		To define navigation rules, you associate "navigation paths" with your components.
+
+	Together, a component and template define an Angular view.
+		A decorator (annotation) on a component class adds the metadata, including a pointer to the associated template.
+		Directives and binding markup in a component's template modify views based on program data and logic.
+
+Tour of Heroes
+	We created the initial app structure using the Angular CLI
+	We learned that Angular components display data
+	We used double curly braces of interpolation to dispaly the app title
+	We used the CLI to create a heroes component
+	We dispalyed the heroes component by adding it to the app component shell (html)
+	We applied the UppercasePipe to format the name
+	We used two-way binding with the ngModel directive
+	We learned about the AppModule
+	We imported the FormsModule in the AppModule so that Angular would recognize and apply the ngModel directive
+	We learned the importance of declaring components in the AppModule and appreciate that the CLI declared it for us
+	The Tour of Heroes displays a list of heroes in a Master/Detail view
+	Users can select a hero and see that hero's details
+	We used *ngFor to iterate and display a list
+	We used *ngIf to conditionally include or exclude a block of HTML
+	We can toggle a CSS style class with a class binding
+	We created a separate, reusable HeroDetailComponent
+	We used a property binding to give the parent HeroesComponent control over the child HeroDetailComponent
+	We used the @Input decorator (annotation) to make the hero property available for binding by the external HeroesComponent
+	We refactored data access to the HeroService class
+	We registered the HeroService as the "provider" of its service at the root level so that it can be injected anywhere in the app
+	We used Angular Dependency Injection to inject it into a component
+	We gave the HeroService "getData" method an asynchronous signature
+	We discovered Observable and the RxJS Observable library
+	We used RxJS of() to return an observable of mock heroes (Observable<Hero[]>)
+	The component's ngOnInit() lifecycle hook calls the HeroService method, not the constructor
+	We created a MessageService for loosely-coupled communication bt classes
+	The HeroService injected into a component is created with another inject service, MessageService
+
+Bootstrap CDN
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+

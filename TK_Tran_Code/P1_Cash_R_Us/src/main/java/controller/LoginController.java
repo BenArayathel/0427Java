@@ -22,7 +22,7 @@
 //		account.setUsername(request.getParameter("username"));
 //		account.setPassword(request.getParameter("password"));
 //		if (account.getUsername().equals("admintk") && account.getPassword().equals("#AWDawd1")) {
-//			return "/testSuccess.html";
+//			return "/customerPortal.html";
 //		} else {
 //			return "/testFail.html";
 //		}

@@ -22,48 +22,59 @@
 </head>
 
 <body>
-<div class="jumbotron text-center">
-    <h1 class="display-2">Register</h1>
+<!-- HEADER -->
+<div class="container">
+    <div class="jumbotron text-center">
+        <h1 class="display-4">Register</h1>
+    </div>
 </div>
 
+<br>
+
+<!-- BODY -->
 <div class="container">
-    <form id="registerForm" action="/registerServlet" method="POST">
-        <!-- Input Fields -->
+    <!-- Remove action attribute to route to register.js instead of straight to RegisterServlet-->
+    <div id="registerForm">
+        <!-- INPUT FIELDS -->
         <div class="form-group row justify-content-center">
             <label class="col-form-label col-2" for="usernameInput"><strong>Username</strong></label>
-            <input class="form-control col-10" id="usernameInput" name="username" type="text"
-                   pattern="[a-zA-Z0-9]{3,15}" title="Username must be 3-15 alphanumeric characters long."
-                   placeholder="Username must be 3-15 alphanumeric characters long."
-                   autofocus required>
+            <input class="form-control col-10" id="usernameInput" name="username" type="text" pattern="[a-zA-Z0-9]{3,15}"
+                   title="Username must be 3-15 alphanumeric characters long." placeholder="Username must be 3-15 alphanumeric characters long." autofocus required>
         </div>
         <div class="form-group row justify-content-center">
             <label class="col-form-label col-2" for="passwordInput"><strong>Password</strong></label>
             <input class="form-control col-10" id="passwordInput" name="password" type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*_]).{8,}"
                    title="Password must be 8-20 characters long with 1 uppercase, 1 lowercase, 1 number and 1 special character (!@#$%^&*_)."
-                   placeholder="Password must be 8-20 characters long with 1 uppercase, 1 lowercase, 1 number and 1 special character (!@#$%^&*_)."
-                   required>
+                   placeholder="Password must be 8-20 characters long with 1 uppercase, 1 lowercase, 1 number and 1 special character (!@#$%^&*_)." required>
         </div>
         <div class="form-group row justify-content-center">
             <label class="col-form-label col-2" for="nameInput"><strong>Name</strong></label>
-            <input class="form-control col-10" id="nameInput" name="name" type="text" placeholder="Enter your name."
-                   required>
+            <input class="form-control col-10" id="nameInput" name="name" type="text" title="Enter your name.." placeholder="Enter your name.." required>
         </div>
         <div class="form-group row justify-content-center">
             <label class="col-form-label col-2" for="depositInput"><strong>Initial Deposit</strong></label>
-            <input class="form-control col-10" id="depositInput" name="deposit" type="number" pattern="^\\d{1,5}"
-                   title="Deposit must be at most 5 digits." placeholder="Deposit must be at most 5 digits."
-                   required>
+            <input class="form-control col-10" id="depositInput" name="deposit" type="number" pattern="[0-9]{1,5}" title="Enter an initial deposit amount.."
+                   placeholder="Enter an initial deposit amount.." required>
+        </div>
+        <div class="form-group row justify-content-center">
+            <label class="col-form-label col-2" for="typeInput"><strong>Account Type</strong></label>
+            <input class="form-control col-10" id="typeInput" name="type" type="text" placeholder="customer" value="customer" disabled required>
         </div>
 
-        <!-- Buttons -->
+        <br>
+        <br>
+        <hr>
+
+        <!-- BUTTONS -->
         <div class="form-group row justify-content-center">
-            <input class="btn btn-info col-2" id="registerBtn" type="submit" value="Submit">
+            <input class="btn btn-info col-2" id="registerBtn" type="button" value="Submit">
             <input class="btn btn-warning col-2" id="resetBtn" type="reset" value="Reset">
+            <input class="btn btn-danger col-2" id="backBtn" type="button" onclick="window.location.assign('/index.html')" value="Go Back">
         </div>
-    </form>
+    </div>
 </div>
 
-<script type="text/javascript" src="js/index.js"></script>
+<script type="text/javascript" src="js/register.js"></script>
 </body>
 
 </html>

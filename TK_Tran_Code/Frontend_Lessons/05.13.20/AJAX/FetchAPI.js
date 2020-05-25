@@ -1,29 +1,29 @@
 // SHORTER WAY, USING FETCH API
 
 window.onload = function () {
-    this.document
-        .getElementById("swSubmit")
-        .addEventListener("click", getSW);
+	this.document
+		.getElementById("swSubmit")
+		.addEventListener("click", getSW);
 }
 
 function getSW() {
-    let swID = document.getElementById("swID").value;
+	let swID = document.getElementById("swID").value;
 
-    fetch("https://swapi.dev/api/people/" + swID) // send response to API, passing in an argument
-        .then(function (daResponse) { // receives response and parse
-            return daResponse.json();
-        })
-        .then(function (daResponse) { // use response to manipulate
-            DOMManipulation(daResponse);
-        })
-        .catch(function (daResponse) {
-            console.log("ERROR");
-        })
+	fetch("https://swapi.dev/api/people/" + swID) // send response to API, passing in an argument
+		.then(function (daResponse) { // receives response and parse to JSON
+			return daResponse.json();
+		})
+		.then(function (data) { // use response to manipulate
+			DOMManipulation(data);
+		})
+		.catch(function (error) {
+			console.log("ERROR");
+		})
 }
 
 function DOMManipulation(ourJSON) {
-    document.getElementById("swName").innerText = ourJSON.name; // using dot notation to access JSON
-    document.getElementById("swBirthYear").innerText = ourJSON.birth_year;
+	document.getElementById("swName").innerText = ourJSON.name; // using dot notation to access JSON
+	document.getElementById("swBirthYear").innerText = ourJSON.birth_year;
 }
 
 /*

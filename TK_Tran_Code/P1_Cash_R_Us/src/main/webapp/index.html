@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <title>Home Page</title>
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
@@ -22,27 +22,32 @@
 </head>
 
 <body>
-<!-- Header -->
-<div class="jumbotron text-center">
-    <h1 class="display-4">Cash R' Us!</h1>
-    <h4>Welcome to Cash R' Us, where your money is ours!</h4>
-</div>
-
-<!-- Main Body -->
+<!-- HEADER -->
 <div class="container">
-    <div class="row">
-        <h4>Select an option below to get started:</h4>
-    </div>
-
-    <!-- Buttons -->
-    <div class="container row justify-content-center">
-        <input class="btn btn-info col-4" id="registerBtn" type="button" onclick="window.location.href='/registerPortal.html'" value="Register">
-        <input class="btn btn-success col-4" id="loginBtn" type="button" onclick="window.location.href='/loginPortal.html'" value="Login">
+    <div class="jumbotron text-center">
+        <h1 class="display-2">Cash R' Us!</h1>
+        <h4>Welcome to Cash R' Us, where your money is ours!</h4>
     </div>
 </div>
 
 <br>
-<br>
+
+<!-- BODY -->
+<div class="container">
+    <div class="row justify-content-center">
+        <h4>Select an option to get started!</h4>
+    </div>
+
+    <br>
+    <br>
+    <br>
+
+    <!-- BUTTONS -->
+    <div class="row justify-content-center">
+        <input class="btn btn-info col-4" id="registerBtn" type="button" onclick="window.location.assign('/registerPortal.html')" value="Register">
+        <input class="btn btn-success col-4" id="loginBtn" type="button" onclick="window.location.assign('/loginPortal.html')" value="Login">
+    </div>
+</div>
 
 <script type="text/javascript" src="js/index.js"></script>
 </body>

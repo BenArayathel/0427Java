@@ -1,6 +1,9 @@
 package servlet;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import dao.DAOImp;
 import model.Account;
+import service.Service;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,102 +14,95 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-@WebServlet("/loginServlet")
+/*
+	read loginPortal's form data and do additional validation..
+	pull a DB instance (by username) and assign to local Account obj..
+	compare credentials of input against DB instance..
+	if match, route to corresponding employee/customer page..
+	if not, route back to home page..
+ */
+
+@WebServlet("/LoginServlet")
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("LoginServlet: doPost() invoked.");
-
-//		response.setContentType("text/html");
+		System.out.println("LoginServlet - doPost()");
 		response.setContentType("application/json");
 
-		Account account = new Account();
-		account.setUsername(request.getParameter("username"));
-		account.setPassword(request.getParameter("password"));
-		if (account.getUsername().equals("admintk") && account.getPassword().equals("#AWDawd1")) {
-			System.out.println("Login Success: " + account.getUsername() + ", " + account.getPassword() + ".");
+		// Setup
+		Service service = new Service();
+		DAOImp dao = new DAOImp();
+		ObjectMapper mapper = new ObjectMapper();
+		PrintWriter writer = response.getWriter();
 
-			HttpSession session = request.getSession(); // creates a session after user logs in
-			session.setAttribute("account", account); // stores user-related info as key/value pairs in the session
+		// LOCAL ACCOUNT - Jackson ObjectMapper maps JS vars to Java obj
+		Account localAccount = mapper.readValue(request.getReader(), model.Account.class);
+		System.out.println("Local Account: " + localAccount);
 
-			response.sendRedirect("index.html"); // sends to another page
+		// Assigns localAccount vars for comparison
+		String localUsername = localAccount.getUsername();
+		String localPassword = localAccount.getPassword();
 
-			// Prints for testing purposes..
-			PrintWriter writer = response.getWriter(); // used to write directly to HTML page
-			writer.println("<h1>Username: " + account.getUsername() + "</h1>");
-			writer.println("Password: " + account.getPassword());
-			writer.println("Name: " + account.getName());
-			writer.println("Balance: " + account.getBalance());
-			writer.println("Type: " + account.getType());
-			writer.flush();
-		} else {
-			System.out.println("LoginServlet: Invalid Credentials.");
+		// HERE WE GOOO: COMPARES CREDENTIALS OF LOCALACCOUNT AND DBACCOUNT
+		try {
+			// DATABASE ACCOUNT - Pulls a db account (by input username)
+			Account dbAccount = dao.getAccount(localUsername);
+			System.out.println("Database Account: " + dbAccount);
 
-			response.sendRedirect("loginPortal.html"); // routes back to loginPortal if credentials are wrong
+			// Assigns dbAccount vars for comparison
+			String dbUsername = dbAccount.getUsername();
+			String dbPassword = dbAccount.getPassword();
+
+			if (dbUsername.equals(localUsername) && dbPassword.equals(localPassword)) {
+				if (dbAccount.getType().equals("admin")) {
+					System.out.println("Employee successfully logged in: " + dbAccount + ".");
+
+					// Session
+					HttpSession session = request.getSession();
+					session.setAttribute("account", dbAccount);
+
+					// Routing
+					writer.write("employeePortal.html");
+				} else {
+					System.out.println("Customer successfully logged in: " + dbAccount + ".");
+
+					// Session
+					HttpSession session = request.getSession();
+					session.setAttribute("account", dbAccount);
+
+					// Routing
+					writer.write("customerPortal.html");
+				}
+			} else {
+				System.out.println("Credentials DO NOT match DB!");
+
+				// Routing
+				writer.write("index.html");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
-
-		/*
-		 * ObjectMapper reads and writes JSON from POJOs
-		 * readValue() parses/deserializes JSON into an obj; writeValue() serializes an obj into JSON.
-		 * getWriter provides which objs are serialized to JSON.
-		 * writeValueAsString() returns generated JSON as a String.
-		 */
-//		ObjectMapper om = new ObjectMapper();
-//		Account account = new Account();
-//		account.setUsername(request.getParameter("username"));
-//		account.setPassword(request.getParameter("password"));
-//		account = om.readValue(request.getReader(), model.Account.class);
-//		System.out.println(account);
-//		response.getWriter().write(new ObjectMapper().writeValueAsString(account));
-
-		// ------------------------------------------------------------------------------------------------------------
-
-//		// SESSION EXAMPLE
-//		// Only when login is successful do we create a session for the user!
-//		// When user closes application, the session is automatically destroyed (or we can set a timer).
-//		// In first.html page/servlet:
-//		Account account1 = new Account();
-//		HttpSession session1 = request.getSession(); // start an HttpSession object once user logs in; this makes our app stateful!
-//		session1.setAttribute("account", account1); // setAttribute() store user-related info as key/value pairs
-//		response.sendRedirect("second.html"); // redirect to another page
-//
-//		// In second.html page/servlet:
-//		HttpSession session2 = request.getSession(false); // false means DON'T CREATE A NEW SESSION (we want to reuse the first session); returns null if no sessions exist
-//		if (session2 == null) { // if there's no session..
-//			response.sendRedirect("first.html"); // ..route back to beginning to create one..
-//		} else { // ..else read more fields and add them to another obj
-//			Account account2 = (Account) session2.getAttribute("account"); // getAttribute() returns the VALUE of the specified KEY
-//			account2.setUsername(request.getParameter("username")); // read username field and assign to obj
-//			session2.setAttribute("account", account2); // store in session as key/value pair again
-//			response.sendRedirect("third.html"); // redirect to another page
-//		}
-//
-//		// In third.html page/servlet:
-//		HttpSession session3 = request.getSession(false); // again, don't create a new session but use the original session
-//		if (session3 == null) {
-//			response.sendRedirect("first.html");
-//		} else {
-//			Account account3 = (Account) session3.getAttribute("account");
-//			account3.setPassword(request.getParameter("password")); // read password field and assign to obj
-//			session3.setAttribute("account", account3);
-//
-//			// FINALLY, print things out
-//			PrintWriter pw = response.getWriter();
-//			pw.println("Username: " + account3.getUsername());
-//			pw.println("Password: " + account3.getPassword());
-//			pw.println("Session ID: " + session3.getId());
-//			pw.println("Session created on: " + new Date(session3.getCreationTime()));
-//			pw.println("Session last accessed time: " + new Date(session3.getLastAccessedTime()));
-//			pw.println("Session max inactive time: " + session3.getMaxInactiveInterval());
-//			session3.invalidate(); // manually destroys the session
-//		}
 	}
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("LoginServlet: doGet() invoked.");
+		System.out.println("LoginServlet - doGet()");
 		response.setContentType("application/json");
 	}
 }
+
+/*
+ * ObjectMapper reads and writes JSON from POJOs
+ * readValue() parses/deserializes JSON into an obj; writeValue() serializes an obj into JSON.
+ * getWriter provides which objs are serialized to JSON.
+ * writeValueAsString() returns generated JSON as a String.
+ */
+//		ObjectMapper om = new ObjectMapper();
+//		Account account = new Account();
+//		account.setUsername(request.getParameter("username"));
+//		account.setPassword(request.getParameter("password"));
+//		account = om.readValue(request.getReader(), model.Account.class); // maps account obj based on Account class' modeling schema
+//		System.out.println(account);
+//		response.getWriter().write(new ObjectMapper().writeValueAsString(account));
