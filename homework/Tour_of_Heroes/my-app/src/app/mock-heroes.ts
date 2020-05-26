@@ -1,3 +1,6 @@
+// no longer using this mock data, using
+// httpclient to access an in-memory db instead
+
 import { Hero } from './hero';
 
 export const HEROES: Hero[] = [

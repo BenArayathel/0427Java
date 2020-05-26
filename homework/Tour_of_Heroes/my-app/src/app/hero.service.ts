@@ -4,6 +4,7 @@ import { HEROES } from './mock-heroes';
 import { Observable, of } from 'rxjs';
 import { MessageService } from './messages.service';
 
+
 // this service is sort of like our connection to a db
 // we are still using a connection to mock data for the project, but
 // it could be to a sql oracle server instead. the components
@@ -19,6 +20,12 @@ export class HeroService {
   getHeroes(): Observable<Hero[]> {
     this.messageService.add('HeroService: fetched heroes');
     return of(HEROES);
+  }
+
+  getHero(id: number): Observable<Hero> {
+    // TODO: send the message _after_ fetching the hero
+    this.messageService.add(`HeroService: fetched hero id=${id}`);
+    return of(HEROES.find(hero => hero.id === id));
   }
 
   constructor(private messageService: MessageService) { }

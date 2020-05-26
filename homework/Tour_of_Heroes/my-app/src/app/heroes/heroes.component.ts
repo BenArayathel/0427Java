@@ -15,7 +15,8 @@ import { MessageService } from '../messages.service';
 })
 export class HeroesComponent implements OnInit {
   
-  selectedHero: Hero; // this typescript syntax means <variable> ofType <object>
+  // no longer how we are selecting them
+  // selectedHero: Hero; // this typescript syntax means <variable> ofType <object>
   
   // first hardcoded hero
   // hero: Hero = {
@@ -33,10 +34,11 @@ export class HeroesComponent implements OnInit {
   // part of the onclick logic
   // click on an item, it assigns it to be
   // the (class? variable?) of selectedHero of type Hero
-  onSelect(hero: Hero): void {
-    this.selectedHero = hero;
-    this.messageService.add(`HeroService: Selected hero id = ${hero.id}`);
-  }
+
+  // onSelect(hero: Hero): void {
+  //   this.selectedHero = hero;
+  //   this.messageService.add(`HeroService: Selected hero id = ${hero.id}`);
+  // }
 
   // a method to get the heroes from the service layer
   // method of the same name, which gets the 'db' data
@@ -44,18 +46,17 @@ export class HeroesComponent implements OnInit {
   //   this.heroes = this.heroService.getHeroes();
   // }
 
+  // this is injecting a SINGLETON instance, btw
+  constructor(private heroService: HeroService) { }
+
+  ngOnInit(): void {
+    this.getHeroes();
+  }
+  
   // new way using observables, closer to actual HTTP request approach
   getHeroes(): void {
     this.heroService.getHeroes()
       .subscribe(heroes => this.heroes = heroes);
-  }
-
-  // this is injecting a SINGLETON instance, btw
-  constructor(private heroService: HeroService,
-    private messageService: MessageService) { }
-
-  ngOnInit(): void {
-    this.getHeroes();
   }
   
   // ngOnInit(): {
