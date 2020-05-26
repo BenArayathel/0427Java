@@ -31,11 +31,18 @@ function checkCredentials() {
         	}).then(
         		response => response.json()).then(
         				data => {
+        					console.log(data);
+        					if(data["status"] == "customer") {
+        						localStorage.clear();
+            					localStorage.setItem("userData", JSON.stringify(data));
+        						window.location.href = "./index.html";
+        					}
+        					else if(data["status"] == "employee") {
+        						localStorage.clear();
+            					localStorage.setItem("userData", JSON.stringify(data));
+        						window.location.href = "./employeePortal.html";
+        					}
         					
-        					localStorage.clear();
-        					localStorage.setItem("userData", JSON.stringify(data));
-        					window.location.href = "./index.html";
-        				    
         				}).catch(error =>{
         					console.log(error)
         					//window.location.href = "./404.html";

@@ -65,3 +65,7 @@ table, th, td {
 .lookupRecord {
 	width: 100px;
 }
+
+#employeeLogoutButton {
+	margin: 0 auto;
+}

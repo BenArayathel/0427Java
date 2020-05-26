@@ -1,4 +1,9 @@
 window.onload = function() {
+	let currentUser = JSON.parse(localStorage.getItem("userData"));
+	console.log(currentUser);
+	if (currentUser["status"] == "customer") {
+		window.location.href= "./index.html";
+	}
 	let deleteButton = document.getElementById("deleteButton");
 	let viewButton = document.getElementById("viewButton");
 	let activateButton = document.getElementById("activateButton");
@@ -10,6 +15,11 @@ window.onload = function() {
 	let activateAccountButton = document.getElementById("activateAccountButton");
 	let deleteAccountButton = document.getElementById("deleteAccountButton");
 	let viewInactiveButton = document.getElementById("viewInactiveButton");
+	let employeeLogoutButton = document.getElementById("employeeLogoutButton");
+	
+	employeeLogoutButton.addEventListener("click", function() {
+		logOut();
+	})
 
 	deleteButton.addEventListener("click", function() {
 		if(deleteDiv.classList.contains("hidden")) {
@@ -174,5 +184,7 @@ function deleteAccount(email) {
     				});
 }
 
-
-
+function logOut() {
+	localStorage.clear();
+	window.location.href = "./login.html";
+}
