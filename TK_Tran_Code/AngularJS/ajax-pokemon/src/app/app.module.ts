@@ -7,8 +7,9 @@ import { AppComponent } from './app.component';
 import { AjaxComponent } from './ajax/ajax.component';
 import { PokemonService } from './services/pokemon.service';
 
+// ROOT MODULE, container for parts of the root-app--controllers, services, filters, etc..
 @NgModule({
-	declarations: [ // components go here
+	declarations: [ // register external components here
 		AppComponent,
 		AjaxComponent
 	],
@@ -17,7 +18,7 @@ import { PokemonService } from './services/pokemon.service';
 		FormsModule,
 		HttpClientModule
 	],
-	providers: [ // services go here
+	providers: [ // register external services here
 		PokemonService
 	],
 	bootstrap: [

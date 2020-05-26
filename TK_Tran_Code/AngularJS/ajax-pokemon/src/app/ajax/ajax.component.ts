@@ -8,16 +8,16 @@ import { PokemonService } from '../services/pokemon.service';
 })
 export class AjaxComponent implements OnInit {
 
-	pokeID: number;
-	pokeName = "";
-	pokeImageUrl = "";
-
 	constructor(private pokeService: PokemonService) {
 
 	}
 
 	ngOnInit(): void {
 	}
+
+	pokeID: number;
+	pokeName = "";
+	pokeImageUrl = "";
 
 	// Messy method
 	pokeButtonClickedMessy() {

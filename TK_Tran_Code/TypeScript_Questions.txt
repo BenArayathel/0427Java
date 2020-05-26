@@ -1,16 +1,38 @@
 What is Node.js?
+	An open-source, cross-platform, JS runtime environment that executes JS code outside of a web browser.
 What is NPM?
-What is Typescript?
-How do we install typescript from npm?
+	Node Package Manager, the default package manager for Node.js.
+	A package manager for the JS programming language.
+What is TypeScript?
+	An open-source programming language developed and maintained by Microsoft.
+	Strict syntactical superset of JavaScript and adds optional static typing to the language.
+	Designed for developing large apps and transcompiles into JS.
+How do we install TypeScript from npm?
+	npm install -g typescript
 How do we transpile ts into js using the terminal?
+	tsc file-name.ts
 What are the datatypes in typescript?
+	Boolean, Number, String, Array, Tuple, Enum, Any, Void, Null and Undefined, Never, Object
 Acess modifiers in typescript?
+	Private - accessed only within the class
+	Protected - accessed only within the class and by the instance of its subclass
+	Public - default, accessible anywhere
 What is a decorator?
-What is amodule?
-What does putting a question mark after a paramert name do?
+	Special declarations attached to a class declaration, method, accessor, property, or parameter.
+	Uses the form @expression, where expression must evaluate to a func that'll be called at runtime without info about the decorated declaration.
+What is a module?
+	Where declarations, imports, providers, and bootstraps are registered.
+What does putting a question mark after a parameter name do?
+	Marks the parameter as OPTIONAL.
 What happens when you put an access modifer on a constructor parameter?
+	???
 What does "get" and "set" keywords in front of a function do?
+	Declares that function a getter or setter for a property.
 Does typescript have inheritance?
+	Yes, using the extends keyword.
 can we do constructor overlading in TS?
+	Yes
 what is transpiling
+	Taking source code from one language and transforming it into another language.
 explain package.json
+	Configures npm package dependencies that're available to all projects in the workspace.

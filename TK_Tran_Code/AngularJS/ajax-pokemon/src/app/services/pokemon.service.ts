@@ -22,12 +22,12 @@ export class PokemonService {
 		Purpose: has tools to make asynchronous and callback functionality simpler.
 	*/
 
-	private baseURL = "https://pokeapi.co/api/v2/pokemon/";
-	private url = "";
-
 	constructor(private HttpClient: HttpClient) {
 
 	}
+
+	private baseURL = "https://pokeapi.co/api/v2/pokemon/";
+	private url = "";
 
 	// Appends ID to URL
 	setUrl(PokeID: number) {
