@@ -1,10 +1,53 @@
-<h1>account created, try to log in later</h1>
-<h3>Page will automatically return to home screen</h3>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="shortcut icon" href="">
+    <title>Beaver Trust Fiduciary Web App</title>
+</head>
+<body>
+    
+    <nav class="navbar navbar-dark bg-dark navbar-expand-sm">
+        <a href="index.html" class="navbar-brand"><img src="https://img.icons8.com/color/48/000000/beaver.png"/>Beaver Trust Fiduciary</a>
 
-<script>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#somethingCustom" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            <div class="collapse navbar-collapse" id="somethingCustom">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+                    <li class="nav-item"><a href="login.html" class="nav-link">Login</a></li>
+                    <li class="nav-item"><a href="create_user_account.html" class="nav-link">Get Started</a></li>
+                </ul>
+            </div>
+    </nav>
 
-    window.setTimeout(function redirectFunction() {
-            window.location.assign("index.html");
+    
+    <div class="container main-container d-flex justify-content-center">
+        <div class="card" style="width: 60vw; margin: 10px;">
+            <div class="card-body text-center">
+                <h1>Account creation successful!</h1>
+                <h3> Please try logging in later after an employee has had a chance to approve your account.</h3>
+                <h6 style="color: darkgray;"><i>(Redirecting to Welcome Screen.)</i></h6>
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+        //return them to the home screen
+        setTimeout(function () {
+        window.location.href = "index.html";
         }, 5000);
 
-</script>
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>

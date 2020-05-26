@@ -45,7 +45,6 @@ public class LoginServlet extends HttpServlet {
 		// map username and password onto a new User object
 		User user = mapper.readValue(req.getReader(), com.bank.models.User.class);
 		
-		System.out.println(user);
 	    System.out.println("username = " + user.getUsername());
 	    System.out.println("password = " + user.getPassword());
 	    
@@ -65,17 +64,24 @@ public class LoginServlet extends HttpServlet {
 				// this is a little clumsy, but it works, just make
 				// sure no duplicate usernames can exist
 				user = udi.accessUserObject(username);
+				System.out.println(user);
 				
-				// add a cookie of the username
-				Cookie cookie = new Cookie("username", username);
-				res.addCookie(cookie);
+				// handle whether they are approved or not
+				if (user.getApproved() == 0) {
+					writer.write("pending.html");
+				} else {
+					// add a cookie of the username
+					Cookie cookie = new Cookie("username", username);
+					res.addCookie(cookie);
+					
+					// start session
+					HttpSession session = req.getSession();
+					session.setAttribute("user", user);
+					
+					// return the redirect URL
+					writer.write("user_home.html");					
+				}
 				
-				// start session
-				HttpSession session = req.getSession();
-				session.setAttribute("user", user);
-				
-				// return the redirect URL
-				writer.write("user_home.html");
 				
 			} else {
 				System.out.println("login failed");
