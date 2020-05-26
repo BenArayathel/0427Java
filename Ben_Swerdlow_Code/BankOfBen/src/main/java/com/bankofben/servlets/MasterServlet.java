@@ -39,72 +39,15 @@ public class MasterServlet extends HttpServlet {
 		} else if (pathOrJsonString.endsWith(".html")) {
 			// if pathOrJsonString is a valid .html path, forward the request and response there
 			System.out.println("Sending dispatch to "+pathOrJsonString);
-//			System.out.println(request.getServletPath());
 			System.out.println(request.getContextPath());
-//			request.getRequestDispatcher(pathOrJsonString).forward(request, response);
 			response.sendRedirect(request.getContextPath()+pathOrJsonString);
-		} else if (validJsonString(pathOrJsonString)) {
+		} else if (isValidJsonString(pathOrJsonString)) {
 			response.setContentType("application/json");
 			response.getWriter().write(pathOrJsonString);
 		} else {
 			throw new IOException("Attempted to return bad redirect or improperly formatted JSON string: "+pathOrJsonString);
 		}
 		
-		
-		
-		
-//		String respString = "home.html";
-//		
-//		String uri = request.getRequestURI(); 
-//		System.out.println(uri);
-//		
-//		switch(uri) {
-//		case "/BankOfBen/api/InitialRegistration":
-//			System.out.println("In initial registration");
-//			try {
-//				respString = InitialRegistration.register(request, response); 
-//				System.out.println(respString);
-//			} catch (IOException | BusinessException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
-//			break;
-////		case "/BankOfBen/api/CompleteRegistration":
-////			return CompleteRegistration.register(request, response);
-//		default:
-//			System.out.println("Didn't recognize option");
-//		}
-//		
-//		if (respString.endsWith(".html")){
-//			System.out.println(respString);
-//			response.sendRedirect(respString);
-//		} else {
-//			response.setContentType("application/json");
-//			System.out.println(respString);
-//			PrintWriter out = response.getWriter();
-//			out.write(respString);
-////			out.flush();
-//		}
-		
-		
-//		try {
-//			response.sendRedirect(InitialRegistration.register(request, response));
-//		} catch (IOException | BusinessException e1) {
-//			// TODO Auto-generated catch block
-//			e1.printStackTrace();
-//		}
-//		try {
-//			request.getRequestDispatcher(RequestHelper.process(request,response)).forward(request,response);
-//		} catch (BusinessException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//		try {
-//			request.getRequestDispatcher(RequestHelper.process(request,response)).forward(request,response);
-//		} catch (ServletException | IOException | BusinessException e) {
-//			loggy.error(e);
-//			response.sendRedirect("error.html");
-//		}
 	}
 
 	/**
@@ -115,7 +58,7 @@ public class MasterServlet extends HttpServlet {
 		doGet(request, response);
 	}
 
-	private boolean validJsonString(String possibleJsonString) {
+	private boolean isValidJsonString(String possibleJsonString) {
 		boolean valid;
 		final ObjectMapper objMapper = new ObjectMapper();
 		

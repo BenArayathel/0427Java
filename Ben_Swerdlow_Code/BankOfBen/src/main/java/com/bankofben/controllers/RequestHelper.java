@@ -12,16 +12,15 @@ public class RequestHelper {
 	public static String process(HttpServletRequest request, HttpServletResponse response) {
 		System.out.println("Request Helper");
 		
-		String respString = "home.html";
+		String respString = "/home.html";
 		
-		String uri = request.getRequestURI(); 
-		System.out.println(uri);
+		String uri = request.getRequestURI();
 		
 		switch(uri) {
 		case "/BankOfBen/api/InitialRegistration":
 			System.out.println("Going to initial registration");
 			try {
-				respString = InitialRegistration.register(request, response); 
+				respString = Register.initialRegistration(request, response); 
 				System.out.println(respString);
 			} catch (IOException | BusinessException e) {
 				// TODO Auto-generated catch block, put in loggy.error
@@ -32,7 +31,7 @@ public class RequestHelper {
 		case "/BankOfBen/api/GetTempUser":
 			System.out.println("Going to get tempUser from current session");
 			try {
-				respString = GetSessionInfo.getTempUser(request, response);
+				respString = SessionInfo.getTempUser(request, response);
 				System.out.println(respString);
 			} catch (JsonProcessingException e) {
 				// TODO Auto-generated catch block
@@ -40,22 +39,27 @@ public class RequestHelper {
 				respString = null;
 			}
 			break;
-//		case "/BankOfBen/api/CompleteRegistration":
-//			return CompleteRegistration.register(request, response);
+		case "/BankOfBen/api/newUserRegistration":
+			try {
+				return Register.newUserRegistration(request, response);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				respString = null;
+			}
+		case "BankOfBen/api/GetFirstLastName":
+			return SessionInfo.getFirstLastName(request, response);
+		case "BankOfBen/api/accountApplication":
+			try {
+				return Accounts.accountApplication(request, response);
+			} catch (BusinessException | IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				respString = null;
+			}
 		default:
-			System.out.println("Didn't recognize option");
+			System.out.println("Didn't recognize option "+uri);
 		}
-		
-//		if (respString.endsWith(".html")){
-//			System.out.println(respString);
-//			response.sendRedirect(respString);
-//		} else {
-//			response.setContentType("application/json");
-//			System.out.println(respString);
-//			PrintWriter out = response.getWriter();
-//			out.write(respString);
-////			out.flush();
-//		}
 
 		return respString;
 	}

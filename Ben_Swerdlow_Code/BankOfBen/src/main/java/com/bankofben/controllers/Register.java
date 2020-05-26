@@ -8,12 +8,15 @@ import javax.servlet.http.HttpSession;
 
 import com.bankofben.exceptions.BusinessException;
 import com.bankofben.models.TempUser;
+import com.bankofben.models.User;
+import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.databind.JsonMappingException;
 //import com.bankofben.services.BankOfBenServices;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-public class InitialRegistration {
+public class Register {
 
-	public static String register(HttpServletRequest request, HttpServletResponse response) throws BusinessException,  IOException{
+	public static String initialRegistration(HttpServletRequest request, HttpServletResponse response) throws BusinessException, JsonParseException, JsonMappingException, IOException {
 		System.out.println("Initial Registration");
 		ObjectMapper objMapper = new ObjectMapper();
 //		BankOfBenServices dbs = new BankOfBenServices();
@@ -52,6 +55,24 @@ public class InitialRegistration {
 		}
 		
 		System.out.println("Returning "+respString);
+		return respString;
+	}
+
+	public static String newUserRegistration(HttpServletRequest request, HttpServletResponse response) throws JsonParseException, JsonMappingException, IOException {
+		System.out.println("New User registration");
+		
+		HttpSession session = request.getSession(false);
+		if (session==null) {
+			return null;
+		}
+		
+		ObjectMapper objMapper = new ObjectMapper();
+		String respString;
+		
+		User user = objMapper.readValue(request.getReader(), com.bankofben.models.User.class);
+		session.setAttribute("user", user);
+		respString = "/accountApplication.html";
+		
 		return respString;
 	}
 

@@ -11,6 +11,9 @@ CREATE TABLE bankofben_accounts(
     CONSTRAINT "FK Customer ID" FOREIGN KEY("Customer ID") REFERENCES bankofben_customers("Customer ID")
 );
 
+ALTER TABLE bankofben_accounts DROP CONSTRAINT "Minimum Balance";
+ALTER TABLE bankofben_accounts ADD CONSTRAINT "Non-negative Balance" CHECK("Balance" >= 0);
+
 DECLARE
 "Account Number" NUMBER;
 "Number of AcctNumbers" NUMBER;

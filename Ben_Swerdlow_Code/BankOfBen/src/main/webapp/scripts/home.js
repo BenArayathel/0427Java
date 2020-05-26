@@ -7,8 +7,8 @@ window.onload = function() {
 
 function submitUserInfo(event) {
   event.preventDefault();
-  let username = document.getElementById("username").value;
-  let email = document.getElementById("email").value;
+  let username = document.getElementById("username").value.trim();
+  let email = document.getElementById("email").value.trim();
   fetch('http://localhost:9999/BankOfBen/api/InitialRegistration', {
             method: 'POST',
             body: JSON.stringify({

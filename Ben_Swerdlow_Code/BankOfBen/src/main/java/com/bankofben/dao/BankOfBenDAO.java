@@ -91,7 +91,7 @@ public class BankOfBenDAO implements BankOfBenDAOInterface {
 	@Override
 	public Account createAccount(Account account) throws BusinessException {
 		
-		if (customerIdExists(account.getCustomerId())) {
+		if (customerIdExists(account.getCustomerId()) && account.getBalance() >= 25) {
 			try(Connection connection = OracleDbConnection.getConnection()){
 				
 				String sqlCall = "{call createaccount(?,?,?,?)}";
@@ -120,6 +120,11 @@ public class BankOfBenDAO implements BankOfBenDAOInterface {
 				b = new BusinessException("Internal database error. Please contact your SYSADMIN.");
 				throw b;
 			}
+		} else if (account.getBalance() < 25) {
+			b = new BusinessException("Cannot create account with starting balance less than $25.00. Aborted attempt to create account with a $"
+					+account.getBalance()+" starting balance.");
+			loggy.error(b);
+			throw b;
 		} else {
 			b = new BusinessException("Internal database error. Account could not be created. "
 					+ "Please contact your SYSADMIN");
