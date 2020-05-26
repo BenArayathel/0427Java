@@ -1,20 +1,17 @@
 window.onload = function (){
-
-	
 	let currentUser = JSON.parse(localStorage.getItem("userData"));
+	console.log("Deposit page loaded");
 	if(!currentUser) {
 		window.location.href = "./login.html";
 	}
 	let depositButton = document.getElementById("depositButton");
 	let depAmt = document.getElementById("depositAmount");
 	
-	
-	//document.querySelector('input[name="genderS"]:checked').value;
 	if(depositButton) {
 		depositButton.addEventListener("click", function(event) {
 	        event.preventDefault();
 	        let accountRadio = document.querySelector('input[name="accountRadios"]:checked').value;
-	        depositMoney(accountRadio, depAmt);
+	        depositMoney(accountRadio, depAmt, currentUser);
 	    })
 	}
 	
@@ -29,10 +26,8 @@ window.onload = function (){
 
 
 
-function depositMoney(whichAccount, amt) {
-    
-    console.log(userData);
-    console.log(`Checking balance- ${userData["checkingBalance"]}  Savings balance- ${userData["savingsBalance"]}`);
+function depositMoney(whichAccount, amt, currentUser) {
+   // console.log(currentUser);
     if (!isNaN(amt.value) && (amt.value < 1000.00)) {
     	let userSv = parseFloat(currentUser["savingsBalance"]);
     	let userCh = parseFloat(currentUser["checkingBalance"]);
@@ -55,8 +50,8 @@ function depositMoney(whichAccount, amt) {
         		"Accept" : "application/json"
         	},
         	body: JSON.stringify({
-        			email: userData["email"],
-        			name: userData["name"],
+        			email: currentUser["email"],
+        			name: currentUser["name"],
         			checkingBalance: userCh,
         			savingsBalance: userSv
         	})

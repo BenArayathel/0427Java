@@ -39,15 +39,23 @@ public class MasterServlet extends HttpServlet {
 		if("GET".equalsIgnoreCase(req.getMethod())) {
 			req.getQueryString();
 			String direction = req.getParameter("direction");
-			
+			String userEmail = req.getParameter("email"); 
 			if(direction.equalsIgnoreCase("user")) {
-				String userRequest = req.getReader().lines().collect(Collectors.joining(System.lineSeparator()));
-				User user = mapper.readValue(userRequest, User.class);
 				
-				User foundUser = uSI.findUser(user.getEmail());
-				mapper.writeValue(res.getWriter(), foundUser);
+				try {
+					User newUser = uDI.selectUserByEmail(userEmail);
+					Account foundAccount = aDI.selectAccountByEmail(userEmail);
+					CurrentUser foundUser = new CurrentUser(newUser.getEmail(), newUser.getName(), foundAccount.getCheckingAccountNumber(), foundAccount.getSavingsAccountNumber(), foundAccount.getActive());
+					mapper.writeValue(res.getWriter(), foundUser);
+				} catch (BusinessException e) {
+					e.printStackTrace();
+				}
+			}
+			
+			else if(direction.equalsIgnoreCase("account")) {
 				
 			}
+
 		}
 	}
 
@@ -61,14 +69,15 @@ public class MasterServlet extends HttpServlet {
 			
 			if(direction.equalsIgnoreCase("user")) {
 				String userRequest = req.getReader().lines().collect(Collectors.joining(System.lineSeparator()));
-			    //ObjectMapper mapper = new ObjectMapper();
+			    
 				User newUser = mapper.readValue(userRequest, User.class);
 				try {
 					String encPass = uSI.passwordEncryption(newUser.getPassword());
 					newUser.setPassword(encPass);
 					if(uSI.createNewUser(newUser)) {
-						CurrentUser currentUser = new CurrentUser(newUser.getEmail(), newUser.getName(), "0.00", "0.00", "customer");
 						uSI.createNewAccount(newUser.getEmail(), "0.00");
+						CurrentUser currentUser = new CurrentUser(newUser.getEmail(), newUser.getName(), "0.00", "0.00", "customer");
+						
 						loggy.debug("New current user created. Email- " + currentUser.getEmail());
 						mapper.writeValue(res.getWriter(), currentUser);
 					};
@@ -79,25 +88,6 @@ public class MasterServlet extends HttpServlet {
 					e.printStackTrace();
 				}
 			}
-			
-//			else if (direction.equalsIgnoreCase("account")) {
-//				String accountRequest = req.getReader().lines().collect(Collectors.joining(System.lineSeparator()));
-//			    //ObjectMapper mapper = new ObjectMapper();
-//				Account newAccount = mapper.readValue(accountRequest, Account.class);
-//				
-//				try {
-//					uSI.createNewAccount(newAccount.getEmail(), newAccount.getCheckingBalance());
-//					res.getWriter().append("Successfully created account associated with email " + newAccount.getEmail() + " and starting balance of " + newAccount.getCheckingBalance());
-//					doGet(req, res);
-//				} catch (BusinessException e) {
-//					loggy.info("Failed to create a new account with email " + newAccount.getEmail());
-//					res.getWriter().append("Failed to create account for email " + newAccount.getEmail());
-//					doGet(req, res);
-//					e.printStackTrace();
-//				}
-//			}
-			
-			pw.append("Successfully sent post action. And now we wait");
 		}
 		
 		else {
@@ -179,6 +169,26 @@ public class MasterServlet extends HttpServlet {
 				
 				
 			}
+			
+			else if (direction.equalsIgnoreCase("activate")) {
+				String activateRequest = req.getReader().lines().collect(Collectors.joining(System.lineSeparator()));
+				Account activationInfo = mapper.readValue(activateRequest,  Account.class);
+				
+				try {
+					aDI.updateAccount(activationInfo.getEmail(), "active", activationInfo.getActive());
+					try {
+						User newUser = uDI.selectUserByEmail(activationInfo.getEmail());
+						Account foundAccount = aDI.selectAccountByEmail(activationInfo.getEmail());
+						CurrentUser foundUser = new CurrentUser(newUser.getEmail(), newUser.getName(), foundAccount.getCheckingAccountNumber(), foundAccount.getSavingsAccountNumber(), foundAccount.getActive());
+						mapper.writeValue(res.getWriter(), foundUser);
+					} catch (BusinessException e) {
+						e.printStackTrace();
+					}
+				} catch (BusinessException e) {
+					loggy.error("Error while activating account with email " + activationInfo.getEmail());
+					e.printStackTrace();
+				}
+			}
 		}
 	}
 	
@@ -193,8 +203,9 @@ public class MasterServlet extends HttpServlet {
 				User user = mapper.readValue(userRequest, User.class);
 				
 				try {
-					uSI.removeUserProfile(user);
-					loggy.info("User with email: " + user.getEmail() + " deleted");
+					uSI.removeUserProfile(user.getEmail());
+					loggy.debug("User with email: " + user.getEmail() + " deleted");
+					res.getWriter().append("Account with email " + user.getEmail() + " deleted. Good riddance");
 				} catch (BusinessException e) {
 					e.printStackTrace();
 				}

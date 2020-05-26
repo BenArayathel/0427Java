@@ -11,7 +11,7 @@ window.onload = function (){
 	        event.preventDefault();
 	        let accountRadio = document.querySelector('input[name="accountRadios"]:checked').value;
 
-	        withdrawMoney(accountRadio, withdrawAmt);
+	        withdrawMoney(accountRadio, withdrawAmt, currentUser);
 	    })
 	}
 	
@@ -24,13 +24,11 @@ window.onload = function (){
 	}
 }
 
-function withdrawMoney(whichAccount, amt) {
-    
-    console.log(userData);
-    console.log(`Checking balance- ${userData["checkingBalance"]}  Savings balance- ${userData["savingsBalance"]}`);
+function withdrawMoney(whichAccount, amt, currentUser) {
+
     if (!isNaN(amt.value) && (amt.value < 1000.00)) {
-    	let userSv = parseFloat(userData["savingsBalance"]);
-    	let userCh = parseFloat(userData["checkingBalance"]);
+    	let userSv = parseFloat(currentUser["savingsBalance"]);
+    	let userCh = parseFloat(currentUser["checkingBalance"]);
         if (whichAccount == "checking") {
         	if(userCh - parseFloat(amt.value) >= 0.00) {
         		userCh -= parseFloat(amt.value);
@@ -59,8 +57,8 @@ function withdrawMoney(whichAccount, amt) {
         		"Accept" : "application/json"
         	},
         	body: JSON.stringify({
-        			email: userData["email"],
-        			name: userData["name"],
+        			email: currentUser["email"],
+        			name: currentUser["name"],
         			checkingBalance: userCh,
         			savingsBalance: userSv
         	})

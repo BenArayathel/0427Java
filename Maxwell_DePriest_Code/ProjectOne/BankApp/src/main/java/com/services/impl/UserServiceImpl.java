@@ -91,20 +91,10 @@ public class UserServiceImpl implements UserService {
 	}
 	
 	@Override
-	public boolean createNewAccount(String email, String startingCheckingAmount) throws BusinessException {
-		boolean verified = true;
-		if (!isValidDeposit(startingCheckingAmount)) {
-			verified = false;
-			return false;
-		}
-		if (verified) {
-			String newSavingsNum = Integer.toString(generateAccountNumber());
-			String newCheckingNum = Integer.toString(generateAccountNumber());
-			aDI.insertAccount(new Account("", newSavingsNum, newCheckingNum, startingCheckingAmount, "0.00", "false", email));
-			return true;
-		}
-		loggy.info("Failed to create new account");
-		return false;
+	public void createNewAccount(String email, String startingCheckingAmount) throws BusinessException {
+		String newSavingsNum = Integer.toString(generateAccountNumber());
+		String newCheckingNum = Integer.toString(generateAccountNumber());
+		aDI.insertAccount(new Account("", newSavingsNum, newCheckingNum, "0.00", "0.00", "false", email));
 	} // End of signUpForAccount
 	
 	public void viewAllAccounts(User u) {
@@ -191,10 +181,10 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public void removeUserProfile(User u) throws BusinessException {
-		String uEmail = u.getEmail();
-		uDI.deleteUser(uEmail);
-		aDI.deleteAccount(uEmail);
+	public void removeUserProfile(String email) throws BusinessException {
+		
+		uDI.deleteUser(email);
+		aDI.deleteAccount(email);
 		
 	}
 	

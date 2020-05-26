@@ -10,7 +10,7 @@ public interface UserService {
 	
 	public boolean createNewUser(User u) throws BusinessException;
 	public boolean userLogin(String email, String password) throws BusinessException;
-	public boolean createNewAccount(String email, String startingCheckingAmount) throws BusinessException;
+	public void createNewAccount(String email, String startingCheckingAmount) throws BusinessException;
 
 	public String checkCheckingBalance(String email) throws BusinessException;
 	public String checkSavingsBalance(String email) throws BusinessException;
@@ -19,7 +19,7 @@ public interface UserService {
 	public void withdrawMoney(String whichAccount, String amount, String email) throws BusinessException;
 	public boolean transferFunds(String uEmail, String fromWhichAccount, String receivingAccountNum, String amt) throws BusinessException;
 	
-	public void removeUserProfile(User u) throws BusinessException;
+	public void removeUserProfile(String email) throws BusinessException;
 	
 
 }

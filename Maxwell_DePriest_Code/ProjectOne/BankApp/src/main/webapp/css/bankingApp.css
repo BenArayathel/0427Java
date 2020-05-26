@@ -47,3 +47,21 @@
 .underline {
     text-decoration: underline;
 }
+
+.center {
+	align: center;
+	text-align: center;
+	margin: 0 auto;
+}
+
+table, th, td {
+	border: 1px solid #E1C158;
+}
+
+.lookupTable {
+	margin: 0 auto;
+}
+
+.lookupRecord {
+	width: 100px;
+}

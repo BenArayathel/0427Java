@@ -12,8 +12,9 @@
 <body class="forestBackground">
     
     <header><div class="container logoHeader border border-dark">
-        <h1 class= "text-center">Employee Portal</h1>
-        <h3 class="text-center">Choose a task:</h3>
+        <h1 class= "text-center underline">Employee Portal</h1>
+        <h5 class="text-center">Hello valued employee, please choose a task:</h5>
+        <br>
     </div>
     </header>
     <br>
@@ -31,17 +32,120 @@
 		</div>
 		
     </div>
-    
+    <br>
+    <br>
     <div class="container mainBody hidden" id="viewDiv">
-    	<span>View Div</span>
+    	<h2 class="text-center">View a customer</h2>
+		<br>
+		<form> 
+            <div class="form-group text-center">
+              <label for="emailLookup">Email Address</label>
+              <input type="text" class="form-control text-center" id="emailView" required>
+            </div>
+
+            <div class="text-center">
+                <button type="submit" id="viewUserButton" class="btn btn-primary text-center">Find User</button>
+                <br>
+            </div>
+           
+         </form>
+    
+    <br>
+	    <div class="container mainBody text-center">
+	    	<div class="row">
+	    		<div class="col-3"></div>
+	    		
+	    		<div class="col-6 center hidden" id="viewResult">
+			    	<table class="lookupTable">
+			    		<tr>
+			    			<th>Email</th>
+			    			<th>Name</th>
+			    			<th>Checking</th>
+			    			<th>Savings</th>
+			    			<th>Account Status</th>
+			    		</tr>
+			    		<tr>
+			    			<td class="lookupRecord" id="viewEmailRecord">Email</td>
+			    			<td class="lookupRecord" id="viewNameRecord">Name</td>
+			    			<td class="lookupRecord" id="viewCheckingRecord">Check #</td>
+			    			<td class="lookupRecord" id="viewSavingRecord">Save #</td>
+			    			<td class="lookupRecord" id="viewStatusRecord">Status</td>
+			    		</tr>
+			    	</table>
+		    	</div>
+		    	<div class="col-3"></div>
+	    	</div>
+	    </div>
+    
     </div>
     
     <div class="container mainBody hidden" id="activateDiv">
-    	<span>ActivateDiv</span>
+    	<h2 class="text-center">Activate an account</h2>
+		<br>
+		<form> 
+            <div class="form-group text-center">
+              <label for="emailLookup">Email Address</label>
+              <input type="text" class="form-control text-center" id="emailActivate" required>
+            </div>
+
+            <div class="text-center">
+                <button type="submit" id="viewInactiveButton" class="btn btn-primary text-center">Find User</button>
+                <br>
+            </div>
+           
+         </form>
+    
+    <br>
+	    <div class="container mainBody text-center">
+	    	<div class="row">
+	    		<div class="col-3"></div>
+	    		
+	    		<div class="col-6 center hidden" id="activateResult">
+			    	<table class="lookupTable">
+			    		<tr>
+			    			<th>Email</th>
+			    			<th>Name</th>
+			    			<th>Checking</th>
+			    			<th>Savings</th>
+			    			<th>Account Status</th>
+			    		</tr>
+			    		<tr>
+			    			<td class="lookupRecord" id="activateEmailRecord">Email</td>
+			    			<td class="lookupRecord" id="activateNameRecord">Name</td>
+			    			<td class="lookupRecord" id="activateCheckingRecord">Check #</td>
+			    			<td class="lookupRecord" id="activateSavingRecord">Save #</td>
+			    			<td class="lookupRecord" id="activateStatusRecord">Status</td>
+			    		</tr>
+			    	</table>
+		    	</div>
+		    	<div class="col-3"></div>
+	    	</div>
+	    	<br>
+	    	<div class="center">
+	    		<button class="btn btn-success" id="activateAccountButton">Activate Account</button>
+	    	</div>
+	    	<br>
+	    </div>
+    
     </div>
     
-    <div class="container mainBody hidden" id="deleteDiv"">
-    	<span>delete div</span>
+    
+    
+    <div class="container mainBody hidden" id="deleteDiv">
+    	<h2 class="text-center">Delete an account</h2>
+		<br>
+		<form> 
+            <div class="form-group text-center">
+              <label for="emailLookup">Email Address</label>
+              <input type="text" class="form-control text-center" id="emailDelete" required>
+            </div>
+
+            <div class="text-center">
+                <button type="submit" id="deleteAccountButton" class="btn btn-danger text-center">Delete User</button>
+            </div>
+
+         </form>
+         <br>
     </div>
 
 
