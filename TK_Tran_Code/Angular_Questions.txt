@@ -1,12 +1,24 @@
 What is Angular?
-Difference between Angular JS and Angular?
+	TypeScript-based open-source web application framework managed by Google.
+Difference between AngularJS and Angular?
+	AngularJS was 1.0 based on JavaScript; Angular is based on TypeScript.
 Technologies that you should include for your environment to create an Angular application?
+
 What is Angular CLI?
+	A CLI used to initialize, develop, and maintain Angular applications.
+	Can be used directly in a command shell.
 How to create a new Angular project using Angular CLI?
+	ng new - creates an Angular app
+	ng generate - generates components, routes, services, and pipes (CLI also creates test shells for all these)
+	ng serve - easily test app locally while developing (like LiveServer)
 (Folder structure) What is e2e?
+	End-to-end testing folder
 (Folder structure) What is node_modules?
+	A folder for build tools; contains libraries downloaded from npm.
 (Folder structure) What is src?
+	Contains main source files.
 Where is the app folder located? What files does it contain (if created by Angular CLI)
+	
 What is a decorator?
 What is a module?
 What is @NgModule? What are some of the attributes inside of the @NgModule decorator?

@@ -1,21 +1,76 @@
 Explain JEE architecture
-	Java Enterprise Edition
-	
+	JEE is built on top of JSE.
+	Provides an API and runtime environment for developing and running large-scale, 
+		multi-tiered, scalable, reliable, and secure network applications.
 define servlet
+	Java programs that run on the web server.
+	Handles requests obtained from the web server, processes the request, produces a response, and sends the response back to web server.
 explain life cycle of the servlet
+	Entire process from creation until destruction:
+		init() - servlet initialized
+		service() - called to process a client's request
+		destroy() - called to terminate the servlet
+		Servlet is then collected by the garbage collector of the JVM
 explain servlet hierarchy
+	Servlet (I) > GenericServlet (C) > UserDefinedServlets
 explain why http is called as stateless protocol
+	No session info is retained by the server (receiver).	
 what are the different ways you make http stateless to stateful using servlets
+	Cookies - a piece of info persisted between multiple client requests
+	Hidden Form Field - an invisible textfield; get it from another servlet
+	URL Rewriting - append a token (identifier) to URL of the next servlet/resource; from the servlet/resource, use getParameter() to obtain the parameter
+	HttpSession - servlet creates a session id for each user
 what are the different types of servlets available. differentiate between them
-explain Front controller design pattern
+	Generic Servlets - protocol independent; contain no inherent HTTP support or any other transport protocol
+	HTTP Servlets - have built-in HTTP protocol support; doGet() and doPost() are used to handle client requests (GET or POST requests)
+explain Front Controller design pattern
+	Provides a centralized request-handling mechanism so all requests is handled by a single handler.
+		Handler can authenticate/authorize/log/track all requests and then pass them to corresponding handlers.
+		Entities:
+			Front Controller - single handler for all requests coming to the application
+			Dispatcher - object which forwards the requests to corresponding specific handler
+			View - object for which the requests are made
 what are the different scopes available in servlets
+	Request Scope - most useful when processing requests of a submitted form; guarantees that no other request will affect your obj while a request is being handled.
+		Lifespan: shortest; lives until a request is successfully processed.
+	Session Scope - associated with a user; when user visits we app, a session is created by a servlet.
+		Lifespan: lives as long as a user interacts with our app or until session.invalidate() is called.
+	Application Scope - global scope associataed with our web app.
+		Lifespan: as long as the web app is deployed.
 explain web container
+	aka "servlet container"; a component of a web server that interacts with Java servlets.
+	Responsible for managing servlet's lifecycle, mapping a URL to a particular servlet, and ensuring that the URL request has correct access-rights.
 web server vs application server
+	Web server serves static pages (HTML/CSS)
+	Application server generates dynamic content by executing server-side code (JSP, Servlet, EJB)
 http status codes
+	1xx - informational
+	2xx - success
+	3xx - redirection
+	4xx - client errors
+	5xx - server errors
 what is RequestDispatcher?
+	An interface that provides the facility of dispatching requests to another resource (HTML/Servlet/JSP).		
 include vs forward vs sendredirect
-explain the need of deployment discriptor
+	public void forward(request, response)
+		Forwards a request from a servlet to another resource on the server (servlet/JSP/HTML)
+	public void include(request, response)
+		Includes the content of a resource (servlet/JSP/HTML) in the response.
+	sendRedirect()
+		HttpServletResponse (I) method; used to redirect response to another resource (servlet/JSP/HTML).
+explain the need of deployment descriptor (DD)
+	It's a config file for an artifact that's deployed to some container.
+	Describes hHOW a component, module, or application should be deployed.
 give servlet tags and also annotations
+	@WebServlet - annotation used to declare a servlet inside a Java file
+	Can also use a web.xml file with tags:
+		<servlet>, <servlet-mapping>, <context-param>, <display-name>, etc..
 what is filter
+	A component that dynamically intercepts requests and responses.
+	Typically not created themselves, but instead "attached" to a servlet/JSP page.
+	Provides the ability to encapsulate recurring tasks into reusable units.
 talk about apache tomcat and compare it with other JEE containers
+	It's an application server that act as a container for servlets.
+	Designed to execute Java servlets and render pages that use JSP (Java Server Pages).
 explain client server model
+	Distributed application structure that splits tasks between service providers (servers) and service requestors (clients).
