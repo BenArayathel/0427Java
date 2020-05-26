@@ -1,0 +1,65 @@
+Explain JEE architecture
+The JEE platform provides the environment to develop enterprise applications / services using multitier architecture. ... - JEE provides a programming development environment which improves the productivity of development, standards for hosting / deploying enterprise applications.
+		
+define servlet
+A servlet is a Java program that runs on a Web server. It is similar to an applet, but is processed on the server rather than a client's machine.
+
+explain life cycle of the servlet
+A servlet life cycle can be defined as the entire process from its creation till the destruction. ... The servlet is initialized by calling the init() method. The servlet calls service() method to process a client's request. The servlet is terminated by calling the destroy() method.	
+	
+explain servlet hierarchy	
+We have a presentation layer <-> servlets <-> service layer <-> dao layer <-> db 
+
+Servlet Class Hierarchy. The Servlet interface is the root interface of the servlet class hierarchy. All Servlets need to either directly or indirectly implement the Servlet interface. The GenericServlet class of the Servlet API implements the Servlet interface.
+	
+explain why http is called as stateless protocol
+HTTP is called a stateless protocol because each command is executed independently, without any knowledge of the commands that came before it. This is the main reason that it is difficult to implement Web sites that react intelligently to user input.
+		
+what are the different ways you make http stateless to stateful using servlets
+In a Stateless Protocol, no information about a transaction is maintained after a transaction is processed. In a Stateful Protocol, state information is kept even after a transaction has been processed
+		
+what are the different types of servlets available. differentiate between them
+generic and HTTP
+GenericServlet and HttpServlet is that the GenericServlet is protocol independent and can be used with any protocol such as HTTP, SMTP, FTP, and, CGI while HttpServlet is protocol dependent and only used with HTTP protocol.	
+	
+explain Front controller design pattern		
+The front controller design pattern means that all requests that come for a resource in an application will be handled by a single handler and then dispatched to the appropriate handler for that type of request
+
+what are the different scopes available in servlets
+page scope, request scope, session scope and application scope. 
+		
+explain web container	
+It is the component of a web server that interacts with Java servlets	
+
+web server vs application server
+web server is meant to serve static pages e.g. HTML and CSS, while Application Server is responsible for generating dynamic content by executing server side code 
+		
+http status codes	
+	
+what is RequestDispatcher?
+RequestDispatcher is an interface, implementation of which defines an object which can dispatch request to any resources(such as HTML, Image, JSP, Servlet) on the server.
+		
+include vs forward vs sendredirect
+in case of forward(), redirect happens at server end and not visible to client, but in case of sendRedirect(), redirection happens at client end and it's visible to client.
+		
+explain the need of deployment discriptor
+Deployment descriptor (web. xml) helps us to configure and provide mapping for URL's to respective servlets or JSP's.
+		
+give servlet tags and also annotations	
+@HandlesTypes.
+@ServletSecurity, @HttpMethodConstraint and @HttpConstraint.
+@MultipartConfig.
+@WebFilter.
+@WebInitParam.
+@WebListener.
+@WebServlet.
+	
+what is filter	
+A Servlet filter is an object that can intercept HTTP requests targeted at your web application. 	
+
+talk about apache tomcat and compare it with other JEE containers
+Tomcat is a web server and a Servlet/JavaServer Pages container. JEE Containers are the interface between a component and the low-level platform-specific functionality that supports the component. Java EE servers are sometimes called application servers, because they allow you to serve application data to clients, much like web servers serve web pages to web browsers.
+		
+explain client server model		
+The client-server model describes how a server provides resources and services to one or more clients. Examples of servers include web servers, mail servers, and file servers. 
+		
