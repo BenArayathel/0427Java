@@ -1,0 +1,15 @@
+<!-- 
+	This template presents a grid of hero name links.
+		The *ngFor repeater, an attribute directive, creates as many links as there are in the component's heroes array.
+		The links are styled as colored blocks by the dashboard.component.css file.
+ -->
+
+<h3>Top Heroes</h3>
+
+<div class="grid grid-pad">
+	<a *ngFor="let hero of heroes" class="col-1-4" routerLink="/detail/{{hero.id}}">
+		<div class="module hero">
+			<h4>{{hero.name}}</h4>
+		</div>
+	</a>
+</div>

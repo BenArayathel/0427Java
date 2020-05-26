@@ -1,10 +1,12 @@
-<!-- *ngIf hides empty details. -->
-<!-- Required bc when app starts, there are initially no selectedHeroes. -->
-<!-- When selectedHero is undefined (which it is initially), ngIf removes this div from the DOM. -->
-<!-- This div only displays IF user selects a hero from the list. -->
+<!-- *ngIf is a structural directive that shows/hides details if the boolean expression evaluates to true/false. -->
+<!-- Required here bc when app starts, there are initially no selectedHeroes. -->
+<!-- When selectedHero is undefined (which it is initially), ngIf removes this div from the DOM! -->
+<!-- This div only displays IF the user selects a hero from the list. -->
 <div *ngIf="hero">
 	<h2>{{hero.name | uppercase}} Details</h2>
+
 	<div><span>ID: </span>{{hero.id}}</div>
+
 	<div>
 		<label>Name:
 			<!-- [(ngModel)] is Angular's two-way binding syntax. -->
@@ -13,4 +15,6 @@
 			<input [(ngModel)]="hero.name" placeholder="Hero Name" />
 		</label>
 	</div>
+
+	<button (click)="goBack()">Go Back</button>
 </div>

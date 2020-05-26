@@ -6,6 +6,6 @@ import { Component } from '@angular/core';
 	templateUrl: './app.component.html', // specifies where the template (HTML) file is located
 	styleUrls: ['./app.component.css'] // specifies where the style (CSS) file is located
 })
-export class AppComponent {
+export class AppComponent { // component logic defined in its class
 	title = 'Pokemon API: AJAX';
 }

@@ -1,10 +1,12 @@
-<!-- This page is considered the "application shell". -->
+<!-- This page is the "APPLICATION SHELL" -->
 
-<!-- {{}} is Angular's interpolation binding syntax; this interpolation binds the component's "title" property to the HTML header tag itself. -->
 <h1>{{title}}</h1>
 
-<!-- To display heroes component, we add it the HTML of the shell app component. -->
-<!-- Recall: app-heroes was the ELEMENT selector for the heroes component; so add <app-heroes> element. -->
-<app-heroes></app-heroes>
+<nav>
+	<a routerLink="/dashboard">Dashboard</a>
+	<a routerLink="/heroes">Heroes</a>
+</nav>
 
+<!-- <router-outlet> tells router where to display routed views. -->
+<router-outlet></router-outlet>
 <app-messages></app-messages>

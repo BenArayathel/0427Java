@@ -1,28 +1,42 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms'; // <-- ngModel lives here.
+import { BrowserModule } from '@angular/platform-browser'; // contains required infrastructure for all Angular apps; included by default.
+import { NgModule } from '@angular/core'; // marks a class as an NgModule (root module) and supplies configuration metadata.
+import { FormsModule } from '@angular/forms'; // <-- ngModel lives here; contains mechanisms for template-driven forms.
+import { AppRoutingModule } from './app-routing.module'; // contains routes and a router outlet where Ang will insert the currently-matched component.
+import { HttpClientModule } from '@angular/common/http'; // contains mechanisms for communicating with a remote server over HTTP.
 
-import { AppComponent } from './app.component';
+// IN-MEMORY WEB API USED TO SIMULATE A DATA SERVER (Reference: https://github.com/angular/in-memory-web-api)
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { InMemoryDataService } from './in-memory-data.service';
+
+import { AppComponent } from './app.component'; // the root AppComponent
 import { HeroesComponent } from './heroes/heroes.component';
 import { HeroDetailComponent } from './hero-detail/hero-detail.component';
 import { MessagesComponent } from './messages/messages.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
-// This is the ROOT MODULE
+
+// ROOT MODULE
 @NgModule({
-	declarations: [ // all components must be declared here
+	declarations: [ // register components, directives, and pipes here
 		AppComponent,
+		DashboardComponent,
 		HeroesComponent,
 		HeroDetailComponent,
 		MessagesComponent
 	],
-	imports: [ // all external imports here
+	imports: [ // register modules from external imports here
 		BrowserModule,
-		FormsModule
+		FormsModule,
+		AppRoutingModule,
+		HttpClientModule,
+
+		// The HttpClientInMemoryWebApiModule module intercepts HTTP requests and returns simulated server responses.
+		// Remove it when a real server is ready to receive requests.
+		HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, { dataEncapsulation: false })
 	],
 	providers: [
 
 	],
 	bootstrap: [AppComponent]
 })
-
 export class AppModule { }

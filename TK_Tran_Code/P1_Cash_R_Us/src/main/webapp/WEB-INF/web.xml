@@ -45,7 +45,7 @@
 	<!--		<url-pattern>/RegisterServlet</url-pattern>-->
 	<!--	</servlet-mapping>-->
 
-	<!-- Servlet Context (Global)-->
+	<!-- ServletContext (Global)-->
 	<!-- context-param = params that're specified for an entire application, available to ALL servlets-->
 	<!--	<context-param>-->
 	<!--		<param-name>databaseurl</param-name>-->

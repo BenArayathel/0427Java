@@ -1,6 +1,6 @@
 Explain JEE architecture
 	JEE is built on top of JSE.
-	Provides an API and runtime environment for developing and running large-scale, 
+	Provides an API and runtime environment for developing and running large-scale,
 		multi-tiered, scalable, reliable, and secure network applications.
 define servlet
 	Java programs that run on the web server.
@@ -14,7 +14,7 @@ explain life cycle of the servlet
 explain servlet hierarchy
 	Servlet (I) > GenericServlet (C) > UserDefinedServlets
 explain why http is called as stateless protocol
-	No session info is retained by the server (receiver).	
+	No session info is retained by the server (receiver).
 what are the different ways you make http stateless to stateful using servlets
 	Cookies - a piece of info persisted between multiple client requests
 	Hidden Form Field - an invisible textfield; get it from another servlet
@@ -50,7 +50,7 @@ http status codes
 	4xx - client errors
 	5xx - server errors
 what is RequestDispatcher?
-	An interface that provides the facility of dispatching requests to another resource (HTML/Servlet/JSP).		
+	An interface that provides the facility of dispatching requests to another resource (HTML/Servlet/JSP).
 include vs forward vs sendredirect
 	public void forward(request, response)
 		Forwards a request from a servlet to another resource on the server (servlet/JSP/HTML)
@@ -59,8 +59,9 @@ include vs forward vs sendredirect
 	sendRedirect()
 		HttpServletResponse (I) method; used to redirect response to another resource (servlet/JSP/HTML).
 explain the need of deployment descriptor (DD)
+	web.xml file
 	It's a config file for an artifact that's deployed to some container.
-	Describes hHOW a component, module, or application should be deployed.
+	Describes HOW a component, module, or application should be deployed.
 give servlet tags and also annotations
 	@WebServlet - annotation used to declare a servlet inside a Java file
 	Can also use a web.xml file with tags:
@@ -72,5 +73,6 @@ what is filter
 talk about apache tomcat and compare it with other JEE containers
 	It's an application server that act as a container for servlets.
 	Designed to execute Java servlets and render pages that use JSP (Java Server Pages).
+	A complete Java ecosystem.
 explain client server model
 	Distributed application structure that splits tasks between service providers (servers) and service requestors (clients).

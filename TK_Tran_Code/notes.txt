@@ -791,6 +791,14 @@ Tour of Heroes
 	The component's ngOnInit() lifecycle hook calls the HeroService method, not the constructor
 	We created a MessageService for loosely-coupled communication bt classes
 	The HeroService injected into a component is created with another inject service, MessageService
+	We added the Angular router to navigate among different components.
+	We turned the AppComponent into a navigation shell with <a> links and a <router-outlet>.
+	We configured the router in an AppRoutingMModule.
+	We defined simple routes, a redirect route, and a parameterized route.
+	We used the routerLink directive in anchor elements.
+	We refactored a tightly-coupled master/detail view into a routed detail view.
+	We used router link params to navigate to the detail view of a user-selected hero.
+	We shared the HeroService among multiple components.
 
 Bootstrap CDN
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">

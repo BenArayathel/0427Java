@@ -4,9 +4,10 @@ What is NPM?
 	Node Package Manager, the default package manager for Node.js.
 	A package manager for the JS programming language.
 What is TypeScript?
-	An open-source programming language developed and maintained by Microsoft.
+	An open-source programming language developed and maintained by MICROSOFT.
 	Strict syntactical superset of JavaScript and adds optional static typing to the language.
-	Designed for developing large apps and transcompiles into JS.
+	All valid TypeScript is valid JavaScript.
+	Designed for developing large-scale apps and transcompiles into JS.
 How do we install TypeScript from npm?
 	npm install -g typescript
 How do we transpile ts into js using the terminal?
@@ -19,7 +20,7 @@ Acess modifiers in typescript?
 	Public - default, accessible anywhere
 What is a decorator?
 	Special declarations attached to a class declaration, method, accessor, property, or parameter.
-	Uses the form @expression, where expression must evaluate to a func that'll be called at runtime without info about the decorated declaration.
+	Uses the form @expression, where expression must evaluate to a func that'll be called at runtime.
 What is a module?
 	Where declarations, imports, providers, and bootstraps are registered.
 What does putting a question mark after a parameter name do?

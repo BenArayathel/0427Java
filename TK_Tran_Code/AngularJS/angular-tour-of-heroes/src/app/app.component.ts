@@ -5,8 +5,7 @@ import { Component } from '@angular/core';
 	templateUrl: './app.component.html',
 	styleUrls: ['./app.component.css']
 })
-
 export class AppComponent {
-	// These properties can be accessed/data-binded via interpolation syntax {{}} in the template(html) itself
+	// These properties can be accessed/data-binded via interpolation syntax {{}} in the template (HTML) itself.
 	title = 'Marvel Cinematic Universe';
 }

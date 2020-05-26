@@ -1,6 +1,7 @@
 import { Hero } from './hero';
 
 // This is a file that holds mock heroes; uses the Hero interface
+// It can be deleted because we're using a simulation server to extract data instead of a static file like this.
 export const HEROES: Hero[] = [
 	{ id: 11, name: 'Superman' },
 	{ id: 12, name: 'Batman' },
