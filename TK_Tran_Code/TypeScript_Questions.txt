@@ -1,0 +1,16 @@
+What is Node.js?
+What is NPM?
+What is Typescript?
+How do we install typescript from npm?
+How do we transpile ts into js using the terminal?
+What are the datatypes in typescript?
+Acess modifiers in typescript?
+What is a decorator?
+What is amodule?
+What does putting a question mark after a paramert name do?
+What happens when you put an access modifer on a constructor parameter?
+What does "get" and "set" keywords in front of a function do?
+Does typescript have inheritance?
+can we do constructor overlading in TS?
+what is transpiling
+explain package.json

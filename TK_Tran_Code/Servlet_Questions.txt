@@ -1,0 +1,21 @@
+Explain JEE architecture
+	Java Enterprise Edition
+	
+define servlet
+explain life cycle of the servlet
+explain servlet hierarchy
+explain why http is called as stateless protocol
+what are the different ways you make http stateless to stateful using servlets
+what are the different types of servlets available. differentiate between them
+explain Front controller design pattern
+what are the different scopes available in servlets
+explain web container
+web server vs application server
+http status codes
+what is RequestDispatcher?
+include vs forward vs sendredirect
+explain the need of deployment discriptor
+give servlet tags and also annotations
+what is filter
+talk about apache tomcat and compare it with other JEE containers
+explain client server model

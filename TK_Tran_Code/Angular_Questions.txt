@@ -1,0 +1,46 @@
+What is Angular?
+Difference between Angular JS and Angular?
+Technologies that you should include for your environment to create an Angular application?
+What is Angular CLI?
+How to create a new Angular project using Angular CLI?
+(Folder structure) What is e2e?
+(Folder structure) What is node_modules?
+(Folder structure) What is src?
+Where is the app folder located? What files does it contain (if created by Angular CLI)
+What is a decorator?
+What is a module?
+What is @NgModule? What are some of the attributes inside of the @NgModule decorator?
+What is a component?
+What is @Componnent? Attributes inside of the @Component decorator?
+How to add new component inside of Angular, using Angular CLI?
+How to create a component, without Angular CLI?
+How to inculde a component on another component's HTML template page?
+What is a directive?
+What are the different kind of directives provided by Angular?
+What is *ngIf and how does it work?
+What is *ngFor and how does it work?
+What is data binding? What are the different data binding options?
+What is a pipe? What are some pipes that come with Angular?
+Can we create custom pipes in Angular?
+What are filters in Angular
+What is a SPA?
+What is routing? Why does Angular implement its own routingmodule?
+What are Angular services? What is an advantage of using sevices?
+What is a Dependency injection?
+How would you add a new service to your project using Angular CLI?
+How would you add a new service to your project, without using Angular CLI?
+How do you perform HTTP requests in Angular?
+Does the HttpClient object create synchronized requests?
+What is a Promise?
+What is an Observable? What do you need to do , to use it inside of an Angular project?
+Difference between Promises and Observable
+What is the lifecycle of a component?
+What are the lifecycle hooks for a component?
+What is the ngOninit() function?
+Explain types of directives
+explain how will you create a custom pipe
+give few examples of predefined pipes
+how forms are handled in angular, explain both types of forms
+different ways of doing data binding in angular
+how would you convert typescript class to angular's component
+explain angular services and how can you inject them
