@@ -39,8 +39,12 @@ public class CustBalanceServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 			
-		 System.out.println("balance servlet doGET was called ... ...");
+		 System.out.println("\n\nCustBalanceServlet doGET running......");
 		 HttpSession session = req.getSession(false);
+		 
+			if (session == null) {
+				System.out.println("\nSession was null");
+			}
 		 
 		 /**
 		  * IN THE SESSION OBJECT I HAVE:
@@ -61,11 +65,14 @@ public class CustBalanceServlet extends HttpServlet {
 		  */
 		 
 		 // the way this line looks, it is as if you can just go an use the POJO but it's NULL
-		 //User user = (User) session.getAttribute("user");
+		 User user = (User) session.getAttribute("user");
+		 System.out.println("\nin getBalance doGet: USER is : \n" + user.toString());
 // upper or lower		 
 		 //String user2 =  session.getAttribute("mappedStringUser").toString();
+		 //System.out.println("\nthis is mappedStringUser: " + user2);
 // upper or lower
-		 //String myCleanString = (String) session.getAttribute("myCleanString");
+		 String myCleanString = (String) session.getAttribute("myCleanString");
+		 System.out.println("\nhere is myCleanString: " + myCleanString);
 		 
 		 //String bal = session.getAttribute("balance").toString();
 		 //System.out.println("user balance via SESSION: " + bal);
@@ -73,8 +80,8 @@ public class CustBalanceServlet extends HttpServlet {
 		 //System.out.println("user balance via SESSION: " + (User) session.getAttribute("balance").toString());
 		 //System.out.println("user balance via SESSION: " + ((ServletRequest) session).getAttribute("balance").toString());
 		 
-//		 User user = (User) session.getAttribute("user11");
-//		 System.out.println("\nuser11 via SESSION: " + user.toString() );
+		 //User user = (User) session.getAttribute("user11");
+		 //System.out.println("\nuser11 via SESSION: " + user.toString() );
 		 
 //			"access"
 //			"balance"
@@ -98,20 +105,58 @@ public class CustBalanceServlet extends HttpServlet {
 		  * it is already a json mapped string: yes ?? ?? ?? ...............................................................................
 		  * so why use another ObjectMapper ...
 		  */
+		 
+		 
+		 
+			String user_in_Json =
+				    "{ \"userName\" : \"" + user.getUserName() + "\","
+				    + " \"contactPhone\" : \"" + user.getContactPhone() + "\","
+				    + " \"password\" : \"" + user.getPassword() + "\","
+				    + " \"user_id\" : \"" + user.getUser_id() + "\","
+				    + " \"email\" : \"" + user.getEmail() + "\","
+				    + " \"dob\" : \"" + user.getDob() + "\","
+				    + " \"soc\" : \"" + user.getSoc() + "\","
+				    + " \"balance\" : \"" + user.getBalance() + "\","
+				    + " \"a_access\" : \"" + user.getA_access() + "\" }";
+			
+			session.setAttribute("myCleanString", user_in_Json);
+		 
+		 
+		 
+		 
 		 // https://stackoverflow.com/questions/2010990/how-do-you-return-a-json-object-from-a-java-servlet
-//		 res.setContentType("application/json");
-//		 res.setCharacterEncoding("UTF-8");
-//		 res.getWriter().write(myCleanString);
+		 res.setContentType("application/json");
+		 res.setCharacterEncoding("UTF-8");
+		 res.getWriter().write(myCleanString);
 
 // below is just balance
 // which is a one liner
-		 res.getWriter().write("{\"balance\": \"" + session.getAttribute("balance").toString() +"\"}");
+		 //res.getWriter().write("{\"balance\": \"" + session.getAttribute("balance") +"\"}");
 		 //res.getWriter().write(new ObjectMapper().writeValueAsString(user2));
+
+		 
 		 //doPost(req, res);
 		 
 		 // FIX OFF OF JSON SCREEN
 		 //res.sendRedirect("http://localhost:9999/Password/balance.html");
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {

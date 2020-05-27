@@ -9,7 +9,6 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
-  
   <servlet>
     <servlet-name>Lunch</servlet-name>
     <servlet-class>com.lunch.servlet.LunchServlet</servlet-class>
@@ -18,22 +17,21 @@
     <servlet-name>Lunch</servlet-name>
     <url-pattern>/pass</url-pattern>
   </servlet-mapping>
-  
   <servlet>
-  	<servlet-name>userLogin</servlet-name>
+    <servlet-name>userLogin</servlet-name>
     <servlet-class>com.lunch.servlet.LoginServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-  	<servlet-name>userLogin</servlet-name>
+    <servlet-name>userLogin</servlet-name>
     <url-pattern>/login</url-pattern>
   </servlet-mapping>
-  
   <servlet>
-  	<servlet-name>balance</servlet-name>
+    <servlet-name>balance</servlet-name>
     <servlet-class>com.lunch.servlet.CustBalanceServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-  	<servlet-name>balance</servlet-name>
+    <servlet-name>balance</servlet-name>
     <url-pattern>/balance</url-pattern>
   </servlet-mapping>
+  
 </web-app>

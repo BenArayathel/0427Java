@@ -53,7 +53,7 @@ public class BankDaoImpl implements BankDAO {
 					
 					if (callableStatement.executeUpdate() != 0 ) {
 						System.out.println("User created: log back in...");
-						System.exit(0);
+						//System.exit(0);
 						return true;
 					} else {
 						System.out.println("Sorry something went wrong at the database");
@@ -367,7 +367,7 @@ public class BankDaoImpl implements BankDAO {
 
 			
 			if (ps.executeUpdate() != 0) {
-				System.exit(0);
+				//System.exit(0);
 				return true;
 			} else {
 				return false;
@@ -413,24 +413,26 @@ public class BankDaoImpl implements BankDAO {
 				ps.setDate(2, new java.sql.Date(user.getDob().getTime()));
 				ps.setString(3, user.getUser_id());
 				
-				Log.logger("Application For Account Received @ db");
-				Log.logger("A Bank Employee will make a determination as soon as possible.");
-				Log.logger("Thanks for applying");
-				
 				if(ps.execute()) {
 					return true;
 				}
+				Log.logger("Application For Account Received @ db");
+				Log.logger("A Bank Employee will make a determination as soon as possible.");
+				Log.logger("Thanks for applying");
+				return true;	
 			}
 
 			
 		}
 		catch(SQLException | BusinessException e) {
 			e.printStackTrace();
+			// 	SOMETHING WENT WRONG RETURN FALSE HERE...........################################################################# ??
 		}
 		finally {
 			closeResources();
 			
 		}
+		Log.logger("\n\nFALSE CONDITION HIT RUNNING customerApplicationForAccount ");
 		return false;
 	}
 	

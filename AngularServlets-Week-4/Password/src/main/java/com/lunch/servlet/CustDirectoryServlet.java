@@ -14,7 +14,10 @@ public class CustDirectoryServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 			
-		 System.out.println("Cust Directory GET ... is called");
+		 System.out.println("Cust-Directory-Servlet GET ... is called");
+		 System.out.println("id is : " + req.getParameter("id"));
+//		res.sendRedirect("http://localhost:9999/Password/custOptDirectory.html");
+		 res.sendRedirect("http://localhost:9999/Password/custOptDirectory.html");
 	}
 	
 	@Override

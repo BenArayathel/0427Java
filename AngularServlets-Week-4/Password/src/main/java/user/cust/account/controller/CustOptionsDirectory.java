@@ -39,12 +39,12 @@ public class CustOptionsDirectory {
 			
 			if (nav == 3){
 				CustViewBal_Depos_Wthdr_Transf c = new CustViewBal_Depos_Wthdr_Transf();
-				c.deposit(user);
+				//c.deposit(user);
 			}
 			
 			if (nav == 4){
 				CustViewBal_Depos_Wthdr_Transf c = new CustViewBal_Depos_Wthdr_Transf();
-				c.withdraw(user);
+				//c.withdraw(user);
 			}
 			
 			if (nav == 5){

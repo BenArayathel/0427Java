@@ -2,6 +2,7 @@ package bank.transaction.dao;
 
 import java.util.List;
 
+import user.cust.account.models.Transaction;
 //import not.used.Account;
 //import not.used.Customer;
 import user.cust.account.models.User;
@@ -11,7 +12,7 @@ public interface TransactionDAO {
 	
 	public boolean createTransaction(User user, String trans);
 	
-	public boolean viewAllTransactions();
+	public List<String> viewAllTransactions();
 	
 	public boolean viewCustTransactions(User user);
 	

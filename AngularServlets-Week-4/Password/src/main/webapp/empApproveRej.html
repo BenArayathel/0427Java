@@ -1,32 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <title>Bank Approve Reject Acct</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <title>Bank Approve Reject Acct</title>
 </head>
+
 <body>
 
   <nav class="navbar navbar-dark navbar-expand-md bg-dark fixed-top py-4">
     <div class="container">
       <a href="home.html" class="navbar-brand">
-        <img src="img/mlogo.png" width="50" height="50" alt=""><h3 class="d-inline align-middle">Bank App</h3>
+        <img src="img/mlogo.png" width="50" height="50" alt="">
+        <h3 class="d-inline align-middle">Bank App</h3>
       </a>
-      <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+      <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
+        aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a href="home.html" class="nav-link">Home</a>
+            <a href="http://localhost:9999/Password/userLogin.html" class="nav-link">Login</a>
           </li>
           <li class="nav-item">
-            <a href="home.html" class="nav-link">Login</a>
+            <a href="http://localhost:9999/Password/userReg.html" class="nav-link">Register</a>
           </li>
           <li class="nav-item">
-            <a href="#authors" class="nav-link">Meet The Authors</a>
+            <a href="#authors" class="nav-link">nothing</a>
           </li>
           <li class="nav-item">
-            <a href="#contact" class="nav-link">Contact</a>
+            <a href="#contact" class="nav-link">nothing</a>
           </li>
         </ul>
       </div>
@@ -34,48 +39,82 @@
   </nav>
 
 
-    
-      <!-- REGISTRATION -->
+
+  <!-- REGISTRATION -->
   <section id="login" style="margin-top: 220px; margin-bottom: 200px;">
     <div class="container">
 
-        
-        <h4 class="text-center">Approve Reject Accounts</h4>
 
-        <table style="margin-top: 60px;" class="table table-striped table-bordered">
-            <thead class="thead-dark">
-                <tr>
-                    <th>#</th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Email</th>
-                    <th>action</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>John</td>
-                    <td>Doe</td>
-                    <td>jdoe@gmail.com</td>
-                    <td><button class="btn btn-sm btn-success mr-2">ok</button><button class="btn btn-sm btn-danger">rej</button></td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Will</td>
-                    <td>Johnson</td>
-                    <td>will@yahoo.com</td>
-                    <td><button class="btn btn-sm btn-success mr-2">ok</button><button class="btn btn-sm btn-danger">rej</button></td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>Shannon</td>
-                    <td>Williams</td>
-                    <td>shannon@yahoo.com</td>
-                    <td><button class="btn btn-sm btn-success mr-2">ok</button><button class="btn btn-sm btn-danger">rej</button></td>
-                </tr>
-            </tbody>
-        </table>
+      <h4 class="text-center">Approve Reject Accounts</h4>
+
+      <button id="myForm" onclick="getAllApplicants()" class="btn btn btn-primary">Soon To Be Get All
+        Applicants</button>
+
+      <table style="margin-top: 60px;" class="table table-striped table-bordered">
+        <thead class="thead-dark">
+          <tr>
+            <th>#</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>John</td>
+            <td>Doe</td>
+            <td>jdoe@gmail.com</td>
+            <td><button class="btn btn-sm btn-success mr-2">ok</button><button
+                class="btn btn-sm btn-danger">rej</button></td>
+          </tr>
+          <tr>
+            <th scope="row">2</th>
+            <td>Will</td>
+            <td>Johnson</td>
+            <td>will@yahoo.com</td>
+            <td><button class="btn btn-sm btn-success mr-2">ok</button><button
+                class="btn btn-sm btn-danger">rej</button></td>
+          </tr>
+          <tr>
+
+
+            <th scope="row">3</th>
+            <td>Shannon</td>
+            <td>Williams</td>
+            <td>shannon@yahoo.com</td>
+            <td><button class="btn btn-sm btn-success mr-2">ok</button></td>
+            <form action="empapproval" method="POST">
+              <input type="hidden" name="user_id" value="">
+              <input type="hidden" name="utility" value="delete">
+              <td><button type="submit" class="btn btn-sm btn-danger">rej</button></td>
+            </form>
+            <form action="empapproval" method="POST">
+              <input type="hidden" name="user_id" value="">
+              <input type="hidden" name="utility" value="delete">
+              <td><button type="submit" class="btn btn-sm btn-danger">rej</button></td>
+            </form>
+          </tr>
+        </tbody>
+      </table>
+
+      <table style="margin-top: 60px; margin-bottom: 160px;" class="table table-striped table-bordered">
+        <thead class="thead-dark">
+          <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>ID</th>
+            <th>DOB</th>
+            <th>Balance</th>
+            <th>auth</th>
+            <th>OK</th>
+            <th>REJ</th>
+          </tr>
+        </thead>
+        <tbody id="output3">
+        </tbody>
+      </table>
 
       <!-- <div class="row">
         <div class="col-md-6 mx-auto">
@@ -111,13 +150,236 @@
     </div>
   </footer>
 
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+    integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+    crossorigin="anonymous"></script>
+
+  <script src="easyHttp.js"></script>
+  <script>
+
+    console.log("basic Script was read ...");
+
+    // window.onload = function () {
+
+    //   console.log("listener event triggered....");
+
+    //   let regForm = this.document.getElementById("myForm");
+    //   if (regForm) {
+    //     regForm.addEventListener("submit", this.getAllTrans);
+    //   }
+    // }
+
+    // event
+    //   event.preventDefault();
+
+
+    // User Data
+    // const data = {
+
+    //   balance: ''
+    // }
+
+    //data.username = document.getElementById("username").value;
+    //data.pass = document.getElementById("pass").value;
+
+    const http = new EasyHttp;
+    let theUsers = [];
+    let special = [];
+
+
+    // GET  :  read or get user's
+    function getAllApplicants() {
+
+      console.log("getAllApplicants function ran... ...");
+
+      let output = '';
+
+      http.get('http://localhost:9999/Password/empapproval')
+        .then(data => {
+          console.log(data);
+          console.log("theUsers.length is : " + theUsers.length);
+          //theUsers = JSON.parse(data);
+
+          // data
+          //theUsers = data;  // theUser is a GLOBAL ARRAY 
+
+          for (const d of data) {  // was data
+
+            console.log(d.user_id);
+            output +=
+              `<tr>
+                    <td>${d.index}</td>
+                    <td>${d.userName}</td>
+                    <td  id="userid">${d.user_id}</td>
+                    <td>${d.dob}</td>
+                    <td>${d.balance}</td>
+                    <td>${d.a_access}</td>
+                    <td><button onclick="ok(${d["user_id"]})" class="btn btn-sm btn-success">ok</button></td>
+                    <td><button onclick="reject(${d.user_id})" class="btn btn-sm btn-danger">X</button></td>
+            </tr>`;
+          }
+          document.getElementById('output3').innerHTML = output;
+
+        })
+        .catch(err => console.log(err));
+
+    }
+
+    /*
+      id gives an undefined error: .. ??
+    */
+    function reject(id) {
+
+      console.log("hey: reject ran... ");
+      // User Data
+      const data2 = {
+        user_id: '',
+        utility: 'delete'
+      }
+      //data2.user_id = document.getElementById("userid").innerHTML;
+      data2.user_id = this.id;
+
+      // for (const d of theUsers) {
+
+      //   if(d.user_id == id){
+      //     data2.user_id = d.user_id;
+      //   }
+      // }
+
+
+      // // POST  :  create user
+      http.post('http://localhost:9999/Password/empapproval', data2)
+        .then(data => console.log(data))
+        .catch(err => console.log(err));
+
+    }
+
+
+    /*
+        Json.parse error
+    */
+    function ok(id) {
+
+      // User Data
+      const data3 = {
+        user_id: '',
+        utility: 'approve'
+      }
+      //data3.user_id = document.getElementById("userid").innerHTML;
+      //data3.user_id = document.getElementById("userid").value;  // JSON.parse error
+      //console.log("here is the id ?? : " + this.id);
+      data3.user_id = this.id;
+
+      // // POST  :  create user
+      http.post('http://localhost:9999/Password/empapproval', data3)
+        .then(data => console.log(data))
+        .catch(err => console.log(err));
+
+    }
+
+
+
+
+    const http1 = new easy1HTTP;
+
+    http1.get('http://localhost:9999/Password/empapproval',
+      function (err, posts) {
+
+        let output = '';
+        if (err) {
+          console.log(err);
+          output += '<li>Something went wrong</li>'
+        } else {
+
+          console.log(posts);
+          theUsers = JSON.parse(posts);
+          console.log("theUsers.length in GET: " + theUsers.length);
+          for (const d of theUsers) {
+            // output += "<li>"+post.title+"</li>";
+            output +=
+              `<tr>
+                    <td>${d.index}</td>
+                    <td>${d.userName}</td>
+                    <td  id="userid">${d.user_id}</td>
+                    <td>${d.dob}</td>
+                    <td>${d.balance}</td>
+                    <td>${d.a_access}</td>
+                    <td><button onclick="ok(${d["user_id"]})" class="btn btn-sm btn-success">ok</button></td>
+                    
+                    <td><button onclick="reject(${d["user_id"]})" class="btn btn-sm btn-danger">X</button></td>
+
+                    
+            </tr>`;
+          }
+
+
+        }
+
+        document.getElementById('output3').innerHTML = output;
+
+      });
+
+// SCRATCH LAND
+
+        // for (const d of data) {  // was data
+        //     // output += `<li>${user.login}</li>`;    // used to be  ${d.user_id}
+        //     console.log(d["user_id"]);
+        //     //special.push(d["user_id"]);
+        //     output += 
+        //     `<tr>
+        //             <td>${d.index}</td>
+        //             <td>${d.userName}</td>
+        //             <td  id="${d["user_id"]}">${d["user_id"]}</td>
+        //             <td class = "userid"></td>
+        //             <td>${d.dob}</td>
+        //             <td>${d.balance}</td>
+        //             <td>${d.a_access}</td>
+        //             <td><button onclick="ok(${d["user_id"]})" class="btn btn-sm btn-success">ok</button></td>
+
+        //             <td><button onclick="reject(${d["user_id"]})" class="btn btn-sm btn-danger">X</button></td>
+
+
+        //     </tr>`;
+
+
+        // }
+
+    /*
+                          <form action="empapproval" method="POST">
+                  <input type="hidden" name="user_id" value="${d.index}">
+                  <input type="hidden" name="utility" value="approve">
+                  <td><button type="submit" class="btn btn-sm btn-success">ok</button></td>
+                </form>
+
+                <td>
+                <form action="empapproval" method="POST">
+                  <input  name="user_id" value="${d.index}">
+                  <input  name="utility" value="delete">
+                  <button type="submit" class="btn btn-sm btn-danger">x</button>
+                </form>
+                </td>
+    */
+
+    /**
+      "{ \"index\" : \"" + usersNeedApproval.indexOf(u)+1 + "\","
+      + " \"userName\" : \"" + u.getUserName() + "\","
+      + " \"user_id\" : \"" + u.getUser_id() + "\","
+      + " \"dob\" : \"" + u.getDob() + "\","
+      + " \"balance\" : \"" + u.getBalance() + "\","
+      + " \"a_access\" : \"" + u.getA_access() + "\" },";
+
+    */
+
+
+
+  </script>
+
 </body>
+
 </html>
-
-
-
-
-

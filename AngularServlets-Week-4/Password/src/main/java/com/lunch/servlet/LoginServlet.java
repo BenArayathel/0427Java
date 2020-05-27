@@ -28,15 +28,11 @@ public class LoginServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 			
-		System.out.println("\nlogin POST");
+		System.out.println("\nLogin1 running doPOST");
 		
 		// VALIDATION ?? ?? 
 		 
-//		System.out.println("GetParameter Test 4 fun ... .....");
-//		String username = req.getParameter("userName");
-//		String pass = req.getParameter("password");
-//		System.out.println("userName: " + username);
-//		System.out.println("password: " + pass);
+
 		
 		// call the db
 		BankDaoImpl b = new BankDaoImpl();
@@ -57,19 +53,28 @@ public class LoginServlet extends HttpServlet {
 		
 		ObjectMapper mapper2 = new ObjectMapper();
 		// only once : req.getReader()
-		User user11 = mapper2.readValue(req.getReader(), user.cust.account.models.User.class);
-		System.out.println("Line 61 : LoginServlet");
-		System.out.println("\nPOST VALUES:\nLoginServlet:\nthis is toString \nuser11: " + user11.toString());
+		User user = mapper2.readValue(req.getReader(), user.cust.account.models.User.class);
+		
+
+//		String userName = req.getParameter("userName");
+//		String password = req.getParameter("password");
+//		System.out.println("userName: " + userName);
+//		System.out.println("password: " + password);
+		//User user = new User(userName, password);
+		
+		
+		//System.out.println("Line 61 : LoginServlet");
+		//System.out.println("\nPOST VALUES:\nLoginServlet:\nthis is toString \nuser: " + user.toString());
 		
 		int access = -1; 
-		access = b.login(user11);		// changed to user11 : this is Sergio's help.. .. .. .. .. .. ... .. . ......
+		access = b.login(user);		// changed to user11 : this is Sergio's help.. .. .. .. .. .. ... .. . ......
 		
-		System.out.println("\nLoginServlet:\nafter backend user11: " + user11.toString());
-		session.setAttribute("user11", user11);
+		System.out.println("\nLoginServlet:\nafter backend USER IS: " + user.toString());
+		session.setAttribute("user", user);
 		
 		System.out.println("\n\naccess is " + access + "\n");
 
-		
+		System.out.println("line 77: here is a little proof: " + session.getAttribute("user"));
 
 		
 		
@@ -92,34 +97,34 @@ public class LoginServlet extends HttpServlet {
 		ObjectMapper mapper = new ObjectMapper();
 		// "{ \"brand\" : \"Mercedes\", \"doors\" : 5 }";
 		String user_in_Json =
-			    "{ \"userName\" : \"" + user11.getUserName() + "\","
-			    + " \"contactPhone\" : \"" + user11.getContactPhone() + "\","
-			    + " \"password\" : \"" + user11.getPassword() + "\","
-			    + " \"user_id\" : \"" + user11.getUser_id() + "\","
-			    + " \"email\" : \"" + user11.getEmail() + "\","
-			    + " \"dob\" : \"" + user11.getDob() + "\","
-			    + " \"soc\" : \"" + user11.getSoc() + "\","
-			    + " \"balance\" : \"" + user11.getBalance() + "\","
-			    + " \"a_access\" : \"" + user11.getA_access() + "\" }";
+			    "{ \"userName\" : \"" + user.getUserName() + "\","
+			    + " \"contactPhone\" : \"" + user.getContactPhone() + "\","
+			    + " \"password\" : \"" + user.getPassword() + "\","
+			    + " \"user_id\" : \"" + user.getUser_id() + "\","
+			    + " \"email\" : \"" + user.getEmail() + "\","
+			    + " \"dob\" : \"" + user.getDob() + "\","
+			    + " \"soc\" : \"" + user.getSoc() + "\","
+			    + " \"balance\" : \"" + user.getBalance() + "\","
+			    + " \"a_access\" : \"" + user.getA_access() + "\" }";
 
-			try {
-				// Ben's
-			    //User mUser = mapper.readValue(req.getReader(), User.class);
-				
-				// tut's
-				User mUser = mapper.readValue(user_in_Json, User.class);
-
-			    System.out.println("\nObjectMapper: mUser.getUser_id() = " + mUser.getUser_id());
-			    System.out.println("ObjectMapper: mUser.getBalance() = " + mUser.getBalance());
-			    session.setAttribute("mappedStringUser", mUser);  // sort of works ... ... ...
-			} catch (IOException e) {
-			    e.printStackTrace();
-			}
+//			try {
+//				// Ben's
+//			    //User mUser = mapper.readValue(req.getReader(), User.class);
+//				
+//				// tut's
+//				//User mUser = mapper.readValue(user_in_Json, User.class);
+//
+//			    //System.out.println("\nObjectMapper: mUser.getUser_id() = " + mUser.getUser_id());
+//			    //System.out.println("ObjectMapper: mUser.getBalance() = " + mUser.getBalance());
+//			    //session.setAttribute("mappedStringUser", mUser);  // sort of works ... ... ...
+//			} catch (IOException e) {
+//			    e.printStackTrace();
+//			}
 			
 			session.setAttribute("myCleanString", user_in_Json);
 		
 		
-			Log.logger("user11 before setting with SESSION: " + user11.getBalance());
+			Log.logger("user before setting with SESSION: " + user.getBalance());
 		//Log.logger("regular POJO: balance before setting with SESSION: " + user.getBalance());
 			
 			
@@ -131,13 +136,18 @@ public class LoginServlet extends HttpServlet {
 //		Log.logger("access is: " + user.getA_access());
 //		Log.logger("dob: " + user.getDob());
 		
-		session.setAttribute("user", user11);  // this seemingly does not work ... ... ...................................................................................................
+		session.setAttribute("user", user);  // this seemingly does not work ... ... ...................................................................................................
 		
+
+		// I DONT THINK I NEED THESE ANYMORE
+//		session.setAttribute("access", user.getA_access());
+//		session.setAttribute("balance", user.getBalance());
+//		session.setAttribute("id", user.getUser_id());
+//		session.setAttribute("soc", user.getSoc());
 		
-		session.setAttribute("access", user11.getA_access());
-		session.setAttribute("balance", user11.getBalance());
-		session.setAttribute("id", user11.getUser_id());
-		session.setAttribute("soc", user11.getSoc());
+		if (session == null) {
+			System.out.println("\nSession was null");
+		}
 		
 
 		
@@ -148,8 +158,9 @@ public class LoginServlet extends HttpServlet {
 			Log.logger("Customer privileges:");
 			Log.logger("\n\n REDIRECT SHOULD RUN NOW !!:");
 			// REDIRECT TO CUSTOMER
-			res.getWriter().write("http://localhost:9999/Password/custOptDirectory.html");
 			//res.sendRedirect("http://localhost:9999/Password/custOptDirectory.html");
+			//res.sendRedirect("custdirectory?id=" + user.getUser_id());
+			res.getWriter().write("http://localhost:9999/Password/custOptDirectory.html");
 		}
 		
 		else if(access == 2) {		// no soc: not a customer
@@ -157,7 +168,8 @@ public class LoginServlet extends HttpServlet {
 			Log.logger("User privileges:");
 //			req.getRequestDispatcher("http://localhost:9999/Password/userOptDirectory.html").forward(req, res);  // I was contemplating this
 			//REDIRECT TO USER
-			res.sendRedirect("http://localhost:9999/Password/userOptDirectory.html");
+			res.getWriter().write("http://localhost:9999/Password/userOptDirectory.html");
+			//res.sendRedirect("http://localhost:9999/Password/userOptDirectory.html");
 		}
 		else if (access == 3) {
 			Log.logger("Invalid");
@@ -166,20 +178,24 @@ public class LoginServlet extends HttpServlet {
 			Log.logger("Redirecting back to Login...\n\n");
 			
 			// REDIRECT back to login
-			res.sendRedirect("http://localhost:9999/Password/userLogin.html");
+			res.getWriter().write("http://localhost:9999/Password/userLogin.html");
+			//res.sendRedirect("http://localhost:9999/Password/userLogin.html");
 			
 		} else if (access == 0) {
 			// IN THE CASE THAT ACCESS IS NULL
 			Log.logger("ACCESS WAS LIKELY NULL:");
-			res.sendRedirect("http://localhost:9999/Password/userLogin.html");
+			res.getWriter().write("http://localhost:9999/Password/userLogin.html");
+			//res.sendRedirect("http://localhost:9999/Password/userLogin.html");
 		}
 		else if (access == -1) {
 			// IN THE CASE THAT ACCESS IS NULL
 			Log.logger("IMPROPER RESPONSE FROM DAO: the -1 case");
-			res.sendRedirect("http://localhost:9999/Password/userLogin.html");
+			res.getWriter().write("http://localhost:9999/Password/userLogin.html");
+			//res.sendRedirect("http://localhost:9999/Password/userLogin.html");
 		} else {
 			Log.logger("IMPROPER RESPONSE FROM DAO: the else case");
-			res.sendRedirect("http://localhost:9999/Password/userLogin.html");
+			res.getWriter().write("http://localhost:9999/Password/userLogin.html");
+			//res.sendRedirect("http://localhost:9999/Password/userLogin.html");
 		}
 		
 //		if (username.equals("lunch") && pass.equals("pass")) {

@@ -5,11 +5,13 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import connection.utilities.DAOUtilites;
 import exception.validations.Validation;
 import log.Log;
-import user.cust.account.controller.UserOptionsDirectory;
+import user.cust.account.models.Transaction;
 import user.cust.account.models.User;
 
 public class TransactionDaoImpl implements TransactionDAO {
@@ -65,7 +67,9 @@ public class TransactionDaoImpl implements TransactionDAO {
 	
 	
 	@Override
-	public boolean viewAllTransactions() {
+	public List<String> viewAllTransactions() {
+		
+		List<String> transactions = new ArrayList<>();
 		
 
 		try {
@@ -75,12 +79,18 @@ public class TransactionDaoImpl implements TransactionDAO {
 			
 			while (rs.next()) {
 				
-				Log.logger("" 
+//				Log.logger("" 
+//						+ rs.getString("trans_id")
+//						+ "\t" + rs.getString("user_id")
+//						+ "\t" + rs.getString("trans_data"));
+				
+				transactions.add("" 
 						+ rs.getString("trans_id")
-						+ "\t" + rs.getString("user_id")
-						+ "\t" + rs.getString("trans_data"));
+						+ " " + rs.getString("user_id")
+						+ " " + rs.getString("trans_data"));
+				
 			}
-			return true;
+			return transactions;
 		}
 		catch(SQLException e) {
 			e.printStackTrace();
@@ -88,7 +98,7 @@ public class TransactionDaoImpl implements TransactionDAO {
 			closeResources();
 		}
 		
-		return false;
+		return null;
 	}
 	
 	

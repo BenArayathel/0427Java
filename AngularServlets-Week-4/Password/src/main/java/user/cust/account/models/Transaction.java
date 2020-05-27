@@ -95,15 +95,12 @@ public class Transaction {
 	@Override
 	public String toString() {
 		return ""+ date 
-				+ ", descr.=" + description
-				+ ", transactionValue=" + transactionValue
-				+ ", destination_id=" + destination_id
-				+ ", creator_user_id=" + user_id 
-				 
-				
-				 
-				 
-				+ " t_id=" + t_id + "]";
+				+ " descr " + description
+				+ " transValue " + transactionValue
+				+ " destinationId " + destination_id
+				+ " creatorUserId " + user_id;
+		
+		// I use to have transaction id on the end of this.
 	}
 
 }

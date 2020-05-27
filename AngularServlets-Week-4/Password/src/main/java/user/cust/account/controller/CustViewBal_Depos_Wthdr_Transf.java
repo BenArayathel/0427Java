@@ -53,14 +53,14 @@ public class CustViewBal_Depos_Wthdr_Transf {
 		
 	}
 	
-	void deposit(User user) {
+	public double deposit(User user, double deposit) {
 		
 		if (user.getA_access() == 1) {
 			
-			Log.logger("Enter Deposit Amount:");
-			if (scanner.hasNext()) {
+			//Log.logger("Enter Deposit Amount:");
+			if (deposit != 0) {										// cannot check for null ?? ????????????????????????????????
 				
-				double deposit = Double.parseDouble(scanner.nextLine());
+				//double deposit = Double.parseDouble(scanner.nextLine());
 				
 				if (deposit > 0) {
 					
@@ -77,26 +77,30 @@ public class CustViewBal_Depos_Wthdr_Transf {
 					
 				} else {
 					Log.logger("Cannot be a negative amout or zero");
+					return -1;
 				}
 
 			}
 			
-			cd.select(user);
+			//cd.select(user);
+			return 1;
 			
 		} else {
 			Log.logger("Sorry you do not have access");
-			cd.select(user);
+			return -1;
+			//cd.select(user);
 		}
-		
+		//return -2;
 	}
 	
-	void withdraw(User user) {
+	public int withdraw(User user, double withdraw) {
 		
 		if (user.getA_access() == 1) {
 			
 			Log.logger("\nEnter Withdraw Amount:");
-			if (scanner.hasNext()) {
-				double withdraw = Double.parseDouble(scanner.nextLine());
+			if (withdraw != 0) {
+				
+				//double withdraw = Double.parseDouble(scanner.nextLine());
 				
 				if (withdraw > 0) {
 					
@@ -117,14 +121,17 @@ public class CustViewBal_Depos_Wthdr_Transf {
 					
 				} else {
 					Log.logger("Cannot be zero or negative amount");
+					return -1;
 				}
 				
 			}
-			cd.select(user);
+			//cd.select(user);
+			return 1;
 			
 		} else {
 			Log.logger("Sorry you do not have access");
-			cd.select(user);
+			//cd.select(user);
+			return -1;
 		}
 		
 	}

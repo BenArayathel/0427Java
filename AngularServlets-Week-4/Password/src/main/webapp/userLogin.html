@@ -1,28 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="shortcut icon" href="">
-    <title>Bank User Login</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link rel="shortcut icon" href="">
+  <title>Bank User Login</title>
 </head>
+
 <body>
 
   <nav class="navbar navbar-dark navbar-expand-md bg-dark fixed-top py-4">
     <div class="container">
       <a href="http://localhost:9999/Password/userLogin.html" class="navbar-brand">
-        <img src="img/mlogo.png" width="50" height="50" alt=""><h3 class="d-inline align-middle">Bank App</h3>
+        <img src="img/mlogo.png" width="50" height="50" alt="">
+        <h3 class="d-inline align-middle">Bank App</h3>
       </a>
       <!-- <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarNav"><span class="navbar-toggler-icon"></span></button> -->
-      <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+      <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
+        aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
             <a href="http://localhost:9999/Password/userLogin.html" class="nav-link">Home</a>
           </li>
           <li class="nav-item">
-            <a href="http://localhost:9999/Password/register.html" class="nav-link">Register</a>
+            <a href="http://localhost:9999/Password/userReg.html" class="nav-link">Register</a>
           </li>
           <li class="nav-item">
             <a href="#authors" class="nav-link">nothing</a>
@@ -34,8 +39,8 @@
       </div>
     </div>
   </nav>
-    
-      <!-- LOGIN -->
+
+  <!-- LOGIN -->
   <section id="login" style="margin-top: 220px; margin-bottom: 200px;">
     <div class="container">
       <div class="row">
@@ -48,7 +53,7 @@
 
               <!-- FORM -->
               <!--  role="form" -->
-              <!-- <form action="login" method="POST">
+              <form id="myForm" action="login" method="POST">
                 <div class="form-group">
                   <label for="username">Username</label>
                   <input id="username" type="text" class="form-control">
@@ -57,8 +62,9 @@
                   <label for="password">Password</label>
                   <input id="pass" name="pass" type="text" class="form-control">
                 </div>
-                <input type="submit" onclick="login()" class="btn btn-primary btn-block" value="Register">
-              </form>  -->
+                <input type="submit"  class="btn btn-primary btn-block" value="Login">
+              </form>
+              <!-- onclick="login()" -->
 
               <!-- <form >
                 <div class="form-group">
@@ -74,7 +80,7 @@
               <!-- Ethan's suggestion: button -->
 
               <!-- NO-FORM -->
-               <div >
+              <!-- <div>
 
                 <div class="">
                   <label for="text">username</label>
@@ -85,11 +91,11 @@
                   <input id="pass" name="pass" type="text" class="">
                 </div>
                 <button onclick="login()" class="btn btn-primary btn-block">Login</button>
-              </div>
+              </div> -->
               <!-- <input type="button" onclick="login()" class="btn btn-primary btn-block" value="Login"> -->
               <!-- <button onclick="login()" class="btn btn-dark btn-block">Login</button> -->
               <!-- onclick="login()" -->
-              <!-- type="submit" -->  
+              <!-- type="submit" -->
             </div>
           </div>
         </div>
@@ -107,115 +113,133 @@
     </div>
   </footer>
 
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+    integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+    crossorigin="anonymous"></script>
   <script src="easyHttp.js"></script>
   <!-- <script src="app.js"></script> -->
   <script>
-    
-
-   console.log("Basic Script ran ...");
 
 
+    console.log("Basic Script ran ...");
 
-  //const http = new EasyHttp;
+    window.onload = function () {
+      let regForm = this.document.getElementById("myForm");
+      if (regForm) {
+        regForm.addEventListener("submit", this.login);
+      }
+    }
 
-  // POST  :  create user
-  function login(){
-    
-    console.log("login() Function ran... ");
+      // event
+      // event.preventDefault();
+
+
+
+    //const http = new EasyHttp;
+
+    // POST  :  create user
+    function login(event) {
+      event.preventDefault();
+      console.log("login() Function ran... ");
 
       // User Data
-    const data = {
+      const data = {
 
-      userName: '',
-      password: ''
-    }
-    data.userName = document.getElementById("username").value;
-    data.password = document.getElementById("pass").value;
-    console.log("here after grabbing elementID's ...");
+        userName: '',
+        password: ''
+      }
+      data.userName = document.getElementById("username").value;
+      data.password = document.getElementById("pass").value;
+      console.log("here after grabbing elementID's ...");
 
-    console.log(data.userName);
-    console.log(data.password);
+      console.log(data.userName);
+      console.log(data.password);
 
-    // http.post('http://localhost:9999/Password/login', data, 
-    // function (err, post) {
-    
-    //   if (err) {
-    //       console.log(err);
+      // http.post('http://localhost:9999/Password/login', data, 
+      // function (err, post) {
 
-    //   } else {
-    //       console.log(post);
-    //   }
-    // });
+      //   if (err) {
+      //       console.log(err);
 
-    // http.post('http://localhost:9999/Password/login', data)
-    // .then(data => {
-      
-    //   console.log("inside .then block ...");
-      
-    //   console.log(data)
-    // })
-    // .then(response => {
-    //   response.text()
-    //   window.location.assign(response)
-    // })
-    // .catch(err => console.log(err));
+      //   } else {
+      //       console.log(post);
+      //   }
+      // });
 
-    const url = new Promise((resolve, reject) => {
+      // http.post('http://localhost:9999/Password/login', data)
+      // .then(data => {
 
-      fetch('http://localhost:9999/Password/login', {
+      //   console.log("inside .then block ...");
+
+      //   console.log(data)
+      // })
+      // .then(response => {
+      //   response.text()
+      //   window.location.assign(response)
+      // })
+      // .catch(err => console.log(err));
+
+      const url = new Promise((resolve, reject) => {
+
+        fetch('http://localhost:9999/Password/login', {
           method: 'POST',
           headers: {
-              'Content-type': 'application/json'
+            'Content-type': 'application/json'
           },
           body: JSON.stringify(data)
-      })
+        })
           .then(res => res.text())
           .then(data => {
-              resolve(data)
-              console.log(data);
-              window.location.assign(data)
+            resolve(data)
+            console.log(data);
+            window.location.assign(data)
           })
           .catch(err => reject(err));
       });
+      // 
 
 
-    // MOZILLA DEVELOPER NETWORK
-    // fetch('http://localhost:9999/Password/login', {
-    //   method: 'POST', // or 'PUT'
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //   },
-    //   body: JSON.stringify(data),
-    // })
-    // .then(response => response.json())
-    // .then(data => {
-    //   console.log('Success:', data);
-    // })
-    // .catch((error) => {
-    //   console.error('Error:', error);
-    // });
+      // MOZILLA DEVELOPER NETWORK
+      // fetch('http://localhost:9999/Password/login', {
+      //   method: 'POST', // or 'PUT'
+      //   headers: {
+      //     'Content-Type': 'application/json',
+      //   },
+      //   body: JSON.stringify(data),
+      // })
+      // .then(response => response.json())
+      // .then(data => {
+      //   console.log('Success:', data);
+      // })
+      // .catch((error) => {
+      //   console.error('Error:', error);
+      // });
 
 
-    // let response = await fetch('http://localhost:9999/Password/login', {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json;charset=utf-8'
-    //   },
-    //   body: JSON.stringify(data)
-    // });
+      // let response = await fetch('http://localhost:9999/Password/login', {
+      //   method: 'POST',
+      //   headers: {
+      //     'Content-Type': 'application/json;charset=utf-8'
+      //   },
+      //   body: JSON.stringify(data)
+      // });
 
-    // let result = await response.json();
-    // result.text();
-    // window.location.assign(result);
+      // let result = await response.json();
+      // result.text();
+      // window.location.assign(result);
 
 
 
-  }
+    }
 
-  
+
   </script>
 </body>
+
 </html>

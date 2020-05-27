@@ -17,9 +17,9 @@ public class UserRegToBecomeCustomer {
 	void acctForm(User user) {
 		
 		Log.logger("Welcome to Application To be Customer");
-		
 		Log.logger("Enter Social Sec. in this format:");
 		Log.logger("***-**-****");
+		
 		if (scanner.hasNext()) {
 
 			this.soc = scanner.nextLine();

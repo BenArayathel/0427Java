@@ -19,7 +19,7 @@ public class SessionServlet extends HttpServlet {
 		Planet op = new Planet("Venus");
 		
 		//SESSION CODE
-//		This method will return the current session or creeate a new one
+//		This method will return the current session or create a new one
 		HttpSession session = req.getSession();
 //		HttpSession session = req.getSession(false); //Will return null if no sessions exists
 		

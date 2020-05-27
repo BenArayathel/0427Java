@@ -14,6 +14,7 @@ public class User {
 	private String soc; // register to be customer
 	private Double balance;
 	private int a_access;
+	private String utility;
 
 	// username, password, email, contact
 	
@@ -168,6 +169,15 @@ public class User {
 	public void setA_access(int a_access) {
 		this.a_access = a_access;
 	}
+	
+	public String getUtility() {
+		return utility;
+	}
+	
+	public void setUtility(String utility) {
+		this.utility = utility;
+	}
+	
 
 	// FULL VERSION
 //	@Override
@@ -176,6 +186,7 @@ public class User {
 //				+ user_id + ", email=" + email + ", dob=" + dob + ", soc=" + soc + ", balance=" + balance
 //				+ ", a_access=" + a_access + "]";
 //	}
+
 
 	@Override
 	public String toString() {

@@ -45,7 +45,7 @@
     <load-on-startup>-1</load-on-startup>
     
     <!-- less than 0, means lazy loading. (wait until it is needed to initiate the servlet
-    	0 or more means eager loading (load immediately when the server starts). Eager lading will happen lowest value 
+    	0 or more means eager loading (load immediately when the server starts). Eager loading will happen lowest value 
     		to highest value. so 0s will load before 1s which load before 2s, etc.... -->
   </servlet>
   <servlet-mapping>

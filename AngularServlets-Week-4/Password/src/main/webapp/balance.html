@@ -17,10 +17,10 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a href="home.html" class="nav-link">Home</a>
+            <a href="http://localhost:9999/Password/userLogin.html" class="nav-link">Login</a>
           </li>
           <li class="nav-item">
-            <a href="register.html" class="nav-link">Register</a>
+            <a href="http://localhost:9999/Password/userReg.html" class="nav-link">Register</a>
           </li>
           <li class="nav-item">
             <a href="#authors" class="nav-link">nothing</a>
@@ -45,23 +45,23 @@
             <div class="card-body">
               <!-- FORM -->
               <!-- action="custbalance" method="GET" -->
-              <!-- <form action="balance" method="GET" >
+              <form id="myForm" action="balance" method="GET" >
                 <div class="form-group">
                   <label for="text">Balance</label>
                   <input id="balance" type="text" class="form-control">
                 </div>
-                <input type="submit" onclick="getBalance()" class="btn btn-success btn-block" value="View Balance">
-              </form> -->
+                <input type="submit" class="btn btn-success btn-block" value="View Balance">
+              </form>
                 <!-- type="button" -->
 
                 <!-- NO FORM -->
-                <div >
+                <!-- <div >
                   <div class="">
                     <label for="text">Balance</label>
                     <input id="balance" type="text" class="">
                   </div>
                   <button onclick="getBalance()" class="btn btn-success btn-block">View Balance</button>
-                </div>
+                </div> -->
             </div>
           </div>
         </div>
@@ -88,6 +88,13 @@
 
     console.log("Script ran");
 
+    window.onload = function () {
+      let regForm = this.document.getElementById("myForm");
+      if (regForm) {
+        regForm.addEventListener("submit", this.getBalance);
+      }
+    }
+
     // User Data
     // const data = {
       
@@ -97,49 +104,54 @@
     //data.username = document.getElementById("username").value;
     //data.pass = document.getElementById("pass").value;
 
-    // const http = new EasyHttp;
+     const http = new EasyHttp;
 
 
     // GET  :  read or get user's
-    // function getBalance() {
-    //   console.log("get balance ran... ...");
+    function getBalance(event) {
 
-    //   let output ='';
+      event.preventDefault();
+      console.log("get balance ran... ...");
 
-    //   http.get('http://localhost:9999/Password/balance')
-    //     .then(data => {
-    //       console.log(data)
+      let output ='';
 
-    //       output = data.balance;
-    //       console.log("data.balance = " + data.balance);
-          
-    //       // document.getElementById("balance").innerHTML = output;
-    //       document.getElementById("balance").value = output;
-
-    //     })
-    //     .catch(err => console.log(err));
-
-
-    // }
-
-    function getBalance() {
-
-      console.log("new get balance ran... ...");
-
-      fetch('http://localhost:9999/Password/balance').then(function (data) {
-          data.json();
-          console.log(data);
-          let output = '';
+      http.get('http://localhost:9999/Password/balance')
+        .then(data => {
+          console.log(data)
 
           output = data.balance;
-          //document.getElementById('output3').innerHTML = output;
-          document.getElementById("balance").value = output;
-      })
-      .catch(function (err) {
-          console.log(err);
+          console.log("data.balance = " + data.balance);
           
-      });
-}
+          // document.getElementById("balance").innerHTML = output;
+          document.getElementById("balance").value = output;
+
+        })
+        .catch(err => console.log(err));
+
+
+    }
+
+//     function getBalance(event) {
+
+//       event.preventDefault();
+//       console.log("new get balance ran... ...");
+
+//       fetch('http://localhost:9999/Password/balance').then(function (data) {
+//           data.json();
+//           console.log("Inside of Fetch here ... ...");
+//           console.log(data.balance);
+//           console.log(data);
+//           let output = '';
+
+//           output = data.balance;
+//           //document.getElementById('output3').innerHTML = output;
+//           document.getElementById("balance").value = output;
+//       })
+//       .catch(function (err) {
+//           console.log(err);
+          
+//       });
+// }
   </script>
 
 </body>
