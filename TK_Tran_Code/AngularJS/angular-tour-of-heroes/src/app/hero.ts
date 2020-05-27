@@ -1,4 +1,4 @@
-// This is a Hero interface
+// Simply a Hero interface
 
 export interface Hero {
 	id: number;

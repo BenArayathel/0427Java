@@ -17,13 +17,6 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 
 // ROOT MODULE
 @NgModule({
-	declarations: [ // register components, directives, and pipes here
-		AppComponent,
-		DashboardComponent,
-		HeroesComponent,
-		HeroDetailComponent,
-		MessagesComponent
-	],
 	imports: [ // register modules from external imports here
 		BrowserModule,
 		FormsModule,
@@ -33,6 +26,13 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 		// The HttpClientInMemoryWebApiModule module intercepts HTTP requests and returns simulated server responses.
 		// Remove it when a real server is ready to receive requests.
 		HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, { dataEncapsulation: false })
+	],
+	declarations: [ // register components, directives, and pipes here
+		AppComponent,
+		DashboardComponent,
+		HeroesComponent,
+		HeroDetailComponent,
+		MessagesComponent,
 	],
 	providers: [
 

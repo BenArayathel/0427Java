@@ -7,6 +7,11 @@ import { Hero } from './hero';
 import { HEROES } from './mock-heroes';
 import { MessageService } from './message.service';
 
+/* 
+	Service purpose:
+		Injected services: http: HttpClient, messageService: MessageService
+		Provide CRUD operations.
+*/
 
 @Injectable({
 	// Makes HeroService available to the DI system by registering a "provider"; something that can create or deliver a service
@@ -15,44 +20,104 @@ import { MessageService } from './message.service';
 })
 export class HeroService {
 
+	private heroesUrl = 'api/heroes';  // URL to web api
+
+	httpOptions = {
+		headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+	};
+
 	// Injects other services into HeroService; a typical "service-in-service" scenario
 	constructor(
 		private http: HttpClient,
 		private messageService: MessageService
 	) { }
 
-	// Defines the URL to our web API
-	private heroesUrl = 'api/heroes';
-
 	// Since MessageService is called so frequently, we wrap it in a private log() method
 	private log(message: string) {
 		this.messageService.add(`HeroService: ${message}`);
 	}
 
-	// Returns an array of all heroes
+	/** GET heroes from the server */
 	getHeroes(): Observable<Hero[]> {
-		// GET heroes from the server
-		return this.http.get<Hero[]>(this.heroesUrl) // to catch potential errors, we "pipe" the Observable result from http.get() through an RxJS catchError() operator
-			.pipe( // the catchError() operator INTERCEPTS an Observable that FAILED
-				catchError(this.handleError<Hero[]>("getHeroes", []))); // catchError() passes the error to an error handler
+		return this.http.get<Hero[]>(this.heroesUrl)
+			.pipe(
+				tap(_ => this.log('fetched heroes')),
+				catchError(this.handleError<Hero[]>('getHeroes', []))
+			);
 	}
 
-	// Returns a single hero by their ID number
+	/** GET hero by id. Return `undefined` when id not found */
+	getHeroNo404<Data>(id: number): Observable<Hero> {
+		const url = `${this.heroesUrl}/?id=${id}`;
+		return this.http.get<Hero[]>(url)
+			.pipe(
+				map(heroes => heroes[0]), // returns a {0|1} element array
+				tap(h => {
+					const outcome = h ? `fetched` : `did not find`;
+					this.log(`${outcome} hero id=${id}`);
+				}),
+				catchError(this.handleError<Hero>(`getHero id=${id}`))
+			);
+	}
+
+	/** GET hero by id. Will 404 if id not found */
 	getHero(id: number): Observable<Hero> {
-		this.messageService.add(`HeroService: fetched hero id=${id}`); // note the use of backticks (`) that define a JS TEMPLATE LITERAL for embedding things
+		const url = `${this.heroesUrl}/${id}`;
+		return this.http.get<Hero>(url).pipe(
+			tap(_ => this.log(`fetched hero id=${id}`)),
+			catchError(this.handleError<Hero>(`getHero id=${id}`))
+		);
+	}
 
-		// of(HEROES.find()) queries through HEROES array and returns a hero with a matching id
-		return of(HEROES.find(hero => hero.id === id));
+	/* GET heroes whose name contains search term */
+	searchHeroes(term: string): Observable<Hero[]> {
+		if (!term.trim()) {
+			// if not search term, return empty hero array.
+			return of([]);
+		}
+		return this.http.get<Hero[]>(`${this.heroesUrl}/?name=${term}`).pipe(
+			tap(x => x.length ?
+				this.log(`found heroes matching "${term}"`) :
+				this.log(`no heroes matching "${term}"`)),
+			catchError(this.handleError<Hero[]>('searchHeroes', []))
+		);
+	}
 
-		// Note: both getHeroes() and getHero() have asynchronous signatures; they returna a mock heroes as an Observable, using the RxJS of() function
+	//////// Save methods //////////
+
+	/** POST: add a new hero to the server */
+	addHero(hero: Hero): Observable<Hero> {
+		return this.http.post<Hero>(this.heroesUrl, hero, this.httpOptions).pipe(
+			tap((newHero: Hero) => this.log(`added hero w/ id=${newHero.id}`)),
+			catchError(this.handleError<Hero>('addHero'))
+		);
+	}
+
+	/** DELETE: delete the hero from the server */
+	deleteHero(hero: Hero | number): Observable<Hero> {
+		const id = typeof hero === 'number' ? hero : hero.id;
+		const url = `${this.heroesUrl}/${id}`;
+
+		return this.http.delete<Hero>(url, this.httpOptions).pipe(
+			tap(_ => this.log(`deleted hero id=${id}`)),
+			catchError(this.handleError<Hero>('deleteHero'))
+		);
+	}
+
+	/** PUT: update the hero on the server */
+	updateHero(hero: Hero): Observable<any> {
+		return this.http.put(this.heroesUrl, hero, this.httpOptions).pipe(
+			tap(_ => this.log(`updated hero id=${hero.id}`)),
+			catchError(this.handleError<any>('updateHero'))
+		);
 	}
 
 	/**
-	 * Handle Http operation that failed.
-	 * Let the app continue.
-	 * @param operation - name of the operation that failed
-	 * @param result - optional value to return as the observable result
-	 */
+	   * Handle Http operation that failed.
+	   * Let the app continue.
+	   * @param operation - name of the operation that failed
+	   * @param result - optional value to return as the observable result
+	   */
 	private handleError<T>(operation = 'operation', result?: T) {
 		return (error: any): Observable<T> => {
 
@@ -65,6 +130,11 @@ export class HeroService {
 			// Let the app keep running by returning an empty result.
 			return of(result as T);
 		};
+	}
+
+	/** Log a HeroService message with the MessageService */
+	private log(message: string) {
+		this.messageService.add(`HeroService: ${message}`);
 	}
 }
 

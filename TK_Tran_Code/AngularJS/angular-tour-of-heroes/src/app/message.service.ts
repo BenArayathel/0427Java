@@ -1,22 +1,23 @@
 import { Injectable } from '@angular/core';
 
 /*
-	We'll be injecting this service into HeroService.
-	Purpose: display a message when a HeroService fetch is successfull!
+	Service purpose: 
+		Will be injected into HeroService
+		Will display a message when HeroService fetch is successful
 */
 
 @Injectable({
-	providedIn: 'root', // by default, root makes this service app-wide
+	providedIn: 'root',
 })
 export class MessageService {
 
 	/* 
-		This service exposes its "cache" of messages along with two methods: 
-			add() to add a message to the cache
+		This service exposes its "cache" of messages as well as two methods: 
+			add() to add messages to the cache
 			clear() to clear the cache
 	*/
 
-	messages: string[] = []; // this is the "cache"
+	messages: string[] = []; // this is the "cache", a string[] array
 
 	add(message: string) {
 		this.messages.push(message);
