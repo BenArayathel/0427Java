@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.company.model.Customer;
 import com.company.model.Registration;
@@ -51,9 +52,12 @@ public class LoginController {
 		
 		// Start processing request and convert string response into java object.
 		ObjectMapper om = new ObjectMapper();
-		Registration registration;
+		Registration registration = new Registration();
+		
+		registration.setLoginName(request.getParameter("loginName"));
+		registration.setLoginPassword(request.getParameter("loginPassword"));
 
-		registration = om.readValue(request.getReader(),com.company.model.Registration.class);
+//		registration = om.readValue(request.getReader(),com.company.model.Registration.class);
 				
 		// check output.
 		System.out.println(registration);
@@ -66,22 +70,30 @@ public class LoginController {
 		customer = bankService.validateLogin(registration.getLoginName(), registration.getLoginPassword());
 		
 		System.out.println("Servelet: " + customer);
-
-		// set response content type to json format.
-		response.setContentType("application/json");
-		response.setCharacterEncoding("UTF-8");		
-		
-		PrintWriter out = response.getWriter();
 		
 		if (customer != null) {
 			System.out.println("Inside customer is not null and try to redirect...");
+
 			// convert java object to string that can be sent to front end (as a response)
+			// set response content type to json format.
+			response.setContentType("application/json");
+			response.setCharacterEncoding("UTF-8");					
+			PrintWriter out = response.getWriter();
+
 			out.write(new ObjectMapper().writeValueAsString(customer));			
-				
+			
+			// Save session
+			HttpSession session = request.getSession();
+			session.setAttribute("customer", customer);
+			
+			
 			if (customer.getCustomerId() == 99999) {
 				return "/api/admin";
 			} else {	
-				return "/api/customer";		
+				//response.sendRedirect("/BankWebApp/src/main/webapp/customerPage.html");
+        		//return "/api/customer";	
+				return "/customerPage.html";		
+
 			}
 		} else {
 			return "/loginPage.html";

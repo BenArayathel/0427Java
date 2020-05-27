@@ -8,6 +8,9 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 
+	<meta HTTP-EQUIV="Pragma" content="no-cache">
+	<meta HTTP-EQUIV="Expires" content="-1">
+
 
     <title>WellsAmerica</title>
 
@@ -34,7 +37,7 @@
 	    </nav>
 		
 	    <div id="myLogin">
-	      <form id="login-form">
+	      <form id="login-form" method="post" action="api/login">
 	        <div class="form-group">
 	          <label for="usr">Login Name:</label><br>
 	          <input name="loginName" type="text" class="form-control" id="usr" required>
@@ -43,7 +46,7 @@
 	          <label for="pwd">Password:</label><br>
 	          <input name="loginPassword" type="password" class="form-control" id="pwd">
 	        </div>       
-	        <input class="btn btn-primary" id="submit-button" type=button onclick="validateLogin()" value="Log In">
+	        <input class="btn btn-primary" id="submit-button" type="submit" onclick="validateLogin()" value="Log In">
 	      
 	      </form>
 	    </div>
@@ -51,13 +54,14 @@
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
-
+ 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 
 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <script src="./main/bankApp.js"></script>
     <script src="./login/login.js"></script> 
+    
 
 </body>
 </html>

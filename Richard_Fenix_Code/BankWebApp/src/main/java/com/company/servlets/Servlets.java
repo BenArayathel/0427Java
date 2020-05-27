@@ -22,14 +22,12 @@ import com.fasterxml.jackson.databind.ObjectMapper;
  * Servlet implementation class Servlets
  */
 public class Servlets extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-	
-    private final ServiceLayer serviceLayer = new ServiceLayer();
-       
-    public Servlets() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+//	private static final long serialVersionUID = 1L;
+//	
+//    public Servlets() {
+//        super();
+//        // TODO Auto-generated constructor stub
+//    }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -47,8 +45,14 @@ public class Servlets extends HttpServlet {
 			throw new ServletException("Path or object not found from RequestHelper");
 		} else if (pathOrJsonString.endsWith(".html")){
 			System.out.println("Sending dispatch to " + pathOrJsonString);
-			System.out.println(request.getContextPath());
+			System.out.println(request.getContextPath() + pathOrJsonString);
 			response.sendRedirect(request.getContextPath()+pathOrJsonString);
+//			response.sendRedirect(pathOrJsonString);
+//			response.sendRedirect("/api" + pathOrJsonString);
+//			response.sendRedirect("http://localhost:9999" + request.getContextPath()+pathOrJsonString);
+
+				
+			return;
 		} else if (isJsonString(pathOrJsonString)) {
 			response.setContentType("application/json");
 			response.getWriter().write(pathOrJsonString);
@@ -63,19 +67,19 @@ public class Servlets extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-//		String pathInfo = request.getPathInfo();
-//		System.out.println(pathInfo);
-//		if (pathInfo == null || pathInfo.isEmpty() || pathInfo.equals("/")) {
-//		response.sendError(HttpServletResponse.SC_NOT_FOUND);
-//		return;
-//		}
+		String pathInfo = request.getPathInfo();
+		System.out.println(pathInfo);
+		if (pathInfo == null || pathInfo.isEmpty() || pathInfo.equals("/")) {
+		response.sendError(HttpServletResponse.SC_NOT_FOUND);
+		return;
+		}
 		
 //		response.sendRedirect("/BankWebApp/customerPage.html");
 //		System.out.println("1");
 //		response.sendRedirect("/BankWebApp/api/customerPage.html");
 //		System.out.println("2");
 //		response.sendRedirect("/customerPage.html");
-//		System.out.println("3");
+		System.out.println("Entered doPost...");
 
 		
 		doGet(request, response);

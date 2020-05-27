@@ -14,15 +14,15 @@ public class RequestHelper {
 		
 		switch(request.getRequestURI()) {
 		
-		case "/BankWebApp/api/customer":
+			case "/BankWebApp/api/customer":
 			
-			return "/customerPage.html";
+				//return "/customerPage.html";
 
-			//return CustomerController.home(request, response);
+				return CustomerController.home(request, response);
 		
-		case "/BankWebApp/api/login":
+			case "/BankWebApp/api/login":
 
-			return LoginController.login(request,response);
+				return LoginController.login(request,response);
 			
 		}
 		
