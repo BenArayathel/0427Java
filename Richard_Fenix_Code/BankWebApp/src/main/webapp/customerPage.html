@@ -1,12 +1,68 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+	<meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+
+    <title>WellsAmerica</title>
 </head>
 <body>
+	<div class="container-fluid">
+	    <div class="jumbotron">
+	      <h1 class="display-4">Wells of America</h1>
+	      <p class="lead">We find ways.</p>
+	      
+	      <p>Hi, <span id="greet"></span></p>
+	      <p> Customer Info:
+	      <p>First Name: <span id="fName"></span></p>
+	      <p>Last Name: <span id="lName"></span></p>
+	      
+	    </div>
+	
+	    <nav class="navbar navbar-default">
+	      <div class="container-fluid">
+	        <div class=nav-bar-header>
+	          <a class="navbar-brand" href="#">WellsAm</a>
+	        </div>
+	        <ul class="nav navbar-nav">
+	          <li class="active"><a href="#">Home</a></li>
+	          <li><a href="#" onclick="loadDeposit()">Deposit</a></li>
+	          <li><a href="#" onclick="loadWithdraw()">Withdraw</a></li>
+	          <li><a href="#" onclick="loadTransfer()">Transfer</a></li>
+	        </ul>
+	      </div>
+	    </nav>
+		
+	    <div id="myDeposit">
+	      <form id="depsosit-form">
+	        <div class="form-group">
+	          <label for="usr">From Account:</label><br>
+	          <input name="loginName" type="text" class="form-control" id="usr" required>
+	        </div>
+	        <div class="form-group">
+	          <label for="pwd">To Account:</label><br>
+	          <input name="loginPassword" type="text" class="form-control" id="pwd">
+	        </div>       
+	        <input class="btn btn-primary" id="submit-button" type="button" onclick="validateLogin()" value="Log In">
+	      
+	      </form>
+	    </div>
+    </div>
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
 
-<p>Welcome to customer HTML Page.</p>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<!--  -->     <script src="./main/bankApp.js"></script>
+    <script src="./customer/customer.js"></script> 
 
 </body>
 </html>

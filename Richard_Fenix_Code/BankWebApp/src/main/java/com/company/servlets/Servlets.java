@@ -5,11 +5,13 @@ import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.company.controller.RequestHelper;
 import com.company.model.Customer;
 import com.company.model.Registration;
 import com.company.service.ServiceLayer;
@@ -23,52 +25,69 @@ public class Servlets extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
     private final ServiceLayer serviceLayer = new ServiceLayer();
-	private static final String URL = "jdbc:oracle:thin:@localhost:1521:XE";
-	private static final String USERNAME = "bank_test";
-	private static final String PASSWORD = "password";
-
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
     public Servlets() {
         super();
         // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+//		try {
+//			// 1. Load driver
+//			Class.forName("oracle.jdbc.driver.OracleDriver");
+//		} catch (Exception ex) {
+//			System.out.println(ex);
+//		}		
 		
-		try {
-			// 1. Load driver
-			Class.forName("oracle.jdbc.driver.OracleDriver");
-			//2. connect to oracle db
-//			Connection con=DriverManager.getConnection(URL,USERNAME,PASSWORD);
-            System.out.println("connection established successfully...!!");     
-		} catch (Exception ex) {
-			System.out.println(ex);
+		
+		String pathOrJsonString = RequestHelper.process(request, response);
+		
+		if (pathOrJsonString==null) {
+			throw new ServletException("Path or object not found from RequestHelper");
+		} else if (pathOrJsonString.endsWith(".html")){
+			System.out.println("Sending dispatch to " + pathOrJsonString);
+			System.out.println(request.getContextPath());
+			response.sendRedirect(request.getContextPath()+pathOrJsonString);
+		} else if (isJsonString(pathOrJsonString)) {
+			response.setContentType("application/json");
+			response.getWriter().write(pathOrJsonString);
+		} else {
+			throw new IOException("attempted to return bad redirect or improper formatted JSON string: " + pathOrJsonString);
 		}
-
-		
-		
-		System.out.println("Inside doGet Registration");
-		
-		response.setContentType("application/json");
-
-
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-		
-		
-		
+				
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+//		String pathInfo = request.getPathInfo();
+//		System.out.println(pathInfo);
+//		if (pathInfo == null || pathInfo.isEmpty() || pathInfo.equals("/")) {
+//		response.sendError(HttpServletResponse.SC_NOT_FOUND);
+//		return;
+//		}
+		
+//		response.sendRedirect("/BankWebApp/customerPage.html");
+//		System.out.println("1");
+//		response.sendRedirect("/BankWebApp/api/customerPage.html");
+//		System.out.println("2");
+//		response.sendRedirect("/customerPage.html");
+//		System.out.println("3");
 
+		
+		doGet(request, response);
+	
+		
+		//request.getRequestDispatcher(RequestHelper.process(request,response)).forward(request, response);	
+//		RequestDispatcher dis=request.getRequestDispatcher(RequestHelper.process(request,response));
+//		dis.forward(request, response);
+			
+		
+		/*
+	
 		try {
 			// 1. load and register JDBC driver for MySQL (
 			Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -96,7 +115,7 @@ public class Servlets extends HttpServlet {
 		Customer customer = new Customer();
 		customer = serviceLayer.validateLogin(registration.getLoginName(), registration.getLoginPassword());
 		
-		System.out.println(customer);
+		System.out.println("Servelet: " + customer);
 
 		// set response content type to json format.
 		response.setContentType("application/json");
@@ -112,8 +131,24 @@ public class Servlets extends HttpServlet {
 			out.flush();
 			
 		}
+		
+		*/
 			
 	}
 
+	private boolean isJsonString(String jsonString) {
+		boolean valid;
+		ObjectMapper objectMapper = new ObjectMapper();
+		
+		try {
+			objectMapper.readTree(jsonString);
+			valid = true;
+		} catch (IOException e) {
+			valid = false;
+		}
+		
+		return valid;
+	}
+	
 		
 }

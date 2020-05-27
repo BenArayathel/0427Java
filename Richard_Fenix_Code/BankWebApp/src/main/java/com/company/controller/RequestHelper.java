@@ -10,13 +10,32 @@ public class RequestHelper {
 	
 	public static String process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		if (request.getRequestURI().equals("/BankWebApp/customer")) {
-			return "CustomerController.home(request, response)";
-		} else if (request.getRequestURI().equals("BankWebApp/admin")) {
-			return "AdminController.home(request, response)";
-		} else {
-			return "index.html";
+		System.out.println(request.getRequestURI());
+		
+		switch(request.getRequestURI()) {
+		
+		case "/BankWebApp/api/customer":
+			
+			return "/customerPage.html";
+
+			//return CustomerController.home(request, response);
+		
+		case "/BankWebApp/api/login":
+
+			return LoginController.login(request,response);
+			
 		}
+		
+		return "/loginPage.html";
+
+		
+//		if (request.getRequestURI().equals("/BankWebApp/customer")) {
+//			return "CustomerController.home(request, response)";
+//		} else if (request.getRequestURI().equals("BankWebApp/admin")) {
+//			return "AdminController.home(request, response)";
+//		} else {
+//			return "index.html";
+//		}
 		
 	}
 
