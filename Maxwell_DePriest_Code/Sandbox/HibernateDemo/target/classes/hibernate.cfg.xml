@@ -1,0 +1,52 @@
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+        
+
+        
+<hibernate-configuration>
+		<session-factory>
+			<!-- JDBC stuff -->
+			<property name ="hibernate.connection.username">madmax9242</property>
+			<property name ="hibernate.connection.password">jasonbourne</property>
+			<property name ="hibernate.connection.url">
+					jdbc:oracle:thin:@database-1.ccpojkviae8q.us-east-2.rds.amazonaws.com:1521:orcl
+			</property>
+			<property name ="hibernate.connection.driver_class">
+				oracle.jdbc.driver.OracleDriver	
+			</property>
+
+			<property name ="hibernate.connection.dialect">
+				org.hibernate.dialect.Oracle10gDialect
+			</property>
+			
+			<!-- Enables logging of generate SQL statements to the console -->
+			<property name ="hibernate.show_sql">false</property>
+
+			<!-- Formats it to be more readable (but it takes up more space) -->
+			<property name ="hibernate.format_sql">false</property>
+			
+			
+			<!--  Connection Pool:
+						A method of speeding up database calls. Hibernate will create 10 connection to the database when 
+						it starts up. And everytime you create a session, the session will "borrow" an active connection
+						from the connection pool. When you close a session the connection deosn't close, it is imply freed up for 
+						another session to use. (By default the pool_size is 20) -->
+			<property name ="hibernate.connection.pool_size">10</property>
+			
+			
+			<!-- Settings for hbm2ddl.auto
+				
+				CREATE - drops all tables and objects (that have names asssociated with your annotations), hibernate will 
+						create you schema from scratch (THIS IS NOT GREAT FRO PRODUCTION!!! Only use it for Dev purposes)
+				VALIDATE - hibernate checks to make sure the schema exists as expected before operating
+				UPDATE - will NOT delete anything, it'll only add or modify existing schema elements, so that schema works 
+						with hibernat's schema. 
+				NONE - it means hibernate won't do anything to your scehma automatically. 
+			 -->
+			
+			<property name ="hibernate.hbm2ddl.auto">create</property>
+			
+			<mapping class = "com.example.model.Jedi"></mapping>
+		</session-factory>
+</hibernate-configuration>
