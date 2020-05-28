@@ -1,9 +1,11 @@
 onload
 document.getElementById("myDeposit").style.display = "none";
 document.getElementById("myWithdraw").style.display = "none";
+document.getElementById("myTransfer").style.display = "none";
 
 fetchCustomerInfo();
 
+//Toggle to show and hide deposit form
 function loadDeposit(){
   console.log("clicked loadDeposit.")
   let x = document.getElementById("myDeposit");
@@ -16,9 +18,12 @@ function loadDeposit(){
   // turn off all other Forms
   let y = document.getElementById("myWithdraw");
   y.style.display = "none";
+  let z = document.getElementById("myTransfer");
+  z.style.display = "none";
 
 }
 
+//Toggle to show and hide withdraw form
 function loadWithdraw(){
   console.log("clicked loadWithdraw.")
   let x = document.getElementById("myWithdraw");
@@ -30,7 +35,26 @@ function loadWithdraw(){
   // turn off all other Forms
   let y = document.getElementById("myDeposit");
   y.style.display = "none";
-	  
+  let z = document.getElementById("myTransfer");
+  z.style.display = "none";
+
+}
+
+//Toggle to show and hide transfer form
+function loadTransfer(){
+  console.log("clicked loadTransfer.")
+  let x = document.getElementById("myTransfer");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+  // turn off all other Forms
+  let y = document.getElementById("myWithdraw");
+  y.style.display = "none";
+  let z = document.getElementById("myDeposit");
+  z.style.display = "none";
+
 }
 
 
@@ -88,7 +112,10 @@ function populateCustomerAccountSection(json) {
 	
 }
 
-// List<Account> aList = bankServiceController.getAccountListByCustomerId(customer.getCustomerId());
+
+function signOff(){
+    console.log("Signing off...");
+}
 
 
 

@@ -256,6 +256,80 @@ public class CustomerController {
 
 	}
 
+	public static String transfer(HttpServletRequest request, HttpServletResponse response) throws IOException {
+
+		/*
+		 *  Check for valid http method.
+		 * You can also check stuff like, they are an admin. 
+		 */
+		if(!request.getMethod().equals("POST")) {
+			return "/loginPage.html";
+		}	
+			
+		System.out.println("Inside Customer Controller to transfer amount...");
+
+		HttpSession session=request.getSession(false);
+		
+		if(session==null) {
+			response.sendRedirect("/loginPage.html");
+		}else {
+			
+			// get customer from session
+			Customer customer=(Customer) session.getAttribute("customer");
+			
+			// get list of accounts from session
+			List<Account> aList = (ArrayList<Account>) session.getAttribute("aList");
+		
+			// From Source
+			String fromAccountId = request.getParameter("fromAccount");
+			Account fromAccount = findAccountFromList(fromAccountId, aList);
+			BigDecimal bigDecimalTransfer = new BigDecimal(request.getParameter("transferAmount"));
+		
+			// To Destination Account
+			String toAccountId = request.getParameter("toAccount");
+
+			fromAccount = bankService.transferAmount(fromAccount, toAccountId, bigDecimalTransfer);
+	
+			return "/customerPage.html";		
+
+		}
+
+		return "";
+
+	}
+
+	
+	public static String signOff(HttpServletRequest request, HttpServletResponse response) throws IOException {
+
+		/*
+		 *  Check for valid http method.
+		 * You can also check stuff like, they are an admin. 
+		 */
+		if(!request.getMethod().equals("GET")) {
+			return "/loginPage.html";
+		}	
+			
+		System.out.println("Inside Customer Controller to signOff...");
+		
+		HttpSession session=request.getSession(false);
+	
+		if(session==null) {
+			response.sendRedirect("/loginPage.html");
+		}else {
+			// Destroy session
+			session.invalidate(); 
+
+			// Destroy session
+			session.invalidate(); 
+
+			return "/loginPage.html";		
+		}
+
+		return "";
+
+	}
+
+	
 	
     // Helper method
     public static Account findAccountFromList(

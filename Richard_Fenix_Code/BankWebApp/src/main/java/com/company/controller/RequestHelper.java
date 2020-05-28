@@ -28,7 +28,12 @@ public class RequestHelper {
 			case "/BankWebApp/api/withdraw":
 				return CustomerController.withdraw(request,response);				
 
-				
+			case "/BankWebApp/api/transfer":
+				return CustomerController.transfer(request,response);				
+
+			case "/BankWebApp/api/signoff":
+				return CustomerController.signOff(request,response);				
+
 		}
 		
 		return "/loginPage.html";

@@ -31,7 +31,7 @@
 	          <li><a href="#" onclick="loadDeposit()">Deposit</a></li>
 	          <li><a href="#" onclick="loadWithdraw()">Withdraw</a></li>
 	          <li><a href="#" onclick="loadTransfer()">Transfer</a></li>
-	          <li><a href="#" onclick="logOff()">Sign Out</a></li>
+	          <li><a href="http://localhost:9999/BankWebApp/api/signOff" onclick="signOff()">Sign Off</a></li>
 	        </ul>
 	      </div>
 	    </nav>
@@ -90,7 +90,34 @@
 	        <input class="btn btn-primary" id="submit-button" type="submit" onclick="validateWithdrawal()" value="Confirm">    
 	      </form>
 	    </div>
-	    
+
+	    <div id="myTransfer">
+	      <h3>Transfer Form</h3>
+	      <form id="transfer-form" method="post" action="api/transfer">
+	        <div class="form-group">
+	          <label for="fromAcct">From Account:</label><br>
+	          <input name="fromAccount" type="text" class="form-control" id="fromAcct" required>
+	        </div>
+	        <div class="form-group">
+	          <label for="amt">Amount To Transfer:</label><br>
+	          <input name="transferAmount" type="text" class="form-control" id="amt">
+	        </div> 
+	        <div class="form-group">
+	          <label for="toAcct">To Account:</label><br>
+	          <input name="toAccount" type="text" class="form-control" id="toAcct">
+	        </div>       
+	        <div class="form-group">
+	          <label for="fName">First Name:</label><br>
+	          <input name="firstName" type="text" class="form-control" id="fName">
+	        </div>       
+	        <div class="form-group">
+	          <label for="lName">Last Name:</label><br>
+	          <input name="lastName" type="text" class="form-control" id="lName">
+	        </div>       
+	              
+	        <input class="btn btn-primary" id="submit-button" type="submit" onclick="validatetransfer()" value="Confirm">    
+	      </form>
+	    </div>
 	    
     </div>
     <!-- jQuery library -->
