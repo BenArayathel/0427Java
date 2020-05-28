@@ -42,7 +42,7 @@ function checkBalance(){
     }
 
     //Call the fetch function to post
-    fetch("http://localhost:9999/controller/api/checkBalance", {
+    fetch("http://localhost:8090/controller/api/checkBalance", {
         method: "POST",
         body: JSON.stringify(
             {
@@ -81,7 +81,7 @@ function deposit(){
     }
 
     //Call the fetch function to post
-    fetch("http://localhost:9999/controller/api/deposit", {
+    fetch("http://localhost:8090/controller/api/deposit", {
         method: "POST",
         body: JSON.stringify({
             accountType: acct,
@@ -117,7 +117,7 @@ function withdraw(){
     }
     
     //Call the fetch function to post
-    fetch("http://localhost:9999/controller/api/withdraw", {
+    fetch("http://localhost:8090/controller/api/withdraw", {
         method: "POST",
         body: JSON.stringify({
             accountType: acct,

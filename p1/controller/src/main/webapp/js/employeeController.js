@@ -4,7 +4,7 @@
 
 function get_accounts(){
     
-    fetch("http://localhost:9999/controller/api/ReturnAccounts", {
+    fetch("http://localhost:8090/controller/api/ReturnAccounts", {
         method: "POST",
         headers: {
             "Content-type": "application/json; charset=UTF-8",

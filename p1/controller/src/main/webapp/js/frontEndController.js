@@ -25,7 +25,7 @@ function sendData(){
 //Function call to verify userID and password
 function user_login(user, pw){
     
-    fetch("http://localhost:9999/controller/api/LoginServlet", {
+    fetch("http://localhost:8090/controller/api/LoginServlet", {
         method: "POST",
         body: JSON.stringify({
             userID: user,
