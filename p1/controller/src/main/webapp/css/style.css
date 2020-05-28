@@ -1,0 +1,32 @@
+body{
+    background-image: url("images/bg.png");
+    background-repeat: no-repeat;
+    background-position: inherit;
+    background-size: 50%;
+}
+
+div#login{
+    margin-left: 66%;
+    margin-top: 20%;
+    border: 1px solid #042c13;
+    padding-left: 5px;
+    padding-right: 50px;
+}
+
+div#signup {
+	margin-left: 63%;
+	border: 1px solid #042c13;
+	padding-left: 5px;
+	padding-right: 50px;
+	margin-top: 5px;
+	margin-right: 8%;
+}
+
+.lettering{
+    font-family: Candara;
+    font-size: large;
+}
+
+p#error{
+    color: red;
+}

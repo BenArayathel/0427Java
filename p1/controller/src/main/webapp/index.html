@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="shortcut icon" href="css/images/favicon.ico">
+        <!-- Bootstrap -->
+    <link rel="stylesheet"
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+    
+    <title>Bank Application Home</title>
+</head>
+<body>
+    <div id="head_div" class="container">
+        <!-- div for the login forms -->
+        <div id="login">
+            <form>
+                <div class="form-group">
+                    <p class="lettering"><strong>Welcome existing customer</strong></p>
+                    <p class="lettering">Please sign in:</p>
+                    <input style="margin-bottom: 5px;" class="form-control" id="user_name_input" type="text" placeholder="Enter UserID">
+                
+                    <input class="form-control" id="user_password_input" type="password" maxlength="4" placeholder="Enter 4 Digit PIN">
+                    <p id="error" style="color: red;"></p>
+                    <br>
+                    <button id="login_button" type="button" class="btn btn-success">Log In</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div id="signup">
+        <h3 style="margin-top: 6px;" class="lettering"><strong>New customer? Apply today.</strong></h3>
+        <button style="margin-bottom: 10px;" type="button" id="signup_button" class="btn btn-success">Apply Now</button>
+    </div>
+
+     <script type="text/javascript" src="js/frontEndController.js"></script>
+    
+</body>
+</html>

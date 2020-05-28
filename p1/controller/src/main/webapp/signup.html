@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/signupStyle.css">
+        <!-- Bootstrap -->
+    <link rel="stylesheet"
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+    
+    <title>Bank Application Home</title>
+</head>
+<body>
+    <div class="container">
+        <span id="signup">
+            <form>
+                <div class="form-group">
+                    <label for="user_fName_input">First Name:</label>
+                    <input style="margin-bottom: 5px;" class="form-control" id="user_fName_input" type="text">
+                    <label for="user_lName_input">Last Name:</label>
+                    <input style="margin-bottom: 5px;" class="form-control" id="user_lName_input" type="text">
+                    <label for="user_ssn_input">SSN:</label>
+                    <input style="margin-bottom: 5px;" class="form-control" id="user_ssn_input" type="text">
+                    <label for="user_occupation_input">Occupation:</label>
+                    <br>
+                    <select id="user_occupation_input" class="signup">
+                        <option value="Administration">Administration</option>
+                        <option value="Education">Education</option>
+                        <option value="Engineering">Engineering</option>
+                        <option value="Finance">Finance</option>
+                        <option value="Human_Resources">Human_Resources</option>
+                        <option value="IT">IT</option>
+                        <option value="Legal">Legal</option>
+                        <option value="Medical">Medical</option>
+                        <option value="Retail">Retail</option>
+                        <option value="Science">Science</option>
+                        <option value="Skilled_Trade">Skilled_Trade</option>
+                        <option value="Software">Software</option>
+                        <option value="Writing">Writing</option>
+                    </select>
+                    <br>
+                    <label for="user_income_input">Annual Income:</label>
+                    <input style="margin-bottom: 5px;" class="form-control" id="user_income_input" type="text">
+                    <br>
+                    <label for="married_div">Are you married?</label>
+                    <div id="married_div">
+                        <label for="user_married_selection">Yes</label>
+                        <input type="radio" id="user_married_selection" value="Yes" name="married">
+                        <label for="user_notmarried_selection">No</label>
+                        <input type="radio" id="user_notmarried_selection" value="No" name="married" checked>
+                    </div>
+                    <br>
+                    <label for="own_home_div">Do you own your home?</label>
+                    <div id="own_home_div">
+                        <label for="user_ownhome_selection">Yes</label>
+                        <input type="radio" id="user_ownhome_selection" value="Yes" name="homeowner">
+                        <label for="user_ownhome_selection">No</label>
+                        <input type="radio" id="user_ownhome_selection" value="No" name="homeowner" checked>
+                    </div>
+                    <div id="pin_entry">
+                        <label for="pin_one">Please select a 4 digit PIN</label>
+                        <input id="pin_one" type="text" maxlength="4">
+                        <label for="pin_two">Please re-enter 4 digit PIN</label>
+                        <input id="pin_two" type="text" maxlength="4">
+                        <label for="init_amount">Amount to start</label>
+                        <input id="init_amount" type="text">
+                    </div>
+                    <br>
+                    <button id="apply_button" type="button" class="btn btn-success">Apply</button>
+                    <button id="back_button" type="button" class="btn btn-success">Back</button>
+                </div>
+            </form>
+        </span>
+        <span id="terms">
+            <div>
+                <h3><b><u>Terms and Conditions</u></b></h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+                    sed do eiusmod tempor incididunt ut labore et dolore 
+                    magna aliqua. Accumsan sit amet nulla facilisi morbi 
+                    tempus. Urna id volutpat lacus laoreet non curabitur 
+                    gravida arcu ac. Purus in mollis nunc sed id semper risus. 
+                    Tempus urna et pharetra pharetra. Blandit massa enim nec dui. 
+                    Diam sit amet nisl suscipit adipiscing bibendum est ultricies 
+                    integer. Enim ut tellus elementum sagittis. Volutpat diam ut 
+                    venenatis tellus in. Lacus sed viverra tellus in hac. Ornare 
+                    arcu odio ut sem nulla pharetra diam sit. Vitae justo eget 
+                    magna fermentum iaculis eu. Lectus sit amet est placerat 
+                    in egestas erat imperdiet sed. Accumsan in nisl nisi 
+                    scelerisque eu ultrices vitae auctor eu.</p>
+
+                    <p>Non odio euismod lacinia at quis. Justo donec enim diam 
+                    vulputate ut pharetra sit amet. Amet mattis vulputate enim 
+                    nulla aliquet porttitor lacus luctus accumsan. 
+                    Quisque sagittis purus sit amet volutpat consequat 
+                    mauris nunc. Massa massa ultricies mi quis. Arcu cursus 
+                    vitae congue mauris rhoncus. Massa sapien faucibus et 
+                    molestie. Quisque egestas diam in arcu cursus. Morbi 
+                    tristique senectus et netus. Morbi tristique senectus 
+                    et netus et malesuada. Ac turpis egestas maecenas 
+                    pharetra convallis posuere morbi leo urna. Turpis 
+                    in eu mi bibendum neque egestas congue quisque. 
+                    Sagittis nisl rhoncus mattis rhoncus urna neque 
+                    viverra justo. In egestas erat imperdiet sed. Sit 
+                    amet nisl suscipit adipiscing bibendum est. Donec 
+                    pretium vulputate sapien nec sagittis aliquam. Neque 
+                    volutpat ac tincidunt vitae semper. Quis varius quam 
+                    quisque id.</p>
+                    
+                    <p>Leo a diam sollicitudin tempor id. Consectetur 
+                    adipiscing elit pellentesque habitant morbi tristique. 
+                    Interdum velit euismod in pellentesque massa placerat 
+                    duis ultricies lacus. Cursus vitae congue mauris rhoncus 
+                    aenean vel. Tempus iaculis urna id volutpat lacus. 
+                    Sapien pellentesque habitant morbi tristique senectus 
+                    et netus. Tortor vitae purus faucibus ornare suspendisse. 
+                    Tincidunt praesent semper feugiat nibh sed pulvinar proin 
+                    gravida hendrerit. Sed nisi lacus sed viverra tellus in 
+                    hac habitasse. Sed risus pretium quam vulputate dignissim. 
+                    Lorem ipsum dolor sit amet consectetur. Lacus sed viverra 
+                    tellus in hac habitasse platea dictumst. Non consectetur a 
+                    erat nam. Pharetra et ultrices neque ornare aenean euismod 
+                    elementum.</p>
+                    
+                    <p>Senectus et netus et malesuada fames ac turpis. Faucibus 
+                    ornare suspendisse sed nisi lacus sed viverra tellus in. 
+                    Non tellus orci ac auctor augue mauris. Aliquet risus 
+                    feugiat in ante metus dictum at tempor. Vitae tempus quam 
+                    pellentesque nec nam aliquam sem. Aliquam eleifend mi in 
+                    nulla posuere sollicitudin aliquam ultrices sagittis. 
+                    Gravida in fermentum et sollicitudin ac. Lobortis mattis 
+                    aliquam faucibus purus in. Mi sit amet mauris commodo quis. 
+                    Sit amet purus gravida quis blandit turpis cursus in. Auctor 
+                    elit sed vulputate mi sit. Suspendisse interdum consectetur 
+                    libero id faucibus nisl tincidunt eget. Mauris augue neque 
+                    gravida in fermentum. Nam at lectus urna duis convallis 
+                    convallis.</p>
+                    
+                    <p>Sollicitudin tempor id eu nisl. In aliquam sem fringilla 
+                    ut morbi tincidunt augue interdum velit. Morbi tincidunt 
+                    augue interdum velit euismod in pellentesque massa placerat. 
+                    Maecenas volutpat blandit aliquam etiam erat velit scelerisque 
+                    in. Eu non diam phasellus vestibulum lorem sed. Suspendisse 
+                    faucibus interdum posuere lorem ipsum dolor. Lorem ipsum dolor 
+                    sit amet consectetur adipiscing elit duis tristique. Mauris 
+                    cursus mattis molestie a. In tellus integer feugiat scelerisque 
+                    varius morbi. Mattis nunc sed blandit libero. Vitae sapien 
+                    pellentesque habitant morbi tristique senectus et netus et. 
+                    Integer eget aliquet nibh praesent tristique. At varius vel 
+                    pharetra vel turpis nunc eget. Porttitor lacus luctus accumsan 
+                    tortor posuere ac ut consequat. Aliquet risus feugiat in ante
+                     metus dictum at. Semper eget duis at tellus at urna condimentum 
+                     mattis. Mi proin sed libero enim sed. Proin libero nunc 
+                     consequat interdum varius sit amet. Adipiscing elit duis 
+                     tristique sollicitudin. Nibh tortor id aliquet lectus proin 
+                     nibh nisl condimentum id.</p>
+            </div>
+        </span>
+    </div>
+
+     <script type = "text/javascript" src="js/signup.js"></script>
+    
+</body>
+</html>

@@ -1,0 +1,33 @@
+body{
+    background-image: url("images/vault.png");
+    background-repeat: no-repeat;
+    background-position: inherit;
+    background-size: 100%;
+}
+
+
+span#signup{
+    position: fixed;
+	margin-bottom: 5%;
+    width: 30%;
+    margin-top: 5%;
+    border: 1px solid #042c13;
+    padding: 4px;
+    background-color: white;
+}
+
+span#terms{
+    margin-right: 15%;
+    margin-left: 45%;
+    position: fixed;
+    margin-top: 5%;
+    border: 1px solid #042c13;
+    padding: 4px;
+    overflow-y: scroll;
+    height: 75%;
+    background-color: white;
+}
+
+select.signup{
+    margin-bottom: 10px;
+}

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <link rel="stylesheet" href="css/acct_style.css">
+        <title>Home</title>
+        
+        <meta charset="UTF-8">
+
+    </head>
+    <body style="background-color: aliceblue; background-image: none;">
+       
+        <table id="account_options_table">
+            <!-- This is for Check Balance -->
+            </tr>
+            <tr>
+                <td>
+                    <h3>Check <br>Balance</h3>
+                </td>
+                <td>
+                    <input id="checking_radio" type="radio" name="csg_balance" value="checking" checked>Checking<br>
+                    <input id="savings_radio" type="radio" name="csg_balance" value="savings">Savings
+                </td>
+                <td>
+                    <p hidden>Nothing</p>
+                </td>
+                <td>
+                    <button id="check_balance_button">Submit</button>
+                </td>
+            </tr>
+            <!-- This is for Deposit -->
+            <tr>
+                <td>
+                    <h3>Deposit</h3>
+                </td>
+                <td>
+                    <input id="checking_radio" type="radio" name="csg_deposit" value="checking" checked>Checking<br>
+                    <input id="savings_radio" type="radio" name="csg_deposit" value="savings">Savings
+                </td>
+                <td>
+                    <input id="deposit_amount_input" type="text"> 
+                </td>
+                <td>
+                    <button id="deposit_button">Submit</button>
+                </td>
+            </tr>
+            <!-- This is for Withdrawl -->
+            <tr>
+                <td>
+                    <h3>Withdraw</h3>
+                </td>
+                <td>
+                    <input id="checking_radio" type="radio" name="csg_withdraw" value="checking" checked>Checking<br>
+                    <input id="savings_radio" type="radio" name="csg_withdraw" value="savings">Savings
+                </td>
+                <td>
+                    <input id="withdrawl_amount_input" type="text"> 
+                </td>
+                <td>
+                    <button id="withdraw_button">Submit</button>
+                </td>
+            </tr>
+            <!-- This is for Bank Transfer -->
+            <tr>
+                <td>
+                    <h3>Transfer</h3>
+                </td>
+                <td>
+                    <input id="transfer_to_acctnum_input" type="text" placeholder="Account to xfer to">
+                </td>
+                <td>
+                    <input id="transfer_amount_input" type="text" placeholder="Amount to transfer">
+                </td>
+                <td>
+                    <button id="transfer_funds_button">Submit</button>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button id="exit_button">Exit</button>
+                    <br><br>
+                </td>
+            </tr>
+        </table>
+        <br>
+        <br>
+        <!-- This is where the information the user requested or is delivered by the system -->
+        <div id="information_div">
+            <p id="information"></p>
+        </div>
+        
+
+        <script type="text/javascript" src="js/accountController.js"></script>
+    </body>
+</html>
