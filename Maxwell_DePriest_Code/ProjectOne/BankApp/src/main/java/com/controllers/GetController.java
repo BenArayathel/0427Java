@@ -41,9 +41,9 @@ public class GetController {
 			CurrentUser foundUser = new CurrentUser(newUser.getEmail(), newUser.getName(), foundAccount.getCheckingAccountNumber(), foundAccount.getSavingsAccountNumber(), foundAccount.getActive());
 			mapper.writeValue(res.getWriter(), foundUser);
 		} catch (BusinessException e) {
-			res.getWriter().append("User not found");
 			e.printStackTrace();
-			res = null;		}
+			res = null;		
+			}
 		
 		return res;
 	}

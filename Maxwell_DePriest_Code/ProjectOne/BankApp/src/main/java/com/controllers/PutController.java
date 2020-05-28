@@ -62,6 +62,9 @@ public class PutController {
 					try {
 						if(aDI.updateAccount(currentUser.getEmail(), "checkingBalance", currentUser.getCheckingBalance())) {
 							loggy.debug("Updated checking balance for email " + currentUser.getEmail());
+							CurrentUser sendingBackUser = new CurrentUser(currentUser.getEmail(), currentUser.getName(), currentUser.getCheckingBalance(), currentUser.getSavingsBalance(), "customer");
+							loggy.debug("Sending user back to client-side. Email- " + currentUser.getEmail());
+							mapper.writeValue(res.getWriter(), sendingBackUser);
 						}
 					} catch (BusinessException e) {
 						loggy.error("Error trying to update checking account for email " + currentUser.getEmail());
@@ -69,9 +72,7 @@ public class PutController {
 						e.printStackTrace();
 					}
 				}// end of checking/saving if block
-				CurrentUser sendingBackUser = new CurrentUser(currentUser.getEmail(), currentUser.getName(), currentUser.getCheckingBalance(), currentUser.getSavingsBalance(), "customer");
-				loggy.debug("Sending user back to client-side. Email- " + currentUser.getEmail());
-				mapper.writeValue(res.getWriter(), sendingBackUser);
+				
 				
 			}
 			
@@ -99,7 +100,7 @@ public class PutController {
 					mapper.writeValue(res.getWriter(), cU);
 				}
 			} catch (BusinessException e) {
-				
+				res = null;
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
@@ -122,6 +123,7 @@ public class PutController {
 					e.printStackTrace();
 				}
 			} catch (BusinessException e) {
+				res = null;
 				loggy.error("Error while activating account with email " + activationInfo.getEmail());
 				e.printStackTrace();
 			}

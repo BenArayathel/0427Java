@@ -44,8 +44,9 @@ function checkCredentials() {
         					}
         					
         				}).catch(error =>{
-        					console.log(error)
-        					//window.location.href = "./404.html";
+        					alert("Invalid Login. Please try again");
+        					//console.log(error)
+        					
         				});
     	
     }
