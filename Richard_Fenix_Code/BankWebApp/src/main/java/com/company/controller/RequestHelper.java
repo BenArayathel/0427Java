@@ -13,21 +13,17 @@ public class RequestHelper {
 		System.out.println(request.getRequestURI());
 		
 		switch(request.getRequestURI()) {
-		
-			case "/BankWebApp/api/customer":
-			
-				//return "/customerPage.html";
-
-				return CustomerController.home(request, response);
-		
 			case "/BankWebApp/api/login":
-
 				return LoginController.login(request,response);
 		
+			case "/BankWebApp/api/customer":
+				return CustomerController.home(request, response);
+		
 			case "/BankWebApp/api/customer/accountlist":
-
 				return CustomerController.getAccountList(request,response);
 
+			case "/BankWebApp/api/deposit":
+				return CustomerController.deposit(request,response);				
 				
 		}
 		

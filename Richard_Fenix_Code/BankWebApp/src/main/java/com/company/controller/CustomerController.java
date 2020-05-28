@@ -2,6 +2,7 @@ package com.company.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.math.BigDecimal;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -14,6 +15,7 @@ import javax.servlet.http.HttpSession;
 import com.company.model.Account;
 import com.company.model.Customer;
 import com.company.model.Registration;
+import com.company.view.BankApp;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class CustomerController {
@@ -23,7 +25,7 @@ public class CustomerController {
 	public static String home(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
 		/*
-		 * you should route guard for your controllers. We have to check for http method.
+		 *  Check for valid http method.
 		 * You can also check stuff like, they are an admin. 
 		 */
 		if(!request.getMethod().equals("GET")) {
@@ -71,7 +73,7 @@ public class CustomerController {
 	public static String getAccountList(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
 		/*
-		 * you should route guard for your controllers. We have to check for http method.
+		 *  Check for valid http method.
 		 * You can also check stuff like, they are an admin. 
 		 */
 		if(!request.getMethod().equals("GET")) {
@@ -104,6 +106,9 @@ public class CustomerController {
 			List<Account> aList = new ArrayList<Account>();
 			aList = bankService.getAccountListByCustomerId(customer.getCustomerId());
 
+			// save account list of customer for future validation purposes (depositing to valid account, etc)
+			session.setAttribute("aList", aList);
+			
 			System.out.println("Account List: " + aList);	
 		
 			response.setContentType("application/json");
@@ -113,15 +118,105 @@ public class CustomerController {
 		
 			out.write(new ObjectMapper().writeValueAsString(aList));				
 		
-			//destroying the session
-			// session.invalidate(); 
 		}
 
 		return "";
 
 	}
 
+	public static String deposit(HttpServletRequest request, HttpServletResponse response) throws IOException {
+
+		/*
+		 *  Check for valid http method.
+		 * You can also check stuff like, they are an admin. 
+		 */
+		if(!request.getMethod().equals("POST")) {
+			return "/loginPage.html";
+		}	
+			
+		System.out.println("Inside Customer Controller to deposit amount...");
+
+		HttpSession session=request.getSession(false);
+		
+		if(session==null) {
+			response.sendRedirect("/loginPage.html");
+		}else {
+			
+			Customer customer=(Customer) session.getAttribute("customer");
+			List<Account> aList = (ArrayList<Account>) session.getAttribute("aList");
+		
+			String accountId = request.getParameter("accountId");
+//			registration.setLoginPassword(request.getParameter("loginPassword"));
+
+			Account account = findAccountFromList(accountId, aList);
+
+			// Move below to front-end validation.
+			/*
+			String warningMessage = "";
+			
+			if (account == null) {
+				warningMessage = "WARNING: Invalid account ID. No deposit made.";
+			}
+			
+			try {
+				BigDecimal bigDecimalDeposit = new BigDecimal(request.getParameter("depositAmount"));
+				// if input is negative...
+				if (bigDecimalDeposit.compareTo(BigDecimal.ZERO) < 1) {
+					warningMessage = "WARNING: Amount is not valid. No deposit made.";
+				};
+			} catch (Exception e) {
+				warningMessage = "WARNING: Amount is not valid. No deposit made.";
+			} 
+
+			
+			// If there is a warning message, it means data input is not valid.
+			if (!warningMessage.isEmpty()) {
+				return "";				
+			}
+			*/
+			
+			
+//			try {
+//				// 1. load and register JDBC driver for MySQL (
+//				Class.forName("oracle.jdbc.driver.OracleDriver");
+//			} catch (Exception ex) {
+//				System.out.println(ex);
+//			}
+		
+			BigDecimal bigDecimalDeposit = new BigDecimal(request.getParameter("depositAmount"));
+			account = bankService.depositAmount(account, bigDecimalDeposit);
+
+			aList = bankService.getAccountListByCustomerId(customer.getCustomerId());
+
+			System.out.println("Account List: " + aList);	
+		
+			response.setContentType("application/json");
+			response.setCharacterEncoding("UTF-8");					
+
+			PrintWriter out=response.getWriter();
+		
+			out.write(new ObjectMapper().writeValueAsString(aList));
+			
+			return "/customerPage.html";		
+
+		}
+
+		return "";
+
+	}
 	
+	
+    // Helper method
+    public static Account findAccountFromList(
+    		  String accountId, List<Account> aList) {
+    	for (Account account : aList) {
+    		if (account.getAccountId().equals(accountId)) {
+    			return account;
+    		}
+    	}
+    	return null;		
+    }
+
 }
 	
 	
