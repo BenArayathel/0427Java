@@ -23,7 +23,12 @@ public class RequestHelper {
 			case "/BankWebApp/api/login":
 
 				return LoginController.login(request,response);
-			
+		
+			case "/BankWebApp/api/customer/accountlist":
+
+				return CustomerController.getAccountList(request,response);
+
+				
 		}
 		
 		return "/loginPage.html";

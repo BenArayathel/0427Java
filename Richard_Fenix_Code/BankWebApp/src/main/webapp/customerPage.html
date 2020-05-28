@@ -16,17 +16,11 @@
 </head>
 <body>
 	<div class="container-fluid">
-	    <div class="jumbotron">
+	    <div class="jumbotron alert-info">
 	      <h1 class="display-4">Wells of America</h1>
 	      <p class="lead">We find ways.</p>
-	      
-	      <p>Hi, <span id="greet"></span></p>
-	      <p> Customer Info:
-	      <p>First Name: <span id="fName"></span></p>
-	      <p>Last Name: <span id="lName"></span></p>
-	      
 	    </div>
-	
+	    
 	    <nav class="navbar navbar-default">
 	      <div class="container-fluid">
 	        <div class=nav-bar-header>
@@ -40,6 +34,31 @@
 	        </ul>
 	      </div>
 	    </nav>
+	    
+	    
+	    <div class="container alert-info">
+	      <p>Hi, <span id="greet"></span></p>
+	      <p> Customer Info:
+	      <p>Customer ID: <span id="customerId"></span></p>
+	      <p>First Name: <span id="fName"></span></p>
+	      <p>Last Name: <span id="lName"></span></p>
+	    </div>
+	
+		
+		<div id="customerAccount">
+			<table id="accountTable" class="table">
+			  <thead>
+			    <tr class="info">
+			      <th scope="col">Account ID</th>
+			      <th scope="col">Type</th>
+			      <th scope="col">Balance</th>
+			    </tr>
+			  </thead>
+			  <tbody id="accountBody">
+			  </tbody>
+			</table>	    
+		</div>
+		
 		
 	    <div id="myDeposit">
 	      <form id="depsosit-form">

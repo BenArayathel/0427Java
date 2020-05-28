@@ -51,7 +51,8 @@ public class LoginController {
 		System.out.println("Inside LoginController now...");
 		
 		// Start processing request and convert string response into java object.
-		ObjectMapper om = new ObjectMapper();
+		//ObjectMapper om = new ObjectMapper();
+		
 		Registration registration = new Registration();
 		
 		registration.setLoginName(request.getParameter("loginName"));
