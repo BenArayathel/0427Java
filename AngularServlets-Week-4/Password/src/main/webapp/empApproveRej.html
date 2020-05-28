@@ -47,10 +47,10 @@
 
       <h4 class="text-center">Approve Reject Accounts</h4>
 
-      <button id="myForm" onclick="getAllApplicants()" class="btn btn btn-primary">Soon To Be Get All
-        Applicants</button>
+      <!-- <button id="myForm" onclick="getAllApplicants()" class="btn btn btn-primary">Soon To Be Get All
+        Applicants</button> -->
 
-      <table style="margin-top: 60px;" class="table table-striped table-bordered">
+      <!-- <table style="margin-top: 60px;" class="table table-striped table-bordered">
         <thead class="thead-dark">
           <tr>
             <th>#</th>
@@ -97,9 +97,9 @@
             </form>
           </tr>
         </tbody>
-      </table>
+      </table> -->
 
-      <table style="margin-top: 60px; margin-bottom: 160px;" class="table table-striped table-bordered">
+      <table style="margin-top: 60px; margin-bottom: 80px;" class="table table-striped table-bordered">
         <thead class="thead-dark">
           <tr>
             <th>#</th>
@@ -209,7 +209,21 @@
           // data
           //theUsers = data;  // theUser is a GLOBAL ARRAY 
 
-          for (const d of data) {  // was data
+          // for (const d of data) {  // populate Global array
+
+          //   theUsers.push(
+          //     {
+          //       index: d.index,
+          //       userName: d.userName,
+          //       user_id: d.user_id,
+          //       dob: d.dob,
+          //       balance: d.balance,
+          //       a_access: d.a_access
+          //     }
+          //   );
+          // }
+
+          for (const d of data) {  // populate HTML
 
             console.log(d.user_id);
             output +=
@@ -220,8 +234,8 @@
                     <td>${d.dob}</td>
                     <td>${d.balance}</td>
                     <td>${d.a_access}</td>
-                    <td><button onclick="ok(${d["user_id"]})" class="btn btn-sm btn-success">ok</button></td>
-                    <td><button onclick="reject(${d.user_id})" class="btn btn-sm btn-danger">X</button></td>
+                    <td><button onclick="ok('${d["user_id"]}')" class="btn btn-sm btn-success">ok</button></td>
+                    <td><button onclick="reject('${d.user_id}')" class="btn btn-sm btn-danger">X</button></td>
             </tr>`;
           }
           document.getElementById('output3').innerHTML = output;
@@ -231,9 +245,6 @@
 
     }
 
-    /*
-      id gives an undefined error: .. ??
-    */
     function reject(id) {
 
       console.log("hey: reject ran... ");
@@ -242,39 +253,25 @@
         user_id: '',
         utility: 'delete'
       }
-      //data2.user_id = document.getElementById("userid").innerHTML;
-      data2.user_id = this.id;
+     
+      data2.user_id = id;
 
-      // for (const d of theUsers) {
-
-      //   if(d.user_id == id){
-      //     data2.user_id = d.user_id;
-      //   }
-      // }
-
-
-      // // POST  :  create user
+      // // POST  :  pass user
       http.post('http://localhost:9999/Password/empapproval', data2)
         .then(data => console.log(data))
         .catch(err => console.log(err));
 
     }
 
-
-    /*
-        Json.parse error
-    */
-    function ok(id) {
+    function ok(id) {   //  Json.parse error
 
       // User Data
       const data3 = {
         user_id: '',
         utility: 'approve'
       }
-      //data3.user_id = document.getElementById("userid").innerHTML;
-      //data3.user_id = document.getElementById("userid").value;  // JSON.parse error
-      //console.log("here is the id ?? : " + this.id);
-      data3.user_id = this.id;
+
+      data3.user_id = id;
 
       // // POST  :  create user
       http.post('http://localhost:9999/Password/empapproval', data3)
@@ -310,9 +307,9 @@
                     <td>${d.dob}</td>
                     <td>${d.balance}</td>
                     <td>${d.a_access}</td>
-                    <td><button onclick="ok(${d["user_id"]})" class="btn btn-sm btn-success">ok</button></td>
+                    <td><button onclick="ok('${d["user_id"]}')" class="btn btn-sm btn-success">ok</button></td>
                     
-                    <td><button onclick="reject(${d["user_id"]})" class="btn btn-sm btn-danger">X</button></td>
+                    <td><button onclick="reject('${d["user_id"]}')" class="btn btn-sm btn-danger">X</button></td>
 
                     
             </tr>`;
@@ -326,6 +323,15 @@
       });
 
 // SCRATCH LAND
+
+ //data2.user_id = document.getElementById("userid").innerHTML;
+
+       // for (const d of theUsers) {
+
+      //   if(d.user_id == id){
+      //     data2.user_id = d.user_id;
+      //   }
+      // }
 
         // for (const d of data) {  // was data
         //     // output += `<li>${user.login}</li>`;    // used to be  ${d.user_id}

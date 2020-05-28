@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <title>Bank View Customer Transactions</title>
+    <title>Bank Customer Transactions</title>
 </head>
 <body>
 
@@ -40,9 +40,9 @@
     <div class="container">
 
         
-        <h4 class="text-center">Employee View A Customer Transactions</h4>
+        <h4 class="text-center">View Customer Transactions</h4>
 
-        <table style="margin-top: 60px;" class="table table-striped table-bordered">
+        <!-- <table style="margin-top: 60px;" class="table table-striped table-bordered">
             <thead class="thead-dark">
                 <tr>
                     <th>#</th>
@@ -68,15 +68,15 @@
                     <th scope="row">3</th>
                     <td>Shannon</td>
                     <td>Williams</td>
-                    <td>shannon@yahoo.com</td>
+                    <td><button onclick="" class="btn btn-sm btn-primary"></button></td>
                 </tr>
             </tbody>
-        </table>
+        </table> -->
 
 
 
 
-        <table style="margin-top: 60px; margin-bottom: 160px;" class="table table-striped table-bordered">
+        <table style="margin-top: 60px; margin-bottom: 25px;" class="table table-striped table-bordered">
           <thead class="thead-dark">
               <tr>
                   <th>#</th>
@@ -85,6 +85,7 @@
                   <th>DOB</th>
                   <th>Balance</th>
                   <th>auth</th>
+                  <th>View</th>
               </tr>
           </thead>
           <tbody id="custTable">
@@ -95,10 +96,10 @@
 
 
 
+        <!-- <p>this is still all transactions</p>
+        <button id="myForm" onclick="getAllTrans()" class="btn btn btn-primary">View Transactions</button> -->
 
-        <button id="myForm" onclick="getAllTrans()" class="btn btn btn-primary">Soon to be View Transaction</button>
-
-        <table style="margin-top: 60px; margin-bottom: 160px;" class="table table-striped table-bordered">
+        <table style="margin-top: 60px; margin-bottom: 25px;" class="table table-striped table-bordered">
           <thead class="thead-dark">
               <tr>
                   <th>records</th>
@@ -178,15 +179,16 @@
 
 
     // GET  :  read or get user's
-    function getAllTrans() {
+    function getAllTrans(id) {
 
     
       console.log("getAllTrans function ran... ...");
       console.log("endpoint: custranhelper");
+      console.log("id is: " + id);
 
       let output ='';
 
-      http.get('http://localhost:9999/Password/custranhelper')    // used to be vewall
+      http.get(`http://localhost:9999/Password/custranhelper?var=${id}`)    // used to be vewall
         .then(data => {
           console.log(data)
           //data = JSON.parse(data);
@@ -244,10 +246,11 @@ if (err) {
                 <td>${d.dob}</td>
                 <td>${d.balance}</td>
                 <td>${d.a_access}</td>
+                <td><button onclick="getAllTrans('${d.user_id}')" class="btn btn-sm btn-primary">view</button></td>
 
                 
         </tr>`;
-    }
+    }   // onclick="getAllTrans()"
 
     
 }

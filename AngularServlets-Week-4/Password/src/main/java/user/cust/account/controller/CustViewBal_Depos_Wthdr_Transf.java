@@ -53,7 +53,7 @@ public class CustViewBal_Depos_Wthdr_Transf {
 		
 	}
 	
-	public double deposit(User user, double deposit) {
+	public int deposit(User user, double deposit) {
 		
 		if (user.getA_access() == 1) {
 			
@@ -136,13 +136,13 @@ public class CustViewBal_Depos_Wthdr_Transf {
 		
 	}
 	
-	void transfer(User user) {
+	public int transfer(User user, double amount, String recipientID) {
 		
 		if (user.getA_access() == 1) {
 			
 			//Log.logger("Under Construction..");
 			
-			if (transferHelperwithdraw(user)) {
+			if (transferHelperwithdraw(user, amount)) {
 				
 				BankDaoImpl b = new BankDaoImpl();
 				List<User> transferRecipient = new ArrayList<>();
@@ -166,11 +166,11 @@ public class CustViewBal_Depos_Wthdr_Transf {
 				
 				//EmployeePortal e1 = new EmployeePortal();
 
-				if (scanner.hasNext()) {
+				if (true) {	// scanner.hasNext()
 
-					int input = Integer.parseInt(scanner.nextLine());
+					//int input = Integer.parseInt(scanner.nextLine());
 
-					if (input == 1) {
+					if (true) {
 
 						// approve acct
 						
@@ -178,41 +178,56 @@ public class CustViewBal_Depos_Wthdr_Transf {
 						Log.logger("() <- to approve: ie: 1");
 						Log.logger("0 - to Quit - back to menu");
 
+						/**
+						 * pass a THIRD PARAM in utility store the transfer recipient's ID
+						 */
 						
-						if (scanner.hasNext()) {
+						if (true) {	// scanner.hasNext()
 							
-							int nav = Integer.parseInt(scanner.nextLine());
+							//int nav = Integer.parseInt(scanner.nextLine());
 							
 							
-							if (nav != 0) {
+							if (true) {	// nav != 0
+								
+								User u_with_recipientID = new User();
+								u_with_recipientID.setUser_id(recipientID);
+								
+								
 								Log.logger("Congratulations ! you Transfered Money to:");
-								Log.logger("this: " + transferRecipient.get(nav-1).toString());
+								//Log.logger("this: " + transferRecipient.get(nav-1).toString());
+								Log.logger("this: " + u_with_recipientID.toString());
+								
 								
 								// send user, funds, recipient
 								//Log.logger("service calling the back");
 								
-								b.update_transfer(user, transferFunds, transferRecipient.get(nav-1));
+								//b.update_transfer(user, transferFunds, transferRecipient.get(nav-1));
+								b.update_transfer(user, transferFunds, u_with_recipientID);
+								
 								t.setUser_id(user.getUser_id());
 								t.setDate(formatter.format(date).toString());
 								t.setDescription("Transfer");
 								t.setTransactionValue(transferFunds);
-								t.setDestination_id(transferRecipient.get(nav-1).toString());
+								t.setDestination_id(u_with_recipientID.getUser_id());
 								tDao.createTransaction(user, t.toString());
 								
 								
 								//b.employeeRejectOrApprove_customerApplicationForAccount(transferRecipient.get(nav-1));
-								cd.select(user);
+								//cd.select(user);
+								
+								return 1;
 							}
 							
-							if (nav == 0) {
+							if (true) {	// nav == 0
 								
-								cd.select(user);
+								//cd.select(user);
 							}
 						}
 					}
-					if (input == 0) {
+					if (true) {	// input == 0
 						//EmployeePortal e2 = new EmployeePortal();
-						cd.select(user);
+						//cd.select(user);
+						return 0;
 					}
 
 				
@@ -228,12 +243,13 @@ public class CustViewBal_Depos_Wthdr_Transf {
 
 
 			
-
-			cd.select(user);
+			return 1;
+			//cd.select(user);
 			
 		} else {
 			Log.logger("Sorry you do not have access");
-			cd.select(user);
+			return 0;
+			//cd.select(user);
 		}
 		
 	}
@@ -243,13 +259,14 @@ public class CustViewBal_Depos_Wthdr_Transf {
 	 * @param user
 	 * @return return boolean: if user has available funds to transfer
 	 */
-	boolean transferHelperwithdraw(User user) {
+	boolean transferHelperwithdraw(User user, double amount) {
 		
 		if (user.getA_access() == 1) {
 			
 			Log.logger("Enter Transfer Amount:");
-			if (scanner.hasNext()) {
-				transferFunds = Double.parseDouble(scanner.nextLine());
+			if (true) {		// scanner.hasNext()
+				//transferFunds = Double.parseDouble(scanner.nextLine());
+				transferFunds = amount;
 				
 				if (transferFunds > 0) {
 					
@@ -272,11 +289,11 @@ public class CustViewBal_Depos_Wthdr_Transf {
 				
 			}
 			// so I really want this navigation here ?? ?? ??
-			cd.select(user);
+			//cd.select(user);
 			
 		} else {
 			Log.logger("Sorry you do not have access");
-			cd.select(user);
+			//cd.select(user);
 		}
 		return false;
 	}

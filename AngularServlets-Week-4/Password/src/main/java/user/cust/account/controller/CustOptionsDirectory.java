@@ -49,7 +49,7 @@ public class CustOptionsDirectory {
 			
 			if (nav == 5){
 				CustViewBal_Depos_Wthdr_Transf c = new CustViewBal_Depos_Wthdr_Transf();
-				c.transfer(user);
+				//c.transfer(user);
 			}
 			
 			if (nav == 6) {
