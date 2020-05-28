@@ -1,0 +1,70 @@
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+    
+    <!--
+    What is Hibernate?
+    	Hibernate is an ORM and persistence framework
+    What is an ORM?
+    	Object Relational Mapping. ORMs take an object in a programming language and translates them to tables in our database
+    What is persistence?
+    	Storing your data "permanently" (in the database)
+    	
+    Benefits of Hibernate:
+    	1) No longer have to write complex SQL queries :)
+    		Hibernate will perform (and perform LOTS of complexity for us
+    	2) Hibernate is object oriented
+    	3) Hibernate is fast! It's fast because (among other things)
+    		- It has caching
+    		- It uses connection ppols to minimize bottle-necked speeds caused by creating connections through the network
+    	4) Hibernate is modular!
+    		You're able to write code using hibernate and late switch sql languages simply by changing out which driver you're using (no need to alter your code)
+     -->
+     
+<hibernate-configuration>
+	<session-factory>
+		<!-- JDBC Stuff -->
+		<property name="hibernate.connection.username">puser</property>
+		<property name="hibernate.connection.password">p4ssw0rd</property>
+		<property name="hibernate.connection.url">
+			jdbc:oracle:thin:@myfirstorcl.cyw8bxzbivob.us-east-2.rds.amazonaws.com:1521:orcl
+		</property>
+		<property name="hibernate.connection.driver_class">
+			oracle.jdbc.driver.OracleDriver
+		</property>
+		<!-- End JDBC Stuff -->
+		
+		<property name="hibernate.connection.dialect">
+			org.hibernate.dialect.Oracle10gDialect
+		</property>
+		
+		<!-- Enables logging of generated SQL statements to the console -->
+		<property name="hibernate.show_sql">false</property>
+		<!-- Formats the generated SQL statements to be more readable, but they'll take up more space -->
+		<property name="hibernate.format_sql">false</property>
+		<!--
+			Connection Pool:
+				A method of speeding up database calls. Hiberate will create pool_size (10) number of connections for you when it starts up.
+				Every time you create a session (i.e. when you try to make a transaction), the session will "borrow" an active connection from the connection pool.
+				When you close a session, the connection doesn't close, it just goes back in the pool ready for another session to use it.
+				(By default, the pool_size is equal to 20.)
+		 -->
+		<property name="hibernate.connection.pool_size">10</property>
+		<!--
+			Settings for hbmd2dd1.auto
+				CREATE
+					drops all tables and objects (that have names associated with your annotations) and hibernate will create our schema from scratch
+					(This is not great for production for obvs reasons. ONLY USE FOR DEV PURPOSES.)
+				VALIDATE
+					Hibernate checks to make sure the schema exists as expected before operating 
+				UPDATE
+					Will NOT delete anything. It will only add or modify existing schema elements so that the schema works with hibernate's schema
+				NONE
+					Hibernate won't do anything to your schema automatically
+			In this demo, we'll only use create
+		 -->
+		<property name="hibernate.hbm2ddl.auto">create</property>
+		
+		<mapping class="com.example.model.Planet"></mapping>
+	</session-factory>
+</hibernate-configuration>
