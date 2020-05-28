@@ -1,19 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <title>Bank Transfer</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <title>Bank Transfer</title>
 </head>
+
 <body>
 
-  <nav class="navbar navbar-dark navbar-expand-md bg-dark fixed-top py-4">
+  <nav class="navbar navbar-dark navbar-expand-md bg-dark fixed-top py-4 mb-5">
     <div class="container">
       <a href="home.html" class="navbar-brand">
-        <img src="img/mlogo.png" width="50" height="50" alt=""><h3 class="d-inline align-middle">Bank App</h3>
+        <img src="img/mlogo.png" width="50" height="50" alt="">
+        <h3 class="d-inline align-middle">Bank App</h3>
       </a>
-      <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+      <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
+        aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
@@ -23,18 +28,18 @@
             <a href="http://localhost:9999/Password/userReg.html" class="nav-link">Register</a>
           </li>
           <li class="nav-item">
-            <a href="#authors" class="nav-link">Meet The Authors</a>
+            <a href="#authors" class="nav-link"></a>
           </li>
           <li class="nav-item">
-            <a href="#contact" class="nav-link">Contact</a>
+            <a href="#contact" class="nav-link"></a>
           </li>
         </ul>
       </div>
     </div>
   </nav>
-    
-      <!-- LOGIN -->
-  <section id="login" style="margin-top: 220px; margin-bottom: 200px;">
+
+  <!-- LOGIN -->
+  <section id="login" style="margin-top: 180px; margin-bottom: 25px;">
     <div class="container">
       <div class="row">
         <div class="col-md-6 mx-auto">
@@ -43,10 +48,18 @@
               <h4>Transfer</h4>
             </div>
             <div class="card-body">
-              <form action="custOptDirectory.html">
+              <form action="transfer" method="POST">
                 <div class="form-group">
-                  <label for="email">Transfer</label>
-                  <input type="text" class="form-control">
+                  <label for="id">ID</label>
+                  <input id="id" name="id" type="text" required readonly class="form-control">
+                </div>
+                <div class="form-group">
+                  <label for="name">Selected Recipient</label>
+                  <input id="name" name="name" type="text" required readonly class="form-control">
+                </div>
+                <div class="form-group">
+                  <label for="amount">Transfer</label>
+                  <input name="amount" type="text" class="form-control">
                 </div>
                 <!-- <div class="form-group">
                   <label for="password">Password</label>
@@ -58,6 +71,29 @@
           </div>
         </div>
       </div>
+
+
+      <div class="row">
+
+        <div class="col-md-10 mx-auto">
+          <table style="margin-top: 60px; margin-bottom: 25px;" class="table table-striped table-bordered">
+            <thead class="thead-dark">
+              <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>ID</th>
+                <th>DOB</th>
+                <th>Balance</th>
+                <th>auth</th>
+                <th>View</th>
+              </tr>
+            </thead>
+            <tbody id="custTable">
+            </tbody>
+          </table>
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -71,8 +107,115 @@
     </div>
   </footer>
 
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+    integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+    crossorigin="anonymous"></script>
+
+  <script src="easyHttp.js"></script>
+  <script>
+
+
+
+
+
+    //const http = new EasyHttp;
+
+
+    // GET  :  read or get user's
+    function selectedRecipient(id, name) {
+
+
+      console.log("getAllTrans function ran... ...");
+      console.log("endpoint: custranhelper");
+      console.log("id is: " + id);
+
+      let output = '';
+
+      // http.get(`http://localhost:9999/Password/custranhelper?var=${id}`)    // used to be vewall
+      //   .then(data => {
+          //console.log(data)
+          //data = JSON.parse(data);
+          //console.log("length of data: " + data.length);
+
+        //   for (const d of data) {
+        //     // output += `<li>${user.login}</li>`;
+        //     output +=
+        //       `<tr>
+        //         <td>${d.info}</td>
+        // </tr>`;
+        //   }
+
+          //   data.forEach(function(user) {
+          //     // output += `<li>${user.login}</li>`;
+          //     output += 
+          //     `<tr>
+          //             <td>${user.info}</td>
+          //     </tr>`;
+          // });
+          //document.getElementById('output3').innerHTML = output;
+          document.getElementById('id').value = id;
+          document.getElementById('name').value = name;
+
+        // })
+        // .catch(err => console.log(err));
+
+
+    }
+
+
+
+
+
+
+
+
+    const http1 = new easy1HTTP;
+
+    http1.get('http://localhost:9999/Password/viewcustomertrans',   // used to be empapproval
+      function (err, posts) {
+
+        console.log("Get call running");
+        console.log("endpoint: viewcustomertrans");
+
+        let output = '';
+        if (err) {
+          console.log(err);
+          output += '<li>Something went wrong</li>'
+        } else {
+
+          console.log(posts);
+          theUsers = JSON.parse(posts);
+          console.log("theUsers.length in GET: " + theUsers.length);
+          for (const d of theUsers) {
+            // output += "<li>"+post.title+"</li>";
+            output +=
+              `<tr>
+                <td>${d.index}</td>
+                <td>${d.userName}</td>
+                <td  id="userid">${d.user_id}</td>
+                <td>${d.dob}</td>
+                <td>${d.balance}</td>
+                <td>${d.a_access}</td>
+                <td><button onclick="selectedRecipient('${d.user_id}', '${d.userName}')" class="btn btn-sm btn-primary">select</button></td>
+
+                
+        </tr>`;
+          }   // onclick="getAllTrans()"
+
+
+        }
+
+        document.getElementById('custTable').innerHTML = output;
+
+      });
+
+  </script>
 </body>
+
 </html>

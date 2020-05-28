@@ -118,14 +118,14 @@ public class EmpApprovals_Servlet extends HttpServlet {
 		if (user.getUtility().equals("approve")) {
 			
 			System.out.println("Approval running in EmpApprovals_Servlet doPost");
-			System.out.println("REMEMBER TO UNCOMMENT CODE FOR FUNCTIONALITY");
-			//b.employeeApprove_customerApplicationForAccount(user);
+			//System.out.println("REMEMBER TO UNCOMMENT CODE FOR FUNCTIONALITY");
+			b.employeeApprove_customerApplicationForAccount(user);
 			
 		} else if (user.getUtility().equals("delete")) {
 			
 			System.out.println("Rejection running in EmpApprovals_Servlet doPost");
-			System.out.println("REMEMBER TO UNCOMMENT CODE FOR FUNCTIONALITY");
-			//b.employeeReject_customerApplicationForAccount(user);
+			//System.out.println("REMEMBER TO UNCOMMENT CODE FOR FUNCTIONALITY");
+			b.employeeReject_customerApplicationForAccount(user);
 
 		} else {
 			

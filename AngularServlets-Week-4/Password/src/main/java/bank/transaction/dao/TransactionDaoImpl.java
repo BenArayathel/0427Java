@@ -103,7 +103,9 @@ public class TransactionDaoImpl implements TransactionDAO {
 	
 	
 	@Override
-	public boolean viewCustTransactions(User user) {
+	public List<String> viewCustTransactions(User user) {
+		
+		List<String> transactions = new ArrayList<>();
 		
 		try{
 
@@ -116,12 +118,12 @@ public class TransactionDaoImpl implements TransactionDAO {
 			
 			while (rs.next()) {			
 
-				Log.logger("" 
+				transactions.add("" 
 						+ rs.getString("trans_id")
-						+ "\t" + rs.getString("user_id")
-						+ "\t" + rs.getString("trans_data"));
+						+ " " + rs.getString("user_id")
+						+ " " + rs.getString("trans_data"));
 			} 
-			return true;
+			return transactions;
 			
 				
 			
@@ -134,7 +136,7 @@ public class TransactionDaoImpl implements TransactionDAO {
 			
 		}
 		
-		return false;
+		return null;
 	}
 	
 	

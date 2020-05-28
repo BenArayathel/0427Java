@@ -14,7 +14,7 @@ public interface TransactionDAO {
 	
 	public List<String> viewAllTransactions();
 	
-	public boolean viewCustTransactions(User user);
+	public List<String> viewCustTransactions(User user);
 	
 	// the stuff below I thought would exist here and maybe it should
 	// ----------------------------------------------
