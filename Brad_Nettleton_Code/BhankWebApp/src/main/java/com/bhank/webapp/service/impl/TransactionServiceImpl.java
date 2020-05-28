@@ -1,5 +1,7 @@
 package com.bhank.webapp.service.impl;
 
+import java.util.List;
+
 import com.bhank.webapp.dao.impl.TransactionDAOImpl;
 import com.bhank.webapp.exception.BusinessException;
 import com.bhank.webapp.main.Main;
@@ -11,7 +13,7 @@ public class TransactionServiceImpl implements TransactionService {
 	TransactionDAOImpl dao = new TransactionDAOImpl();
 
 	@Override
-	public Transaction postTransaction(Transaction transaction) throws BusinessException {
+	public Transaction createTransaction(Transaction transaction) throws BusinessException {
 		if(transaction.getFromAccountId() == null || transaction.getToAccountId() == null) {
 			Main.logger.error("null account id for fromAccount: "+transaction.getFromAccountId()+" or toAccount: "+transaction.getToAccountId());
 			throw new BusinessException("from or to account id is null");
@@ -19,7 +21,7 @@ public class TransactionServiceImpl implements TransactionService {
 			Main.logger.error("Cannot transfer $0 or less");
 			throw new BusinessException("transaction is less than or equal to 0, amount=\'"+transaction.getTransferAmount()+"\'");
 		} else {
-			transaction = dao.postTransaction(transaction);
+			transaction = dao.createTransaction(transaction);
 		}
 		return transaction;
 	}
@@ -27,7 +29,7 @@ public class TransactionServiceImpl implements TransactionService {
 	@Override
 	public Transaction acceptTransaction(Transaction transaction) throws BusinessException {
 		if(transaction == null) {
-			throw new BusinessException("Transactdeion object is null");
+			throw new BusinessException("Transaction object is null");
 		} else {
 			dao.acceptTransaction(transaction);
 		}
@@ -37,7 +39,7 @@ public class TransactionServiceImpl implements TransactionService {
 	@Override
 	public Transaction declineTransaction(Transaction transaction) throws BusinessException {
 		if(transaction == null) {
-			throw new BusinessException("Transactdeion object is null");
+			throw new BusinessException("Transaction object is null");
 		} else {
 			dao.declineTransaction(transaction);
 		}
@@ -45,15 +47,16 @@ public class TransactionServiceImpl implements TransactionService {
 	}
 
 	@Override
-	public Transaction selectTransactionsByAccount(String id) throws BusinessException {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Transaction> selectTransactionsByAccount(String fromAccountId) throws BusinessException {
+		if(fromAccountId==null) {
+			throw new BusinessException("Transaction id object is null");
+		} else {
+			return dao.selectTransactionsByAccount(fromAccountId);
+		}
 	}
 
 	@Override
-	public Transaction selectAllTransactions() throws BusinessException {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Transaction> selectAllTransactions() throws BusinessException {
+		return dao.selectAllTransactions();
 	}
-
 }

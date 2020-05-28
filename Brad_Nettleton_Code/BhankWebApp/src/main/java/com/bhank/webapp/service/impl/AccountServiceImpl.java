@@ -100,7 +100,7 @@ public class AccountServiceImpl implements AccountService {
 	}
 
 	@Override
-	public Account acceptMoneyTransfer(Account account) throws BusinessException {
+	public Account acceptMoneyTransfer(String transactionId) throws BusinessException {
 		// TODO Auto-generated method stub
 		return null;
 	}

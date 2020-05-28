@@ -9,22 +9,24 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.bhank.webapp.controllers.RequestHelper;
 
+
 public class MasterServlet extends HttpServlet {
-	
 	private static final long serialVersionUID = 1L;
+	
+//	client -> MasterServlet -> RequestHelper -> controller+s -> service -> ....
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
 
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 //		request.getRequestDispatcher("string").forward(request,resposne);
-		System.out.println("MasterServlet doGet");
-//		request.getRequestDispatcher("/login.html").forward(request, response);
-		request.getRequestDispatcher(RequestHelper.process(request, response)).forward(request, response);
+			
+		request.getRequestDispatcher(RequestHelper.process(request,response)).forward(request,response);
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		System.out.println("MasterServlet doPost");
-		request.getRequestDispatcher(RequestHelper.process(request, response)).forward(request, response);
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		request.getRequestDispatcher(RequestHelper.process(request,response)).forward(request,response);
+
 	}
+
 }

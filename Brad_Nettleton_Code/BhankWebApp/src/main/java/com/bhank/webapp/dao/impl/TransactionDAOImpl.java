@@ -3,7 +3,10 @@ package com.bhank.webapp.dao.impl;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.bhank.webapp.dao.TransactionDAO;
 import com.bhank.webapp.dbutil.OracleConnection;
@@ -14,7 +17,7 @@ import com.bhank.webapp.model.Transaction;
 public class TransactionDAOImpl implements TransactionDAO {
 
 	@Override
-	public Transaction postTransaction(Transaction transaction) throws BusinessException {
+	public Transaction createTransaction(Transaction transaction) throws BusinessException {
 
 		try (Connection connection = OracleConnection.getConnection()) {
 			String sql = "{call CREATETRANSACTION(?,?,?,?,?,?,?)}";
@@ -69,15 +72,52 @@ public class TransactionDAOImpl implements TransactionDAO {
 	}
 
 	@Override
-	public Transaction selectTransactionsByAccount(String id) throws BusinessException {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Transaction> selectTransactionsByAccount(String accountId) throws BusinessException {
+		List<Transaction> transactions = new ArrayList<>();
+		try(Connection connection = OracleConnection.getConnection()) {
+			String sql = "select * from transaction where from_account_id=\'"+accountId+"\'";
+			PreparedStatement preparedStatement = connection.prepareStatement(sql);
+			ResultSet resultSet = preparedStatement.executeQuery();
+			while(resultSet.next()) {
+				Transaction transaction = new Transaction();
+				transaction.setId(resultSet.getString("id"));
+				transaction.setFromAccountId(resultSet.getString("from_account_id"));
+				transaction.setToAccountId(resultSet.getString("to_account_id"));
+				transaction.setDeposit(resultSet.getString("isdeposit").equals("y")?true:false);
+				transaction.setAccepted(resultSet.getString("isapproved").equals("y")?true:false);
+				
+				transactions.add(transaction);
+			}
+		} catch (ClassNotFoundException | SQLException e) {
+			Main.logger.error("Account DAO failed to select all transaction");
+			throw new BusinessException("Internal error occured please contact SYSADMIN");
+		}
+		Main.logger.info("Account DAO successfully selected all transactions");
+		return transactions;
 	}
 
 	@Override
-	public Transaction selectAllTransactions() throws BusinessException {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Transaction> selectAllTransactions() throws BusinessException {
+		List<Transaction> transactions = new ArrayList<>();
+		try(Connection connection = OracleConnection.getConnection()) {
+			String sql = "select * from transaction";
+			PreparedStatement preparedStatement = connection.prepareStatement(sql);
+			ResultSet resultSet = preparedStatement.executeQuery();
+			while(resultSet.next()) {
+				Transaction transaction = new Transaction();
+				transaction.setId(resultSet.getString("id"));
+				transaction.setFromAccountId(resultSet.getString("from_account_id"));
+				transaction.setToAccountId(resultSet.getString("to_account_id"));
+				transaction.setDeposit(resultSet.getString("isdeposit").equals("y")?true:false);
+				transaction.setAccepted(resultSet.getString("isapproved").equals("y")?true:false);
+				
+				transactions.add(transaction);
+			}
+		} catch (ClassNotFoundException | SQLException e) {
+			Main.logger.error("Account DAO failed to select all transaction");
+			throw new BusinessException("Internal error occured please contact SYSADMIN");
+		}
+		Main.logger.info("Account DAO successfully selected all transactions");
+		return transactions;
 	}
-
 }

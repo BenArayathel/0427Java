@@ -8,6 +8,40 @@
 <body>
     <div>
         <h1>Customer Home</h1>
+        <h2>Welcome, <span id="customerNameSpan"></span>!</h2>
+    </div>
+    <div id='accountsDiv'>
+        <table id='accountsTable'>
+            <thead>
+                <tr>
+                    <th>Account ID</th>
+                    <th>Balance</th>
+                </tr>
+            </thead>
+            <tbody id='accountsTableBody'>
+
+            </tbody>
+        </table>
+    </div>
+    <!--
+      		System.out.println("Customer Menu");
+			System.out.println("Logged in as: " + customer.getName());
+			System.out.println("-------------");
+			System.out.println("1)Apply for new account");
+			System.out.println("2)View balance of an account");
+			System.out.println("3)Withdrawal");
+			System.out.println("4)Deposit");
+			System.out.println("5)Post money transfer");
+			System.out.println("6)Accept money transfer");
+			System.out.println("7)Return to main menu");
+    -->
+    <input type='text' id='ApplyForNewAccountTextInput' placeholder='Starting Balance'>
+    <button id='ApplyForNewAccountButton'>Apply For New Account</button>
+    <div class='accountDetails'>
+        <h4 id='accountIdDisplay'></h4>
+        Transaction Amount: <input type="text" name="transactionAmount" id='accountTransactionAmountInput'>
+        <button id='accountDepositButton'>Deposit</button>
+        <button id='accountWithdrawalButton'>Withdraw</button>
     </div>
 </body>
 <script type="text/javascript" src="./scripts/customer_home.js"></script>

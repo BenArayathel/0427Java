@@ -7,8 +7,8 @@ public class Transaction {
 	private String toAccountId;
 	private double transferAmount;
 	private boolean isDeposit;
-	private boolean pending;
-	private boolean accepted;
+	private boolean isPending;
+	private boolean isAccepted;
 	public String getId() {
 		return id;
 	}
@@ -40,22 +40,22 @@ public class Transaction {
 		this.isDeposit = isDeposit;
 	}
 	public boolean isPending() {
-		return pending;
+		return isPending;
 	}
 	public void setPending(boolean pending) {
-		this.pending = pending;
+		this.isPending = pending;
 	}
 	public boolean isAccepted() {
-		return accepted;
+		return isAccepted;
 	}
 	public void setAccepted(boolean accepted) {
-		this.accepted = accepted;
+		this.isAccepted = accepted;
 	}
 	@Override
 	public String toString() {
 		return "Transaction [id=" + id + ", fromAccountId=" + fromAccountId + ", toAccountId=" + toAccountId
-				+ ", transferAmount=" + transferAmount + ", isDeposit=" + isDeposit + ", pending=" + pending
-				+ ", accepted=" + accepted + "]";
+				+ ", transferAmount=" + transferAmount + ", isDeposit=" + isDeposit + ", pending=" + isPending
+				+ ", accepted=" + isAccepted + "]";
 	}
 	
 	

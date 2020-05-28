@@ -23,7 +23,7 @@ import { RouterModule } from '@angular/router';
 
     RouterModule.forRoot([
       {path: 'welcome', component: WelcomeComponent},
-      {path: 'planets', component: PlanetListComponent},
+      {path: 'planets/:myVariable', component: PlanetListComponent},
       {path: '', component: WelcomeComponent},
       {path: '**', redirectTo: 'welcome', pathMatch: 'full'}
     ])

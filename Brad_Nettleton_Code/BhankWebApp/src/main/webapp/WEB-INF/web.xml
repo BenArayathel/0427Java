@@ -6,13 +6,13 @@
   </welcome-file-list>
   <servlet>
     <description></description>
-    <display-name>LoginServlet</display-name>
-    <servlet-name>LoginServlet</servlet-name>
-    <servlet-class>com.bhank.webapp.servlets.LoginServlet</servlet-class>
+    <display-name>CustomerLoginServlet</display-name>
+    <servlet-name>CustomerLoginServlet</servlet-name>
+    <servlet-class>com.bhank.webapp.servlets.CustomerLoginServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>LoginServlet</servlet-name>
-    <url-pattern>/Login</url-pattern>
+    <servlet-name>CustomerLoginServlet</servlet-name>
+    <url-pattern>/CustomerLogin</url-pattern>
   </servlet-mapping>
   <servlet>
     <description></description>
@@ -23,5 +23,35 @@
   <servlet-mapping>
     <servlet-name>CustomerHomeServlet</servlet-name>
     <url-pattern>/CustomerHome</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>CustomerRegistrationServlet</display-name>
+    <servlet-name>CustomerRegistrationServlet</servlet-name>
+    <servlet-class>com.bhank.webapp.servlets.CustomerRegistrationServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CustomerRegistrationServlet</servlet-name>
+    <url-pattern>/CustomerRegistration</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DepositServlet</display-name>
+    <servlet-name>DepositServlet</servlet-name>
+    <servlet-class>com.bhank.webapp.servlets.DepositServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DepositServlet</servlet-name>
+    <url-pattern>/Deposit</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>WithdrawalServlet</display-name>
+    <servlet-name>WithdrawalServlet</servlet-name>
+    <servlet-class>com.bhank.webapp.servlets.WithdrawalServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>WithdrawalServlet</servlet-name>
+    <url-pattern>/Withdrawal</url-pattern>
   </servlet-mapping>
 </web-app>

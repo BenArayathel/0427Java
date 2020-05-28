@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Planet } from '../shared/planet';
 import { PlanetService } from '../shared/planet.service';
+import { }
 
 
 @Component({
@@ -38,12 +39,17 @@ export class PlanetListComponent {
   planets: Planet[];
   filteredPlanets: Planet[];
 
-  constructor(private myPlanetService: PlanetService) {
+  currentUser = '';
+
+  constructor(private myPlanetService: PlanetService, private ) {
     this.planets = myPlanetService.getPlanet();
 
     this.filteredPlanets = this.planets;
    }
 
+   ngOnInit(): void {
+     this.currentUser = this.route.snapshot.paramMap.get('myVariable');
+   }
    toggleImage() {
      this.showImage = !this.showImage;
    }
@@ -56,5 +62,6 @@ export class PlanetListComponent {
        planet.name.toLocaleLowerCase().indexOf(filterValue) !== -1
      );
    }
+
 
 }

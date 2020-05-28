@@ -12,6 +12,7 @@ public class Account{
 	public Account(double balance) {
 		this.balance = balance;
 		this.pending = true;
+		this.approved = false;
 	}
 	
 	public String getId() {

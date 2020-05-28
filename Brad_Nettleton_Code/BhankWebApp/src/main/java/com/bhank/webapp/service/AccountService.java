@@ -14,7 +14,7 @@ public interface AccountService {
 	Account deposit(String id, double amount) throws BusinessException;
 	Account withdraw(String id, double amount) throws BusinessException;
 	Account postMoneyTransfer(Account fromAccount, Account toAccount, double amount) throws BusinessException;
-	Account acceptMoneyTransfer(Account account) throws BusinessException;
+	Account acceptMoneyTransfer(String transactionId) throws BusinessException;
 	Account approveAccount(Account account) throws BusinessException;
 	Account declineAccount(Account account) throws BusinessException;
 	

@@ -14,9 +14,12 @@ import com.bhank.webapp.dbutil.OracleConnection;
 import com.bhank.webapp.exception.BusinessException;
 import com.bhank.webapp.main.Main;
 import com.bhank.webapp.model.Account;
+import com.bhank.webapp.model.Transaction;
 
 public class AccountDAOImpl implements AccountDAO {
 
+	TransactionDAOImpl transactionDAO = new TransactionDAOImpl();
+	
 	@Override
 	public Account createAccount(Account account) throws BusinessException {
 		try (Connection connection = OracleConnection.getConnection()) {
@@ -46,11 +49,13 @@ public class AccountDAOImpl implements AccountDAO {
 			String sql = "update account set balance=\'"+(account.getBalance()+amount)+"\' where id=\'"+account.getId()+"\'";
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
 			int resultSet = preparedStatement.executeUpdate();
+			createTransaction(account.getCustomerId(), account.getCustomerId(), amount);
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 			Main.logger.error("Account DAO failed to update account \""+account.getId()+"\" with deposit of \""+amount+"\" in database");
 			throw new BusinessException("Internal error occured please contact SYSADMIN");
 		}
+		
 		Main.logger.info("Account DAO successfully updated account \""+account.getId()+"\" with deposit of \""+amount+"\" in database");
 		return account;
 	}
@@ -62,6 +67,7 @@ public class AccountDAOImpl implements AccountDAO {
 			String sql = "update account set balance=\'"+(account.getBalance()-amount)+"\' where id=\'"+account.getId()+"\'";
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
 			int resultSet = preparedStatement.executeUpdate(sql);
+			createTransaction(account.getCustomerId(), account.getCustomerId(), amount);
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 			Main.logger.error("Account DAO failed to update account \""+account.getId()+"\" with withdrawal of \""+amount+"\" in database");
@@ -72,13 +78,13 @@ public class AccountDAOImpl implements AccountDAO {
 	}
 
 	@Override
-	public Account postMoneyTransfer(Account account, double amount) throws BusinessException {
-		// TODO Auto-generated method stub
+	public Transaction postMoneyTransfer(Account fromAccount, Account toAccount, double amount) throws BusinessException {
+		createTransaction(fromAccount.getCustomerId(), toAccount.getCustomerId(), amount);
 		return null;
 	}
 
 	@Override
-	public Account acceptMoneyTransfer(Account account) throws BusinessException {
+	public Transaction acceptMoneyTransfer(String transactionId) throws BusinessException {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -196,6 +202,26 @@ public class AccountDAOImpl implements AccountDAO {
 		}
 		Main.logger.info("Account DAO successfully selected all pending accounts");
 		return pendingAccountsList;
+	}
+	
+	private void createTransaction(String customerFrom,  String customerTo, double amount) throws BusinessException {
+		try(Connection connection = OracleConnection.getConnection()) {
+		String sql = "{call CREATETRANSACTION(?,?,?,?,?,?,?)}";
+		CallableStatement callableStatement = connection.prepareCall(sql);
+		callableStatement.setString(2, customerFrom);
+		callableStatement.setString(3, customerTo);
+		callableStatement.setDouble(4, amount);
+		callableStatement.setString(5, "y");
+		callableStatement.setString(6, "y");
+		callableStatement.setString(7, "n");
+
+		callableStatement.registerOutParameter(1, java.sql.Types.VARCHAR);
+
+		callableStatement.execute();
+		} catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+			throw new BusinessException("Internal error occured please contact SYSADMIN");
+		}
 	}
 
 }

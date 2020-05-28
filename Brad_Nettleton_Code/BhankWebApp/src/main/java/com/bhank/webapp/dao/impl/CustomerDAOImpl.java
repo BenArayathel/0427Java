@@ -89,6 +89,7 @@ public class CustomerDAOImpl implements CustomerDAO {
 			}
 		} catch (ClassNotFoundException | SQLException e) {
 			Main.logger.error("Customer DAO failed to select customer by name \""+customerName+"\" and password \""+customerPassword+"\" from database due to "+e.getMessage());
+			e.printStackTrace();
 			throw new BusinessException("Internal Error contact SYSADMIN");
 		}
 		return customer;

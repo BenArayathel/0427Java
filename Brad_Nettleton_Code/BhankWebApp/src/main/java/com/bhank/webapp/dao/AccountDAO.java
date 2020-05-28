@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.bhank.webapp.exception.BusinessException;
 import com.bhank.webapp.model.Account;
+import com.bhank.webapp.model.Transaction;
 
 public interface AccountDAO {
 	
@@ -13,8 +14,8 @@ public interface AccountDAO {
 	// update
 	Account deposit(Account account, double amount) throws BusinessException;
 	Account withdraw(Account account, double amount) throws BusinessException;
-	Account postMoneyTransfer(Account account, double amount) throws BusinessException;
-	Account acceptMoneyTransfer(Account account) throws BusinessException;
+	Transaction postMoneyTransfer(Account fromAccount, Account toAccount, double amount) throws BusinessException;
+	Transaction acceptMoneyTransfer(String transationId) throws BusinessException;
 	Account approveAccount(Account account) throws BusinessException;
 	Account declineAccount(Account account) throws BusinessException;
 	
