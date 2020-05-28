@@ -9,6 +9,7 @@ import javax.servlet.http.HttpSession;
 import com.bankofben.exceptions.BusinessException;
 import com.bankofben.models.TempUser;
 import com.bankofben.models.User;
+import com.bankofben.services.BankOfBenServices;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 //import com.bankofben.services.BankOfBenServices;
@@ -19,7 +20,7 @@ public class Register {
 	public static String initialRegistration(HttpServletRequest request, HttpServletResponse response) throws BusinessException, JsonParseException, JsonMappingException, IOException {
 		System.out.println("Initial Registration");
 		ObjectMapper objMapper = new ObjectMapper();
-//		BankOfBenServices dbs = new BankOfBenServices();
+		BankOfBenServices dbs = new BankOfBenServices();
 		
 		TempUser tempUser = objMapper.readValue(request.getReader(), com.bankofben.models.TempUser.class);
 		
@@ -29,15 +30,15 @@ public class Register {
 //			respString = "{\"username\": "+tempUser.getUsername()+"}";
 //		} else if (dbs.emailExists(tempUser.getEmail())) {
 //			respString = "{\"email\": "+tempUser.getEmail()+"}";
-		if (tempUser.getUsername().equals("username")) {
+		if (dbs.usernameExists(tempUser.getUsername())) {
 			respString = "{\"username\": \""+tempUser.getUsername()+"\"}";
 //			respString = objMapper.writeValueAsString(tempUser);
-		} else if (tempUser.getEmail().equals("ben@gmail.com")) {
+		} else if (dbs.emailExists(tempUser.getEmail())) {
 			respString = "{\"email\": \""+tempUser.getEmail()+"\"}";
 //			respString = objMapper.writeValueAsString(tempUser);
 		} else {
-			String userString = objMapper.writeValueAsString(tempUser);
-			System.out.println(userString);
+//			String userString = objMapper.writeValueAsString(tempUser);
+//			System.out.println(userString);
 //			// Set username cookie
 //			Cookie usernameCookie = new Cookie("username", tempUser.getUsername());
 //			usernameCookie.setMaxAge(900);
@@ -58,20 +59,22 @@ public class Register {
 		return respString;
 	}
 
-	public static String newUserRegistration(HttpServletRequest request, HttpServletResponse response) throws JsonParseException, JsonMappingException, IOException {
+	public static String newUserRegistration(HttpServletRequest request, HttpServletResponse response) throws JsonParseException, JsonMappingException, IOException, BusinessException {
 		System.out.println("New User registration");
+		String respString="/home.html";
 		
 		HttpSession session = request.getSession(false);
-		if (session==null) {
-			return null;
+		BankOfBenServices dbs = new BankOfBenServices();
+		if (session!=null) {
+			ObjectMapper objMapper = new ObjectMapper();
+			User user = objMapper.readValue(request.getReader(), com.bankofben.models.User.class);
+			if (dbs.ssnExists(user.getSsn())) {
+				respString = "{\"ssn\": \""+user.getSsn()+"\"}";
+			} else {
+				session.setAttribute("user", user);
+				respString = "/accountApplication.html";
+			}
 		}
-		
-		ObjectMapper objMapper = new ObjectMapper();
-		String respString;
-		
-		User user = objMapper.readValue(request.getReader(), com.bankofben.models.User.class);
-		session.setAttribute("user", user);
-		respString = "/accountApplication.html";
 		
 		return respString;
 	}

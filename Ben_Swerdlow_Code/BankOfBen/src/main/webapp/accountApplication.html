@@ -13,7 +13,7 @@
 <body>
     <h1>New Account Application</h1>
     <div>
-        <p>Hello, <span id="FirstLast">userFirstName userLastName</span>.</p>
+        <p>Hello, <span id="firstLast">userFirstName userLastName</span>.</p>
         <p>
             Please specify a starting balance for your account. You must deposit at least $25
             to apply for an account.
@@ -24,7 +24,9 @@
         <div class="input-group">
             <span class="input-group-addon">$</span>
             <input type="number" pattern="^[0-9]{2,}.{0,1}[0-9]{0,2}$"
-                min=25 max=1000000000 class="form-control" id="startBal" placeholder="0.00" required>
+                min=25 max=1000000000 class="form-control" id="startBal" placeholder="0.00" required
+                oninvalid="setCustomValidity('Starting balance cannot be less than $25 and cannot include fractions of a cent.')"
+                onchange="try{setCustomValidity('')}catch(e){}">
         </div>
         <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
         <div class="help-block with-errors"></div>
@@ -35,5 +37,6 @@
     
     <script src="/vendors/formvalidation/dist/js/FormValidation.min.js"></script>
     <script src="/vendors/formvalidation/dist/js/plugins/Bootstrap.min.js"></script>
+    <script src="scripts/accountApplication.js"></script>
 </body>
 </html>

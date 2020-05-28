@@ -62,7 +62,7 @@ public class SessionInfo {
 				System.out.println(attributeName);
 				if (attributeName.equals("user") || attributeName.equals("customer") || attributeName.equals("employee")) {
 					User user = (User) session.getAttribute(attributeName);
-					respString = user.getFirstName()+" "+user.getLastName();
+					respString = "{\"firstName\": \""+user.getFirstName()+"\", \"lastName\": \""+user.getLastName()+"\"}";
 				}
 			}
 		}

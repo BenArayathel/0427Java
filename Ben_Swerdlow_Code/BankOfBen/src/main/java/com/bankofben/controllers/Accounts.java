@@ -36,7 +36,8 @@ public class Accounts {
 				double startingBalance = Double.parseDouble(new Marshal().getRequestBodyNameValuePair("startingBalance", request));
 				Customer customer = new BankOfBenServices().applyForAccount_newUser(user, startingBalance);
 				session.setAttribute("customer", customer);
-				respString = "/customer.html";
+				session.removeAttribute("user");
+				respString = "/userPending.html";
 			} else {
 				throw new BusinessException("Invalid session user. Please try again.");
 			}

@@ -1,7 +1,6 @@
 package com.bankofben.dao;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.sql.Connection;
@@ -24,13 +23,14 @@ public class OracleDbConnection {
 	public static Connection getConnection() throws ClassNotFoundException, SQLException, BusinessException {
 		Class.forName("oracle.jdbc.OracleDriver");
 		
-		String projectPath = new File("").getAbsolutePath();
+//		String projectPath = new File("").getAbsolutePath();
+		String home = System.getProperty("user.home");
 		
 		if (connection==null) {
 			
 			List<String> login = new ArrayList<>();
 			
-			try(BufferedReader reader = new BufferedReader(new FileReader(projectPath+"\\..\\..\\..\\BankOfBenDbLogin.txt"))){
+			try(BufferedReader reader = new BufferedReader(new FileReader(home+"\\revature_training\\BankOfBenDbLogin.txt"))){
 				String line = "";
 				while ((line = reader.readLine()) != null) {
 					login.add(line);
@@ -46,7 +46,7 @@ public class OracleDbConnection {
 			
 			List<String> login = new ArrayList<>();
 			
-			try(BufferedReader reader = new BufferedReader(new FileReader(projectPath+"\\..\\..\\..\\BankOfBenDbLogin.txt"))){
+			try(BufferedReader reader = new BufferedReader(new FileReader(home+"\\revature_training\\BankOfBenDbLogin.txt"))){
 				String line = "";
 				while ((line = reader.readLine()) != null) {
 					login.add(line);

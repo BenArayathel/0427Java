@@ -41,22 +41,60 @@ public class RequestHelper {
 			break;
 		case "/BankOfBen/api/newUserRegistration":
 			try {
-				return Register.newUserRegistration(request, response);
-			} catch (IOException e) {
+				respString = Register.newUserRegistration(request, response);
+			} catch (IOException | BusinessException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 				respString = null;
 			}
-		case "BankOfBen/api/GetFirstLastName":
+			break;
+		case "/BankOfBen/api/getFirstLastName":
 			return SessionInfo.getFirstLastName(request, response);
-		case "BankOfBen/api/accountApplication":
+		case "/BankOfBen/api/accountApplication":
 			try {
-				return Accounts.accountApplication(request, response);
+				respString = Accounts.accountApplication(request, response);
 			} catch (BusinessException | IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 				respString = null;
 			}
+			break;
+		case "/BankOfBen/api/login":
+			try {
+				respString = Login.login(request, response);
+			} catch (IOException | BusinessException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				respString = null;
+			}
+			break;
+		case "/BankOfBen/api/getAccountsForCustomer":
+			try {
+				respString = CustomerView.getAccountsForCustomer(request, response);
+			} catch (JsonProcessingException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				respString = null;
+			}
+			break;
+		case "/BankOfBen/api/makeDeposit":
+			try {
+				respString = ChangeAccount.makeDeposit(request, response);
+			} catch (IOException | BusinessException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				respString = null;
+			}
+			break;
+		case "/BankOfBen/api/makeWithdrawal":
+			try {
+				respString = ChangeAccount.makeWithdrawal(request, response);
+			} catch (IOException | BusinessException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				respString = null;
+			}
+			break;
 		default:
 			System.out.println("Didn't recognize option "+uri);
 		}

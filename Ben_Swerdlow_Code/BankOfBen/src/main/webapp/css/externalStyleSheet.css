@@ -24,3 +24,15 @@ body {
 label {
     text-align: left;
 }
+
+td {
+    padding: 2px 8px;
+}
+
+.dollarSign {
+    text-align: left;
+}
+
+.dollars {
+    text-align: right;
+}

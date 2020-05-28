@@ -3,9 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link rel="stylesheet"
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- My Styling -->
+    <link rel="stylesheet" type="text/css" href="css/externalStyleSheet.css">
     <title>Customer Home</title>
 </head>
 <body>
-    
+
+    <div>
+        <p>Welcome, <span id="firstLast"></span>. </p>
+    </div>
+
+    <div id="viewBalances">
+        <label for="balances">Account Information</label>
+        <table class="table table-dark" id="balances">
+            <thead>
+                <tr id="balHeader">
+                    <th class="scope" id="balAccNum">Account Number</th>
+                    <th class="scope" id="balBalance">Balance</th>
+                    <th class="scope" id="balPending">Pending</th>
+                    <!-- <th class="scope" id="balDeposit"></th> -->
+                    <!-- <th class="scope" id="balWithdraw"></th> -->
+                </tr>
+            </thead>
+        </table>
+    </div>
+
+    <br>
+
+    <div id="viewPayments">
+        <label for="payments">Payments</label>
+        <table id="payments">
+            <tr id="payHeader">
+                <th id="payId">Payment ID</th>
+                <th id="payInit">Initiator</th>
+                <th id="payAccNum">Recieving Account #</th>
+                <th id="payAmt">Amount</th>
+                <th id="payStatus">Status</th>
+                <th id="payAction"></th>
+            </tr>
+        </table>
+    </div>
+
+    <br>
+
+    <div id="viewRequests">
+        <label for="requests">Requests</label>
+        <table id="requests">
+            <tr id="reqHeader">
+                <th id="reqId">Payment ID</th>
+                <th id="reqInit">Initiator</th>
+                <th id="reqAccNum">Source Account #</th>
+                <th id="reqAmt">Amount</th>
+                <th id="reqStatus">Status</th>
+                <th id="reqAction"></th>
+            </tr>
+        </table>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="scripts/customer.js"></script>
 </body>
 </html>

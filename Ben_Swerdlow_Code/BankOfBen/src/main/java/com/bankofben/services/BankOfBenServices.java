@@ -353,8 +353,8 @@ public class BankOfBenServices {
 		return a;
 	}
 	
-	public boolean doesCustomerOwnAccountNumber(String customerId, long AccountNumber) throws BusinessException {
-		return dao.doesCustomerOwnAccountNumber(customerId, AccountNumber);
+	public boolean doesCustomerOwnAccountNumber(String customerId, long accountNumber) throws BusinessException {
+		return dao.doesCustomerOwnAccountNumber(customerId, accountNumber);
 	}
 
 }

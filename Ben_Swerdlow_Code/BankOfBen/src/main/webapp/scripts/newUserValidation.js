@@ -96,7 +96,7 @@ async function processResponse(response) {
             } else {
                 customCreateElement(
                     "ssnExists",
-                    document.getElementById("regInfoForm"),
+                    document.getElementById("ssn"),
                     {text: `Social security number \"${responseJSON.ssn}\" is an existing Bank of Ben user social security number.`});
                 }
         } else {

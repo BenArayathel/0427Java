@@ -36,14 +36,17 @@ public class MasterServlet extends HttpServlet {
 		
 		if (pathOrJsonString==null) {
 			throw new ServletException("Could not follow instruction from RequestHelper");
+		} else if (isValidJsonString(pathOrJsonString)) {
+			response.setContentType("application/json");
+			response.getWriter().write(pathOrJsonString);
 		} else if (pathOrJsonString.endsWith(".html")) {
 			// if pathOrJsonString is a valid .html path, forward the request and response there
 			System.out.println("Sending dispatch to "+pathOrJsonString);
 			System.out.println(request.getContextPath());
 			response.sendRedirect(request.getContextPath()+pathOrJsonString);
-		} else if (isValidJsonString(pathOrJsonString)) {
-			response.setContentType("application/json");
-			response.getWriter().write(pathOrJsonString);
+		} else if (pathOrJsonString.contains("/api/")) {
+			System.out.println("Sending request (and response) to "+pathOrJsonString);
+			request.getRequestDispatcher(pathOrJsonString).forward(request, response);
 		} else {
 			throw new IOException("Attempted to return bad redirect or improperly formatted JSON string: "+pathOrJsonString);
 		}

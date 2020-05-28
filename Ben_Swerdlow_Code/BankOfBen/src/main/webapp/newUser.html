@@ -34,7 +34,7 @@
         <div class="form-group">
             <label for="firstName" class="control-label">First Name</label>
             <input type="text" class="form-control" placeholder="First" id="firstName"
-              pattern="[A-Z]{1}[a-z]+" required
+              pattern="[A-Z]{1}[A-Za-z'-]+" required
               oninvalid="setCustomValidity('Can only contain alphabetical characters and must start with a capital letter')"
               onchange="try{setCustomValidity('')}catch(e){}">
         </div>
@@ -42,7 +42,7 @@
         <div class="form-group">
             <label for="middleName" class="control-label">Middle Name</label>
             <input type="text" class="form-control" placeholder="Middle" id="middleName"
-              pattern="[A-Z]{1}[a-z]+"
+              pattern="[A-Z]{1}[A-Za-z'-]+"
               oninvalid="setCustomValidity('Can only contain alphabetical characters and must start with a capital letter')"
               onchange="try{setCustomValidity('')}catch(e){}">
             </div>
@@ -51,7 +51,7 @@
         <div class="form-group">
             <label for="lastName" class="control-label">Last Name</label>
             <input type="text" class="form-control" placeholder="Last" id="lastName"
-                pattern="[A-Z]{1}[a-z]+" required
+                pattern="[A-Z]{1}[A-Za-z'-]+" required
                 oninvalid="setCustomValidity('Can only contain alphabetical characters and must start with a capital letter')"
                 onchange="try{setCustomValidity('')}catch(e){}">
             </div>
@@ -60,7 +60,7 @@
         <div class="form-group">
             <label for="momsMaidName" class="control-label">Mother's Maiden Name</label>
             <input type="text" class="form-control" placeholder="Maiden" id="momsMaidName"
-              pattern="[A-Z]{1}[a-z]+" required
+              pattern="[A-Z]{1}[A-Za-z'-]+" required
               oninvalid="setCustomValidity('Can only contain alphabetical characters and must start with a capital letter')"
               onchange="try{setCustomValidity('')}catch(e){}">
             </div>
