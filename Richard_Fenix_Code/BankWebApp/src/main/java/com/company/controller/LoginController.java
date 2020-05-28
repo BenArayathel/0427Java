@@ -83,8 +83,10 @@ public class LoginController {
 
 			out.write(new ObjectMapper().writeValueAsString(customer));			
 			
-			// Save session
+			// *** Enable SESSION *** //
 			HttpSession session = request.getSession();
+
+			// *** Save CUSTOMER in SESSION *** //
 			session.setAttribute("customer", customer);
 			
 			

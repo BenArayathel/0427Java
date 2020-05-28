@@ -24,6 +24,10 @@ public class RequestHelper {
 
 			case "/BankWebApp/api/deposit":
 				return CustomerController.deposit(request,response);				
+
+			case "/BankWebApp/api/withdraw":
+				return CustomerController.withdraw(request,response);				
+
 				
 		}
 		

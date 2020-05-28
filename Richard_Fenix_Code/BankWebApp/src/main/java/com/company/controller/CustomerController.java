@@ -106,7 +106,7 @@ public class CustomerController {
 			List<Account> aList = new ArrayList<Account>();
 			aList = bankService.getAccountListByCustomerId(customer.getCustomerId());
 
-			// save account list of customer for future validation purposes (depositing to valid account, etc)
+			// *** Save List of User Accounts in SESSION *** //
 			session.setAttribute("aList", aList);
 			
 			System.out.println("Account List: " + aList);	
@@ -205,6 +205,57 @@ public class CustomerController {
 
 	}
 	
+	
+	public static String withdraw(HttpServletRequest request, HttpServletResponse response) throws IOException {
+
+		/*
+		 *  Check for valid http method.
+		 * You can also check stuff like, they are an admin. 
+		 */
+		if(!request.getMethod().equals("POST")) {
+			return "/loginPage.html";
+		}	
+			
+		System.out.println("Inside Customer Controller to withdwraw amount...");
+
+		HttpSession session=request.getSession(false);
+		
+		if(session==null) {
+			response.sendRedirect("/loginPage.html");
+		}else {
+			
+			Customer customer=(Customer) session.getAttribute("customer");
+			List<Account> aList = (ArrayList<Account>) session.getAttribute("aList");
+		
+			String accountId = request.getParameter("accountId");
+
+			Account account = findAccountFromList(accountId, aList);
+		
+			BigDecimal bigDecimalWithdraw = new BigDecimal(request.getParameter("withdrawAmount"));
+			
+			// Update chosen account
+			account = bankService.withdrawAmount(account, bigDecimalWithdraw);
+
+//			No need returning any data.
+//			aList = bankService.getAccountListByCustomerId(customer.getCustomerId());
+//
+//			System.out.println("Account List: " + aList);	
+//		
+//			response.setContentType("application/json");
+//			response.setCharacterEncoding("UTF-8");					
+//
+//			PrintWriter out=response.getWriter();
+//		
+//			out.write(new ObjectMapper().writeValueAsString(aList));
+			
+			return "/customerPage.html";		
+
+		}
+
+		return "";
+
+	}
+
 	
     // Helper method
     public static Account findAccountFromList(

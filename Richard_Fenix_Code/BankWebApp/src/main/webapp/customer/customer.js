@@ -1,5 +1,6 @@
 onload
 document.getElementById("myDeposit").style.display = "none";
+document.getElementById("myWithdraw").style.display = "none";
 
 fetchCustomerInfo();
 
@@ -11,7 +12,27 @@ function loadDeposit(){
   } else {
     x.style.display = "none";
   }
+  
+  // turn off all other Forms
+  let y = document.getElementById("myWithdraw");
+  y.style.display = "none";
+
 }
+
+function loadWithdraw(){
+  console.log("clicked loadWithdraw.")
+  let x = document.getElementById("myWithdraw");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+  // turn off all other Forms
+  let y = document.getElementById("myDeposit");
+  y.style.display = "none";
+	  
+}
+
 
 
 function fetchCustomerInfo() {
