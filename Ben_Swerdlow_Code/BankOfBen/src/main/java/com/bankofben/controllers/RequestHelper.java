@@ -78,6 +78,7 @@ public class RequestHelper {
 			}
 			break;
 		case "/BankOfBen/api/makeDeposit":
+			System.out.println("I am in make deposit");
 			try {
 				respString = ChangeAccount.makeDeposit(request, response);
 			} catch (IOException | BusinessException e) {
@@ -89,6 +90,60 @@ public class RequestHelper {
 		case "/BankOfBen/api/makeWithdrawal":
 			try {
 				respString = ChangeAccount.makeWithdrawal(request, response);
+			} catch (IOException | BusinessException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				respString = null;
+			}
+			break;
+		case "/BankOfBen/api/getPaymentsPendingInvolvingCustomer":
+			try {
+				respString = CustomerView.getPaymentsPendingInvolvingCustomer(request, response);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				respString = null;
+			}
+			break;
+		case "/BankOfBen/api/getRequestsPendingInvolvingCustomer":
+			try {
+				respString = CustomerView.getRequestsPendingInvolvingCustomer(request, response);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				respString = null;
+			}
+			break;
+		case "/BankOfBen/api/acceptPayment":
+			try {
+				respString = TransferActions.acceptPayment(request, response);
+			} catch (IOException | BusinessException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				respString = null;
+			}
+			break;
+		case "/BankOfBen/api/rejectPayment":
+			try {
+				respString = TransferActions.rejectPayment(request, response);
+			} catch (IOException | BusinessException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				respString = null;
+			}
+			break;
+		case "/BankOfBen/api/acceptRequest":
+			try {
+				respString = TransferActions.acceptRequest(request, response);
+			} catch (IOException | BusinessException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				respString = null;
+			}
+			break;
+		case "/BankOfBen/api/rejectRequest":
+			try {
+				respString = TransferActions.rejectRequest(request, response);
 			} catch (IOException | BusinessException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

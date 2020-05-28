@@ -23,8 +23,8 @@ async function setFirstLastName() {
 
 function makeCustomerView() {
     makeBalanceView();
-    // makePaymentView();
-    // makeRequestView();
+    makePaymentView();
+    makeRequestView();
 }
 
 async function makeBalanceView() {
@@ -47,9 +47,9 @@ async function makeBalanceView() {
                 account.accountNumber,
                 document.getElementById("balances"),
                 {html: `<td>${account.accountNumber}</td>
-                        <td><span class="dollarSign">$</span><span class="dollars">${account.balance.toFixed(2)}</span></td>
+                        <td id="${account.accountNumber}balance"><span class="dollarSign">$</span><span id="${account.accountNumber}dollars" class="dollars">${account.balance.toFixed(2)}</span></td>
                         <td>${account.pending ? "Pending" : ""}</td>
-                        ${account.pending ? "" : `<input type="number" placeholder="0.00" class="amount">
+                        ${account.pending ? "" : `<input type="number" step="0.01" placeholder="0.00" id="${account.accountNumber}amount">
                         <input type="button" class="btn btn-primary" value="Deposit" onclick="makeDeposit(${account.accountNumber})">
                         <input type="button" class="btn btn-secondary" value="Withdraw" onclick="makeWithdrawal(${account.accountNumber})">`}`})
         }
@@ -57,49 +57,126 @@ async function makeBalanceView() {
     }
 }
 
-async function makeDeposit(accountNumber) {
-    let amount = document.querySelector(`#${accountNumber}.amount`);
-    console.log(amount);
+async function makePaymentView() {
     let response = await fetch(
-        'http://localhost:9999/BankOfBen/api/makeDeposit', {
+        'http://localhost:9999/BankOfBen/api/getPaymentsPendingInvolvingCustomer', {
             method: 'POST',
-            body: JSON.stringify({
-                "accountNumber": accountNumber,
-                "amount": amount
-            }),
             headers: {"Content-type": "application/json; charset=UTF-8"}
         }
     );
     if (response.url.endsWith(".html") && response.url !== window.location.href) {
         window.location.href = response.url;
     } else {
+        let payments = await response.json();
+        // let padBefore = 0;
+        for (const payment of payments) {
+            customCreateTableRow(
+                payment.id,
+                document.getElementById("payments"),
+                {html: `<td>${payment.id}</td>
+                        <td>${payment.initUserId}</td>
+                        <td>${payment.receivingAccountNumber}</td>
+                        <td>${payment.amount.toFixed(2)}</td>
+                        <td>${payment.pending ? "Pending" : ""}</td>
+                        ${payment.pending ? `
+                        <input type="button" class="btn btn-success" value="Accept" onclick="acceptPayment(${payment.id})">
+                        <input type="button" class="btn btn-danger" value="Halt" onclick="rejectPayment(${payment.id})">` : "" }`})
+        }
+    }
+}
+
+async function makeRequestView() {
+    let response = await fetch(
+        'http://localhost:9999/BankOfBen/api/getRequestsPendingInvolvingCustomer', {
+            method: 'POST',
+            headers: {"Content-type": "application/json; charset=UTF-8"}
+        }
+    );
+    if (response.url.endsWith(".html") && response.url !== window.location.href) {
+        window.location.href = response.url;
+    } else {
+        let requests = await response.json();
+        // let padBefore = 0;
+        for (const request of requests) {
+            customCreateTableRow(
+                request.id,
+                document.getElementById("requests"),
+                {html: `<td>${request.id}</td>
+                        <td>${request.initUserId}</td>
+                        <td>${request.receivingAccountNumber}</td>
+                        <td>${request.amount.toFixed(2)}</td>
+                        <td>${request.pending ? "Pending" : ""}</td>
+                        ${request.pending ? `
+                        <input type="button" class="btn btn-success" value="Accept" onclick="acceptRequest(${request.id})">
+                        <input type="button" class="btn btn-danger" value="Halt" onclick="rejectRequest(${request.id})">` : "" }`})
+        }
+    }
+}
+
+async function acceptPayment(paymentId) {
+    let response = await fetch(
+        'http://localhost:9999/BankOfBen/api/acceptPayment', {
+            method: 'POST',
+            body: JSON.stringify({id: paymentId}),
+            headers: {"Content-type": "application/json; charset=UTF-8"}
+        }
+    );
+    if (response.url.endsWith(".html") && response.url !== window.location.href) {
+        window.location.href = response.url;
+    } else {
+        //
+    }
+}
+
+async function makeDeposit(accountNumber) {
+    let bodyObj = {
+        "accountNumber": `${accountNumber}`,
+        "amount": document.getElementById(`${accountNumber}amount`).value
+    };
+    console.log(bodyObj);
+    let response = await fetch(
+        'http://localhost:9999/BankOfBen/api/makeDeposit', {
+            method: 'POST',
+            body: JSON.stringify(bodyObj),
+            headers: {"Content-type": "application/json; charset=UTF-8"}
+        }
+    );
+    console.log(response);
+    if (response.url.endsWith(".html") && response.url !== window.location.href) {
+        window.location.href = response.url;
+    } else {
+        console.log("Making reponse json.")
         let account = await response.json();
-        let dollars = document.querySelector(`#${accountNumber}.dollars`);
-        dollars.innerText = account.balance;
-        dollars.style = "color: green";
+        let dollars = document.getElementById(`${accountNumber}dollars`);
+        dollars.innerText = account.balance.toFixed(2);
+        let balance = document.getElementById(`${accountNumber}balance`);
+        balance.style = "color: green";
     }
 }
 
 async function makeWithdrawal(accountNumber) {
-    let amount = document.querySelector(`#${accountNumber}.amount`);
-    console.log(amount);
+    let bodyObj = {
+        "accountNumber": `${accountNumber}`,
+        "amount": document.getElementById(`${accountNumber}amount`).value
+    };
+    console.log(bodyObj);
     let response = await fetch(
         'http://localhost:9999/BankOfBen/api/makeWithdrawal', {
             method: 'POST',
-            body: JSON.stringify({
-                "accountNumber": accountNumber,
-                "amount": amount
-            }),
+            body: JSON.stringify(bodyObj),
             headers: {"Content-type": "application/json; charset=UTF-8"}
         }
     );
+    console.log(response);
     if (response.url.endsWith(".html") && response.url !== window.location.href) {
         window.location.href = response.url;
     } else {
+        console.log("Making reponse json.")
         let account = await response.json();
-        let dollars = document.querySelector(`#${accountNumber}.dollars`);
-        dollars.innerText = account.balance;
-        dollars.style = "color: red";
+        let dollars = document.getElementById(`${accountNumber}dollars`);
+        dollars.innerText = account.balance.toFixed(2);
+        let balance = document.getElementById(`${accountNumber}balance`);
+        balance.style = "color: red";
     }
 }
 

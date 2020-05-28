@@ -1,6 +1,7 @@
 package com.bankofben.controllers;
 
 import java.io.IOException;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -23,13 +24,18 @@ public class ChangeAccount {
 			Customer customer = (Customer) session.getAttribute("customer");
 			if (customer!=null) {
 				Marshal marshal = new Marshal();
-				String accountNumberString = marshal.getRequestBodyNameValuePair("accountNumber", request);
+				String[] properties = {"accountNumber", "amount"};
+				Map<String, String> depositInfo = marshal.getRequestBodyNameValuePairs(properties, request);
+				String accountNumberString = depositInfo.get("accountNumber");
 				long accountNumber = Long.parseLong(accountNumberString);
 				if (dbs.doesCustomerOwnAccountNumber(customer.getId(), accountNumber)) {
+//					System.out.println("Account exists!");
 					Account account = dbs.getAccount(accountNumber, Account.getRoutingNumber());
-					String amountString = marshal.getRequestBodyNameValuePair("amount", request);
+					String amountString = depositInfo.get("amount");
 					Double amount = Double.parseDouble(amountString);
+//					System.out.println("Updating amount!");
 					Account updatedAccount = dbs.updateAccountBalance(account, amount, account);
+//					System.out.println("Updated amount!");
 					respString = new ObjectMapper().writeValueAsString(updatedAccount);
 				} else {
 					throw new BusinessException("Customer "+customer.getUsername()+" does not own account "+accountNumber);
@@ -47,13 +53,18 @@ public class ChangeAccount {
 			Customer customer = (Customer) session.getAttribute("customer");
 			if (customer!=null) {
 				Marshal marshal = new Marshal();
-				String accountNumberString = marshal.getRequestBodyNameValuePair("accountNumber", request);
+				String[] properties = {"accountNumber", "amount"};
+				Map<String, String> depositInfo = marshal.getRequestBodyNameValuePairs(properties, request);
+				String accountNumberString = depositInfo.get("accountNumber");
 				long accountNumber = Long.parseLong(accountNumberString);
 				if (dbs.doesCustomerOwnAccountNumber(customer.getId(), accountNumber)) {
+//					System.out.println("Account exists!");
 					Account account = dbs.getAccount(accountNumber, Account.getRoutingNumber());
-					String amountString = marshal.getRequestBodyNameValuePair("amount", request);
+					String amountString = depositInfo.get("amount");
 					Double amount = Double.parseDouble(amountString);
+//					System.out.println("Updating amount!");
 					Account updatedAccount = dbs.updateAccountBalance(account, -amount, account);
+//					System.out.println("Updated amount!");
 					respString = new ObjectMapper().writeValueAsString(updatedAccount);
 				} else {
 					throw new BusinessException("Customer "+customer.getUsername()+" does not own account "+accountNumber);

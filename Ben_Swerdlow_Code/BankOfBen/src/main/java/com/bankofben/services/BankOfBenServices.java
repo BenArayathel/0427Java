@@ -212,6 +212,14 @@ public class BankOfBenServices {
 		return dao.getTransfersInvolvingCustomerWithPendingStatus(customer, true);
 	}
 	
+	public Payment getPaymentById(String paymentId) throws BusinessException {
+		return dao.getPaymentById(paymentId);
+	}
+	
+	public Request getRequestById(String requestId) throws BusinessException {
+		return dao.getRequestById(requestId);
+	}
+	
 	public List<Payment> getPayments(Customer customer) throws BusinessException {
 		return dao.getAllPaymentsInvolvingCustomer(customer);
 	}
@@ -245,6 +253,50 @@ public class BankOfBenServices {
 			throw b;
 		}
 	}
+	
+	public void makePayment(Payment payment) throws BusinessException {
+		Account payingAccount = getAccount(payment.getPayingAccountNumber(), Account.getRoutingNumber());
+		if (payingAccount.isPending()) {
+			BusinessException b = new BusinessException("Cannot operate on an account that is pending.");
+			loggy.error(b);
+			throw b;
+		}
+		Account receivingAccount = getAccount(payment.getReceivingAccountNumber(), Account.getRoutingNumber());
+		if (receivingAccount.isPending()) {
+			BusinessException b = new BusinessException("Cannot operate on an account that is pending.");
+			loggy.error(b);
+			throw b;
+		}
+		double payingAccountBalance = Math.round((payingAccount.getBalance()-payment.getAmount())*100)/100;
+		payingAccount.setBalance(payingAccountBalance, payment);
+		double receivingAccountBalance = Math.round((payingAccount.getBalance()-payment.getAmount())*100)/100;
+		receivingAccount.setBalance(receivingAccountBalance, payment);
+		payingAccount = updateAccountBalance(payingAccount, -payment.getAmount(), receivingAccount);
+		receivingAccount = updateAccountBalance(receivingAccount, payment.getAmount(), payingAccount);
+		resolvePendingPayment(payment);
+	}
+	
+	public void makeRequest(Request request) throws BusinessException {
+		Account requestorAccount = getAccount(request.getRequestorAccountNumber(), Account.getRoutingNumber());
+		if (requestorAccount.isPending()) {
+			BusinessException b = new BusinessException("Cannot operate on an account that is pending.");
+			loggy.error(b);
+			throw b;
+		}
+		Account soughtAccount = getAccount(request.getSoughtAccountNumber(), Account.getRoutingNumber());
+		if (soughtAccount.isPending()) {
+			BusinessException b = new BusinessException("Cannot operate on an account that is pending.");
+			loggy.error(b);
+			throw b;
+		}
+		double requestorAccountBalance = Math.round((requestorAccount.getBalance()+request.getAmount())*100)/100;
+		requestorAccount.setBalance(requestorAccountBalance, request);
+		double soughtAccountBalance = Math.round((soughtAccount.getBalance()-request.getAmount())*100)/100;
+		soughtAccount.setBalance(soughtAccountBalance, request);
+		requestorAccount = updateAccountBalance(requestorAccount, request.getAmount(), soughtAccount);
+		soughtAccount = updateAccountBalance(soughtAccount, -request.getAmount(), requestorAccount);
+		resolvePendingRequest(request);
+	}
 
 	public void resolvePendingRequest(Request request) throws BusinessException {
 		if (request.isPending()) {
@@ -256,7 +308,7 @@ public class BankOfBenServices {
 		}
 	}
 
-	public void haltTransfer(Transfer transfer, Customer customer) throws BusinessException {
+	public void haltTransfer(Transfer transfer) throws BusinessException {
 		if (transfer.isPending()) {
 			dao.deleteTransfer(transfer.getId());
 		} else {
@@ -340,16 +392,10 @@ public class BankOfBenServices {
 	}
 
 	public Account updateAccountBalance(Account account, double amount, Account otherAccount) throws BusinessException {
-		Account a = dao.updateAccountBalance(account.getBalance()+amount, account.getAccountNumber());
-		if (a.getBalance()!=Math.floor((account.getBalance()+amount)*100)/100) {
-			b = new BusinessException("Internal database error. Account not updated correctly. Please contact a Bank of Ben employee "
-					+ "soon as possible to remedy the issue.");
-			loggy.error(b);
-			throw b;
-		} else {
-			Transaction transaction = new Transaction(account.getAccountNumber(), account.getBalance(), amount, otherAccount.getAccountNumber());
-			dao.createTransaction(transaction);
-		}
+		System.out.println((double) Math.round((account.getBalance()+amount)*100)/100);
+		Account a = dao.updateAccountBalance((double) Math.round((account.getBalance()+amount)*100)/100, account.getAccountNumber());
+		Transaction transaction = new Transaction(account.getAccountNumber(), account.getBalance(), amount, otherAccount.getAccountNumber());
+		dao.createTransaction(transaction);
 		return a;
 	}
 	

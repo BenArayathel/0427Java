@@ -31,9 +31,11 @@ public class Marshal {
 	
 	public String getRequestBodyNameValuePair(String property, HttpServletRequest request) throws IOException, BusinessException {
 		String body = request.getReader().lines().collect(Collectors.joining(System.lineSeparator()));
-		System.out.println(body);
+		System.out.println("This is the body "+body);
 		JsonNode bodyObj = objMapper.readTree(body);
+		System.out.println("This is the body object "+bodyObj);
 		String respString = bodyObj.get(property).textValue();
+		System.out.println("This is teh value "+respString);
 		if (respString==null) {
 			throw new BusinessException("Could not find property "+property+" in request body.");
 		}

@@ -27,21 +27,21 @@ async function processResponse(response) {
         responseJSON = await response.json();
         if ("username" in responseJSON) {
             if (document.getElementById("badLoginDiv")){
-                document.getElementById("badLoginDiv").innerText = `<strong>Warning!</strong>: Invalid login. Username ${username} is not registered with the Bank of Ben.`;
+                document.getElementById("badLoginDiv").innerText = `<strong>Warning!</strong>: Invalid login. Username ${responseJSON.username} is not registered with the Bank of Ben.`;
             } else {
                 customWarningElement(
                     "badLoginDiv",
                     document.getElementById("loginForm"),
-                    `<strong>Warning!</strong>: Invalid login. Username ${username} is not registered with the Bank of Ben.`);
+                    `<strong>Warning!</strong>: Invalid login. Username ${responseJSON.username} is not registered with the Bank of Ben.`);
             }
         } else if ("password" in responseJSON) {
             if (document.getElementById("badLoginDiv")){
-                document.getElementById("badLoginDiv").innerText = `<strong>Warning!</strong>: Invalid login. Incorrect password for username ${username}.`;
+                document.getElementById("badLoginDiv").innerText = `<strong>Warning!</strong>: Invalid login. Incorrect password for username ${responseJSON.username}.`;
             } else {
                 customWarningElement(
                     "badLoginDiv",
                     document.getElementById("loginForm"),
-                    `<strong>Warning!</strong>: Invalid login. Incorrect password for username ${username}.`);
+                    `<strong>Warning!</strong>: Invalid login. Incorrect password for username ${responseJSON.username}.`);
             }
         } else {
             console.error("Couldn't figure out what to do");
@@ -49,12 +49,12 @@ async function processResponse(response) {
     }
 }
 
-function customWarningElement(id, attachToElement, text){
+function customWarningElement(id, attachToElement, html){
     let div = document.createElement("div");
     div.id = id;
     div.class = "warning";
     div.style = "background-color: #ff9800"
-    div.innerText = text;
+    div.innerHTML = html;
     attachToElement.appendChild(div);
 }
 
