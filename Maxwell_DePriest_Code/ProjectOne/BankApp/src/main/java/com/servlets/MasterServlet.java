@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
 
+import com.controllers.GetController;
+import com.controllers.PostController;
 import com.controllers.RequestHelper;
 import com.exceptions.BusinessException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -37,63 +39,27 @@ public class MasterServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		if("GET".equalsIgnoreCase(req.getMethod())) {
-			req.getQueryString();
-			String direction = req.getParameter("direction");
-			String userEmail = req.getParameter("email"); 
-			if(direction.equalsIgnoreCase("user")) {
-				
-				try {
-					User newUser = uDI.selectUserByEmail(userEmail);
-					Account foundAccount = aDI.selectAccountByEmail(userEmail);
-					CurrentUser foundUser = new CurrentUser(newUser.getEmail(), newUser.getName(), foundAccount.getCheckingAccountNumber(), foundAccount.getSavingsAccountNumber(), foundAccount.getActive());
-					mapper.writeValue(res.getWriter(), foundUser);
-				} catch (BusinessException e) {
-					e.printStackTrace();
+			
+				if (res == null) {
+					res.sendError(404, "User could not be found");
+				}
+				else {
+					res = GetController.getUserInfo(req, res);
 				}
 			}
-			
-			else if(direction.equalsIgnoreCase("account")) {
-				
-			}
-
+		else {
+			res.sendError(404, "Error. Please use the get action next time");
 		}
 	}
-
+	
 	protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-		PrintWriter pw = res.getWriter();
-
 		if ("POST".equalsIgnoreCase(req.getMethod())) 
 		{
-			req.getQueryString();
-			String direction = req.getParameter("direction");
-			
-			if(direction.equalsIgnoreCase("user")) {
-				String userRequest = req.getReader().lines().collect(Collectors.joining(System.lineSeparator()));
-			    
-				User newUser = mapper.readValue(userRequest, User.class);
-				try {
-					String encPass = uSI.passwordEncryption(newUser.getPassword());
-					newUser.setPassword(encPass);
-					if(uSI.createNewUser(newUser)) {
-						uSI.createNewAccount(newUser.getEmail(), "0.00");
-						CurrentUser currentUser = new CurrentUser(newUser.getEmail(), newUser.getName(), "0.00", "0.00", "customer");
-						
-						loggy.debug("New current user created. Email- " + currentUser.getEmail());
-						mapper.writeValue(res.getWriter(), currentUser);
-					};
-				} catch (BusinessException e) {
-					res.getWriter().append("Failed to create a new user with email " + newUser.getEmail());
-					loggy.info("Failed to create a new user with email " + newUser.getEmail());
-					doGet(req, res);
-					e.printStackTrace();
-				}
-			}
+			res = PostController.postInfo(req, res);
 		}
-		
 		else {
-			pw.append("Error. Please use the post action next time");
+			res.sendError(404, "Error. Please use the post action next time");
 		}
-		
 	}
 	
 	protected void doPut(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
