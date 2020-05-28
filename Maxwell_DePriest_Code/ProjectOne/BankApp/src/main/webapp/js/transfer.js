@@ -1,4 +1,4 @@
-//uSI.transferFunds(currentUser.getEmail(), "checkingBalance", accNum, amt)
+
 
 window.onload = function (){
 	
@@ -10,6 +10,7 @@ window.onload = function (){
 	let transferButton = document.getElementById("transferButton");
 	let receiverAccountNum = document.getElementById("receiverAccountNum");
 	let transferAmt = document.getElementById("transferAmount");
+	let transferSpinner = document.getElementById("transferSpinner");
 	
 	if(transferButton) {
 		transferButton.addEventListener("click", function(event) {
@@ -31,6 +32,7 @@ function transferMoney(senderAccount, receiverAccountNum, amt) {
     let userData = JSON.parse(localStorage.getItem("userData"));
 
     if (!isNaN(amt) && (amt < 1000.00)) {
+    	transferSpinner.hidden = false;
     	let senderSv = parseFloat(userData["savingsBalance"]);
     	let senderCh = parseFloat(userData["checkingBalance"]);
     	console.log("Sending transfer fetch...");
@@ -54,6 +56,7 @@ function transferMoney(senderAccount, receiverAccountNum, amt) {
         					window.location.href = "./index.html"
         					
         				}).catch(error =>{
+        					transferSpinner.hidden = true;
         					console.log(error)
         					//window.location.href = "./404.html";
         				});

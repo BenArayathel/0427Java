@@ -11,11 +11,15 @@ let storedData = JSON.parse(localStorage.getItem("userData"))
 var cBal = document.getElementById("checkingBalance");
 var sBal = document.getElementById("savingsBalance");
 var greet = document.getElementById("customerGreeting");
+var logoutButton = document.getElementById("logOutButton");
+
 
 if(!storedData) {
 	greet.innerHTML = "Hello friend, it appears that you haven't logged in yet";
 	cBal.innerHTML= "";
 	sBal.innerHTML = "";
+	logoutButton.text = "Login";
+	
 	
 }
 else {

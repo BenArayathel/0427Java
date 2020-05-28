@@ -1,4 +1,5 @@
 let regButton = document.getElementById("registerButton");
+let registrationSpinner = document.getElementById("registrationSpinner");
 regButton.addEventListener("click", function(event) {
 	event.preventDefault();
 	comparePasswords();
@@ -20,6 +21,7 @@ function comparePasswords() {
 }
 
 function registerNewCustomer(name, email, phoneNum, password) {
+	registrationSpinner.hidden = false;
 	console.log("Submitting new information...");
 	fetch('http://localhost:8088/BankApp/api/post?direction=user', {
     	method: 'POST',
@@ -45,7 +47,8 @@ function registerNewCustomer(name, email, phoneNum, password) {
     					window.location.href = "index.html";
     				    
     				}).catch(error =>{
-    					console.log(error)
+    					console.log(error);
+    					registrationSpinner.hidden = true;
     					//window.location.href = "./404.html";
     				});
 	

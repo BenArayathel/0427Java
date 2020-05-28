@@ -6,6 +6,7 @@ window.onload = function (){
 	}
 	let depositButton = document.getElementById("depositButton");
 	let depAmt = document.getElementById("depositAmount");
+	let depositSpinner = document.getElementById("depositSpinner");
 	
 	if(depositButton) {
 		depositButton.addEventListener("click", function(event) {
@@ -27,7 +28,7 @@ window.onload = function (){
 
 
 function depositMoney(whichAccount, amt, currentUser) {
-   // console.log(currentUser);
+    depositSpinner.hidden = false;
     if (!isNaN(amt.value) && (amt.value < 1000.00)) {
     	let userSv = parseFloat(currentUser["savingsBalance"]);
     	let userCh = parseFloat(currentUser["checkingBalance"]);
@@ -59,12 +60,14 @@ function depositMoney(whichAccount, amt, currentUser) {
         		response => response.json()).then(
         				data => {
         					localStorage.clear();
+        					depositSpinner.hidden = true;
         					localStorage.setItem("userData", JSON.stringify(data));
         					alert("Money successfully deposited");
         					window.location.href = "./index.html"
         					
         				    
         				}).catch(error =>{
+        					depositSpinner.hidden = true;
         					alert("Account may not have been activated yet. Please be patient with us. Thank you.");
         					//console.log(error)
         					//window.location.href = "./404.html";
@@ -73,6 +76,7 @@ function depositMoney(whichAccount, amt, currentUser) {
     }
     else {
     	alert("Please only enter numerical values that are less than $1000.00");
+    	depositSpinner.hidden = true;
     }
 }
 

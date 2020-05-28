@@ -1,5 +1,6 @@
 window.onload = function() {
 	let loginButton = document.getElementById("loginButton");
+	let loginSpinner = document.getElementById("loginSpinner");
 	if(loginButton) {
 		loginButton.addEventListener("click", function(event) {
 			event.preventDefault();
@@ -11,12 +12,14 @@ window.onload = function() {
 
 
 function checkCredentials() {
+	
     let email = document.getElementById("loginEmail");
     let password = document.getElementById("loginPassword");
 //    if (!password || !email) {
 //    	window.location.href("./404.html");
 //    }
     if(password && email) {
+    	loginSpinner.hidden = false;
     	console.log("Checking credentials...");
     	fetch('http://localhost:8088/BankApp/login', {
         	method: 'POST',
@@ -45,6 +48,7 @@ function checkCredentials() {
         					
         				}).catch(error =>{
         					alert("Invalid Login. Please try again");
+        					loginSpinner.hidden = true;
         					//console.log(error)
         					
         				});

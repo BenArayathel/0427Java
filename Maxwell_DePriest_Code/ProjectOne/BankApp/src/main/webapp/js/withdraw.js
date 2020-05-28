@@ -5,6 +5,7 @@ window.onload = function (){
 	}
 	let withdrawButton = document.getElementById("withdrawButton");
 	let withdrawAmt = document.getElementById("withdrawAmount");
+	let withdrawSpinner = document.getElementById("withdrawSpinner");
 
 	if(withdrawButton) {
 		withdrawButton.addEventListener("click", function(event) {
@@ -25,8 +26,9 @@ window.onload = function (){
 }
 
 function withdrawMoney(whichAccount, amt, currentUser) {
-
+	
     if (!isNaN(amt.value) && (amt.value < 1000.00)) {
+    	withdrawSpinner.hidden = false;
     	let userSv = parseFloat(currentUser["savingsBalance"]);
     	let userCh = parseFloat(currentUser["checkingBalance"]);
         if (whichAccount == "checking") {
@@ -35,6 +37,7 @@ function withdrawMoney(whichAccount, amt, currentUser) {
         	}
         	else {
         		alert("Withdrawl Amount cannot exceed current balance");
+        		withdrawSpinner.hidden = true;
         		return false;
         	}
         }
@@ -43,6 +46,7 @@ function withdrawMoney(whichAccount, amt, currentUser) {
         		userSv -= parseFloat(amt.value);
         	}
         	else {
+        		withdrawSpinner.hidden = true;
         		alert("Withdrawl Amount cannot exceed current balance");
         		return false;
         	}
@@ -67,11 +71,13 @@ function withdrawMoney(whichAccount, amt, currentUser) {
         				data => {
         					localStorage.clear();
         					localStorage.setItem("userData", JSON.stringify(data));
+        					withdrawSpinner.hidden = true;
         					alert("Money successfully withdrawn");
         					window.location.href= "./index.html";
         					
         				    
         				}).catch(error =>{
+        					withdrawSpinner.hidden = true;
         					alert("Account may not have been activated yet. Please be patient with us. Thank you.");
         					//console.log(error)
         					//window.location.href = "./404.html";

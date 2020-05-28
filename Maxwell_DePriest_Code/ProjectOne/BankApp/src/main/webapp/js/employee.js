@@ -17,6 +17,10 @@ window.onload = function() {
 	let viewInactiveButton = document.getElementById("viewInactiveButton");
 	let employeeLogoutButton = document.getElementById("employeeLogoutButton");
 	
+	let activateFindUserSpinner = document.getElementById("activateFindUserSpinner");
+	let findUserSpinner = document.getElementById("findUserSpinner");
+	let activateSpinner = document.getElementById("activateSpinner");
+	
 	employeeLogoutButton.addEventListener("click", function() {
 		logOut();
 	})
@@ -80,6 +84,7 @@ window.onload = function() {
 }
 
 function viewUser() {
+	findUserSpinner.hidden = false;
 	let emailSearch = document.getElementById("emailView").value;
 	console.log("Searching for user...");
 	fetch('http://localhost:8088/BankApp/api/get?direction=user&email=' + emailSearch, {
@@ -97,10 +102,11 @@ function viewUser() {
     					document.getElementById("viewSavingRecord").innerText = data["savingsBalance"].slice(0, -3);
     					let accountStatus = (data["status"] == "true" ? "Activated" : "Not Activated");
     					document.getElementById("viewStatusRecord").innerText = accountStatus;
-    					
     					document.getElementById("viewResult").classList.remove("hidden");
+    					findUserSpinner.hidden = true;
 
     				}).catch(error =>{
+    					findUserSpinner.hidden = true;
     					alert("Couldn't find an account with that email");
     					//window.location.href = "./404.html";
     				});
@@ -108,6 +114,7 @@ function viewUser() {
 
 
 function findInactiveAccount() {
+	activateFindUserSpinner.hidden = false;
 	var activateSearch = document.getElementById("emailActivate").value;
 	console.log("Searching for user...");
 	fetch('http://localhost:8088/BankApp/api/get?direction=user&email=' + activateSearch, {
@@ -125,10 +132,11 @@ function findInactiveAccount() {
     					document.getElementById("activateSavingRecord").innerText = data["savingsBalance"].slice(0, -3);
     					let accountStatus = (data["status"] == "true" ? "Activated" : "Not Activated");
     					document.getElementById("activateStatusRecord").innerText = accountStatus;
-    					
     					document.getElementById("activateResult").classList.remove("hidden");
+    					activateFindUserSpinner.hidden = true;
 
     				}).catch(error =>{
+    					activateFindUserSpinner.hidden = true;
     					alert("Couldn't find an account with that email");
     					console.log(error)
     					//window.location.href = "./404.html";
@@ -137,6 +145,7 @@ function findInactiveAccount() {
 }
 
 function activateAccount() {
+	activateSpinner.hidden = false;
 	var activateSearch = document.getElementById("emailActivate").value;
 	console.log("Activating account...");
 	fetch('http://localhost:8088/BankApp/api/put?direction=activate', {
@@ -160,8 +169,10 @@ function activateAccount() {
         					document.getElementById("activateStatusRecord").innerText = accountStatus;
         					
         					document.getElementById("activateResult").classList.remove("hidden");
+        					activateSpinner.hidden = true;
 
         				}).catch(error =>{
+        					activateSpinner.hidden = true;
         					alert("Something went wrong. Please try again");
         					//window.location.href = "./404.html";
         				});
