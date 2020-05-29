@@ -135,18 +135,18 @@ public class RequestHelper {
 		case "/BankOfBen/api/getRequestsPendingToCustomer":
 			try {
 				respString = CustomerView.getRequestsPendingToCustomer(request, response);
-			} catch (JsonProcessingException e1) {
+			} catch (JsonProcessingException e) {
 				// TODO Auto-generated catch block
-				e1.printStackTrace();
+				e.printStackTrace();
 				respString = null;
 			}
 			break;
 		case "/BankOfBen/api/getRequestsPendingFromCustomer":
 			try {
 				respString = CustomerView.getRequestsPendingFromCustomer(request, response);
-			} catch (JsonProcessingException e1) {
+			} catch (JsonProcessingException e) {
 				// TODO Auto-generated catch block
-				e1.printStackTrace();
+				e.printStackTrace();
 				respString = null;
 			}
 			break;

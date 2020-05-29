@@ -112,7 +112,7 @@ async function postRequest(event) {
 function makeCustomerView() {
     makeBalanceView();
     makePaymentView();
-    makeRequestView();
+    // makeRequestView();
 }
 
 let accounts;
@@ -208,7 +208,9 @@ async function makePaymentView() {
     } else {
         let payments = await responseToCustomer.json();
         // let padBefore = 0;
-        if (payments) {
+        console.log(payments);
+        console.log(JSON.stringify(payments));
+        if (payments!==undefined && payments.length!=0) {
             for (const payment of payments) {
                 customCreateTableRow(
                     payment.id,
@@ -227,17 +229,17 @@ async function makePaymentView() {
             customCreateTableRow(
                 "noToPayments",
                 document.getElementById("payments"),
-                {html: `<td>--------------</td>
+                {html: `<td>--------------------</td>
+                        <td>--------------------</td>
                         <td>--------------</td>
-                        <td>----------</td>
-                        <td>----------</td>
-                        <td>------</td>
-                        <td>-</td>`
+                        <td>--------------</td>
+                        <td>--------</td>
+                        <td>------</td>`
                 }
             );
         }
         customCreateTableRow(
-            "separator",
+            "paymentSeparator",
             document.getElementById("payments"),
             {html: ``}
         )
@@ -272,12 +274,12 @@ async function makePaymentView() {
             customCreateTableRow(
                 "noFromPayments",
                 document.getElementById("payments"),
-                {html: `<td>--------------</td>
+                {html: `<td>--------------------</td>
+                        <td>--------------------</td>
                         <td>--------------</td>
-                        <td>----------</td>
-                        <td>----------</td>
-                        <td>------</td>
-                        <td>-</td>`
+                        <td>--------------</td>
+                        <td>--------</td>
+                        <td>------</td>`
                 }
             );
         }
@@ -347,17 +349,17 @@ async function makeRequestView() {
             customCreateTableRow(
                 "noToRequests",
                 document.getElementById("requests"),
-                {html: `<td>--------------</td>
+                {html: `<td>--------------------</td>
+                        <td>--------------------</td>
                         <td>--------------</td>
-                        <td>----------</td>
-                        <td>----------</td>
-                        <td>------</td>
-                        <td>-</td>`
+                        <td>--------------</td>
+                        <td>--------</td>
+                        <td>------</td>`
                 }
             );
         }
         customCreateTableRow(
-            "separator",
+            "requestSeparator",
             document.getElementById("requests"),
             {html: ``}
         )
@@ -392,12 +394,12 @@ async function makeRequestView() {
             customCreateTableRow(
                 "noFromRequests",
                 document.getElementById("requests"),
-                {html: `<td>--------------</td>
+                {html: `<td>--------------------</td>
+                        <td>--------------------</td>
                         <td>--------------</td>
-                        <td>----------</td>
-                        <td>----------</td>
-                        <td>------</td>
-                        <td>-</td>`
+                        <td>--------------</td>
+                        <td>--------</td>
+                        <td>------</td>`
                 }
             );
         }
