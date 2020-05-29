@@ -30,32 +30,38 @@ window.onload = function() {
 			deleteDiv.classList.remove("hidden");
 			viewDiv.classList.add("hidden");
 			activateDiv.classList.add("hidden");
+			
 		}
 		else {
 			deleteDiv.classList.add("hidden");
 		}
+		eraseSearchFields();
 	})
 	viewButton.addEventListener("click", function() {
 		if(viewDiv.classList.contains("hidden")) {
 			deleteDiv.classList.add("hidden");
 			viewDiv.classList.remove("hidden");
 			activateDiv.classList.add("hidden");
+			
 		}
 		
 		else {
 			viewDiv.classList.add("hidden");
 		}
+		eraseSearchFields();
 	})
 	activateButton.addEventListener("click", function() {
 		if(activateDiv.classList.contains("hidden")) {
 			deleteDiv.classList.add("hidden");
 			viewDiv.classList.add("hidden");
 			activateDiv.classList.remove("hidden");
+			
 		}
 		
 		else {
 			activateDiv.classList.add("hidden");
 		}
+		eraseSearchFields();
 		
 	})
 	viewUserButton.addEventListener("click", function(event) {
@@ -193,6 +199,11 @@ function deleteAccount(email) {
     					//console.log(error)
     					//window.location.href = "./404.html";
     				});
+}
+
+function eraseSearchFields() {
+	document.getElementById("activateResult").classList.add("hidden");
+	document.getElementById("viewResult").classList.add("hidden");
 }
 
 function logOut() {

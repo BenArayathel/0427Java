@@ -47,7 +47,9 @@ function registerNewCustomer(name, email, phoneNum, password) {
     					window.location.href = "index.html";
     				    
     				}).catch(error =>{
+    					alert("Account with this email already exists");
     					console.log(error);
+    					
     					registrationSpinner.hidden = true;
     					//window.location.href = "./404.html";
     				});
