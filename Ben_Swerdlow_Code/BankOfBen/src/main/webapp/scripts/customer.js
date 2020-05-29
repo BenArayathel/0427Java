@@ -557,28 +557,38 @@ async function makeDeposit(accountNumber) {
 async function makeWithdrawal(accountNumber) {
     if (document.getElementById(`${accountNumber}amount`).checkValidity()) {
         let amount = document.getElementById(`${accountNumber}amount`).value;
-        let bodyObj = {
-            "accountNumber": `${accountNumber}`,
-            "amount": `${amount}`
-        };
-        console.log(bodyObj);
-        let response = await fetch(
-            'http://localhost:9999/BankOfBen/api/makeWithdrawal', {
-                method: 'POST',
-                body: JSON.stringify(bodyObj),
-                headers: {"Content-type": "application/json; charset=UTF-8"}
+        let myAccount = undefined;
+        for (const account of accounts) {
+            if (account.accountNumber==accountNumber) {
+                myAccount = account;
             }
-        );
-        console.log(response);
-        if (response.url.endsWith(".html") && response.url !== window.location.href) {
-            window.location.href = response.url;
+        }
+        if (amount > myAccount.balance) {
+            console.log("Tried to withdraw too much money.")
         } else {
-            console.log("Making reponse json.")
-            let account = await response.json();
-            let dollars = document.getElementById(`${accountNumber}dollars`);
-            dollars.innerText = account.balance.toFixed(2);
-            let balance = document.getElementById(`${accountNumber}balance`);
-            balance.style = "color: red";
+            let bodyObj = {
+                "accountNumber": `${accountNumber}`,
+                "amount": `${amount}`
+            };
+            console.log(bodyObj);
+            let response = await fetch(
+                'http://localhost:9999/BankOfBen/api/makeWithdrawal', {
+                    method: 'POST',
+                    body: JSON.stringify(bodyObj),
+                    headers: {"Content-type": "application/json; charset=UTF-8"}
+                }
+            );
+            console.log(response);
+            if (response.url.endsWith(".html") && response.url !== window.location.href) {
+                window.location.href = response.url;
+            } else {
+                console.log("Making reponse json.")
+                let account = await response.json();
+                let dollars = document.getElementById(`${accountNumber}dollars`);
+                dollars.innerText = account.balance.toFixed(2);
+                let balance = document.getElementById(`${accountNumber}balance`);
+                balance.style = "color: red";
+            }
         }
     } else {
         console.log(document.getElementById(`${accountNumber}amount`).checkValidity());
