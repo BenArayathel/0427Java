@@ -1,0 +1,4 @@
+2020-05-28 02:46:49,437 -0500 [http-nio-8090-exec-1] INFO  (Project1ServiceImpl.java:151) - Account 10213 rejected by employee Bob Executive
+2020-05-28 03:03:33,455 -0500 [http-nio-8090-exec-5] INFO  (Project1ServiceImpl.java:138) - Account 10149 approved by employee Bob Executive
+2020-05-29 03:56:20,853 -0500 [http-nio-8090-exec-10] INFO  (Project1ServiceImpl.java:125) - $300.0 deposited into account 10381 by user Caleb Rentpayer
+2020-05-29 03:57:40,720 -0500 [http-nio-8090-exec-7] INFO  (Project1ServiceImpl.java:166) - $200.0 transferred from Account #10381 to Account #10331

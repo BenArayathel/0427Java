@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link rel="stylesheet"
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<title>Create New Account</title>
+</head>
+<body>
+	<nav class="navbar navbar-default">
+	      <div class="container-fluid">
+	        <div class=nav-bar-header>
+	          <a class="navbar-brand" href="#">BK Bank: We Don't Make Burgers</a>
+	        </div>
+	        <ul class="nav navbar-nav">
+	          <li><a href="/Project1/customer_page.html">Customer Portal</a></li>
+	          <li><a href="/Project1/employee_page.html">Employee Portal</a></li>
+	          <li><a href="http://localhost:8090/Project1/app/Logout" onclick="logoutUser()">Logout</a></li>
+	        </ul>
+	      </div>
+	 </nav>
+	<div id="newAcctForm" action="CreateAccount" method="POST">
+		<label for="amount">Enter amount to be deposited into new account: </label>
+		<input type="text" id="amount">
+		<input type="submit" id="createSubmit" value="Create" class="btn btn-primary">
+	</div>
+	<script src="scripts/createAccount.js"></script>
+</body>
+</html>

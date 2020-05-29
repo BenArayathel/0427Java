@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link rel="stylesheet"
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<title>Account Activities</title>
+</head>
+<body>
+	<nav class="navbar navbar-default">
+	      <div class="container-fluid">
+	        <div class=nav-bar-header>
+	          <a class="navbar-brand" href="#">BK Bank: We Don't Make Burgers</a>
+	        </div>
+	        <ul class="nav navbar-nav">
+	          <li><a href="/Project1/customer_page.html">Customer Portal</a></li>
+	          <li><a href="http://localhost:8090/Project1/app/Logout" onclick="logoutUser()">Logout</a></li>
+	        </ul>
+	      </div>
+	 </nav>
+
+	<h3>Deposit</h3>
+	<div id="depositForm" action="Deposit" method="POST">
+		<label for="depositAmount">Enter amount to be deposited: </label>
+		<input type="text" id="depositAmount" placeholder="0.00"><br><br>
+		<input type="submit" value="Deposit" id="depSubmit" class="btn btn-primary">
+	</div>
+	<h3>Withdrawal</h3>
+	<div id="withdrawalForm" action="Withdraw" method="POST">
+		<label for="withdrawalAmount">Enter amount to be withdrawn: </label><br>
+		<input type="text" id="withdrawalAmount" placeholder="0.00"><br><br>
+		<input type="submit" value="Withdraw" id="wdSubmit" class="btn btn-primary">
+	</div>
+	<h3>Transfer</h3>
+	<div id="transferForm" action="Transfer" method="POST">
+		<label for="transferAccount">Enter account # to transfer to: </label>
+		<input type="text" id="transferAccount" placeholder="Acct #">
+		<br>
+		<label for="transferAmount">Enter amount to be transferred: </label>
+		<input type="text" id="transferAmount" placeholder="0.00"><br><br>
+		<input type="submit" value="Transfer" id="transferSubmit" class="btn btn-primary">
+	</div>
+	<script src="scripts/deposit.js"></script>
+	<script src="scripts/withdrawal.js"></script>
+	<script src="scripts/transfer.js"></script>
+</body>
+</html>
