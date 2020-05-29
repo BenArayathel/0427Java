@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.bankofben.exceptions.BusinessException;
 import com.bankofben.models.Account;
+import com.bankofben.models.Transaction;
 import com.bankofben.services.BankOfBenServices;
 import com.bankofben.utils.Marshal;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -29,9 +30,21 @@ public class EmployeeView {
 		BankOfBenServices dbs = new BankOfBenServices();
 		String username = new Marshal().getRequestBodyNameValuePair("username", request);
 		System.out.println(username);
-		accounts = dbs.getAccountsForCustomerUsername(username);
-		String respString = new ObjectMapper().writeValueAsString(accounts);
+		String respString = null;
+		try {
+			accounts = dbs.getAccountsForCustomerUsername(username);
+			respString = new ObjectMapper().writeValueAsString(accounts);
+		} catch (BusinessException e) {
+			respString = "{\"ERROR\": \""+e.getMessage()+"\"}";
+		}
 		System.out.println(respString);
+		return respString;
+	}
+
+	public static String getAllTransactions(HttpServletRequest request, HttpServletResponse response) throws BusinessException, JsonProcessingException {
+		BankOfBenServices dbs = new BankOfBenServices();
+		List<Transaction> transactions = dbs.getTransactions();
+		String respString = new ObjectMapper().writeValueAsString(transactions);
 		return respString;
 	}
 

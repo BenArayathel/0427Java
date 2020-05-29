@@ -477,8 +477,14 @@ public class BankOfBenServices {
 			throw b;
 		}
 	}
+	
+	public List<Transaction> getTransactions() throws BusinessException {
+		List<Transaction> transactions = dao.getAllTransactions();
+		Collections.sort(transactions);
+		return transactions;
+	}
 
-	public String getTransactions() throws BusinessException {
+	public String getTransactionsString() throws BusinessException {
 		List<Transaction> transactions = dao.getAllTransactions();
 		Collections.sort(transactions);
 		StringBuilder outputBuilder = new StringBuilder();
@@ -492,7 +498,7 @@ public class BankOfBenServices {
 		return outputBuilder.toString();
 	}
 
-	public String getTransactions(long accountNumber) throws BusinessException {
+	public String getTransactionsString(long accountNumber) throws BusinessException {
 		List<Transaction> transactions = dao.getAllTransactionsWithAccountNumber(accountNumber);
 		Collections.sort(transactions);
 		StringBuilder outputBuilder = new StringBuilder();
@@ -506,7 +512,7 @@ public class BankOfBenServices {
 		return outputBuilder.toString();
 	}
 	
-	public String getTransactionsUpTo(int numberOfTransactions) throws BusinessException {
+	public String getTransactionsStringUpTo(int numberOfTransactions) throws BusinessException {
 		List<Transaction> transactions = dao.getAllTransactionsUpTo(numberOfTransactions);
 		Collections.sort(transactions);
 		StringBuilder outputBuilder = new StringBuilder();

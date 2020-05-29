@@ -27,7 +27,7 @@ async function processResponse(response) {
         responseJSON = await response.json();
         if ("username" in responseJSON) {
             if (document.getElementById("badLoginDiv")){
-                document.getElementById("badLoginDiv").innerText = `<strong>Warning!</strong>: Invalid login. Username ${responseJSON.username} is not registered with the Bank of Ben.`;
+                document.getElementById("badLoginDiv").innerHTML = `<strong>Warning!</strong>: Invalid login. Username ${responseJSON.username} is not registered with the Bank of Ben.`;
             } else {
                 customWarningElement(
                     "badLoginDiv",
@@ -36,7 +36,7 @@ async function processResponse(response) {
             }
         } else if ("password" in responseJSON) {
             if (document.getElementById("badLoginDiv")){
-                document.getElementById("badLoginDiv").innerText = `<strong>Warning!</strong>: Invalid login. Incorrect password for username ${responseJSON.username}.`;
+                document.getElementById("badLoginDiv").innerHTML = `<strong>Warning!</strong>: Invalid login. Incorrect password for username ${responseJSON.username}.`;
             } else {
                 customWarningElement(
                     "badLoginDiv",

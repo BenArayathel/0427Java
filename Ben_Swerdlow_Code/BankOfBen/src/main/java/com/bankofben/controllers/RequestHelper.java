@@ -214,9 +214,34 @@ public class RequestHelper {
 			}
 			break;
 		case "/BankOfBen/api/getCustomerBalances":
-			System.out.println("In getCustomerBalances case");
 			try {
 				respString = EmployeeView.getCustomerBalances(request, response);
+			} catch (IOException | BusinessException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				respString = null;
+			}
+			break;
+		case "/BankOfBen/api/getAllTransactions":
+			try {
+				respString = EmployeeView.getAllTransactions(request, response);
+			} catch (JsonProcessingException | BusinessException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				respString = null;
+			}
+		case "/BankOfBen/api/approveAccount":
+			try {
+				respString = EmployeeActions.approveAccount(request, response);
+			} catch (IOException | BusinessException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				respString = null;
+			}
+			break;
+		case "/BankOfBen/api/rejectAccount":
+			try {
+				respString = EmployeeActions.rejectAccount(request, response);
 			} catch (IOException | BusinessException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
