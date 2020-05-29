@@ -79,7 +79,6 @@ public class TransferActions {
 			Customer customer = (Customer) session.getAttribute("customer");
 			if (customer!=null) {
 				Map<String, String> paymentDetails = marshal.getRequestBodyNameValuePairs(properties, request);
-				System.out.println(paymentDetails);
 				long payingAccountNumber = Long.parseLong(paymentDetails.get("payingAccountNumber"));
 				long recievingAccountNumber = Long.parseLong(paymentDetails.get("recievingAccountNumber"));
 				double amount = Double.parseDouble(paymentDetails.get("paymentAmount"));

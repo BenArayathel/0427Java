@@ -4,10 +4,14 @@ import java.io.IOException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
+
 import com.bankofben.exceptions.BusinessException;
 import com.fasterxml.jackson.core.JsonProcessingException;
 
 public class RequestHelper {
+	
+	final static Logger loggy = Logger.getLogger(RequestHelper.class);
 
 	public static String process(HttpServletRequest request, HttpServletResponse response) {
 		System.out.println("Request Helper");
@@ -23,8 +27,8 @@ public class RequestHelper {
 				respString = Register.initialRegistration(request, response); 
 				System.out.println(respString);
 			} catch (IOException | BusinessException e) {
-				// TODO Auto-generated catch block, put in loggy.error
-				e.printStackTrace();
+				loggy.error(e);
+//				e.printStackTrace();
 				respString = null;
 			}
 			break;
@@ -34,8 +38,8 @@ public class RequestHelper {
 				respString = SessionInfo.getTempUser(request, response);
 				System.out.println(respString);
 			} catch (JsonProcessingException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				loggy.error(e);
+//				e.printStackTrace();
 				respString = null;
 			}
 			break;
@@ -43,8 +47,8 @@ public class RequestHelper {
 			try {
 				respString = Register.newUserRegistration(request, response);
 			} catch (IOException | BusinessException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				loggy.error(e);
+//				e.printStackTrace();
 				respString = null;
 			}
 			break;
@@ -54,8 +58,8 @@ public class RequestHelper {
 			try {
 				respString = Accounts.accountApplication(request, response);
 			} catch (BusinessException | IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				loggy.error(e);
+//				e.printStackTrace();
 				respString = null;
 			}
 			break;
@@ -63,8 +67,8 @@ public class RequestHelper {
 			try {
 				respString = Login.login(request, response);
 			} catch (IOException | BusinessException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				loggy.error(e);
+//				e.printStackTrace();
 				respString = null;
 			}
 			break;
@@ -72,8 +76,8 @@ public class RequestHelper {
 			try {
 				respString = CustomerView.getAccountsForCustomer(request, response);
 			} catch (JsonProcessingException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				loggy.error(e);
+//				e.printStackTrace();
 				respString = null;
 			}
 			break;
@@ -82,8 +86,8 @@ public class RequestHelper {
 			try {
 				respString = ChangeAccount.makeDeposit(request, response);
 			} catch (IOException | BusinessException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				loggy.error(e);
+//				e.printStackTrace();
 				respString = null;
 			}
 			break;
@@ -91,8 +95,8 @@ public class RequestHelper {
 			try {
 				respString = ChangeAccount.makeWithdrawal(request, response);
 			} catch (IOException | BusinessException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				loggy.error(e);
+//				e.printStackTrace();
 				respString = null;
 			}
 			break;
@@ -100,26 +104,26 @@ public class RequestHelper {
 			try {
 				respString = CustomerView.getPaymentsPendingInvolvingCustomer(request, response);
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				loggy.error(e);
+//				e.printStackTrace();
 				respString = null;
 			}
 			break;
 		case "/BankOfBen/api/getPaymentsPendingToCustomer":
 			try {
 				respString = CustomerView.getPaymentsPendingToCustomer(request, response);
-			} catch (JsonProcessingException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
+			} catch (JsonProcessingException e) {
+				loggy.error(e);
+//				e.printStackTrace();
 				respString = null;
 			}
 			break;
 		case "/BankOfBen/api/getPaymentsPendingFromCustomer":
 			try {
 				respString = CustomerView.getPaymentsPendingFromCustomer(request, response);
-			} catch (JsonProcessingException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
+			} catch (JsonProcessingException e) {
+				loggy.error(e);
+//				e.printStackTrace();
 				respString = null;
 			}
 			break;
@@ -127,8 +131,8 @@ public class RequestHelper {
 			try {
 				respString = CustomerView.getRequestsPendingInvolvingCustomer(request, response);
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				loggy.error(e);
+//				e.printStackTrace();
 				respString = null;
 			}
 			break;
@@ -136,8 +140,8 @@ public class RequestHelper {
 			try {
 				respString = CustomerView.getRequestsPendingToCustomer(request, response);
 			} catch (JsonProcessingException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				loggy.error(e);
+//				e.printStackTrace();
 				respString = null;
 			}
 			break;
@@ -145,8 +149,8 @@ public class RequestHelper {
 			try {
 				respString = CustomerView.getRequestsPendingFromCustomer(request, response);
 			} catch (JsonProcessingException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				loggy.error(e);
+//				e.printStackTrace();
 				respString = null;
 			}
 			break;
@@ -154,8 +158,8 @@ public class RequestHelper {
 			try {
 				respString = TransferActions.acceptPayment(request, response);
 			} catch (IOException | BusinessException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				loggy.error(e);
+//				e.printStackTrace();
 				respString = null;
 			}
 			break;
@@ -163,8 +167,8 @@ public class RequestHelper {
 			try {
 				respString = TransferActions.haltPayment(request, response);
 			} catch (IOException | BusinessException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				loggy.error(e);
+//				e.printStackTrace();
 				respString = null;
 			}
 			break;
@@ -172,8 +176,8 @@ public class RequestHelper {
 			try {
 				respString = TransferActions.acceptRequest(request, response);
 			} catch (IOException | BusinessException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				loggy.error(e);
+//				e.printStackTrace();
 				respString = null;
 			}
 			break;
@@ -181,8 +185,8 @@ public class RequestHelper {
 			try {
 				respString = TransferActions.haltRequest(request, response);
 			} catch (IOException | BusinessException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				loggy.error(e);
+//				e.printStackTrace();
 				respString = null;
 			}
 			break;
@@ -190,8 +194,8 @@ public class RequestHelper {
 			try {
 				respString = TransferActions.postPayment(request, response);
 			} catch (IOException | BusinessException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				loggy.error(e);
+//				e.printStackTrace();
 				respString = null;
 			}
 			break;
@@ -199,8 +203,8 @@ public class RequestHelper {
 			try {
 				respString = TransferActions.postRequest(request, response);
 			} catch (IOException | BusinessException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				loggy.error(e);
+//				e.printStackTrace();
 				respString = null;
 			}
 			break;
@@ -208,8 +212,8 @@ public class RequestHelper {
 			try {
 				respString = EmployeeView.getAllBalances(request, response);
 			} catch (JsonProcessingException | BusinessException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				loggy.error(e);
+//				e.printStackTrace();
 				respString = null;
 			}
 			break;
@@ -217,8 +221,8 @@ public class RequestHelper {
 			try {
 				respString = EmployeeView.getCustomerBalances(request, response);
 			} catch (IOException | BusinessException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				loggy.error(e);
+//				e.printStackTrace();
 				respString = null;
 			}
 			break;
@@ -226,8 +230,8 @@ public class RequestHelper {
 			try {
 				respString = EmployeeView.getAllTransactions(request, response);
 			} catch (JsonProcessingException | BusinessException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				loggy.error(e);
+//				e.printStackTrace();
 				respString = null;
 			}
 			break;
@@ -235,8 +239,8 @@ public class RequestHelper {
 			try {
 				respString = EmployeeActions.approveAccount(request, response);
 			} catch (IOException | BusinessException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				loggy.error(e);
+//				e.printStackTrace();
 				respString = null;
 			}
 			break;
@@ -244,13 +248,13 @@ public class RequestHelper {
 			try {
 				respString = EmployeeActions.rejectAccount(request, response);
 			} catch (IOException | BusinessException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				loggy.error(e);
+//				e.printStackTrace();
 				respString = null;
 			}
 			break;
 		default:
-			System.out.println("Didn't recognize option "+uri);
+			loggy.info("Didn't recognize option "+uri);
 		}
 
 		return respString;

@@ -6,6 +6,8 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
+
 import com.bankofben.exceptions.BusinessException;
 import com.bankofben.models.Account;
 import com.bankofben.models.Transaction;
@@ -15,9 +17,10 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class EmployeeView {
+	
+	final static Logger loggy = Logger.getLogger(RequestHelper.class);
 
 	public static String getAllBalances(HttpServletRequest request, HttpServletResponse response) throws BusinessException, JsonProcessingException {
-//		String respString = "/home.html";
 		List<Account> accounts = null;
 		BankOfBenServices dbs = new BankOfBenServices();
 		accounts = dbs.getAllAccounts();
@@ -29,15 +32,14 @@ public class EmployeeView {
 		List<Account> accounts = null;
 		BankOfBenServices dbs = new BankOfBenServices();
 		String username = new Marshal().getRequestBodyNameValuePair("username", request);
-		System.out.println(username);
 		String respString = null;
 		try {
 			accounts = dbs.getAccountsForCustomerUsername(username);
 			respString = new ObjectMapper().writeValueAsString(accounts);
 		} catch (BusinessException e) {
+			loggy.error(e);
 			respString = "{\"ERROR\": \""+e.getMessage()+"\"}";
 		}
-		System.out.println(respString);
 		return respString;
 	}
 

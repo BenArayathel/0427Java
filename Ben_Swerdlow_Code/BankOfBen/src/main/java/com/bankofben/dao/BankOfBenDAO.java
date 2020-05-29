@@ -1579,6 +1579,53 @@ public class BankOfBenDAO implements BankOfBenDAOInterface {
 		return payments;
 	}
 	
+	public List<Payment> getAllPaymentsWithReceivingAccountNumber(long receivingAccountNumber, String customerId, boolean selfPayments) throws BusinessException {
+		
+		List<Payment> payments = new ArrayList<>();
+		List<Account> accounts = getAccountsForCustomerId(customerId);
+		
+		String sqlCall;
+		if (selfPayments) {
+			sqlCall = "SELECT * FROM bankofben_payments WHERE \"Receiving Account Number\" = ? "
+					+ "AND \"Paying Account Number\" IN ";
+		} else {
+			sqlCall = "SELECT * FROM bankofben_payments WHERE \"Receiving Account Number\" = ? "
+					+ "AND \"Paying Account Number\" NOT IN ";
+		}
+		
+		StringBuilder inListBuilder = new StringBuilder();
+		int numAccounts = accounts.size();
+		inListBuilder.append("?");
+		for (int i=1; i<numAccounts; i++) {
+			inListBuilder.append(", ?");
+		}
+		sqlCall += inListBuilder.toString();
+			
+		try(Connection connection = OracleDbConnection.getConnection()){
+			
+			PreparedStatement ps = connection.prepareStatement(sqlCall);
+			ps.setLong(1, receivingAccountNumber);
+			
+			ResultSet rset = ps.executeQuery();
+
+			while (rset.next()) {
+				payments.add(new Payment(rset.getString("Payment ID"), rset.getString("Initiator's ID"),
+						rset.getBoolean("Pending"), rset.getLong("Paying Account Number"),
+						rset.getLong("Receiving Account Number"), rset.getDouble("Amount")));
+			}
+			
+			ps.close();
+			
+		} catch (ClassNotFoundException | SQLException e) {
+			loggy.error(e);
+			b = new BusinessException("Internal database error. Please contact your SYSADMIN.");
+			loggy.error(b);
+			throw b;
+		}
+		
+		return payments;
+	}
+	
 	public List<Payment> getAllPaymentsWithPayingAccountNumberAndPendingStatus(long payingAccountNumber, boolean pendingStatus) throws BusinessException {
 		
 		List<Payment> payments = new ArrayList<>();

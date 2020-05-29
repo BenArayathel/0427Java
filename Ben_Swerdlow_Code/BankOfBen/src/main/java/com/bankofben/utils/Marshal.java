@@ -7,11 +7,15 @@ import java.util.stream.Collectors;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.log4j.Logger;
+
 import com.bankofben.exceptions.BusinessException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class Marshal {
+	
+	final static Logger loggy = Logger.getLogger(Marshal.class);
 	
 	final static ObjectMapper objMapper = new ObjectMapper();
 	
@@ -31,15 +35,15 @@ public class Marshal {
 	
 	public String getRequestBodyNameValuePair(String property, HttpServletRequest request) throws IOException, BusinessException {
 		String body = request.getReader().lines().collect(Collectors.joining(System.lineSeparator()));
-		System.out.println("This is the body "+body);
+		loggy.info("This is the body "+body);
 		JsonNode bodyObj = objMapper.readTree(body);
-		System.out.println("This is the body object "+bodyObj);
+		loggy.info("This is the body object "+bodyObj);
 		String respString = bodyObj.get(property).textValue();
-		System.out.println("This is teh value "+respString);
+		loggy.info("This is the value "+respString);
 		if (respString==null) {
 			throw new BusinessException("Could not find property "+property+" in request body.");
 		}
-		System.out.println(respString);
+		loggy.info(respString);
 		return respString;
 	}
 

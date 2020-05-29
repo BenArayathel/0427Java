@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.log4j.Logger;
+
 import com.bankofben.exceptions.BusinessException;
 import com.bankofben.models.Account;
 import com.bankofben.models.Customer;
@@ -17,6 +19,8 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class CustomerView {
+	
+	final static Logger loggy = Logger.getLogger(CustomerView.class);
 
 	public static String getAccountsForCustomer(HttpServletRequest request, HttpServletResponse response) throws JsonProcessingException {
 		String respString = "/home.html";
@@ -30,8 +34,8 @@ public class CustomerView {
 					accounts = dbs.getAccountsForCustomer(customer);
 					respString = new ObjectMapper().writeValueAsString(accounts);
 				} catch (BusinessException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+					loggy.error(e);
+//					e.printStackTrace();
 				}
 			}
 		}
@@ -50,8 +54,8 @@ public class CustomerView {
 					payments = dbs.getPaymentsPending(customer);
 					respString = new ObjectMapper().writeValueAsString(payments);
 				} catch (BusinessException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+					loggy.error(e);
+//					e.printStackTrace();
 				}
 			}
 		}
@@ -71,8 +75,8 @@ public class CustomerView {
 					payments = dbs.getPaymentsPendingToCustomer(customer, selfPayments);
 					respString = new ObjectMapper().writeValueAsString(payments);
 				} catch (BusinessException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+					loggy.error(e);
+//					e.printStackTrace();
 				}
 			}
 		}
@@ -92,8 +96,8 @@ public class CustomerView {
 					payments = dbs.getPaymentsPendingFromCustomer(customer, selfPayments);
 					respString = new ObjectMapper().writeValueAsString(payments);
 				} catch (BusinessException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+					loggy.error(e);
+//					e.printStackTrace();
 				}
 			}
 		}
@@ -112,8 +116,8 @@ public class CustomerView {
 					requests = dbs.getRequestsPending(customer);
 					respString = new ObjectMapper().writeValueAsString(requests);
 				} catch (BusinessException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+					loggy.error(e);
+//					e.printStackTrace();
 				}
 			}
 		}
@@ -133,8 +137,8 @@ public class CustomerView {
 					requests = dbs.getRequestsPendingToCustomer(customer, selfRequests);
 					respString = new ObjectMapper().writeValueAsString(requests);
 				} catch (BusinessException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+					loggy.error(e);
+//					e.printStackTrace();
 				}
 			}
 		}
@@ -154,8 +158,8 @@ public class CustomerView {
 					requests = dbs.getRequestsPendingFromCustomer(customer, selfRequests);
 					respString = new ObjectMapper().writeValueAsString(requests);
 				} catch (BusinessException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+					loggy.error(e);
+//					e.printStackTrace();
 				}
 			}
 		}

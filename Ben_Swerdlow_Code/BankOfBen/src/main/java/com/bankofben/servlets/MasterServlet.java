@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 
 import com.bankofben.controllers.RequestHelper;
@@ -31,11 +32,23 @@ public class MasterServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		loggy.info("Get is not used in this application since all information is sensitive.");
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		loggy.setLevel(Level.INFO);
+		loggy.info("Test 123");
 		
 		String pathOrJsonString = RequestHelper.process(request, response);
 		
 		if (pathOrJsonString==null) {
-			throw new ServletException("Could not follow instruction from RequestHelper");
+			ServletException s = new ServletException("Could not follow instruction from RequestHelper");
+			loggy.error(s);
+			throw s;
 		} else if (isValidJsonString(pathOrJsonString)) {
 			response.setContentType("application/json");
 			response.getWriter().write(pathOrJsonString);
@@ -48,17 +61,10 @@ public class MasterServlet extends HttpServlet {
 			System.out.println("Sending request (and response) to "+pathOrJsonString);
 			request.getRequestDispatcher(pathOrJsonString).forward(request, response);
 		} else {
-			throw new IOException("Attempted to return bad redirect or improperly formatted JSON string: "+pathOrJsonString);
+			IOException e = new IOException("Attempted to return bad redirect or improperly formatted JSON string: "+pathOrJsonString);
+			loggy.error(e);
+			throw e;
 		}
-		
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
 	}
 
 	private boolean isValidJsonString(String possibleJsonString) {
