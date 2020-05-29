@@ -1,6 +1,6 @@
 //GET ALL TRANSACIONS
 let lognAcc = document.getElementById('getAllTrans_btn');
-window.addEventListener("dblclick",getAllTransaction)
+lognAcc.addEventListener("dblclick",getAllTransaction)
 
 function getAllTransaction() {
     fetch('http://localhost:9090/Project1_BankOfFriendship/EmpAllTransaction')

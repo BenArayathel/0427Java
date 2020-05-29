@@ -1,7 +1,7 @@
 
 //GET ALL LOGIN ACCOUNTS
 let lognAcc = document.getElementById('logAcc_btn');
-window.addEventListener("dblclick",getAllLoginAcc)
+lognAcc.addEventListener("dblclick",getAllLoginAcc)
 
 function getAllLoginAcc() {
     fetch('http://localhost:9090/Project1_BankOfFriendship/EmpLoginAccA')
@@ -35,7 +35,7 @@ function getAllLoginAcc() {
 
 //GET ALL PENDING LOGIN ACCOUNTS
 let pendlognAcc = document.getElementById('pendLoginAcc_btn');
-window.addEventListener("dblclick",getAllLoginAccPen)
+pendlognAcc.addEventListener("dblclick",getAllLoginAccPen)
 
 function getAllLoginAccPen() {
     fetch('http://localhost:9090/Project1_BankOfFriendship/EmpLoginAccB')

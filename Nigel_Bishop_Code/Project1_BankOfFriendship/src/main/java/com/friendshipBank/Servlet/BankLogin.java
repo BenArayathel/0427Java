@@ -67,7 +67,9 @@ public class BankLogin extends HttpServlet{
 						System.out.println("SYSTEM:  " + userAccess.getUserName() + " ACCOUNT STATUS: " + PENDING);
 	  
 	    				session.setAttribute("userAccess", userAccess);
-						pw.write("newCustomerDash.html");		
+						pw.write("NewCusDashboard.html");
+//	    				pw.write("http://localhost:9090/Project1_BankOfFriendship/newCustomerDash.html");
+	    				
 					}
 					else if(userAccess.getAccountStatus().equals(CUSTOMER)) 
 					{

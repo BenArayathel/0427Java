@@ -4089,3 +4089,27 @@ THANK YOU FOR USING MY BANKING APPLICATION
 2020-05-17 17:46:12,614 -0400 [main] INFO  (EmployeeWelcomePage_ViewBankAccounts.java:43) - SELECT: (7) EXIT THE APPLICATION
 2020-05-17 17:46:18,323 -0400 [main] INFO  (EmployeeWelcomePage_ViewBankAccounts.java:125) - 
 THANK YOU FOR USING MY BANKING APPLICATION
+2020-05-19 22:14:12,157 -0400 [main] INFO  (WelcomePage.java:15) - 
+************************************************
+2020-05-19 22:14:12,160 -0400 [main] INFO  (WelcomePage.java:16) - *        WELCOME TO BANK OF FRIENDSHIP         *
+2020-05-19 22:14:12,160 -0400 [main] INFO  (WelcomePage.java:17) - ************************************************
+2020-05-19 22:14:12,160 -0400 [main] INFO  (WelcomePage.java:18) - SELECT: (1) LOGIN PAGE
+2020-05-19 22:14:12,160 -0400 [main] INFO  (WelcomePage.java:19) - SELECT: (2) NEW USER CREATION PAGE
+2020-05-19 22:14:12,160 -0400 [main] INFO  (WelcomePage.java:20) - SELECT: (3) EXIT APPLICATION
+2020-05-19 22:14:14,563 -0400 [main] INFO  (BankApplicationLogin.java:14) - 
+  LOGIN PAGE   
+2020-05-19 22:14:14,563 -0400 [main] INFO  (BankApplicationLogin.java:15) - **************************************************
+2020-05-19 22:14:14,572 -0400 [main] INFO  (BankApplicationLogin_accountStatus.java:28) - SYSTEM:  ENTER USERNAME
+2020-05-19 22:14:17,863 -0400 [main] INFO  (BankApplicationLogin_accountStatus.java:30) - SYSTEM:  ENTER PASSWORD
+2020-05-19 22:14:24,272 -0400 [main] INFO  (BankApplicationLogin_accountStatus.java:52) - SYSTEM:  johnsmith LOGIN SUCCESSFULL
+2020-05-19 22:14:24,276 -0400 [main] INFO  (EmployeeWelcomePage_Home.java:17) - 
+  WELCOME TO BANK OF FRIENDSHIP EMPLOYEE DASHBOARD   
+2020-05-19 22:14:24,276 -0400 [main] INFO  (EmployeeWelcomePage_Home.java:18) - **************************************************
+2020-05-19 22:14:24,276 -0400 [main] INFO  (EmployeeWelcomePage_Home.java:19) - SELECT: (1) VIEW LOGIN ACCOUNTS
+2020-05-19 22:14:24,277 -0400 [main] INFO  (EmployeeWelcomePage_Home.java:20) - SELECT: (2) VIEW BANK ACCOUNTS (CHK | SAV)
+2020-05-19 22:14:24,277 -0400 [main] INFO  (EmployeeWelcomePage_Home.java:21) - SELECT: (3) VIEW CUSTOMER ACCOUNTS (PROFILE)
+2020-05-19 22:14:24,277 -0400 [main] INFO  (EmployeeWelcomePage_Home.java:22) - SELECT: (4) VIEW ALL BANK TRANSACTIONS
+2020-05-19 22:14:24,278 -0400 [main] INFO  (EmployeeWelcomePage_Home.java:23) - SELECT: (5) LOG OUT
+2020-05-19 22:14:24,278 -0400 [main] INFO  (EmployeeWelcomePage_Home.java:24) - SELECT: (6) EXIT THE APPLICATION
+2020-05-19 22:14:32,902 -0400 [main] INFO  (EmployeeWelcomePage_Home.java:45) - 
+THANK YOU FOR USING MY BANKING APPLICATION
