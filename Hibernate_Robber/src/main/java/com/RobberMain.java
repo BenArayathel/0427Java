@@ -10,10 +10,21 @@ public class RobberMain {
 		// (could be used for default bank users)
 		insertIntialValue();
 		
-		// then print the results
-		System.out.println(rdao.selectByName("Billy"));
-		System.out.println(rdao.selectByName("Bobby"));
-		System.out.println(rdao.selectByName("Byron"));
+		// print them all out...
+		System.out.println(rdao.selectAll());
+		
+		// change one
+		updateARobber("Billy", "Baseball Bat");
+		
+		// ...print them all out again...
+		System.out.println(rdao.selectAll());
+		
+		// delete one
+		Robber bobby = rdao.selectByName("Bobby");
+		rdao.delete(bobby);
+		
+		// ...print them all out again...
+		System.out.println(rdao.selectAll());
 		
 	}
 	
@@ -23,6 +34,14 @@ public class RobberMain {
 		rdao.insert(new Robber(0, "Billy", "Blackjack"));
 		rdao.insert(new Robber(0, "Bobby", "Blunderbuss"));
 		rdao.insert(new Robber(0, "Byron", "Bagpipes"));
+	}
+	
+	// my addition, update a robber's weapon, by name
+	public static void updateARobber(String name, String newWeapon) {
+		Robber billy = rdao.selectByName(name);
+		billy.setWeapon(newWeapon);
+		
+		rdao.update(billy);
 	}
 		
 }
