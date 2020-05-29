@@ -36,7 +36,7 @@ async function postPayment(event) {
     let paymentAmount = document.getElementById("paymentAmount").value;
     let post = false;
     let accBal = undefined;
-    for (const account in accounts) {
+    for (const account of accounts) {
         if (account.accountNumber == payingAccountNumber) {
             accBal = account.balance;
             if (paymentAmount > account.balance){
@@ -77,16 +77,21 @@ async function postRequest(event) {
     let requestAmount = document.getElementById("requestAmount").value;
     let post = false;
     let accBal = undefined;
-    for (const account in accounts) {
-        if (account.accountNumber == payingAccountNumber) {
+    // console.log(accounts);
+    for (const account of accounts) {
+        // console.log(account.accountNumber);
+        if (account.accountNumber == requestorAccountNumber) {
             accBal = account.balance;
-            if (paymentAmount > account.balance){
+            if (requestAmount > account.balance){
+                // console.log(requestAmount);
+                // console.log(account.balance);
                 post=false;
             } else {
                 post=true;
             }
         }
     }
+    console.log(post)
     if (post) {
         let response = await fetch(
             'http://localhost:9999/BankOfBen/api/postRequest', {
@@ -105,14 +110,14 @@ async function postRequest(event) {
             console.log("Could not make request!")
         }
     } else {
-        console.log(`Could not make request. Amount ${paymentAmount} cannot exceed balance ${accBal ? accBal : ""}`)
+        console.log(`Could not make request. Amount ${requestAmount} cannot exceed balance ${accBal ? accBal : ""}`)
     }
 }
 
-function makeCustomerView() {
-    makeBalanceView();
-    makePaymentView();
-    // makeRequestView();
+async function makeCustomerView() {
+    await makeBalanceView();
+    await makePaymentView();
+    await makeRequestView();
 }
 
 let accounts;
@@ -342,8 +347,8 @@ async function makeRequestView() {
                             <td>${request.amount.toFixed(2)}</td>
                             <td>${request.pending ? "Pending" : ""}</td>
                             ${request.pending ? `
-                            <input type="button" class="btn btn-success" value="Accept" onclick="acceptPayment('${request.id}')">
-                            <input type="button" class="btn btn-danger" value="Halt" onclick="haltPayment('${request.id}')">` : "" }`})
+                            <input type="button" class="btn btn-success" value="Accept" onclick="acceptRequest('${request.id}')">
+                            <input type="button" class="btn btn-danger" value="Halt" onclick="haltRequest('${request.id}')">` : "" }`})
             }
         } else {
             customCreateTableRow(
@@ -388,7 +393,7 @@ async function makeRequestView() {
                             <td>${request.amount.toFixed(2)}</td>
                             <td>${request.pending ? "Pending" : ""}</td>
                             ${request.pending ? `
-                            <input type="button" class="btn btn-danger" value="Halt" onclick="haltPayment('${request.id}')">` : "" }`})
+                            <input type="button" class="btn btn-danger" value="Halt" onclick="haltRequest('${request.id}')">` : "" }`})
             }
         } else {
             customCreateTableRow(
@@ -432,6 +437,44 @@ async function haltPayment(paymentId) {
         'http://localhost:9999/BankOfBen/api/haltPayment', {
             method: 'POST',
             body: JSON.stringify({id: paymentId}),
+            headers: {"Content-type": "application/json; charset=UTF-8"}
+        }
+    );
+    if (response.url.endsWith(".html")) {
+        // makeBalanceView();
+        // makePaymentView();
+        window.location.href = response.url;
+    } else {
+        console.log("Couldn't figure out what to do with response: "+response.url);
+    }
+}
+
+async function acceptRequest(requestId) {
+    console.log(requestId);
+    console.log(JSON.stringify({id: requestId}));
+    let response = await fetch(
+        'http://localhost:9999/BankOfBen/api/acceptRequest', {
+            method: 'POST',
+            body: JSON.stringify({id: requestId}),
+            headers: {"Content-type": "application/json; charset=UTF-8"}
+        }
+    );
+    if (response.url.endsWith(".html")) {
+        // makeBalanceView();
+        // makePaymentView();
+        window.location.href = response.url;
+    } else {
+        console.log("Couldn't figure out what to do with response: "+response.url);
+    }
+}
+
+async function haltRequest(requestId) {
+    console.log(requestId);
+    console.log(JSON.stringify({id: requestId}));
+    let response = await fetch(
+        'http://localhost:9999/BankOfBen/api/haltRequest', {
+            method: 'POST',
+            body: JSON.stringify({id: requestId}),
             headers: {"Content-type": "application/json; charset=UTF-8"}
         }
     );

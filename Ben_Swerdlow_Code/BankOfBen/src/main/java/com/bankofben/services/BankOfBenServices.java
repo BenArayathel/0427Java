@@ -451,7 +451,7 @@ public class BankOfBenServices {
 
 	public void resolvePendingRequest(Request request) throws BusinessException {
 		if (request.isPending()) {
-			dao.updatePaymentPendingStatus_returnNothing(false, request.getId());
+			dao.updateRequestPendingStatus_returnNothing(false, request.getId());
 		} else {
 			b = new BusinessException("No need to resolve request "+request.getId()+". Request is not pending.");
 			loggy.error(b);

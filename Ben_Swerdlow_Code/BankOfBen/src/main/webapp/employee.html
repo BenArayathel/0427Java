@@ -3,9 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link rel="stylesheet"
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- My Styling -->
+    <link rel="stylesheet" type="text/css" href="css/externalStyleSheet.css">
     <title>Employee Home</title>
 </head>
 <body>
+
+    <div>
+        <p>Welcome, <span id="firstLast"></span>. </p>
+    </div>
+
+    <div id="employeeOptions">
+        What would you like to do?
+        <div id="balancesContainer">
+            <input id="seeAllBalances" type="button" class="btn btn-primary" value="View All Balances"/>
+            <br>
+            <form id="customerBalances" role="form" >
+                <input type="text" id="username" placeholder="username" minlength="4" maxlength="20"
+                    pattern="^[A-Za-z]{1}[A-Za-z0-9]{3,19}$" required
+                    oninvalid="this.setCustomValidity('Username is required and must be between '
+                        +'4 and 20 alphanumeric characters and must start with a letter')"
+                    oninput="this.setCustomValidity('')">
+                <input type="submit" id="seeCustomerBalances" value="View Customer Balances" class="btn btn-primary">
+            </form>
+        </div>
+        <br>
+        <div id="logContainer">
+            <input id="seeAllTransactions" type="button" class="btn btn-primary" value="View All Transactions"/>
+        </div>
+    </div>
     
+    <script src="/vendors/formvalidation/dist/js/FormValidation.min.js"></script>
+    <script src="/vendors/formvalidation/dist/js/plugins/Bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="scripts/employee.js"></script>
 </body>
 </html>

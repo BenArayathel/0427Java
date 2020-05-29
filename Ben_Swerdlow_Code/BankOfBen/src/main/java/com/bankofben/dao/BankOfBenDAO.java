@@ -1728,7 +1728,7 @@ public class BankOfBenDAO implements BankOfBenDAOInterface {
 			
 			ResultSet rset = ps.executeQuery();
 			if (rset.next()) {
-				request = new Request(rset.getString("Payment ID"), rset.getString("Initiator's ID"),
+				request = new Request(rset.getString("Request ID"), rset.getString("Initiator's ID"),
 						rset.getBoolean("Pending"), rset.getLong("Requestor Account Number"),
 						rset.getLong("Sought Account Number"), rset.getDouble("Amount"));
 			} else {
@@ -1762,9 +1762,9 @@ public class BankOfBenDAO implements BankOfBenDAOInterface {
 			ResultSet rset = ps.executeQuery();
 
 			while (rset.next()) {
-				requests.add(new Request(rset.getString("Payment ID"), rset.getString("Initiator's ID"),
-						rset.getBoolean("Pending"), rset.getLong("Paying Account Number"),
-						rset.getLong("Receiving Account Number"), rset.getDouble("Amount")));
+				requests.add(new Request(rset.getString("Request ID"), rset.getString("Initiator's ID"),
+						rset.getBoolean("Pending"), rset.getLong("Requestor Account Number"),
+						rset.getLong("Sought Account Number"), rset.getDouble("Amount")));
 			}
 			
 		} catch (ClassNotFoundException | SQLException e) {
@@ -1803,9 +1803,9 @@ public class BankOfBenDAO implements BankOfBenDAOInterface {
 			ResultSet rset = ps.executeQuery();
 
 			while (rset.next()) {
-				requests.add(new Request(rset.getString("Payment ID"), rset.getString("Initiator's ID"),
-						rset.getBoolean("Pending"), rset.getLong("Paying Account Number"),
-						rset.getLong("Receiving Account Number"), rset.getDouble("Amount")));
+				requests.add(new Request(rset.getString("Request ID"), rset.getString("Initiator's ID"),
+						rset.getBoolean("Pending"), rset.getLong("Requestor Account Number"),
+						rset.getLong("Sought Account Number"), rset.getDouble("Amount")));
 			}
 			
 			ps.close();
@@ -1834,9 +1834,9 @@ public class BankOfBenDAO implements BankOfBenDAOInterface {
 			ResultSet rset = ps.executeQuery();
 
 			while (rset.next()) {
-				requests.add(new Request(rset.getString("Payment ID"), rset.getString("Initiator's ID"),
-						rset.getBoolean("Pending"), rset.getLong("Paying Account Number"),
-						rset.getLong("Receiving Account Number"), rset.getDouble("Amount")));
+				requests.add(new Request(rset.getString("Request ID"), rset.getString("Initiator's ID"),
+						rset.getBoolean("Pending"), rset.getLong("Requestor Account Number"),
+						rset.getLong("Sought Account Number"), rset.getDouble("Amount")));
 			}
 			
 			ps.close();
@@ -1895,7 +1895,7 @@ public class BankOfBenDAO implements BankOfBenDAOInterface {
 			ResultSet rset = ps.executeQuery();
 
 			while (rset.next()) {
-				requests.add(new Request(rset.getString("Payment ID"), rset.getString("Initiator's ID"),
+				requests.add(new Request(rset.getString("Request ID"), rset.getString("Initiator's ID"),
 						rset.getBoolean("Pending"), rset.getLong("Requestor Account Number"),
 						rset.getLong("Sought Account Number"), rset.getDouble("Amount")));
 			}
@@ -1903,6 +1903,7 @@ public class BankOfBenDAO implements BankOfBenDAOInterface {
 			ps.close();
 			
 		} catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
 			loggy.error(e);
 			b = new BusinessException("Internal database error. Please contact your SYSADMIN.");
 			loggy.error(b);
@@ -1925,7 +1926,7 @@ public class BankOfBenDAO implements BankOfBenDAOInterface {
 			ResultSet rset = ps.executeQuery();
 
 			while (rset.next()) {
-				requests.add(new Request(rset.getString("Payment ID"), rset.getString("Initiator's ID"),
+				requests.add(new Request(rset.getString("Request ID"), rset.getString("Initiator's ID"),
 						rset.getBoolean("Pending"), rset.getLong("Requestor Account Number"),
 						rset.getLong("Sought Account Number"), rset.getDouble("Amount")));
 			}
@@ -1956,7 +1957,7 @@ public class BankOfBenDAO implements BankOfBenDAOInterface {
 			ResultSet rset = ps.executeQuery();
 
 			while (rset.next()) {
-				requests.add(new Request(rset.getString("Payment ID"), rset.getString("Initiator's ID"),
+				requests.add(new Request(rset.getString("Request ID"), rset.getString("Initiator's ID"),
 						rset.getBoolean("Pending"), rset.getLong("Requestor Account Number"),
 						rset.getLong("Sought Account Number"), rset.getDouble("Amount")));
 			}
@@ -1964,6 +1965,7 @@ public class BankOfBenDAO implements BankOfBenDAOInterface {
 			ps.close();
 			
 		} catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
 			loggy.error(e);
 			b = new BusinessException("Internal database error. Please contact your SYSADMIN.");
 			loggy.error(b);
