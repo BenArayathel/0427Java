@@ -1,10 +1,15 @@
 package com.example.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 // This should be an entity that is saved in the database
@@ -32,6 +37,9 @@ public class Planet {
 	// This is a column called planet_slogan
 	@Column(name="planet_slogan")
 	private String slogan;
+	
+	@OneToMany(mappedBy = "myPlanet", fetch = FetchType.LAZY)
+	private List<Moon> moons = new ArrayList<>();
 	
 	/*
 	 * Hibernate needs a no args constructor, getters and setters, and toString()
@@ -73,10 +81,18 @@ public class Planet {
 	public void setSlogan(String slogan) {
 		this.slogan = slogan;
 	}
+	
+	public List<Moon> getMoons() {
+		return moons;
+	}
+
+	public void setMoons(List<Moon> moons) {
+		this.moons = moons;
+	}
 
 	@Override
 	public String toString() {
-		return "Planet [planetId=" + planetId + ", name=" + name + ", slogan=" + slogan + "]";
+		return "Planet [planetId=" + planetId + ", name=" + name + ", slogan=" + slogan + ", moons=" + moons + "]";
 	}
 
 }

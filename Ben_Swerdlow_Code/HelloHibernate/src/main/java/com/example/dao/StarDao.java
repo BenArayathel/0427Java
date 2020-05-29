@@ -15,7 +15,7 @@ public class StarDao {
 		Transaction tx = ses.beginTransaction();
 		ses.save(s);
 		tx.commit();
-		ses.close();
+//		ses.close();
 	}
 	
 	public void update(Star s) {
@@ -23,7 +23,7 @@ public class StarDao {
 		Transaction tx = ses.beginTransaction();
 		ses.update(s);
 		tx.commit();
-		ses.close();
+//		ses.close();
 	}
 	
 	public List<Star> selectAll() {
@@ -70,7 +70,7 @@ public class StarDao {
 		Transaction tx = ses.beginTransaction();
 		ses.delete(s);
 		tx.commit();
-		ses.close();
+//		ses.close();
 	}
 
 }

@@ -67,5 +67,6 @@
 		
 		<mapping class="com.example.model.Planet"></mapping>
 		<mapping class="com.example.model.Star"></mapping>
+		<mapping class="com.example.model.Moon"></mapping>
 	</session-factory>
 </hibernate-configuration>

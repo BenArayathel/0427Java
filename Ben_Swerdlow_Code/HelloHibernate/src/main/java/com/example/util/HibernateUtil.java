@@ -29,8 +29,28 @@ public class HibernateUtil {
 	private static SessionFactory sf = 
 			new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
 	
+//	public static Session getSession() {
+//		return sf.openSession();
+//	}
+	
+	private static Session ses;
+	
+	// Put these two functions in to deal with lazy loading
+	
+	// Making a global session
 	public static Session getSession() {
-		return sf.openSession();
+		if (ses==null) {
+			return ses = sf.openSession();
+		} else {
+			return ses;
+		}
+	}
+	
+	// Closing a global session
+	public static void closeSession() {
+		ses.close();
+		ses = null;
+		sf.close();
 	}
 
 }

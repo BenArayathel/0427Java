@@ -36,7 +36,7 @@ public class PlanetDao {
 		Transaction tx = ses.beginTransaction();
 		ses.save(p);
 		tx.commit();
-		ses.close();
+//		ses.close();
 	}
 	
 	public void update(Planet p) {
@@ -44,7 +44,7 @@ public class PlanetDao {
 		Transaction tx = ses.beginTransaction();
 		ses.update(p);
 		tx.commit();
-		ses.close();
+//		ses.close();
 	}
 	
 	public List<Planet> selectAll() {
@@ -58,6 +58,8 @@ public class PlanetDao {
 		
 		// Native SQL
 //		List<Planet> planetList = ses.createNativeQuery("SELECT * from Planet_table", Planet.class).list();
+		
+//		ses.close();
 		
 		return planetList;
 	}
@@ -91,7 +93,7 @@ public class PlanetDao {
 		Transaction tx = ses.beginTransaction();
 		ses.delete(p);
 		tx.commit();
-		ses.close();
+//		ses.close();
 	}
 
 }
