@@ -23,10 +23,10 @@
             <a href="http://localhost:9999/Password/userReg.html" class="nav-link">Register</a>
           </li>
           <li class="nav-item">
-            <a href="#authors" class="nav-link">nothing</a>
+            <a href="#authors" class="nav-link"></a>
           </li>
           <li class="nav-item">
-            <a href="#contact" class="nav-link">nothing</a>
+            <a href="http://localhost:9999/Password/logout" class="nav-link">Logout</a>
           </li>
         </ul>
       </div>
@@ -43,14 +43,16 @@
               <h4>Deposit</h4>
             </div>
             <div class="card-body">
+              <!--  id="myForm" this is for passing by real JS post -->
               <form action="deposit" method="POST">
                 <div class="form-group">
                   <label for="deposit">Deposit</label>
-                  <input type="text" name="deposit" class="form-control">
+                  <input  type="number" name="deposit" required  class="form-control">
+                  <!-- id="money" this is for passing by real JS post -->
                 </div>
-                <!-- <div class="form-group">
-                  <label for="password">Password</label>
-                  <input type="text" class="form-control">
+                <!-- pattern="[0-9]*"
+                  pattern="[^a-zA-Z]"
+                  type="text" pattern="[0-9]"
                 </div> -->
                 <input type="submit" class="btn btn-success btn-block" value="Deposit">
               </form>
@@ -74,5 +76,64 @@
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+
+  <script>
+
+
+    console.log("Basic Script ran ...");
+
+    window.onload = function () {
+      let regForm = this.document.getElementById("myForm");
+      if (regForm) {
+        regForm.addEventListener("submit", this.deposit);
+      }
+    }
+
+      // event
+      // event.preventDefault();
+
+
+
+    // POST  :  
+    function deposit(event) {
+      event.preventDefault();
+      console.log("deposit() Function ran... ");
+
+      // User Data
+      const data = {
+
+        utility: ''
+      }
+      data.utility = document.getElementById("money").value;
+      //data.password = document.getElementById("pass").value;
+      console.log("here after grabbing elementID's ...");
+
+      console.log("this is the value: " + data.utility);
+      //console.log(data.password);
+
+      const url = new Promise((resolve, reject) => {
+
+        fetch('http://localhost:9999/Password/deposit', {
+          method: 'POST',
+          headers: {
+            'Content-type': 'application/json'
+          },
+          body: JSON.stringify(data)
+        })
+          .then(res => res.text())
+          .then(data => {
+            resolve(data)
+            console.log(data);
+            window.location.assign(data)
+          })
+          .catch(err => reject(err));
+      });
+
+
+
+    }
+
+
+  </script>
 </body>
 </html>

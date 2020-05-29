@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import user.cust.account.controller.CustViewBal_Depos_Wthdr_Transf;
 import user.cust.account.models.User;
 
@@ -27,8 +29,16 @@ public class WithdrawServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		System.out.println("\n\nWithdrawServlet: doPost running......\n");
+		
+//		ObjectMapper mapper2 = new ObjectMapper();
+//		// only once : req.getReader()
+//		User nonUser = mapper2.readValue(request.getReader(), user.cust.account.models.User.class);
+//		System.out.println("nonUser has deposit: " + nonUser.getUtility());
+		
+		
 		HttpSession session=request.getSession(false);
-		System.out.println("WithdrawServlet: doPost running......\n");
+		
 		
 		if(session == null) {
 			//response.sendRedirect("/session_demo");
@@ -37,7 +47,7 @@ public class WithdrawServlet extends HttpServlet {
 			
 			User user=(User) session.getAttribute("user");
 			System.out.println("Identifying session: User: " + user.toString());
-			System.out.println("recorded withdraw: " + request.getParameter("withdraw"));
+			//System.out.println("recorded withdraw: " + request.getParameter("withdraw"));
 			
 			CustViewBal_Depos_Wthdr_Transf c = new CustViewBal_Depos_Wthdr_Transf();
 			int result = c.withdraw(user, Double.parseDouble(request.getParameter("withdraw")));

@@ -97,6 +97,23 @@ public class User {
 		this.balance = balance;
 		this.a_access = a_access;
 	}
+	
+	
+
+	public User(String userName, long contactPhone, String password, String user_id, String email, Date dob, String soc,
+			Double balance, int a_access, String utility) {
+		super();
+		this.userName = userName;
+		this.contactPhone = contactPhone;
+		this.password = password;
+		this.user_id = user_id;
+		this.email = email;
+		this.dob = dob;
+		this.soc = soc;
+		this.balance = balance;
+		this.a_access = a_access;
+		this.utility = utility;
+	}
 
 	public String getUserName() {
 		return userName;

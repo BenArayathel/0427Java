@@ -1,10 +1,12 @@
 package com.example.dao;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import javax.persistence.TypedQuery;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import org.hibernate.criterion.Restrictions;
 
 import com.example.model.Planet;
 import com.example.util.HibernateUtil;
@@ -59,7 +61,22 @@ public class PlanetDao {
 	}
 	
 	public List<Planet> selectAll() {
-		return null;
+		
+		Session session = HibernateUtil.getSession();
+//		List<Planet> planets = new ArrayList<>();
+//		session.getTransaction();
+//		
+//		String hql = "from Planet_table";
+//		TypedQuery<Planet> query = session.createQuery(hql, Planet.class);
+//		planets = query.getResultList();
+//		
+//		session.getTransaction().commit();
+//		session.close();
+//		HibernateUtil.closeSession();
+		
+		List<Planet> planets = session.createNativeQuery("FROM Planet_table", Planet.class).list();
+		
+		return planets;
 		
 	}
 	

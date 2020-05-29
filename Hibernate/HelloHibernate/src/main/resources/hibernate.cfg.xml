@@ -26,10 +26,11 @@
 <hibernate-configuration>
 		<session-factory>
 			<!-- JDBC stuff -->
-			<property name ="hibernate.connection.username">puser</property>
-			<property name ="hibernate.connection.password">p4ssw0rd</property>
+					<!-- jdbc:oracle:thin:@database-2.cqoseij0k35s.us-east-2.rds.amazonaws.com:1521:orcl -->
+			<property name ="hibernate.connection.username">mybasic</property>
+			<property name ="hibernate.connection.password">34uy34uy</property>
 			<property name ="hibernate.connection.url">
-					jdbc:oracle:thin:@database-2.cqoseij0k35s.us-east-2.rds.amazonaws.com:1521:orcl
+					jdbc:oracle:thin:@database-1.ctmojn75tg7f.us-east-2.rds.amazonaws.com:1521:orcl
 			</property>
 			<property name ="hibernate.connection.driver_class">
 				oracle.jdbc.driver.OracleDriver	

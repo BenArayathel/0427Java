@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import user.cust.account.controller.CustViewBal_Depos_Wthdr_Transf;
 import user.cust.account.models.User;
 
@@ -28,6 +30,14 @@ public class DepositServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		System.out.println("\n\nDepositServlet");
+		
+		//ObjectMapper mapper2 = new ObjectMapper();
+		// only once : req.getReader()
+		//User nonUser = mapper2.readValue(request.getReader(), user.cust.account.models.User.class);
+		//System.out.println("nonUser has deposit: " + nonUser.getUtility());
+		
+		
 
 		HttpSession session=request.getSession(false);
 		
@@ -38,7 +48,7 @@ public class DepositServlet extends HttpServlet {
 			
 			User user=(User) session.getAttribute("user");
 			System.out.println("Identifying session: User: " + user.toString());
-			System.out.println("recorded deposit: " + request.getParameter("deposit"));
+			//System.out.println("recorded deposit: " + request.getParameter("deposit"));
 			
 			CustViewBal_Depos_Wthdr_Transf c = new CustViewBal_Depos_Wthdr_Transf();
 			//c.deposit(user, Double.parseDouble(request.getParameter("deposit")));
