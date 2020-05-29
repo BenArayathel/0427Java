@@ -28,15 +28,16 @@
 	          <a class="navbar-brand" href="#">WellsAm</a>
 	        </div>
 	        <ul class="nav navbar-nav">
-	          <li class="active"><a href="#">Home</a></li>
+	          <li class="active"><a href="#" onclick="loadHome()">Home</a></li>
 	          <li><a href="#" onclick="loadLogin()">Login</a></li>
 	          <li><a href="#" onclick="loadSignUp()">Sign Up</a></li>
-	          <li><a href="#" onclick="loadApplyNewAccount()">Apply for New Account</a></li>
+	          <li><a href="#" onclick="loadNewAccount()">Apply for New Account</a></li>
 	        </ul>
 	      </div>
 	    </nav>
 		
 	    <div id="myLogin">
+	      <h3>Log In</h3>	    
 	      <form id="login-form" method="post" action="api/login">
 	        <div class="form-group">
 	          <label for="usr">Login Name:</label><br>
@@ -46,10 +47,66 @@
 	          <label for="pwd">Password:</label><br>
 	          <input name="loginPassword" type="password" class="form-control" id="pwd">
 	        </div>       
-	        <input class="btn btn-primary" id="submit-button" type="submit" onclick="validateLogin()" value="Log In">
+	        <input class="btn btn-primary" id="submit-button" type="submit" onSubmit="return validateLogin()" value="Log In">
 	      
 	      </form>
 	    </div>
+	    
+	    <div id="myNewAccount">
+	      <h3>New Account Form</h3>	    
+	      <form id="new-account-form" method="post" action="api/newaccount">
+	        <div class="form-group">
+	          <label for="fname">First Name:</label><br>
+	          <input name="firstName" type="text" class="form-control" id="fname" required>
+	        </div>
+	        <div class="form-group">
+	          <label for="lname">Last Name:</label><br>
+	          <input name="lastName" type="text" class="form-control" id="lname">
+	        </div>
+	        <div class="form-group">
+	          <label for="bday">Birthday(MM/dd/yyyy):</label><br>
+	          <input name="birthday" type="text" class="form-control" id="bday" required>
+	        </div>
+	        <div class="form-group">
+	          <label for="state">State:</label><br>
+	          <input name="state" type="text" class="form-control" id="state">
+	        </div>       
+	        <div class="form-group">
+	          <label for="accType">Account Type (CHEC, SAVI, BROK, CRED, MORT):</label><br>
+	          <input name="accountType" type="text" class="form-control" id="accType" required>
+	        </div>
+	        <div class="form-group">
+	          <label for="initDeposit">Initial Deposit: </label><br>
+	          <input name="initialDeposit" type="text" class="form-control" id="initDeposit" required>
+	        </div>
+	               
+	        <input class="btn btn-primary" id="submit-button" type="submit" onSubmit="return validateNewAccount()" value="Submit Application">
+	      
+	      </form>
+	    </div>
+	    
+	    <div id="mySignUp">
+	      <h3>Sign Up Form</h3>	    
+	      <form id="sign-up-form" method="post" action="api/signup">
+	        <div class="form-group">
+	          <label for="enroll-fname">First Name:</label><br>
+	          <input name="enrollFirstName" type="text" class="form-control" id="enroll-fname" required>
+	        </div>
+	        <div class="form-group">
+	          <label for="enroll-lname">Last Name:</label><br>
+	          <input name="enrollLastName" type="text" class="form-control" id="enroll-lname">
+	        </div>
+	        <div class="form-group">
+	          <label for="enroll-accountId">Account ID:</label><br>
+	          <input name="enrollAccountId" type="text" class="form-control" id="enroll-accountId" required>
+	        </div>
+	               
+	        <input class="btn btn-primary" id="submit-button" type="submit" onSubmit="return validateSignUp()" value="Validate Account">
+	      
+	      </form>
+	    </div>
+	    
+	    
     </div>
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

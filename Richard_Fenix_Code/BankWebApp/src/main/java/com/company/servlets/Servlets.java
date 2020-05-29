@@ -47,10 +47,6 @@ public class Servlets extends HttpServlet {
 			System.out.println("Sending dispatch to " + pathOrJsonString);
 			System.out.println(request.getContextPath() + pathOrJsonString);
 			response.sendRedirect(request.getContextPath()+pathOrJsonString);
-//			response.sendRedirect(pathOrJsonString);
-//			response.sendRedirect("/api" + pathOrJsonString);
-//			response.sendRedirect("http://localhost:9999" + request.getContextPath()+pathOrJsonString);
-
 				
 			return;
 		} else if (isJsonString(pathOrJsonString)) {

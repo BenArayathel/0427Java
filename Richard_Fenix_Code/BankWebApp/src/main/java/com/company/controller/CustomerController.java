@@ -16,6 +16,7 @@ import com.company.model.Account;
 import com.company.model.Customer;
 import com.company.model.Registration;
 import com.company.view.BankApp;
+import com.company.viewModel.AccountViewModel;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class CustomerController {
@@ -258,10 +259,7 @@ public class CustomerController {
 
 	public static String transfer(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
-		/*
-		 *  Check for valid http method.
-		 * You can also check stuff like, they are an admin. 
-		 */
+		// Check for valid http method.
 		if(!request.getMethod().equals("POST")) {
 			return "/loginPage.html";
 		}	
@@ -327,9 +325,8 @@ public class CustomerController {
 
 		return "";
 
-	}
+	}	
 
-	
 	
     // Helper method
     public static Account findAccountFromList(

@@ -2,6 +2,7 @@ package com.company.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.math.BigDecimal;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -89,21 +90,52 @@ public class LoginController {
 			// *** Save CUSTOMER in SESSION *** //
 			session.setAttribute("customer", customer);
 			
-			
 			if (customer.getCustomerId() == 99999) {
 				return "/api/admin";
 			} else {	
-				//response.sendRedirect("/BankWebApp/src/main/webapp/customerPage.html");
-        		//return "/api/customer";	
 				return "/customerPage.html";		
-
 			}
 		} else {
 			return "/loginPage.html";
 		}
 		
-			
 	}
-
 	
+	public static String newAccount(HttpServletRequest request, HttpServletResponse response) throws IOException {
+
+		/*
+		 *  Check for valid http method.
+		 * You can also check stuff like, they are an admin. 
+		 */
+		if(!request.getMethod().equals("POST")) {
+			return "/loginPage.html";
+		}	
+			
+		System.out.println("Inside Customer Controller to request new account...");
+		
+		try {
+			// 1. load and register JDBC driver for MySQL (
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			//2. then you can connect to oracle db through your usual DAO Implementations
+			// response.getWriter().println("Connected to Oracle using thin driver");;
+		} catch (Exception ex) {
+			System.out.println(ex);
+		}
+		
+		// get form input
+		String firstName = request.getParameter("firstName");
+		String lastName = request.getParameter("lastName");
+		String birthday = request.getParameter("birthday");
+		String usState = request.getParameter("state");
+		String accountType = request.getParameter("accountType");
+		String initBalance = request.getParameter("initialDeposit");
+		
+		System.out.println("check values here...");
+		
+		// Save changes
+        bankService.createCustomerAccount(firstName, lastName, birthday, usState, accountType, new BigDecimal(initBalance));
+			
+		return "/loginPage.html";
+
+	}
 }
