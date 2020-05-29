@@ -29,7 +29,7 @@
 		        <ul class="nav navbar-nav">
 		          <li class="active"><a href="#" onclick="loadAdminHome()">Home</a></li>
 		          <li><a href="#" onclick="loadViewCustomer()">View Customer Account</a></li>
-<!-- 		          <li><a href="#" onclick="loadApprovePending()">Approve Pending Account</a></li> -->
+<!--  		          <li><a href="#" onclick="loadApprovePending()">Approve Pending Account</a></li> -->
 		          <li><a href="#" onclick="loadViewTransaction()">View Transaction Log</a></li>
 		          <li><a href="http://localhost:9999/BankWebApp/api/signOff" onclick="signOff()">Sign Off</a></li>
 		        </ul>
@@ -53,7 +53,7 @@
 		          <label for="view-acct">Enter Account ID:</label><br>
 		          <input name="accountId" type="text" class="form-control" id="view-acct" required>
 		        </div>
-		        <input class="btn btn-primary" id="submit-button" type="button" onclick="viewCustomer()" value="Submit">    
+		        <input class="btn btn-primary" id="submit-button" type="submit" onclick="viewCustomer()" value="Submit">    
 		      </form>
 		    </div>
 		    
@@ -111,7 +111,7 @@
 		    </div>
 		    
 		    
-<!-- 		    <div id="myApprovePending">
+<!--  		    <div id="myApprovePending">
 		      <h3>Withdrawal Form</h3>
 		      <form id="withdrawal-form" method="post" action="api/withdraw">
 		        <div class="form-group">
@@ -125,7 +125,7 @@
 		        <input class="btn btn-primary" id="submit-button" type="submit" onclick="validateWithdrawal()" value="Confirm">    
 		      </form>
 		    </div>
- -->	
+ --> 	
 		    <div id="myViewTransaction">
 		      <h3>Transaction Log</h3>
 		      

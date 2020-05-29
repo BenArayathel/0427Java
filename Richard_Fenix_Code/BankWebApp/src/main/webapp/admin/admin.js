@@ -1,5 +1,4 @@
 onload
-
 loadAdminHome();
 fetchAdminInfo();
 
@@ -128,13 +127,21 @@ function populateCustomerPage(json) {
 
 
 function viewCustomer(){
-	accountId = document.getElementById("view-acct").value;
+	console.log("entered viewCustomer.");
+	let accountId = document.getElementById("view-acct").value;
+//	if (isNaN(accountId)) {
+//		alert("Account ID must be numeric.");
+//		document.getElementById("view-acct").focus();
+//		return false;
+//	};
+
 	fetch('http://localhost:9999/BankWebApp/api/admin/viewcustomer?accountId='+accountId)
 	//capture response back from the servlet
 	.then(response => response.text())
 	.then((text) => text.length ? JSON.parse(text) : {})
 	.then(json => displayCustomerAccountDetail(json))
 	.catch(error => console.error(error));
+	
 }
 
 function displayCustomerAccountDetail(json){

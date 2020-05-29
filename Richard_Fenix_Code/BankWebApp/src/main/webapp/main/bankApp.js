@@ -1,6 +1,30 @@
 /**
  * 
  */
+$("#myLogin").validate();
+
+$("#mySignUp").validate();
+
+$("#myEnroll").validate();
+
+$("#myViewCustomer").validate();
+
+// loginPage
+$("#myNewAccount").validate();
+  
+//$("#myNewAccount").validate({
+//  rules: {
+//		initDeposit: { digits: true}
+//	}
+//  })
+
+
+// customerPage
+$("#myDeposit").validate();
+$("#myWithdraw").validate();
+$("#myTransfer").validate();
+
+
 
 $('.currency-usd').each(function() { 
     var monetary_value = $(this).text(); 

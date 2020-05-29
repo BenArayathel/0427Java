@@ -62,60 +62,60 @@
 		
 		
 	    <div id="myDeposit">
-	      <h3>Deposit Form</h3>
-	      <form id="depsosit-form" method="post" action="api/deposit">
+	      <h3>Deposit To</h3>
+	      <form id="depsosit-form" onsubmit="return validateDeposit()" method="post" action="api/deposit">
 	        <div class="form-group">
 	          <label for="acct">To Account:</label><br>
 	          <input name="accountId" type="text" class="form-control" id="acct" required>
 	        </div>
 	        <div class="form-group">
 	          <label for="amt">Enter Deposit Amount:</label><br>
-	          <input name="depositAmount" type="text" class="form-control" id="amt">
+	          <input name="depositAmount" type="text" class="form-control" id="dep-amt" required>
 	        </div>       
-	        <input class="btn btn-primary" id="submit-button" type="submit" onclick="validateDeposit()" value="Confirm">    
+	        <input class="btn btn-primary" id="submit-deposit" type="submit" value="Confirm">    
 	      </form>
 	    </div>
 	    
 	    <div id="myWithdraw">
 	      <h3>Withdrawal Form</h3>
-	      <form id="withdrawal-form" method="post" action="api/withdraw">
+	      <form id="withdrawal-form" onsubmit="return validateWithdrawal()" method="post" action="api/withdraw">
 	        <div class="form-group">
 	          <label for="acct">From Account:</label><br>
 	          <input name="accountId" type="text" class="form-control" id="acct" required>
 	        </div>
 	        <div class="form-group">
 	          <label for="amt">Enter Amount To Withdraw:</label><br>
-	          <input name="withdrawAmount" type="text" class="form-control" id="amt">
+	          <input name="withdrawAmount" type="text" class="form-control" id="with-amt" required>
 	        </div>       
-	        <input class="btn btn-primary" id="submit-button" type="submit" onclick="validateWithdrawal()" value="Confirm">    
+	        <input class="btn btn-primary" id="submit-withdraw" type="submit" value="Confirm">    
 	      </form>
 	    </div>
 
 	    <div id="myTransfer">
 	      <h3>Transfer Form</h3>
-	      <form id="transfer-form" method="post" action="api/transfer">
+	      <form id="transfer-form" onsubmit="return validatetransfer()" method="post" action="api/transfer">
 	        <div class="form-group">
 	          <label for="fromAcct">From Account:</label><br>
 	          <input name="fromAccount" type="text" class="form-control" id="fromAcct" required>
 	        </div>
 	        <div class="form-group">
 	          <label for="amt">Amount To Transfer:</label><br>
-	          <input name="transferAmount" type="text" class="form-control" id="amt">
+	          <input name="transferAmount" type="text" class="form-control" id="trans-amt" required>
 	        </div> 
 	        <div class="form-group">
 	          <label for="toAcct">To Account:</label><br>
-	          <input name="toAccount" type="text" class="form-control" id="toAcct">
+	          <input name="toAccount" type="text" class="form-control" id="toAcct" required>
 	        </div>       
 	        <div class="form-group">
 	          <label for="fName">First Name:</label><br>
-	          <input name="firstName" type="text" class="form-control" id="fName">
+	          <input name="firstName" type="text" class="form-control" id="fName" required>
 	        </div>       
 	        <div class="form-group">
 	          <label for="lName">Last Name:</label><br>
-	          <input name="lastName" type="text" class="form-control" id="lName">
+	          <input name="lastName" type="text" class="form-control" id="lName" required>
 	        </div>       
 	              
-	        <input class="btn btn-primary" id="submit-button" type="submit" onclick="validatetransfer()" value="Confirm">    
+	        <input class="btn btn-primary" id="submit-button" type="submit" value="Confirm">    
 	      </form>
 	    </div>
 	    
@@ -129,7 +129,7 @@
 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <script src="./main/bankApp.js"></script>
-    <script src="./admin/admin.js"></script> 
+    <script src="./customer/customer.js"></script> 
 
 </body>
 </html>

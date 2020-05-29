@@ -32,7 +32,6 @@ public class LoginController {
 			 * You can also check stuff like, they are an admin. 
 			 */
 		
-		
 		if(!request.getMethod().equals("POST")) {
 			return "/loginPage.html";
 		}	
@@ -46,9 +45,7 @@ public class LoginController {
 		} catch (Exception ex) {
 			System.out.println(ex);
 		}
-		
-		//doGet(request, response);
-		
+				
 		System.out.println("Inside LoginController now...");
 		
 		// Start processing request and convert string response into java object.
@@ -98,6 +95,91 @@ public class LoginController {
 		}
 		
 	}
+	
+	
+	public static String validateCustomerAccount(HttpServletRequest request, HttpServletResponse response) throws IOException {
+
+		if(!request.getMethod().equals("POST")) {
+			return "/loginPage.html";
+		}	
+		
+		
+		try {
+			// 1. load and register JDBC driver for MySQL (
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			//2. then you can connect to oracle db through your usual DAO Implementations
+			// response.getWriter().println("Connected to Oracle using thin driver");;
+		} catch (Exception ex) {
+			System.out.println(ex);
+		}
+				
+		System.out.println("Inside LoginController to validate customer enrollment...");
+
+		// Start processing request and convert string response into java object.		
+		String firstName = request.getParameter("enrollFirstName");
+		String lastName = request.getParameter("enrollLastName");
+		String accountId = request.getParameter("enrollAccountId");
+
+        Customer customer = bankService.validateCustomerAccount(firstName, lastName, accountId);
+	
+		if (customer != null) {
+			// convert java object to string that can be sent to front end (as a response)
+			// set response content type to json format.
+			response.setContentType("application/json");
+			response.setCharacterEncoding("UTF-8");					
+			PrintWriter out = response.getWriter();
+
+			out.write(new ObjectMapper().writeValueAsString(customer));			
+			
+			// *** Enable SESSION *** //
+			HttpSession session = request.getSession();
+
+			// *** Save CUSTOMER in SESSION *** //
+			session.setAttribute("customer", customer);
+			
+			return "/enrollmentPage.html";		
+			
+		} else {
+			return "/loginPage.html";
+		}
+
+	}	
+
+	public static String EnrollAccount(HttpServletRequest request, HttpServletResponse response) throws IOException {
+
+		if(!request.getMethod().equals("POST")) {
+			return "/loginPage.html";
+		}	
+						
+		System.out.println("Inside LoginController to enroll login account...");
+
+		HttpSession session=request.getSession(false);
+		
+		if(session==null) {
+			response.sendRedirect("/loginPage.html");
+		}else {
+			
+			// get customer from session
+			Customer customer=(Customer) session.getAttribute("customer");
+
+			// Get required variables.		
+			Integer customerId = customer.getCustomerId();
+			String loginName = request.getParameter("loginName");
+			String password1 = request.getParameter("password1");
+
+        	boolean isRegistered = bankService.registerUser(customerId, loginName, password1);
+
+			// Destroy session
+			session.invalidate(); 
+
+			return "/loginPage.html";		
+		}
+
+		return "";
+
+	}	
+
+		
 	
 	public static String newAccount(HttpServletRequest request, HttpServletResponse response) throws IOException {
 

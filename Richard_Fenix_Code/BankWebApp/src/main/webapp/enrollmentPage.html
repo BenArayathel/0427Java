@@ -1,0 +1,66 @@
+<html>
+<head>
+	<meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+	<meta HTTP-EQUIV="Pragma" content="no-cache">
+	<meta HTTP-EQUIV="Expires" content="-1">
+
+
+    <title>WellsAmerica</title>
+</head>
+<body>
+	<div class="container-fluid">
+	    <div class="jumbotron alert-info">
+	      <h1 class="display-4">Wells of America</h1>
+	      <p class="lead">We find ways.</p>
+	    </div>
+	    	    
+	    
+	    <div class="alert-info">
+	      <p>Hi, <span id="greet"></span></p>
+	      <p> Customer Info:
+	      <p>Customer ID: <span id="customerId"></span></p>
+	      <p>First Name: <span id="fName"></span></p>
+	      <p>Last Name: <span id="lName"></span></p>
+	    </div>
+			
+	    <div id="myEnroll">
+	      <h3>Enrollment Form</h3>
+	      <form id="enrollment-form" method="post" action="api/enroll">
+	        <div class="form-group">
+	          <label for="login">Login Name:</label><br>
+	          <input name="loginName" type="text" class="form-control" id="login" required>
+	        </div>
+	        <div class="form-group">
+	          <label for="passwd">Password:</label><br>
+	          <input name="password1" type="password" class="form-control" id="passwd" required>
+	        </div>    
+	        <div class="form-group">
+	          <label for="passwd2">Password:</label><br>
+	          <input name="password2" type="password" class="form-control" id="passwd2" required>
+	        </div>    
+	           
+	        <input class="btn btn-primary" id="submit-button" type="submit" onclick="validateEnrollment()" value="Confirm">    
+	      </form>
+	    </div>
+	    
+	    
+    </div>
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="./main/bankApp.js"></script>
+    <script src="./enroll/enroll.js"></script> 
+
+</body>
+</html>

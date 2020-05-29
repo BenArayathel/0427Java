@@ -81,10 +81,18 @@ function validateLogin() {
 	
 };
 
+
+function validateCustomerAccount(){
+	console.log("validateCustomerAccount() has been clicked.");
+	
+	return;
+
+}
+
 function validateNewAccount() {
 	console.log("validateNewAccount() has been clicked.");
 	
-	return false;
+	return;
 	
 	
 };
@@ -93,7 +101,7 @@ function validateNewAccount() {
 function validateSignUp() {
 	console.log("validateSignUp() has been clicked.");
 	
-	return false;
+	return;
 	
 	
 };

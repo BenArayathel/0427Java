@@ -45,9 +45,9 @@
 	        </div>
 	        <div class="form-group">
 	          <label for="pwd">Password:</label><br>
-	          <input name="loginPassword" type="password" class="form-control" id="pwd">
+	          <input name="loginPassword" type="password" class="form-control" id="pwd" required>
 	        </div>       
-	        <input class="btn btn-primary" id="submit-button" type="submit" onSubmit="return validateLogin()" value="Log In">
+	        <input class="btn btn-primary" id="submit-login" type="submit" onSubmit="return validateLogin()" value="Log In">
 	      
 	      </form>
 	    </div>
@@ -61,7 +61,7 @@
 	        </div>
 	        <div class="form-group">
 	          <label for="lname">Last Name:</label><br>
-	          <input name="lastName" type="text" class="form-control" id="lname">
+	          <input name="lastName" type="text" class="form-control" id="lname" required>
 	        </div>
 	        <div class="form-group">
 	          <label for="bday">Birthday(MM/dd/yyyy):</label><br>
@@ -69,7 +69,7 @@
 	        </div>
 	        <div class="form-group">
 	          <label for="state">State:</label><br>
-	          <input name="state" type="text" class="form-control" id="state">
+	          <input name="state" type="text" class="form-control" id="state" required>
 	        </div>       
 	        <div class="form-group">
 	          <label for="accType">Account Type (CHEC, SAVI, BROK, CRED, MORT):</label><br>
@@ -80,28 +80,28 @@
 	          <input name="initialDeposit" type="text" class="form-control" id="initDeposit" required>
 	        </div>
 	               
-	        <input class="btn btn-primary" id="submit-button" type="submit" onSubmit="return validateNewAccount()" value="Submit Application">
+	        <input class="btn btn-primary" id="submit-new-account" type="submit" onSubmit="validateNewAccount()" value="Submit Application">
 	      
 	      </form>
 	    </div>
 	    
 	    <div id="mySignUp">
 	      <h3>Sign Up Form</h3>	    
-	      <form id="sign-up-form" method="post" action="api/signup">
+	      <form id="sign-up-form" method="post" action="api/validatecustomeraccount">
 	        <div class="form-group">
 	          <label for="enroll-fname">First Name:</label><br>
 	          <input name="enrollFirstName" type="text" class="form-control" id="enroll-fname" required>
 	        </div>
 	        <div class="form-group">
 	          <label for="enroll-lname">Last Name:</label><br>
-	          <input name="enrollLastName" type="text" class="form-control" id="enroll-lname">
+	          <input name="enrollLastName" type="text" class="form-control" id="enroll-lname" required>
 	        </div>
 	        <div class="form-group">
 	          <label for="enroll-accountId">Account ID:</label><br>
 	          <input name="enrollAccountId" type="text" class="form-control" id="enroll-accountId" required>
 	        </div>
 	               
-	        <input class="btn btn-primary" id="submit-button" type="submit" onSubmit="return validateSignUp()" value="Validate Account">
+	        <input class="btn btn-primary" id="submit-sign-up" type="submit" onSubmit="validateCustomerAccount()" value="Validate Account">
 	      
 	      </form>
 	    </div>

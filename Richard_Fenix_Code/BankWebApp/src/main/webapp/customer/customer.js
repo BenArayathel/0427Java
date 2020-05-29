@@ -118,6 +118,56 @@ function populateCustomerAccountSection(json) {
 }
 
 
+function validateDeposit(){
+	console.log("entered validateDeposit...");
+	let amount = document.getElementById("dep-amt").value;
+	if (isNaN(amount)) {
+		alert("Amount must be a valid number.");
+		document.getElementById("dep-amt").focus();
+		return false;
+	}
+	if (amount <= 0 ) {
+		alert("Deposit Amount must be greater than $0.00.");
+		document.getElementById("dep-amt").focus();
+		return false;
+	}
+	return true;
+}
+
+function validateWithdrawal(){
+	console.log("entered validateWithdrawal...");
+	let amount = document.getElementById("with-amt").value;
+	if (isNaN(amount)) {
+		alert("Amount must be a valid number.");
+		document.getElementById("with-amt").focus();
+		return false;
+	}
+	if (amount <= 0 ) {
+		alert("Withdrawal Amount must be greater than $0.00.");
+		document.getElementById("with-amt").focus();
+		return false;
+	}
+	return true;
+}
+
+
+function validatetransfer(){
+	console.log("entered validatetransfer...");
+	let amount = document.getElementById("trans-amt").value;
+	if (isNaN(amount)) {
+		alert("Amount must be a valid number.");
+		document.getElementById("trans-amt").focus();
+		return false;
+	}
+	if (amount <= 0 ) {
+		alert("Transfer Amount must be greater than $0.00.");
+		document.getElementById("trans-amt").focus();
+		return false;
+	}
+	return true;
+}
+
+
 function signOff(){
     console.log("Signing off...");
 }
