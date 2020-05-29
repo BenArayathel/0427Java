@@ -1,7 +1,8 @@
 <!DOCTYPE hibernate-configuration PUBLIC
         "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
         "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
-             
+
+     
 <hibernate-configuration>
 		<session-factory>
 			<!-- JDBC stuff -->
@@ -13,6 +14,8 @@
 			<property name ="hibernate.connection.driver_class">
 				oracle.jdbc.driver.OracleDriver	
 			</property>
+			
+			
 			
 			
 			<property name ="hibernate.connection.dialect">
@@ -29,14 +32,16 @@
 			
 			
 			<!-- Settings for hbm2ddl.auto
-				CREATE - drops tables every time, use for development, don't use for production
-					(in this case, use Hibernate_Employee etc for new tables, don't mess with old ones)
-				UPDATE - will NOT delete anything, so safe for production
-				NONE - hibernate won't do anything to your schema automatically. 
+				
+				CREATE - drops all tables and creates them each time. use for dev, not production
+				VALIDATE - hibernate checks to make sure the schema exists as expected before operating
+				UPDATE - will NOT delete anything, it'll only add or modify existing schema elements, so that schema works 
+						with hibernat's schema. 
+				NONE - nothing automatic
 			 -->
 			
 			<property name ="hibernate.hbm2ddl.auto">create</property>
 			
-			<mapping class = "com.example.model.Robber"></mapping>
+			<mapping class = "com.Robber"></mapping>
 		</session-factory>
 </hibernate-configuration>
