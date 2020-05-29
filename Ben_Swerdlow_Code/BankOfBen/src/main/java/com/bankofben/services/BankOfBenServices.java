@@ -194,6 +194,15 @@ public class BankOfBenServices {
 		return dao.getAccountByAccountNumber(accountNumber);
 	}
 	
+	public List<Account> getAccountsForCustomerId(String customerId) throws BusinessException {
+		return dao.getAccountsForCustomerId(customerId);
+	}
+	
+	public List<Account> getAccountsForCustomerUsername(String username) throws BusinessException {
+		Customer customer = dao.getCustomerByUsername(username);
+		return dao.getAccountsForCustomerId(customer.getId());
+	}
+	
 	public List<Account> getAccountsForCustomer(Customer customer) throws BusinessException {
 		return dao.getAccountsForCustomerId(customer.getId());
 	}
@@ -513,8 +522,12 @@ public class BankOfBenServices {
 		return outputBuilder.toString();
 	}
 	
-	public List<Account> getAccountsWithPendingStatus(boolean isPending) throws BusinessException{
+	public List<Account> getAccountsWithPendingStatus(boolean isPending) throws BusinessException {
 		return dao.getAccountsWithPendingStatus(isPending);
+	}
+	
+	public List<Account> getAllAccounts() throws BusinessException {
+		return dao.getAllAccounts();
 	}
 
 	public void approveNewCustomerAccountApplication(Account a) throws BusinessException {

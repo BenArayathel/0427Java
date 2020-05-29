@@ -204,6 +204,25 @@ public class RequestHelper {
 				respString = null;
 			}
 			break;
+		case "/BankOfBen/api/getAllBalances":
+			try {
+				respString = EmployeeView.getAllBalances(request, response);
+			} catch (JsonProcessingException | BusinessException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				respString = null;
+			}
+			break;
+		case "/BankOfBen/api/getCustomerBalances":
+			System.out.println("In getCustomerBalances case");
+			try {
+				respString = EmployeeView.getCustomerBalances(request, response);
+			} catch (IOException | BusinessException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				respString = null;
+			}
+			break;
 		default:
 			System.out.println("Didn't recognize option "+uri);
 		}

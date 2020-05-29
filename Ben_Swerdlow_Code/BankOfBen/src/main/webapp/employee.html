@@ -13,15 +13,15 @@
 <body>
 
     <div>
-        <p>Welcome, <span id="firstLast"></span>. </p>
+        <p>Welcome, <span id="firstLast"></span>. What would you like to do?</p>
     </div>
 
     <div id="employeeOptions">
-        What would you like to do?
         <div id="balancesContainer">
             <input id="seeAllBalances" type="button" class="btn btn-primary" value="View All Balances"/>
             <br>
-            <form id="customerBalances" role="form" >
+            <br>
+            <form id="customerBalancesFrom" role="form" >
                 <input type="text" id="username" placeholder="username" minlength="4" maxlength="20"
                     pattern="^[A-Za-z]{1}[A-Za-z0-9]{3,19}$" required
                     oninvalid="this.setCustomValidity('Username is required and must be between '
@@ -30,6 +30,7 @@
                 <input type="submit" id="seeCustomerBalances" value="View Customer Balances" class="btn btn-primary">
             </form>
         </div>
+        <br>
         <br>
         <div id="logContainer">
             <input id="seeAllTransactions" type="button" class="btn btn-primary" value="View All Transactions"/>
