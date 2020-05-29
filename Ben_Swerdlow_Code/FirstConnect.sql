@@ -114,3 +114,9 @@ UPDATE bankofben_transactions SET "Other Account Number" = 3969255661;
 ALTER TABLE bankofben_transactions MODIFY "Other Account Number" NOT NULL;
 ALTER TABLE bankofben_transactions ADD CONSTRAINT "FK Other Account Number" FOREIGN KEY("Other Account Number")
     REFERENCES bankofben_accounts("Account Number");
+
+SET SERVEROUTPUT ON;
+
+SELECT * FROM bankofben_requests WHERE "Sought Account Number" = 2060079423 AND "Pending" = 1;
+
+SELECT * FROM bankofben_accounts WHERE 
