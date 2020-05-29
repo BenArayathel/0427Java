@@ -58,6 +58,48 @@ public class CustomerView {
 		return respString;
 	}
 
+	public static String getPaymentsPendingToCustomer(HttpServletRequest request, HttpServletResponse response) throws JsonProcessingException {
+		String respString = "/home.html";
+		List<Payment> payments = new ArrayList<>();
+		BankOfBenServices dbs = new BankOfBenServices();
+		HttpSession session = request.getSession(false);
+		if (session!=null) {
+			Customer customer = (Customer) session.getAttribute("customer");
+			if (customer!=null) {
+				try {
+					boolean selfPayments = true;
+					payments = dbs.getPaymentsPendingToCustomer(customer, selfPayments);
+					respString = new ObjectMapper().writeValueAsString(payments);
+				} catch (BusinessException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
+		return respString;
+	}
+
+	public static String getPaymentsPendingFromCustomer(HttpServletRequest request, HttpServletResponse response) throws JsonProcessingException {
+		String respString = "/home.html";
+		List<Payment> payments = new ArrayList<>();
+		BankOfBenServices dbs = new BankOfBenServices();
+		HttpSession session = request.getSession(false);
+		if (session!=null) {
+			Customer customer = (Customer) session.getAttribute("customer");
+			if (customer!=null) {
+				try {
+					boolean selfPayments = false;
+					payments = dbs.getPaymentsPendingFromCustomer(customer, selfPayments);
+					respString = new ObjectMapper().writeValueAsString(payments);
+				} catch (BusinessException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
+		return respString;
+	}
+
 	public static String getRequestsPendingInvolvingCustomer(HttpServletRequest request, HttpServletResponse response) throws JsonProcessingException {
 		String respString = "/home.html";
 		List<Request> requests = new ArrayList<>();
@@ -68,6 +110,48 @@ public class CustomerView {
 			if (customer!=null) {
 				try {
 					requests = dbs.getRequestsPending(customer);
+					respString = new ObjectMapper().writeValueAsString(requests);
+				} catch (BusinessException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
+		return respString;
+	}
+
+	public static String getRequestsPendingToCustomer(HttpServletRequest request, HttpServletResponse response) throws JsonProcessingException {
+		String respString = "/home.html";
+		List<Request> requests = new ArrayList<>();
+		BankOfBenServices dbs = new BankOfBenServices();
+		HttpSession session = request.getSession(false);
+		if (session!=null) {
+			Customer customer = (Customer) session.getAttribute("customer");
+			if (customer!=null) {
+				try {
+					boolean selfRequests = true;
+					requests = dbs.getRequestsPendingToCustomer(customer, selfRequests);
+					respString = new ObjectMapper().writeValueAsString(requests);
+				} catch (BusinessException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
+		return respString;
+	}
+
+	public static String getRequestsPendingFromCustomer(HttpServletRequest request, HttpServletResponse response) throws JsonProcessingException {
+		String respString = "/home.html";
+		List<Request> requests = new ArrayList<>();
+		BankOfBenServices dbs = new BankOfBenServices();
+		HttpSession session = request.getSession(false);
+		if (session!=null) {
+			Customer customer = (Customer) session.getAttribute("customer");
+			if (customer!=null) {
+				try {
+					boolean selfRequests = false;
+					requests = dbs.getRequestsPendingFromCustomer(customer, selfRequests);
 					respString = new ObjectMapper().writeValueAsString(requests);
 				} catch (BusinessException e) {
 					// TODO Auto-generated catch block

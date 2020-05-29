@@ -105,12 +105,48 @@ public class RequestHelper {
 				respString = null;
 			}
 			break;
+		case "/BankOfBen/api/getPaymentsPendingToCustomer":
+			try {
+				respString = CustomerView.getPaymentsPendingToCustomer(request, response);
+			} catch (JsonProcessingException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+				respString = null;
+			}
+			break;
+		case "/BankOfBen/api/getPaymentsPendingFromCustomer":
+			try {
+				respString = CustomerView.getPaymentsPendingFromCustomer(request, response);
+			} catch (JsonProcessingException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+				respString = null;
+			}
+			break;
 		case "/BankOfBen/api/getRequestsPendingInvolvingCustomer":
 			try {
 				respString = CustomerView.getRequestsPendingInvolvingCustomer(request, response);
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
+				respString = null;
+			}
+			break;
+		case "/BankOfBen/api/getRequestsPendingToCustomer":
+			try {
+				respString = CustomerView.getRequestsPendingToCustomer(request, response);
+			} catch (JsonProcessingException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+				respString = null;
+			}
+			break;
+		case "/BankOfBen/api/getRequestsPendingFromCustomer":
+			try {
+				respString = CustomerView.getRequestsPendingFromCustomer(request, response);
+			} catch (JsonProcessingException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
 				respString = null;
 			}
 			break;
@@ -123,9 +159,9 @@ public class RequestHelper {
 				respString = null;
 			}
 			break;
-		case "/BankOfBen/api/rejectPayment":
+		case "/BankOfBen/api/haltPayment":
 			try {
-				respString = TransferActions.rejectPayment(request, response);
+				respString = TransferActions.haltPayment(request, response);
 			} catch (IOException | BusinessException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -141,9 +177,27 @@ public class RequestHelper {
 				respString = null;
 			}
 			break;
-		case "/BankOfBen/api/rejectRequest":
+		case "/BankOfBen/api/haltRequest":
 			try {
-				respString = TransferActions.rejectRequest(request, response);
+				respString = TransferActions.haltRequest(request, response);
+			} catch (IOException | BusinessException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				respString = null;
+			}
+			break;
+		case "/BankOfBen/api/postPayment":
+			try {
+				respString = TransferActions.postPayment(request, response);
+			} catch (IOException | BusinessException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				respString = null;
+			}
+			break;
+		case "/BankOfBen/api/postRequest":
+			try {
+				respString = TransferActions.postRequest(request, response);
 			} catch (IOException | BusinessException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

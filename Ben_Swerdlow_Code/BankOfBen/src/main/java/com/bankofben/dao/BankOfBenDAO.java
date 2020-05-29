@@ -1578,6 +1578,68 @@ public class BankOfBenDAO implements BankOfBenDAOInterface {
 		
 		return payments;
 	}
+	
+	public List<Payment> getAllPaymentsWithPayingAccountNumberAndPendingStatus(long payingAccountNumber, boolean pendingStatus) throws BusinessException {
+		
+		List<Payment> payments = new ArrayList<>();
+		
+		try(Connection connection = OracleDbConnection.getConnection()){
+			
+			String sqlCall = "SELECT * FROM bankofben_payments WHERE \"Paying Account Number\" = ? AND \"Pending\" = ?";
+			PreparedStatement ps = connection.prepareStatement(sqlCall);
+			ps.setLong(1, payingAccountNumber);
+			ps.setBoolean(2, pendingStatus);
+			
+			ResultSet rset = ps.executeQuery();
+
+			while (rset.next()) {
+				payments.add(new Payment(rset.getString("Payment ID"), rset.getString("Initiator's ID"),
+						rset.getBoolean("Pending"), rset.getLong("Paying Account Number"),
+						rset.getLong("Receiving Account Number"), rset.getDouble("Amount")));
+			}
+			
+			ps.close();
+			
+		} catch (ClassNotFoundException | SQLException e) {
+			loggy.error(e);
+			b = new BusinessException("Internal database error. Please contact your SYSADMIN.");
+			loggy.error(b);
+			throw b;
+		}
+		
+		return payments;
+	}
+	
+	public List<Payment> getAllPaymentsWithReceivingAccountNumberAndPendingStatus(long receivingAccountNumber, boolean pendingStatus) throws BusinessException {
+		
+		List<Payment> payments = new ArrayList<>();
+		
+		try(Connection connection = OracleDbConnection.getConnection()){
+			
+			String sqlCall = "SELECT * FROM bankofben_payments WHERE \"Receiving Account Number\" = ? AND \"Pending\" = ?";
+			PreparedStatement ps = connection.prepareStatement(sqlCall);
+			ps.setLong(1, receivingAccountNumber);
+			ps.setBoolean(2, pendingStatus);
+			
+			ResultSet rset = ps.executeQuery();
+
+			while (rset.next()) {
+				payments.add(new Payment(rset.getString("Payment ID"), rset.getString("Initiator's ID"),
+						rset.getBoolean("Pending"), rset.getLong("Paying Account Number"),
+						rset.getLong("Receiving Account Number"), rset.getDouble("Amount")));
+			}
+			
+			ps.close();
+			
+		} catch (ClassNotFoundException | SQLException e) {
+			loggy.error(e);
+			b = new BusinessException("Internal database error. Please contact your SYSADMIN.");
+			loggy.error(b);
+			throw b;
+		}
+		
+		return payments;
+	}
 
 	@Override
 	public List<Payment> getAllPaymentsByColumn(String columnName, String columnValue) throws BusinessException {
@@ -1819,6 +1881,37 @@ public class BankOfBenDAO implements BankOfBenDAOInterface {
 		return requests;
 	}
 	
+	public List<Request> getAllRequestsWithRequestorAccountNumberAndPendingStatus(long requestorAccountNumber, boolean pendingStatus) throws BusinessException {
+		
+		List<Request> requests = new ArrayList<>();
+		
+		try(Connection connection = OracleDbConnection.getConnection()){
+			
+			String sqlCall = "SELECT * FROM bankofben_requests WHERE \"Requestor Account Number\" = ? AND \"Pending\" = ?";
+			PreparedStatement ps = connection.prepareStatement(sqlCall);
+			ps.setLong(1, requestorAccountNumber);
+			ps.setBoolean(2, pendingStatus);
+			
+			ResultSet rset = ps.executeQuery();
+
+			while (rset.next()) {
+				requests.add(new Request(rset.getString("Payment ID"), rset.getString("Initiator's ID"),
+						rset.getBoolean("Pending"), rset.getLong("Requestor Account Number"),
+						rset.getLong("Sought Account Number"), rset.getDouble("Amount")));
+			}
+			
+			ps.close();
+			
+		} catch (ClassNotFoundException | SQLException e) {
+			loggy.error(e);
+			b = new BusinessException("Internal database error. Please contact your SYSADMIN.");
+			loggy.error(b);
+			throw b;
+		}
+		
+		return requests;
+	}
+	
 	public List<Request> getAllRequestsWithSoughtAccountNumber(long soughtAccountNumber) throws BusinessException {
 		
 		List<Request> requests = new ArrayList<>();
@@ -1828,6 +1921,37 @@ public class BankOfBenDAO implements BankOfBenDAOInterface {
 			String sqlCall = "SELECT * FROM bankofben_requests WHERE \"Sought Account Number\" = ?";
 			PreparedStatement ps = connection.prepareStatement(sqlCall);
 			ps.setLong(1, soughtAccountNumber);
+			
+			ResultSet rset = ps.executeQuery();
+
+			while (rset.next()) {
+				requests.add(new Request(rset.getString("Payment ID"), rset.getString("Initiator's ID"),
+						rset.getBoolean("Pending"), rset.getLong("Requestor Account Number"),
+						rset.getLong("Sought Account Number"), rset.getDouble("Amount")));
+			}
+			
+			ps.close();
+			
+		} catch (ClassNotFoundException | SQLException e) {
+			loggy.error(e);
+			b = new BusinessException("Internal database error. Please contact your SYSADMIN.");
+			loggy.error(b);
+			throw b;
+		}
+		
+		return requests;
+	}
+	
+	public List<Request> getAllRequestsWithSoughtAccountNumberAndPendingStatus(long soughtAccountNumber, boolean pendingStatus) throws BusinessException {
+		
+		List<Request> requests = new ArrayList<>();
+		
+		try(Connection connection = OracleDbConnection.getConnection()){
+			
+			String sqlCall = "SELECT * FROM bankofben_requests WHERE \"Sought Account Number\" = ? AND \"Pending\" = ?";
+			PreparedStatement ps = connection.prepareStatement(sqlCall);
+			ps.setLong(1, soughtAccountNumber);
+			ps.setBoolean(2, pendingStatus);
 			
 			ResultSet rset = ps.executeQuery();
 
@@ -2019,18 +2143,6 @@ public class BankOfBenDAO implements BankOfBenDAOInterface {
 		
 		return payments;
 	}
-		
-//		
-//		
-//		List<Payment> customerPayments = new ArrayList<>();
-//		for (Account ca : customerAccounts) {
-//			List<Payment> accountPayments = getAllPaymentsInvolvingAccount(ca);
-//			for (Payment p : accountPayments) {
-//				customerPayments.add(p);
-//			}
-//		}
-//		return customerPayments;
-//	}
 
 	public List<Payment> getAllPaymentsInvolvingAccount(Account ca) throws BusinessException {
 		List<Payment> paymentsToAccount = getAllPaymentsWithPayingAccountNumber(ca.getAccountNumber());

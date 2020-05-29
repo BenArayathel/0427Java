@@ -3,6 +3,8 @@ package com.bankofben.services;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import org.apache.log4j.Logger;
 
@@ -227,6 +229,70 @@ public class BankOfBenServices {
 	public List<Payment> getPaymentsPending(Customer customer) throws BusinessException {
 		return dao.getAllPaymentsInvolvingCustomerWithPendingStatus(customer, true);
 	}
+
+	public List<Payment> getPaymentsPendingToCustomer(Customer customer) throws BusinessException {
+		List<Account> accounts = getAccountsForCustomer(customer);
+		List<Payment> toPayments = new ArrayList<>();
+		for (Account account : accounts) {
+			List<Payment> paymentsToAccount = dao.getAllPaymentsWithReceivingAccountNumberAndPendingStatus(account.getAccountNumber(), true);
+			toPayments = Stream.concat(toPayments.stream(), paymentsToAccount.stream())
+                    .collect(Collectors.toList());
+		}
+		return toPayments;
+	}
+
+	public List<Payment> getPaymentsPendingToCustomer(Customer customer, boolean selfPayments) throws BusinessException {
+		List<Account> accounts = getAccountsForCustomer(customer);
+		List<Long> accountNumbers = new ArrayList<>();
+		for (Account account : accounts) {
+			accountNumbers.add(account.getAccountNumber());
+		}
+		List<Payment> toPayments = new ArrayList<>();
+		System.out.println("Getting to payments");
+		for (long accountNumber : accountNumbers) {
+			List<Payment> paymentsToAccount = dao.getAllPaymentsWithReceivingAccountNumberAndPendingStatus(accountNumber, true);
+			for (Payment payment : paymentsToAccount) {
+				if ((accountNumbers.contains(payment.getPayingAccountNumber())
+						&& accountNumbers.contains(payment.getReceivingAccountNumber()) == selfPayments)) {
+					toPayments.add(payment);
+				}
+			}
+		}
+		System.out.println("Got to payments");
+		return toPayments;
+	}
+	
+	public List<Payment> getPaymentsPendingFromCustomer(Customer customer) throws BusinessException {
+		List<Account> accounts = getAccountsForCustomer(customer);
+		List<Payment> fromPayments = new ArrayList<>();
+		for (Account account : accounts) {
+			List<Payment> paymentsToAccount = dao.getAllPaymentsWithPayingAccountNumberAndPendingStatus(account.getAccountNumber(), true);
+			fromPayments = Stream.concat(fromPayments.stream(), paymentsToAccount.stream())
+                    .collect(Collectors.toList());
+		}
+		return fromPayments;
+	}
+
+	public List<Payment> getPaymentsPendingFromCustomer(Customer customer, boolean selfPayments) throws BusinessException {
+		List<Account> accounts = getAccountsForCustomer(customer);
+		List<Long> accountNumbers = new ArrayList<>();
+		for (Account account : accounts) {
+			accountNumbers.add(account.getAccountNumber());
+		}
+		List<Payment> fromPayments = new ArrayList<>();
+		System.out.println("Getting from payments");
+		for (long accountNumber : accountNumbers) {
+			List<Payment> paymentsFromAccount = dao.getAllPaymentsWithPayingAccountNumberAndPendingStatus(accountNumber, true);
+			for (Payment payment : paymentsFromAccount) {
+				if ((accountNumbers.contains(payment.getPayingAccountNumber())
+						&& accountNumbers.contains(payment.getReceivingAccountNumber()) == selfPayments)) {
+					fromPayments.add(payment);
+				}
+			}
+		}
+		System.out.println("Got from payments");
+		return fromPayments;
+	}
 	
 	public List<Request> getRequests(Customer customer) throws BusinessException {
 		return dao.getAllRequestsInvolvingCustomer(customer);
@@ -234,6 +300,70 @@ public class BankOfBenServices {
 	
 	public List<Request> getRequestsPending(Customer customer) throws BusinessException {
 		return dao.getAllRequestsInvolvingCustomerWithPendingStatus(customer, true);
+	}
+
+	public List<Request> getRequestsPendingToCustomer(Customer customer) throws BusinessException {
+		List<Account> accounts = getAccountsForCustomer(customer);
+		List<Request> toRequests = new ArrayList<>();
+		for (Account account : accounts) {
+			List<Request> requestsToAccount = dao.getAllRequestsWithSoughtAccountNumber(account.getAccountNumber());
+			toRequests = Stream.concat(toRequests.stream(), requestsToAccount.stream())
+                    .collect(Collectors.toList());
+		}
+		return toRequests;
+	}
+
+	public List<Request> getRequestsPendingToCustomer(Customer customer, boolean selfPayments) throws BusinessException {
+		List<Account> accounts = getAccountsForCustomer(customer);
+		List<Long> accountNumbers = new ArrayList<>();
+		for (Account account : accounts) {
+			accountNumbers.add(account.getAccountNumber());
+		}
+		List<Request> toRequests = new ArrayList<>();
+		System.out.println("Getting to requests");
+		for (long accountNumber : accountNumbers) {
+			List<Request> requestsToAccount = dao.getAllRequestsWithSoughtAccountNumberAndPendingStatus(accountNumber, true);
+			for (Request request : requestsToAccount) {
+				if ((accountNumbers.contains(request.getRequestorAccountNumber())
+						&& accountNumbers.contains(request.getSoughtAccountNumber()) == selfPayments)) {
+					toRequests.add(request);
+				}
+			}
+		}
+		System.out.println("Got to requests");
+		return toRequests;
+	}
+	
+	public List<Request> getRequestsPendingFromCustomer(Customer customer) throws BusinessException {
+		List<Account> accounts = getAccountsForCustomer(customer);
+		List<Request> fromRequests = new ArrayList<>();
+		for (Account account : accounts) {
+			List<Request> requestsToAccount = dao.getAllRequestsWithRequestorAccountNumber(account.getAccountNumber());
+			fromRequests = Stream.concat(fromRequests.stream(), requestsToAccount.stream())
+                    .collect(Collectors.toList());
+		}
+		return fromRequests;
+	}
+
+	public List<Request> getRequestsPendingFromCustomer(Customer customer, boolean selfPayments) throws BusinessException {
+		List<Account> accounts = getAccountsForCustomer(customer);
+		List<Long> accountNumbers = new ArrayList<>();
+		for (Account account : accounts) {
+			accountNumbers.add(account.getAccountNumber());
+		}
+		List<Request> fromRequests = new ArrayList<>();
+		System.out.println("Getting from requests");
+		for (long accountNumber : accountNumbers) {
+			List<Request> requestsToAccount = dao.getAllRequestsWithRequestorAccountNumberAndPendingStatus(accountNumber, true);
+			for (Request request : requestsToAccount) {
+				if ((accountNumbers.contains(request.getRequestorAccountNumber())
+						&& accountNumbers.contains(request.getSoughtAccountNumber()) == selfPayments)) {
+					fromRequests.add(request);
+				}
+			}
+		}
+		System.out.println("Got from requests");
+		return fromRequests;
 	}
 
 	public void postPayement(Customer customer, Account paySourceAccount, Account payDestinationAccount, double amount) throws BusinessException {
@@ -267,12 +397,23 @@ public class BankOfBenServices {
 			loggy.error(b);
 			throw b;
 		}
-		double payingAccountBalance = Math.round((payingAccount.getBalance()-payment.getAmount())*100)/100;
-		payingAccount.setBalance(payingAccountBalance, payment);
-		double receivingAccountBalance = Math.round((payingAccount.getBalance()-payment.getAmount())*100)/100;
-		receivingAccount.setBalance(receivingAccountBalance, payment);
-		payingAccount = updateAccountBalance(payingAccount, -payment.getAmount(), receivingAccount);
-		receivingAccount = updateAccountBalance(receivingAccount, payment.getAmount(), payingAccount);
+		
+		double amount = payment.getAmount();
+		double payingAccountOrigBal = payingAccount.getBalance();
+		double receivingAccountOrigBal = receivingAccount.getBalance();
+		double payingAccountNewBal = ((double) Math.round((payingAccount.getBalance()-amount)*100))/100.0;
+		double receivingAccountNewBal = ((double) Math.round((receivingAccount.getBalance()+amount)*100))/100.0;
+		// Check to ensure this will work
+		// if can't work, won't be able to execute the next four lines
+		payingAccount.setBalance(payingAccountNewBal, payment);
+		receivingAccount.setBalance(receivingAccountNewBal, payment);
+		Transaction transaction = new Transaction(payingAccount.getAccountNumber(), payingAccountOrigBal, -amount, receivingAccount.getAccountNumber());
+		Transaction otherTransaction = new Transaction(receivingAccount.getAccountNumber(), receivingAccountOrigBal, amount, payingAccount.getAccountNumber());
+		// Update the db accordingly
+		dao.updateAccountBalance(payingAccountNewBal, payingAccount.getAccountNumber());
+		dao.updateAccountBalance(receivingAccountNewBal, receivingAccount.getAccountNumber());
+		dao.createTransaction(transaction);
+		dao.createTransaction(otherTransaction);
 		resolvePendingPayment(payment);
 	}
 	
@@ -289,12 +430,22 @@ public class BankOfBenServices {
 			loggy.error(b);
 			throw b;
 		}
-		double requestorAccountBalance = Math.round((requestorAccount.getBalance()+request.getAmount())*100)/100;
-		requestorAccount.setBalance(requestorAccountBalance, request);
-		double soughtAccountBalance = Math.round((soughtAccount.getBalance()-request.getAmount())*100)/100;
-		soughtAccount.setBalance(soughtAccountBalance, request);
-		requestorAccount = updateAccountBalance(requestorAccount, request.getAmount(), soughtAccount);
-		soughtAccount = updateAccountBalance(soughtAccount, -request.getAmount(), requestorAccount);
+		double amount = request.getAmount();
+		double requestorAccountOrigBal = requestorAccount.getBalance();
+		double soughtAccountOrigBal = soughtAccount.getBalance();
+		double requestorAccountNewBal = ((double) Math.round((requestorAccount.getBalance()+amount)*100))/100.0;
+		double soughtAccountNewBal = ((double) Math.round((soughtAccount.getBalance()-amount)*100))/100.0;
+		// Check to ensure this will work
+		// if can't work, won't be able to execute the next four lines
+		requestorAccount.setBalance(requestorAccountNewBal, request);
+		soughtAccount.setBalance(soughtAccountNewBal, request);
+		Transaction transaction = new Transaction(requestorAccount.getAccountNumber(), requestorAccountOrigBal, amount, soughtAccount.getAccountNumber());
+		Transaction otherTransaction = new Transaction(soughtAccount.getAccountNumber(), soughtAccountOrigBal, -amount, requestorAccount.getAccountNumber());
+		// Update the db accordingly
+		dao.updateAccountBalance(requestorAccountNewBal, requestorAccount.getAccountNumber());
+		dao.updateAccountBalance(soughtAccountNewBal, soughtAccount.getAccountNumber());
+		dao.createTransaction(transaction);
+		dao.createTransaction(otherTransaction);
 		resolvePendingRequest(request);
 	}
 
@@ -392,8 +543,8 @@ public class BankOfBenServices {
 	}
 
 	public Account updateAccountBalance(Account account, double amount, Account otherAccount) throws BusinessException {
-		System.out.println((double) Math.round((account.getBalance()+amount)*100)/100);
-		Account a = dao.updateAccountBalance((double) Math.round((account.getBalance()+amount)*100)/100, account.getAccountNumber());
+		System.out.println(((double) Math.round((account.getBalance()+amount)*100))/100.0);
+		Account a = dao.updateAccountBalance(((double) Math.round((account.getBalance()+amount)*100))/100.0, account.getAccountNumber());
 		Transaction transaction = new Transaction(account.getAccountNumber(), account.getBalance(), amount, otherAccount.getAccountNumber());
 		dao.createTransaction(transaction);
 		return a;

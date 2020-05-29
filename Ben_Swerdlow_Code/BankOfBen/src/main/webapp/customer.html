@@ -38,35 +38,60 @@
         <table class="table table-dark" id="payments">
             <thead>
                 <tr id="payHeader">
-                    <th id="payId">Payment ID</th>
-                    <th id="payInit">Initiator</th>
-                    <th id="payAccNum">Recieving Account #</th>
-                    <th id="payAmt">Amount</th>
-                    <th id="payStatus">Status</th>
+                    <th id="payIdHead">Payment ID</th>
+                    <th id="payInitHead">Initiator</th>
+                    <th id="payAccNumHead">Paying Account #</th>
+                    <th id="recAccNumHead">Recieving Account #</th>
+                    <th id="payAmtHead">Amount</th>
+                    <th id="payStatusHead">Status</th>
                     <!-- <th id="payAction"></th> -->
                 </tr>
             </thead>
         </table>
     </div>
-
     <br>
-
+    <div id="postPaymentDiv">
+        <label for="paymentPoster">Post a Payment</label>
+        <form data-toggle="validator" role="form" id="paymentPoster" aria-label="Post a Payment">
+            <!-- <input id="payAccNum" type=number min=1000000000 max=9999999999 required placeholder="Paying Account Number"> -->
+            <input id="recAccNum" type=number min=1000000000 max=9999999999 required placeholder="Recieving Account Number">
+            <input id="paymentAmount" type=number step=0.01 min=0.01
+                max=1000000000 required placeholder="Amount">
+            <input id="postPayment" class="btn btn-info" type=submit value="Post Payment">
+        </form>
+    </div>
+    <br>
     <div id="viewRequests">
         <label for="requests">Requests</label>
         <table class="table table-dark" id="requests">
             <thead>
                 <tr id="reqHeader">
-                    <th id="reqId">Payment ID</th>
-                    <th id="reqInit">Initiator</th>
-                    <th id="reqAccNum">Source Account #</th>
-                    <th id="reqAmt">Amount</th>
-                    <th id="reqStatus">Status</th>
+                    <th id="reqIdHead">Payment ID</th>
+                    <th id="reqInitHead">Initiator</th>
+                    <th id="reqAccNumHead">Requestor Account #</th>
+                    <th id="sotAccNumHead">Source Account #</th>
+                    <th id="reqAmtHead">Amount</th>
+                    <th id="reqStatusHead">Status</th>
                     <!-- <th id="reqAction"></th> -->
                 </tr>
             </thead>
         </table>
     </div>
+    <br>
+    <div id="postRequestDiv">
+        <label for="requestPoster">Post a Request</label>
+        <form data-toggle="validator" role="form" id="requestPoster" aria-label="Post a Request">
+            <!-- <input id="reqAccNum" type=number min=1000000000 max=9999999999 required placeholder="Requestor Account Number"> -->
+            <input id="sotAccNum" type=number min=1000000000 max=9999999999 required placeholder="Sought Account Number">
+            <input id="requestAmount" type=number step=0.01 min=0.01
+                max=1000000000 required placeholder="Amount">
+            <input id="postRequest" class="btn btn-info" type=submit value="Post Request">
+        </form>
+    </div>
+    <br>
 
+    <script src="/vendors/formvalidation/dist/js/FormValidation.min.js"></script>
+    <script src="/vendors/formvalidation/dist/js/plugins/Bootstrap.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
