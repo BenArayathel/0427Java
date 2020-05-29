@@ -24,11 +24,12 @@
                     <th class="scope" id="balAccNum">Account Number</th>
                     <th class="scope" id="balBalance">Balance</th>
                     <th class="scope" id="balPending">Pending</th>
-                    <!-- <th class="scope" id="balDeposit"></th> -->
-                    <!-- <th class="scope" id="balWithdraw"></th> -->
                 </tr>
             </thead>
         </table>
+        <form id="appAccForm" action="http://localhost:9999/BankOfBen/accountApplication.html">
+            <input id="appAccButton" type="submit" class="btn btn-warning" value="Apply For Another Account">
+        </form>
     </div>
 
     <br>
@@ -44,7 +45,6 @@
                     <th id="recAccNumHead">Recieving Account #</th>
                     <th id="payAmtHead">Amount</th>
                     <th id="payStatusHead">Status</th>
-                    <!-- <th id="payAction"></th> -->
                 </tr>
             </thead>
         </table>
@@ -53,7 +53,6 @@
     <div id="postPaymentDiv">
         <label for="paymentPoster">Post a Payment</label>
         <form data-toggle="validator" role="form" id="paymentPoster" aria-label="Post a Payment">
-            <!-- <input id="payAccNum" type=number min=1000000000 max=9999999999 required placeholder="Paying Account Number"> -->
             <input id="recAccNum" type=number min=1000000000 max=9999999999 required placeholder="Recieving Account Number">
             <input id="paymentAmount" type=number step=0.01 min=0.01
                 max=1000000000 required placeholder="Amount">
@@ -72,7 +71,6 @@
                     <th id="sotAccNumHead">Source Account #</th>
                     <th id="reqAmtHead">Amount</th>
                     <th id="reqStatusHead">Status</th>
-                    <!-- <th id="reqAction"></th> -->
                 </tr>
             </thead>
         </table>
@@ -81,7 +79,6 @@
     <div id="postRequestDiv">
         <label for="requestPoster">Post a Request</label>
         <form data-toggle="validator" role="form" id="requestPoster" aria-label="Post a Request">
-            <!-- <input id="reqAccNum" type=number min=1000000000 max=9999999999 required placeholder="Requestor Account Number"> -->
             <input id="sotAccNum" type=number min=1000000000 max=9999999999 required placeholder="Sought Account Number">
             <input id="requestAmount" type=number step=0.01 min=0.01
                 max=1000000000 required placeholder="Amount">

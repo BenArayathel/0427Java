@@ -230,6 +230,7 @@ public class RequestHelper {
 				e.printStackTrace();
 				respString = null;
 			}
+			break;
 		case "/BankOfBen/api/approveAccount":
 			try {
 				respString = EmployeeActions.approveAccount(request, response);
