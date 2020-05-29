@@ -257,7 +257,12 @@ public class BankOfBenServices {
 			accountNumbers.add(account.getAccountNumber());
 		}
 		List<Payment> toPayments = new ArrayList<>();
-		System.out.println("Getting to payments");
+		loggy.info("Getting to payments");
+//		for (long accountNumber : accountNumbers) {
+//			List<Payment> paymentsToAccountSPYN = dao.getAllPaymentsWithReceivingAccountNumberAndPendingStatus(accountNumber, customer.getId(), true, selfPayments);
+//			toPayments = Stream.concat(toPayments.stream(), paymentsToAccountSPYN.stream())
+//                    .collect(Collectors.toList());
+//		}
 		for (long accountNumber : accountNumbers) {
 			List<Payment> paymentsToAccount = dao.getAllPaymentsWithReceivingAccountNumberAndPendingStatus(accountNumber, true);
 			for (Payment payment : paymentsToAccount) {
@@ -289,7 +294,12 @@ public class BankOfBenServices {
 			accountNumbers.add(account.getAccountNumber());
 		}
 		List<Payment> fromPayments = new ArrayList<>();
-		System.out.println("Getting from payments");
+		loggy.info("Getting from payments");
+//		for (long accountNumber : accountNumbers) {
+//			List<Payment> paymentsToAccountSPYN = dao.getAllPaymentsWithPayingAccountNumberAndPendingStatus(accountNumber, customer.getId(), true, selfPayments);
+//			fromPayments = Stream.concat(fromPayments.stream(), paymentsToAccountSPYN.stream())
+//                    .collect(Collectors.toList());
+//		}
 		for (long accountNumber : accountNumbers) {
 			List<Payment> paymentsFromAccount = dao.getAllPaymentsWithPayingAccountNumberAndPendingStatus(accountNumber, true);
 			for (Payment payment : paymentsFromAccount) {

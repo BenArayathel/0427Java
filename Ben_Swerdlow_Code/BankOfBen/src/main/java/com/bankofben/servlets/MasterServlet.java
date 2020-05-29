@@ -41,7 +41,6 @@ public class MasterServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		loggy.setLevel(Level.INFO);
-		loggy.info("Test 123");
 		
 		String pathOrJsonString = RequestHelper.process(request, response);
 		
@@ -65,6 +64,41 @@ public class MasterServlet extends HttpServlet {
 			loggy.error(e);
 			throw e;
 		}
+	}
+	
+	protected void doUpdate(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		// I would use this for updates, but most updates are more complicated, involving creation and deletion, and the core logic would be very similar.
+		// Future updates would implement these for completeness. (Same goes for delete.)
+		
+//		String pathOrJsonString = RequestHelper.process(request, response);
+//		
+//		if (pathOrJsonString==null) {
+//			ServletException s = new ServletException("Could not follow instruction from RequestHelper");
+//			loggy.error(s);
+//			throw s;
+//		} else if (isValidJsonString(pathOrJsonString)) {
+//			response.setContentType("application/json");
+//			response.getWriter().write(pathOrJsonString);
+//		} else if (pathOrJsonString.endsWith(".html")) {
+//			// if pathOrJsonString is a valid .html path, forward the request and response there
+//			System.out.println("Sending dispatch to "+pathOrJsonString);
+//			System.out.println(request.getContextPath());
+//			response.sendRedirect(request.getContextPath()+pathOrJsonString);
+//		} else if (pathOrJsonString.contains("/api/")) {
+//			System.out.println("Sending request (and response) to "+pathOrJsonString);
+//			request.getRequestDispatcher(pathOrJsonString).forward(request, response);
+//		} else {
+//			IOException e = new IOException("Attempted to return bad redirect or improperly formatted JSON string: "+pathOrJsonString);
+//			loggy.error(e);
+//			throw e;
+//		}
+		
+	}
+	
+	protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// I would use this for deletes, but most deletes are more complicated, involving creation as well as deletion, and the core logic would be very similar.
+		// Future updates would implement these for completeness. (Same goes for update.)
 	}
 
 	private boolean isValidJsonString(String possibleJsonString) {

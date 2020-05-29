@@ -488,55 +488,137 @@ async function haltRequest(requestId) {
 }
 
 async function makeDeposit(accountNumber) {
-    let bodyObj = {
-        "accountNumber": `${accountNumber}`,
-        "amount": document.getElementById(`${accountNumber}amount`).value
-    };
-    console.log(bodyObj);
-    let response = await fetch(
-        'http://localhost:9999/BankOfBen/api/makeDeposit', {
-            method: 'POST',
-            body: JSON.stringify(bodyObj),
-            headers: {"Content-type": "application/json; charset=UTF-8"}
+    if (document.getElementById(`${accountNumber}amount`).checkValidity()) {
+        let amount = document.getElementById(`${accountNumber}amount`).value;
+        let bodyObj = {
+            "accountNumber": `${accountNumber}`,
+            "amount": `${amount}`
+        };
+        console.log(bodyObj);
+        let response = await fetch(
+            'http://localhost:9999/BankOfBen/api/makeDeposit', {
+                method: 'POST',
+                body: JSON.stringify(bodyObj),
+                headers: {"Content-type": "application/json; charset=UTF-8"}
+            }
+        );
+        console.log(response);
+        if (response.url.endsWith(".html") && response.url !== window.location.href) {
+            window.location.href = response.url;
+        } else {
+            console.log("Making reponse json.")
+            let account = await response.json();
+            let dollars = document.getElementById(`${accountNumber}dollars`);
+            dollars.innerText = account.balance.toFixed(2);
+            let balance = document.getElementById(`${accountNumber}balance`);
+            balance.style = "color: green";
         }
-    );
-    console.log(response);
-    if (response.url.endsWith(".html") && response.url !== window.location.href) {
-        window.location.href = response.url;
     } else {
-        console.log("Making reponse json.")
-        let account = await response.json();
-        let dollars = document.getElementById(`${accountNumber}dollars`);
-        dollars.innerText = account.balance.toFixed(2);
-        let balance = document.getElementById(`${accountNumber}balance`);
-        balance.style = "color: green";
+        console.log(document.getElementById(`${accountNumber}amount`).checkValidity());
+        console.log("Amount must be a number at least $0.01 to no more than 2 decimal places for deposit or withdrawal.");
     }
+    // let amount = document.getElementById(`${accountNumber}amount`).value;
+    // let splitAmountStringArray = `${amount}`.split('.');
+    // if (isNaN(amount)) {
+    //     console.log("Improper number");
+    // } else if (amount < 0.01) {
+    //     console.log("Amount must be at least $0.01 for deposit or withdrawal");
+    // } else if (splitAmountStringArray.length > 2) {
+    //     console.log("Improper number");
+    // } else if (splitAmountStringArray.length==2 && splitAmountStringArray[1].length > 2) {
+    //     console.log("Amount cannot be specified to more than two decimal places.");
+    // } else {
+    //     let bodyObj = {
+    //         "accountNumber": `${accountNumber}`,
+    //         "amount": `${amount}`
+    //     };
+    //     console.log(bodyObj);
+    //     let response = await fetch(
+    //         'http://localhost:9999/BankOfBen/api/makeDeposit', {
+    //             method: 'POST',
+    //             body: JSON.stringify(bodyObj),
+    //             headers: {"Content-type": "application/json; charset=UTF-8"}
+    //         }
+    //     );
+    //     console.log(response);
+    //     if (response.url.endsWith(".html") && response.url !== window.location.href) {
+    //         window.location.href = response.url;
+    //     } else {
+    //         console.log("Making reponse json.")
+    //         let account = await response.json();
+    //         let dollars = document.getElementById(`${accountNumber}dollars`);
+    //         dollars.innerText = account.balance.toFixed(2);
+    //         let balance = document.getElementById(`${accountNumber}balance`);
+    //         balance.style = "color: green";
+    //     }
+    // }
 }
 
 async function makeWithdrawal(accountNumber) {
-    let bodyObj = {
-        "accountNumber": `${accountNumber}`,
-        "amount": document.getElementById(`${accountNumber}amount`).value
-    };
-    console.log(bodyObj);
-    let response = await fetch(
-        'http://localhost:9999/BankOfBen/api/makeWithdrawal', {
-            method: 'POST',
-            body: JSON.stringify(bodyObj),
-            headers: {"Content-type": "application/json; charset=UTF-8"}
+    if (document.getElementById(`${accountNumber}amount`).checkValidity()) {
+        let amount = document.getElementById(`${accountNumber}amount`).value;
+        let bodyObj = {
+            "accountNumber": `${accountNumber}`,
+            "amount": `${amount}`
+        };
+        console.log(bodyObj);
+        let response = await fetch(
+            'http://localhost:9999/BankOfBen/api/makeWithdrawal', {
+                method: 'POST',
+                body: JSON.stringify(bodyObj),
+                headers: {"Content-type": "application/json; charset=UTF-8"}
+            }
+        );
+        console.log(response);
+        if (response.url.endsWith(".html") && response.url !== window.location.href) {
+            window.location.href = response.url;
+        } else {
+            console.log("Making reponse json.")
+            let account = await response.json();
+            let dollars = document.getElementById(`${accountNumber}dollars`);
+            dollars.innerText = account.balance.toFixed(2);
+            let balance = document.getElementById(`${accountNumber}balance`);
+            balance.style = "color: red";
         }
-    );
-    console.log(response);
-    if (response.url.endsWith(".html") && response.url !== window.location.href) {
-        window.location.href = response.url;
     } else {
-        console.log("Making reponse json.")
-        let account = await response.json();
-        let dollars = document.getElementById(`${accountNumber}dollars`);
-        dollars.innerText = account.balance.toFixed(2);
-        let balance = document.getElementById(`${accountNumber}balance`);
-        balance.style = "color: red";
+        console.log(document.getElementById(`${accountNumber}amount`).checkValidity());
+        console.log("Amount must be a number at least $0.01 to no more than 2 decimal places for deposit or withdrawal.");
     }
+    // let amount = document.getElementById(`${accountNumber}amount`).value;
+    // let splitAmountStringArray = `${amount}`.split('.');
+    // if (isNaN(amount)) {
+    //     console.log("Improper number");
+    // } else if (amount < 0.01) {
+    //     console.log("Amount must be at least $0.01 for deposit or withdrawal");
+    // } else if (splitAmountStringArray.length > 2) {
+    //     console.log("Improper number");
+    // } else if (splitAmountStringArray.length==2 && splitAmountStringArray[1].length > 2) {
+    //     console.log("Amount cannot be specified to more than two decimal places.");
+    // } else {
+    //     let bodyObj = {
+    //         "accountNumber": `${accountNumber}`,
+    //         "amount": `${amount}`
+    //     };
+    //     console.log(bodyObj);
+    //     let response = await fetch(
+    //         'http://localhost:9999/BankOfBen/api/makeWithdrawal', {
+    //             method: 'POST',
+    //             body: JSON.stringify(bodyObj),
+    //             headers: {"Content-type": "application/json; charset=UTF-8"}
+    //         }
+    //     );
+    //     console.log(response);
+    //     if (response.url.endsWith(".html") && response.url !== window.location.href) {
+    //         window.location.href = response.url;
+    //     } else {
+    //         console.log("Making reponse json.")
+    //         let account = await response.json();
+    //         let dollars = document.getElementById(`${accountNumber}dollars`);
+    //         dollars.innerText = account.balance.toFixed(2);
+    //         let balance = document.getElementById(`${accountNumber}balance`);
+    //         balance.style = "color: red";
+    //     }
+    // }
 }
 
 function customCreateTableRow(id, attachToElement, inner){

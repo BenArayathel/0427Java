@@ -14,7 +14,7 @@ public class RequestHelper {
 	final static Logger loggy = Logger.getLogger(RequestHelper.class);
 
 	public static String process(HttpServletRequest request, HttpServletResponse response) {
-		System.out.println("Request Helper");
+		loggy.info("Request Helper processing");
 		
 		String respString = "/home.html";
 		
@@ -257,6 +257,11 @@ public class RequestHelper {
 			loggy.info("Didn't recognize option "+uri);
 		}
 
+		return respString;
+	}
+	
+	public static String processUpdate(HttpServletRequest request, HttpServletResponse response) {
+		String respString = null;
 		return respString;
 	}
 
