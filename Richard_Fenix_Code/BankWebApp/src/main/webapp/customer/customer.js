@@ -1,9 +1,14 @@
 onload
-document.getElementById("myDeposit").style.display = "none";
-document.getElementById("myWithdraw").style.display = "none";
-document.getElementById("myTransfer").style.display = "none";
 
+loadCustomerHome();
 fetchCustomerInfo();
+
+function loadCustomerHome(){
+  document.getElementById("myDeposit").style.display = "none";
+  document.getElementById("myWithdraw").style.display = "none";
+  document.getElementById("myTransfer").style.display = "none";
+}
+
 
 //Toggle to show and hide deposit form
 function loadDeposit(){

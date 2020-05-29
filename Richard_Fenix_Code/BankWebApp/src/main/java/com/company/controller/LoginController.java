@@ -74,8 +74,6 @@ public class LoginController {
 		System.out.println("Servelet: " + customer);
 		
 		if (customer != null) {
-			System.out.println("Inside customer is not null and try to redirect...");
-
 			// convert java object to string that can be sent to front end (as a response)
 			// set response content type to json format.
 			response.setContentType("application/json");
@@ -91,7 +89,7 @@ public class LoginController {
 			session.setAttribute("customer", customer);
 			
 			if (customer.getCustomerId() == 99999) {
-				return "/api/admin";
+				return "/adminPage.html";
 			} else {	
 				return "/customerPage.html";		
 			}

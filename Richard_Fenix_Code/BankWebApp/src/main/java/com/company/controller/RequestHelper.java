@@ -15,7 +15,16 @@ public class RequestHelper {
 		switch(request.getRequestURI()) {
 			case "/BankWebApp/api/login":
 				return LoginController.login(request,response);
-				
+
+			case "/BankWebApp/api/admin":
+				return AdminController.home(request,response);
+
+			case "/BankWebApp/api/admin/viewcustomer":
+				return AdminController.viewCustomer(request,response);
+
+			case "/BankWebApp/api/approveaccount":
+				return AdminController.approveAccount(request,response);
+
 			case "/BankWebApp/api/newaccount":
 				return LoginController.newAccount(request,response);
 		
@@ -36,7 +45,6 @@ public class RequestHelper {
 
 			case "/BankWebApp/api/signoff":
 				return CustomerController.signOff(request,response);				
-
 				
 		}
 		
