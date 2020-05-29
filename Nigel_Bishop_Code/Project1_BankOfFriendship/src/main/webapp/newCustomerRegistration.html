@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bank Of Friendship</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+        <a class="navbar-brand" href="http://localhost:9090/Project1_BankOfFriendship/">Bank of Friendship</a>
+    </div>
+    <ul class="nav navbar-nav">
+        <li class="active"><a href="http://localhost:9090/Project1_BankOfFriendship/">Home</a></li>
+        <!-- <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Page 1 <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="#">Page 1-1</a></li>
+          <li><a href="#">Page 1-2</a></li>
+          <li><a href="#">Page 1-3</a></li>
+        </ul>
+      </li>
+      <li><a href="#">Page 2</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+      <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+    </ul> -->
+  </div>
+</nav>
+  
+<div class="container">
+  <h1>WELCOME TO BANK OF FRIENDSHIP</h1>
+  <p>Bank of Friendship bla bal bala asdf adsfadf adsf adsf asdfadsfadsfadfasdf</p>
+  <p>Bank of Friendship bla bal bala asdf adsfadf adsf adsf asdfadsfadsfadfasdf</p>
+</div>
+
+<div class="container">
+    <h3>New Customer Application Registration  </h3>
+    <p>Enter valid customer information for application consideration</p>
+
+    <form class="form-horizontal">
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="email">First Name:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="firstName" placeholder="Enter Firstname" name="firstName">
+                </div>
+        </div>
+
+      <div class="form-group">
+        <label class="control-label col-sm-2" for="email">Last Name:</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="lastName" placeholder="Enter Lastname" name="lastName">
+            </div>
+      </div>
+
+      <div class="form-group">
+        <label class="control-label col-sm-2" for="email">Email Address:</label>
+            <div class="col-sm-10">
+                <input type="email" class="form-control" id="emailAddress" placeholder="Enter Email Address" name="emailAddress">
+            </div>
+      </div>
+
+      <div class="form-group">
+        <label class="control-label col-sm-2" for="email">Contact Number:</label>
+            <div class="col-sm-10">
+                <input type="number" class="form-control" id="contactNumber" placeholder="Enter Contact Number" name="contactNumber">
+            </div>
+       </div>
+
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="email">Date Of Birth:</label>
+                <div class="col-sm-10">
+                    <input type="date" class="form-control" id="dob" placeholder="Enter Date Of Birth" name="dob">
+                </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="email">Street Address:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="street" placeholder="Enter Street Address" name="street">
+                </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="email">City:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="city" placeholder="Enter City" name="city">
+                </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="email">State:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="state" placeholder="Enter State" name="state">
+                </div>
+        </div>
+
+      <div class="form-group">        
+        <div class="col-sm-offset-2 col-sm-10">
+          <!-- <button type="submit" class="btn btn-success">Next</button> -->
+          <button id="newCustomer_btn" type="button" class="btn btn-success">Next</button>
+
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <!-- private String customerID;
+  private String lastName;
+  private String firstName;
+  private String emailAddress;
+  private long contactNumber;
+  private Date dob;
+  private String street;
+  private String city;
+  private String state; -->
+
+  <!-- MainDriver.SystemLog.info("SYSTEM:  PLEASE ENTER VALID CUSTOMER INFORMATION (NEW CUSTOMER PROFILE)");
+  MainDriver.SystemLog.info("\nSYSTEM:  ENTER LAST NAME");
+  customer.setLastName(myScanner.UserInput_LongString());
+  MainDriver.SystemLog.info("SYSTEM:  ENTER FIRST NAME");
+  customer.setFirstName(myScanner.UserInput_LongString());
+  MainDriver.SystemLog.info("SYSTEM:  ENTER EMAIL ADDRESS");
+  customer.setEmailAddress(myScanner.UserInput_LongString());
+  try 
+  {
+      MainDriver.SystemLog.info("SYSTEM:  ENTER CONTACT NUMBER (10 numbers 0-9)");
+      customer.setContactNumber(Long.parseLong(myScanner.UserInput_LongString()));
+      MainDriver.SystemLog.info("SYSTEM:  ENTER DATE OF BIRTH(DOB) IN (dd-MM-yyyy format only)");
+      String dob = myScanner.UserInput_String();
+      customer.setDob(customerServiceImpl.isValidDate(dob));
+      MainDriver.SystemLog.info("SYSTEM:   ENTER STREET ADDRESS");
+      customer.setStreet(myScanner.UserInput_LongString());
+      MainDriver.SystemLog.info("SYSTEM:   ENTER CITY");
+      customer.setCity(myScanner.UserInput_LongString());
+      MainDriver.SystemLog.info("SYSTEM:   ENTER STATE (Two letter format only. eg: 'NY' (for New York state) ");
+      customer.setState(myScanner.UserInput_String().toUpperCase()); -->
+
+
+
+    <script src="Javascript/createNewCust.js"></script>
+
+</body>
+</html>
