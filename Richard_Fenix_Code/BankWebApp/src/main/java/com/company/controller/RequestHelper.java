@@ -21,6 +21,10 @@ public class RequestHelper {
 
 			case "/BankWebApp/api/admin/viewcustomer":
 				return AdminController.viewCustomer(request,response);
+				
+			case "/BankWebApp/api/admin/transactions":
+				return AdminController.getTransactions(request,response);
+
 
 			case "/BankWebApp/api/approveaccount":
 				return AdminController.approveAccount(request,response);
