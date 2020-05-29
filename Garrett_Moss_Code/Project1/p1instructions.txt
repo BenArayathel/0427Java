@@ -1,0 +1,19 @@
+Project 1
+    • Project-1(P1) is the transformation from P0 to P1.
+    • You must convert the console-based app of P0 to the web-based app
+    • UI side technologies(Html, css, Bootstrap, vanilla JS) – client side
+      validations using vanilla JS is must and should, no angular strictly,
+      any other JS framework you guys wish to use please debate the need of
+      it with us and after approval you can go ahead and use it.
+    • Server Side technology – the BO(service) and DAO layer will be still
+      the same you will be using Servlets(from JEE) to handle server side
+      scripting to do handshake with JS, when JS does a AJAX call, the servlet
+      will be able to read the incoming request and generate back the responses
+      as JSON and JS will process it and put it to client.
+    • Do not waste much time in building a clean UI and in beautifying the client
+      side, rather the focus should be on making the handshakes from frontend to
+      backend and bringing out the efficiency by doing bug fixe
+separation of
+      concerns, usage of technical aspects. We are totally good accepting a Simple
+      UI with rich functionality, so please focus on it.
+    • Evaluation parameters will be as the same as P0.

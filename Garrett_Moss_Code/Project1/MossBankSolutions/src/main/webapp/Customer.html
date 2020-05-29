@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  <link rel="stylesheet" type = "text/css" href="./css/theme.css"> 
+    
+    
+    <title>Customer Home</title>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <a class="navbar-brand" href="#">
+          <img src="./css/m.png" width="30" height="30" class="d-inline-block align-top" alt="" loading="lazy">
+          Moss Bank Solutions
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="login.html">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#"></a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Customer Account Options
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="login.html">Logout<span class="sr-only">(current)</span></a>
+            </li>
+          </ul>
+        </div>
+      </nav> 
+    <h1>
+        Customer Portal
+    </h1>
+
+    <div  class="well">
+
+			<div class="text-center">
+				<h3 id="customerInfo" style="color: white; background-color: #0066ff; margin: 2cm; padding: 2cm;">Welcome to the Customer Portal!</h3>
+			</div>
+		</div>
+
+    <div id= "optionselection"class="list-group">
+        <a href="#"id="balance" class="list-group-item list-group-item-action">
+          View Balance
+          <form>
+            <div class="form-row">
+              <div class="col">
+                <input type="text" id = "balanceAccount"class="form-control" placeholder="Enter Account Number">
+              </div>
+            </div>
+            <button type="submit" id="balanceSubmit" class="btn btn-primary">Submit</button>
+          </form>
+        </a>
+        <a href="#" id="withdraw"class="list-group-item list-group-item-action">Make Withdrawl
+          <form>
+            <div class="form-row">
+              <div class="col">
+                <input type="text" id = "withdrawAccount"class="form-control" placeholder="Enter Account Number">
+              </div>
+              <div class="col">
+                <input type="text" id = "withdrawAmount"class="form-control" placeholder="Enter Withdraw Amount to two decimal places">
+              </div>
+              <div class="col">
+                <input type="text" id = "balanceWithdraw"class="form-control" placeholder="Enter Account Balance">
+              </div>
+            </div>
+            <button type="submit" id="withdrawSubmit" class="btn btn-primary">Submit</button>
+          </form>
+        </a>
+        <a href="#" id="deposit"class="list-group-item list-group-item-action">Make Deposit
+          <form>
+            <div class="form-row">
+              <div class="col">
+                <input type="text" id = "depositAccount" class="form-control" placeholder="Enter Account Number">
+              </div>
+              <div class="col">
+                <input type="text" id = "depositAmount"class="form-control" placeholder="Enter Deposit Amount to two decimal places">
+              </div>
+            </div>
+            <button type="submit" id="depositSubmit"class="btn btn-primary">Submit</button>
+          </form>
+        </a>
+        <a href="#" id="transfer"class="list-group-item list-group-item-action">Make Transfer
+          <form>
+            <div class="form-row">
+              <div class="col">
+                <input type="text" id = "fromAccount"class="form-control" placeholder="Enter your Account Number">
+              </div>
+              <div class="col">
+                <input type="text" id = "transferAmount"class="form-control" placeholder="Enter Transfer Amount to two decimal places">
+              </div>
+              <div class="col">
+                <input type="text" id = "toAccount"class="form-control" placeholder="Enter to Account Number">
+              </div>
+            </div>
+            <button type="submit" id="transferSubmit" class="btn btn-primary">Submit</button>
+          </form>
+        </a>
+        <a href="#" id="transfer"class="list-group-item list-group-item-action">Accept Transfer
+          <form>
+            <div class="form-row">
+              <div class="col">
+                <input type="text" id = "elseAccount"class="form-control" placeholder="Enter from Account Number">
+              </div>
+              <div class="col">
+                <input type="text" id = "acceptAmount"class="form-control" placeholder="Enter Transfer Amount to two decimal places">
+              </div>
+              <div class="col">
+                <input type="text" id = "yourAccount"class="form-control" placeholder="Enter your Account Number">
+              </div>
+            </div>
+            <button type="submit" id="acceptSubmit" class="btn btn-primary">Submit</button>
+          </form>
+        </a>
+        <a href="#" id="apply"class="list-group-item list-group-item-action">Apply for a new account
+          <form>
+            <div class="form-row">
+              <div class="col">
+                <input type="text" id = "username"class="form-control" placeholder="Enter your Username">
+              </div>
+              <div class="col">
+                <input type="text" id = "password"class="form-control" placeholder="Enter your Password">
+              </div>
+              <div class="col">
+                <input type="text" id = "startingBalance"class="form-control" placeholder="Enter a Starting Balance">
+              </div>
+            </div>
+            <button type="submit" id="newCustomer" class="btn btn-primary">Submit</button>
+          </form>
+        </a>
+        <a href="login.html" id="logout" class="list-group-item list-group-item-action">Logout</a>
+      </div>
+      <footer>
+          Moss Bank Solutions v0.1
+      </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+<script type="text/javascript" src="scripts/customer.js"></script>
+</body>
+</html>

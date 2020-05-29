@@ -1,0 +1,30 @@
+#login{
+    margin: 1cm;
+    padding-top: 3cm;
+    padding-bottom: 8.94cm;
+}
+
+footer{
+    text-align: center;
+    height: 50px;
+    background-color: grey;
+    font-weight: bold;
+    font-size: xx-large;
+    color: white;
+}
+
+
+#optionselection{
+    margin: 1cm;
+    padding-top: 3cm;
+    padding-bottom: 8.6cm;
+}
+
+h1{
+    text-align: center;
+}
+
+h3{
+    text-align: center;
+    padding: 1cm;
+}
