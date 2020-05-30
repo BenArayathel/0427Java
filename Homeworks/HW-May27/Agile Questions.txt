@@ -1,0 +1,132 @@
+Explain Agile
+“Agile is a term used to describe approaches to software development emphasizing incremental delivery, team collaboration, continual planning, and continual learning. 
+Agile software development refers to software development methodologies centered round the idea of iterative development, where requirements and solutions evolve through collaboration between self-organizing cross-functional teams. ... Scrum and Kanban are two of the most widely used Agile methodologies.
+
+12 Agile software development principles
+1
+Our highest priority is to satisfy the customer through early and continuous delivery of valuable software.
+
+2
+Welcome changing requirements, even late in development. Agile processes harness change for the customer’s competitive advantage.
+
+3
+Deliver working software frequently, from a couple of weeks to a couple of months, with a preference to the shorter timescale.
+
+4
+Business people and developers must work together daily throughout the project.
+
+5
+Build projects around motivated individuals. Give them the environment and support they need, and trust them to get the job done.
+
+6
+The most efficient and effective method of conveying information to and within a development team is face-to-face conversation.
+
+7
+Working software is the primary measure of progress.
+
+8
+Agile processes promote sustainable development. The sponsors, developers, and users should be able to maintain a constant pace indefinitely.
+
+9
+Continuous attention to technical excellence and good design enhances agility.
+
+10
+Simplicity–the art of maximizing the amount of work not done–is essential.
+
+11
+The best architectures, requirements, and designs emerge from self-organizing teams.
+
+12
+At regular intervals, the team reflects on how to become more effective, then tunes and adjusts its behavior accordingly.
+---------------------------------------------------------------------------------------
+Satisfying customers through early and continuous delivery of valuable work.
+Breaking big work down into smaller tasks that can be completed quickly.
+Recognizing that the best work emerges from self-organized teams.
+Providing motivated individuals with the environment and support they need and trusting them to get the job done.
+Creating processes that promote sustainable efforts.
+Maintaining a constant pace for completed work.
+Welcoming changing requirements, even late in a project.
+Assembling the project team and business owners on a daily basis throughout the project.
+Having the team reflect at regular intervals on how to become more effective, then tuning and adjusting behavior accordingly.
+Measuring progress by the amount of completed work.
+Continually seeking excellence.
+Harnessing change for a competitive advantage.
+Scrum Vs Agile
+
+Scrum Vs Kanban
+Scrum prescribes time-boxed iterations. Kanban focuses on planning a different duration for individual iteration. Scrum helps firms to save time and money. Kanban method focus on continuous improvement, productivity, and efficiency.
+
+What is SDLC
+Software Development Life Cycle
+Software Development Life Cycle (SDLC) is a process used by the software industry to design, develop and test high quality softwares. ... It is also called as Software Development Process. SDLC is a framework defining tasks performed at each step in the software development process.
+
+Waterfall Vs Agile
+Waterfall is a structured software development methodology so most times it can be quite rigid. Agile can be considered as a collection of many different projects. ... Agile is quite a flexible method which allows changes to be made in the project development requirements even if the initial planning has been completed.
+
+Burn down chart
+A burndown chart is a graphic representation of how quickly the team is working through a customer's user stories, an agile tool that is used to capture a description of a feature from an end-user perspective. The burndown chart shows the total effort against the amount of work for each iteration.
+
+Scrum Board
+A Scrum Board is a tool that helps Teams make Sprint Backlog items visible. The board can take many physical and virtual forms but it performs the same function regardless of how it looks. The board is updated by the Team and shows all items that need to be completed for the current Sprint.
+
+What is standup?
+The daily stand-up meeting (also known as a "daily scrum", a "daily huddle", "morning roll-call", etc.) is simple to describe: The whole team meets every day for a quick status update. We stand up to keep the meeting short. That's it.
+
+Role of scrum master
+The scrum master is the team role responsible for ensuring the team lives agile values and principles and follows the processes and practices that the team agreed they would use. The responsibilities of this role include: ... Ensuring a good relationship between the team and product owner as well as others outside the team.
+
+what is sprint
+a sprint is a set period of time during which specific work has to be completed and made ready for review. Each sprint begins with a planning meeting. ... The duration of a sprint is determined by the scrum master, the team's facilitator and manager of the Scrum framework.
+
+Define Devops
+DevOps (development and operations) is an enterprise software development phrase used to mean a type of agile relationship between development and IT operations. The goal of DevOps is to change and improve the relationship by advocating better communication and collaboration between these two business units.
+
+how devops is related to agile
+Agile refers to an iterative approach which focuses on collaboration, customer feedback, and small, rapid releases. DevOps is considered a practice of bringing development and operations teams together. Agile helps to manage complex projects. DevOps central concept is to manage end-to-end engineering processes.
+
+explain CI
+Continuous Integration (CI) is a development practice where developers integrate code into a shared repository frequently, preferably several times a day. Each integration can then be verified by an automated build and automated tests.
+
+explain Continuos Deployment and Continuous Delivery
+Continuous Delivery" means that you are ready and able to deploy any version to any supported platform at any time. "Continuous Deployment" means that you are engaging in actual deployment.
+
+explain about jenkins tool
+Jenkins is an open source automation tool written in Java with plugins built for Continuous Integration purpose. Jenkins is used to build and test your software projects continuously making it easier for developers to integrate changes to the project, and making it easier for users to obtain a fresh build.
+
+explain the CI/CD process
+CI/CD is a method to frequently deliver apps to customers by introducing automation into the stages of app development. The main concepts attributed to CI/CD are continuous integration, continuous delivery, and continuous deployment.
+
+what is continuous testing
+Continuous Testing is the process of executing automated tests as part of the software delivery pipeline in order to obtain feedback on the business risks associated with a software release candidate as rapidly as possible.
+
+devlopment vs production
+"Prod" means "Production". It describes the environment you are distributing to the customers. On the other hand, "Dev" means "Development", its the environment which the developers work on.
+
+what is continuos monitoring
+Continuous monitoring refers to the process and technology required to incorporate monitoring across each phase of your DevOps and IT operations lifecycles. It helps to continuously ensure the health, performance, and reliability of your application and infrastructure as it moves from development to production.
+
+Explain Maven as build automation tool
+Apache Maven, is a software project management, and comprehension tool, based on the concept of a project object model, or POM. Maven can manage a project's build, reporting, and documentation from a central piece of information. ... Maven is designed to provide a simple project setup, that uses best practices as a guide.
+
+explain pom
+POM stands for Project Object Model. It is fundamental unit of work in Maven. It is an XML file that resides in the base directory of the project as pom. xml. The POM contains information about the project and various configuration detail used by Maven to build the project(s).
+
+jar vs war vs ear
+Basically EAR files are a superset containing WAR files and JAR files.
+JAR file allows Java Runtime Environment (JRE) to deploy an entire application including the classes and related resources in a single request. WAR file allows testing and deploying web applications easily while EAR file allows deploying different modules onto an application server simultaneously.
+
+explain Maven build life cycle
+A build life cycle consists of a sequence of build phases, and each build phase consists of a sequence of goals. When you run Maven you pass a command to Maven. This command is the name of a build life cycle, phase or goal. If a life cycle is requested executed, all build phases in that life cycle are executed.
+
+how maven project is different than any other normal java project
+main difference is that maven also provides dependency management, standard project layout and project management. A build tool is used to create deliverable like JAR file or WAR file from Java source and resources for deployment.
+
+local vs remote maven repositry
+Remote repositories refer to any other type of repository, accessed by a variety of protocols such as file:// and https:// . These repositories might be a truly remote repository set up by a third party to provide their artifacts for downloading (for example, repo.maven.apache.org).
+Local Repo. The local repo is on your computer and has all the files and their commit history, enabling full diffs, history review, and committing when offline. This is one of the key features of a “distributed” version control system (DVCS), locally having the full repository history.
+
+what are user stories
+In software development and product management, a user story is an informal, natural language description of one or more features of a software system. User stories are often written from the perspective of an end user or user of a system.
+
+What is git feature branching?
+A feature branch is simply a separate branch in your Git repo used to implement a single feature in your project.
