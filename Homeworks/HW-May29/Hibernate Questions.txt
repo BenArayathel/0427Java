@@ -1,0 +1,91 @@
+Explain importance of Hibernate F/w
+Hibernate ORM (or simply Hibernate) is an object-relational mapping tool for the Java programming language. It provides a framework for mapping an object-oriented domain model to a relational database. It generates SQL calls and relieves the developer from the manual handling and object conversion of the result set.
+
+JPA Vs Hibernate
+JPA is just a specification while Hibernate is one of the JPA provider i.e hibernate is implementing various things mentioned in JPA contract. JPA or Java Persistence API is a standard specification for ORM implementations whereas Hibernate is the actual ORM implementation or framework.
+
+jdbc vs hibernate
+JDBC is a technology for persistence of data. Hibernate is a framework for persistence of objects. JDBC uses SQL (Structured Query Language) to interact with the database. Hibernate uses HQL primarily uses (Hibernate Query Language) and also SQL (Structured Query Language) to interact with the database.
+
+builder pattern in hibernate
+Hibernate uses Java Beans to access the properties, so it relies on getXXX() and setXXX() methods being present.
+
+factory pattern in hibernate
+SessionFactory of Hibernate is an example of the Factory Design Pattern. This pattern defines an interface for creating an object, but let subclasses decide which class to instantiate. Factory Method lets a class defer instantiation to subclasses.
+
+fetch strategies in hibernate
+Hibernate – fetching strategies examples
+fetch-“join” = Disable the lazy loading, always load all the collections and entities.
+fetch-“select” (default) = Lazy load all the collections and entities.
+batch-size=”N” = Fetching up to 'N' collections or entities, *Not record*.
+fetch-“subselect” = Group its collection into a sub select statement.
+
+load vs get
+Get() returns the object by fetching it from database or from hibernate cache whereas load() just returns the reference of an object that might not actually exists, it loads the data from database or cache only when you access other properties of the object.
+
+save vs persist
+Difference between save and persist method in Hibernate
+First difference between save and persist is there return type. Similar to save method persist also INSERT records into database but return type of persist is void while return type of save is Serializable object.
+
+save vs saveorupdate
+Main difference between save and saveOrUpdate method is that save() generates a new identifier and INSERT record into database while saveOrUpdate can either INSERT or UPDATE based upon existence of record. save() method will fail if the primary key is already persistent i.e. object already exists in the database.
+
+what is HQL?
+HQL is an object-oriented query language, similar to SQL, but instead of operating on tables and columns, HQL works with persistent objects and their properties. ... HQL is a superset of the JPQL, the Java Persistence Query Language. A JPQL query is a valid HQL query, but not all HQL queries are valid JPQL queries.
+
+HQL vs SQL
+SQL is based on a relational database model whereas HQL is a combination of object-oriented programming with relational database concepts. SQL manipulates data stored in tables and modifies its rows and columns. HQL is concerned about objects and its properties. ... HQL is similar to SQL and is also case insensitive.
+core interfaces in hibernate
+
+different states of an object in hibernate
+Hibernate defines and supports the following object states: Transient - an object is transient if it has just been instantiated using the new operator, and it is not associated with a Hibernate Session . It has no persistent representation in the database and no identifier value has been assigned.
+
+Persistent objects are instances of POJO classes that you create that represent rows in the table in the database. ... When a POJO instance is in session scope, it is said to be persistent i.e hibernate detects any changes made to that object and synchronizes it with database when we close or flush the session.
+
+etached Object State:Object which is just removed from hibernate session is called as detached object. The sate of the detached object is called as detached state. When the object is in detached sate then it contain identity but you can't do persistence operation with that identity.
+
+what is n+1 problem with hibernate?
+N+1 problem is a performance issue in Object Relational Mapping that fires multiple select queries (N+1 to be exact, where N= number of records in table) in database for a single select query at application layer. Hibernate provides multiple ways to catch and prevent this problem.
+
+contextual sessions in hibernate
+Most applications using Hibernate need some form of "contextual" sessions, where a given session is in effect throughout the scope of a given context.
+
+L1 Vs L2 cache
+This cache makes use of Hibernate's own caching. In JPA/Hibernate (and other similar ORM tools), the L1 cache is the transactional cache i.e. the entities stored from when you open a transaction to when you close it. ... The L2 cache is a full (typically) shared cache.
+
+different inheritance mapping in hibernate
+Table Per Hierarchy.
+Table Per Concrete class.
+Table Per Subclass.
+
+dirty checking in hibernate
+Dirty Checking is one of the features of hibernate. In dirty checking, hibernate automatically detects whether an object is modified (or) not and need to be updated. As long as the object is in persistent state i.e., bound to a particular Session(org. hibernate.
+
+different ways of doing association mapping in hibernate
+Many-to-One Associations
+With JPA and Hibernate, you can model this in 3 different ways. You can either model it as a bidirectional association with an attribute on the Order and the OrderItem entity. Or you can model it as a unidirectional relationship with an attribute on the Order or the OrderItem entity.
+
+what is ORM
+Object-relational mapping in computer science is a programming technique for converting data between incompatible type systems using object-oriented programming languages. This creates, in effect, a "virtual object database" that can be used from within the programming language.
+
+what is OGM
+Hibernate OGM is a persistence engine providing Java Persistence (JPA) support for NoSQL datastores. It reuses Hibernate ORM's object life cycle management and (de)hydration engine but persists entities into a NoSQL store (key/value, document, column-oriented, etc) instead of a relational database.
+
+what is hbm2ddl auto?
+Hibernate hbm2ddl. auto: hbm2ddl. auto is a hibernate configuration property. It is used to validate and exports schema DDL to the database when the SessionFactory is created.
+
+explain hibernate.cfg.xml
+Hibernate requires to know in advance — where to find the mapping information that defines how your Java classes relate to the database tables. ... All such information is usually supplied as a standard Java properties file called hibernate. properties, or as an XML file named hibernate. cfg. xml.
+
+give annotations used in hibernate
+@Entity : specifies that the class is an entity.
+@Table : defines the primary table for the annotated entity.
+@Column : it is used to specify a mapped column for the persistent field.
+@Id : defines the primary key field of the entity.
+@GeneratedValue : allows the auto generation of the field’s values by hibernate, according to strategy attribute.
+
+what is dialect
+The dialect specifies the type of database used in hibernate so that hibernate generate appropriate type of SQL statements. For connecting any hibernate application with the database, it is required to provide the configuration of SQL dialect.
+
+explain need of Criteria and Restrictions  API in hibernate
+The Criteria API makes it easy to use restrictions in your queries to selectively retrieve objects; for instance, your application could retrieve only products with a price over $30. You may add these restrictions to a Criteria object with the add() method. The add() method takes an org. hibernate.
