@@ -1,0 +1,115 @@
+What is cloud
+cloud computing means storing and accessing data and programs over the Internet instead of your computer's hard drive. The cloud is just a metaphor for the Internet.
+
+Explain IAAS, PAAS, SAAS, FAAS
+Infrastructure as a service (IaaS) is a form of cloud computing that provides virtualized computing resources over the internet. IaaS is one of the three main categories of cloud computing services,
+
+Platform-as-a-service (PaaS) is a type of cloud computing offering in which a service provider delivers a platform to clients, enabling them to develop, run, and manage business applications without the need to build and maintain the infrastructure such software development processes typically require
+Compare AWS with other providers like GCP, Azure
+
+Software as a service (SaaS) is a software distribution model in which a third-party provider hosts applications and makes them available to customers over the Internet.
+
+Function as a service (FaaS) is a serverless way to execute modular pieces of code on the edge. FaaS lets developers write and update a piece of code on the fly, which can then be executed in response to an event, such as a user clicking on an element in a web application.
+
+List differnt services you know of AWS
+
+Service #1 - Amazon S3.
+Service #2 - Amazon EC2 [Elastic Compute Cloud]
+Service #3 - AWS Lambda.
+Service #4 - Amazon Glacier.
+Service #5 - Amazon SNS.
+Service #6 - Amazon CloudFront.
+Service #7 - Amazon EBS [Elastic Block Store]
+Service #8 - Amazon Kinesis.
+Service #9 - Amazon VPC
+Service #10 - Amazon SQS
+Service #11 - Amazon Elastic Beanstalk
+Service #12 - DynamoDB
+Service #13 - Amazon RDS [Relational Database Service]
+Service #14 - Amazon ElastiCache
+Service #15 - Amazon Redshift
+
+what is VPC
+Amazon Virtual Private Cloud (Amazon VPC) enables you to launch AWS resources into a virtual network that you've defined. This virtual network closely resembles a traditional network that you'd operate in your own data center, with the benefits of using the scalable infrastructure of AWS.
+
+what are differnt types of clouds available
+There are three main cloud computing types, with additional ones evolving—software-as-a-service (SaaS) for web-based applications, infrastructure-as-a-service (IaaS) for Internet-based access to storage and computing power, and platform-as-a-service (PaaS) that gives developers the tools to build and host Web
+
+what is VPN
+A VPN, or Virtual Private Network, allows you to create a secure connection to another network over the Internet. VPNs can be used to access region-restricted websites, shield your browsing activity from prying eyes on public Wi-Fi, and more. 
+
+what is EC2
+Amazon Elastic Compute Cloud (Amazon EC2) is a web service that provides secure, resizable compute capacity in the cloud. It is designed to make web-scale cloud computing easier for developers. Amazon EC2's simple web service interface allows you to obtain and configure capacity with minimal friction.
+
+explain EBS
+AWS Elastic Block Store (EBS) is Amazon's block-level storage solution used with the EC2 cloud service to store persistent data. ... EBS offers the same high availability and low-latency performance within the selected availability zone, allowing users to scale storage capacity at low subscription-based pricing model.
+
+explain why would you use S3 bucket and how you configure it
+A bucket is a logical unit of storage in Amazon Web Services (AWS) object storage service, Simple Storage Solution (S3). Buckets are used to store objects, which consist of data and metadata that describes the data.
+
+What is Route53
+Amazon Route 53 is a highly available and scalable cloud Domain Name System (DNS) web service. You can use Amazon Route 53 to configure DNS health checks to route traffic to healthy endpoints or to independently monitor the health of your application and its endpoints.
+
+Give some linux commands you know and usage
+cd.
+chmod.
+chown.
+curl.
+df.
+diff.
+mkdir. 
+rmdir. 
+lsblk. 
+mount.
+
+how would you create and configure EC2
+To launch the EC2 instance and mount an EFS file system
+Open the Amazon EC2 console at https://console.aws.amazon.com/ec2/.
+Choose Launch Instance.
+In Step 1: Choose an Amazon Machine Image (AMI), find an Amazon Linux AMI at the top of the list and choose Select.
+In Step 2: Choose an Instance Type, choose Next: Configure Instance Details.
+In Step 3: Configure Instance Details, provide the following information:
+For Network, choose the entry for the same VPC that you noted when you created your EFS file system in Step 1: Create Your Amazon EFS File System.
+For Subnet, choose a default subnet in any Availability Zone.
+For File systems, make sure that the EFS file system that you created in Step 1: Create Your Amazon EFS File System is selected. The path shown next to the file system ID is the mount point that the EC2 instance will use, which you can change. Choose Add to user data to mount the file system when the EC2 is launched.
+Under Advanced Details, confirm that the user data is present in User data.
+Choose Next: Add Storage.
+Choose Next: Add Tags.
+Name your instance and choose Next: Configure Security Group.
+In Step 6: Configure Security Group, set Assign a security group to Select an existing security group. Choose the default security group to make sure that it can access your EFS file system.
+You can't access your EC2 instance by Secure Shell (SSH) using this security group. SSH access isn't required for this exercise. To add access by SSH later, you can edit the default security and add a rule to allow SSH. Or you can create a new security group that allows SSH. You can use the following settings to add SSH access:
+Type: SSH
+Protocol: TCP
+Port Range: 22
+Source: Anywhere 0.0.0.0/0
+Choose Review and Launch.
+Choose Launch.
+Select the check box for the key pair that you created, and then choose Launch Instances.
+
+explain RDS services by AWS
+Amazon Relational Database Service (Amazon RDS) is a web service that makes it easier to set up, operate, and scale a relational database in the AWS Cloud. It provides cost-efficient, resizable capacity for an industry-standard relational database and manages common database administration tasks.
+
+what is security group
+A security group acts as a virtual firewall for your instance to control inbound and outbound traffic. If you launch an instance using the Amazon EC2 API or a command line tool and you don't specify a security group, the instance is automatically assigned to the default security group for the VPC.
+
+what is auto scaling
+Amazon EC2 Auto Scaling helps ensure that your application always has the right amount of capacity to handle the current traffic demand. Better cost management. Amazon EC2 Auto Scaling can dynamically increase and decrease capacity as needed.
+
+what is IAM in AWS
+AWS Identity and Access Management (IAM) enables you to manage access to AWS services and resources securely. Using IAM, you can create and manage AWS users and groups, and use permissions to allow and deny their access to AWS resources. IAM is a feature of your AWS account offered at no additional charge.
+
+what is cloud watch
+Amazon CloudWatch is a monitoring and management service that provides data and actionable insights for AWS, hybrid, and on-premises applications and infrastructure resources. With CloudWatch, you can collect and access all your performance and operational data in form of logs and metrics from a single platform.
+
+what is sonar cloud
+SonarCloud is the leading online service to catch Bugs and Security Vulnerabilities in your Pull Requests and throughout your code repositories.
+
+Devops with cloud
+You can't have DevOps without cloud.
+That doesn't mean cloud is necessary to adopt DevOps practices, though. As long as an organization has efficient processes for obtaining resources to deploy and test application changes, it can adopt a DevOps approach.
+
+Explain serverless
+Serverless computing is a method of providing backend services on an as-used basis. Servers are still used, but a company that gets backend services from a serverless vendor is charged based on usage, not a fixed amount of bandwidth or number of servers.
+
+Explain Lambda
+AWS Lambda is an event-driven computing cloud service from Amazon Web Services that allows developers to program functions on a pay-per-use basis without having to provision storage or compute resources to support them.
