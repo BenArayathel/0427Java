@@ -1,0 +1,94 @@
+Explain Agile
+	Various approaches to software development under which rquirements and solutions evolve through the collaborative
+	effort of self-organizing and cross-functional teams and their customers.
+12 Agile software development principles
+	1. Customer Satisfaction
+	2. Welcome Change
+	3. Deliver Frequently
+	4. Working Together
+	5. Motivated Team
+	6. Face to Face
+	7. Working Software
+	8. Constant Pace
+	9. Good Design
+	10. Simplicity
+	11. Self-Organization
+	12. Reflect and Adjust
+Scrum Vs Agile
+	Agile is continuous integration of development and testing.
+	Scrum is an Agile process on delivering business value in the shortest time.
+Scrum Vs Kanban
+	Scrum prescribes time-boxed iterations; saves time and money.
+	Kanban focuses on planning a different duration for individual iteration; continuous improvement, productivity, and efficiency.
+What is SDLC
+	Software Development Life Cycle; process used by software industry to design, develop, and test high quality softwares.
+Waterfall Vs Agile
+	Waterfall is linear; Agile is cross-functional.
+Burn down chart
+	A graphical representation of work left to do versus time.
+	Measures how quickly a team is working through a customer's user stories.
+Scrum Board
+	A tool that helps teams make Sprint backlog items visible.
+What is standup?
+	Daily meetings for development team to synchronize activities and create a plan for the next time interval.
+Role of scrum master
+	Ensuring team lives agile values and principles and follows the processes and practices that the team agrees they would use.
+what is sprint
+	Repeatable fixed time-box during which a "done" product of the highest possible value is created.
+Define Devops
+	A set of practices that combine software development and IT operations.
+	It aims to shorten development life cycle and provide continuous delivery of high software quality.
+how devops is related to agile
+	DevOps focuses on continuous integration and testing; Agile focuses on constant change.
+explain CI
+	The practice of merging all dev's working copies to a shared mainline (pipeline) several times a day.
+	After merge their code changes to a central repo, automated builds and tests are run.
+explain Continuos Deployment and Continuous Delivery
+	Continuous Deployment - a software release process that uses automated testing to validate if changes to a codebase are correct
+		and stable for immediate autonomous deployment.
+	Continuos Delivery - an approach in which teams produce software in short cycles, ensuring that the software can be reliably
+		released at any time and, when releasing, doing so manually.
+explain about jenkins tool
+	Free and open-source automation server.
+	Helps automate parts of software development related to building, testing, and deploying.
+	Facilitates continuous integration and continuous delivery.
+explain the CI/CD process
+	Plan > Code > Build > Test > Release > Deploy > Operate > Monitor > Plan
+what is continuous testing
+	A way of reducing waiting time for feedback to developers by introducing development environment-triggered tests and tester-triggered tests.
+Development vs production
+	Development is making something stable enough to run; Production is actually running it.
+what is continuos monitoring
+	Process used to detect compliance and risk issues associated with an organization's financial and operational environment.
+Explain Maven as build automation tool
+	Defines the scenario where dependent projects build process gets started once the project build is successfully completed,
+	in order to ensure that dependent projects are stable.
+explain POM
+	Project Object Model; a fundamental unit of work in Maven.
+	It's an XML file that contains info about project and config details used by Maven to build the project.
+jar vs war vs ear
+	In J2EE, modules are packaged as JAR, WAR, or EAR based on their functionality.
+	JAR - Java Archives; encapsulates one or more Java classes and a descriptor.
+	WAR - Web Archive; a WEB module loaded into a web container of a Java Application Server. Contains Servlet class files and JSP files.
+	EAR - Enterprise Archive; both files above packaged as JAR file with an .EAR extension.
+explain Maven build life cycle
+	Validate - validate the project is correct and all necessary info is available.
+	Compile - compile the project source code.
+	Test - test the compiled source code using a suitable unit testing framework.
+	Package - take compiled code and package it in its distributable format, such as JAR/WAR/EAR.
+	Verify - run any checks on results of integration tests to ensure quality criteria are met.
+	Install - install package into local repo, for use as a dependency in other projects locally.
+	Deploy - done in build environment, copies final package to remote repo for sharing with other devs and projects.
+how maven project is different than any other normal java project
+	Build process is easy.
+	Provides a uniform build system.
+	Provides quality project information.
+	Encourages better development practices.
+local vs remote maven repository
+	Local repo is a directory on the PC where Maven runs.
+	Remote refers to any repo accessed by a variety of protocols like file:// and https://.
+what are user stories
+	Short, simple descriptions of a feature told from the perspective of the customer.
+What is git feature branching?
+	Instead of copying files from directory to directory, Git stores a branch as a reference to a commit.
+	In this sense, a branch represents the tip of a series of commits; it's not a container for commits.

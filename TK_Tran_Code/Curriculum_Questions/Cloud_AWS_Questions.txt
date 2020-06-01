@@ -1,0 +1,33 @@
+What is cloud
+	On-demand available of computer system resources, especially data storage and computing power, w/o directive active management by the user.
+Explain IAAS, PAAS, SAAS, FAAS
+	IAAS - provides virtualized computing resources over the Internet.
+	PAAS - provides a platform to develop, run, and manage applications.
+	SAAS - provides software licensed on a subscription basis, centrally hosted.
+	FAAS - Function as a Service..
+Compare AWS with other providers like GCP, Azure
+List differnt services you know of AWS
+what is VPC
+	Virtual Private Cloud
+what are differnt types of clouds available
+what is VPN
+	Virtual Private Network
+what is EC2
+	Elastic Cloud Compute
+explain EBS
+	Elastic Block Store
+explain why would you use S3 bucket and how you configure it
+	It's scalable based on traffic of our web app.
+What is Route53
+	Highly available and scalable cloud DNS.
+Give some linux commands you know and usage
+how would you create and configure EC2
+explain RDS services by AWS
+what is security group
+what is auto scaling
+what is IAM in AWS
+what is cloud watch
+what is sonar cloud
+Devops with cloud
+Explain serverless
+Explain Lambda
