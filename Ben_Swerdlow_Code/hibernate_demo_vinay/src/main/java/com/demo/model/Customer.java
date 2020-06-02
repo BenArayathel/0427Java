@@ -16,7 +16,7 @@ public class Customer {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private int cid;
 	private String name;
-	@OneToOne(fetch = FetchType.LAZY);// Will not make it eager. Will only pull laptop details when specifically asked for it
+	@OneToOne(fetch = FetchType.LAZY)// Will not make it eager. Will only pull laptop details when specifically asked for it
 	private Laptop laptop;
 	
 	public Customer() {

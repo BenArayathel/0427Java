@@ -10,8 +10,8 @@ public class HibernateUtil {
 	 * Hibernate's imporatant objects and interfaces
 	 * 
 	 * Configuration (Class)
-	 * 	- Configuration gathers information from teh hibernate.cfg.xml and to use that info to create a session factory
-	 * SessionFactor (Interface)
+	 * 	- Configuration gathers information from the hibernate.cfg.xml and to use that info to create a session factory
+	 * SessionFactory (Interface)
 	 * 	- Create sessions and store information on HOW to make connections to your database.
 	 * 	- Once it's configured, it's immutable
 	 * Session (Interface)
