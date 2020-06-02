@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+	<!-- 
+		What is Spring bean?
+				A Spring bean is an object that you've told spring to manage for you
+				
+		What is bean wiring?
+				Bean wiring is the process of telling spring to manage objects for you 
+				AND also defining what dependencies those objects may have 
+				(this can be done with annotaionns as well)
+				
+		What are the types of Injections:
+				Setter
+				Constructor 
+				Field (be careful)
+		-->
+				
+	<!-- MANUAL WIRING -->
+	<!-- SETTER INJECTION -->
+	<!-- <bean name = "PlanetDaoFIRST" class = "com.example.dao.PlanetDaoImpl"></bean>
+	<bean name = "PlanServiceFIRST" scope = "singleton" class = "com.example.service.PlanetServiceImpl">
+			<property name="pDao" ref = "PlanetDaoFIRST"></property>
+	</bean> -->
+	
+	<!-- CONSTURCOTR INJECTION -->
+	<bean name = "PlanetDaoFIRST" class = "com.example.dao.PlanetDaoImpl"></bean>
+	<bean name = "PlanServiceFIRST" scope = "singleton" class = "com.example.service.PlanetServiceImpl">
+		<constructor-arg index = "0" ref = "PlanetDaoFIRST"></constructor-arg>
+		<constructor-arg index = "1" type = "int" value = "5"/>
+	</bean>
+	 
+</beans>
