@@ -4,6 +4,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.example.service.PlanetService;
+import com.example.service.PlanetServiceImpl;
 //import com.example.service.PlanetServiceImpl;
 
 /*
@@ -60,16 +61,26 @@ public class Main {
 	
 //	private static PlanetService pServ = new PlanetServiceImpl();
 	private static PlanetService pServ;
+//	private static PlanetService pServ1;
+//	private static PlanetService pServ2;
+//	private static PlanetService pServ3;
 
 	public static void main(String[] args) {
 		
 		// This asks spring service to make the PlanetService object for us
-		pServ = appContext.getBean("PlanServiceFIRST", PlanetService.class);
+		pServ = appContext.getBean("planetService", PlanetService.class);
+//		pServ = appContext.getBean("PlanServiceFIRST", PlanetService.class);
+//		pServ = appContext.getBean("PlanServiceFIRST", PlanetService.class);
+//		pServ = appContext.getBean("PlanServiceFIRST", PlanetService.class);
 		// This seems overkill, but we can have multiple PlanetService beans that have different configurations and we just reference them very simply 
 		// instead of setting them up the same way each time.
 		
 		System.out.println(pServ.getAllPlanets());
-
+//		System.out.println(pServ1.getAllPlanets());
+//		System.out.println(pServ2.getAllPlanets());
+//		System.out.println(pServ3.getAllPlanets());
+		System.out.println(PlanetServiceImpl.howManyServicesDidIMake);
+		
 	}
 
 }
