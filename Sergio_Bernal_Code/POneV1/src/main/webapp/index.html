@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/main.css">
+    <title>Hack Bank</title>
+
+</head>
+
+<body class="d-flex flex-column">
+
+    <div class="container-fluid" style="height: 110px;">
+        <header class="bg-danger fixed-top header">
+            <nav class="navbar stick-top navbar-expand-lg navbar-light bg-danger">
+                <div class="container d-flex justify-content-center">
+                    <a class="navbar-brand align-middle" href="javascript:void()">
+                        <strong class="hb-logo">H<span class="b-animation">B</span></strong>
+                    </a>
+                </div>
+            </nav>
+        </header>
+    </div>
+
+    <div class="container mt-3 d-flex justify-content-center">
+
+        <div class="card shadow rounded" style="width: 300px;">
+            <div class="card-body">
+                <form class="form-signin text-center" method="POST">
+                    <h1 class="h3 mb-3 font-weight-normal"><strong>HACK BANK</strong></h1>
+                    <h5 class="mb-3 font-weight-normal">Welcome to version 2.0</h5>
+                    <div class="form-group">
+                        <label for="inpEmail" class="text-left">Email address</label>
+                        <input type="email" id="inpEmail" class="form-control mb-3" placeholder="Email address"
+                            required="" autofocus="">
+                    </div>
+                    <div class="form-group">
+                        <label for="inpPassword" class="sr-only">Password</label>
+                        <input type="password" id="inpPassword" class="form-control mb-3" placeholder="Password"
+                            required="">
+                    </div>
+
+                    <!-- <div class="checkbox mb-3">
+
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="customCheck1">
+                            <label class="custom-control-label" for="customCheck1">Remember Me.</label>
+                        </div>
+
+                    </div> -->
+                    <button class="btn btn-lg btn-danger btn-block text-uppercase" id="btnLogin" type="submit">
+                        <strong>Sign in</strong>
+                    </button>
+                    <button class="btn btn-link" id="btnRegister"><strong>Register</strong></button>
+                    <p class="mt-4 mb-0 text-muted">HackBank © 2020</p>
+                </form>
+            </div>
+        </div>
+
+        <div id="toastContainer"></div>
+
+    </div>
+
+    <footer></footer>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+
+    <script src="./script/footer.js"></script>
+    <script src="./script/cookies.js"></script>
+    <script src="./script/bank-toast.js"></script>
+    <script src="./script/login.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,53 @@
+.header {
+    height: 110px;
+    clip-path: polygon(100% 0%, 100% 55%, 50% 100%, 0% 55%, 0% 0%);
+}
+.hb-logo{
+    font-stretch: extra-condensed;
+    font-size: x-large;
+    letter-spacing: -3px;
+    margin-left: 6px;
+}
+.b-animation{
+    color: rgb(0, 255, 157);
+    animation-name: b-animation;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+}
+@keyframes b-animation {
+    0%   {color: rgb(0, 255, 157);}
+    20%  {color: rgb(10, 235, 243);}
+    40%  {color: rgb(255, 255, 255);}
+    60%  {color: rgb(0, 183, 255);}
+    80%  {color: rgb(0, 255, 115);}
+    100%  {color: rgb(163, 255, 87);}
+}
+
+/* Login CSS */
+.form-signin {
+    width: 100%;
+    max-width: 330px;
+    padding: 15px;
+    margin: auto;
+}
+
+/* Registration Form*/
+.br-right{
+    border-right: 2px dashed #b8b8b8;
+}
+.br-bottom{
+    border-bottom: 2px dashed #b8b8b8;
+}
+
+/* Hidding Arrows Btn on input number */
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
