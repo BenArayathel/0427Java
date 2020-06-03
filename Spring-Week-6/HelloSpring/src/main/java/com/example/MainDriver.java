@@ -46,9 +46,15 @@ public class MainDriver {
 	
 	public static void main(String[] args) {
 		
-		pServ = appContext.getBean("PlanServiceFIRST", PlanetService.class);
+//		pServ = new PlanetServiceImpl(pDao);
+		
+		pServ = appContext.getBean("PlanService", PlanetService.class);
+//		pServ = appContext.getBean("PlanServiceFIRST", PlanetService.class);
+//		pServ = appContext.getBean("PlanServiceSECOND", PlanetService.class);
+//		pServ = appContext.getBean("PlanServiceSECOND", PlanetService.class);
 		
 		System.out.println(pServ.getAllPlanets());
+		System.out.println(PlanetServiceImpl.howManyServicesDidIMake);
 	}
 
 }
