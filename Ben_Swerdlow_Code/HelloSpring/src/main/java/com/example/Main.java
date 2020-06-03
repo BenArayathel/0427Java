@@ -68,7 +68,7 @@ public class Main {
 	public static void main(String[] args) {
 		
 		// This asks spring service to make the PlanetService object for us
-		pServ = appContext.getBean("planetService", PlanetService.class);
+		pServ = appContext.getBean("PlanService", PlanetService.class);
 //		pServ = appContext.getBean("PlanServiceFIRST", PlanetService.class);
 //		pServ = appContext.getBean("PlanServiceFIRST", PlanetService.class);
 //		pServ = appContext.getBean("PlanServiceFIRST", PlanetService.class);

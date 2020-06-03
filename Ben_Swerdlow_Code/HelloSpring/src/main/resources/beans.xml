@@ -46,8 +46,8 @@
 	  -->
 	  <!-- This is going to allow planetService to know that there is a variable in the setter that is of type PlanetDaoImpl and it should make one if it needs one -->
 	  <!-- we're using the classes right now, but should use interfaces? -->
-	  <!-- <bean name="planetDao" class="com.example.dao.PlanetDaoImpl"></bean>
-	  <bean name="planetService" scope="singleton" class="com.example.service.PlanetServiceImpl" autowire="byName"></bean> -->
+	  <!-- <bean name="planetDao" class="com.example.dao.PlanetDaoImpl"></bean> -->
+	  <!-- <bean name="planetService" scope="singleton" class="com.example.service.PlanetServiceImpl" autowire="byName"></bean> -->
 	  <!-- autowire="byType" || "byName" -->
 	  
 	  <!-- This will turn on spring's context module annotation (yay annotations!) -->

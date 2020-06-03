@@ -37,6 +37,7 @@ public class Planet {
 	// This is a column called planet_slogan
 	@Column(name="planet_slogan")
 	private String slogan;
+//	@Column(name="star")
 	
 	@OneToMany(mappedBy = "myPlanet", fetch = FetchType.LAZY)
 	private List<Moon> moons = new ArrayList<>();
