@@ -1,0 +1,26 @@
+Polymorphism:
+
+	The word itself means to take many different forms. From inheritance 
+	we're allowed to reuse code implemented by parent classes but we can 
+	also use those methods to complete different actions.
+
+	Overriding:
+		Using the same method signature of the parent class but with 
+		a different implementation. 
+
+		Run time polymorphism (dynamic binding)
+	
+		Only applicable to inherited methods, so Constructors and 
+		same level methods cannot be overriden
+
+	Overloading
+		Same method name, but different parameters:
+			Different number of parameters
+			Different types of parameters
+			Different order to parameters
+
+		Compile time polymorphism (static binding)
+
+		Can be applied to constructors and same level methods, they 
+		can also have different return types as well. 
+		

@@ -1,0 +1,69 @@
+
+Inheritance
+
+	Is one of the most important aspects of OOP, allows you to inherit methods and variables from 
+	parent classes; this promotes code reuse. 
+
+	For homogenous inheritance we use the keyword: "extends"
+	class -> class
+	abstract class -> class
+	abstract class -> abstract class
+	interface -> interface
+
+	For hetrogenous inheritance we use the keyword: "implements"
+	interface -> class
+	(A interface cannot implement a class)
+
+	Child classes have access to their parent classes, e.g. (multilevel inheritance)
+	A -> B -> C
+	C will have access to all the methods and variables in B and A.
+	B will have access to all the methods in B (but not C).
+	A will not have access to B and C
+
+	In Java classes cannot extend multiple classes but it does allow us to extend and 
+	implement multiple interfaces. 
+ 
+	This introduces us to the concept of the diamond problem: 
+		If Java did allow multiple classes, and both parent classes shared a method
+		signature but different implementation, the child class would not know which 
+		issue version to pick.
+
+		With interfaces, because none of the methods can be concrete, we don't have this 
+		issue as there won't be different implementations of a method. 
+
+		However since JDK, we've been given the option of creating a concrete method in
+		interface, using the keyword "default". 
+
+		If you implement multiple interfaces with different implementations of a method,
+		you'll be forced to override the method and use the keyword "super" to use a 
+		particular iterfaces method.
+
+		syntax:
+
+		 public interface ConcreteInterface {
+	
+			default void test() {
+				System.out.println("This is concrete");
+			}	
+	
+			interface AnotherI{
+				default void test() {
+					System.out.println("My other method!");
+				}
+			}
+	
+			class MyClass implements ConcreteInterface, AnotherI{
+
+				@Override
+				public void test() {			
+					AnotherI.super.test();
+				}
+		
+			}
+	
+			public static void main(String[] args) {
+				ConcreteInterface asdf = new MyClass();
+				asdf.test();
+			}
+		}
+
