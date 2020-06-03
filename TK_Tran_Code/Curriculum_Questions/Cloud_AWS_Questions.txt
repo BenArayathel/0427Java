@@ -16,6 +16,8 @@ what is EC2
 	Elastic Cloud Compute
 explain EBS
 	Elastic Block Store
+ELB
+	Elastic Load Balancing
 explain why would you use S3 bucket and how you configure it
 	It's scalable based on traffic of our web app.
 What is Route53
