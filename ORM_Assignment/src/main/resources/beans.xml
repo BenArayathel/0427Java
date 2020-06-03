@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
+		
+		
+	<!-- These are context annotations. We are activating them. We are using them instead of XML
+	 configurations.
+	Some of them are "@Autowired", "@Bean", "@Lazy" and "@Component". -->
+	<context:annotation-config/>
+	
+	<!-- Spring will scan all packages and subpackages that start with "com" -->
+	<!-- same for mine, because of similiar file structure. -->
+	<context:component-scan base-package="com"/>
+	
+	<!-- Turning on tx annotations (Spring ORM) -->
+	<!-- These are Transaction Annotations, used in the DAO methods to interact with the db -->
+	<tx:annotation-driven/>
+	
+	<!-- We NEED a SessionFactory to make the project function 
+				the SessionFactory has a dependency called "DataSource" -->
+				
+	<!-- DATASOURCE
+			This bean is a JDBC instance. 
+			Datasource is an object that holds all attributes necessary to connect to ANY database -->
+			
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+	
+ 		<property name="driverClassName" value = "oracle.jdbc.OracleDriver"/>
+ 		<property name="url" 
+ 			value = "jdbc:oracle:thin:@database-1.cb5vpvii5jvy.us-west-2.rds.amazonaws.com:1521:orcl">
+ 		</property>
+ 		<property name="username" value = "admin"/>
+ 		<property name="password" value = "gunderodd"/>
+ 		
+	 </bean>
+			 
+	<!--  SESSIONFACTORY
+			This bean is a Hibernate instance 
+			Session Factory is an object that is responsible for creating Hibernate sessions.  -->
+			
+	<bean id = "sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+ 		<property name="dataSource" ref="dataSource"/>
+ 		
+ 		<!-- this line was also wrong in my first pass, it has to refer to where the model lives -->
+		<property name="packagesToScan" value="com"/>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</prop>
+				<prop key="hibernate.show_sql">false</prop>
+				<prop key="hibernate.format_sql">false</prop>
+				
+				<!-- this line means that we are in a development mode, delete items out of 
+				the db after  -->
+				
+				<!-- BEN'S NOTES ABOUT DIFFERENT VALUES FOR THIS:
+				
+				Settings for hbm2ddl.auto
+				
+				CREATE - drops all tables and objects (that have names associated with your annotations),
+				 hibernate will create you schema from scratch
+				 Only use it for Dev purposes)
+				VALIDATE - hibernate checks to make sure the schema exists as expected before operating
+				UPDATE - will NOT delete anything, it'll only add or modify existing schema elements,
+				 so that schema works 
+						with hibernat's schema. 
+				NONE - it means hibernate won't do anything to your scehma automatically. 
+				
+			    -->
+			    
+				<prop key="hibernate.hbm2ddl.auto">create</prop>
+			</props>
+		</property>
+ 	</bean>
+	 	
+	 <!-- TRANSACTION MANAGER
+	 			Manages your transactions and ALSO manages our contextual sessions 
+	 			
+	 		What are contextual sessions?
+	 			Sessions with info SPECIFC TO YOU. They make it so that each user
+	 			 sees only THEIR information, not someone elses -->
+ 			
+ 	<bean id = "transactionManager"
+ 		class = "org.springframework.orm.hibernate5.HibernateTransactionManager">
+ 		<property name="sessionFactory" ref = "sessionFactory"/>
+ 	</bean>
+		
+
+</beans>
