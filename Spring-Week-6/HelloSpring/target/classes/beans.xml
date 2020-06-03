@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+	<!-- 
+		What is Spring bean?
+				A Spring bean is an object that you've told spring to manage for you
+				
+		What is bean wiring?
+				Bean wiring is the process of telling spring to manage objects for you 
+				AND also defining what dependencies those objects may have 
+				(this can be done with annotaionns as well)
+				
+		What are the types of Injections:
+				Setter
+				Constructor 
+				Field (be careful)
+		-->
+		
+		<!-- Scopes of Spring Bean:
+			Singleton (default) tells spring to ONLY ever make one instance 
+			Prototype tells spring that whenever someone asks for that bean THEN create ANOTHER instance 
+			Request create a new instance of a bean for EVERY new Http Request
+			Session create a new instance of a bean for EVERY new web session
+			GlobalSession says that a single instance of that bean will exist for the ENTIRE SessionFactory
+			-->
+			
+		<!-- 
+			INJECTION vs AUTOWIRING
+				Injection is simply a method of giving an object its dependencies. (It's not specific to Spring)
+					"How do I get the object their dependencies?"
+				
+				Autowiring is when Spring (or another framework) scans your objects to determine WHICH dependencies it needs. 
+					"What dependencies do the objects need?"
+					
+			Cooking example:
+				Autowiring is like asking "Which ingredient do I need"
+				Injection is like asking "How am I using the ingredients"
+		 -->
+				
+	<!-- MANUAL WIRING -->
+	<!-- SETTER INJECTION -->
+	<!-- <bean name = "PlanetDaoFIRST" class = "com.example.dao.PlanetDaoImpl"></bean>
+	<bean name = "PlanServiceFIRST" scope = "singleton" class = "com.example.service.PlanetServiceImpl">
+			<property name="pDao" ref = "PlanetDaoFIRST"></property>
+	</bean> -->
+	
+	<!-- CONSTRUCTOR INJECTION -->
+	<!-- <bean name = "PlanetDaoFIRST" class = "com.example.dao.PlanetDaoImpl"></bean> -->
+	<!-- <bean name = "PlanetDaoBETTER" class = "com.example.dao.PlanetDaoImpBetterVErsionl"></bean> -->
+	<!-- <bean name = "PlanServiceFIRST" scope = "singleton" class = "com.example.service.PlanetServiceImpl">
+		<constructor-arg index = "0" ref = "PlanetDaoFIRST"></constructor-arg>
+		<constructor-arg index = "1" type = "int" value = "5"/>
+	</bean>
+	
+	<bean name = "PlanServiceSECOND" scope = "prototype" class = "com.example.service.PlanetServiceImpl">
+		<constructor-arg index = "0" ref = "PlanetDaoFIRST"></constructor-arg>
+		<constructor-arg index = "1" type = "int" value = "5"/>
+	</bean> -->
+	
+	
+	<!-- 
+		Autowiring modes:
+			"no": autowiring means psring will not autowire anything. (default)
+			"byType": means spring will autowire by looking at the class' property dataype then match those 
+				datatypes to the dataypes of beans already in the IoC container. It then uses setter injection to inject the beans
+			"byName": means spring will autowire by looking at the class' property variable names, then match those 
+				varables to bean names laready int eh IoC container. It also uses setter injections. 
+			"constructor" works similar to byType, except it injects using the constructor with the most dependencies the IoC
+				container recognizes. If the "byType" fails, then the constructor setting will be changed to the byName strategy.
+	 -->
+	
+	<!-- <bean name = "planetDao" class = "com.example.dao.PlanetDaoImpl"></bean>
+	
+	<bean name = "planetService" scope = "singleton" class ="com.example.service.PlanetServiceImpl" autowire = "constructor"/> -->
+	
+	<context:annotation-config/> <!--  This line will turn on spring's context module annotation -->
+	<context:component-scan base-package="com.example.service"/>
+	<context:component-scan base-package="com.example.dao"/>
+	
+	 
+</beans>
