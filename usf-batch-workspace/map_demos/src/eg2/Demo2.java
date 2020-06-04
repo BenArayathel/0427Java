@@ -37,6 +37,28 @@ public class Demo2 {
 		 * Print Ids of employees whose name ends with either n or a
 		 * Print Ids of employees who has the salary range between 100 to 1000
 		 */
+		
+		System.out.println("Printing all Employees with more than 10 years of exp");
+		for(Entry<Integer, Employee> e: empMap.entrySet()) {
+			if(e.getValue().getYop() > 10) {
+				System.out.println("Employees with more that 10 years of service: " + e.getKey());
+			}
+		}
+		System.out.println("Printing all Ids of employees whose name ends with either n or a");
+		for(Entry<Integer, Employee> e: empMap.entrySet()) {
+
+			if(e.getValue().getName().charAt(e.getValue().getName().length()) != 'a' 
+				&& e.getValue().getName().charAt(e.getValue().getName().length()) != 'n' ) {
+				System.out.println("No names ending in a or n: " + e.getKey());
+			}
+		}
+		System.out.println("Printing all Ids of employees who has the salary range between 100 to 1000");
+		for(Entry<Integer, Employee> e: empMap.entrySet()) {
+			if(e.getValue().getSalary() >= 100 && e.getValue().getSalary() <= 1000) {
+				System.out.println("Employees whose salary is inclusively between 1oo and 1000: " + e.getKey());
+			}
+		}
+		 
 	}
 	
 	
