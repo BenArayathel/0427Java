@@ -48,7 +48,7 @@ function getSW(){
 
     let xhttp = new XMLHttpRequest();
 
-    // console.log(xhttp);
+    console.log(xhttp);
 
     xhttp.onreadystatechange = function(){
 
