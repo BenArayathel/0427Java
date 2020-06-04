@@ -13,9 +13,9 @@
 			
 		 		<property name="driverClassName" value = "oracle.jdbc.OracleDriver"/>
 		 		<!-- <property name="url" value = "#{systemEnvironment['TRAINING_DB_URL']}"/> -->
-		 		<property name="url" value = "jdbc:oracle:thin:@database-2.cqoseij0k35s.us-east-2.rds.amazonaws.com:1521:orcl"></property>
-		 		<property name="username" value = "#{systemEnvironment['TRAINING_DB_USERNAME']}"/>
-		 		<property name="password" value = "#{systemEnvironment['TRAINING_DB_PASSWORD']}"/>
+				<property name="url" value = "jdbc:oracle:thin:@myfirstorcl.cyw8bxzbivob.us-east-2.rds.amazonaws.com:1521:orcl"></property>
+				<property name="username" value = "admin"/>
+				<property name="password" value = "M45t3rP455w0rd"/>
 		 		
 			 </bean>
 			 
