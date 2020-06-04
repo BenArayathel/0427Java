@@ -33,7 +33,7 @@
 			<version>4.3.25.RELEASE</version>
 		</dependency>
 		<!-- JDBC -->
-			<!-- https://mvnrepository.com/artifact/com.oracle.ojdbc/ojdbc8 -->
+		<!-- https://mvnrepository.com/artifact/com.oracle.ojdbc/ojdbc8 -->
 		<dependency>
 		    <groupId>com.oracle.ojdbc</groupId>
 		    <artifactId>ojdbc8</artifactId>

@@ -15,37 +15,17 @@ public class PlanetDao {
 	
 	private JdbcTemplate jdbcTemplate;
 
-	public PlanetDao() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
-	public PlanetDao(DataSource dataSource) {
-		super();
-		this.dataSource = dataSource;
-		this.jdbcTemplate = new JdbcTemplate(this.dataSource);
-	}
-
 	public DataSource getDataSource() {
 		return dataSource;
 	}
 
 	public void setDataSource(DataSource dataSource) {
-		System.out.println("In data source setter");
 		this.dataSource = dataSource;
+		this.jdbcTemplate = new JdbcTemplate(this.dataSource);
 	}
 
 	public JdbcTemplate getJdbcTemplate() {
 		return jdbcTemplate;
-	}
-
-//	public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
-//		this.jdbcTemplate = jdbcTemplate;
-//	}
-
-	public void setJdbcTemplate() {
-		System.out.println("In jdbc template setter");
-		this.jdbcTemplate = new JdbcTemplate(this.dataSource);
 	}
 
 	@Override
@@ -60,7 +40,7 @@ public class PlanetDao {
 	}
 	
 	public Planet selectPlanetById(String id) {
-		String sql = "SELECT * FROM planet(id, name) where id=?";
+		String sql = "SELECT * FROM planet(id, name) WHERE id=?";
 		Planet p = jdbcTemplate.queryForObject(sql, new Object[] {id}, new PlanetMapper());
 		return p;
 	}

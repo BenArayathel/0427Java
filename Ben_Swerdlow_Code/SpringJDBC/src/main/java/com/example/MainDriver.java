@@ -14,9 +14,7 @@ public class MainDriver {
 
 	public static void main(String[] args) {
 		
-		System.out.println(new Planet(74, "Jupiter"));
-		
-		planetRepo.insertPlanet(new Planet(74, "Jupiter"));
+		planetRepo.insertPlanet(new Planet(3, "Earth"));
 		
 		System.out.println(planetRepo.selectAllPlanets());
 	}

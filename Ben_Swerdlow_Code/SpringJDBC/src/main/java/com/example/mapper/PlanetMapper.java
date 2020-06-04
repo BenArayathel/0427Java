@@ -14,7 +14,7 @@ public class PlanetMapper implements RowMapper<Planet> {
 		Planet planet = new Planet();
 		planet.setPlanetId(rs.getInt("id"));
 		planet.setPlanetName(rs.getString("name"));
-		return null;
+		return planet;
 	}
 
 }
