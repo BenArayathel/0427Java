@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
-  <display-name>myMVC</display-name>
+  <display-name>JSR303</display-name>
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.htm</welcome-file>
@@ -10,7 +10,8 @@
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
   
-   <listener>
+  
+  <listener>
   		<!-- This context load listener will tie the lifecycle of Spring to the lifecyle of 
   			tomcat iteself. In short, it's an event listener -->
   		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
@@ -26,4 +27,5 @@
   		<servlet-name>dispatcher</servlet-name>
   		<url-pattern>/*</url-pattern>
   </servlet-mapping>
+  
 </web-app>
