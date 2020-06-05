@@ -16,26 +16,18 @@ public class Planet {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int planetId;
 	
-	@Column(name = "planet_name")
+	@Column(name = "planet_name", unique = true, nullable = false)
 	private String planetName;
 	
-
-	public Planet(int planetId, String planetName) {
-		super();
-		this.planetId = planetId;
-		this.planetName = planetName;
-	}
-
+	
 	public Planet() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public int getPlanetId() {
-		return planetId;
-	}
-
-	public void setPlanetId(int planetId) {
+	public Planet(String planetName, int planetId) {
+		super();
+		this.planetName = planetName;
 		this.planetId = planetId;
 	}
 
@@ -47,9 +39,17 @@ public class Planet {
 		this.planetName = planetName;
 	}
 
+	public int getPlanetId() {
+		return planetId;
+	}
+
+	public void setPlanetId(int planetId) {
+		this.planetId = planetId;
+	}
+
 	@Override
 	public String toString() {
-		return "Planet [planetId=" + planetId + ", planetName=" + planetName + "]";
+		return "Planet [planetName=" + planetName + ", planetId=" + planetId + "]";
 	}
 	
 	
