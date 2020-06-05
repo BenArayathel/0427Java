@@ -24,7 +24,8 @@ import com.example.model.Planet;
 @RequestMapping("/api")
 @CrossOrigin(origins = "*") //Dealing with CORS issues
 public class PlanetController {
-	@Autowired
+	
+//	@Autowired //DON'T DO THIS, this is Field Injection 
 	private PlanetRepo planetRepo;
 
 	//CONSTRUCTORS
@@ -33,6 +34,18 @@ public class PlanetController {
 		// TODO Auto-generated constructor stub
 	}
 	
+	
+	@Autowired //Constructor injection
+	public PlanetController(PlanetRepo planetRepo) {
+		this.planetRepo = planetRepo;
+	}
+	
+	
+	public void setPlanetRepo(PlanetRepo planetRepo) {
+		this.planetRepo = planetRepo;
+	}
+
+
 	//METHODS
 	@ResponseStatus(value = HttpStatus.I_AM_A_TEAPOT)
 	@RequestMapping(value = "/getAllPlanets", method = RequestMethod.GET)
