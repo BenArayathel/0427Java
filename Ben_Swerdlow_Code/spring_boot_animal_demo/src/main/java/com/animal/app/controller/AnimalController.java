@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.animal.app.model.Animal;
 import com.animal.app.service.AnimalService;
 
-//@CrossOrigin(origins="http://localhost:4200/")
+@CrossOrigin(origins="http://localhost:4200/")
 @RestController
 public class AnimalController {
 
