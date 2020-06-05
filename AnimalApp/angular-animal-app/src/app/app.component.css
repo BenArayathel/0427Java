@@ -1,0 +1,17 @@
+.main {
+    text-align: center;
+    text-decoration: underline;
+}
+
+ul {
+    list-style: none;
+}
+
+li {
+    display: inline-block;
+    padding: 20px;
+}
+
+.out {
+    text-align: center;
+}
