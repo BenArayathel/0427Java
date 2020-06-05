@@ -1,11 +1,17 @@
 package com.example.controller;
 
 import java.util.List;
+import java.util.Set;
+
+import javax.validation.ConstraintViolation;
+import javax.validation.Validator;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,6 +24,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.support.SessionStatus;
 
 import com.example.dao.PlanetRepo;
 import com.example.model.Planet;
@@ -35,11 +42,12 @@ public class PlanetController {
 	// OMG DON'T DO THIS IN PRACTICE. AUTOWIRING FIELDS IS BAD!!!! Create a setter method or constructor that passes in the value
 	@Autowired
 	private PlanetRepo planetRepo;
+	@Autowired
+	private Validator validator;
 	
 	public PlanetController() {
 		super();
 		System.out.println("Initializing constructor!");
-		// TODO Auto-generated constructor stub
 	}
 
 	public PlanetController(PlanetRepo planetRepo) {
@@ -76,20 +84,38 @@ public class PlanetController {
 	}
 	
 	@PutMapping(value="/createPlanet")
-	public @ResponseBody String createNewPlanet(@RequestBody Planet incomingPlanet) {
+	public @ResponseBody String createNewPlanet(@RequestBody Planet incomingPlanet, BindingResult result, SessionStatus status) {
 		
 		/*
 		 * If an incoming JSON doesn't have ALL the necessary planet model fields, then Spring will simply give the missing
 		 * model fields their default values automatically. ALSO, if the incoming JSON has MORE fields than the Planet model,
 		 * then it'll simply ignore those fields. 
 		 */
+		
+		System.out.println(validator);
+		
+		Set<ConstraintViolation<Planet>> violations = validator.validate(incomingPlanet);
+		
+		for (ConstraintViolation<Planet> violation : violations) {
+			String propertyPath = violation.getPropertyPath().toString();
+			String message = violation.getMessage();
+			result.addError(new FieldError("Planet", propertyPath, "Invalid "+propertyPath+"("+message+")"));
+		}
+		
+		if (result.hasErrors()) {
+			return "Failed to add Planet";
+		}
+		
+		status.setComplete();
+		
 		planetRepo.insert(incomingPlanet);
 		return "Success";
 	}
 	
 	@DeleteMapping(value="/deletingPlanet")
-	public @ResponseBody String deleteNewPlanet(@RequestBody Planet planet) {
-		planetRepo.delete(planet);
+	public @ResponseBody String deletePlanet(@RequestParam("id") int planetId) {
+		System.out.println("planetId: "+planetId);
+		planetRepo.delete(planetId);
 		return "Planet successfully destroyed";
 	}
 

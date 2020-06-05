@@ -2,6 +2,7 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
 	xmlns:tx="http://www.springframework.org/schema/tx"
 	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
@@ -13,6 +14,10 @@
 	<context:component-scan base-package="com"/>
 	<!-- Turning on tx annotations (Spring ORM) -->
 	<tx:annotation-driven/>
+	 <!-- MVC related configuration -->
+	 <!-- Turn on MVC annotations (Spring MVC)-->
+	 <mvc:annotation-driven/>
+	 <context:component-scan base-package="com.example.controller"/>
 
 	<!-- We NEED a SessionFactory to make the project function. The SessionFactory has a dependency called "DataSource" -->
 	
@@ -49,4 +54,6 @@
  	<bean id = "transactionManager" class = "org.springframework.orm.hibernate5.HibernateTransactionManager">
  		<property name="sessionFactory" ref = "sessionFactory"/>
  	</bean>
+ 	
+ 	<bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean"/>
 </beans>

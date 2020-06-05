@@ -26,7 +26,8 @@ public class PlanetRepo {
 		sesFact.getCurrentSession().save(planet);
 	}
 	
-	public void delete(Planet planet) {
+	public void delete(int id) {
+		Planet planet = selectById(id);
 		sesFact.getCurrentSession().delete(planet);
 	}
 	
