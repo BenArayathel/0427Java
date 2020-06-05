@@ -10,12 +10,12 @@ public class ViewController {
 	@PostMapping(value="/nextpage")
 	public String nextPage() {
 		//FORWARD
-		return "/oth/other.html";
+//		return "/oth/other.html";
 		
 		
 		//REDIRECT
 //		return "redirect: /SpringMVC/oth/other.html";
-//		return "redirect: https://www.google.com/";
+		return "redirect: https://www.google.com/";
 	}
 }
 
