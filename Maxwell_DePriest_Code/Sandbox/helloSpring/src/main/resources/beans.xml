@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+	<!-- Manual wiring -->
+	<!-- <bean name = "PlanetDaoFIRST" class="com.example.dao.PlanetDaoImpl"></bean> -->
+	<!-- When spring sees pDao, spring will recognize that this should reference PlanetDaoFIRST, which is a PlanetDaoImpl object -->
+	<!-- <bean name="PlanServiceFirst" scope="singleton" class="com.example.service.PlanetServiceImpl">
+		<property name="pDao" ref = "PlanetDaoFIRST"></property>
+	</bean> -->
+	
+	<!--
+	Scopes of a Spring Bean
+		- Singleton (default): Tells spring to ONLY ever make ONE instance
+		- Prototype: Tells spring that whenever someone asks for that bean, THEN create ANOTHER instance
+		- Request: Create a new instance of a bean for EVERY new Http Request
+		- Session: Create a new instance of a bean for EVERY new web session
+		- Global Session: A single instance of that bean will exist for the ENTIRE SessionFactory
+	 -->
+	
+	
+	<!-- Constructor Injection -->
+	<!-- <bean name = "PlanetDaoFIRST" class="com.example.dao.PlanetDaoImpl"></bean>
+	<bean name="PlanServiceFIRST" scope="singleton" class="com.example.service.PlanetServiceImpl"> -->
+	<!-- Specify within the constructor of the PlanetServiceImpl that it depends on the PlanetDao -->
+	<!-- 	<constructor-arg index="0" ref="PlanetDaoFIRST"></constructor-arg>
+		<constructor-arg index="1" type="int" value="5"></constructor-arg>
+	</bean>
+	
+	<bean name="PlanServiceSECOND" scope="prototype" class="com.example.service.PlanetServiceImpl">
+		<constructor-arg index="0" ref="PlanetDaoFIRST"></constructor-arg>
+		<constructor-arg index="1" type="int" value="5"></constructor-arg>
+	</bean>
+	  -->
+	 <!--
+	 INJECTION vs. AUTOWIRING?
+	 	- Injection is simply a method of giving an object its dependencies. (It's not specific to Spring.)
+	 		> "How do I get the object their dependencies?"
+	 		> Analogy: Recipes - "Which ingredients do I need?"
+	 	- Autowiring is when Spring (or another framework) scans your objects to determine WHICH dependencies it needs
+	 		> "What dependencies do the objects need?"
+	 		> Analogy: Recipes - "How am I using the ingredients?"
+	  -->
+	  <!-- This is going to allow planetService to know that there is a variable in the setter that is of type PlanetDaoImpl and it should make one if it needs one -->
+	  <!-- we're using the classes right now, but should use interfaces? -->
+	  <!-- <bean name="planetDao" class="com.example.dao.PlanetDaoImpl"></bean> -->
+	  <!-- <bean name="planetService" scope="singleton" class="com.example.service.PlanetServiceImpl" autowire="byName"></bean> -->
+	  <!-- autowire="byType" || "byName" -->
+	  
+	  <!-- This will turn on spring's context module annotation (yay annotations!) -->
+	  <context:annotation-config/>
+	  <context:component-scan base-package="com.example.service"/>
+	  <context:component-scan base-package="com.example.dao"/>
+	  
+	  <!-- 
+	  Autowiring modes:
+	  	"no": spring won't autowire anything (the default )
+	  	"byType": spring will autowire by looking at the class' property datatype, then match those datatypes to the datatypes of beans already in the IoC container.
+	  				It then uses setter injection to inject the beans
+	  	"byName": spring will autowire by looking atht he class' property variable names, then match those variables to bean names already in the IoC container. It
+	  				also uses setter inject to inject the beans
+	  	"constructor": Similar to "byType", except it injectsusing the constructor with the most dependencies the IoC container recognizes. If "byType" mode fails, 
+	  				then the constructor setting will be changed to the "byName" strategy	  
+	   -->
+
+</beans>
