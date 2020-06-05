@@ -153,7 +153,7 @@
              Note: The pattern used is equivalent to using pattern="common" -->
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
-      <Context docBase="helloServlets" path="/helloServlets" reloadable="true" source="org.eclipse.jst.jee.server:helloServlets"/><Context docBase="basicServlets" path="/basicServlets" reloadable="true" source="org.eclipse.jst.jee.server:basicServlets"/><Context docBase="p1_test" path="/p1_test" reloadable="true" source="org.eclipse.jst.jee.server:p1_test"/><Context docBase="Project1_BankOfFriendship" path="/Project1_BankOfFriendship" reloadable="true" source="org.eclipse.jst.jee.server:Project1_BankOfFriendship"/></Host>
+      <Context docBase="helloServlets" path="/helloServlets" reloadable="true" source="org.eclipse.jst.jee.server:helloServlets"/><Context docBase="basicServlets" path="/basicServlets" reloadable="true" source="org.eclipse.jst.jee.server:basicServlets"/><Context docBase="p1_test" path="/p1_test" reloadable="true" source="org.eclipse.jst.jee.server:p1_test"/><Context docBase="Project1_BankOfFriendship" path="/Project1_BankOfFriendship" reloadable="true" source="org.eclipse.jst.jee.server:Project1_BankOfFriendship"/><Context docBase="springmvc_dropdown_example" path="/springmvcexample" reloadable="true" source="org.eclipse.jst.j2ee.server:springmvc_dropdown_example"/></Host>
     </Engine>
   </Service>
 </Server>

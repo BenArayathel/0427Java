@@ -2,64 +2,74 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
 	xmlns:tx="http://www.springframework.org/schema/tx"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
 		
-		<!-- Turn on context annotations -->
+
+		<!-- Turning on context annotations -->
 	<context:annotation-config/>
 	
-	<!-- Spring will scan all packages and subpackages that start with "com" -->
+	<!-- Spring will scan all packages AND subpackages that start with "com" -->
 	<context:component-scan base-package="com"/>
 	
 	<!-- Turning on tx annotations (Spring ORM) -->
 	<tx:annotation-driven/>
 	
-	<!-- We NEED a SessionFactory to make the project function 
-				the SessionFactory has a dependency called "DataSource" -->
-				
+	<!-- Turning on mvc annotations (Spring MVC) -->
+	<mvc:annotation-driven/>
+	
+	
+	<!-- We NEED a SessionFactory to make the project function, 
+			the SessionFactory has a dependency called "DataSource -->
+			
 	<!-- DATASOURCE
-			This bean is a JDBC instance. 
-			Datasource is an object that holds all attributes necessary to connect to ANY database -->
-			
-			<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-			
-		 		<property name="driverClassName" value = "oracle.jdbc.OracleDriver"/>
-		 		<!-- <property name="url" value = "#{systemEnvironment['TRAINING_DB_URL']}"/> -->
-		 		<property name="url" value = "jdbc:oracle:thin:@database-2.cqoseij0k35s.us-east-2.rds.amazonaws.com:1521:orcl"></property>
-		 		<property name="username" value = "#{systemEnvironment['TRAINING_DB_USERNAME']}"/>
-		 		<property name="password" value = "#{systemEnvironment['TRAINING_DB_PASSWORD']}"/>
-		 		
-			 </bean>
-			 
-	<!--  SESSIONFACTORY
-			This bean is a Hibernate instance 
-			Session Factory is an object that is responsible for creating Hibernate sessions.  -->
-			
-		<bean id = "sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
-	 		<property name="dataSource" ref="dataSource"/>
-			<property name="packagesToScan" value="com.example.model"/>
-			<property name="hibernateProperties">
-				<props>
-					<prop key="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</prop>
-					<prop key="hibernate.show_sql">false</prop>
-					<prop key="hibernate.format_sql">false</prop>
-					<prop key="hibernate.hbm2ddl.auto">create</prop>
-				</props>
-			</property>
-	 		
-	 	</bean>
+			This bean is a JDBC instance.
+			DataSource is an object that holds all attributes necessary to connect to ANY database
+	 -->
+	 
+	 <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+	 		<property name="driverClassName" value = "oracle.jdbc.OracleDriver"/>
+	 		<!-- <property name="url" value = "#{systemEnvironment['TRAINING_DB_URL']}"/> -->
+	 		<property name="url" value = "jdbc:oracle:thin:@database-2.cqoseij0k35s.us-east-2.rds.amazonaws.com:1521:orcl"></property>
+	 		<property name="username" value = "#{systemEnvironment['TRAINING_DB_USERNAME']}"/>
+	 		<property name="password" value = "#{systemEnvironment['TRAINING_DB_PASSWORD']}"/>
+	 </bean>
+	 
+	 <!-- SESSIONFACTORY
+	 	This bean is a Hibernate instance 
+	 	Session Factory is an object that is responsible for creating Hibernate sessions. -->
 	 	
-	 <!-- TRANSACTION MANAGER
-	 			Manages your transactions and ALSO manages our contextual sessions 
-	 			
-	 		What are contextual sessions?
-	 			Sessions with info SPECIFC TO YOU. They make it so that each user sees only THEIR information, not someone elses -->
-	 			
-	 	<bean id = "transactionManager" class = "org.springframework.orm.hibernate5.HibernateTransactionManager">
-	 		<property name="sessionFactory" ref = "sessionFactory"/>
-	 	</bean>
+	 <bean id = "sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+	 		<property name="dataSource" ref="dataSource"/>
+		<property name="packagesToScan" value="com.example.model"/>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</prop>
+				<prop key="hibernate.show_sql">false</prop>
+				<prop key="hibernate.format_sql">false</prop>
+				<prop key="hibernate.hbm2ddl.auto">create</prop>
+			</props>
+		</property>
+	 		
+	 </bean>
+	 
+	 <!-- TRANSACTION MANAGER 
+	This bean is a HIbernate instance.
+	This bean is responsible for managing your transactions (big surprise)
+		AND also manages our contextual sessions.
+	
+	What are contextual sessions?
+		Sessions with information SPECIFIC TO YOU. They make it so that each user sees only THEIR
+		information, not someone else's.
+	-->
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate5.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory"></property>	
+	</bean>
 
 
 </beans>
