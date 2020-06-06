@@ -47,7 +47,7 @@ public class JediController {
 		return jediService.updateJedi(jedi);
 	}
 	
-	@DeleteMapping("/delete/{id}")
+	@DeleteMapping("/delete/jedi/{id}")
 	public void deleteJediById(@PathVariable("id") int id) {
 		jediService.deleteJediById(id);
 	}

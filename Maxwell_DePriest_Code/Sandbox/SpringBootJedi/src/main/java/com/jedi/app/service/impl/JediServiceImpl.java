@@ -7,7 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.jedi.app.dao.JediDao;
+import com.jedi.app.dao.PadawanDao;
 import com.jedi.app.model.Jedi;
+import com.jedi.app.model.Padawan;
 import com.jedi.app.service.JediService;
 
 @Service
@@ -15,6 +17,9 @@ public class JediServiceImpl implements JediService {
 	
 	@Autowired
 	private JediDao jediDao;
+	
+	@Autowired
+	private PadawanDao padawanDao;
 
 	@Override
 	public Jedi createJedi(Jedi jedi) {
@@ -48,11 +53,14 @@ public class JediServiceImpl implements JediService {
 	}
 
 	@Override
-	public boolean createJediRoster() {
-		jediDao.save(new Jedi(1, "Yoda", "master", "green"));
-		jediDao.save(new Jedi(2, "Mace Windu", "master", "purple"));
-		jediDao.save(new Jedi(3, "Obi-Wan Kenobi", "knight", "blue"));
-		jediDao.save(new Jedi(4, "Quigon Jinn", "knight", "green"));
+	public boolean createJediRoster() {		
+				
+		jediDao.save(new Jedi("Qui-gon Jinn", "knight", "green", false));
+		jediDao.save(new Jedi("Mace Windu", "master", "purple", false));
+
+		
+//		Padawan anakin = new Padawan("Anakin Skywalker", "blue", obiWan.getId());
+//		padawanDao.save(anakin);
 		return true;
 		
 	}

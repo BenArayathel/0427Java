@@ -1,8 +1,12 @@
 package com.jedi.app.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -15,20 +19,20 @@ public class Jedi {
 	private String name;
 	private String rank;
 	private String lightsaber_color;
+	private boolean havePadawan;
+	
 	
 	public Jedi() {
 	
 	}
 
-	public Jedi(int id, String name, String rank, String lightsaber_color) {
-		super();
-		this.id = id;
+	public Jedi( String name, String rank, String lightsaber_color, boolean havePadawan) {
 		this.name = name;
 		this.rank = rank;
 		this.lightsaber_color = lightsaber_color;
+		this.havePadawan = havePadawan;
+
 	}
-
-
 
 	public int getId() {
 		return id;
@@ -46,7 +50,7 @@ public class Jedi {
 		this.name = name;
 	}
 
-	public String getAffiliation() {
+	public String getRank() {
 		return rank;
 	}
 
@@ -61,6 +65,8 @@ public class Jedi {
 	public void setLightsaber_color(String lightsaber_color) {
 		this.lightsaber_color = lightsaber_color;
 	}
+	
+	
 	
 	
 
