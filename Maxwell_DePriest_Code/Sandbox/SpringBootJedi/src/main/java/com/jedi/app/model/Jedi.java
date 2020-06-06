@@ -20,6 +20,16 @@ public class Jedi {
 	
 	}
 
+	public Jedi(int id, String name, String rank, String lightsaber_color) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.rank = rank;
+		this.lightsaber_color = lightsaber_color;
+	}
+
+
+
 	public int getId() {
 		return id;
 	}

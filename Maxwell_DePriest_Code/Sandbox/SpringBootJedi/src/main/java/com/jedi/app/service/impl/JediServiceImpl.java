@@ -1,5 +1,6 @@
 package com.jedi.app.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,6 +45,16 @@ public class JediServiceImpl implements JediService {
 	@Override
 	public List<Jedi> getAllJediByRank(String rank) {
 		return jediDao.findJediByRank(rank);
+	}
+
+	@Override
+	public boolean createJediRoster() {
+		jediDao.save(new Jedi(1, "Yoda", "master", "green"));
+		jediDao.save(new Jedi(2, "Mace Windu", "master", "purple"));
+		jediDao.save(new Jedi(3, "Obi-Wan Kenobi", "knight", "blue"));
+		jediDao.save(new Jedi(4, "Quigon Jinn", "knight", "green"));
+		return true;
+		
 	}
 
 }

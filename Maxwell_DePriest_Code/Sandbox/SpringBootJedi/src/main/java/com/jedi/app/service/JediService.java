@@ -1,5 +1,6 @@
 package com.jedi.app.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.jedi.app.model.Jedi;
@@ -7,6 +8,7 @@ import com.jedi.app.model.Jedi;
 public interface JediService {
 
 	public Jedi createJedi(Jedi jedi);
+	public boolean createJediRoster();
 	public Jedi updateJedi(Jedi jedi);
 	public Jedi getJediById(int id);
 	public void deleteJediById(int id);
