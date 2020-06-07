@@ -1,0 +1,32 @@
+<div align="center">
+<h3>Animal List</h3>
+    <table border="1px">
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Avatar</th>
+            <th>edit</th>
+            <th>delete</th>
+        </tr>
+        <tr *ngFor="let animal of animals">
+            <td>
+                {{animal.id}}
+            </td>
+            <td>
+                {{animal.name}}
+            </td>
+            <td>
+                {{animal.age}}
+            </td>
+            <td>
+                {{animal.avatar}}
+            </td>
+            <td><button (click)="edit( animal.id )" class="btn btn-outline-warning btn-sm">edit</button></td>
+            <td><button (click)="delete( animal.id )" class="btn btn-outline-danger btn-sm">X</button></td>
+        </tr>
+    </table>
+
+    <app-animal-edit></app-animal-edit>
+
+</div>
