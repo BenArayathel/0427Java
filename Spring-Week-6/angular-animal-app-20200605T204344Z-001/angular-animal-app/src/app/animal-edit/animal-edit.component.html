@@ -1,0 +1,31 @@
+<p>animal-edit works!</p>
+
+
+
+
+
+<!--
+    
+    THIS IS WHERE I LEFT OFF AS THIS IS TRYING TO RUN
+        AND IT IS NULL
+    
+    -->
+
+
+<div *ngIf="animal.id !== -1;" align="center">
+    <h3><u>Edit Animal Form</u></h3>
+<table border="1px">
+<tr>
+    <td><input type="text" placeholder="Enter Name" [(ngModel)]="animal.name"/></td>
+</tr>
+<tr>
+    <td><input type="number" placeholder="Enter Age" [(ngModel)]="animal.age"/></td>
+</tr>
+<tr>
+    <td><input type="text" placeholder="Enter Image" [(ngModel)]="animal.avatar"/></td>
+</tr>
+
+</table>
+<button (click)="editAnimal(animal)">Edit Animal</button>
+</div>
+

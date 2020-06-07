@@ -6,6 +6,8 @@
             <th>Name</th>
             <th>Age</th>
             <th>Avatar</th>
+            <th>edit</th>
+            <th>delete</th>
         </tr>
         <tr *ngFor="let animal of animals">
             <td>
@@ -20,7 +22,11 @@
             <td>
                 {{animal.avatar}}
             </td>
+            <td><button (click)="edit( animal.id )" class="btn btn-outline-warning btn-sm">edit</button></td>
+            <td><button (click)="delete( animal.id )" class="btn btn-outline-danger btn-sm">X</button></td>
         </tr>
     </table>
+
+    <app-animal-edit></app-animal-edit>
 
 </div>
