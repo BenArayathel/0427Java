@@ -1,0 +1,72 @@
+What is Spring? 
+	A complete end-to-end ecosystem of modules for developing enterprise-level applications.
+What are some features of Spring?
+Modules of Spring
+What is the Bean Configuration File?
+What is the root tag of the Beans.xml file? How would you add a bean in the file?
+What are the 2 distinct types of containers that Spring provides?
+What is Spring Bean?
+What are the five scopes that a Spring Bean can have?
+What is the default scope of a Spring bean if a scope is not definied?
+What is the life cycle of a Spring Bean
+What is an IoC?
+what are the different IOC conatiners available in Spring? Differentiate between them.
+What is dependency injection?
+What are the different types of dependency injection, and which does Spring support?
+When would you use the different types of injection?
+What is autowiring?
+What are the different autowiring modes that you can specify?
+What are Spring annotations?
+How do you register a class to a spring bean, using annotations?
+How do you activate annotation-based autowiring in Spring?
+What is the @Inject annotation?
+What is @Bean?
+How can you inject any collection as a bean property?
+What are cross-cutting concerns?
+What is code tangling and code scattering?
+What is AOP?
+What is an Aspect?
+What do you mean by Advice?
+What are the types of Advice?
+What is a join point in Spring AOP?
+What is a Pointcut in regards to Spring AOP?
+What is the difference between joinpoint and pointcut?
+What is AspectJ?
+What is Spring ORM?
+What 3 beans do you need  to set up Hibernate with Spring ORM? Why are they necessary?
+What does @Transactional do in Spring ORM?
+Explain different annotations used in Spring AOP
+What is Spring MVC?
+Design pattern used in Spring MVC architecture?
+Describe how Spring MVC implements the Model-View-Controller design pattern.
+What do you need to do in order to configure the dispatcher servleet manually for Spring MVC?
+How do you turn ON annotations support in Spring MVC?
+Howw do you tell Spring that a class is a controller?
+What does the @RequestMapping annotations do and what attributes can you define for it?
+What are other annotations that can be used inside of a controller?
+What does DefaultAnnotationHandlerMapping do in Spring MVC?
+What does the InternalResourceViewResolver do and what are some of its properties?
+What is the ContextLoadListener in SpringMVC?
+What is the @RestController annotation?
+@Controller Vs @RestController
+What is Spring Boot?
+What does adding the 'spring-boot-starter-parent' to your POM do for you?
+What are some of the advantages of using Spring Boot over the basic Spring core?
+What is the @SpringBootApplication?
+Is it possible to add any confiugration to Spring Boot?
+What type of information do we commonly add to the application.properties file?
+What is Spring Data?
+Advantages of Spring Data?
+What interface can you extend through your repository interfaces to provide standard CRUD operations?
+MVC1 Vs MVC2
+Different ways of getting data in the spring controller
+explain the flow of Spring web MVC
+What is contextual session?
+Explain Spring boot starter project
+what is actuator
+Spring Boot Vs Spring
+explain web dev tools in spring boot
+explain all stereo type annotations
+explain few JSR-303 annotations
+How would you handle exceptons in Spring Web MVC?
+CRUDRepository Vs JPARepository

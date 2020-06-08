@@ -19,7 +19,8 @@ export class PokemonService {
 			Purpose: makes asynchronous and callback functionality simpler.
 	*/
 
-	constructor(private HttpClient: HttpClient) {
+	// Bootstraps the HttpClient on class-creation
+	constructor(private http: HttpClient) {
 	}
 
 	private url: string;
@@ -31,12 +32,12 @@ export class PokemonService {
 
 	// Messy AJAX method; returns an Observable string
 	fetchPokemonMessy(): Observable<string> {
-		return this.HttpClient.get<string>(this.url); // GET
+		return this.http.get<string>(this.url); // GET
 	}
 
 	// Clean AJAX method, returns an Observable Poke
 	fetchPokemonClean(): Observable<Poke> {
-		return this.HttpClient.get<Poke>(this.url); // GET
+		return this.http.get<Poke>(this.url); // GET
 	}
 }
 

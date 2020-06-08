@@ -38,17 +38,17 @@ what is HQL?
 	Hibernate Query Language; similar in appearance to SQL but is fully object-oriented and understands notions like inheritance, polymorphism, and association.
 HQL vs SQL
 Core Hibernate Interfaces
-	1. Configuration (I) - used to configure Hibernate; uses a Configuration instance to specify the location of mapping documents.
+	1. Configuration (I) - uses hibernate.cfg.xml to create a SessionFactory.
 		Configuration cfg = new Configuration();
 		cfg.addResource("hello/Message.hbm.xml");
 		cfg.setProperties( System.getProperties() );
 	2. Transaction (I) - OPTIONAL, used to commit and rollback changes to the state of persistent data.
 		Transaction transaction = session.beginTransaction();
-	3. SessionFactory (I) - a Factory used to create Session instances; lightweight and typically only one instance is created for entire application.
+	3. SessionFactory (I) - a Factory used to create Session instances; lightweight and typically only one instance is created for entire application; THREAD SAFE.
 		SessionFactory sessionFactory = cfg.buildSessionFactory();
 	4. Session (I) - a persistence manager that manages operations like storing and retrieving objectsl; NOT THREAD SAFE.
 		Session session = sessionFactory.openSession();
-	5. Query and Criteria Interface - allows you to perform queries against the DB and control how the query is executed.
+	5. Query and Criteria Interface - allows you to perform queries against the DB and controls filtration of queries, respectively.
 different states of an object in hibernate
 	Transient - an object not associated with a session and does not represent a row in the DB.
 		Employee emp = new Employee();
@@ -68,7 +68,7 @@ contextual sessions in hibernate
 	The mapping of a current Session to a user's context.
 L1 Vs L2 cache
 	L1 is cache memory built onto the CPU itself.
-		Associated with SESSION.
+		Associated with SESSION; exists per session.
 		ENABLED BY DEFAULT.
 	L2 is cache memory on a separate chip that can be accessed more quickly than the larger "main" memory.
 		Associated with SESSIONFACTORY.
@@ -98,7 +98,7 @@ what is hbm2ddl auto?
 		create - hibernate first drops the existing tables data and structure, then creates new tables and executes operations on the new table.
 		validate - hibernate validates table structure, whether tables and columns exist or not. If table doesn't exist, Hibernate throws exception.
 		update - hibernate creates table or column if they don't exist, updates them if they do exist. Different from create b/c no tables get dropped.
-		create-drop - used for unit-testing; Hibernate checls for a table do do necessary operations. DROPS THE TABLE AFTER OPERATIONS ARE COMPLETED.
+		create-drop - used for unit-testing; Hibernate checks for a table to do operations. DROPS THE TABLE AFTER OPERATIONS ARE COMPLETED.
 Explain hibernate.cfg.xml
 	A Hibernate config file that specifies required Hibernate properties.
 	By default, placed under src/main/resource folder.
@@ -108,10 +108,11 @@ Annotations used in Hibernate
 	@Entity - marks an entire CLASS as an entity bean, so it MUST have a no-args constructor that's visible with at least protected scope.
 	@Table - specifies details of the table that'll be used to persist the entity in the DB.
 	@Id and @GeneratedValue - Id specifies the primary key; GeneratedValue makes code portable between different databases.
+	@Column
 What is dialect
 	Hibenate is database-agnostic, so we must specify a dialect to distinguish between which SQL variant we're using.
 	A property of hibernate.cfg.xml that generates the appropriate SQL "variant" for the chosen database.
-explain need of Criteria and Restrictions API in hibernate
+Explain need of Criteria and Restrictions API in hibernate
 	Hibernate Criteria API allows you to build up a criteria query object programmatically; the org.hibernate.Criteria interface defines available methods.
-	Hibernate Criteria - using Restrictions allows selective retrieval of objects.
+	Hibernate Criteria - uses restriction/filtration to selectively retrieve objects.
 		E.g retrieve only products with a price over $30.

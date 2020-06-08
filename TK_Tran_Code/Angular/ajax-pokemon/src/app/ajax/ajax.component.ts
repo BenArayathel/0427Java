@@ -1,11 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PokemonService } from '../services/pokemon.service';
 
-/* 
-	Component Purpose:
-		
-*/
-
 @Component({
 	selector: 'app-ajax',
 	templateUrl: './ajax.component.html',
