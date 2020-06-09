@@ -9,14 +9,22 @@ import { Animal } from '../animal';
 })
 export class AnimalListComponent implements OnInit {
 
-  public animals:Animal[];
+  private _animals:Animal[];
 
   constructor(private service:AnimalService) { }
 
   ngOnInit(): void {
     this.service.getAllAnimals().subscribe(
-      data => this.animals = data
+      data => this._animals = data
     );
+  }
+
+  get animals():Animal[] {
+    return this._animals;
+  }
+
+  set animals(animalArray:Animal[]) {
+    this._animals = animalArray;
   }
 
 }

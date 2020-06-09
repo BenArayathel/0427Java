@@ -11,16 +11,16 @@ export class AnimalService {
   private url:string;
 
   constructor(private http:HttpClient) {
-    this.url = "http://localhost:8080/";
+    this.url = "http://localhost:9000/";
   }
 
   public createAnimal(animal:Animal) {
     return this.http.post<Animal>(this.url+"animal", animal);
   }
 
-  public updateAnimal(animal:Animal) {
-    return this.http.put<Animal>(this.url+"animal", animal);
-  }
+  // public updateAnimal(animal:Animal) {
+  //   return this.http.put<Animal>(this.url+"animal", animal);
+  // }
 
   public getAllAnimals():Observable<Animal[]> {
     return this.http.get<Animal[]>(this.url+"animals");
