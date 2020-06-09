@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
 @Entity
 @Table
 public class Animal {
@@ -14,7 +15,7 @@ public class Animal {
 	private String name;
 	private int age;
 	private String avatar;
-	
+
 	public Animal() {
 		// TODO Auto-generated constructor stub
 	}
@@ -50,5 +51,5 @@ public class Animal {
 	public void setAvatar(String avatar) {
 		this.avatar = avatar;
 	}
-	
+
 }

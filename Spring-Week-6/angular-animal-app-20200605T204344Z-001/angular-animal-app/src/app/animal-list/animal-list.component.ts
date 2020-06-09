@@ -8,7 +8,9 @@ import { Animal } from '../animal';
   styleUrls: ['./animal-list.component.css']
 })
 export class AnimalListComponent implements OnInit {
+
 private animals:Animal[];
+
   constructor(private service:AnimalService) {
    }
 
