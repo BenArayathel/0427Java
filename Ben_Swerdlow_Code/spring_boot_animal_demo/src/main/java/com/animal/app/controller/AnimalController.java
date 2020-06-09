@@ -13,44 +13,66 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.animal.app.model.Animal;
+import com.animal.app.model.Person;
 import com.animal.app.service.AnimalService;
+import com.animal.app.service.PersonService;
 
-@CrossOrigin(origins="http://localhost:4200/")
+@CrossOrigin(origins="http://localhost:4200")
 @RestController
 public class AnimalController {
-
-	// *sigh* It's... ok... in a controller. But just autowire the constructor to be consistent.
+	
+	private AnimalService animalServ;
+	private PersonService personServ;
+	
 	@Autowired
-	private AnimalService service;
+	public AnimalController(AnimalService animalServ, PersonService personServ) {
+		this.animalServ = animalServ;
+		this.personServ = personServ;
+	}
 
 	@PostMapping("/animal")
 	public Animal createAnimal(@RequestBody Animal a) {
 		// TODO Auto-generated method stub
-		return service.createAnimal(a);
+		return animalServ.createAnimal(a);
 	}
 
 	@PutMapping("/animal")
 	public Animal updateAnimal(@RequestBody Animal a) {
-		return service.updateAnimal(a);
+		return animalServ.updateAnimal(a);
+	}
+	
+	@PutMapping("/animal/belongsTo/{ownerId}")
+	public Animal updateanimal(@RequestBody Animal a, @PathVariable("ownerId") Integer ownerId) {
+		if (a.getOwner()==null && personServ.isPerson(ownerId)) {
+			Person p = personServ.getPersonById(ownerId);
+			a.setOwner(p);
+//			List<Animal> pAnimalList= p.getPets();
+//			pAnimalList.add(a);
+//			p.setPets(pAnimalList);
+//			personServ.updatePerson(p);
+			return animalServ.updateAnimal(a);
+		} else {
+			return null;
+		}
 	}
 	
 	@GetMapping("/animal/{id}")
 	public Animal getAnimalById(@PathVariable("id") int id) {
-		return service.getAnimalById(id);
+		return animalServ.getAnimalById(id);
 	}
 
 	@DeleteMapping("/animal/{id}")
 	public void deleteAnimalById(@PathVariable int id) {
-		service.deleteAnimalById(id);
+		animalServ.deleteAnimalById(id);
 	}
 
 	@GetMapping("/animals")
 	public List<Animal> getAllAnimals() {
-		return service.getAllAnimals();
+		return animalServ.getAllAnimals();
 	}
 
 	@GetMapping("/animal/age/{age}")
 	public List<Animal> getAnimalsByAge(@PathVariable("age") int age) {
-		return service.getAnimalsByAge(age);
+		return animalServ.getAnimalsByAge(age);
 	}
 }

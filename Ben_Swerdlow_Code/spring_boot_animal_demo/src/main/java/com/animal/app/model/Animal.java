@@ -1,9 +1,13 @@
 package com.animal.app.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 //import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+//import javax.persistence.JoinTable;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -16,6 +20,9 @@ public class Animal {
 	private String name;
 	private int age;
 	private String avatar;
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "owner_FK")
+	private Person owner;
 	
 	public Animal() {
 		super();
@@ -62,10 +69,18 @@ public class Animal {
 	public void setAvatar(String avatar) {
 		this.avatar = avatar;
 	}
-	
+
+	public Person getOwner() {
+		return owner;
+	}
+
+	public void setOwner(Person owner) {
+		this.owner = owner;
+	}
+
 	@Override
 	public String toString() {
-		return "Animal [id=" + id + ", name=" + name + ", age=" + age + ", avatar=" + avatar + "]";
+		return "Animal [id=" + id + ", name=" + name + ", age=" + age + ", avatar=" + avatar + ", owner=" + owner + "]";
 	}
 
 }
