@@ -1,5 +1,7 @@
 package com.example.dao;
 
+import java.util.List;
+
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -14,6 +16,15 @@ public class MoonDao {
 		ses.save(m);
 		tx.commit();
 //		ses.close();
+	}
+	
+	public List<Moon> selectAll() {
+		Session ses = HibernateUtil.getSession();
+		
+		// HQL
+		List<Moon> moonList = ses.createQuery("from Moon", Moon.class).list();
+		
+		return moonList;
 	}
 	
 }

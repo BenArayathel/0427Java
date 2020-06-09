@@ -8,7 +8,7 @@ import com.example.dao.PlanetDao;
 import com.example.dao.StarDao;
 import com.example.model.Moon;
 import com.example.model.Planet;
-import com.example.model.Star;
+//import com.example.model.Star;
 import com.example.util.HibernateUtil;
 
 public class HibernateMain {
@@ -28,6 +28,7 @@ public class HibernateMain {
 //		System.out.println(pdao.selectByName("Mercury"));
 		
 		System.out.println(pdao.selectAll());
+		System.out.println(mdao.selectAll());
 		
 //		System.out.println(sdao.selectByName("Sun"));
 //		System.out.println(sdao.selectByName("Siris"));
@@ -67,6 +68,7 @@ public class HibernateMain {
 		moonsOfEarth.add(theMoon);
 		
 		Mars.setMoons(moonsOfMars);
+		Earth.setMoons(moonsOfEarth);
 		
 		pdao.insert(Mercury);
 		pdao.insert(Pluto);
