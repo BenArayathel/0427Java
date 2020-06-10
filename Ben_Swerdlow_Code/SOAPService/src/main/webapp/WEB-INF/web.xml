@@ -15,7 +15,6 @@
   	<servlet-class>
   		com.sun.xml.ws.transport.http.servlet.WSServlet
   	</servlet-class>
-  	<!-- EAGER loading (Lazy is negative) -->
   	<load-on-startup>1</load-on-startup>
   </servlet>
   
