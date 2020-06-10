@@ -120,6 +120,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "angular-animal-app"
+    }
+  },
+  "defaultProject": "angular-animal-app",
+  "cli": {
+    "analytics": false
+  }
 }
