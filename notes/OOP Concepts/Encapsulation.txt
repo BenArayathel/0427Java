@@ -1,0 +1,23 @@
+Encapsulation:
+
+	Is the practice of restricting access to resources within your 
+	class or object. This is to ensure data isn't accessible 
+	without the approptiate permissions. 
+
+	Java implements this via access modifier keywords:
+	In order of least secure to most secure:
+	
+	public :
+		This resource is accessible to any system 
+
+	protected: 
+		This resource is only available to classes or objects 
+		within the same package as the resource or if it is a
+		child class.
+	
+	default (implicit):
+		This resource is only available to classes or objects 
+		within the same package.
+
+	private:
+		Only available to the class, no other systems. 
