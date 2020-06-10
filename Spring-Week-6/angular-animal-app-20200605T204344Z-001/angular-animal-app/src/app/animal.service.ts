@@ -20,4 +20,16 @@ export class AnimalService {
     return this.http.get<Animal[]>(this.url+"animals");
   }
 
+  public updateAnimal(animal:Animal){
+    return this.http.post<Animal>(this.url+"animal",animal);
+  }
+
+  public deleteAnimalById(id:Animal["id"]){
+    return this.http.delete<Animal>(this.url+"animal/"+id);
+  }
+
+  public getAnimalById(id:Animal["id"]){
+    return this.http.get<Animal>(this.url+"animal/"+id);
+  }
+
 }
