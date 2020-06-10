@@ -82,3 +82,97 @@ Methods:
 	PATCH		no			no
 	OPTION		yes			yes
 	HEAD		yes			yes
+
+
+REST: Representational State Transfer
+	An architectural style protocol 
+		What kind of information can you send over?
+			XML, JSON, anything HTTP can handle. 
+		Transfer protocol?
+			Is only HTTP/HTTPS.
+		Contract bound?
+			It is not contract bound. 
+
+		RESTful conditions/constraints:
+			1) Stateless - does not retain/store any ata about the latest HTTP requests
+			2) Uniform Interface - Each entity's API should follow the same pattern, no operation should have more that 1 URL. 
+			3) Client-Server - they are seperate entities 
+			4) Layer System - client cannot tell whether it is connected to the original server or another server.
+			5) Cacheable - resource must delcare themselves as cacheable 
+			6) (Optional) Code on demand: Able to send executable code to the original server or another server. 
+
+		https://restfulapi.net/
+
+		If you don't meet all the conditions, then it's a REST based service. 
+			
+
+SOAP - Simple Object Access Protocol 	
+	A XML-based message protocol 
+		What information format can we send over?
+			XML, only XML. 
+		Transfer protocol?
+			Any protocol, HTTP, HTTPS, FTP, SMTP. 
+		Contract bound?
+			Yes, uses WSDL - Web Service Description Language. (It's an instruction manual)
+
+			Contract - first:
+				You define the contract first, then make the service around it.  
+			Contract -last:
+				You create the service first, then make an instruction manual (contract) around it. 
+
+		Soap Message:
+			<envelope> //ROOT tag
+				<header> // metadata, optionally can enable extra security 		
+				<body> //the message content
+					<fault> //Optional, errors and exceptions.
+			</envelope>
+
+		SOAP WSDL:
+			<definitions>
+				<types> //datatypes used in SOAP service 
+				<message> // parameters and return types expected during messaging 
+				<porttype> // available operations that can be taken 
+					<operations> //A specific supported action 
+				<binding> //protocol and encoding 
+					  //protocol is http/htttps/ftp/smtp .. etc.
+					  //encoding types: DOCUMENT/litera, DOCUMENT/encoded, RPC/literal, RPC/encoded
+				<service> //URL location of the service 
+					<port> //Individual location of the service 
+			</definitions> 
+
+
+
+
+
+					SOAP				REST
+Tools				JAX-WS, ApacheCXF 			toolless
+Exception hendling		Inbuilt 				extenal resources 
+Contract			WSDL					Not contract bound (WADL, but not nexessary)
+Message				XML					any
+Atomicity 			Can make SOAP message atomic		not atomic, can be made ACID compiant 
+Protocol 			any	 				HTTP/HTTPS
+Security 			any, allows for additonal security 	HTTPS
+
+ "TECMAPS" 
+
+Marshalling Tools:
+	Jackson : JSON < - > POJO (REST)
+
+	JAX-WS: WSDL <- > JAVA (SOAP)
+
+	JAX-B: XML < - > POJO (REST & SOAP)
+
+
+
+
+
+
+
+
+
+
+
+		
+
+			
+	
