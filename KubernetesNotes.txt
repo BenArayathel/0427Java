@@ -1,0 +1,36 @@
+What is Kubernetes?
+	It is a container ochestration tool. 
+
+Keyterms:
+	Node: Individual unit of computing hardware on Kubernetes. Can be a physical machine or virtual machine, anything with processing power. 
+
+	Cluster: A group of nodes sharing their resources. Kubernetes typically mange at a cluster level (rather than individual nodest). When we 
+		deploy our application onto the cluster worklaod will be shared across all the nodes. 
+
+	Persistant Volume: Due to the nature of the cluster, information can be overwritten on a node as a prgoram is reallocated to another node. 
+		The local storage on the cluster is treated as a temporary cache. Persistent volumes provide a file system that can be mounted to the 
+		cluster to allow persistent storage (also won't need to be associated with any particular node)
+
+	Container: Virutalization of operating system. Provides an isolated environment that can run our applications, by including all the dependencies. 
+	
+	Pods: Containers are wrapped with pods, a pod can contain multiple containers. Each container on a pod can communicate with each other as if ont eh 
+		same system (while also maintaining a bit of isolatioin). Kubernetes does not manage containers directly.
+		With kubernetes, if the workload is too much for a pod to handle, it can be replicated to ease the workload. 
+		Pods are scaled up as a unit, so make sure you don't have too many containers in one pod. Otherwise you'll end up with a lot of wasted reources 
+			as you scale up. Minimise this by only combining tightly couled containers into a single pod. 
+		Pods will have na interlal IP, will be recreated everytime a pod is deployed. Thankfully kubernetes has a built-in service registry file.  
+
+	Deployments: Allows us to create a desired state (define the number of pod replicase we want), also will automatically redploy a pod if a pod fails. 
+
+	kubectl: CLI for contorolling kubernetes clusers https://kubernetes.io/docs/reference/kubectl/overview/
+
+
+	Benefits of Kubernetes:
+	1)Kuberentes can expose a container using IP address. If traffic is high, Kubernetes is able to load balance and distribute the netwrok traffis. 
+		
+	2) Storage ochestration: allows you to automatically mount a storage system of your choice. 
+
+	3) Automated rollouts and rollbacks 
+
+	4) Self-heaing: If a pod fails, it'll restart. If it fails to restart, it'll kill the pod and then it'll replace the pod.  
+	
