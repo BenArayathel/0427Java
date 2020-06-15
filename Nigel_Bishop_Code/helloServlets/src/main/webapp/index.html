@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nigel Fetch API Testing</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+</head>
+<body>
+    <div class="container">
+        <h1 class="display-4 mb-4" > Nigel Fetch API Testing</h1>
+        <div class="d-flex">
+            <button class="btn btn-primary mr-4" id="getText">Get Text</button>
+            <button class="btn btn-primary mr-4" id="getCustomers">Get Customers </button>
+            <button class="btn btn-primary mr-4" id="getPosts">Get Posts </button>
+        </div>
+
+        <hr>
+        <form id="addPost">
+            <div class="form-group">
+                <input type="text" class="form-control" id="intitle" placeholder="Title">
+            </div>
+            <div class="form-group">
+                <textarea id="inbody" class="form-control" placeholder="Body"></textarea>
+            </div>
+            <input type="submit" class="btn btn-success" value="Submit">
+        </form>
+
+        <br>
+        <div id="output"></div>
+
+    </div>
+    <script type = "text/javascript" src = "fetchAPI.js"></script>
+
+</body>
+</html>

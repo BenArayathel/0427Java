@@ -1,0 +1,45 @@
+<div align="center">
+    <h3><u>Update Animal Page</u></h3>
+<table border="1px">
+
+<tr>
+    <td><input type="number" placeholder="Enter ID" [(ngModel)]="animal.id"/></td>
+</tr>
+
+</table>
+<button (click)="getAnimalById(animal.id)">Get Animal</button>
+</div>
+
+
+
+
+
+
+<div align="center">
+    <h3>Animal </h3>
+        <table border="1px">
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Avatar</th>
+            </tr>
+            <tr >
+                <td>
+                    {{animal.id}}
+                </td>
+                <td>
+                    {{animal.name}}
+                </td>
+                <td>
+                    {{animal.age}}
+                </td>
+                <td>
+                    <img src="{{animal.avatar}}" width="100" height="100">
+                    <!-- {{animal.avatar}} -->
+                </td>
+            </tr>
+        </table>
+    
+    </div>
+    

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Spring MVC CARS</title>
+</head>
+<body>
+	
+<!-- Planet CONTROLLER FORMS -->
+	<!-- SELECT ALL PLANETS-->
+<!-- 	<form method="get" action="/SpringMVC/mvcexample/api/getAllPlanets">
+ -->	<form method="get" action="/SpringMVC_Cars/mvccars/api/getAllCars">
+		<h4>Select all, GET</h4>
+		<input type="submit" value="Get All Cars"/>
+	</form>
+	
+	<!-- GET PLANET BY ID -->
+	<form method="post" action="/SpringMVC/mvcexample/api/getPlanetById">
+		<h4>Get Planet by Id, POST</h4>
+		<input type="number" name="id" placeholder="planet id" />
+		<input type="submit" value="Get Planet By Id"/>
+	</form>
+	
+	<!-- GET PLANET BY ID2 -->
+	<form method="post" action="/SpringMVC/mvcexample/api/getPlanetById2">
+		<h4>Get Planet by Id2, POST</h4>
+		<input type="number" name="id" placeholder="planet id" />
+		<input type="submit" value="Get Planet By Id2"/>
+	</form>
+	
+	<!-- GET PLANET BY URI -->
+	<form method="post" action="/SpringMVC/mvcexample/api/getPlanetByUri/1">
+		<h4>Get Planet by URI, POST</h4>
+		<input type="submit" value="Get Planet By URI"/>
+	</form>
+	
+	<!-- Use POSTMAN to demonstrated the controller methods "createNewPlanet()"-->
+	
+<!-- SESSION CONTROLLER FORMS -->
+	<br><br>
+	<form method="get" action="/SpringMVC/mvcexample/getName">
+		<h4>retrieve session info example</h4>
+		<input type="submit" value="Session: get name"/>
+	</form>
+	<br>
+	<form method="get" action="/SpringMVC/mvcexample/login">
+		<h4>create session example</h4>
+		<input type="text" name="myName" placeholder="username" />
+		<input type="submit" value="Session: login"/>
+	</form>
+	<br>
+	<form method="get" action="/SpringMVC/mvcexample/logout">
+		<h4>invalidate session example</h4>
+		<input type="submit" value="Session: logout"/>
+	</form>
+	
+	<br><br>
+	
+<!-- VIEW CONTROLLER FORMS -->
+	<form method="post" action="/SpringMVC/mvcexample/nextpage">
+		<h4>Page Changer</h4>
+		<input type="submit" value="Page Changer"/>
+	</form>
+	
+</body>
+</html>

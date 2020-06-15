@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
+  <display-name>Project1_BankOfFriendship</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  
+    <servlet>
+    <description></description>
+    <display-name>BankLogin</display-name>
+    <servlet-name>BankLogin</servlet-name>
+    <servlet-class>com.friendshipBank.Servlet.BankLogin</servlet-class>   
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BankLogin</servlet-name>
+    <url-pattern>/BankLoginPage</url-pattern>
+  </servlet-mapping>
+  
+      <servlet>
+    <description></description>
+    <display-name>NewCustomer</display-name>
+    <servlet-name>NewCustomer</servlet-name>
+    <servlet-class>com.friendshipBank.Servlet.CreateNewCustomer</servlet-class>   
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>NewCustomer</servlet-name>
+    <url-pattern>/CreateNewCustomer</url-pattern>
+  </servlet-mapping>
+  
+        <servlet>
+    <description></description>
+    <display-name>NewLogin</display-name>
+    <servlet-name>NewLogin</servlet-name>
+    <servlet-class>com.friendshipBank.Servlet.CreateNewLoginProfile</servlet-class>   
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>NewLogin</servlet-name>
+    <url-pattern>/CreateNewLogin</url-pattern>
+  </servlet-mapping>
+  
+          <servlet>
+    <description></description>
+    <display-name>NewBankAccount</display-name>
+    <servlet-name>NewBankAccount</servlet-name>
+    <servlet-class>com.friendshipBank.Servlet.ReqBankingAccount</servlet-class>   
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>NewBankAccount</servlet-name>
+    <url-pattern>/ReqBankingAccount</url-pattern>
+  </servlet-mapping>
+  
+            <servlet>
+    <description></description>
+    <display-name>CustomerHome</display-name>
+    <servlet-name>CustomerHome</servlet-name>
+    <servlet-class>com.friendshipBank.Servlet.CustomerDashboard</servlet-class>   
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CustomerHome</servlet-name>
+    <url-pattern>/CustomerDashboard</url-pattern>
+  </servlet-mapping>
+  
+              <servlet>
+    <description></description>
+    <display-name>CustomerHomeS</display-name>
+    <servlet-name>CustomerHomeS</servlet-name>
+    <servlet-class>com.friendshipBank.Servlet.CustomerDashboard2</servlet-class>   
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CustomerHomeS</servlet-name>
+    <url-pattern>/CustomerDashboardS</url-pattern>
+  </servlet-mapping>
+  
+                <servlet>
+    <description></description>
+    <display-name>CusCheckingH</display-name>
+    <servlet-name>CusCheckingH</servlet-name>
+    <servlet-class>com.friendshipBank.Servlet.CusChecking</servlet-class>   
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CusCheckingH</servlet-name>
+    <url-pattern>/CusChecking</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <display-name>CusCheckingB</display-name>
+    <servlet-name>CusCheckingB</servlet-name>
+    <servlet-class>com.friendshipBank.Servlet.CusChecking2</servlet-class>   
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CusCheckingB</servlet-name>
+    <url-pattern>/CusCheckingS</url-pattern>
+  </servlet-mapping>
+  
+    <servlet>
+    <servlet-name>CusSavingA</servlet-name>
+    <servlet-class>com.friendshipBank.Servlet.CusSaving1</servlet-class>   
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CusSavingA</servlet-name>
+    <url-pattern>/CusSavingAA</url-pattern>
+  </servlet-mapping>
+  
+    <servlet>
+    <servlet-name>CusSavingB</servlet-name>
+    <servlet-class>com.friendshipBank.Servlet.CusSaving2</servlet-class>   
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CusSavingB</servlet-name>
+    <url-pattern>/CusSavingBB</url-pattern>
+  </servlet-mapping>
+  
+      <servlet>
+    <servlet-name>EmpLoginA</servlet-name>
+    <servlet-class>com.friendshipBank.Servlet.EmpLoginAcc1</servlet-class>   
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EmpLoginA</servlet-name>
+    <url-pattern>/EmpLoginAccA</url-pattern>
+  </servlet-mapping>
+  
+        <servlet>
+    <servlet-name>EmpLoginB</servlet-name>
+    <servlet-class>com.friendshipBank.Servlet.EmpLoginAcc2</servlet-class>   
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EmpLoginB</servlet-name>
+    <url-pattern>/EmpLoginAccB</url-pattern>
+  </servlet-mapping>
+  
+          <servlet>
+    <servlet-name>EmpBankA</servlet-name>
+    <servlet-class>com.friendshipBank.Servlet.EmpBankAcc1</servlet-class>   
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EmpBankA</servlet-name>
+    <url-pattern>/EmpBankAccA</url-pattern>
+  </servlet-mapping>
+  
+            <servlet>
+    <servlet-name>EmpBankB</servlet-name>
+    <servlet-class>com.friendshipBank.Servlet.EmpBankAcc2</servlet-class>   
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EmpBankB</servlet-name>
+    <url-pattern>/EmpBankAccB</url-pattern>
+  </servlet-mapping>
+  
+              <servlet>
+    <servlet-name>EmpAllTran</servlet-name>
+    <servlet-class>com.friendshipBank.Servlet.EmpAllTrans</servlet-class>   
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EmpAllTran</servlet-name>
+    <url-pattern>/EmpAllTransaction</url-pattern>
+  </servlet-mapping>
+  
+                <servlet>
+    <servlet-name>BankLog</servlet-name>
+    <servlet-class>com.friendshipBank.Servlet.BankLogout</servlet-class>   
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BankLog</servlet-name>
+    <url-pattern>/BankLogOut</url-pattern>
+  </servlet-mapping>
+  
+  
+                  <servlet>
+    <servlet-name>CusTrans</servlet-name>
+    <servlet-class>com.friendshipBank.Servlet.CusTransfer</servlet-class>   
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CusTrans</servlet-name>
+    <url-pattern>/CusTransfer</url-pattern>
+  </servlet-mapping>
+  
+</web-app>

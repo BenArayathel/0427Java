@@ -1,0 +1,46 @@
+2020-05-13 00:08:03,921 -0400 [main] ERROR (BankApplicationLogin.java:70) - The entered USERNAME or PASSWORD is invalid
+2020-05-13 07:53:27,155 -0400 [main] ERROR (CreateNewCustomer.java:76) - The entered CUSTOMER Lastname User1 is invalid
+2020-05-13 07:56:32,053 -0400 [main] ERROR (BankApplicationLogin.java:82) - SYSTEM: UserName or Password entered is incorrect
+2020-05-13 08:01:50,679 -0400 [main] ERROR (CreateNewCustomer.java:76) - SYSTEM: AN INTERNAL ERROR HAS OCCURED, PLEASE CONTACT YOUR SYSTEM ADMINISTRATOR (CREATE CUS)
+2020-05-13 08:03:09,629 -0400 [main] ERROR (CreateNewCustomer.java:76) - SYSTEM: AN INTERNAL ERROR HAS OCCURED, PLEASE CONTACT YOUR SYSTEM ADMINISTRATOR (CREATE CUS)
+2020-05-13 08:04:47,870 -0400 [main] ERROR (CreateNewCustomer.java:76) - SYSTEM: AN INTERNAL ERROR HAS OCCURED, PLEASE CONTACT YOUR SYSTEM ADMINISTRATOR (CREATE CUS)
+2020-05-13 08:05:47,584 -0400 [main] ERROR (CreateNewCustomer.java:76) - SYSTEM: AN INTERNAL ERROR HAS OCCURED, PLEASE CONTACT YOUR SYSTEM ADMINISTRATOR (CREATE CUS)
+2020-05-13 08:08:20,718 -0400 [main] ERROR (CreateNewCustomer.java:76) - SYSTEM: AN INTERNAL ERROR HAS OCCURED, PLEASE CONTACT YOUR SYSTEM ADMINISTRATOR (CREATE CUS)
+2020-05-13 08:11:18,375 -0400 [main] ERROR (EmployeeWelcomePage_ViewLoginAccounts.java:95) - The entered CUSTOMER ID 12 is invalid
+2020-05-13 08:13:38,668 -0400 [main] ERROR (BankApplicationLogin.java:82) - SYSTEM: UserName or Password entered is incorrect
+2020-05-13 16:15:36,726 -0400 [main] ERROR (BankApplicationLogin.java:82) - The entered USERNAME or PASSWORD is invalid
+2020-05-13 17:59:57,537 -0400 [main] ERROR (BankApplicationLogin.java:82) - SYSTEM: UserName or Password entered is incorrect
+2020-05-17 01:52:18,443 -0400 [main] ERROR (BankApplicationLogin.java:81) - The entered USERNAME or PASSWORD is invalid
+2020-05-17 01:54:40,706 -0400 [main] ERROR (BankApplicationLogin.java:81) - The entered USERNAME or PASSWORD is invalid
+2020-05-17 01:54:46,300 -0400 [main] ERROR (BankApplicationLogin.java:81) - The entered USERNAME or PASSWORD is invalid
+2020-05-17 01:54:50,322 -0400 [main] ERROR (BankApplicationLogin.java:81) - The entered USERNAME or PASSWORD is invalid
+2020-05-17 01:54:54,554 -0400 [main] ERROR (BankApplicationLogin.java:81) - The entered USERNAME or PASSWORD is invalid
+2020-05-17 01:56:44,794 -0400 [main] ERROR (BankApplicationLogin.java:81) - The entered USERNAME or PASSWORD is invalid
+2020-05-17 01:56:47,946 -0400 [main] ERROR (BankApplicationLogin.java:81) - The entered USERNAME or PASSWORD is invalid
+2020-05-17 01:56:51,457 -0400 [main] ERROR (BankApplicationLogin.java:81) - The entered USERNAME or PASSWORD is invalid
+2020-05-17 01:58:06,738 -0400 [main] ERROR (BankApplicationLogin.java:81) - The entered USERNAME or PASSWORD is invalid
+2020-05-17 01:58:09,010 -0400 [main] ERROR (BankApplicationLogin.java:81) - The entered USERNAME or PASSWORD is invalid
+2020-05-17 01:58:12,074 -0400 [main] ERROR (BankApplicationLogin.java:81) - The entered USERNAME or PASSWORD is invalid
+2020-05-17 02:00:03,929 -0400 [main] ERROR (BankApplicationLogin.java:81) - The entered USERNAME or PASSWORD is invalid
+2020-05-17 02:00:06,441 -0400 [main] ERROR (BankApplicationLogin.java:81) - The entered USERNAME or PASSWORD is invalid
+2020-05-17 02:00:08,488 -0400 [main] ERROR (BankApplicationLogin.java:81) - The entered USERNAME or PASSWORD is invalid
+2020-05-17 02:00:09,930 -0400 [main] ERROR (BankApplicationLogin.java:81) - The entered USERNAME or PASSWORD is invalid
+2020-05-17 02:00:11,530 -0400 [main] ERROR (BankApplicationLogin.java:81) - The entered USERNAME or PASSWORD is invalid
+2020-05-17 02:01:54,369 -0400 [main] ERROR (BankApplicationLogin.java:81) - The entered USERNAME or PASSWORD is invalid
+2020-05-17 02:02:26,130 -0400 [main] ERROR (BankApplicationLogin.java:81) - The entered USERNAME or PASSWORD is invalid
+2020-05-17 02:12:42,935 -0400 [main] ERROR (BankApplicationLogin_accounts.java:65) - The entered USERNAME or PASSWORD is invalid
+2020-05-17 02:12:46,399 -0400 [main] ERROR (BankApplicationLogin_accounts.java:65) - The entered USERNAME or PASSWORD is invalid
+2020-05-17 02:12:49,303 -0400 [main] ERROR (BankApplicationLogin_accounts.java:65) - The entered USERNAME or PASSWORD is invalid
+2020-05-17 02:14:12,446 -0400 [main] ERROR (BankApplicationLogin_accounts.java:65) - The entered USERNAME or PASSWORD is invalid
+2020-05-17 02:14:14,783 -0400 [main] ERROR (BankApplicationLogin_accounts.java:65) - The entered USERNAME or PASSWORD is invalid
+2020-05-17 02:14:17,462 -0400 [main] ERROR (BankApplicationLogin_accounts.java:65) - The entered USERNAME or PASSWORD is invalid
+2020-05-17 02:14:26,703 -0400 [main] ERROR (BankApplicationLogin_accounts.java:65) - The entered USERNAME or PASSWORD is invalid
+2020-05-17 02:14:28,206 -0400 [main] ERROR (BankApplicationLogin_accounts.java:65) - The entered USERNAME or PASSWORD is invalid
+2020-05-17 02:14:30,582 -0400 [main] ERROR (BankApplicationLogin_accounts.java:65) - The entered USERNAME or PASSWORD is invalid
+2020-05-17 12:07:50,660 -0400 [main] ERROR (CreateLoginProfile.java:67) - The entered PASSWORD is invalid
+2020-05-17 12:08:18,326 -0400 [main] ERROR (CreateLoginProfile.java:67) - The entered PASSWORD is invalid
+2020-05-17 12:11:17,396 -0400 [main] ERROR (CreateLoginProfile.java:67) - The entered PASSWORD is invalid
+2020-05-17 12:30:25,768 -0400 [main] ERROR (CreateLoginProfile.java:67) - The entered PASSWORD is invalid
+2020-05-17 12:30:37,512 -0400 [main] ERROR (CreateLoginProfile.java:67) - The entered PASSWORD is invalid
+2020-05-17 13:12:31,572 -0400 [main] ERROR (CustomerAccount_Checking.java:324) - SYSTEM: AN INTERNAL ERROR HAS OCCURED, PLEASE CONTACT YOUR SYSTEM ADMINISTRATOR (INFO ALL TRAN)
+2020-05-17 13:17:49,949 -0400 [main] ERROR (CustomerAccount_Checking.java:331) - SYSTEM: AN INTERNAL ERROR HAS OCCURED, PLEASE CONTACT YOUR SYSTEM ADMINISTRATOR (INFO ALL TRAN)

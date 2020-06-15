@@ -1,0 +1,20 @@
+<div align="center">
+    <h3><u>Update Animal Page</u></h3>
+<table border="1px">
+
+<tr>
+    <td><input type="number" placeholder="Enter ID" [(ngModel)]="animal.id"/></td>
+</tr>
+<tr>
+    <td><input type="text" placeholder="Enter Name" [(ngModel)]="animal.name"/></td>
+</tr>
+<tr>
+    <td><input type="number" placeholder="Enter Age" [(ngModel)]="animal.age"/></td>
+</tr>
+<tr>
+    <td><input type="text" placeholder="Enter Image" [(ngModel)]="animal.avatar"/></td>
+</tr>
+
+</table>
+<button (click)="updateAnimal()">Update Animal</button>
+</div>
