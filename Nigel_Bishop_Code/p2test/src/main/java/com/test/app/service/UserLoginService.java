@@ -9,4 +9,7 @@ public interface UserLoginService {
 	
 	public UserLogin createUser(UserLogin UserLogin);
 	public List<UserLogin> getAllUser();
+	public UserLogin findByUsername(String userName);
+
+
 }

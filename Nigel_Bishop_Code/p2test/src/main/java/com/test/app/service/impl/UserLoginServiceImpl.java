@@ -25,4 +25,9 @@ public class UserLoginServiceImpl implements UserLoginService{
 		return userLoginDAO.findAll();
 	}
 
+	@Override
+	public UserLogin findByUsername(String userName) {
+		return userLoginDAO.findByuserName(userName);
+	}
+
 }

@@ -29,6 +29,10 @@ public class UserLoginController {
 		return loginservice.getAllUser();
 	}
 
-	
+	@GetMapping("/userlogin/{userName}")
+	public UserLogin findByUsername(@RequestBody String userName) {
+		return loginservice.findByUsername(userName);
+	}
+
 
 }
