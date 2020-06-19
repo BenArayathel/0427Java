@@ -1,4 +1,4 @@
-Explain the importance of the Hibernate F/w
+Explain the importance of the Hibernate F/w 
 	Reduces lines of code by maintaining object-table mappings itself and returns results to an application in the form of Java objects.
 	Created by Gavin King.
 JPA Vs Hibernate
