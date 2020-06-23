@@ -1,21 +1,37 @@
 --[ Java Questions ]--
 
 What is Java?
+	A general-purpose programming language that is class-based, object0oriented, and statically- and strongly-typed.
 Why Java?
+	Write once, run anywhere.
 What is the JVM? JRE? JDK?
+	JVM: an engine that provides runtime environment to drive Java code or applications. It converts bytecode into machine language. JVM is a part of JRE.
+	JRE: a container for java components that orchestrates their activities.
+	JDK: software development environment used for developing Java apps.
 What is a bit? What is a byte? What is a nibble?
 What are the naming conventions in java?
 What are the primitive datatypes in java?
+	boolean (1 bit)
+	byte (8 bits)
+	char (16 bits)
+	short (16 bits)
+	int (32 bits)
+	long (64 bits)
+	float (32 bits)
+	double (64 bits).
 What is flow control?
 What does the keyword "break" do? What does the keyword "continue" do?
 What is short circuiting?
 What datatypes does a switch case allow?
+	byte, short, char, int, String and some wrapper classes.
 What is an array?
 What method do you call to find the size of an array?
+	Array.length
 What is a method?
 What is a function vs a method?
 What is method overloading?
 What is var args in java?
+	Variable arguments (...); used when you don't know ahead of time how many args will be passed.
 What is a class?
 What is an object?
 What are the four pillars of object oriented programming?
@@ -29,11 +45,13 @@ What is the difference between initializing and instantiating?
 What are the scopes of a variable in java?
 What are the access modifiers in java?
 What is shadowing?
+	Overriding a variable accessible within overlapping scopes.
 What is the difference between overloading and overriding?
 What is runtime polymorphism? What is compile time polymorphism?
 What is type casting?
 What is the difference between up and down casting?
 What is a wrapper class?
+	A class that automatically wraps a primitive into an Object type.
 What is autoboxing? What is unboxing?
 What is a String?
 What is the difference betwen String, StringBuilder, and StringBuffer?

@@ -8,7 +8,7 @@ What is Angular CLI?
 	A CLI used to initialize, develop, and maintain Angular applications.
 	Can be used directly in a command shell.
 How to create a new Angular project using Angular CLI?
-	ng new - creates an Angular app
+	ng new [app-name] - creates an Angular app
 	ng generate - generates components, routes, services, and pipes (CLI also creates test shells for all these)
 	ng serve - easily test app locally while developing (like LiveServer)
 (Folder structure) What is e2e?
@@ -24,18 +24,20 @@ Where is the app folder located? What files does it contain (if created by Angul
 	/src/app
 	Contains component files in which our app logic and data are defined.
 What is a decorator?
-	A design pattern used to separate modification (decorations) of a class without modifying original source code.
+	A func that modifies a class or property definition. Ang defines decorators that attach metadata to classes/properties so that it knows what those 
+		classes or properties mean and how they should work.
 	They're functions that allow a service, directive, or filter to be modified prior to its usage.
-	Reference: https://angular.io/api?type=decorator
 What is a module?
-	A container for different parts of our app--controllers, services, filters, directives, etc.
+	In general, a collection of blocks of code dedicated to a single purpose.
+	A container for different parts of our app: controllers, services, filters, directives, etc.
 What is @NgModule? What are some of the attributes inside of the @NgModule decorator?
 	The ROOT MODULE, container for components, imports, sevices, and other parts of the root-app.
+	A class precededed by @NgModule() serves as a manifest for a block of code dedicated to an application domain.
 What is a component?
-	Controls a patch of screen called a "view".
-	We define a component's logic inside a class.
+	A class w/ @Component() associates it with a companion template (html file).
+	Together, the component class and template define a view.
+	Responsible for exposing data and handling msot of view's display and UI logic through data-binding.
 What is @Component? Attributes inside of the @Component decorator?
-	The root component of the app.
 	Attributes:
 		selector - used to select this component
 		templateUrl - specifies where the associated template (HTML) file is located
@@ -47,8 +49,8 @@ How to create a component, without Angular CLI?
 How to include a component on another component's HTML template page?
 	Register it in @NgModule declarations property.
 What is a directive?
-	Something that changes a template (HTML).
-	Extends HTML by giving it new syntax.
+	A class that can modify the structure of the DOM.
+	Usually associated with an HTML element or attribute.
 What are the different kind of directives provided by Angular?
 	ngIf, ngFor, ngSwitch,, etc...
 What is *ngIf and how does it work?
@@ -60,7 +62,7 @@ What is *ngFor and how does it work?
 	A structural directive that renders an element FOR EACH ITEM IN A COLLECTION.
 	The directive is placed ON AN ELEMENT, which becomes the PARENT of future cloned elements.
 What is data binding? What are the different data binding options?
-	Allows to define communication bt a component and the DOM.
+	Allows to define communication b/t a component and the DOM.
 	Makes it easy to define interactive apps without worrying about pushing and pulling data.
 	Four data binds:
 		FROM THE COMPONENT TO THE DOM:
@@ -70,10 +72,9 @@ What is data binding? What are the different data binding options?
 					<li>Name: {{ user.name }}</li>
 					<li>Email: {{ user.email }}</li>
 			2. Property binding: [property]="value"
-				With this, the value is passed FROM THE COMPONENT TO THE SPECIFIED PROPERTY, which is often a simple HTML ATTRIBUTE.
+				With this, the value is passed FROM THE COMPONENT TO THE SPECIFIED PROPERTY (an HTML attribute).
 				Example:
 					<input type="email" [value]="user.email">
-					or
 					<img [src]="value"/>
 					Default value of this input is now the user.email property from the component.
 		FROM THE DOM TO THE COMPONENT
@@ -84,13 +85,13 @@ What is data binding? What are the different data binding options?
 					cookBacon() from the component is called when the button is clicked from the DOM side.
 		TWO WAY
 			4. Two-way binding: [(ngModule)]="value"
-				Using the "banana in a box" syntax; allows bi-directional data flow.
+				Using the "apple in a box" syntax; allows bi-directional data flow.
 				Combines property and event binding [()].
 				Example:
 					<input type="email" [(ngModel)]="user.email">
 					user.email component property is used as the VALUE for the input, but if the user changes the value, the component property gets updated automatically!
 Can we create custom pipes in Angular?
-	Yes, first ng generate pipe <pipe-name>
+	Yes, first ng generate pipe [pipe-name]
 	Then, register it as a DECLARATION in our app module.
 	Finally, use the pipe with the "|" symbol in our HTML.
 What are filters in Angular
@@ -101,7 +102,7 @@ What is a pipe? What are some pipes that come with Angular?
 	Common pipes:
 		uppercase
 		lowercase
-		titlecase - capitalizes first letter of each word and transforms the rest to lowercase
+		titlecase
 What is a SPA?
 	Single Page Applications
 	A web app that interacts with the web browser by dynamically rewriting the current page instead of loading entire new pages.
@@ -111,17 +112,18 @@ What is routing? Why does Angular implement its own routingModule?
 What are Angular services? What is an advantage of using sevices?
 	Singleton objects that get INSTANTIATED ONLY ONCE during the lifespan of an app.
 	Main objective is to organize and share business logic, models, or data and functions with other components.
+	Must be injected through a constructor before they're used inside dependent classes.
 What is a Dependency Injection (DI)?
 	An important application design pattern which increases efficiency and modularity.
 	Dependencies are services/objects that a class needs in order to perform its functions.
-	DI is a coding pattern in which a class asks for DEPENDENCIES FROM EXTERNAL SOURCES rather than creating them itself.
-	The dependencies from external sources are then INJECTED into the requestor.
+	DI is where a class ASKS FOR DEPENDENCIES FROM EXTERNAL SOURCES rather than creating them itself.
+	The dependencies from external sources are then INJECTED into the requestor (via the requestor's constructor).
 How would you add a new service to your project using Angular CLI?
-	ng generate service <service-name>
+	ng generate service [service-name]
 How would you add a new service to your project, without using Angular CLI?
-	Create a x.services.ts file and register it in @NgModule?
+	Create a x.services.ts file and register it in @NgModule (?)
 How do you perform HTTP requests in Angular?
-	Importing HttpClientModule from @angular/common/http and registering it inside the import property of @NgModule
+	Importing HttpClientModule from @angular/common/http and registering it inside the import property of @NgModule.
 Does the HttpClient object create synchronized requests?
 	???
 What is a Promise?
@@ -130,6 +132,7 @@ What is an Observable? What do you need to do to use it inside of an Angular pro
 	Any object whose state may be of interest, and in whom another object may register an interest.
 Difference between Promises and Observable
 	A promise is ALWAYS ASYNCHRONOUS, whereas an observable can be either SYNCHRONOUS OR ASYNCHRONOUS.
+	A promise contains a single value, whereas an observable can contain a stream a values that we can subscribe to.
 What is the lifecycle of a component?
 	Component lifecycle starts when Ang instantiates the component class and renders the component view.
 	The lifecycle continues with change-detection, as Ang checks to see when data-bound properties change, and updates both the view and component instance as needed.
@@ -137,8 +140,8 @@ What is the lifecycle of a component?
 What are the lifecycle hooks for a component?
 	Our app can use lifecycle hook methods to take into key events in the lifecycle of a component.
 	Lifecycle hook methods:
-		ngOnChanges()
 		ngOnInit()
+		ngOnChanges()
 		ngDoCheck()
 		ngAfterContentInit()
 		ngAfterContentChecked()

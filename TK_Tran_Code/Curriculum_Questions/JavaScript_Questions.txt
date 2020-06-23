@@ -153,7 +153,7 @@ What are the disadvantages of AJAX?
 	Complex.
 	Less secure.
 	Search engines cannot index AJAX pages.
-	Browsers with JS disabled cannot use the appcation.
+	Browsers with JS disabled cannot use the application.
 Can we add more than one ‘document.ready’ function in a page?
 	.ready() accepts an anon func as its param and triggers when the DOM has completed loaded the browser window.
 	Yes, you can use the function multiple times and thus can set multiple anon funcs that'll execute after the DOM is ready.

@@ -1,21 +1,21 @@
-WebServices Questions 
+WebServices Questions
 What is a service?
-What is SOA? Style of software design where services are provided to other components through a communication protocol over a network.
+What is SOA? Software Oriented Architecture, services are provided to other components through a communication protocol over a network.
 What are key characteristics of SOA services? Modular, code reusability, scalability, language-independent.
 What is a web service? A service offered over the web.
 What are the types of web services? SOAP, REST, UDDI (Universal Description, Discovery, and Integration).
 What are REST and RESTful Web Services? Web services that adhere to the 6 REST principles.
+What are 6 REST constraints? client-server, stateless, cacheable, uniform interface, layered system, code on demand (optional).
 What are some of the properties contained within a HTTP request? Header, Body, Request Line (method, URI, Http version).
 What are some of the properties contained within a HTTP response? Header, Body, Status Line (status code and status text).
 What are the HTTP methods supported by REST? get, post, put, delete, patch, options, head, trace, connect..
 What is an idempotent HTTP method? every OUTCOME is the SAME, regardless of how many times its performed.
 What is a safe HTTP method? the method doesn't change the STATE of our app.
 What HTTP methods are idempotent? Which are safe? Safe: get, option, head..Idempotent: get, put, delete, options, head
-What are some of the different categories of HTTP response codes?
+What are some of the different categories of HTTP response codes? 100-500
 What is a status code 418? IM_A_TEAPOT; server refuses to brew coffee and is permanently, a teapot.
-What are 6 REST constraints? client-server, stateless, cacheable, uniform interface, layered system, code on demand (optional).
 What annotations should you replace @Controller with to implement RESTful web services using Spring? @RestController (@Controller and @ResponseBody)
-What is marshalling? What is unmarshalling? transforming the memory representation of an obj to a data format suitable for storage or transmission.
+What is marshalling? Transforming the memory representation of an obj to a data format suitable for storage or transmission.
 What object in Spring can be used to send an HTTP response? @GetMapping, @PostMapping, etc..
 How can we send a status code back to client side (Inside of our controller)? @ResponseStatus above the method.
 What is an annotation that can be used to implement custom exception handling for ResponseEntity objects? @ExceptionHandler above the method.
@@ -25,8 +25,7 @@ What is WSDL? Web Services Description Language, an XML-based language for descr
 What are some of the properties that the WSDL contains? <definition>, <types>, <message>, <porttype>, <operations>, <binding>, <service>, <port>.
 What are the 4 types of WSDL bindings? Which one is not used? DOCUMENT/literal, DOCUMENT/encoded, RPC/literal, RPC/encoded.
 Difference between Contract-First and Contract-Last approach for SOAP services?
-What is a SOAP message? the message to be sent.
-Explain WSDL tags which you know. <definition>, <types>, <message>, <porttype>, <operations>, <binding>, <service>, <port>.
+What is a SOAP message? The message to be sent.
 SOAP Vs REST: "TECMAPS": tools used, exception handling, contract, message, atomicity, protocol, security.
 
 Explain Monolithic Architecture
@@ -34,52 +33,52 @@ List out Pros and Cons of Monolithic Architecture
 Explain why MSA?
 MSA Vs SOA Vs Monolitihic
 Talk about pros and cons of MSA
-Explain Spring Cloud Config. Provides server and client-side support for externalized configuration in a distributed system.
+Explain Spring Cloud Config. Provides server and client-side support for externalized configuration in a distributed system. Central place to manage external properties.
 Talk about Netflix OSS
 How would you monitor your Microservices? Netflix Eureka
-What is client side load balancing? How would you achieve it? Netflix Ribbon
-What is the need of API Gateway services? Explain in details
-Explain the importance of Circuit Breaker Hystrix?
-Explain Hystrix Dashboard. Allows you to monitor Hystrix metrics in realtime. 
-What is the use of Message Queues? (Apache kafka or Rabbit MQ)
+What is client side load balancing? Netflix Ribbon
+What is the need of API Gateway services? Routes traffic to appropriate target; reduces server load.
+Explain the importance of Circuit Breaker Hystrix? Latency and fault tolerance; stops cascading failures and enables resilience where failure is inevitable.
+Explain Hystrix Dashboard. Allows you to monitor Hystrix metrics in realtime.
+What is the use of Message Queues (Apache Kafka or Rabbit MQ)?  Queues messages up.
 List down the annotations used with Netflix OSS with Spring Cloud for the different Infrastructure services available.
 
 What is Virtualization? Creating a virtual version of something, including hardware or network resources.
-What is HyperV? Microsoft's hypervisor; creates virtual machines.
-What is Containerization? Bundling an app together with all its related config files, libraries and dependencies.
-Why containerization is important for MSA? It allows for complete isolation of services from its host.
 What is a Virtual Machine? A virtualization of computer hardware, each with its own OS and resources.
+What is HyperV? Microsoft's hypervisor; creates virtual machines. EACH W/ IT'S OWN OS.
+What is Containerization? Bundling an app together with all its related config files, libraries and dependencies. SHARES SAME OS.
+Why containerization is important for MSA? It allows for complete isolation of services from its host.
 Compare docker swarms with kubernetes. Docker Swarm works well with smaller apps; Kubernetes allows scalability for very large apps.
 
 Kuberenetes
-What is a pod? A group of one or more containers with shared storage/network.
-What is a node? Anything with processing power; may be a virtual or physical machine.
-What is a cluster? A group of one or more nodes sharing resources. 
+What is a pod? A group of one or more containers with shared storage/network. Wraps around containers.
+What is a node? Anything with processing power; may be a virtual or physical machine. Wraps around pods.
+What is a cluster? A group of one or more nodes sharing resources. Wraps around nodes.
 What is a persistant volume? A cluster-wide resource used to store data in a way that it persists beyond the lifetime of a pod.
-What is kubernete deployments? Generated by Kubernetes and runs multiple replicas of your app and automatically replaces instances that fail.
+What is kubernete deployments? Generated by Kubernetes and runs MULTIPLE REPLICAS of your app and automatically REPLACES INSTANCES THAT FAIL (SELF-HEALING).
 What is kubernetes manifest? A YAML file used to create, modify and delete Kubernetes resources such as pods or deployments.
 What is kubectl? CLI used to run Kubernetes commands.
 What is ochestration with kubernetes? What is the advantages of using an ochestration tool? Automates app deployment, scaling, and management b/c too many containers.
-What is the kubectl command line syntax template? 
+What is the kubectl command line syntax template?
 What are types of resources you can use in kubernetes? (kubectl)
 What are some basic operations you can use in kubernetes? (kubectl)
 What kind of file can the kubernetes manifest be? YAML
 How would you define a manfiest to create 3 replicas of a pod and expose it?
 
-Docker 
-Why is Docker important? Isolates services of an app.
-What is a Dockerfile? Contains cofiguration files for Docker.
+Docker
+Why is Docker important? Isolates components and services that build up a complete app.
+What is a Dockerfile? Contains configuration files for Docker.
 What are some useful docker commands inside of the Dockerfile?
-Is there another way to configrure a docker image, other than Dockerfile?
-What is a Docker image? 
-What is a Docker container?
-What id Docker Compose?
-What is Docker registry?
-Benefits of using Docker ?
-What is Docker hub?
-How would I create a docker image? Which file's would I need and what would the command line be?
-How do I create and start a docker container?
-How do I stop and start an existing container?
-How do I get the list of docker images?
-How do I get the list of all the docker containers?
-What are some other useful docker commands? 
+Is there another way to configure a docker image, other than Dockerfile?
+What is a Docker image? A file that contains instructions for creating a container that can run on Docker.
+What is a Docker container? A part of a whole application, such as libraries and other dependencies.
+What is Docker Compose? A YAML file for defining and running multiple containers.
+What is Docker registry? A storage and content delivery system; holds Docker images.
+Benefits of using Docker? Containerization
+What is Docker hub? Service by Docker for finding and sharing premade images.
+How would I create a docker image? Which file's would I need and what would the command line be? docker image build
+How do I create and start a docker container? docker create > docker start
+How do I stop and start an existing container? docker start or docker stop
+How do I get the list of docker images? docker images
+How do I get the list of all the docker containers? docker ps
+What are some other useful docker commands?
