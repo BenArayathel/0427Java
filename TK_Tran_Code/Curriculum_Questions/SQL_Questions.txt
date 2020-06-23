@@ -43,7 +43,7 @@ What is referential integrity?
     Foreign keys must always reference a valid primary key
 What is a cascade delete?
     If a record from the parent table is deleted, the corresponding records in child table will automatically be deleted.
-What is Like keyboard?
+What is LIKE keyword?
     Used in WHERE clause to specify a pattern in a column.
 What is GROUP BY?
     Groups rows that have the same values into "summary rows".

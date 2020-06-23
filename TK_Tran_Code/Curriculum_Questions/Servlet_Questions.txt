@@ -1,5 +1,5 @@
 Explain JEE architecture
-	JEE is built on top of JSE.
+	JEE is built on top of JSE (Java Standard Edition).
 	Provides an API and runtime environment for developing and running large-scale,
 		multi-tiered, scalable, reliable, and secure network applications.
 define servlet
@@ -73,6 +73,5 @@ what is filter
 talk about apache tomcat and compare it with other JEE containers
 	It's an application server that act as a container for servlets.
 	Designed to execute Java servlets and render pages that use JSP (Java Server Pages).
-	A complete Java ecosystem.
 explain client server model
 	Distributed application structure that splits tasks between service providers (servers) and service requestors (clients).

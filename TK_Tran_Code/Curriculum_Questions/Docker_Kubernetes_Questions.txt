@@ -40,7 +40,7 @@ What is client side load balancing? Netflix Ribbon
 What is the need of API Gateway services? Routes traffic to appropriate target; reduces server load.
 Explain the importance of Circuit Breaker Hystrix? Latency and fault tolerance; stops cascading failures and enables resilience where failure is inevitable.
 Explain Hystrix Dashboard. Allows you to monitor Hystrix metrics in realtime.
-What is the use of Message Queues (Apache Kafka or Rabbit MQ)?  Queues messages up.
+What is the use of Message Queues (Apache Kafka or Rabbit MQ)? Queues data up if a service is receiving more than it can handle.
 List down the annotations used with Netflix OSS with Spring Cloud for the different Infrastructure services available.
 
 What is Virtualization? Creating a virtual version of something, including hardware or network resources.
@@ -67,14 +67,14 @@ How would you define a manfiest to create 3 replicas of a pod and expose it?
 
 Docker
 Why is Docker important? Isolates components and services that build up a complete app.
-What is a Dockerfile? Contains configuration files for Docker.
-What are some useful docker commands inside of the Dockerfile?
+What is a Dockerfile? Contains configuration files for Docker. Make a new file named Dockerfile.txt
+What are some useful docker commands inside of the Dockerfile? FROM (base image), VOLUME (where to mount), ADD, ENTRYPOINT (configure container that'll run as executable).
 Is there another way to configure a docker image, other than Dockerfile?
 What is a Docker image? A file that contains instructions for creating a container that can run on Docker.
 What is a Docker container? A part of a whole application, such as libraries and other dependencies.
 What is Docker Compose? A YAML file for defining and running multiple containers.
 What is Docker registry? A storage and content delivery system; holds Docker images.
-Benefits of using Docker? Containerization
+Benefits of using Docker? Containerization, share same OS, faster.
 What is Docker hub? Service by Docker for finding and sharing premade images.
 How would I create a docker image? Which file's would I need and what would the command line be? docker image build
 How do I create and start a docker container? docker create > docker start
@@ -82,3 +82,7 @@ How do I stop and start an existing container? docker start or docker stop
 How do I get the list of docker images? docker images
 How do I get the list of all the docker containers? docker ps
 What are some other useful docker commands?
+
+docker run vs docker start
+	run creates new container of an image then executes that container
+	start launches a container that was previously stopped

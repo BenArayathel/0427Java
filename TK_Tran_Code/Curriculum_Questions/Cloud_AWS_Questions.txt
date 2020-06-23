@@ -1,7 +1,7 @@
 What is cloud
 	On-demand available of computer system resources, especially data storage and computing power, w/o directive active management by the user.
 Explain IAAS, PAAS, SAAS, FAAS
-	IAAS - provides virtualized computing resources over the Internet; abstracts various low-level details of underlying network infrastructure like 
+	IAAS - provides virtualized computing resources over the Internet; abstracts various low-level details of underlying network infrastructure like
 		computing resources, data partitioning, scaling, security, backup, etc.
 	PAAS - builds on top of IAAS and provides a computing platform which includes OS, programming-language execution environment, database, and web server.
 	SAAS - provides software licensed on a subscription basis, centrally hosted.
@@ -10,7 +10,7 @@ Compare AWS with other providers like GCP, Azure
 	More options.
 List differnt services you know of AWS
 	RDS - Relational Database Service, provides scalable relational database in the cloud.
-	EC2 - Elastic Cloud Compute, provides computing resources over the cloud.
+	EC2 - Elastic Compute Cloud, provides computing resources over the cloud.
 	S3 - provides object storage through a web service interface; scalable based on traffic.
 	EBS - raw block-level storage that can be attached to EC2 and used by RDS.
 	ELB - automatically redirects traffic across multiple targets to reduce server load.
@@ -31,11 +31,12 @@ explain RDS services by AWS
 what is security group
 what is auto scaling
 what is IAM in AWS
+	Identity and Access Management, lets you manage access to AWS services and resources securely.
 what is cloud watch
 what is sonar cloud
 Devops with cloud
 Explain serverless
-Explain Lambda
+Explain AWS Lambda - computing service that runs code in response to events and automatically manages resources required by that code.
 
 Vertical scaling - adding more resources/components (CPU/RAM/DISK) to your server.
 Horizontal scaling - involves adding ENTIRE physical machines in the pool of existing resources.
