@@ -48,16 +48,24 @@ What does DefaultAnnotationHandlerMapping do in Spring MVC?
 What does the InternalResourceViewResolver do and what are some of its properties?
 What is the ContextLoadListener in SpringMVC?
 What is the @RestController annotation?
+	Combination of @Controller and @ResponseBody
 @Controller Vs @RestController
 What is Spring Boot?
 What does adding the 'spring-boot-starter-parent' to your POM do for you?
+	Allows you to inherit a starter project that already made decisions about ORM, Object Mapper, or Logger to use.
 What are some of the advantages of using Spring Boot over the basic Spring core?
 What is the @SpringBootApplication?
-Is it possible to add any confiugration to Spring Boot?
+	Combination of @Configuration, @EnableAutoConfiguration, and @Component.
+Is it possible to add any configuration to Spring Boot?
+	Yes, inside application.properties.
 What type of information do we commonly add to the application.properties file?
+	Port number, application name, show_sql, sql_format
 What is Spring Data?
+	A Spring-based programming model for data access.
 Advantages of Spring Data?
+	Spring Data creates all our DAO implementations for us; all we do is create an interface that extends JpaRepository.
 What interface can you extend through your repository interfaces to provide standard CRUD operations?
+	CrudRepository
 MVC1 Vs MVC2
 Different ways of getting data in the spring controller
 explain the flow of Spring web MVC
@@ -69,4 +77,9 @@ explain web dev tools in spring boot
 explain all stereo type annotations
 explain few JSR-303 annotations
 How would you handle exceptons in Spring Web MVC?
+	Aspects?
 CRUDRepository Vs JPARepository
+	JpaRepository extends PagingAndSortingRepository, which extends CrudRepository.
+	CrudRepository provides CRUD methods.
+	PagingAndSortingRepository provides pagination and sorting methods.
+	JpaRepository provides JPA-related methods such as flushing and persistence.

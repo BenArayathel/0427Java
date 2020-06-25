@@ -42,12 +42,10 @@ how devops is related to agile
 	DevOps focuses on continuous integration and testing; Agile focuses on constant change.
 explain CI
 	The practice of merging all dev's working copies to a shared mainline (pipeline) several times a day.
-	After merge their code changes to a central repo, automated builds and tests are run.
+	After merge their code changes to a central repo, automated builds and tests are also triggered and run.
 explain Continuos Deployment and Continuous Delivery
-	Continuous Deployment - a software release process that uses automated testing to validate if changes to a codebase are correct
-		and stable for immediate autonomous deployment.
-	Continuos Delivery - an approach in which teams produce software in short cycles, ensuring that the software can be reliably
-		released at any time and, when releasing, do so manually.
+	Continuous Deployment - every change made is automatically deployed to production; ensures code is always UTD.
+	Continuos Delivery - ensures that a complete software can be reliably released at any time.
 explain Jenkins
 	Free and open-source automation server.
 	Helps automate parts of software development related to building, testing, and deploying.
