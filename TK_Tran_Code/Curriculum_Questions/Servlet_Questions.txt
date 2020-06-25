@@ -12,7 +12,7 @@ explain life cycle of the servlet
 		destroy() - called to terminate the servlet
 		Servlet is then collected by the garbage collector of the JVM
 explain servlet hierarchy
-	Servlet (I) > GenericServlet (C) > UserDefinedServlets
+	Servlet (I) > GenericServlet (C) > HttpServlet > MyServlet
 explain why http is called as stateless protocol
 	No session info is retained by the server (receiver).
 what are the different ways you make http stateless to stateful using servlets

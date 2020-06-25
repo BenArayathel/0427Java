@@ -1,5 +1,7 @@
 What is Java?
-	A general-purpose programming language that is class-based, object0oriented, and statically- and strongly-typed.
+	High-level, object-oriented, robust, secure, platform-independent, high performance, multithreaded, and portal programming language.
+	Developed by James Gosling in 1991.
+	Strongly-typed, compiled language.
 Why Java?
 	Write once, run anywhere.
 What is the JVM? JRE? JDK?
@@ -53,3 +55,35 @@ What is a wrapper class?
 What is autoboxing? What is unboxing?
 What is a String?
 What is the difference betwen String, StringBuilder, and StringBuffer?
+
+----------------------------------------------------------------------------------------------------
+Object - an entity with some state and behavior, created using "new"
+Heap - runtime data where memory is allocated to objects.
+Stack - variables, method invocation and return. Holds frames, these frames destroyed when method invocation completes.
+Just-in-Time Compiler (JIT) - improves performance. Compiles parts of bytecode w/ similar functionality at same time, reducing amount of time needed for compilation.
+"WORA" - Write once run anywhere; Java is portable and platform-independent.
+Classloader - subsystem of JVM used to load class files.
+Access Modifiers
+	public - accessible by any class or method
+	protected - accessible by class of same package, or subclasses
+	default (package private) - accessible within package only
+	private - accessible within class only
+Static variables or methods - they're shared among all objects of the same class, bc they're a part of the class and not of the object
+	No need to create the object to access variables or methods
+Advantages of packages - avoid name clashes, easy access control, provides structure to app
+Constructor - special method used to initialize an object upon its creation. Invoked when a class is instantiated and memory is allocated for the object.
+	Name of constructor must be same as class name.
+	Must not have a return type.
+	Cannot be final.
+	Default constructor - doesn't accept any value, called implicitly by compiler if no constructors are defined
+	Parameterizes constructor - accepts arguments to instantiate an object
+Thread Lifecycle
+	New
+		> start()
+	Runnable
+		> run() or stop()
+	Running
+	Terminated
+
+	New threads can be "blocked" when one is currently running.
+	wait() can be called on new threads to block them (Non Runnable).
