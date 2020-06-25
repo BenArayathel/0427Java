@@ -1,5 +1,3 @@
---[ Java Questions ]--
-
 What is Java?
 Why Java?
 What is the JVM? JRE? JDK?

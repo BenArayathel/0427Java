@@ -1,5 +1,3 @@
---[ SQL Questions ]--
-
 What is a database?
     Stored collection of data.
 What is DBMS?

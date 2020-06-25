@@ -1,5 +1,3 @@
---[ HTML & CSS Questions ]--
-
 What is HTML?
 	Hypertext Markup Language; displays content on a webpage.
 What is required to create an HTML document
@@ -13,7 +11,7 @@ What are the two parts of an attribute?
 What are the four core attributes of HTML attributes
 	class, id, title, ?
 What is the ID attribute?
-	Specifies a unique ID for an HTML element; used to point to a style in a stylesheet or by JavaScript to manipulate the element.
+	Specifies a unique identifier for an element; used to point to a style in a stylesheet or by JavaScript to manipulate the element.
 What is the title attribute?
 	Specifies extra information about an element; shows as tooltip text when mouse hovers over element.
 	Can be used on ANY HTML element, but it's not that useful.
@@ -23,22 +21,23 @@ Heading Tags
 	Titles or subtitles that you wish to display on a webpage.
 	Ranges from h1 to h6.
 Paragraph Tag
-	Always starts on a new line and is usually a block of text.
+	Block-level tag for main body text.
 	Browser automatically adds whitespace (a margin) before and after the paragraph.
 Break Tag
-	Inserts a single line break.
-	Considered an "empty tag" which means it has no end tag.
+	Block-level tag that inserts a single blank line.
+	Considered an "empty/self-closing tag" which means it has no end tag.
 How to make text Italic? Bold? Underline?
 	Italic = <i></i> or <em></em>
 	Bold = <b></b> or <string>
 	Underline = <u></u>
 What is the difference between the <div> and <span> elements
-	Span is in-line and used for small chunks of HTML inside a line.
-	Div is block-line and used for larger chunks of code.
+	Span is in-line and used for small chunks of HTML inside the same line.
+	Div is block-level and used for larger chunks of code.
 How do you write a comment in HTML?
 	// or /* */
 How would you insert an image into an HTML page?
 	<img src="#" alt="#">
+	Including an alt attribute is best practice for the impaired.
 How would you make a table in an HTML page?
 	<table>
 		<tr>
@@ -66,7 +65,7 @@ What are three types of list tags you can use on an HTML document?
 How would I add a link to another HTML document in the current HTML document?
 	<a href="">Click for Next Page</a>
 How would you set a background for an element?
-	In CSS, select the element and add a background-image attribute with the url of an image.
+	In CSS, select the element and add a background-image attribute with the string url of an image.
 What is an HTML form?
 	A group of elements collectively used to collect user input.
 	User input can then be sent to server for processing.
@@ -79,19 +78,24 @@ What is the <input> tag used for?
 What are some different values that you can assign to the <input>'s type attribute and what data can you collect?
 	type="button/checkbox/color/date/datatime-local/email/file/hidden/image/month/number/password/radio/range/reset/search/submit/tel/text/time/url/week"
 What are three different ways that you can add styles to an HTML document
+	Inline with style attribute, inside <style> tags, or in an external CSS file.
 What is CSS?
-	Cascading Style Sheets; decorates webpages.
+	Cascading Style Sheets; decorates and styles webpages.
 What CSS selectors you can use to access all HTML elements of a certain type, id, or class?
 	* selects all HTML elements.
+	. selects classes
+	# selects ids
 What are three ways to specify color properties?
 	Hexadecimal (#92a8d1), RGB (255, 255, 255), and RGBA (255, 255, 255, 0.6)
 What is specificity in CSS?
 	Set of rules applied to CSS selectors in order to determine which style is applied to an element.
-	The more specific a CSS style, the higher point value/weight it accrues, the likelier it is to be present on the element's style.
+	The more specific a CSS style, the higher "point" value it accrues, the likelier it is to be present on the element's style.
 What is the box model in CSS?
 	A paradigm used to describe CSS design and layout.
 	Every element covered by an invisible box.
 	Consists of margins, borders, padding, and actual content.
+
+
 What is a child selector?
 	(>) Selects all elements that're the children of a specified element.
 	Example: selects all <p> elements that're children of a <div> element.
@@ -110,6 +114,8 @@ How could you use a selector to choose a specific element with a specific class?
 	p.intro {
 		background-color: red;
 	}
+
+
 What is Bootstrap?
 	CSS framework for developing responsive and mobile-first websites.
 BONUS POINTS

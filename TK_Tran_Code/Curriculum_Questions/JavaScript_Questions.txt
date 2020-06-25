@@ -1,5 +1,3 @@
---[ JavaScript Questions ]--
-
 What is the DOM?
 	Document Object Model; created by browser when a webpage is loaded; constructed as a tree of objects.
 	DOM defines a standard for accessing documents:
@@ -23,15 +21,15 @@ What are some advantages that can be gained through using JavaScript?
 	Client-side language, easy to learn, comparatively fast for end-users.
 	Versatile and popular (many resources).
 What does it mean that JavaScript is loosely typed?
-	Doesn't require a variable type to be defined on creation.
+	Doesn't require a variable type to be defined upon creation.
 What does it mean that JavaScript is an interpreted language?
-	Implementations execute instructions directly and freely, without previously compiling into machine language beforehand.
+	Implementations execute instructions directly and freely, line by line, without previously compiling into machine language beforehand.
 What tag would you use to wrap around a block of JavaScript on an HTML document and where would you need to place it?
 	<script></script> can be placed in head or the last block in the HTML <body> tags.
 Is JavaScript case sensitive?
 	Tags and attribute names are case-insensitive; attribute VALUES are case-sensitive.
 How do you insert a comment in JavaScript?
-	// /* */
+	// or /* */
 Does JavaScript has data types? If it does, what are they?
 	Primitives:
 		String
@@ -45,15 +43,15 @@ Does JavaScript has data types? If it does, what are they?
 	Function
 What are three different ways you can create variables in JavaScript and when would you use each?
 	var - can be globally OR locally scoped.
-		Can be updated AND redeclared.
+		Can be updated AND redeclared (dangerous).
 	let - only block-scoped (anything within {} is a block).
 		Can be updated but NOT redeclared.
 		New to ES6.
 	const - maintains constant values.
-		Cannot be updated or redeclared.
+		Cannot be updated nor redeclared.
 		New to ES6.
 What are global variables? How are these variable declared and what are the problems associated with using them?
-	Variables that can be accessed globally; issues with unintentional overwriting of global variables.
+	Variables that can be accessed globally; issues with unintentional overwriting.
 What JavaScript values are considered falsey? What are considered truthy?
 	Seemingly different values equate to TRUE when compared with == (loosely equals).
 	But FALSE occurs when compared with === (strictly equals) because type is considered.
@@ -66,11 +64,10 @@ What is the typeof operator?
 	Returns the data type of the given value.
 What is hoisting in JavaScript?
 	A mechanism where variables and function declarations are moved to the top of their scope before execution.
-	A process on JavaScript that moves all declarations to the top of the current scope.
-	Example: this
+	Example: this..
 		console.log(greeter);
 		var greeter = "say hello";
-	Example: is interpreted as this
+	Example: ..is interpreted as this
 		var greeter;
 		console.log(greeter); // greeter is undefined
 		greeter = "say hello";
@@ -100,15 +97,15 @@ How can you add new elements dynamically?
 	With the HTML DOM createElement() method.
 	Example:
 		var btn = document.createElement("BUTTON"); 	// creates a <button> element
-		btn.innerHTML = "CLICK ME"; 					// inserts text
-		document.body.appendChild(btn);					// append <button> to <body>
+		btn.innerHTML = "CLICK ME"; 					        // inserts text
+		document.body.appendChild(btn);				       	// append <button> to <body>
 Explain how can you submit a form using JavaScript?
 	document.getElementById("myForm").submit();
 	Can also use a <button> with a type="submit".
-	Tip: use .reset() or <button> type="reset" to reset a form.
+	Tip: use .reset() or <button type="reset"> to reset form fields.
 What is an event?
-	"Things" that happen to HTML elements.
-	JS can "react" on these events.
+	"Things" that happen to HTML elements during program execution.
+	JS can be triggered and "react" on these events to do something.
 What are some common JavaScript events?
 	An HTML webpage has finished loading.
 	An HTML input field was changed.
@@ -116,11 +113,12 @@ What are some common JavaScript events?
 	onchange, onclick, onmouseover, onmouseout, onkeydown, onload, etc..
 What are event listeners? Name three ways that you can implement event listeners.
 	addEventListener() attaches an event handler to a specific element.
-	Attaches handler to an element without overwriting existing event handlers.
+		Attaches handler to an element without overwriting existing event handlers.
 	Can add many event handlers to one element:
 		element.addEventListener("click", myFunction);
 		element.addEventListener("mouseover", mySecondFunction);
-	Can add event listeners to any DOM object, not just HTML elements. i.e. the window object.
+	Can add event listeners to any DOM object, not just HTML elements.
+		i.e. the window object.
 	addEventListener() makes it easier to control how the event reacts to bubbling.
 	Remove an event listener via .removeEventListener().
 	Syntax:
@@ -131,17 +129,17 @@ What are event listeners? Name three ways that you can implement event listeners
 	When passing params, use ANONYMOUS FUNCTIONS that CALLS THE SPECIFIED FUNCTION with params:
 		element.addEventListener("click", function(){ myFunc(p1, p2) });
 			function() is the anonymous func.
-			it calls a named function, myFunc which accepts two params.
-Event Bubbling vs Event capturing
+			it calls a named function, myFunc, which accepts two params.
+Event Bubbling vs Event Capturing
 	Event propogation is the way of defining the element order when an event occurs.
-	In "bubbling", the innermost element's event is handled first, THEN the outer.
-	In "capturing", the outermost element's event is handled first, THEN the inner.
+	In "bubbling", the innermost element's event is handled first, THEN the outer. Bubbles outward.
+	In "capturing", the outermost element's event is handled first, THEN the inner. Captures inward.
 What is JSON in Ajax?
-	JSON is data that could be send via AJAX.
+	JSON is a data format that could be send via AJAX.
 	Data interchange format in JavaScript.
 What is AJAX?
-	Asynchronouse JavaScript and XML
-	AJAX refers to sending/receiving data b/t browser's objects and another source, usually a web server commonly over HTTP.
+	Asynchronouse JavaScript and XML.
+	AJAX refers to sending/receiving data b/t browser's objects and another source, usually a web server, commonly over HTTP.
 What are the advantages of AJAX?
 	Developers can:
 		Update a webpage without reloading the page (asynchronous).
@@ -153,10 +151,10 @@ What are the disadvantages of AJAX?
 	Complex.
 	Less secure.
 	Search engines cannot index AJAX pages.
-	Browsers with JS disabled cannot use the appcation.
+	Browsers with JS disabled cannot use the application.
 Can we add more than one ‘document.ready’ function in a page?
-	.ready() accepts an anon func as its param and triggers when the DOM has completed loaded the browser window.
 	Yes, you can use the function multiple times and thus can set multiple anon funcs that'll execute after the DOM is ready.
+	.ready() accepts an anon func as its param and triggers when the DOM has completed loaded the browser window.
 What is the for-in loop in JavaScript?
 	Iterates over lists but returns a list of KEYS.
 		let list = [4, 5, 6];
@@ -172,16 +170,18 @@ What is the for-of loop in JavaScript?
 What are all the technologies used by AJAX?
 	HTML/CSS - displays content and style; for presentation.
 	DOM - dynamic display and interaction with data.
-	XML or JSON - carrying data to and from server.
+	XML or JSON - data format for carrying data to and from server.
 	ASP or JSP - server-side.
 	XMLHttpRequest - for asynchronous comms between client and server.
-	JavaScript - used to being above technologies together; used for client-side validation before sending data to server.
+	JavaScript - used to bring above technologies together; used for client-side validation before sending data to server.
 XHR Vs Fetch API
 	XMLHttpRequest was used to retrieve data from a server asynchronously.
+		Had to create an XMLHttpRequest object first.
+		Commonly result in callback hell.
 	Fetch makes it easier to make asynchronous requests and handle responses better than XMLHttpRequest.
 		Main improvement is that Fetch API uses "Promises", hence avoiding callback hell.
 What are Promises?
-	Object returned from fetch() that represents a value that may not be avaiable yet, but will be resolved at some point in the future.
+	Object returned from fetch() that represents a value that may not be available yet, but will be resolved at some point in the future.
 What is Type Coercion
 	Process of converting value from one type to another.
 	Any type, be it primitive or an object, is a valid subject for type coercion.
@@ -189,22 +189,25 @@ What is Type Coercion
 		Number(value)
 	Implicit: automatic, when you apply operators to values of different types.
 		1 == null, 2/’5', null + new Date()
-		or it can be triggered by surrounding context, like with if(value) {}, where value is coerced to boolean.
+		or it can be triggered by surrounding context, like with if (value) { }, where value is coerced to boolean.
 Explain callback functions
 	A func that's passed into another func as an argument, which is then invoked inside the other func to complete some action.
 	Example:
+		// First func
 		function greeting(name) {
 			alert("Hello " + name);
 		}
 
+		// Second func
 		function processUserInput(callback) {
 			var name = prompt("Please enter your name: ");
 			callback(name);
 		}
 
+		// Passing first func into second func
 		processUserInput(greeting);
 	greeting() is passed into processUserInput().
-	It then gets called inside processUserInput.
+	It then gets called inside processUserInput (greeting was renamed to callback()).
 	greeting() is considered a callback function, because it got passed into processUserInput() as a param.
 	Ensures that the prompt() is run first, THEN print out Hello + name.
 Java vs JavaScript
@@ -212,10 +215,11 @@ Java vs JavaScript
 	Java is statically-typed, JS is dynamically typed.
 ECMAScript vs JavaScript
 	JavaScript is the most popular implementation of ECMAScript.
+	ECMAScript is the dance, JavaScript is the dancer.
 JS Objects Vs Arrays
 	Objects store properties (key-value pairs), arrays store lists of multiple items in a single variable.
 	Arrays useful when order matters.
-Explain rest operator in JS
+Explain the rest operator in JS
 	A func's LAST PARAM can be prefixed with "..." which causes all remaining (user-supplied) args to be placed within a "standard" JS array.
 	Example:
 		function myFun(a, b, ...manyMoreArgs) {
@@ -243,17 +247,15 @@ explain dom tree
 					> Text: "My Header"
 what are closures in JS
 	A feature in JS where an inner func has access to the outer func's variables, a global chain.
-	A closure is a function that has access to its outer function scope even after the outer function has returned. 
-		This means a closure can remember and access variables and arguments of its outer function even after the function has finished!
+		A closure can remember and access variables and arguments of its outer function even after the function has finished!
 	The closure has three scope chains:
 		It has access to its own scope variables.
-		It has access to the outer func's variables.
-		It has access to global variables.
+		It has access to the outer (parent) func's variables.
+		It event has access to global variables.
 	Example:
 		function outer() {
 			var b = 10;
 			function inner() {
-					
 					var a = 20; 
 					console.log(a + b);
 				}
@@ -262,7 +264,7 @@ what are closures in JS
 		Notice how inner has access to b, the outer func's variable.
 		Scope of var a is limited to inner(), and scope of var b is limited to outer().
 		Reference: https://medium.com/@prashantramnyc/javascript-closures-simplified-d0d23fa06ba4
-explain arrow functions
+explain arrow functions (=>)
 	Syntactically compact alternative to a regular function expression.
 get vs put vs post vs patch
 	get - read-only, retrieves data from the server.
